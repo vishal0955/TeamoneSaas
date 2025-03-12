@@ -37,7 +37,7 @@ const Login = () => {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <div  style={{ textAlign: "center", marginTop: "50px" }}>
             <h2>Login</h2>
             <input
                 type="email"
