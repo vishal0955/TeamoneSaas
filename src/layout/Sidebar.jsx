@@ -354,7 +354,7 @@
 
 
 import { useState, useEffect } from "react";
-import { House, Users, Calendar, BarChart3, FolderKanban, FileText } from 'lucide-react';
+import { House, Users, Calendar, BarChart3, FolderKanban, FileText, Cog } from 'lucide-react';
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -406,7 +406,44 @@ const menuItems = [
   },
 ];
 
+const superAdminMenu = [
+    {
+        name: "Dashboard",
+        path: "/dashboard",
+        icon: <House size={20} />,
+      },
+      {
+        name: "Plans ",
+        path: "/superadmin/plans",
+        icon: <Calendar size={20} />,
+      },
+      {
+        name: "User Info ",
+        path: "/user_info",
+        icon: <Calendar size={20} />,
+      },
+      {
+        name: "Order",
+        path: "/order_plan",
+        icon: <Calendar size={20} />,
+      },
+      {
+        name: "Plan Request ",
+        path: "/superadmin/plans",
+        icon: <Calendar size={20} />,
+      },
+      {
+        name: "Settings",
+        path: "/superadmin/settings",
+        icon: <Cog size={20} />,
+      }
+]
+
 export default function Sidebar({ toggleSidebar, collapsed }) {
+
+    const userRole = localStorage.getItem("userRole");
+    console.log(userRole);
+    const menu = userRole === "superadmin" ? superAdminMenu : menuItems;
   const [openMenus, setOpenMenus] = useState({});
   const [isMobile, setIsMobile] = useState(false);
 
@@ -465,7 +502,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
         
         {/* Menu items */}
         <ul className="pt-4">
-          {menuItems.map((item) => (
+          { menu.map((item) => (
             <li key={item.name} className="mb-1 group">
               <div className="relative">
                 <Link 

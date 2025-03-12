@@ -5,7 +5,7 @@ import Sidebar from './Sidebar';
 function SuperAdminDashboard() {
   return (
     <div>
-      <Sidebar/>
+      {/* <Sidebar/> */}
       <>
   <div className="container-fluid mt-4 " style={{marginLeft:"250px"}}>
     <div className="row mt-4 ">
