@@ -264,6 +264,7 @@
 // }
 
 import { useState } from "react";
+import { House } from 'lucide-react';
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -271,7 +272,7 @@ const menuItems = [
   {
     name: "Dashboard",
     path: "/dashboard",
-    icon: 'smart-home',
+    icon: <House />,
   },
   {
     name: "CRM",
@@ -304,11 +305,16 @@ export default function Sidebar({toggleSideBar, collapsed}) {
 
   return (
    
-    <div className={collapsed ? "w-64 min-h-screen bg-gray-100 p-4" : "w-4 bg-green-400"}>
+    <div className={collapsed ? "w-64 min-h-screen bg-gray-100 p-4" : "w-20 bg-green-400"}>
      {/* <div className="w-64 min-h-screen bg-gray-100 p-4" > */}
-     <ul>
+     <div className="pt-0">
+       <p className="h-[50px]">Logo</p>
+     </div>
+     <div>
+     <ul className="pt-66px">
         {menuItems.map((item) => (
           <li key={item.name} className="mb-2">
+        
             <button
               className="flex items-center justify-between w-full p-2 rounded-lg hover:bg-gray-200"
               onClick={() => toggleMenu(item.name)}
@@ -332,6 +338,7 @@ export default function Sidebar({toggleSideBar, collapsed}) {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 }
