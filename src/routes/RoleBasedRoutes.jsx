@@ -15,6 +15,8 @@ const RoleBasedRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/not-found" element={<NotFound />} />
 
+      <Route element=
+
       <Route element={<Layout />}>
         <Route
           path="/admin"
@@ -24,14 +26,7 @@ const RoleBasedRoutes = () => {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/superAdmin"
-          element={
-            <ProtectedRoute allowedRoles={["superAdmin"]}>
-              <SuperAdminDashboard />
-            </ProtectedRoute>
-          }
-        />
+     
         <Route
           path="/client"
           element={
