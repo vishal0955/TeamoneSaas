@@ -271,6 +271,7 @@ const menuItems = [
   {
     name: "Dashboard",
     path: "/dashboard",
+    icon: 'smart-home',
   },
   {
     name: "CRM",
@@ -292,16 +293,20 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({toggleSideBar, collapsed}) {
+    // const [sidebarOpen, setSidebarOpen] = useState(false);
   const [openMenus, setOpenMenus] = useState({});
+  console.log("collapsed", collapsed);
 
   const toggleMenu = (name) => {
     setOpenMenus((prev) => ({ ...prev, [name]: !prev[name] }));
   };
 
   return (
-    <div className="w-64 min-h-screen bg-gray-100 p-4">
-      <ul>
+   
+    <div className={collapsed ? "w-64 min-h-screen bg-gray-100 p-4" : "w-4 bg-green-400"}>
+     {/* <div className="w-64 min-h-screen bg-gray-100 p-4" > */}
+     <ul>
         {menuItems.map((item) => (
           <li key={item.name} className="mb-2">
             <button
