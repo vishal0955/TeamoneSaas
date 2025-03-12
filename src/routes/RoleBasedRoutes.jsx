@@ -24,6 +24,7 @@ const RoleBasedRoutes = () => {
             </ProtectedRoute>
           }
         />
+        
         <Route
           path="/superAdmin"
           element={
