@@ -83,7 +83,7 @@ const Login = () => {
     // Predefined Credentials for Testing (You can replace this with API call)
     const predefinedUsers = {
         admin: { email: "admin@example.com", password: "admin123", role: "admin" },
-        superAdmin: { email: "superadmin@example.com", password: "superadmin123", role: "superAdmin" },
+        superAdmin: { email: "superadmin@example.com", password: "superadmin123", role: "superadmin" },
         client: { email: "client@example.com", password: "client123", role: "client" },
         manager: { email: "manager@example.com", password: "manager123", role: "manager" },
         employee: { email: "employee@example.com", password: "employee123", role: "employee" }
