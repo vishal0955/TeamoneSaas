@@ -361,58 +361,135 @@ import { Link } from "react-router-dom";
 const menuItems = [
   {
     name: "Dashboard",
-    path: "/dashboard",
-    icon: <House size={20} />,
+    path: "/admin",
+    icon: <House size={14} />,
   },
+  // {
+  //   name: "Application",  
+  //   icon: <Users size={14} />,
+  //   subItems: [
+  //     { name: "ToDo", path: "/application/todo" },
+  //     { name: "Notes", path: "/crm/leads" },
+  //     { name: "Calendar", path: "/crm/sales" },
+  //   ],
+  // },
   {
-    name: "Application",  
-    icon: <Users size={20} />,
+    name: "Project",
+    path: "/project",
+    icon: <FolderKanban size={14} />,
     subItems: [
-      { name: "", path: "/crm/customers" },
-      { name: "Leads", path: "/crm/leads" },
-      { name: "Sales", path: "/crm/sales" },
+      { name: "Project", path: "/project/projects" },
+      { name: "Task", path: "/project/tasks" },
+      { name: "Task Board", path: "/project/timeline" },
     ],
   },
 
   {
     name: "CRM",
     path: "/crm",
-    icon: <Users size={20} />,
+    icon: <Users size={14} />,
     subItems: [
-      { name: "Customers", path: "/crm/customers" },
+      { name: "Contacts", path: "/crm/customers" },
+      { name: "Companies", path: "/crm/companies" },
       { name: "Leads", path: "/crm/leads" },
+      { name: "Deals", path: "/crm/deals" },
+      { name: "Pipeline", path: "/crm/pipeline" },
+      { name: "Analytics", path: "/crm/analytics" },
+      { name: "Activities", path: "/crm/activities" },
       { name: "Sales", path: "/crm/sales" },
     ],
   },
   {
     name: "HRM",
     path: "/hrm",
-    icon: <Calendar size={20} />,
+    icon: <Calendar size={14} />,
     subItems: [
-      { name: "Employees", path: "/hrm/employees" },
-      { name: "Attendance", path: "/hrm/attendance" },
-      { name: "Payroll", path: "/hrm/payroll" },
+      { 
+        name: "Employees", 
+        path: "/hrm/employees", 
+        subMenu: [
+          { name: "Employees", path: "/hrm/employees/list" },
+          { name: "Departments", path: "/hrm/employees/departments" },
+          { name: "Designations", path: "/hrm/employees/designations" },
+          { name: "Policies", path: "/hrm/employees/policies" },
+        ]
+      },
+      {
+        name: "Tickets", 
+        path: "/hrm/tickets", 
+        // subMenu: [
+        //   { name: "Leave", path: "/hrm/tickets/leave" },
+        //   { name: "Attendance", path: "/hrm/tickets/attendance" },
+        // ]
+      },
+      {
+        name: "Holidays", 
+        path: "/hrm/holidays", 
+    
+      },
+      { 
+        name: "Attendance", 
+        path: "/hrm/attendance", 
+        subMenu: [
+          { name: "Attendance", path: "/hrm/attendance/list" },
+          { name: "Leaves", path: "/hrm/attendance/leaves" },
+          { name: "Leave Settings", path: "/hrm/attendance/leave_settings" },
+          { name: "Timesheet", path: "/hrm/attendance/timesheet" },
+          {name: "Shift & Schedule", path: "/hrm/attendance/shift_schedule" },
+          { name: "OverTime", path: "/hrm/attendance/overtime" }, 
+        ]
+      },
+      {
+        name: "Performance", path: "/hrm/performance",
+        subMenu: [
+          { name: "Performance Indicator", path: "/hrm/performance/performance_indicator" },
+         
+          { name: "Performance Review", path: "/hrm/performance/performance_review" },
+          { name: "Performance Appraisal", path: "/hrm/performance/performance_appraisal" },
+        ]
+      }
+      
+
+
     ],
   },
+
   {
-    name: "Project",
-    path: "/project",
-    icon: <FolderKanban size={20} />,
+    name: "Recruitment",
+    path: "/recruitment",
+    icon: <Calendar size={14} />,
     subItems: [
-      { name: "Project", path: "/project/projects" },
-      { name: "Task", path: "/project/tasks" },
-      { name: "Timeline", path: "/project/timeline" },
+      { name: "Jobs", path: "/recruitment/jobs" },
+      { name: "Candidates", path: "/recruitment/candidates" },
+      { name: "Interviews", path: "/recruitment/interviews" },
+      { name: "Offer Letters", path: "/recruitment/offer_letters" },
     ],
+
   },
+
+  {
+    name: "Finance & Accounts",
+    path: "/recruitment",
+    icon: <Calendar size={14} />,
+    subItems: [
+      { name: "Sales", path: "/recruitment/jobs" },
+      { name: "Candidates", path: "/recruitment/candidates" },
+      { name: "Interviews", path: "/recruitment/interviews" },
+      { name: "Offer Letters", path: "/recruitment/offer_letters" },
+    ],
+
+  },
+
+
   {
     name: "Reports",
     path: "/reports",
-    icon: <BarChart3 size={20} />,
+    icon: <BarChart3 size={14} />,
   },
   {
     name: "Documents",
     path: "/documents",
-    icon: <FileText size={20} />,
+    icon: <FileText size={14} />,
   },
 ];
 
@@ -420,158 +497,215 @@ const superAdminMenu = [
     {
         name: "Dashboard",
         path: "/superadmin/dashboard",
-        icon: <House size={20} />,
-      },
-      {
+        icon: <House size={14} />,
+    },
+    {
         name: "Plans ",
         path: "/superadmin/plans",
-        icon: <Calendar size={20} />,
-      },
-      {
+        icon: <Calendar size={14} />,
+    },
+    {
         name: "User Info ",
         path: "/superadmin/user_info",
-        icon: <Calendar size={20} />,
-      },
-      {
+        icon: <Calendar size={14} />,
+    },
+    {
         name: "Order",
         path: "/superadmin/order_plan",
-        icon: <Calendar size={20} />,
-      },
-      {
+        icon: <Calendar size={14} />,
+    },
+    {
         name: "Plan Request ",
         path: "/superadmin/plan_request",
-        icon: <Calendar size={20} />,
-      },
-      {
+        icon: <Calendar size={14} />,
+    },
+    {
         name: "Settings",
         path: "/superadmin/settings",
-        icon: <Cog size={20} />,
-      }
-]
+        icon: <Cog size={14} />,
+    }
+];
 
 export default function Sidebar({ toggleSidebar, collapsed }) {
-
     const userRole = localStorage.getItem("userRole");
     console.log(userRole);
     const menu = userRole === "superadmin" ? superAdminMenu : menuItems;
-  const [openMenus, setOpenMenus] = useState({});
-  const [isMobile, setIsMobile] = useState(false);
+    const [openMenus, setOpenMenus] = useState({});
+    const [openSubMenus, setOpenSubMenus] = useState({});
+    const [isMobile, setIsMobile] = useState(false);
 
-  // Check if mobile view on mount and on resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-  }, []);
-
-  const toggleMenu = (name, e) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    setOpenMenus((prev) => ({ ...prev, [name]: !prev[name] }));
-  };
-
-  // Determine sidebar width/visibility
-  const sidebarClass = collapsed 
-    ? "w-16 fixed z-30 h-screen bg-white" 
-    : "w-56 fixed z-30 h-screen bg-white";
-
-  // For mobile: when expanded, show overlay
-  const overlayClass = !collapsed && isMobile 
-    ? "fixed inset-0 bg-black bg-opacity-50 z-20" 
-    : "hidden";
-
-  return (
-    <>
-      {/* Backdrop overlay for mobile */}
-      <div 
-        className={overlayClass} 
-        onClick={() => toggleSidebar && toggleSidebar()}
-      ></div>
-      
-      {/* Sidebar */}
-      <div 
-        className={`transition-all duration-300 border-r border-gray-200 ${sidebarClass}`}
-      >
-        {/* Logo area */}
-        <div className="h-14 flex items-center justify-center border-b border-gray-200">
-          {collapsed ? (
-            <span className="text-blue-500 font-bold text-xl">H</span>
-          ) : (
-            <span className="text-blue-500 font-bold text-xl">HRMS</span>
-          )}
-        </div>
+    // Check if mobile view on mount and on resize
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
         
-        {/* Menu items */}
-        <ul className="pt-4">
-          { menu.map((item) => (
-            <li key={item.name} className="mb-1 group">
-              <div className="relative">
-                <Link 
-                  to={item.path}
-                  className={`flex items-center ${
-                    collapsed ? "justify-center" : "justify-between"
-                  } px-4 py-1 hover:bg-gray-100 transition-colors`}
-                >
-                  <div className="flex items-center">
-                    <span className={`text-[#111827] ${!collapsed && "mr-3"}`}>
-                      {item.icon}
-                    </span>
-                    {!collapsed && (
-                      <span className="text-[#111827]">{item.name}</span>
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
+
+    const toggleMenu = (name, e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        setOpenMenus(prev => ({
+            ...prev,
+            [name]: !prev[name]
+        }));
+    };
+
+    const toggleSubMenu = (name, e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        setOpenSubMenus(prev => ({
+            ...prev,
+            [name]: !prev[name]
+        }));
+    };
+
+    // Determine sidebar width/visibility
+    const sidebarClass = collapsed 
+        ? "w-16 fixed z-30 h-screen bg-[#FFFFFF] overflow-y-auto" 
+        : "w-52 fixed z-30 h-screen bg-[#FFFFFF] overflow-y-auto";
+
+    // For mobile: when expanded, show overlay
+    const overlayClass = !collapsed && isMobile 
+        ? "fixed inset-0 bg-black bg-opacity-50 z-20" 
+        : "hidden";
+
+    return (
+        <>
+            {/* Backdrop overlay for mobile */}
+            <div 
+                className={overlayClass} 
+                onClick={() => toggleSidebar && toggleSidebar()}
+            ></div>
+            
+            {/* Sidebar */}
+            <div 
+                className={`transition-all duration-300 border-r border-gray-200 ${sidebarClass}`}
+            >
+                {/* Logo area */}
+                <div className="h-14 flex items-center justify-center border-b border-gray-200">
+                    {collapsed ? (
+                        <span className="text-blue-500 font-bold text-xl">H</span>
+                    ) : (
+                        <span className="text-blue-500 font-bold text-xl">HRMS</span>
                     )}
-                  </div>
-                  
-                  {!collapsed && item.subItems && (
-                    <button 
-                      onClick={(e) => toggleMenu(item.name, e)}
-                      className="text-[#111827]"
-                    >
-                      {openMenus[item.name] ? <FaAngleDown size={14} /> : <FaAngleRight size={14} />}
-                    </button>
-                  )}
-                </Link>
+                </div>
                 
-                {/* Show tooltip on hover when collapsed */}
-                {collapsed && (
-                  <div className="absolute left-16 ml-1 top-2 z-50 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none">
-                    {item.name}
-                  </div>
-                )}
-              </div>
-              
-              {/* Submenu */}
-              {!collapsed && openMenus[item.name] && item.subItems && (
-                <ul className="bg-gray-50 py-2">
-                  {item.subItems.map((subItem) => (
-                    <li key={subItem.name}>
-                      <Link 
-                        to={subItem.path}
-                        className="block pl-12 pr-4 py-2 text-sm text-[#111827]  font-strong hover:bg-gray-100"
-                      >
-                        {subItem.name}
-                      </Link>
-                    </li>
-                  ))}
+                {/* Menu items */}
+                <ul className="pt-4">
+                    {menu.map((item) => (
+                        <li key={item.name} className="mb-1 group">
+                            <div className="relative">
+                                <Link 
+                                    to={item.path}
+                                    className={`flex items-center ${
+                                        collapsed ? "justify-center" : "justify-between"
+                                    } px-3 py-1 hover:bg-[#eae9ff] transition-colors`}
+                                    onClick={(e) => {
+                                        if (item.subItems) {
+                                            e.preventDefault();
+                                            toggleMenu(item.name, e);
+                                        }
+                                    }}
+                                >
+                                    <div className="flex items-center">
+                                        <span className={`text-[#374151] ${!collapsed && "mr-3"}`}>
+                                            {item.icon}
+                                        </span>
+                                        {!collapsed && (
+                                            <span className="text-[#374151] font-bold font-varela">
+                                                {item.name}
+                                            </span>
+                                        )}
+                                    </div>
+                                    
+                                    {!collapsed && item.subItems && (
+                                        <span className="text-[#464646]">
+                                            {openMenus[item.name] ? <FaAngleDown size={14} /> : <FaAngleRight size={14} />}
+                                        </span>
+                                    )}
+                                </Link>
+                                
+                                {/* Show tooltip on hover when collapsed */}
+                                {collapsed && (
+                                    <div className="absolute left-16 ml-1 top-2 z-50 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none">
+                                        {item.name}
+                                    </div>
+                                )}
+                            </div>
+                            
+                            {/* Submenu */}
+                            {!collapsed && openMenus[item.name] && item.subItems && (
+                                <ul className="bg-gray-50 py-2">
+                                    {item.subItems.map((subItem) => (
+                                        <li key={subItem.name} className="relative">
+                                            {/* SubItem with potential subMenu */}
+                                            <div 
+                                                className="flex items-center justify-between pl-12 pr-4 py-2 text-[#464646] font-[12px] font-varela hover:bg-[#eae9ff] hover:text-[#292929]"
+                                                onClick={(e) => {
+                                                    if (subItem.subMenu) {
+                                                        e.preventDefault();
+                                                        toggleSubMenu(subItem.name, e);
+                                                    }
+                                                }}
+                                            >
+                                                <Link 
+                                                    to={subItem.path}
+                                                    className="flex-grow"
+                                                    onClick={(e) => {
+                                                        if (subItem.subMenu) {
+                                                            e.preventDefault();
+                                                        }
+                                                    }}
+                                                >
+                                                    {subItem.name}
+                                                </Link>
+                                                
+                                                {subItem.subMenu && (
+                                                    <span className="text-[#464646]">
+                                                        {openSubMenus[subItem.name] ? <FaAngleDown size={12} /> : <FaAngleRight size={12} />}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            
+                                            {/* Third level submenu */}
+                                            {openSubMenus[subItem.name] && subItem.subMenu && (
+                                                <ul className="bg-gray-100 py-1">
+                                                    {subItem.subMenu.map((nestedItem) => (
+                                                        <li key={nestedItem.name}>
+                                                            <Link 
+                                                                to={nestedItem.path}
+                                                                className="block pl-16 pr-4 py-2 text-[#464646] font-[11px] font-varela hover:bg-[#eae9ff] hover:text-[#292929]"
+                                                            >
+                                                                {nestedItem.name}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </li>
+                    ))}
                 </ul>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-      
-      {/* Content spacer to push main content when sidebar is expanded */}
-      <div className={collapsed ? "ml-16" : "ml-64"}>
-        {/* Your main content would go here */}
-      </div>
-    </>
-  );
+            </div>
+            
+            {/* Content spacer to push main content when sidebar is expanded */}
+            <div className={collapsed ? "ml-16" : "ml-64"}>
+                {/* Your main content would go here */}
+            </div>
+        </>
+    );
 }
