@@ -409,7 +409,7 @@ const menuItems = [
 const superAdminMenu = [
     {
         name: "Dashboard",
-        path: "/dashboard",
+        path: "/superadmin/dashboard",
         icon: <House size={20} />,
       },
       {
@@ -419,17 +419,17 @@ const superAdminMenu = [
       },
       {
         name: "User Info ",
-        path: "/user_info",
+        path: "/superadmin/user_info",
         icon: <Calendar size={20} />,
       },
       {
         name: "Order",
-        path: "/order_plan",
+        path: "/superadmin/order_plan",
         icon: <Calendar size={20} />,
       },
       {
         name: "Plan Request ",
-        path: "/superadmin/plans",
+        path: "/superadmin/plan_request",
         icon: <Calendar size={20} />,
       },
       {
