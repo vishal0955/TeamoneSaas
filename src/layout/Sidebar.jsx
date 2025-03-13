@@ -365,6 +365,16 @@ const menuItems = [
     icon: <House size={20} />,
   },
   {
+    name: "Application",  
+    icon: <Users size={20} />,
+    subItems: [
+      { name: "", path: "/crm/customers" },
+      { name: "Leads", path: "/crm/leads" },
+      { name: "Sales", path: "/crm/sales" },
+    ],
+  },
+
+  {
     name: "CRM",
     path: "/crm",
     icon: <Users size={20} />,
