@@ -51,7 +51,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    // <div className="flex-1 overflow-y-auto bg-gray-50 p-6">
+    <div className="flex-1 max-w-full  overflow-y-auto bg-gray-50 p-6">
       <div className="max-w-full ">
         {/* Dashboard Cards */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
