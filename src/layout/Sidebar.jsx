@@ -250,7 +250,7 @@
 //             {openMenus[item.title] && item.subItems.length > 0 && (
 //               <ul className="ml-6 mt-2 border-l border-gray-300">
 //                 {item.subItems.map((subItem) => (
-//                   <li key={subItem} className="p-1 pl-4 text-gray-700 hover:text-black">
+//                   <li key={subItem} className="p-1 pl-4 text-[#111827]-700 hover:text-black">
 //                     {subItem}
 //                   </li>
 //                 ))}
@@ -338,7 +338,7 @@
 //             {openMenus[item.name] && item.subItems && (
 //               <ul className="ml-6 mt-2 border-l border-gray-300">
 //                 {item.subItems.map((subItem) => (
-//                   <li key={subItem.name} className="p-1 pl-4 text-gray-700 hover:text-black">
+//                   <li key={subItem.name} className="p-1 pl-4 text-[#111827]-700 hover:text-black">
 //                     <Link to={subItem.path}>{subItem.name}</Link>
 //                   </li>
 //                 ))}
@@ -472,7 +472,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
   // Determine sidebar width/visibility
   const sidebarClass = collapsed 
     ? "w-16 fixed z-30 h-screen bg-white" 
-    : "w-64 fixed z-30 h-screen bg-white";
+    : "w-56 fixed z-30 h-screen bg-white";
 
   // For mobile: when expanded, show overlay
   const overlayClass = !collapsed && isMobile 
@@ -509,21 +509,21 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                   to={item.path}
                   className={`flex items-center ${
                     collapsed ? "justify-center" : "justify-between"
-                  } px-4 py-3 hover:bg-gray-100 transition-colors`}
+                  } px-4 py-1 hover:bg-gray-100 transition-colors`}
                 >
                   <div className="flex items-center">
-                    <span className={`text-gray-500 ${!collapsed && "mr-3"}`}>
+                    <span className={`text-[#111827] ${!collapsed && "mr-3"}`}>
                       {item.icon}
                     </span>
                     {!collapsed && (
-                      <span className="text-gray-700">{item.name}</span>
+                      <span className="text-[#111827]">{item.name}</span>
                     )}
                   </div>
                   
                   {!collapsed && item.subItems && (
                     <button 
                       onClick={(e) => toggleMenu(item.name, e)}
-                      className="text-gray-500"
+                      className="text-[#111827]"
                     >
                       {openMenus[item.name] ? <FaAngleDown size={14} /> : <FaAngleRight size={14} />}
                     </button>
@@ -545,7 +545,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                     <li key={subItem.name}>
                       <Link 
                         to={subItem.path}
-                        className="block pl-12 pr-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block pl-12 pr-4 py-2 text-sm text-[#111827]  font-strong hover:bg-gray-100"
                       >
                         {subItem.name}
                       </Link>
