@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Student Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+    <script src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex bg-gray-100">
+        <aside class="w-72 bg-white border-r border-gray-200 fixed h-full z-10 shadow-lg">
+            <div class="flex items-center justify-center h-16 border-b border-gray-200">
+                <img src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" class="h-8"/>
+            </div>
+            <nav class="mt-6">
+                <div class="px-4 space-y-1">
+                    <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-custom rounded-lg bg-custom/10">
+                        <i class="fas fa-home w-5 h-5 mr-3"></i>
+                        Dashboard
+                    </a>
+                    <a href="#" class="flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50"><div class="flex items-center"><i class="fas fa-book w-5 h-5 mr-3"></i>My Courses</div><i class="fas fa-chevron-down"></i></a><div class="ml-7 mt-1 space-y-1" id="courses-dropdown"><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">📂 Course Name 1</a><div class="ml-6 space-y-1"><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">📖 Overview</a><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">🎥 Lessons &amp; Modules</a><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">📝 Assignments &amp; Quizzes</a><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">💬 Q&amp;A &amp; Discussions</a><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">⭐ Reviews &amp; Ratings</a><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">🎓 Certificate</a></div></div>
+                    <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-tasks w-5 h-5 mr-3"></i>
+                        Assignments
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-certificate w-5 h-5 mr-3"></i>
+                        Certificates
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-users w-5 h-5 mr-3"></i>
+                        Community
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-comments w-5 h-5 mr-3"></i>
+                        Messages
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-cog w-5 h-5 mr-3"></i>
+                        Settings
+                    </a>
+                </div>
+            </nav>
+        </aside>
+        <div class="flex-1 ml-72 relative">
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between h-16 items-center">
+                        <div class="flex-1 flex items-center">
+                            <div class="max-w-lg w-full lg:max-w-xs relative">
+                                <label for="search" class="sr-only">Search</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-search text-gray-400"></i>
+                                    </div>
+                                    <input id="search" name="search" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-custom focus:border-custom sm:text-sm" placeholder="Search courses..." type="search"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ml-4 flex items-center space-x-4">
+                            <button type="button" class="!rounded-button relative p-2 text-gray-600 hover:text-custom">
+                                <span class="sr-only">View notifications</span>
+                                <i class="fas fa-bell text-xl"></i>
+                                <span class="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-400 ring-2 ring-white"></span>
+                            </button>
+                            <div class="relative">
+                                <button type="button" class="flex items-center max-w-xs rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom">
+                                    <img class="h-8 w-8 rounded-full" src="https://creatie.ai/ai/api/search-image?query=A professional headshot of a young person with a friendly smile, wearing business casual attire, against a neutral background. The image should be well-lit and clear, suitable for a profile picture.&width=200&height=200&flag=1b156a98-0be4-4b1c-bd34-90bde9325372&flag=f509c8a7-5358-4c9b-adb4-3af692e2268c&flag=9952e8c1-1aa0-4f07-aac5-d23fb9df0921&flag=86b913a5-aeb4-45b1-9a70-96c18a4568e7&flag=f68829e9-5fc4-434c-8028-45862f313f94&flag=eb1f3151-49f4-4adf-91e8-32b7765d27ce&flag=f61f957d-2866-4297-9bf4-9b1a1ba6ee65" alt=""/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main class="py-10 px-4 sm:px-6 lg:px-8 max-w-8xl mx-auto"><div class="max-w-8xl mx-auto"><div class="bg-white shadow-xl rounded-xl overflow-hidden"><div class="p-6 border-b"><h1 class="text-2xl font-bold">Advanced Web Development</h1><div class="mt-4"><div class="flex justify-between mb-2"><span class="text-sm font-medium text-gray-700">Course Progress</span><span class="text-sm font-medium text-gray-700">75% Complete</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-custom h-2.5 rounded-full" style="width: 75%"></div></div></div></div><div class="grid grid-cols-4 gap-0 h-[calc(100vh-220px)]"><div class="col-span-1 border-r overflow-y-auto"><div class="p-4"><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><span class="font-medium">Module 1: Introduction</span><i class="fas fa-chevron-down"></i></div><div class="mt-2 ml-4 space-y-2"><div class="flex items-center text-sm text-gray-600"><i class="fas fa-check-circle text-green-500 mr-2"></i>Welcome to the Course</div><div class="flex items-center text-sm text-gray-600"><i class="fas fa-check-circle text-green-500 mr-2"></i>Course Overview</div></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><span class="font-medium">Module 2: HTML &amp; CSS</span><i class="fas fa-chevron-down"></i></div><div class="mt-2 ml-4 space-y-2"><div class="flex items-center text-sm text-gray-600"><i class="fas fa-check-circle text-green-500 mr-2"></i>HTML Basics</div><div class="flex items-center text-sm text-custom"><i class="fas fa-play-circle mr-2"></i>CSS Fundamentals</div></div></div></div></div></div><div class="col-span-3 p-6"><div class="aspect-w-16 aspect-h-9 bg-black rounded-lg mb-6"><video controls="" class="w-full"><source src="#" type="video/mp4"/>Your browser does not support the video tag.</video></div><div class="flex justify-between mb-6"><button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"><i class="fas fa-arrow-left mr-2"></i>Previous Lesson</button><button class="px-4 py-2 bg-custom text-white rounded-lg hover:bg-custom/90">Mark as Complete</button><button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">Next Lesson<i class="fas fa-arrow-right ml-2"></i></button></div><div class="grid grid-cols-2 gap-6"><div class="space-y-4"><div class="border rounded-lg p-4"><h3 class="font-medium mb-2">Lesson Notes</h3><textarea class="w-full h-32 p-2 border rounded-lg" placeholder="Add your notes here..."></textarea><button class="mt-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200">Save Notes</button></div><div class="border rounded-lg p-4"><h3 class="font-medium mb-2">Resources</h3><div class="space-y-2"><a href="#" class="flex items-center text-custom hover:underline"><i class="fas fa-file-pdf mr-2"></i>Lesson PDF</a><a href="#" class="flex items-center text-custom hover:underline"><i class="fas fa-file-alt mr-2"></i>Assignment</a></div></div></div><div class="border rounded-lg p-4"><h3 class="font-medium mb-4">Q&amp;A Section</h3><div class="space-y-4"><div class="border-b pb-4"><div class="flex items-start gap-4"><img src="https://creatie.ai/ai/api/search-image?query=student avatar&flag=53f23795-501e-457c-ac92-7b1b82e7dbdc" alt="Student" class="w-8 h-8 rounded-full"/><div><p class="font-medium">How do I implement responsive design?</p><p class="text-sm text-gray-500 mt-1">Posted by John D. • 2 days ago</p></div></div></div><button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 w-full">Ask a Question</button></div></div></div></div></div></div></div></main>
+        </div>
+    </div>
