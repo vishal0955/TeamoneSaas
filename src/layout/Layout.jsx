@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
     const toggleSidebar = () => {
       setIsSidebarCollapsed((prev) => !prev);
@@ -13,9 +13,11 @@ const Layout = () => {
     return (
         <div className="flex" >
             <Sidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
-            <div className="w-full">
+            <div className="flex-1">
                 <Navbar toggleSidebar={toggleSidebar} />
+                
                 <Outlet />
+               
             </div>
         </div>
     );

@@ -7,12 +7,12 @@ function SuperAdminDashboard() {
     <div>
       {/* <Sidebar/> */}
       <>
-  <div className="container-fluid mt-4 " style={{marginLeft:"250px"}}>
+  <div className="container-fluid mt-4 " >
     <div className="row mt-4 ">
       <div className="col-md-6 col-lg-3 col-sm-6 mb-3">
         <div className="card h-100">
           <div
-            routerlink="/Admin/Care Providers"
+            routerlink=""
             className="card-body d-flex align-items-center gap-3"
           >
             <div className="icon-box mr-3">
