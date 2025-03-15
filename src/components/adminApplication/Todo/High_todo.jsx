@@ -140,12 +140,12 @@ const TodoApp = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-8">
+        {/* <div className="flex justify-center mt-8">
           <button className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 flex items-center">
             <FaSpinner className="mr-2 animate-spin" />
             Load More
           </button>
-        </div>
+        </div> */}
       </div>
 
       <button className="fixed bottom-8 right-8 bg-gray-900 text-white p-3 rounded-full hover:bg-gray-800">

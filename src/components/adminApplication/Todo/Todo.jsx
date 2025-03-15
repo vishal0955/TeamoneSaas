@@ -72,7 +72,7 @@ const TodoList = () => {
                   <button className="px-6 py-2.5 text-sm font-semibold bg-custom text-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                     All
                   </button>
-                  <Link to={"/high"}>
+                  <Link to={"/admin/high"}>
                     <button className="px-6 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                       High
                     </button>

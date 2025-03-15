@@ -3,18 +3,11 @@ import * as echarts from "echarts";
 
 const AdminDashboard = () => {
   useEffect(() => {
-    const charts = [];
-
-    const initChart = (id, options) => {
-      const el = document.getElementById(id);
-      if (el) {
-        const chart = echarts.init(el);
-        chart.setOption(options);
-        charts.push(chart);
-      }
-    };
-
-    initChart("employeeDistribution", {
+    // Employee Distribution Chart
+    const employeeDistribution = echarts.init(
+      document.getElementById("employeeDistribution")
+    );
+    employeeDistribution.setOption({
       animation: false,
       tooltip: { trigger: "item" },
       legend: { orient: "vertical", right: 10, top: "center" },
@@ -41,13 +34,80 @@ const AdminDashboard = () => {
       ],
     });
 
-    const handleResize = () => charts.forEach((chart) => chart.resize());
-    window.addEventListener("resize", handleResize);
+    // Hiring Trends Chart
+    const hiringTrends = echarts.init(document.getElementById("hiringTrends"));
+    hiringTrends.setOption({
+      animation: false,
+      tooltip: { trigger: "axis" },
+      grid: { left: "3%", right: "4%", bottom: "3%", containLabel: true },
+      xAxis: {
+        type: "category",
+        boundaryGap: false,
+        data: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ],
+      },
+      yAxis: { type: "value" },
+      series: [
+        {
+          name: "New Hires",
+          type: "line",
+          smooth: true,
+          data: [25, 32, 28, 35, 42, 38, 40, 45, 48, 43, 39, 41],
+          areaStyle: { opacity: 0.1 },
+          itemStyle: { color: "#4F46E5" },
+          lineStyle: { width: 3 },
+        },
+      ],
+    });
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      charts.forEach((chart) => chart.dispose());
-    };
+    // Recruitment Pipeline Chart
+    const recruitmentPipeline = echarts.init(
+      document.getElementById("recruitmentPipeline")
+    );
+    recruitmentPipeline.setOption({
+      animation: false,
+      tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
+      grid: { left: "3%", right: "4%", bottom: "3%", containLabel: true },
+      xAxis: {
+        type: "category",
+        data: [
+          "Applied",
+          "Screening",
+          "Interview",
+          "Technical",
+          "Offer",
+          "Accepted",
+        ],
+      },
+      yAxis: { type: "value" },
+      series: [
+        {
+          name: "Candidates",
+          type: "bar",
+          data: [120, 80, 45, 28, 15, 12],
+          itemStyle: { color: "#8B5CF6" },
+        },
+      ],
+    });
+
+    // Resize Charts on Window Resize
+    window.addEventListener("resize", () => {
+      employeeDistribution.resize();
+      hiringTrends.resize();
+      recruitmentPipeline.resize();
+    });
   }, []);
 
   return (
@@ -109,6 +169,7 @@ const AdminDashboard = () => {
             </div>
           ))}
         </div>
+
         {/* Charts Section */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mt-6">
           <div className="bg-white rounded-lg shadow p-6">
@@ -129,7 +190,6 @@ const AdminDashboard = () => {
             </h3>
             <div id="recruitmentPipeline" className="h-80"></div>
           </div>
-                  
         </div>
 
         {/* Recent Activities Table */}
@@ -176,10 +236,9 @@ const AdminDashboard = () => {
               </tbody>
             </table>
           </div>
-                  
         </div>
       </div>
-    // </div>
+    </div>
   );
 };
 

@@ -18,11 +18,14 @@ import UserInfo from "../pages/Super Admin/UserInfo";
 import OrderPlan from "../pages/Super Admin/OrderPlan";
 import PlanRequest from "../pages/Super Admin/PlanRequest";
 import Setting from "../pages/Super Admin/Setting";
+import Project from "../components/Project/Project";
+import TaskListExample from "../pages/TaskListExample";
+import TaskManagementTable from "../components/adminApplication/Todo/Takslist";
 
 const RoleBasedRoutes = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login />} />
       <Route path="/not-found" element={<NotFound />} />
 
       <Route path="/superadmin" element={<SuperAdminLayout />}>
@@ -44,6 +47,11 @@ const RoleBasedRoutes = () => {
             </ProtectedRoute>
           }
         />
+
+<Route path="/tasklist" element={<TaskListExample />} />
+
+<Route path="/tasklist1" element={<TaskManagementTable />} />
+        <Route path="/projectlist" element={<Project />} />
         <Route
           path="/todo"
           element={
@@ -56,7 +64,7 @@ const RoleBasedRoutes = () => {
         <Route
           path="/client"
           element={
-            <ProtectedRoute allowedRoles={["client"]}>
+            <ProtectedRoute allowedRoles={["client","admin"]}>
               <ClientDashboard />
             </ProtectedRoute>
           }
@@ -65,7 +73,7 @@ const RoleBasedRoutes = () => {
         <Route
           path="/client"
           element={
-            <ProtectedRoute allowedRoles={["client"]}>
+            <ProtectedRoute allowedRoles={["client","admin"]}>
               <ClientDashboard />
             </ProtectedRoute>
           }
