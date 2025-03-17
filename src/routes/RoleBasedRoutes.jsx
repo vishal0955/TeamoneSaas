@@ -21,6 +21,8 @@ import Setting from "../pages/Super Admin/Setting";
 import Project from "../components/Project/Project";
 import TaskListExample from "../pages/TaskListExample";
 import TaskManagementTable from "../components/adminApplication/Todo/Takslist";
+import TodoList from "../components/ToDo/TodoList";
+import TodoApp from "../components/ToDo/TodoApp";
 
 const RoleBasedRoutes = () => {
   return (
@@ -48,6 +50,9 @@ const RoleBasedRoutes = () => {
           }
         />
 
+        <Route path="/todoapp" element={<TodoApp />} />
+
+<Route path="/todolist" element={<TodoList />} />
 <Route path="/tasklist" element={<TaskListExample />} />
 
 <Route path="/tasklist1" element={<TaskManagementTable />} />
