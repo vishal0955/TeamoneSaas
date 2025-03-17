@@ -43,7 +43,7 @@ const HRMDashboard = () => {
           <div className="border-b border-gray-200">
             <nav className="flex -mb-px">
               <Link
-                to={"/employeedetails"}
+                to={""}
                 className="px-6 py-4 text-gray-500 hover:text-gray-700"
               >
                 Personal Details

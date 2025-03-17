@@ -39,8 +39,8 @@ const menuItems = [
     icon: <FolderOpenDot size={16} />,
     subItems: [
       { name: "Project", path: "/project/projects" },
-      { name: "Task", path: "/project/tasklist" },
-      { name: "Task Board", path: "/project/timeline" },
+      { name: "Task", path: "/project/task" },
+    
       { name: "Todo", path: "/project/Todo" },
       { name: "Notes", path: "/project/Notes" },
     ],
@@ -70,7 +70,7 @@ const menuItems = [
         path: "/hrm/employees",
         subMenu: [
           { name: "Employees List", path: "/employeelist" },
-          { name: "Employees Details", path: "/employeedetails" },
+          // { name: "Employees Details", path: "/employeedetails" },
           { name: "Departments", path: "/department" },
           { name: "Designations", path: "/designations" },
           { name: "Policies", path: "/hrm/employees/policies" },
@@ -86,7 +86,7 @@ const menuItems = [
       },
       {
         name: "Holidays",
-        path: "/hrm/holidays",
+        path: "/hrm/holiday",
       },
       {
         name: "Attendance",
@@ -289,7 +289,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <aside
         className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
-          collapsed ? "w-20" : "w-64"
+          collapsed ? "w-20" : "w-56"
         } z-30`}>
         {/* Fixed Header */}
         <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
@@ -461,7 +461,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <main
         className={`transition-all duration-300 ${
-          collapsed ? "ml-20" : "ml-64"
+          collapsed ? "ml-20" : "ml-56"
         }`}>
         {/* Main content */}
       </main>
