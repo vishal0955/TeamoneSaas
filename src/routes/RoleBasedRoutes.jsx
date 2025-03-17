@@ -32,6 +32,8 @@ import EmployeeDetails from "../components/AdminHRM/EmployeeDetails";
 import Department from "../components/AdminHRM/Department";
 import Designations from "../components/AdminHRM/Designations";
 import TaskList from "../components/Task/TaskList";
+import TaskDetail from "../components/Task/TaskDetail";
+import AddTask from "../components/Task/AddTask";
 
 const RoleBasedRoutes = () => {
   return (
@@ -60,10 +62,11 @@ const RoleBasedRoutes = () => {
         />
 
         <Route path="/todoapp" element={<TodoApp />} />
-        <Route path="/tasklist" element={<TaskList />} />
+        <Route path="/project/tasklist" element={<TaskList />} />
+        <Route path="/addtask" element={<AddTask />} />
 
-<Route path="/todolist" element={<TodoList />} />
-<Route path="/tasklist" element={<TaskListExample />} />
+        <Route path="/todolist" element={<TodoList />} />
+        <Route path="/tasklist" element={<TaskListExample />} />
         <Route
           path="/employeelist"
           element={
@@ -85,13 +88,11 @@ const RoleBasedRoutes = () => {
         <Route path="/tasklist" element={<TaskListExample />} />
         <Route
           path="/employeegrid"
-          element={<EmployeeGrid></EmployeeGrid>}
-        ></Route>
+          element={<EmployeeGrid></EmployeeGrid>}></Route>
 
         <Route
           path="/workdetails"
-          element={<WorkDetails></WorkDetails>}
-        ></Route>
+          element={<WorkDetails></WorkDetails>}></Route>
 
         <Route path="/document" element={<Document></Document>}></Route>
         <Route path="/attendance" element={<Attendance></Attendance>}></Route>

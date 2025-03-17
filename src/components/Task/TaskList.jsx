@@ -1,92 +1,197 @@
 import React from 'react'
-import "./tasklist.css"
-
+import "./task.css"
+import { Link } from 'react-router-dom'
 
 const TaskList = () => {
   return (
-    <div>
-        <div className="container py-5">
-  <div className="task-card">
-    <div className="d-flex justify-content-between align-items-start mb-4">
-      <h4 className="mb-0">Task Details</h4>
-      <a href="#" className="edit-btn">
-        <i className="bi bi-pencil" /> Edit Task
-      </a>
+  <>
+  <div className="container py-5">
+  <div className="tasks-container">
+    {/* Header */}
+    <div className="d-flex justify-content-between align-items-center mb-4">
+      <h4 className="mb-0">Tasks List</h4>
+      <Link to="/addtask">
+      <button className="btn new-task-btn">
+        <i className="bi bi-plus" /> New Task
+      </button>
+      </Link>
     </div>
-    <div className="row">
-      <div className="col-lg-8">
-        <h5 className="mb-3">Task Description</h5>
-        <p className="text-muted mb-4">
-          Design and implement new user interface components for the dashboard
-          section. Focus on improving user experience and maintaining
-          consistency with our design system.
-        </p>
-        <div className="row">
-          <div className="col-md-6">
-            <div className="task-metadata">
-              <i className="bi bi-calendar" />
-              <span>Due: Oct 15, 2024 - 5:00 PM</span>
-            </div>
-            <div className="task-metadata">
-              <i className="bi bi-person" />
-              <span>Assigned to: Sarah Chen</span>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="task-metadata">
-              <i className="bi bi-flag" />
-              <span>Priority: High</span>
-            </div>
-            <div className="task-metadata">
-              <i className="bi bi-folder" />
-              <span>Project: Brand Refresh Project</span>
-            </div>
-          </div>
-        </div>
+    {/* Search and Filters */}
+    <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-box"
+          placeholder="Search tasks..."
+        />
       </div>
-      <div className="col-lg-4">
-        <h5 className="mb-3">Attachments</h5>
-        <div className="attachment-item">
-          <div className="d-flex align-items-center">
-            <i className="bi bi-file-pdf text-danger me-2" />
-            <div>
-              <div>Requirements.pdf</div>
-              <div className="file-size">2.4 KB</div>
-            </div>
-          </div>
-          <a href="#" className="text-muted">
-            <i className="bi bi-download" />
-          </a>
-        </div>
-        <div className="attachment-item">
-          <div className="d-flex align-items-center">
-            <i className="bi bi-file-image text-primary me-2" />
-            <div>
-              <div>Mockup.png</div>
-              <div className="file-size">1.8 MB</div>
-            </div>
-          </div>
-          <a href="#" className="text-muted">
-            <i className="bi bi-download" />
-          </a>
-        </div>
-        <div className="attachment-item">
-          <div className="d-flex align-items-center">
-            <i className="bi bi-file-word text-primary me-2" />
-            <div>
-              <div>Guidelines.doc</div>
-              <div className="file-size">850 KB</div>
-            </div>
-          </div>
-          <a href="#" className="text-muted">
-            <i className="bi bi-download" />
-          </a>
-        </div>
+      <div className="d-flex gap-2">
+        <select className="form-select filter-select">
+          <option>All Status</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+          <option>Pending</option>
+        </select>
+        <select className="form-select filter-select">
+          <option>All Priority</option>
+          <option>High</option>
+          <option>Medium</option>
+          <option>Low</option>
+        </select>
       </div>
+    </div>
+    {/* Tasks Table */}
+    <div className="table-responsive">
+      <table className="table align-middle">
+        <thead>
+          <tr>
+            <th style={{ width: 40 }}>
+              <input type="checkbox" className="form-check-input" />
+            </th>
+            <th>Task</th>
+            <th>Project</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Assigned To</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input type="checkbox" className="form-check-input" />
+            </td>
+            <td>Design System Update</td>
+            <td>Brand Refresh Project</td>
+            <td>
+              <span className="status-badge status-in-progress">
+                In Progress
+              </span>
+            </td>
+            <td>
+              <i className="bi bi-arrow-up priority-high" /> High
+            </td>
+            <td>
+              <div className="d-flex align-items-center">
+                <img
+                  src="https://ui-avatars.com/api/?name=Sarah+Chen"
+                  className="avatar"
+                />
+                <span>Sarah Chen</span>
+              </div>
+            </td>
+            <td>Dec 25, 2023</td>
+            <td>
+              <a href="#" className="action-btn">
+                <i className="bi bi-pencil" />
+              </a>
+              <a href="#" className="action-btn text-danger">
+                <i className="bi bi-trash" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" className="form-check-input" />
+            </td>
+            <td>API Integration</td>
+            <td>Backend Modernization</td>
+            <td>
+              <span className="status-badge status-completed">Completed</span>
+            </td>
+            <td>
+              <i className="bi bi-dash priority-medium" /> Medium
+            </td>
+            <td>
+              <div className="d-flex align-items-center">
+                <img
+                  src="https://ui-avatars.com/api/?name=Michael+Johnson"
+                  className="avatar"
+                />
+                <span>Michael Johnson</span>
+              </div>
+            </td>
+            <td>Dec 20, 2023</td>
+            <td>
+              <a href="#" className="action-btn">
+                <i className="bi bi-pencil" />
+              </a>
+              <a href="#" className="action-btn text-danger">
+                <i className="bi bi-trash" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" className="form-check-input" />
+            </td>
+            <td>Content Strategy</td>
+            <td>Marketing Campaign Q4</td>
+            <td>
+              <span className="status-badge status-pending">Pending</span>
+            </td>
+            <td>
+              <i className="bi bi-arrow-down priority-low" /> Low
+            </td>
+            <td>
+              <div className="d-flex align-items-center">
+                <img
+                  src="https://ui-avatars.com/api/?name=Emily+Wilson"
+                  className="avatar"
+                />
+                <span>Emily Wilson</span>
+              </div>
+            </td>
+            <td>Dec 30, 2023</td>
+            <td>
+              <a href="#" className="action-btn">
+                <i className="bi bi-pencil" />
+              </a>
+              <a href="#" className="action-btn text-danger">
+                <i className="bi bi-trash" />
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {/* Pagination */}
+    <div className="d-flex justify-content-between align-items-center mt-4">
+      <div className="text-muted">Showing 1 to 3 of 12 results</div>
+      <nav>
+        <ul className="pagination">
+          <li className="page-item disabled">
+            <a className="page-link" href="#">
+              <i className="bi bi-chevron-left" />
+            </a>
+          </li>
+          <li className="page-item active">
+            <a className="page-link" href="#">
+              1
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              2
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              3
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              <i className="bi bi-chevron-right" />
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>
-    </div>
+  </>
   )
 }
 
