@@ -11,6 +11,8 @@ import {
   faEllipsisV 
 } from '@fortawesome/free-solid-svg-icons';
 
+// import { useHistory } from 'react-router-dom';
+
 const EMPLOYEES = [
   { id: 1, name: 'John Doe' },
   { id: 2, name: 'Jane Smith' },
@@ -204,6 +206,16 @@ const TaskDropdown = ({ taskId, onEdit, onDelete, onView }) => {
 };
 
 const TodoApp = () => {
+
+ 
+
+  // Inside your TodoApp component
+  // const history = useHistory();
+  
+  // const handleViewDetails = (task) => {
+  //   history.push(`/task/${task.id}`, { task }); // Pass the task data as state
+  // };
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -639,7 +651,7 @@ const TodoApp = () => {
                           <FontAwesomeIcon icon={faEllipsisV} />
                         </button>
                         {activeDropdown === task.id && (
-                          <TaskDropdown
+                          <TaskDropdown 
                             taskId={task.id}
                             onEdit={() => handleEdit(task)}
                             onDelete={() => handleDelete(task.id)}

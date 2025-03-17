@@ -6,11 +6,13 @@ import {
   BarChart3,
   FolderKanban,
   FolderOpenDot,
+  ClipboardCheck,
   FileText,
   Cog,
   Contact,
   User,
   ChartColumn,
+  SquareCheckBig,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -20,6 +22,16 @@ const menuItems = [
     name: "Dashboard",
     path: "/admin",
     icon: <House size={16} />,
+  },
+  {
+    name: "Todo",
+    path: "/todo",
+    icon: <SquareCheckBig size={16} />,  
+  }, 
+  {
+    name: "Notes",
+    path: "/notesgrid",
+    icon: <ClipboardCheck size={16} />,   
   },
   {
     name: "Project",

@@ -25,12 +25,15 @@ import Setting from "../pages/Super Admin/Setting";
 import Project from "../components/Project/Project";
 import TaskListExample from "../pages/TaskListExample";
 import TaskManagementTable from "../components/adminApplication/Todo/Takslist";
-import TodoList from "../components/ToDo/TodoList";
+// import TodoList from "../components/ToDo/TodoList";
 import TodoApp from "../components/ToDo/TodoApp";
 import EmployeeGrid from "../components/AdminHRM/EmployeeGrid";
 import EmployeeDetails from "../components/AdminHRM/EmployeeDetails";
 import Department from "../components/AdminHRM/Department";
 import Designations from "../components/AdminHRM/Designations";
+
+import NotesList from "../components/Notes/NotesList";
+import NotesGrid from "../components/Notes/NotesGrid";
 
 const RoleBasedRoutes = () => {
   return (
@@ -58,9 +61,13 @@ const RoleBasedRoutes = () => {
           }
         />
 
-        <Route path="/todoapp" element={<TodoApp />} />
+        <Route path="/todo" element={<TodoApp />} />
 
-<Route path="/todolist" element={<TodoList />} />
+    {/* Notes Route  */}
+           <Route path="/notesgrid" element={<NotesGrid />} />
+           <Route path="/noteslist" element={<NotesList />} />
+
+{/* <Route path="/todolist" element={<TodoList />} /> */}
 <Route path="/tasklist" element={<TaskListExample />} />
         <Route
           path="/employeelist"
@@ -113,14 +120,7 @@ const RoleBasedRoutes = () => {
 
         <Route path="/tasklist1" element={<TaskManagementTable />} />
         <Route path="/projectlist" element={<Project />} />
-        <Route
-          path="/todo"
-          element={
-            <ProtectedRoute allowedRoles={["admin", "superAdmin"]}>
-              <Todo></Todo>
-            </ProtectedRoute>
-          }
-        />
+     
         <Route path="/high" element={<High_todo></High_todo>}></Route>
         <Route
           path="/client"

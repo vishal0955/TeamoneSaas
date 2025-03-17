@@ -1,8 +1,24 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaStar, FaTrash, FaEllipsisV, FaPlus } from 'react-icons/fa';
 
-const NotesApp = () => {
+
+import React, { useState } from 'react';
+import { 
+    ChevronLeft, 
+    ChevronRight, 
+    Plus, 
+    MoreVertical, 
+    Star, 
+    Trash2, 
+    List, 
+    Grid
+  } from 'lucide-react';
+import { FaStar, FaTrash, FaEllipsisV, FaPlus } from 'react-icons/fa';
+import AddNotePopup from './AddNoteForm';
+
+const NotesGrid = () => {
+    const [viewMode, setViewMode] = useState('list');
+    const [isAddNoteOpen, setIsAddNoteOpen] = useState(false);
+
+    console.log(viewMode);
   const [notes, setNotes] = useState([
     {
       id: 1,
@@ -30,173 +46,355 @@ const NotesApp = () => {
     }
   ]);
 
+  const handleOpenAddNote = () => {
+    setIsAddNoteOpen(true);
+  };
+
+  const handleCloseAddNote = () => {
+    setIsAddNoteOpen(false);
+  };
+
+  const handleSaveNote = (newNote) => {
+    setNotes(prevNotes => [
+      ...prevNotes,
+      {
+        id: Date.now(), // Simple ID generation
+        ...newNote
+      }
+    ]);
+  };
+
+  const handleDeleteNote = (id) => {
+    setNotes(prevNotes => prevNotes.filter(note => note.id !== id));
+};
+
+// **Star Note Functionality**
+const handleToggleStar = (id) => {
+    setNotes(prevNotes => 
+        prevNotes.map(note => 
+            note.id === id ? { ...note, starred: !note.starred } : note
+        )
+    );
+};
+
   const [categories] = useState([
-    { id: 'all', name: 'All Notes', count: 24, icon: 'bi-sticky' },
-    { id: 'important', name: 'Important', icon: 'bi-star-fill', color: '#FFD700' },
-    { id: 'trash', name: 'Trash', icon: 'bi-trash' }
+    { id: 'all', name: 'All Notes', count: 24, icon: 'sticky' },
+    { id: 'important', name: 'Starred', icon: 'star' },
+    { id: 'trash', name: 'Trash', icon: 'trash' }
   ]);
 
   const [tags] = useState([
-    { id: 'pending', name: 'Pending', color: '#0d6efd' },
-    { id: 'on-hold', name: 'On Hold', color: '#dc3545' },
-    { id: 'in-progress', name: 'In Progress', color: '#ffc107' },
-    { id: 'done', name: 'Done', color: '#198754' }
+    { id: 'pending', name: 'Pending', color: 'bg-blue-500' },
+    { id: 'on-hold', name: 'On Hold', color: 'bg-red-500' },
+    { id: 'in-progress', name: 'In Progress', color: 'bg-yellow-500' },
+    { id: 'done', name: 'Done', color: 'bg-green-500' }
   ]);
 
   const [priorities] = useState([
-    { id: 'medium', name: 'Medium', color: '#ffc107' },
-    { id: 'high', name: 'High', color: '#dc3545' },
-    { id: 'low', name: 'Low', color: '#198754' }
+    { id: 'medium', name: 'Medium', color: 'bg-yellow-500' },
+    { id: 'high', name: 'High', color: 'bg-red-500' },
+    { id: 'low', name: 'Low', color: 'bg-green-500' }
   ]);
 
-  const getPriorityClass = (priority) => {
+  const getPriorityClasses = (priority) => {
     switch (priority) {
       case 'High':
-        return 'bg-danger bg-opacity-25 text-danger';
+        return 'bg-red-100 text-red-700';
       case 'Medium':
-        return 'bg-warning bg-opacity-25 text-warning';
+        return 'bg-yellow-100 text-yellow-700';
       case 'Low':
-        return 'bg-success bg-opacity-25 text-success';
+        return 'bg-green-100 text-green-700';
       default:
-        return 'bg-secondary bg-opacity-25 text-secondary';
+        return 'bg-gray-100 text-gray-700';
     }
   };
 
   return (
-    <div className="container-fluid p-0">
-      <div className="row g-0">
-        {/* Sidebar */}
-        <div className="col-md-3 col-lg-2 bg-light border-end vh-100 p-0">
-          <div className="d-flex align-items-center p-3">
-            <div className="bg-primary bg-opacity-25 rounded p-2 me-2">
-              <span className="text-primary fw-bold">GD</span>
-            </div>
-            <h5 className="mb-0">Notes</h5>
+    <div className="flex h-screen bg-gray-50">
+      {/* Sidebar */}
+      <div className="w-48 bg-white border-r border-gray-200 flex-shrink-0">
+        <div className="flex items-center px-3 py-4">
+          <div className="bg-indigo-100 rounded p-2 mr-2">
+            {/* <span className="text-indigo-600 font-bold">GD</span> */}
           </div>
-          
-          <div className="px-3 py-2">
-            <h6 className="text-muted small mb-2">Notes List</h6>
-            <ul className="list-group list-group-flush">
-              {categories.map(category => (
-                <li key={category.id} className={`list-group-item border-0 px-2 py-1 ${category.id === 'all' ? 'bg-dark text-white rounded' : ''}`}>
-                  <div className="d-flex align-items-center">
-                    <div className="me-2">
-                      {category.id === 'all' ? (
-                        <i className="bi bi-sticky"></i>
-                      ) : category.id === 'important' ? (
-                        <i className="bi bi-star-fill" style={{ color: category.color }}></i>
-                      ) : (
-                        <i className="bi bi-trash"></i>
-                      )}
-                    </div>
-                    <div className="flex-grow-1">{category.name}</div>
-                    {category.id === 'all' && <div className="badge bg-dark text-white">{category.count}</div>}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div className="px-3 py-2">
-            <h6 className="text-muted small mb-2">Tags</h6>
-            <ul className="list-group list-group-flush">
-              {tags.map(tag => (
-                <li key={tag.id} className="list-group-item border-0 px-2 py-1">
-                  <div className="d-flex align-items-center">
-                    <div className="me-2">
-                      <span className="dot" style={{ backgroundColor: tag.color, width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }}></span>
-                    </div>
-                    <div>{tag.name}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div className="px-3 py-2">
-            <h6 className="text-muted small mb-2">Priority</h6>
-            <ul className="list-group list-group-flush">
-              {priorities.map(priority => (
-                <li key={priority.id} className="list-group-item border-0 px-2 py-1">
-                  <div className="d-flex align-items-center">
-                    <div className="me-2">
-                      <span className="dot" style={{ backgroundColor: priority.color, width: '10px', height: '10px', borderRadius: '50%', display: 'inline-block' }}></span>
-                    </div>
-                    <div>{priority.name}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <h5 className="font-medium">Notes</h5>
         </div>
+        
+        <div className="px-3 py-2">
+          <h6 className="text-gray-500 text-xs font-medium mb-2">Notes List</h6>
+          <ul>
+            {categories.map(category => (
+              <li key={category.id} className={`mb-1 rounded ${category.id === 'all' ? 'bg-gray-900 text-white' : ''}`}>
+                <div className="flex items-center px-3 py-2">
+                  <div className="mr-2">
+                    {category.id === 'all' && (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    )}
+                    {category.id === 'important' && (
+                      <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    )}
+                    {category.id === 'trash' && (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                    )}
+                  </div>
+                  <div className="flex-grow">{category.name}</div>
+                  {category.id === 'all' && <div className="text-xs bg-gray-700 text-white px-2 py-1 rounded">{category.count}</div>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div className="px-4 py-2">
+          <h6 className="text-gray-500 text-xs font-medium mb-2">Tags</h6>
+          <ul>
+            {tags.map(tag => (
+              <li key={tag.id} className="mb-1">
+                <div className="flex items-center px-3 py-2">
+                  <div className="mr-2">
+                    <span className={`inline-block w-3 h-3 rounded-full ${tag.color}`}></span>
+                  </div>
+                  <div>{tag.name}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div className="px-4 py-2">
+          <h6 className="text-gray-500 text-xs font-medium mb-2">Priority</h6>
+          <ul>
+            {priorities.map(priority => (
+              <li key={priority.id} className="mb-1">
+                <div className="flex items-center px-3 py-2">
+                  <div className="mr-2">
+                    <span className={`inline-block w-3 h-3 rounded-full ${priority.color}`}></span>
+                  </div>
+                  <div>{priority.name}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
-        {/* Main Content */}
-        <div className="col-md-9 col-lg-10 vh-100 bg-body-tertiary">
-          <div className="container-fluid p-3">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-              <div className="dropdown">
-                <button className="btn btn-light dropdown-toggle" type="button" id="bulkActions" data-bs-toggle="dropdown" aria-expanded="false">
+      {/* Main Content */}
+      <div className="flex-1 overflow-auto">
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex">
+              <div className="relative">
+                <button className="flex items-center bg-white border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   Bulk Actions
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="bulkActions">
-                  <li><a className="dropdown-item" href="#">Mark as Read</a></li>
-                  <li><a className="dropdown-item" href="#">Delete Selected</a></li>
-                </ul>
-              </div>
-              <button className="btn btn-light ms-2">Apply</button>
-              <div className="ms-auto">
-                <button className="btn btn-light me-2">
-                  <i className="bi bi-download"></i> Export
-                </button>
-                <button className="btn btn-dark">
-                  <i className="bi bi-plus"></i> Add Note
+                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
                 </button>
               </div>
+              <button className="bg-white border border-gray-300 rounded px-4 py-2 text-sm ml-2">Apply</button>
             </div>
+            <div className="flex">
 
-            <h4 className="mb-3">Important Notes</h4>
-            
-            <div className="row g-3">
-              {notes.map(note => (
-                <div key={note.id} className="col-md-6 col-lg-4">
-                  <div className="card h-100 border-0 shadow-sm">
-                    <div className="card-body">
-                      <div className="d-flex justify-content-between mb-2">
-                        <span className={`badge rounded-pill ${getPriorityClass(note.priority)}`}>{note.priority}</span>
-                        <button className="btn btn-sm btn-light">
-                          <FaEllipsisV />
-                        </button>
+            <div className="flex items-center">
+              <div className="mr-2 flex border border-gray-300 rounded">
+                <button 
+                  className={`p-2 ${viewMode === 'list' ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'}`}
+                 onClick={() => setViewMode('list')}
+                >
+                  <List size={18} />
+                </button>
+                <button 
+                  className={`p-2 ${viewMode === 'grid' ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'}`}
+                 onClick={() => setViewMode('grid')}
+                >
+                  <Grid size={18} />
+                </button>
+              </div>
+           
+              <button className="bg-gray-900 text-white rounded px-4 py-2 text-sm flex items-center"  onClick={handleOpenAddNote}  >
+                <Plus size={16} className="mr-1" />
+                Add Note
+              </button>
+            </div>
+                
+         
+          
+            </div>
+          </div>
+
+          <h4 className="text-xl font-medium mb-4">Important Notes</h4>
+
+          
+                    {viewMode === 'list' ? (
+                        <div className="space-y-4">
+                        {notes.map((note) => (
+                          <div key={note.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
+                            <div className="p-4">
+                              <div className="flex justify-between items-start mb-2">
+                                <div>
+                                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${note.priorityColor}`}>
+                                    {note.priority}
+                                  </span>
+                                </div>
+                                <button className="text-gray-400 hover:text-gray-600">
+                                  <MoreVertical size={16} />
+                                </button>
+                              </div>
+                              <h5 className="font-medium mb-2">{note.title}</h5>
+                              <p className="text-gray-600 text-sm">{note.description}</p>
+                              <div className="flex items-center mt-4">
+                                <div className="mr-2">
+                                  <div className="bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center">
+                                    <span className="text-gray-600 text-xs">JP</span>
+                                  </div>
+                                </div>
+                                <div className="flex-grow">
+                                  <div className="text-sm">{note.category}</div>
+                                </div>
+                                <div className="flex">
+                                  <button className="p-1 text-gray-400 hover:text-yellow-500"  onClick={() => handleToggleStar(note.id)}>
+                                    <Star size={16}  className={note.starred ? 'text-yellow-500 ' : ''} />
+                                  </button>
+                                  <button className="p-1 text-gray-400 hover:text-red-500" onClick={() => handleDeleteNote(note.id)}>
+                                    <Trash2 size={16} />
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                      <h5 className="card-title">{note.title}</h5>
-                      <p className="card-text text-muted">{note.description}</p>
-                      <div className="d-flex align-items-center mt-3">
-                        <div className="me-2">
-                          <div className="bg-secondary bg-opacity-25 rounded-circle d-flex justify-content-center align-items-center" style={{ width: '30px', height: '30px' }}>
-                            <span className="text-secondary small">JP</span>
+                    ) : 
+                    (
+                    // <div className="space-y-4">
+                    //   {notes.map((note) => (
+                    //     <div key={note.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
+                    //       <div className="p-4">
+                    //         <div className="flex justify-between items-start mb-2">
+                    //           <div>
+                    //             <span className={`px-3 py-1 rounded-full text-xs font-medium ${note.priorityColor}`}>
+                    //               {note.priority}
+                    //             </span>
+                    //           </div>
+                    //           <button className="text-gray-400 hover:text-gray-600">
+                    //             <MoreVertical size={16} />
+                    //           </button>
+                    //         </div>
+                    //         <h5 className="font-medium mb-2">{note.title}</h5>
+                    //         <p className="text-gray-600 text-sm">{note.description}</p>
+                    //         <div className="flex items-center mt-4">
+                    //           <div className="mr-2">
+                    //             <div className="bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center">
+                    //               <span className="text-gray-600 text-xs">JP</span>
+                    //             </div>
+                    //           </div>
+                    //           <div className="flex-grow">
+                    //             <div className="text-sm">{note.category}</div>
+                    //           </div>
+                    //           <div className="flex">
+                    //             <button className="p-1 text-gray-400 hover:text-yellow-500">
+                    //               <Star size={16} />
+                    //             </button>
+                    //             <button className="p-1 text-gray-400 hover:text-red-500">
+                    //               <Trash2 size={16} />
+                    //             </button>
+                    //           </div>
+                    //         </div>
+                    //       </div>
+                    //     </div>
+                    //   ))}
+                    // </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {notes.map(note => (
+                      <div key={note.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div className="p-4">
+                          <div className="flex justify-between items-center mb-3">
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityClasses(note.priority)}`}>
+                              {note.priority}
+                            </span>
+                            <button className="text-gray-400 hover:text-gray-600">
+                              <FaEllipsisV className="w-4 h-4" />
+                            </button>
+                          </div>
+                          <h5 className="font-medium mb-2">{note.title}</h5>
+                          <p className="text-gray-600 text-sm">{note.description}</p>
+                          <div className="flex items-center mt-4">
+                            <div className="mr-2">
+                              <div className="bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center">
+                                <span className="text-gray-600 text-xs">JP</span>
+                              </div>
+                            </div>
+                            <div className="flex-grow">
+                              <div className="text-sm">{note.category}</div>
+                            </div>
+                            <div className="flex">
+                              <button className="p-1 text-gray-400 hover:text-yellow-500">
+                                <FaStar className="w-4 h-4" />
+                              </button>
+                              <button className="p-1 text-gray-400 hover:text-red-500">
+                                <FaTrash className="w-4 h-4" />
+                              </button>
+                            </div>
                           </div>
                         </div>
-                        <div className="flex-grow-1">
-                          <div className="small">{note.category}</div>
-                        </div>
-                        <div>
-                          <button className="btn btn-sm btn-light me-1">
-                            <FaStar />
-                          </button>
-                          <button className="btn btn-sm btn-light">
-                            <FaTrash />
-                          </button>
-                        </div>
                       </div>
+                    ))}
+                  </div>
+                    )
+                    }
+          
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {notes.map(note => (
+              <div key={note.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div className="p-4">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityClasses(note.priority)}`}>
+                      {note.priority}
+                    </span>
+                    <button className="text-gray-400 hover:text-gray-600">
+                      <FaEllipsisV className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <h5 className="font-medium mb-2">{note.title}</h5>
+                  <p className="text-gray-600 text-sm">{note.description}</p>
+                  <div className="flex items-center mt-4">
+                    <div className="mr-2">
+                      <div className="bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center">
+                        <span className="text-gray-600 text-xs">JP</span>
+                      </div>
+                    </div>
+                    <div className="flex-grow">
+                      <div className="text-sm">{note.category}</div>
+                    </div>
+                    <div className="flex">
+                      <button className="p-1 text-gray-400 hover:text-yellow-500">
+                        <FaStar className="w-4 h-4" />
+                      </button>
+                      <button className="p-1 text-gray-400 hover:text-red-500">
+                        <FaTrash className="w-4 h-4" />
+                      </button>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            ))}
+          </div> */}
         </div>
+        <AddNotePopup 
+        isOpen={isAddNoteOpen} 
+        onClose={handleCloseAddNote} 
+        onSave={handleSaveNote}
+      />
+
       </div>
     </div>
   );
 };
 
-export default NotesApp;
+export default NotesGrid;
