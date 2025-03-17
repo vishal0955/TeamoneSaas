@@ -19,6 +19,7 @@ const EMPLOYEES = [
 ];
 
 const PRIORITY_OPTIONS = ['High', 'Medium', 'Low'];
+const TAG_OPTIONS = ['Projects', 'Urgent', 'Internal', 'In progress', 'Reminder', 'Completed'];
 
 const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
     description: '',
     priority: PRIORITY_OPTIONS[0].toLowerCase(),
     dueDate: '',
-    tags: '',
+    tags: [],
     assignees: []
   });
 
@@ -34,7 +35,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
     if (editTask) {
       setFormData({
         ...editTask,
-        tags: editTask.tags.join(', '),
+        tags: Array.isArray(editTask.tags) ? editTask.tags : [],
         assignees: Array.isArray(editTask.assignees) ? editTask.assignees : []
       });
     } else {
@@ -43,36 +44,21 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
         description: '',
         priority: PRIORITY_OPTIONS[0].toLowerCase(),
         dueDate: '',
-        tags: '',
+        tags: [],
         assignees: []
       });
     }
   }, [editTask]);
 
-  const title = editTask ? 'Edit Task' : 'Add New Task';
-  const submitButtonText = editTask ? 'Update Task' : 'Add Task';
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const submissionData = {
-      ...formData,
-      // Convert tags from string to array if needed
-      tags: typeof formData.tags === 'string' ? 
-        formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag) : 
-        formData.tags,
-      // Ensure assignees is an array of numbers
-      assignees: Array.isArray(formData.assignees) ? 
-        formData.assignees : 
-        [Number(formData.assignees)].filter(id => !isNaN(id))
-    };
-    onSubmit(submissionData);
-    // Reset form
+    onSubmit(formData);
     setFormData({
       text: '',
       description: '',
       priority: PRIORITY_OPTIONS[0].toLowerCase(),
       dueDate: '',
-      tags: '',
+      tags: [],
       assignees: []
     });
   };
@@ -82,7 +68,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-xl font-semibold mb-4">{title}</h2>
+        <h2 className="text-xl font-semibold mb-4">{editTask ? 'Edit Task' : 'Add New Task'}</h2>
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
@@ -90,7 +76,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
               <input
                 type="text"
                 value={formData.text}
-                onChange={(e) => setFormData({...formData, text: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, text: e.target.value })}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 required
               />
@@ -99,7 +85,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
               <label className="block text-sm font-medium text-gray-700">Description</label>
               <textarea
                 value={formData.description}
-                onChange={(e) => setFormData({...formData, description: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 rows="3"
               />
@@ -108,10 +94,10 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
               <label className="block text-sm font-medium text-gray-700">Priority</label>
               <select
                 value={formData.priority}
-                onChange={(e) => setFormData({...formData, priority: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
               >
-                {PRIORITY_OPTIONS.map(priority => (
+                {PRIORITY_OPTIONS.map((priority) => (
                   <option key={priority} value={priority.toLowerCase()}>
                     {priority}
                   </option>
@@ -123,32 +109,41 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
               <input
                 type="date"
                 value={formData.dueDate}
-                onChange={(e) => setFormData({...formData, dueDate: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Tags (comma-separated)</label>
-              <input
-                type="text"
+              <label className="block text-sm font-medium text-gray-700">Tags</label>
+              <select
+              
                 value={formData.tags}
-                onChange={(e) => setFormData({...formData, tags: e.target.value})}
+                onChange={(e) => {
+                  const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+                  setFormData({ ...formData, tags: selectedOptions });
+                }}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                placeholder="Projects, Urgent, Internal"
-              />
+              >
+                {TAG_OPTIONS.map((tag) => (
+                  <option key={tag} value={tag}>
+                    {tag}
+                  </option>
+                ))}
+              </select>
+              <p className="text-xs text-gray-500 mt-1">Hold Ctrl/Cmd to select multiple tags</p>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">Assignees</label>
               <select
-                multiple
-                value={Array.isArray(formData.assignees) ? formData.assignees : []}
+            
+                value={formData.assignees}
                 onChange={(e) => {
-                  const selectedOptions = Array.from(e.target.selectedOptions, option => Number(option.value));
-                  setFormData({...formData, assignees: selectedOptions});
+                  const selectedOptions = Array.from(e.target.selectedOptions, (option) => Number(option.value));
+                  setFormData({ ...formData, assignees: selectedOptions });
                 }}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
               >
-                {EMPLOYEES.map(employee => (
+                {EMPLOYEES.map((employee) => (
                   <option key={employee.id} value={employee.id}>
                     {employee.name}
                   </option>
@@ -169,7 +164,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
               type="submit"
               className="px-4 py-2 bg-purple-600 text-white rounded-md text-sm font-medium hover:bg-purple-700"
             >
-              {submitButtonText}
+              {editTask ? 'Update Task' : 'Add Task'}
             </button>
           </div>
         </form>
@@ -432,10 +427,10 @@ const TodoApp = () => {
               </button>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <button className="px-3 py-1 text-xs rounded-md bg-white text-gray-700 border border-gray-200 flex items-center">
-                <FontAwesomeIcon icon={faCalendar} className="mr-1" />
+              <select className="px-3 py-1 text-xs rounded-md bg-white text-gray-700 border border-gray-200 flex items-center">
+              <label>  <FontAwesomeIcon icon={faCalendar} className="mr-1" /> </label>
                 <span>Due Date</span>
-              </button>
+              </select>
               <button className="px-3 py-1 text-xs rounded-md bg-white text-gray-700 border border-gray-200 flex items-center">
                 <span>All Tags</span>
                 <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
