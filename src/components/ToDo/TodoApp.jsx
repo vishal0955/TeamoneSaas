@@ -210,7 +210,7 @@ const TodoApp = () => {
       text: 'Finalize project proposal',
       priority: 'high',
       completed: false,
-      dueDate: '15 Jan 2025',
+      dueDate: '2025-01-15',
       tags: ['Projects', 'Urgent'],
       assignees: [1, 2],
     },
@@ -219,7 +219,7 @@ const TodoApp = () => {
       text: 'Submit to supervisor by EOD',
       priority: 'high',
       completed: false,
-      dueDate: '23 May 2024',
+      dueDate: '2024-05-23',
       tags: ['Internal', 'In progress'],
       assignees: [1],
     },
@@ -228,14 +228,31 @@ const TodoApp = () => {
       text: 'Check and respond to emails',
       priority: 'medium',
       completed: true,
-      dueDate: 'Tomorrow',
+      dueDate: '2025-03-18',
       tags: ['Reminder', 'Completed'],
       assignees: [1, 2],
     },
   ]);
 
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [dueDateFilter, setDueDateFilter] = useState('');
+  const [tagFilter, setTagFilter] = useState('');
+  const [sortBy, setSortBy] = useState('createdDate');
+
+  const filteredTasks = tasks
+    .filter((task) => {
+      if (activeFilter !== 'all' && task.priority !== activeFilter) return false;
+      if (dueDateFilter && task.dueDate !== dueDateFilter) return false;
+      if (tagFilter && !task.tags.includes(tagFilter)) return false;
+      return true;
+    })
+    .sort((a, b) => {
+      if (sortBy === 'createdDate') return a.id - b.id;
+      if (sortBy === 'dueDate') return new Date(a.dueDate) - new Date(b.dueDate);
+      return 0;
+    });
+
   const [newTask, setNewTask] = useState('');
-  const [activeFilter, setActiveFilter] = useState('high');
   const [showPopup, setShowPopup] = useState(false);
   const [newTaskForm, setNewTaskForm] = useState({
     text: '',
@@ -427,18 +444,55 @@ const TodoApp = () => {
               </button>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <select className="px-3 py-1 text-xs rounded-md bg-white text-gray-700 border border-gray-200 flex items-center">
-              <label>  <FontAwesomeIcon icon={faCalendar} className="mr-1" /> </label>
-                <span>Due Date</span>
-              </select>
-              <button className="px-3 py-1 text-xs rounded-md bg-white text-gray-700 border border-gray-200 flex items-center">
-                <span>All Tags</span>
-                <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
-              </button>
-              <button className="px-3 py-1 text-xs rounded-md bg-white text-gray-700 border border-gray-200 flex items-center">
-                <span>Sort By: Created Date</span>
-                <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
-              </button>
+              <div className="flex flex-wrap items-center gap-2">
+  {/* Due Date Filter */}
+  <div>
+    <label className="text-xs text-gray-500">Due Date</label>
+    <select
+      value={dueDateFilter}
+      onChange={(e) => setDueDateFilter(e.target.value)}
+      className="block w-full border border-gray-300 rounded-md shadow-sm p-2 text-xs mt-1"
+    >
+      <option value="">All</option>
+      {Array.from(new Set(tasks.map((task) => task.dueDate))).map((date) => (
+        <option key={date} value={date}>
+          {new Date(date).toLocaleDateString()}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  {/* All Tags Filter */}
+  <div>
+    <label className="text-xs text-gray-500">All Tags</label>
+    <select
+      value={tagFilter}
+      onChange={(e) => setTagFilter(e.target.value)}
+      className="block w-full border border-gray-300 rounded-md shadow-sm p-2 text-xs mt-1"
+    >
+      <option value="">All</option>
+      {TAG_OPTIONS.map((tag) => (
+        <option key={tag} value={tag}>
+          {tag}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  {/* Sort By Filter */}
+  <div>
+    <label className="text-xs text-gray-500">Sort By</label>
+    <select
+      value={sortBy}
+      onChange={(e) => setSortBy(e.target.value)}
+      className="block w-full border border-gray-300 rounded-md shadow-sm p-2 text-xs mt-1"
+    >
+      <option value="createdDate">Created Date</option>
+      <option value="dueDate">Due Date</option>
+    </select>
+  </div>
+</div>
+
             </div>
           </div>
 
