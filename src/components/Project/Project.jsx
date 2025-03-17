@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import "./project.css";
+import AddNewProject from "./AddNewProject"; // Import the AddNewProject component
 
 const Project = () => {
   const [view, setView] = useState("grid");
+  const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
   const toggleView = (selectedView) => {
     setView(selectedView);
+  };
+
+  const handleAddProjectClick = () => {
+    setShowModal(true); // Show the modal when the button is clicked
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false); // Close the modal
   };
 
   return (
@@ -32,7 +42,9 @@ const Project = () => {
             </div>
             <button
               className="btn add-project-btn ms-3"
-              style={{ height: "fit-content" }}>
+              style={{ height: "fit-content" }}
+              onClick={handleAddProjectClick} // Open modal on click
+            >
               <i className="bi bi-plus" /> Add New Project
             </button>
           </div>
@@ -117,15 +129,29 @@ const Project = () => {
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
+      {/* Modal for Adding New Project */}
+      {showModal && (
+        <div className="modal fade show" style={{ display: "block" }} tabIndex="-1" role="dialog">
+          <div className="modal-dialog modal-lg" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Add New Project</h5>
+                <button type="button" className="close" onClick={handleCloseModal}>
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <AddNewProject onClose={handleCloseModal} /> {/* Pass the close function */}
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

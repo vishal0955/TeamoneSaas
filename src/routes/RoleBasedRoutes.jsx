@@ -65,6 +65,7 @@ const RoleBasedRoutes = () => {
         <Route path="/todoapp" element={<TodoApp />} />
         <Route path="/project/projects" element={<Project />} />
         <Route path="/project/task" element={<Task />} />
+        <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
 
 {/* <Route path="/todolist" element={<TodoList />} /> */}
