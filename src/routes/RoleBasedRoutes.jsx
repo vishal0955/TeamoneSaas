@@ -31,9 +31,10 @@ import EmployeeGrid from "../components/AdminHRM/EmployeeGrid";
 import EmployeeDetails from "../components/AdminHRM/EmployeeDetails";
 import Department from "../components/AdminHRM/Department";
 import Designations from "../components/AdminHRM/Designations";
-import TaskList from "../components/Task/TaskList";
+import TaskList from "../components/Task/Task";
 import TaskDetail from "../components/Task/TaskDetail";
 import AddTask from "../components/Task/AddTask";
+import Task from "../components/Task/Task";
 
 const RoleBasedRoutes = () => {
   return (
@@ -62,7 +63,8 @@ const RoleBasedRoutes = () => {
         />
 
         <Route path="/todoapp" element={<TodoApp />} />
-        <Route path="/project/tasklist" element={<TaskList />} />
+        <Route path="/project/projects" element={<Project />} />
+        <Route path="/project/task" element={<Task />} />
         <Route path="/addtask" element={<AddTask />} />
 
         <Route path="/todolist" element={<TodoList />} />

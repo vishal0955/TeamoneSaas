@@ -27,7 +27,7 @@ const menuItems = [
     icon: <FolderOpenDot size={16} />,
     subItems: [
       { name: "Project", path: "/project/projects" },
-      { name: "Task", path: "/project/tasklist" },
+      { name: "Task", path: "/project/task" },
       { name: "Task Board", path: "/project/timeline" },
       { name: "Todo", path: "/project/Todo" },
       { name: "Notes", path: "/project/Notes" },

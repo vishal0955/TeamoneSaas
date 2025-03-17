@@ -1,0 +1,151 @@
+.projects-container {
+    padding: 32px;
+}
+
+.view-toggle {
+    display: inline-flex;
+    background: #fff;
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.view-toggle button {
+    border: none;
+    background: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: #6c757d;
+}
+
+.view-toggle button.active {
+    background: #e9ecef;
+    color: #212529;
+}
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-status {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    margin-bottom: 16px;
+}
+
+.status-ongoing {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-completed {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.project-description {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.project-meta {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.team-avatars {
+    display: flex;
+    margin-top: 16px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: -8px;
+    background: #dee2e6;
+}
+
+.avatar:first-child {
+    margin-left: 0;
+}
+
+.add-project-btn {
+    background: #212529;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+.add-project-btn:hover {
+    background: #343a40;
+    color: white;
+}
+
+.project-options {
+    color: #6c757d;
+    background: none;
+    border: none;
+    padding: 4px;
+}
+
+.project-options:hover {
+    color: #212529;
+}
+
+.list-view .project-card {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    margin-bottom: 16px;
+}
+
+.list-view .project-info {
+    flex-grow: 1;
+    margin-right: 24px;
+}
+
+.list-view .project-status {
+    margin-bottom: 0;
+}
+
+.list-view .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.grid-view {
+    display: none;
+}
+
+.grid-view.active {
+    display: block;
+}
+
+.list-view {
+    display: none;
+}
+
+.list-view.active {
+    display: block;
+}

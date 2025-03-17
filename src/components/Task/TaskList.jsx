@@ -1,31 +1,10 @@
-import React, { useState } from 'react';
-import "./task.css";
-import AddTask from './AddTask'; // Import the AddTask component
+import React from 'react'
 
 const TaskList = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <>
-      <div className="container py-5">
-        <div className="tasks-container">
-          {/* Header */}
-          <div className="d-flex justify-content-between align-items-center mb-4">
-            <h4 className="mb-0">Tasks List</h4>
-            <button className="btn new-task-btn" onClick={handleOpenModal}>
-              <i className="bi bi-plus" /> New Task
-            </button>
-          </div>
-          {/* Search and Filters */}
-          <div className="d-flex justify-content-between align-items-center mb-4">
+    {/* Search and Filters */}
+    <div className="d-flex justify-content-between align-items-center mb-4">
             <div className="search-container">
               <input
                 type="text"
@@ -48,8 +27,8 @@ const TaskList = () => {
               </select>
             </div>
           </div>
-          {/* Tasks Table */}
-          <div className="table-responsive">
+           {/* Tasks Table */}
+           <div className="table-responsive">
             <table className="table align-middle">
               <thead>
                 <tr>
@@ -137,30 +116,8 @@ const TaskList = () => {
               </ul>
             </nav>
           </div>
-        </div>
-      </div>
-
-      {/* Modal for AddTask */}
-      {isModalOpen && (
-        <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1" role="dialog">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Add Task</h5>
-                <button type="button" className="close" onClick={handleCloseModal}>
-                  <span>&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <AddTask />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      {isModalOpen && <div className="modal-backdrop fade show"></div>}
     </>
-  );
-};
+  )
+}
 
-export default TaskList;
+export default TaskList
