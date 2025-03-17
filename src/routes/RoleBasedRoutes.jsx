@@ -25,7 +25,7 @@ import Setting from "../pages/Super Admin/Setting";
 import Project from "../components/Project/Project";
 import TaskListExample from "../pages/TaskListExample";
 import TaskManagementTable from "../components/adminApplication/Todo/Takslist";
-import TodoList from "../components/ToDo/TodoList";
+// import TodoList from "../components/ToDo/TodoList";
 import TodoApp from "../components/ToDo/TodoApp";
 import EmployeeGrid from "../components/AdminHRM/EmployeeGrid";
 import EmployeeDetails from "../components/AdminHRM/EmployeeDetails";
@@ -67,8 +67,8 @@ const RoleBasedRoutes = () => {
         <Route path="/project/task" element={<Task />} />
         <Route path="/addtask" element={<AddTask />} />
 
-        <Route path="/todolist" element={<TodoList />} />
-        <Route path="/tasklist" element={<TaskListExample />} />
+{/* <Route path="/todolist" element={<TodoList />} /> */}
+<Route path="/tasklist" element={<TaskListExample />} />
         <Route
           path="/employeelist"
           element={
@@ -79,7 +79,7 @@ const RoleBasedRoutes = () => {
         />
 
         <Route
-          path="/employeedetails"
+          path="/employee/:id"
           element={
             <ProtectedRoute allowedRoles={["admin", "superAdmin"]}>
               <EmployeeDetails></EmployeeDetails>
@@ -87,14 +87,25 @@ const RoleBasedRoutes = () => {
           }
         />
 
+        {/* <Route
+          path="/employeedetails"
+          element={
+            <ProtectedRoute allowedRoles={["admin", "superAdmin"]}>
+              <EmployeeDetails></EmployeeDetails>
+            </ProtectedRoute>
+          }
+        /> */}
+
         <Route path="/tasklist" element={<TaskListExample />} />
         <Route
           path="/employeegrid"
-          element={<EmployeeGrid></EmployeeGrid>}></Route>
+          element={<EmployeeGrid></EmployeeGrid>}
+        ></Route>
 
         <Route
           path="/workdetails"
-          element={<WorkDetails></WorkDetails>}></Route>
+          element={<WorkDetails></WorkDetails>}
+        ></Route>
 
         <Route path="/document" element={<Document></Document>}></Route>
         <Route path="/attendance" element={<Attendance></Attendance>}></Route>

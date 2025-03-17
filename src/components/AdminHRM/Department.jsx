@@ -96,7 +96,6 @@ const Department = () => {
 
       {/* Filters */}
       <div className="bg-white border border-gray-50 rounded-lg">
-    
         <div className="flex flex-wrap justify-between items-center p-3 rounded-md">
           <h1 className="text-xl font-semibold text-gray-800">
             Department List
@@ -234,7 +233,7 @@ const Department = () => {
               </div>
               <button
                 type="submit"
-                className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
               >
                 {editingDepartment ? "Update Department" : "Add Department"}
               </button>

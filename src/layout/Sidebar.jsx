@@ -58,7 +58,7 @@ const menuItems = [
         path: "/hrm/employees",
         subMenu: [
           { name: "Employees List", path: "/employeelist" },
-          { name: "Employees Details", path: "/employeedetails" },
+          // { name: "Employees Details", path: "/employeedetails" },
           { name: "Departments", path: "/department" },
           { name: "Designations", path: "/designations" },
           { name: "Policies", path: "/hrm/employees/policies" },
