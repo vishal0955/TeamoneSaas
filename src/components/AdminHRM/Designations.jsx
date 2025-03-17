@@ -9,15 +9,69 @@ import {
 } from "react-icons/fa";
 
 const initialDepartments = [
-  { id: 1, name: "Finance", employees: 20, status: "Active" },
-  { id: 2, name: "Application Development", employees: 30, status: "Active" },
-  { id: 3, name: "IT Management", employees: 15, status: "Active" },
-  { id: 4, name: "Web Development", employees: 20, status: "Active" },
-  { id: 5, name: "Sales", employees: 20, status: "Active" },
-  { id: 6, name: "UI / UX", employees: 30, status: "Active" },
-  { id: 7, name: "Account Management", employees: 15, status: "Active" },
-  { id: 8, name: "Marketing", employees: 10, status: "Inactive" },
-  { id: 9, name: "Administration", employees: 5, status: "Active" },
+  {
+    id: 1,
+    name: "Finance",
+    employees: 20,
+    designation: "Manager",
+    status: "Active",
+  },
+  {
+    id: 2,
+    name: "Application Development",
+    employees: 30,
+    designation: "Developer",
+    status: "Active",
+  },
+  {
+    id: 3,
+    name: "IT Management",
+    employees: 15,
+    designation: "IT Head",
+    status: "Active",
+  },
+  {
+    id: 4,
+    name: "Web Development",
+    employees: 20,
+    designation: "Frontend Dev",
+    status: "Active",
+  },
+  {
+    id: 5,
+    name: "Sales",
+    employees: 20,
+    designation: "Sales Executive",
+    status: "Active",
+  },
+  {
+    id: 6,
+    name: "UI / UX",
+    employees: 30,
+    designation: "Designer",
+    status: "Active",
+  },
+  {
+    id: 7,
+    name: "Account Management",
+    employees: 15,
+    designation: "Accountant",
+    status: "Active",
+  },
+  {
+    id: 8,
+    name: "Marketing",
+    employees: 10,
+    designation: "Marketing Head",
+    status: "Inactive",
+  },
+  {
+    id: 9,
+    name: "Administration",
+    employees: 5,
+    designation: "Admin",
+    status: "Active",
+  },
 ];
 
 const Designations = () => {
@@ -28,6 +82,7 @@ const Designations = () => {
   const [newDepartment, setNewDepartment] = useState({
     name: "",
     employees: "20",
+    designation: "",
     status: "Active",
   });
 
@@ -38,7 +93,12 @@ const Designations = () => {
       setNewDepartment(department);
     } else {
       setEditingDepartment(null);
-      setNewDepartment({ name: "", employees: "20", status: "Active" });
+      setNewDepartment({
+        name: "",
+        employees: "20",
+        designation: "",
+        status: "Active",
+      });
     }
     setIsModalOpen(true);
   };
@@ -139,6 +199,7 @@ const Designations = () => {
                 <th className="px-4 py-3 w-12">
                   <input type="checkbox" />
                 </th>
+                <th className="px-4 py-3 text-left">Designation</th>
                 <th className="px-4 py-3 text-left">Department</th>
                 <th className="px-4 py-3 text-left">No of Employees</th>
                 <th className="px-4 py-3 text-left">Status</th>
@@ -151,6 +212,7 @@ const Designations = () => {
                   <td className="px-4 py-3">
                     <input type="checkbox" />
                   </td>
+                  <td className="px-4 py-3">{dept.designation}</td>
                   <td className="px-4 py-3">{dept.name}</td>
                   <td className="px-4 py-3">{dept.employees}</td>
                   <td className="px-4 py-3">
@@ -196,9 +258,26 @@ const Designations = () => {
               <FaTimes />
             </button>
             <h2 className="text-xl font-semibold mb-4">
-              {editingDepartment ? "Edit Department" : "Add Department"}
+              {editingDepartment ? "Edit Designation" : "Add Designation"}
             </h2>
             <form onSubmit={handleSave}>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Designation Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-2 border rounded-md"
+                  value={newDepartment.designation}
+                  onChange={(e) =>
+                    setNewDepartment({
+                      ...newDepartment,
+                      designation: e.target.value,
+                    })
+                  }
+                  required
+                />
+              </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
                   Department Name
@@ -233,9 +312,9 @@ const Designations = () => {
               </div>
               <button
                 type="submit"
-                className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
               >
-                {editingDepartment ? "Update Department" : "Add Department"}
+                {editingDepartment ? "Update Designation" : "Add Designation"}
               </button>
             </form>
           </div>

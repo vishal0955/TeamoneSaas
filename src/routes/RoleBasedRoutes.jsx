@@ -66,13 +66,22 @@ const RoleBasedRoutes = () => {
         />
 
         <Route
-          path="/employeedetails"
+          path="/employee/:id"
           element={
             <ProtectedRoute allowedRoles={["admin", "superAdmin"]}>
               <EmployeeDetails></EmployeeDetails>
             </ProtectedRoute>
           }
         />
+
+        {/* <Route
+          path="/employeedetails"
+          element={
+            <ProtectedRoute allowedRoles={["admin", "superAdmin"]}>
+              <EmployeeDetails></EmployeeDetails>
+            </ProtectedRoute>
+          }
+        /> */}
 
         <Route path="/tasklist" element={<TaskListExample />} />
         <Route

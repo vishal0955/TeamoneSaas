@@ -314,8 +314,10 @@ const EmployeeList = () => {
                   />
                   <input
                     type="text"
+                    name="id"
                     placeholder="Employee ID"
                     value={newEmployee.id}
+                    onChange={handleInputChange}
                     className="w-full p-2 border rounded"
                   />
                 </div>
@@ -376,9 +378,11 @@ const EmployeeList = () => {
                     alt={employee.name}
                   />
                   <div>
-                    <div className="font-medium text-gray-900">
-                      {employee.name}
-                    </div>
+                    <Link to={`/employee/${employee.id}`}>
+                      <div className="font-medium text-gray-900">
+                        {employee.name}
+                      </div>
+                    </Link>
                     <div className="text-sm text-gray-500">#{employee.id}</div>
                   </div>
                 </td>
