@@ -13,7 +13,11 @@ import High_todo from "../components/adminApplication/Todo/High_todo";
 import Medium_todo from "../components/adminApplication/Todo/Medium_todo";
 import Low_todo from "../components/adminApplication/Todo/Low_todo";
 import SuperAdminLayout from "../layout/SuperAdminLayout";
+import EmployeeList from "../components/AdminHRM/EmployeeList";
+import Attendance from "../components/AdminHRM/Attendance";
 import Plans from "../pages/Super Admin/Plans";
+import Document from "../components/AdminHRM/Document";
+import WorkDetails from "../components/AdminHRM/WorkDetails";
 import UserInfo from "../pages/Super Admin/UserInfo";
 import OrderPlan from "../pages/Super Admin/OrderPlan";
 import PlanRequest from "../pages/Super Admin/PlanRequest";
@@ -21,6 +25,10 @@ import Setting from "../pages/Super Admin/Setting";
 import Project from "../components/Project/Project";
 import TaskListExample from "../pages/TaskListExample";
 import TaskManagementTable from "../components/adminApplication/Todo/Takslist";
+import EmployeeGrid from "../components/AdminHRM/EmployeeGrid";
+import EmployeeDetails from "../components/AdminHRM/EmployeeDetails";
+import Department from "../components/AdminHRM/Department";
+import Designations from "../components/AdminHRM/Designations";
 
 const RoleBasedRoutes = () => {
   return (
@@ -48,9 +56,56 @@ const RoleBasedRoutes = () => {
           }
         />
 
-<Route path="/tasklist" element={<TaskListExample />} />
+        <Route
+          path="/employeelist"
+          element={
+            <ProtectedRoute allowedRoles={["admin", "superAdmin"]}>
+              <EmployeeList></EmployeeList>
+            </ProtectedRoute>
+          }
+        />
 
-<Route path="/tasklist1" element={<TaskManagementTable />} />
+        <Route
+          path="/employeedetails"
+          element={
+            <ProtectedRoute allowedRoles={["admin", "superAdmin"]}>
+              <EmployeeDetails></EmployeeDetails>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/tasklist" element={<TaskListExample />} />
+        <Route
+          path="/employeegrid"
+          element={<EmployeeGrid></EmployeeGrid>}
+        ></Route>
+
+        <Route
+          path="/workdetails"
+          element={<WorkDetails></WorkDetails>}
+        ></Route>
+
+        <Route path="/document" element={<Document></Document>}></Route>
+        <Route path="/attendance" element={<Attendance></Attendance>}></Route>
+
+        <Route
+          path="/department"
+          element={
+            <ProtectedRoute allowedRoles={["admin", "superAdmin"]}>
+              <Department></Department>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/designations"
+          element={
+            <ProtectedRoute allowedRoles={["admin", "superAdmin"]}>
+              <Designations></Designations>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/tasklist1" element={<TaskManagementTable />} />
         <Route path="/projectlist" element={<Project />} />
         <Route
           path="/todo"
@@ -64,7 +119,7 @@ const RoleBasedRoutes = () => {
         <Route
           path="/client"
           element={
-            <ProtectedRoute allowedRoles={["client","admin"]}>
+            <ProtectedRoute allowedRoles={["client", "admin"]}>
               <ClientDashboard />
             </ProtectedRoute>
           }
@@ -73,7 +128,7 @@ const RoleBasedRoutes = () => {
         <Route
           path="/client"
           element={
-            <ProtectedRoute allowedRoles={["client","admin"]}>
+            <ProtectedRoute allowedRoles={["client", "admin"]}>
               <ClientDashboard />
             </ProtectedRoute>
           }
