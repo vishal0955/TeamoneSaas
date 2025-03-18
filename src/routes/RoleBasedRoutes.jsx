@@ -51,6 +51,8 @@ import Companies from "../components/Crm/Companies";
 import Leads from "../components/Crm/Leads";
 import Deal from "../components/Crm/Deal";
 import Pipeline from "../components/Crm/Pipeline";
+import Analytics from "../components/Crm/Analytics";
+import Job from "../components/Recruitment/Job";
 
 const RoleBasedRoutes = () => {
   return (
@@ -96,8 +98,13 @@ const RoleBasedRoutes = () => {
         <Route path="/crm/leads" element={<Leads />} />
         <Route path="/crm/deals" element={<Deal />} />
         <Route path="/crm/pipeline" element={<Pipeline />} />
+        <Route path="/crm/pipeline" element={<Pipeline />} />
+        <Route path="/crm/analytics" element={<Analytics />} />
 
         {/* crm-section */}
+        {/* recruitment */}
+        <Route path="/recruitment/jobs" element={<Job />} />
+        {/* recruitment */}
 
 {/* <Route path="/todolist" element={<TodoList />} /> */}
 <Route path="/tasklist" element={<TaskListExample />} />
