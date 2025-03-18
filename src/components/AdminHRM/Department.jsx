@@ -140,7 +140,7 @@ const Department = () => {
                   <input type="checkbox" />
                 </th>
                 <th className="px-4 py-3 text-left">Department</th>
-                <th className="px-4 py-3 text-left">No of Employees</th>
+                {/* <th className="px-4 py-3 text-left">No of Employees</th> */}
                 <th className="px-4 py-3 text-left">Status</th>
                 <th className="px-4 py-3 text-left">Actions</th>
               </tr>
@@ -152,7 +152,7 @@ const Department = () => {
                     <input type="checkbox" />
                   </td>
                   <td className="px-4 py-3">{dept.name}</td>
-                  <td className="px-4 py-3">{dept.employees}</td>
+                  {/* <td className="px-4 py-3">{dept.employees}</td> */}
                   <td className="px-4 py-3">
                     <span
                       className={`px-2 py-1 text-sm rounded-full ${

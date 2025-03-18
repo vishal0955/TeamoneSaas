@@ -6,6 +6,7 @@ import "./LeavePageStyles.css"
 
 import { FaUsers, FaCalendarCheck, FaCalendarTimes, FaClock, FaFileExport, FaPlus, FaPen, FaTrash } from 'react-icons/fa';
 import LeaveForm from './LeaveForm';
+import AddLeaveForm from './AddLeaveForm';
 
 const LeavePage = () => {
      const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
@@ -312,7 +313,7 @@ const LeavePage = () => {
                   />
                 </div>
                 <div className="modal-body">
-           <LeaveForm />
+           <AddLeaveForm />
                 </div>
               </div>
             </div>
@@ -328,6 +329,6 @@ const LeavePage = () => {
   );
 };
 
-export default LeavePage;
+export default LeavePage; 
 
 
