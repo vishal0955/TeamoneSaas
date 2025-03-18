@@ -45,6 +45,7 @@ import Timesheet from "../components/AdminHRM/Timesheet/Timesheet";
 import LeaveSetting from "../components/AdminHRM/Leave/LeaveSetting";
 import Contacts from "../components/Crm/Contacts";
 import Companies from "../components/Crm/Companies";
+import Leads from "../components/Crm/Leads";
 
 const RoleBasedRoutes = () => {
   return (
@@ -87,6 +88,7 @@ const RoleBasedRoutes = () => {
         {/* crm-section */}
         <Route path="/crm/customers" element={<Contacts />} />
         <Route path="/crm/companies" element={<Companies />} />
+        <Route path="/crm/leads" element={<Leads />} />
 
         {/* crm-section */}
 
