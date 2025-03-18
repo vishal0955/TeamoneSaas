@@ -49,6 +49,8 @@ import CustomPolicyModal from "../components/AdminHRM/Leave/CustomPolicyform";
 import Contacts from "../components/Crm/Contacts";
 import Companies from "../components/Crm/Companies";
 import Leads from "../components/Crm/Leads";
+import Deal from "../components/Crm/Deal";
+import Pipeline from "../components/Crm/Pipeline";
 
 const RoleBasedRoutes = () => {
   return (
@@ -92,6 +94,8 @@ const RoleBasedRoutes = () => {
         <Route path="/crm/customers" element={<Contacts />} />
         <Route path="/crm/companies" element={<Companies />} />
         <Route path="/crm/leads" element={<Leads />} />
+        <Route path="/crm/deals" element={<Deal />} />
+        <Route path="/crm/pipeline" element={<Pipeline />} />
 
         {/* crm-section */}
 
