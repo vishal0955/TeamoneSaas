@@ -38,9 +38,13 @@ import Task from "../components/Task/Task";
 
 import NotesList from "../components/Notes/NotesList";
 import NotesGrid from "../components/Notes/NotesGrid";
-import HolidaysList from "../components/AdminHRM/Holiday";
-import Holidays from "../components/AdminHRM/Holiday";
+
 import AttendanceAdmin from "../components/AdminHRM/Attendance/AttendanceAdmin";
+import Holidays from "../components/AdminHRM/Holiday";
+import Timesheet from "../components/AdminHRM/Timesheet/Timesheet";
+import LeaveSetting from "../components/AdminHRM/Leave/LeaveSetting";
+import Contacts from "../components/Crm/Contacts";
+import Companies from "../components/Crm/Companies";
 
 const RoleBasedRoutes = () => {
   return (
@@ -79,6 +83,12 @@ const RoleBasedRoutes = () => {
         <Route path="/project/task" element={<Task />} />
         <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
+        
+        {/* crm-section */}
+        <Route path="/crm/customers" element={<Contacts />} />
+        <Route path="/crm/companies" element={<Companies />} />
+
+        {/* crm-section */}
 
 {/* <Route path="/todolist" element={<TodoList />} /> */}
 <Route path="/tasklist" element={<TaskListExample />} />
@@ -144,6 +154,10 @@ const RoleBasedRoutes = () => {
         />
 
         <Route path="/hrm/holiday" element={<Holidays />}></Route>
+
+        <Route path="/hrm/attendance/timesheet" element={<Timesheet />} />
+
+        <Route path="/hrm/attendance/leave_settings" element={<LeaveSetting />} />
 
         <Route path="/tasklist1" element={<TaskManagementTable />} />
         <Route path="/projectlist" element={<Project />} />
