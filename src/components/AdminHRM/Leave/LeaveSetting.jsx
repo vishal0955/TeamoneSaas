@@ -2,16 +2,24 @@ import React,{ useState} from 'react'
 import "./LeaveSetting.css"
 import { Link , useNavigate} from 'react-router-dom';
 import CustomPolicyModal from './CustomPolicyform';
+import AddLeaveForm from './AddLeaveForm';
 const LeaveSetting = () => {
  const navigate = useNavigate();
- 
-      const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
-      const handleOpenModal = () => setIsModalOpen(true);
-      const handleCloseModal = () => setIsModalOpen(false);
- 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    document.body.classList.remove("modal-open"); // Remove modal-open class
+  };
+
   return (
-        <div className="container py-4">
+    <>
+            <div className="container py-4">
   {/* Breadcrumb */}
   <nav aria-label="breadcrumb">
     <ol className="breadcrumb">
@@ -183,40 +191,38 @@ const LeaveSetting = () => {
           </li>
         </ul>
       </nav>
-    </div>
-    {/* {isModalOpen && (
-        <div
-          className="modal fade show"
-          style={{ display: "block" }}
-          tabIndex="-1"
-          role="dialog">
-          <div className="modal-dialog modal-lg" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-            
-       
-                <button
-                  type="button"
-                  className="close"
-                  onClick={handleCloseModal}>
-                  <span>&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-              <CustomPolicyModal />
-              </div>
-            </div>
-          </div>
-        </div>
-      )} */}
-      {/* {isModalOpen && <div className="modal-backdrop fade show"></div>} */}
-  <CustomPolicyModal  isOpen={isModalOpen} onClose={handleCloseModal}/>
-  
-
-    
+    </div>   
   </div>
 </div>
-
+      {/* Modal for Add LeaveForm */}
+      {isModalOpen && (
+              <>
+                <div className="modal fade show d-block" role="dialog">
+                  <div className="modal-dialog modal-lg" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title">New Custom Policy</h5>
+                        <button
+                          type="button"
+                          className="btn-close"
+                          aria-label="Close"
+                          onClick={handleCloseModal}
+                        />
+                      </div>
+                      <div className="modal-body">
+                        <AddLeaveForm />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Modal backdrop */}
+                <div
+                  className="modal-backdrop fade show"
+                  onClick={handleCloseModal}
+                ></div>
+              </>
+            )}
+    </>
   )
 }
 
