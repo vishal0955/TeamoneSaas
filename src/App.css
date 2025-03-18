@@ -44,3 +44,16 @@
 .read-the-docs {
   color: #888;
 }
+
+/* .dropdown-menu {
+  position: relative;
+}
+.dropdown-menu select {
+  position: relative;
+  z-index: 1050;
+} */
+
+.dropdown-menu {
+  top: 100% !important;
+  transform: translateY(0) !important;
+}
