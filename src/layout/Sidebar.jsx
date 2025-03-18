@@ -129,8 +129,8 @@ const menuItems = [
     subItems: [
       { name: "Jobs", path: "/recruitment/jobs" },
       { name: "Candidates", path: "/recruitment/candidates" },
-      { name: "Interviews", path: "/recruitment/interviews" },
-      { name: "Offer Letters", path: "/recruitment/offer_letters" },
+      { name: "Refferals", path: "/recruitment/refferals" },
+
     ],
   },
 
