@@ -46,6 +46,8 @@ import LeaveSetting from "../components/AdminHRM/Leave/LeaveSetting";
 import Leave from "../components/AdminHRM/Leave/LeaveList";
 import Overtime from "../components/AdminHRM/Leave/Overtime";
 import CustomPolicyModal from "../components/AdminHRM/Leave/CustomPolicyform";
+import Contacts from "../components/Crm/Contacts";
+import Companies from "../components/Crm/Companies";
 
 const RoleBasedRoutes = () => {
   return (
@@ -84,6 +86,12 @@ const RoleBasedRoutes = () => {
         <Route path="/project/task" element={<Task />} />
         <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
+        
+        {/* crm-section */}
+        <Route path="/crm/customers" element={<Contacts />} />
+        <Route path="/crm/companies" element={<Companies />} />
+
+        {/* crm-section */}
 
 {/* <Route path="/todolist" element={<TodoList />} /> */}
 <Route path="/tasklist" element={<TaskListExample />} />
