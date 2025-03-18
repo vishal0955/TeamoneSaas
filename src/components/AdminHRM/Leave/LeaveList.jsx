@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import "./LeavePageStyles.css"
 
 import { FaUsers, FaCalendarCheck, FaCalendarTimes, FaClock, FaFileExport, FaPlus, FaPen, FaTrash } from 'react-icons/fa';
-import LeaveForm from './LeaveForm';
+import LeaveForm from './AddTodayWork';
 import AddLeaveForm from './AddLeaveForm';
 
 const LeavePage = () => {

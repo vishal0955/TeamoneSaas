@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
 import { FaSearch, FaChevronDown, FaChevronLeft, FaChevronRight, FaFileExport, FaPlus, FaSort } from 'react-icons/fa';
+import AddNewProject from '../../Project/AddNewProject';
+import AddLeaveForm from '../Leave/AddLeaveForm';
+import AddTodayWork from '../Leave/AddTodayWork';
 
 const EmployeeTimeTracker = () => {
-  const [employees, setEmployees] = useState([
+
+      const [isModalOpen, setIsModalOpen] = useState(false);
+      const handleOpenModal = () => {
+        setIsModalOpen(true);
+        document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+      };
+
+      const handleCloseModal = () => {
+        setIsModalOpen(false);
+        document.body.classList.remove("modal-open"); // Remove modal-open class
+      };
+    
+      const [employees, setEmployees] = useState([
     {
       id: 1,
       name: 'Sarah Wilson',
@@ -110,7 +125,7 @@ const EmployeeTimeTracker = () => {
                 <FaFileExport className="h-3 w-3 mr-2" />
                 Export
               </button>
-              <button className="flex items-center justify-center px-4 py-1/2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <button className="flex items-center justify-center px-4 py-1/2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={handleOpenModal}>
                 <FaPlus className="h-3 w-3 mr-2" />
                 Add Today's Work
               </button>
@@ -234,6 +249,21 @@ const EmployeeTimeTracker = () => {
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            
+             
+                <div className="modal-body">
+                  <AddTodayWork  onClose={handleCloseModal} />
+                </div>
+              
+          </div>
+          </>
+      )}
+
+
     </div>
   );
 };

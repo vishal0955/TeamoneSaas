@@ -59,6 +59,7 @@ import Job from "../components/Recruitment/Job";
 import Schedule from "../components/AdminHRM/Timesheet/Schedule";
 import Candidate from "../components/Recruitment/Candidate";
 import Activity from "../components/Crm/Activity";
+import Refferal from "../components/Recruitment/Refferal";
 
 const RoleBasedRoutes = () => {
   return (
@@ -111,6 +112,7 @@ const RoleBasedRoutes = () => {
         {/* recruitment */}
         <Route path="/recruitment/jobs" element={<Job />} />
         <Route path="/recruitment/candidates" element={<Candidate />} />
+        <Route path="/recruitment/refferals" element={<Refferal />} />
         {/* recruitment */}
 
         {/* <Route path="/todolist" element={<TodoList />} /> */}
