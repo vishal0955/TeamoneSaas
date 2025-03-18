@@ -48,6 +48,7 @@ import Overtime from "../components/AdminHRM/Leave/Overtime";
 import CustomPolicyModal from "../components/AdminHRM/Leave/CustomPolicyform";
 import Contacts from "../components/Crm/Contacts";
 import Companies from "../components/Crm/Companies";
+import Leads from "../components/Crm/Leads";
 
 const RoleBasedRoutes = () => {
   return (
@@ -90,6 +91,7 @@ const RoleBasedRoutes = () => {
         {/* crm-section */}
         <Route path="/crm/customers" element={<Contacts />} />
         <Route path="/crm/companies" element={<Companies />} />
+        <Route path="/crm/leads" element={<Leads />} />
 
         {/* crm-section */}
 
