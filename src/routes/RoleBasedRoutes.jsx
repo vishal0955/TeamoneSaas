@@ -43,6 +43,9 @@ import AttendanceAdmin from "../components/AdminHRM/Attendance/AttendanceAdmin";
 import Holidays from "../components/AdminHRM/Holiday";
 import Timesheet from "../components/AdminHRM/Timesheet/Timesheet";
 import LeaveSetting from "../components/AdminHRM/Leave/LeaveSetting";
+import Leave from "../components/AdminHRM/Leave/LeaveList";
+import Overtime from "../components/AdminHRM/Leave/Overtime";
+import CustomPolicyModal from "../components/AdminHRM/Leave/CustomPolicyform";
 
 const RoleBasedRoutes = () => {
   return (
@@ -126,6 +129,9 @@ const RoleBasedRoutes = () => {
         <Route path="/document" element={<Document></Document>}></Route>
         <Route path="/attendance" element={<Attendance></Attendance>}></Route>
 
+{/*  lave */}
+        <Route path="/hrm/attendance/leaves" element={<Leave />} />
+
         <Route path="/hrm/attendance/list" element={<AttendanceAdmin />}></Route>
 
         <Route
@@ -150,6 +156,10 @@ const RoleBasedRoutes = () => {
         <Route path="/hrm/attendance/timesheet" element={<Timesheet />} />
 
         <Route path="/hrm/attendance/leave_settings" element={<LeaveSetting />} />
+
+        <Route path="/hrm/attendance/overtime" element={<Overtime />} />
+
+        <Route  path="/addcustompolicy" element={<CustomPolicyModal />}></Route>
 
         <Route path="/tasklist1" element={<TaskManagementTable />} />
         <Route path="/projectlist" element={<Project />} />
