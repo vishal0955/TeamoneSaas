@@ -1,6 +1,15 @@
-import React from 'react'
+import React,{ useState} from 'react'
 import "./LeaveSetting.css"
+import { Link , useNavigate} from 'react-router-dom';
+import CustomPolicyModal from './CustomPolicyform';
 const LeaveSetting = () => {
+ const navigate = useNavigate();
+ 
+      const [isModalOpen, setIsModalOpen] = useState(false);
+
+      const handleOpenModal = () => setIsModalOpen(true);
+      const handleCloseModal = () => setIsModalOpen(false);
+ 
   return (
         <div className="container py-4">
   {/* Breadcrumb */}
@@ -22,6 +31,7 @@ const LeaveSetting = () => {
           <span className="input-group-text bg-white">
             <i className="bi bi-search" />
           </span>
+       
           <input
             type="text"
             className="form-control"
@@ -62,7 +72,7 @@ const LeaveSetting = () => {
         <button className="btn btn-light">
           <i className="bi bi-download" /> Export
         </button>
-        <button className="btn btn-primary">
+        <button className="btn btn-primary" onClick={handleOpenModal}>
           <i className="bi bi-plus" /> Add Custom Policy
         </button>
         <button className="btn btn-light">
@@ -174,6 +184,36 @@ const LeaveSetting = () => {
         </ul>
       </nav>
     </div>
+    {/* {isModalOpen && (
+        <div
+          className="modal fade show"
+          style={{ display: "block" }}
+          tabIndex="-1"
+          role="dialog">
+          <div className="modal-dialog modal-lg" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+            
+       
+                <button
+                  type="button"
+                  className="close"
+                  onClick={handleCloseModal}>
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+              <CustomPolicyModal />
+              </div>
+            </div>
+          </div>
+        </div>
+      )} */}
+      {/* {isModalOpen && <div className="modal-backdrop fade show"></div>} */}
+  <CustomPolicyModal  isOpen={isModalOpen} onClose={handleCloseModal}/>
+  
+
+    
   </div>
 </div>
 

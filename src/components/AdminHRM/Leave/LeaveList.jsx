@@ -1,27 +1,52 @@
+
+
 import React, { useState } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
+import "./LeavePageStyles.css"
+
 import { FaUsers, FaCalendarCheck, FaCalendarTimes, FaClock, FaFileExport, FaPlus, FaPen, FaTrash } from 'react-icons/fa';
 
-const Leave = () => {
+const LeavePage = () => {
   const [entries] = useState([
     {
       id: 1,
       employee: {
         name: 'Anthony Lewis',
         department: 'Finance',
-        avatar: 'https://placeholderimage.jpg'
+        avatar: 'https://via.placeholder.com/32'
       },
       leaveType: 'Medical Leave',
       from: '14 Jan 2024',
       to: '15 Jan 2024',
       days: 2
+    },
+    {
+      id: 2,
+      employee: {
+        name: 'Sarah Wilson',
+        department: 'HR',
+        avatar: 'https://via.placeholder.com/32'
+      },
+      leaveType: 'Vacation',
+      from: '20 Jan 2024',
+      to: '25 Jan 2024',
+      days: 5
+    },
+    {
+      id: 3,
+      employee: {
+        name: 'Michael Chen',
+        department: 'IT',
+        avatar: 'https://via.placeholder.com/32'
+      },
+      leaveType: 'Personal Leave',
+      from: '18 Jan 2024',
+      to: '19 Jan 2024',
+      days: 2
     }
-    // Add more entries as needed
   ]);
-
+  
   const [selectedDate, setSelectedDate] = useState('2024-03-11');
-  const [entriesPerPage] = useState(10);
-  const [currentPage] = useState(1);
 
   const stats = {
     totalPresent: { current: 180, total: 200 },
@@ -117,40 +142,43 @@ const Leave = () => {
       </div>
 
       {/* Filters */}
-      <div className="row g-3 mb-4 align-items-center">
-        <div className="col-sm-6 col-md-2">
-          <select className="form-select">
+      <div className="row g-3 mb-4">
+        <div className="col-sm-auto">
+          <select className="form-select shadow-none" style={{ minWidth: '120px' }}>
             <option>10 Entries</option>
             <option>25 Entries</option>
             <option>50 Entries</option>
           </select>
         </div>
-        <div className="col-sm-6 col-md-3">
-          <div className="input-group">
-            <span className="input-group-text bg-white border-end-0">
-              <i className="bi bi-search"></i>
-            </span>
-            <input type="text" className="form-control border-start-0" placeholder="Search..." />
+        <div className="col-sm">
+          <div className="position-relative">
+            <input 
+              type="text" 
+              className="form-control shadow-none" 
+              placeholder="Search..." 
+              style={{ paddingLeft: '35px' }}
+            />
+            <i className="bi bi-search position-absolute" style={{ left: '12px', top: '50%', transform: 'translateY(-50%)' }}></i>
           </div>
         </div>
-        <div className="col-sm-6 col-md-3 ms-md-auto">
+        <div className="col-sm-auto">
           <input
             type="date"
-            className="form-control"
+            className="form-control shadow-none"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
           />
         </div>
-        <div className="col-sm-6 col-md-2">
-          <select className="form-select">
+        <div className="col-sm-auto">
+          <select className="form-select shadow-none" style={{ minWidth: '150px' }}>
             <option>All Leave Types</option>
             <option>Medical Leave</option>
             <option>Vacation</option>
             <option>Personal Leave</option>
           </select>
         </div>
-        <div className="col-sm-6 col-md-2">
-          <select className="form-select">
+        <div className="col-sm-auto">
+          <select className="form-select shadow-none" style={{ minWidth: '150px' }}>
             <option>Last 7 Days</option>
             <option>Last 30 Days</option>
             <option>Last 90 Days</option>
@@ -159,83 +187,164 @@ const Leave = () => {
       </div>
 
       {/* Table */}
-      <div className="card border-0 shadow-sm">
+      {/* <div className="card border-0">
         <div className="table-responsive">
-          <table className="table table-hover mb-0">
-            <thead className="bg-light">
-              <tr>
-                <th>
-                  <input type="checkbox" className="form-check-input" />
+          <table className="table table-hover align-middle mb-0">
+            <thead>
+              <tr className="bg-light">
+                <th style={{ width: '40px' }}>
+                  <div className="form-check">
+                    <input type="checkbox" className="form-check-input shadow-none" />
+                  </div>
                 </th>
-                <th>Employee</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {entries.length === 0 ? (
+                <tr>
+                  <td colSpan="7" className="text-center py-4 text-muted">
+                    No entries found
+                  </td>
+                </tr>
+              ) : (
+                entries.map((entry) => (
+                  <tr key={entry.id}>
+                    <td>
+                      <div className="form-check">
+                        <input type="checkbox" className="form-check-input shadow-none" />
+                      </div>
+                    </td>
+                    <td>
+                      <div className="d-flex align-items-center">
+                        <img
+                          src={entry.employee.avatar}
+                          alt=""
+                          className="rounded-circle me-2"
+                          width="32"
+                          height="32"
+                          onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/32';
+                          }}
+                        />
+                        <div>
+                          <div>{entry.employee.name}</div>
+                          <small className="text-muted">{entry.employee.department}</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="badge bg-primary bg-opacity-10 text-primary">
+                        {entry.leaveType}
+                      </span>
+                    </td>
+                    <td>{entry.from}</td>
+                    <td>{entry.to}</td>
+                    <td>{entry.days} Days</td>
+                    <td>
+                      <button className="btn btn-sm btn-link text-body p-0 me-2">
+                        <FaPen />
+                      </button>
+                      <button className="btn btn-sm btn-link text-danger p-0">
+                        <FaTrash />
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div> */}
+
+      <div className="table-responsive">
+        <table className="table align-middle">
+          <thead>
+            <tr>
+              <th style={{ width: 40 }}>
+                <input type="checkbox" className="form-check-input" />
+              </th>
+              <th>Employee</th>
                 <th>Leave Type</th>
                 <th>From</th>
                 <th>To</th>
                 <th>Days</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {entries.map((entry) => (
-                <tr key={entry.id}>
-                  <td>
-                    <input type="checkbox" className="form-check-input" />
-                  </td>
-                  <td>
-                    <div className="d-flex align-items-center">
-                      <img
-                        src={entry.employee.avatar}
-                        alt={entry.employee.name}
-                        className="rounded-circle me-2"
-                        width="32"
-                        height="32"
-                        onError={(e) => {
-                          e.target.src = 'https://via.placeholder.com/32';
-                        }}
-                      />
-                      <div>
-                        <div className="fw-medium">{entry.employee.name}</div>
-                        <small className="text-muted">{entry.employee.department}</small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span className="badge bg-primary bg-opacity-10 text-primary">
-                      {entry.leaveType}
-                    </span>
-                  </td>
-                  <td>{entry.from}</td>
-                  <td>{entry.to}</td>
-                  <td>{entry.days} Days</td>
-                  <td>
-                    <button className="btn btn-sm btn-link text-body p-0 me-2">
-                      <FaPen />
-                    </button>
-                    <button className="btn btn-sm btn-link text-danger p-0">
-                      <FaTrash />
-                    </button>
+                <th style={{ width: '100px' }}>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Sample Task Rows */}
+            {/* <tr onClick={() => handleRowClick(1)} style={{ cursor: 'pointer' }}> */}
+            {entries.length === 0 ? (
+                <tr>
+                  <td colSpan="7" className="text-center py-4 text-muted">
+                    No entries found
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              ) : (
+                entries.map((entry) => (
+                  <tr key={entry.id}>
+                    <td>
+                      <div className="form-check">
+                        <input type="checkbox" className="form-check-input shadow-none" />
+                      </div>
+                    </td>
+                    <td>
+                      <div className="d-flex align-items-center">
+                        <img
+                          src={entry.employee.avatar}
+                          alt=""
+                          className="rounded-circle me-2"
+                          width="32"
+                          height="32"
+                          onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/32';
+                          }}
+                        />
+                        <div>
+                          <div>{entry.employee.name}</div>
+                          <small className="text-muted">{entry.employee.department}</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="badge bg-primary bg-opacity-10 text-primary">
+                        {entry.leaveType}
+                      </span>
+                    </td>
+                    <td>{entry.from}</td>
+                    <td>{entry.to}</td>
+                    <td>{entry.days} Days</td>
+                    <td>
+                      <button className="btn btn-sm btn-link text-body p-0 me-2">
+                        <FaPen />
+                      </button>
+                      <button className="btn btn-sm btn-link text-danger p-0">
+                        <FaTrash />
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            {/* Add more task rows as needed */}
+          </tbody>
+        </table>
       </div>
 
       {/* Pagination */}
       <div className="d-flex justify-content-between align-items-center mt-4">
-        <div className="text-muted">
-          Showing 1 to {entriesPerPage} of {entries.length} entries
+        <div className="text-muted small">
+          Showing 1 to {entries.length} of {entries.length} entries
         </div>
         <nav>
-          <ul className="pagination mb-0">
+          <ul className="pagination pagination-sm mb-0">
             <li className="page-item disabled">
               <button className="page-link">Previous</button>
             </li>
             <li className="page-item active">
               <button className="page-link">1</button>
             </li>
-            <li className="page-item">
+            <li className="page-item disabled">
               <button className="page-link">Next</button>
             </li>
           </ul>
@@ -246,3 +355,5 @@ const Leave = () => {
 };
 
 export default LeavePage;
+
+

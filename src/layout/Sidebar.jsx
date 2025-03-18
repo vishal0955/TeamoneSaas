@@ -41,8 +41,8 @@ const menuItems = [
       { name: "Project", path: "/project/projects" },
       { name: "Task", path: "/project/task" },
     
-      { name: "Todo", path: "/project/Todo" },
-      { name: "Notes", path: "/project/Notes" },
+      // { name: "Todo", path: "/project/Todo" },
+      // { name: "Notes", path: "/project/Notes" },
     ],
   },
   {
