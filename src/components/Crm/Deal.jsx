@@ -280,7 +280,7 @@ const Deal = () => {
   </div>
 </div>
 
-      {/* Modal for Add contact */}
+      {/* Modal for Add Deals */}
       {isModalOpen && (
               <>
                 <div className="modal fade show d-block" role="dialog">
