@@ -56,6 +56,8 @@ import Deal from "../components/Crm/Deal";
 import Pipeline from "../components/Crm/Pipeline";
 import Analytics from "../components/Crm/Analytics";
 import Job from "../components/Recruitment/Job";
+import Schedule from "../components/AdminHRM/Timesheet/Schedule";
+import Candidate from "../components/Recruitment/Candidate";
 import Activity from "../components/Crm/Activity";
 
 const RoleBasedRoutes = () => {
@@ -108,6 +110,7 @@ const RoleBasedRoutes = () => {
         {/* crm-section */}
         {/* recruitment */}
         <Route path="/recruitment/jobs" element={<Job />} />
+        <Route path="/recruitment/candidates" element={<Candidate />} />
         {/* recruitment */}
 
         {/* <Route path="/todolist" element={<TodoList />} /> */}
@@ -142,6 +145,8 @@ const RoleBasedRoutes = () => {
         {/* <Route path="/tasklist" element={<TaskListExample />} /> */}
         <Route path="/policy" element={<Policy></Policy>}></Route>
         <Route path="/tasklist" element={<TaskListExample />} />
+
+        <Route path="/hrm/attendance/shift_schedule" element={<Schedule />}></Route>
 
         <Route
           path="/performanceindicator"

@@ -57,7 +57,7 @@ const menuItems = [
       { name: "Pipeline", path: "/crm/pipeline" },
       { name: "Analytics", path: "/crm/analytics" },
       { name: "Activities", path: "/crm/activities" },
-      { name: "Sales", path: "/crm/sales" },
+      // { name: "Sales", path: "/crm/sales" },
     ],
   },
   {

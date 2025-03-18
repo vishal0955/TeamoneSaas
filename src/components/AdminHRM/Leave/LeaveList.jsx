@@ -5,8 +5,26 @@ import React, { useState } from 'react';
 import "./LeavePageStyles.css"
 
 import { FaUsers, FaCalendarCheck, FaCalendarTimes, FaClock, FaFileExport, FaPlus, FaPen, FaTrash } from 'react-icons/fa';
+import LeaveForm from './LeaveForm';
+import AddLeaveForm from './AddLeaveForm';
 
 const LeavePage = () => {
+     const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+    
+    
+    
+      const handleOpenModal = () => {
+        setIsModalOpen(true);
+        // document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+      };
+    
+      const handleCloseModal = () => {
+        setIsModalOpen(false);
+        // document.body.classList.remove("modal-open"); // Remove modal-open class
+      };
+    
+
+    // const [showAddLeave, setShowAddLeave] = useState(false);
   const [entries] = useState([
     {
       id: 1,
@@ -70,7 +88,7 @@ const LeavePage = () => {
             <FaFileExport className="me-2" />
             Export
           </button>
-          <button className="btn btn-dark">
+          <button className="btn btn-dark" onClick={handleOpenModal}>
             <FaPlus className="me-2" />
             Add Leave
           </button>
@@ -186,76 +204,7 @@ const LeavePage = () => {
         </div>
       </div>
 
-      {/* Table */}
-      {/* <div className="card border-0">
-        <div className="table-responsive">
-          <table className="table table-hover align-middle mb-0">
-            <thead>
-              <tr className="bg-light">
-                <th style={{ width: '40px' }}>
-                  <div className="form-check">
-                    <input type="checkbox" className="form-check-input shadow-none" />
-                  </div>
-                </th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              {entries.length === 0 ? (
-                <tr>
-                  <td colSpan="7" className="text-center py-4 text-muted">
-                    No entries found
-                  </td>
-                </tr>
-              ) : (
-                entries.map((entry) => (
-                  <tr key={entry.id}>
-                    <td>
-                      <div className="form-check">
-                        <input type="checkbox" className="form-check-input shadow-none" />
-                      </div>
-                    </td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <img
-                          src={entry.employee.avatar}
-                          alt=""
-                          className="rounded-circle me-2"
-                          width="32"
-                          height="32"
-                          onError={(e) => {
-                            e.target.src = 'https://via.placeholder.com/32';
-                          }}
-                        />
-                        <div>
-                          <div>{entry.employee.name}</div>
-                          <small className="text-muted">{entry.employee.department}</small>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <span className="badge bg-primary bg-opacity-10 text-primary">
-                        {entry.leaveType}
-                      </span>
-                    </td>
-                    <td>{entry.from}</td>
-                    <td>{entry.to}</td>
-                    <td>{entry.days} Days</td>
-                    <td>
-                      <button className="btn btn-sm btn-link text-body p-0 me-2">
-                        <FaPen />
-                      </button>
-                      <button className="btn btn-sm btn-link text-danger p-0">
-                        <FaTrash />
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div> */}
+  
 
       <div className="table-responsive">
         <table className="table align-middle">
@@ -298,7 +247,7 @@ const LeavePage = () => {
                           width="32"
                           height="32"
                           onError={(e) => {
-                            e.target.src = 'https://via.placeholder.com/32';
+                            // e.target.src = 'https://via.placeholder.com/32';
                           }}
                         />
                         <div>
@@ -331,7 +280,6 @@ const LeavePage = () => {
         </table>
       </div>
 
-      {/* Pagination */}
       <div className="d-flex justify-content-between align-items-center mt-4">
         <div className="text-muted small">
           Showing 1 to {entries.length} of {entries.length} entries
@@ -350,10 +298,37 @@ const LeavePage = () => {
           </ul>
         </nav>
       </div>
+      {isModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+               
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className="modal-body">
+           <AddLeaveForm />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal backdrop */}
+          <div
+            className="modal-backdrop fade show"
+            onClick={handleCloseModal}
+          ></div>
+        </>
+      )}
     </div>
   );
 };
 
-export default LeavePage;
+export default LeavePage; 
 
 

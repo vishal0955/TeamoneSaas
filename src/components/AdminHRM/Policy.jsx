@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { FaPlus, FaFileExport } from "react-icons/fa";
-import { FaUpload } from "react-icons/fa";
+// import { FaUpload } from "react-icons/fa";
 import { useRef } from "react";
 // import ReactQuill from "react-quill";
 // import "react-quill/dist/quill.snow.css"; // Quill ka default style
