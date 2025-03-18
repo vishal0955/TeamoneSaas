@@ -11,24 +11,26 @@ const Navbar = ({ toggleSidebar}) => {
   const dropdownRef = useRef(null);
 
   const handleLogout = () => {
-    localStorage.setItem("userRole", null);
-    localStorage.setItem("userEmail", null);
+    console.log("logout clicked")
+    localStorage.removeItem("userRole");
+    localStorage.removeItem("userEmail");
     navigate('/');
   }
   
+
   // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //       setIsDropdownOpen(false);
+  //     }
+  //   };
     
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, []);
   
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -163,8 +165,8 @@ const Navbar = ({ toggleSidebar}) => {
           </div>
           
           {/* Logout */}
-          <div className="py-1 border-t border-gray-200">
-            <a href="#logout" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleLogout}>
+          <div className="py-1 border-t border-gray-200" onClick={handleLogout}>
+            <a href="#logout" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" >
               <LogOut size={18} className="mr-3 text-gray-500" />
               <span>Logout</span>
             </a>

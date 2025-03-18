@@ -162,8 +162,12 @@ import React, { useState } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faSearch, faPlus, faChevronLeft, faChevronRight, faHome, faCalendarAlt, faSort } from '@fortawesome/free-solid-svg-icons';
+import AddHolidayModal from './addHoliday';
 
 const Holidays = () => {
+
+  const [showModal, setShowModal] = useState(false);
+
   const [holidays, setHolidays] = useState([
     { id: 1, title: 'New Year', date: '01 Jan 2024', description: 'First day of the new year', status: 'Active' },
     { id: 2, title: 'Martin Luther King Jr. Day', date: '15 Jan 2024', description: 'Celebrating the civil rights leader', status: 'Active' },
@@ -262,7 +266,7 @@ const Holidays = () => {
                   <FontAwesomeIcon icon={faSearch} />
                 </button>
 
-                <button className="btn btn-primary ms-4 shadow-sm " onClick={() => alert('Add Holiday clicked')}>
+                <button className="btn btn-primary ms-4 shadow-sm " onClick={() => setShowModal(true)}>
               <FontAwesomeIcon icon={faPlus} className="me-2" />
               Add Holiday
             </button>
@@ -432,6 +436,8 @@ const Holidays = () => {
           </div>
         </div>
       </div>
+
+      {showModal && <AddHolidayModal show={showModal} handleClose={() => setShowModal(false)} />}
     </div>
   );
 };
