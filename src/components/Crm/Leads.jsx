@@ -209,14 +209,14 @@ const Leads = () => {
     </div>
   </div>
 </div>
- {/* Modal for Add contact */}
+ {/* Modal for Add Leads */}
             {isModalOpen && (
               <>
                 <div className="modal fade show d-block" role="dialog">
                   <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
                       <div className="modal-header">
-                        <h5 className="modal-title">Add New Contact</h5>
+                        <h5 className="modal-title">Add New Leads</h5>
                         <button
                           type="button"
                           className="btn-close"

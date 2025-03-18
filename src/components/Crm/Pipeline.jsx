@@ -159,7 +159,7 @@ const Pipeline = () => {
             <div className="modal-dialog modal-lg" role="document">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Add New Contact</h5>
+                  <h5 className="modal-title">Add New Pipeline</h5>
                   <button
                     type="button"
                     className="btn-close"
