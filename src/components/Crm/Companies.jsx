@@ -3,8 +3,18 @@ import './Crm.css';
 import AddCompanies from './AddCompanies';
 
 const Companies = () => {
-  const [viewMode, setViewMode] = useState(localStorage.getItem('preferredView') || 'grid');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [viewMode, setViewMode] = useState('grid');
+    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  
+    const handleOpenModal = () => {
+      setIsModalOpen(true);
+      document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+    };
+  
+    const handleCloseModal = () => {
+      setIsModalOpen(false);
+      document.body.classList.remove("modal-open"); // Remove modal-open class
+    };
   const [companies] = useState([
     {
       id: 1,
@@ -59,15 +69,12 @@ const Companies = () => {
     }
   ]);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    document.body.style.overflow = 'unset'; // Restore scrolling
-  };
+  useEffect(() => {
+    const savedView = localStorage.getItem('preferredView');
+    if (savedView) {
+      setViewMode(savedView);
+    }
+  }, []);
 
   const toggleView = (view) => {
     setViewMode(view);
@@ -157,7 +164,8 @@ const Companies = () => {
   };
 
   return (
-    <div className="container py-4">
+    <>
+       <div className="container py-4">
       <div className="d-flex justify-content-between align-items-center mb-4 page-header">
         <div className="d-flex align-items-center header-title">
           <h4 className="mb-0">Companies</h4>
@@ -199,9 +207,8 @@ const Companies = () => {
           </div>
         </div>
       </div>
-
       <div className="view-container">
-        <div className={`${viewMode}-view active`}>
+        <div className={viewMode === 'grid' ? 'grid-view active' : 'list-view active'}>
           {viewMode === 'grid' ? (
             <div className="row g-4">
               {companies.map(company => (
@@ -209,40 +216,42 @@ const Companies = () => {
               ))}
             </div>
           ) : (
-            <div className="list-container">
-              {companies.map(company => (
-                <CompanyCard key={company.id} company={company} isListView={true} />
-              ))}
-            </div>
+            companies.map(company => (
+              <CompanyCard key={company.id} company={company} isListView={true} />
+            ))
           )}
         </div>
       </div>
-
-      {/* Modal for Add companies */}
-      {isModalOpen && (
-        <>
-          <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
-            <div className="modal-dialog modal-lg" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title">Add New Company</h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    aria-label="Close"
-                    onClick={handleCloseModal}
-                  />
-                </div>
-                <div className="modal-body">
-                  <AddCompanies onClose={handleCloseModal} />
+    </div>
+          /* Modal for Add companies */
+          {isModalOpen && (
+            <>
+              <div className="modal fade show d-block" role="dialog">
+                <div className="modal-dialog modal-lg" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title">Add New Contact</h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        aria-label="Close"
+                        onClick={handleCloseModal}
+                      />
+                    </div>
+                    <div className="modal-body">
+                      <AddCompanies />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="modal-backdrop fade show" onClick={handleCloseModal} />
-        </>
-      )}
-    </div>
+              {/* Modal backdrop */}
+              <div
+                className="modal-backdrop fade show"
+                onClick={handleCloseModal}
+              ></div>
+            </>
+          )}
+    </>
   );
 };
 
