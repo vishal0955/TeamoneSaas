@@ -218,11 +218,7 @@ const AddCompanies = ({ onClose }) => {
               {/* Footer */}
               <div className="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
                 <div>
-                  <h6 className="mb-1">Contacts</h6>
-                  <div className="d-flex align-items-center">
-                    <img src="https://i.ibb.co/kVGZvBvs/user-11.jpg" className="rounded-circle me-2" alt="Contact" />
-                    <span>Room Rep</span>
-                  </div>
+                 
                 </div>
                 <div className="d-flex gap-2">
                   <button className="btn btn-outline-secondary" onClick={onClose}>Cancel</button>

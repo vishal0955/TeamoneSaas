@@ -223,7 +223,7 @@ const Companies = () => {
         </div>
       </div>
     </div>
-          /* Modal for Add companies */
+          {/* /* Modal for Add companies */}
           {isModalOpen && (
             <>
               <div className="modal fade show d-block" role="dialog">
