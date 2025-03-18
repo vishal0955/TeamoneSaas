@@ -61,7 +61,7 @@ const menuItems = [
           // { name: "Employees Details", path: "/employeedetails" },
           { name: "Departments", path: "/department" },
           { name: "Designations", path: "/designations" },
-          { name: "Policies", path: "/hrm/employees/policies" },
+          { name: "Policies", path: "/policy" },
         ],
       },
       {
@@ -94,16 +94,16 @@ const menuItems = [
         subMenu: [
           {
             name: "Performance Indicator",
-            path: "/hrm/performance/performance_indicator",
+            path: "/performanceindicator",
           },
 
-          {
-            name: "Performance Review",
-            path: "/hrm/performance/performance_review",
-          },
+          // {
+          //   name: "Performance Review",
+          //   path: "/hrm/performance/performance_review",
+          // },
           {
             name: "Performance Appraisal",
-            path: "/hrm/performance/performance_appraisal",
+            path: "/performaceappraisal",
           },
         ],
       },
@@ -278,7 +278,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
       <aside
         className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
           collapsed ? "w-20" : "w-64"
-        } z-30`}>
+        } z-30`}
+      >
         {/* Fixed Header */}
         <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
           {collapsed ? (
@@ -288,7 +289,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
           )}
           <button
             onClick={toggleSidebar}
-            className="p-1.5 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors">
+            className="p-1.5 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
+          >
             {collapsed ? "→" : "←"}
           </button>
         </div>
@@ -302,7 +304,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                   key={item.name}
                   className="relative"
                   onMouseEnter={() => setHoveredItem(item.name)}
-                  onMouseLeave={() => setHoveredItem(null)}>
+                  onMouseLeave={() => setHoveredItem(null)}
+                >
                   <Link
                     to={item.path}
                     className={`group flex items-center gap-x-3 px-3 py-2 rounded-lg transition-all duration-150
@@ -316,7 +319,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                       if (item.subItems) {
                         toggleMenu(item.name, e);
                       }
-                    }}>
+                    }}
+                  >
                     <span
                       className={`flex-shrink-0 transition-colors duration-150
                                             ${
@@ -324,7 +328,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                                                 ? "text-indigo-600"
                                                 : "text-black group-hover:text-gray-700"
                                             }
-                                        `}>
+                                        `}
+                    >
                       {item.icon}
                     </span>
 
@@ -337,7 +342,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                                                         ? "text-indigo-600"
                                                         : "text-black group-hover:text-gray-900"
                                                     }
-                                                `}>
+                                                `}
+                        >
                           {item.name}
                         </span>
 
@@ -345,7 +351,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                           <span
                             className={`ml-auto transition-transform duration-200 ${
                               openMenus[item.name] ? "rotate-180" : ""
-                            }`}>
+                            }`}
+                          >
                             <FaAngleDown size={14} />
                           </span>
                         )}
@@ -381,7 +388,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                                 if (subItem.subMenu) {
                                   toggleSubMenu(subItem.name, e);
                                 }
-                              }}>
+                              }}
+                            >
                               <span>{subItem.name}</span>
                               {subItem.subMenu && (
                                 <span
@@ -389,7 +397,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                                     openSubMenus[subItem.name]
                                       ? "rotate-180"
                                       : ""
-                                  }`}>
+                                  }`}
+                                >
                                   <FaAngleDown size={12} />
                                 </span>
                               )}
@@ -402,7 +411,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                                   <li key={nestedItem.name}>
                                     <Link
                                       to={nestedItem.path}
-                                      className="block py-1.5 pl-3 text-sm text-black hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors">
+                                      className="block py-1.5 pl-3 text-sm text-black hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
+                                    >
                                       {nestedItem.name}
                                     </Link>
                                   </li>
@@ -450,7 +460,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
       <main
         className={`transition-all duration-300 ${
           collapsed ? "ml-20" : "ml-64"
-        }`}>
+        }`}
+      >
         {/* Main content */}
       </main>
     </>

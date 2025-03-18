@@ -201,7 +201,7 @@ const Designations = () => {
                 </th>
                 <th className="px-4 py-3 text-left">Designation</th>
                 <th className="px-4 py-3 text-left">Department</th>
-                <th className="px-4 py-3 text-left">No of Employees</th>
+                {/* <th className="px-4 py-3 text-left">No of Employees</th> */}
                 <th className="px-4 py-3 text-left">Status</th>
                 <th className="px-4 py-3 text-left">Actions</th>
               </tr>
@@ -214,7 +214,7 @@ const Designations = () => {
                   </td>
                   <td className="px-4 py-3">{dept.designation}</td>
                   <td className="px-4 py-3">{dept.name}</td>
-                  <td className="px-4 py-3">{dept.employees}</td>
+                  {/* <td className="px-4 py-3">{dept.employees}</td> */}
                   <td className="px-4 py-3">
                     <span
                       className={`px-2 py-1 text-sm rounded-full ${
@@ -263,7 +263,7 @@ const Designations = () => {
             <form onSubmit={handleSave}>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
-                  Designation Name
+                  Designation
                 </label>
                 <input
                   type="text"
@@ -278,20 +278,59 @@ const Designations = () => {
                   required
                 />
               </div>
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
-                  Department Name
+                  Department
                 </label>
-                <input
-                  type="text"
-                  className="w-full p-2 border rounded-md"
+                <select
+                  className="w-full p-2 border rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-gray-500 dropdown-menu"
                   value={newDepartment.name}
                   onChange={(e) =>
                     setNewDepartment({ ...newDepartment, name: e.target.value })
                   }
-                  required
-                />
+                >
+                  <option value="">Select Department</option>
+                  {initialDepartments.map((dept) => (
+                    <option key={dept.id} value={dept.name}>
+                      {dept.name}
+                    </option>
+                  ))}
+                </select>
+              </div> */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Department Name
+                </label>
+                <div className="dropdown">
+                  <button
+                    className="btn btn-light border dropdown-toggle w-full"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static" // Yeh dropdown ko neeche force karega
+                    aria-expanded="false"
+                  >
+                    {newDepartment.name || "Select Department"}
+                  </button>
+                  <ul className="dropdown-menu w-full">
+                    {departments.map((dept) => (
+                      <li key={dept.id}>
+                        <button
+                          className="dropdown-item"
+                          onClick={() =>
+                            setNewDepartment({
+                              ...newDepartment,
+                              name: dept.name,
+                            })
+                          }
+                        >
+                          {dept.name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
+
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
                   Status
