@@ -218,11 +218,7 @@ const AddCompanies = ({ onClose }) => {
               {/* Footer */}
               <div className="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
                 <div>
-                  <h6 className="mb-1">Contacts</h6>
-                  <div className="d-flex align-items-center">
-                    <img src="https://i.ibb.co/kVGZvBvs/user-11.jpg" className="rounded-circle me-2" alt="Contact" />
-                    <span>Room Rep</span>
-                  </div>
+                 
                 </div>
                 <div className="d-flex gap-2">
                   <button className="btn btn-outline-secondary" onClick={onClose}>Cancel</button>
@@ -274,12 +270,147 @@ const AddCompanies = ({ onClose }) => {
 
           {/* Social Profiles Tab */}
           <div className="tab-pane fade" id="social" role="tabpanel">
-            {/* ... */}
+          <div className="row g-4">
+      <div className="col-md-6">
+        <label className="form-label">Facebook</label>
+        <div className="input-group">
+          <span className="input-group-text">
+            <i className="bi bi-facebook" />
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Facebook profile URL"
+          />
+        </div>
+      </div>
+      <div className="col-md-6">
+        <label className="form-label">Twitter</label>
+        <div className="input-group">
+          <span className="input-group-text">
+            <i className="bi bi-twitter" />
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Twitter profile URL"
+          />
+        </div>
+      </div>
+      <div className="col-md-6">
+        <label className="form-label">LinkedIn</label>
+        <div className="input-group">
+          <span className="input-group-text">
+            <i className="bi bi-linkedin" />
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="LinkedIn profile URL"
+          />
+        </div>
+      </div>
+      <div className="col-md-6">
+        <label className="form-label">Instagram</label>
+        <div className="input-group">
+          <span className="input-group-text">
+            <i className="bi bi-instagram" />
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Instagram profile URL"
+          />
+        </div>
+      </div>
+    </div>
           </div>
 
           {/* Access Tab */}
           <div className="tab-pane fade" id="access" role="tabpanel">
-            {/* ... */}
+          <div className="mb-4">
+      <div className="form-check form-check-inline">
+        <input
+          className="form-check-input"
+          type="radio"
+          name="visibility"
+          id="public"
+          defaultValue="public"
+        />
+        <label className="form-check-label" htmlFor="public">
+          Public
+        </label>
+      </div>
+      <div className="form-check form-check-inline">
+        <input
+          className="form-check-input"
+          type="radio"
+          name="visibility"
+          id="private"
+          defaultValue="private"
+          defaultChecked=""
+        />
+        <label className="form-check-label" htmlFor="private">
+          Private
+        </label>
+      </div>
+    </div>
+    <div className="mb-3">
+      <label className="form-label">Select People</label>
+      <div className="contact-list">
+        <div className="contact-item d-flex align-items-center justify-content-between mb-3">
+          <div className="d-flex align-items-center">
+            <div className="profile-circle me-3">
+              <img
+                src="https://i.ibb.co/GSmprKx/Ellipse-5-6.png"
+                alt="Michael Walker"
+              />
+            </div>
+            <span>Michael Walker</span>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              defaultChecked=""
+            />
+          </div>
+        </div>
+        <div className="contact-item d-flex align-items-center justify-content-between mb-3">
+          <div className="d-flex align-items-center">
+            <div className="profile-circle me-3">
+              <img
+                src="https://i.ibb.co/SDtWRT1B/Ellipse-5-2.png"
+                alt="Sophie Headrick"
+              />
+            </div>
+            <span>Sophie Headrick</span>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              defaultChecked=""
+            />
+          </div>
+        </div>
+        <div className="contact-item d-flex align-items-center justify-content-between mb-3">
+          <div className="d-flex align-items-center">
+            <div className="profile-circle me-3">
+              <img
+                src="https://i.ibb.co/SDtWRT1B/Ellipse-5-2.png"
+                alt="Cameron Drake"
+              />
+            </div>
+            <span>Cameron Drake</span>
+          </div>
+          <div className="form-check">
+            <input className="form-check-input" type="checkbox" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button className="btn btn-dark w-auto">Confirm</button>
           </div>
         </div>
       </div>

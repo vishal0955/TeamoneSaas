@@ -5,8 +5,23 @@ import React, { useState } from 'react';
 import "./LeavePageStyles.css"
 
 import { FaUsers, FaCalendarCheck, FaCalendarTimes, FaClock, FaFileExport, FaPlus, FaPen, FaTrash } from 'react-icons/fa';
+import LeaveForm from './LeaveForm';
 
 const LeavePage = () => {
+     const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+    
+    
+    
+      const handleOpenModal = () => {
+        setIsModalOpen(true);
+        // document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+      };
+    
+      const handleCloseModal = () => {
+        setIsModalOpen(false);
+        // document.body.classList.remove("modal-open"); // Remove modal-open class
+      };
+    
 
     // const [showAddLeave, setShowAddLeave] = useState(false);
   const [entries] = useState([
@@ -72,7 +87,7 @@ const LeavePage = () => {
             <FaFileExport className="me-2" />
             Export
           </button>
-          <button className="btn btn-dark">
+          <button className="btn btn-dark" onClick={handleOpenModal}>
             <FaPlus className="me-2" />
             Add Leave
           </button>
@@ -231,7 +246,7 @@ const LeavePage = () => {
                           width="32"
                           height="32"
                           onError={(e) => {
-                            e.target.src = 'https://via.placeholder.com/32';
+                            // e.target.src = 'https://via.placeholder.com/32';
                           }}
                         />
                         <div>
@@ -282,6 +297,33 @@ const LeavePage = () => {
           </ul>
         </nav>
       </div>
+      {isModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+               
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className="modal-body">
+           <LeaveForm />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal backdrop */}
+          <div
+            className="modal-backdrop fade show"
+            onClick={handleCloseModal}
+          ></div>
+        </>
+      )}
     </div>
   );
 };
