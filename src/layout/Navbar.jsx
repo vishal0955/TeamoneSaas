@@ -1,12 +1,20 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Search, Grid, Settings, Maximize, Bell, Mail, ChevronLeft, User, Activity, CreditCard, HelpCircle, LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ toggleSidebar}) => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 //   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const dropdownRef = useRef(null);
+
+  const handleLogout = () => {
+    localStorage.setItem("userRole", null);
+    localStorage.setItem("userEmail", null);
+    navigate('/');
+  }
   
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -156,7 +164,7 @@ const Navbar = ({ toggleSidebar}) => {
           
           {/* Logout */}
           <div className="py-1 border-t border-gray-200">
-            <a href="#logout" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <a href="#logout" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleLogout}>
               <LogOut size={18} className="mr-3 text-gray-500" />
               <span>Logout</span>
             </a>

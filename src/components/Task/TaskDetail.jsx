@@ -1,6 +1,12 @@
-import React from 'react'
-import "./task.css"
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import "./task.css";
+import { Link } from 'react-router-dom';
 const TaskDetail = () => {
+  const { id } = useParams();
+
+  // You can fetch task details based on the id here
+  // For now, we will just display the id
   return (
     <>
     <div>
@@ -8,9 +14,14 @@ const TaskDetail = () => {
   <div className="task-card">
     <div className="d-flex justify-content-between align-items-start mb-4">
       <h4 className="mb-0">Task Details</h4>
+      <div className="btn">
+      <Link to="/project/task" className="edit-btn me-2">
+         Back
+      </Link>
       <a href="#" className="edit-btn">
         <i className="bi bi-pencil" /> Edit Task
       </a>
+      </div>
     </div>
     <div className="row">
       <div className="col-lg-8">
@@ -87,7 +98,7 @@ const TaskDetail = () => {
 </div>
     </div>
     </>
-  )
-}
+  );
+};
 
-export default TaskDetail
+export default TaskDetail;

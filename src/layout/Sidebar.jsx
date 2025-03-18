@@ -6,11 +6,13 @@ import {
   BarChart3,
   FolderKanban,
   FolderOpenDot,
+  ClipboardCheck,
   FileText,
   Cog,
   Contact,
   User,
   ChartColumn,
+  SquareCheckBig,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -22,15 +24,25 @@ const menuItems = [
     icon: <House size={16} />,
   },
   {
+    name: "Todo",
+    path: "/todo",
+    icon: <SquareCheckBig size={16} />,
+  },
+  {
+    name: "Notes",
+    path: "/notesgrid",
+    icon: <ClipboardCheck size={16} />,
+  },
+  {
     name: "Project",
     path: "/project",
     icon: <FolderOpenDot size={16} />,
     subItems: [
       { name: "Project", path: "/project/projects" },
-      { name: "Task", path: "/project/tasklist" },
-      { name: "Task Board", path: "/project/timeline" },
-      { name: "Todo", path: "/project/Todo" },
-      { name: "Notes", path: "/project/Notes" },
+      { name: "Task", path: "/project/task" },
+
+      // { name: "Todo", path: "/project/Todo" },
+      // { name: "Notes", path: "/project/Notes" },
     ],
   },
   {
@@ -74,7 +86,7 @@ const menuItems = [
       },
       {
         name: "Holidays",
-        path: "/hrm/holidays",
+        path: "/hrm/holiday",
       },
       {
         name: "Attendance",
@@ -117,8 +129,7 @@ const menuItems = [
     subItems: [
       { name: "Jobs", path: "/recruitment/jobs" },
       { name: "Candidates", path: "/recruitment/candidates" },
-      { name: "Interviews", path: "/recruitment/interviews" },
-      { name: "Offer Letters", path: "/recruitment/offer_letters" },
+      { name: "Refferals", path: "/recruitment/refferals" },
     ],
   },
 

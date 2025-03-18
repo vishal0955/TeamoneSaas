@@ -11,6 +11,14 @@ import {
   faEllipsisV 
 } from '@fortawesome/free-solid-svg-icons';
 
+// import { useHistory } from 'react-router-dom';
+const PROJECTS = [
+  { id: null, name: 'None' }, // Option for no project
+  { id: 1, name: 'Project Alpha' },
+  { id: 2, name: 'Project Beta' },
+  { id: 3, name: 'Project Gamma' },
+];
+
 const EMPLOYEES = [
   { id: 1, name: 'John Doe' },
   { id: 2, name: 'Jane Smith' },
@@ -28,7 +36,8 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
     priority: PRIORITY_OPTIONS[0].toLowerCase(),
     dueDate: '',
     tags: [],
-    assignees: []
+    assignees: [],
+    project: null // Default to none
   });
 
   React.useEffect(() => {
@@ -36,7 +45,8 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
       setFormData({
         ...editTask,
         tags: Array.isArray(editTask.tags) ? editTask.tags : [],
-        assignees: Array.isArray(editTask.assignees) ? editTask.assignees : []
+        assignees: Array.isArray(editTask.assignees) ? editTask.assignees : [],
+        project: editTask.project || null // Set project if exists
       });
     } else {
       setFormData({
@@ -45,7 +55,8 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
         priority: PRIORITY_OPTIONS[0].toLowerCase(),
         dueDate: '',
         tags: [],
-        assignees: []
+        assignees: [],
+        project: null // Default to none
       });
     }
   }, [editTask]);
@@ -59,7 +70,8 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
       priority: PRIORITY_OPTIONS[0].toLowerCase(),
       dueDate: '',
       tags: [],
-      assignees: []
+      assignees: [],
+      project: null // Reset to none
     });
   };
 
@@ -112,6 +124,20 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                 onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
               />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Project</label>
+              <select
+                value={formData.project || ''} // Set to empty string if project is null
+                onChange={(e) => setFormData({ ...formData, project: e.target.value ? Number(e.target.value) : null })}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+              >
+                {PROJECTS.map((project) => (
+                  <option key={project.id} value={project.id}>
+                    {project.name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">Tags</label>
@@ -173,6 +199,8 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   );
 };
 
+
+
 const TaskDropdown = ({ taskId, onEdit, onDelete, onView }) => {
   return (
     <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
@@ -204,6 +232,16 @@ const TaskDropdown = ({ taskId, onEdit, onDelete, onView }) => {
 };
 
 const TodoApp = () => {
+
+ 
+
+  // Inside your TodoApp component
+  // const history = useHistory();
+  
+  // const handleViewDetails = (task) => {
+  //   history.push(`/task/${task.id}`, { task }); // Pass the task data as state
+  // };
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -639,7 +677,7 @@ const TodoApp = () => {
                           <FontAwesomeIcon icon={faEllipsisV} />
                         </button>
                         {activeDropdown === task.id && (
-                          <TaskDropdown
+                          <TaskDropdown 
                             taskId={task.id}
                             onEdit={() => handleEdit(task)}
                             onDelete={() => handleDelete(task.id)}
