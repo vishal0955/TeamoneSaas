@@ -70,9 +70,9 @@ const RoleBasedRoutes = () => {
 
         <Route path="/todo" element={<TodoApp />} />
 
-    {/* Notes Route  */}
-           <Route path="/notesgrid" element={<NotesGrid />} />
-           <Route path="/noteslist" element={<NotesList />} />
+        {/* Notes Route  */}
+        <Route path="/notesgrid" element={<NotesGrid />} />
+        <Route path="/noteslist" element={<NotesList />} />
 
         <Route path="/todoapp" element={<TodoApp />} />
         <Route path="/project/projects" element={<Project />} />
@@ -80,8 +80,8 @@ const RoleBasedRoutes = () => {
         <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
 
-{/* <Route path="/todolist" element={<TodoList />} /> */}
-<Route path="/tasklist" element={<TaskListExample />} />
+        {/* <Route path="/todolist" element={<TodoList />} /> */}
+        <Route path="/tasklist" element={<TaskListExample />} />
         <Route
           path="/employeelist"
           element={
@@ -124,7 +124,10 @@ const RoleBasedRoutes = () => {
         <Route path="/document" element={<Document></Document>}></Route>
         <Route path="/attendance" element={<Attendance></Attendance>}></Route>
 
-        <Route path="/hrm/attendance/list" element={<AttendanceAdmin />}></Route>
+        <Route
+          path="/hrm/attendance/list"
+          element={<AttendanceAdmin />}
+        ></Route>
 
         <Route
           path="/department"
@@ -147,7 +150,7 @@ const RoleBasedRoutes = () => {
 
         <Route path="/tasklist1" element={<TaskManagementTable />} />
         <Route path="/projectlist" element={<Project />} />
-     
+
         <Route path="/high" element={<High_todo></High_todo>}></Route>
         <Route
           path="/client"
