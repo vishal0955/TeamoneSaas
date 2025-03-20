@@ -119,6 +119,14 @@ const menuItems = [
           },
         ],
       },
+      {
+        name: "Payroll",
+        path: "/hrm/payroll",
+        subMenu: [
+          { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
+          { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
+        ],
+      },
     ],
   },
 
@@ -150,42 +158,42 @@ const menuItems = [
   //         { name: "Taxes", path: "/finance/sales/taxs" },
   //       ],
   //     },
-  //     {
-  //       name: "Payroll",
-  //       path: "/finance/payroll",
-  //       subMenu: [
-  //         { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
-  //         { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
-  //       ],
-  //     },
+      // {
+      //   name: "Payroll",
+      //   path: "/finance/payroll",
+      //   subMenu: [
+      //     { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
+      //     { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
+      //   ],
+      // },
   //   ],
   // },
 
-  // {
-  //   name: "Administration",
-  //   path: "/administration",
+  {
+    name: "Administration",
+    path: "/administration",
 
-  //   subItems: [
-  //     {
-  //       name: "Help & Support",
-  //       path: "/admininistration/help_support",
-  //       subMenu: [
-  //         { name: "FAQs", path: "/admininistration/help_support/faqs" },
-  //       ],
-  //     },
-  //     {
-  //       name: "User Management",
-  //       path: "/admininistration/user_management",
-  //       subMenu: [
-  //         { name: "Users", path: "/admininistration/user_management/users" },
-  //         {
-  //           name: "Roles &Permissions",
-  //           path: "/admininistration/user_management/roles_permissions",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+    subItems: [
+      {
+        name: "Help & Support",
+        path: "/admininistration/help_support",
+        subMenu: [
+          { name: "FAQs", path: "/admininistration/help_support/faqs" },
+        ],
+      },
+      {
+        name: "User Management",
+        path: "/admininistration/user_management",
+        subMenu: [
+          { name: "Users", path: "/admininistration/user_management/users" },
+          {
+            name: "Roles &Permissions",
+            path: "/admininistration/user_management/roles_permissions",
+          },
+        ],
+      },
+    ],
+  },
 
   // {
   //   name: "Reports",
