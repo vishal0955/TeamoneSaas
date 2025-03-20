@@ -50,6 +50,7 @@ const menuItems = [
     path: "/crm",
     icon: <Contact size={16} />,
     subItems: [
+      {name: "Dashboard", path: "/crm/dashboard"},
       { name: "Contacts", path: "/crm/customers" },
       { name: "Companies", path: "/crm/companies" },
       { name: "Leads", path: "/crm/leads" },

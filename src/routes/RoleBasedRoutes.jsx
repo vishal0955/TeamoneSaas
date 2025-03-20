@@ -54,13 +54,16 @@ import Companies from "../components/crmold/Companies";
 import Leads from "../components/crmold/Leads";
 import Deal from "../components/crmold/Deal";
 import Pipeline from "../components/crmold/Pipeline";
-import Analytics from "../components/crmold/Analytics";
+
 import Job from "../components/Recruitment/Job";
 import Schedule from "../components/AdminHRM/Timesheet/Schedule";
 import Candidate from "../components/Recruitment/Candidate";
 import Activity from "../components/crmold/Activity";
 import Refferal from "../components/Recruitment/Refferal";
 import Users from "../usermanagement/users";
+import CRMDashboard from "../components/crm/dashboard/CRMDashboard";
+import Analytics from "../components/crm/dashboard/Analytics";
+import ContactsList from "../components/crm/contact/Contact";
 
 const RoleBasedRoutes = () => {
   return (
@@ -101,13 +104,20 @@ const RoleBasedRoutes = () => {
         <Route path="/addtask" element={<AddTask />} />
         
         {/* crm-section */}
-        <Route path="/crm/customers" element={<Contacts />} />
+        <Route path="/crm/customers" element={<ContactsList/>} />
         <Route path="/crm/companies" element={<Companies />} />
         <Route path="/crm/leads" element={<Leads />} />
         <Route path="/crm/deals" element={<Deal />} />
         <Route path="/crm/pipeline" element={<Pipeline />} />
         <Route path="/crm/analytics" element={<Analytics />} />
         <Route path="/crm/activities" element={<Activity />} />
+
+        {/*  CRM Routes  */}
+
+      <Route path="/crm/dashboard" element={<CRMDashboard />} />
+
+
+
 
         {/* crm-section */}
         {/* recruitment */}
