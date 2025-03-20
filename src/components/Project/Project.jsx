@@ -4,18 +4,20 @@ import AddNewProject from "./AddNewProject"; // Import the AddNewProject compone
 
 const Project = () => {
   const [view, setView] = useState("grid");
-  const [showModal, setShowModal] = useState(false); // State to control modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   const toggleView = (selectedView) => {
     setView(selectedView);
   };
 
-  const handleAddProjectClick = () => {
-    setShowModal(true); // Show the modal when the button is clicked
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
   };
 
   const handleCloseModal = () => {
-    setShowModal(false); // Close the modal
+    setIsModalOpen(false);
+    document.body.classList.remove("modal-open"); // Remove modal-open class
   };
 
   return (
@@ -25,7 +27,6 @@ const Project = () => {
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h4 className="mb-0">All Projects</h4>
           <div className="add-toggle d-flex">
-            {/* View Toggle */}
             <div className="d-flex align-items-center gap-3 mb-4">
               <div className="view-toggle">
                 <button
@@ -43,8 +44,7 @@ const Project = () => {
             <button
               className="btn add-project-btn ms-3"
               style={{ height: "fit-content" }}
-              onClick={handleAddProjectClick} // Open modal on click
-            >
+              onClick={handleOpenModal}>
               <i className="bi bi-plus" /> Add New Project
             </button>
           </div>
@@ -129,28 +129,33 @@ const Project = () => {
         </div>
       </div>
 
-      {/* Modal for Adding New Project */}
-      {showModal && (
-        <div className="modal fade show" style={{ display: "block" }} tabIndex="-1" role="dialog">
-          <div className="modal-dialog modal-lg" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Add New Project</h5>
-                <button type="button" className="close" onClick={handleCloseModal}>
-                  <span>&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <AddNewProject onClose={handleCloseModal} /> {/* Pass the close function */}
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
-                  Close
-                </button>
+      {/* Modal for Add New Project */}
+      {isModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Add New Project</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className="modal-body">
+                  <AddNewProject />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          {/* Modal backdrop */}
+          <div
+            className="modal-backdrop fade show"
+            onClick={handleCloseModal}
+          ></div>
+        </>
       )}
     </>
   );
