@@ -67,6 +67,8 @@ import ContactsList from "../components/crm/contact/Contact";
 import ContactDetailPage from "../components/crm/contact/ContactCard";
 import Company from "../components/crm/companies/Company";
 import CompanyDetails from "../components/crm/companies/CompanyDetails";
+import AllQuotes from "../components/crm/allquotes/AllQuotes";
+import AllInvoice from "../components/crm/invoice/AllInvoice";
 
 const RoleBasedRoutes = () => {
   return (
@@ -115,11 +117,17 @@ const RoleBasedRoutes = () => {
         <Route path="/crm/companydetails" element={<CompanyDetails />} />
 
 
+        {/* <Route path="/crm/customers" element={<ContactsList/>} />
+        <Route path="/crm/companies" element={<Companies />} />
         <Route path="/crm/leads" element={<Leads />} />
         <Route path="/crm/deals" element={<Deal />} />
         <Route path="/crm/pipeline" element={<Pipeline />} />
         <Route path="/crm/analytics" element={<Analytics />} />
-        <Route path="/crm/activities" element={<Activity />} />
+        <Route path="/crm/activities" element={<Activity />} /> */}
+        <Route path="/crm/quotes" element={<AllQuotes />} /> 
+        <Route path="/crm/invoices" element={<AllInvoice />} /> 
+
+
 
         {/*  CRM Routes  */}
 
