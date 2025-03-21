@@ -57,9 +57,11 @@ const menuItems = [
       { name: "Deals", path: "/crm/deals" },
       { name: "Quotes", path: "/crm/quotes" },
       {name : "Invoices", path: "/crm/invoices"},
+      { name: "Payment", path: "/crm/Payment" },
       // { name: "Pipeline", path: "/crm/pipeline" },
       { name: "Tasks", path: "/crm/tasks" },
       { name: "Analytics", path: "/crm/analytics" },
+      
       // { name: "Activities", path: "/crm/activities" },
       // { name: "Sales", path: "/crm/sales" },
     ],
