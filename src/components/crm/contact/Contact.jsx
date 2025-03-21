@@ -10,7 +10,7 @@ const ContactsList = () => {
       initials: 'NK',
       email: 'nikurj@example.com',
       jobTitle: '—',
-      phoneNumber: '—',
+      phoneNumber: '+91 ',
       companyName: '—'
     }
   ]);
