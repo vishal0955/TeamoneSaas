@@ -50,14 +50,18 @@ const menuItems = [
     path: "/crm",
     icon: <Contact size={16} />,
     subItems: [
+      {name: "Dashboard", path: "/crm/dashboard"},
       { name: "Contacts", path: "/crm/customers" },
       { name: "Companies", path: "/crm/companies" },
-      { name: "Leads", path: "/crm/leads" },
+      // { name: "Leads", path: "/crm/leads" },
       { name: "Deals", path: "/crm/deals" },
-      { name: "Pipeline", path: "/crm/pipeline" },
+      { name: "Quotes", path: "/crm/quotes" },
+      {name : "Invoices", path: "/crm/invoices"},
+      // { name: "Pipeline", path: "/crm/pipeline" },
+      { name: "Tasks", path: "/crm/tasks" },
       { name: "Analytics", path: "/crm/analytics" },
-      { name: "Activities", path: "/crm/activities" },
-      { name: "Sales", path: "/crm/sales" },
+      // { name: "Activities", path: "/crm/activities" },
+      // { name: "Sales", path: "/crm/sales" },
     ],
   },
   {
@@ -119,6 +123,14 @@ const menuItems = [
           },
         ],
       },
+      {
+        name: "Payroll",
+        path: "/hrm/payroll",
+        subMenu: [
+          { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
+          { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
+        ],
+      },
     ],
   },
 
@@ -133,33 +145,33 @@ const menuItems = [
     ],
   },
 
-  {
-    name: "Finance & Accounts",
-    path: "/finance",
-    icon: <ChartColumn size={16} />,
-    subItems: [
-      {
-        name: "Sales",
-        path: "/finance/sales",
-        subMenu: [
-          { name: "Estimates", path: "/finance/sales/estimates" },
-          { name: "Invoices", path: "/finance/sales/invoices" },
-          { name: "Payments", path: "/finance/sales/payments" },
-          { name: "Expenses", path: "/finance/sales/expenses" },
-          { name: "Provident Funds", path: "/finance/sales/provident_funds" },
-          { name: "Taxes", path: "/finance/sales/taxs" },
-        ],
-      },
-      {
-        name: "Payroll",
-        path: "/finance/payroll",
-        subMenu: [
-          { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
-          { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
-        ],
-      },
-    ],
-  },
+  // {
+  //   name: "Finance & Accounts",
+  //   path: "/finance",
+  //   icon: <ChartColumn size={16} />,
+  //   subItems: [
+  //     {
+  //       name: "Sales",
+  //       path: "/finance/sales",
+  //       subMenu: [
+  //         { name: "Estimates", path: "/finance/sales/estimates" },
+  //         { name: "Invoices", path: "/finance/sales/invoices" },
+  //         { name: "Payments", path: "/finance/sales/payments" },
+  //         { name: "Expenses", path: "/finance/sales/expenses" },
+  //         { name: "Provident Funds", path: "/finance/sales/provident_funds" },
+  //         { name: "Taxes", path: "/finance/sales/taxs" },
+  //       ],
+  //     },
+      // {
+      //   name: "Payroll",
+      //   path: "/finance/payroll",
+      //   subMenu: [
+      //     { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
+      //     { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
+      //   ],
+      // },
+  //   ],
+  // },
 
   {
     name: "Administration",

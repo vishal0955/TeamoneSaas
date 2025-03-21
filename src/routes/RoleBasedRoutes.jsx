@@ -49,11 +49,21 @@ import LeaveSetting from "../components/AdminHRM/Leave/LeaveSetting";
 import Leave from "../components/AdminHRM/Leave/LeaveList";
 import Overtime from "../components/AdminHRM/Leave/Overtime";
 import CustomPolicyModal from "../components/AdminHRM/Leave/CustomPolicyform";
-import Contacts from "../components/Crm/Contacts";
-import Companies from "../components/Crm/Companies";
-import Leads from "../components/Crm/Leads";
-import Deal from "../components/Crm/Deal";
-import Pipeline from "../components/Crm/Pipeline";
+import Contacts from "../components/crmold/Contacts";
+import Companies from "../components/crmold/Companies";
+import Leads from "../components/crmold/Leads";
+import Deal from "../components/crmold/Deal";
+import Pipeline from "../components/crmold/Pipeline";
+
+import Job from "../components/Recruitment/Job";
+import Schedule from "../components/AdminHRM/Timesheet/Schedule";
+import Candidate from "../components/Recruitment/Candidate";
+import Activity from "../components/crmold/Activity";
+import Refferal from "../components/Recruitment/Refferal";
+import Users from "../usermanagement/users";
+import CRMDashboard from "../components/crm/dashboard/CRMDashboard";
+import Analytics from "../components/crm/dashboard/Analytics";
+import ContactsList from "../components/crm/contact/Contact";
 
 const RoleBasedRoutes = () => {
   return (
@@ -94,13 +104,27 @@ const RoleBasedRoutes = () => {
         <Route path="/addtask" element={<AddTask />} />
         
         {/* crm-section */}
-        <Route path="/crm/customers" element={<Contacts />} />
+        <Route path="/crm/customers" element={<ContactsList/>} />
         <Route path="/crm/companies" element={<Companies />} />
         <Route path="/crm/leads" element={<Leads />} />
         <Route path="/crm/deals" element={<Deal />} />
         <Route path="/crm/pipeline" element={<Pipeline />} />
+        <Route path="/crm/analytics" element={<Analytics />} />
+        <Route path="/crm/activities" element={<Activity />} />
+
+        {/*  CRM Routes  */}
+
+      <Route path="/crm/dashboard" element={<CRMDashboard />} />
+
+
+
 
         {/* crm-section */}
+        {/* recruitment */}
+        <Route path="/recruitment/jobs" element={<Job />} />
+        <Route path="/recruitment/candidates" element={<Candidate />} />
+        <Route path="/recruitment/refferals" element={<Refferal />} />
+        {/* recruitment */}
 
         {/* <Route path="/todolist" element={<TodoList />} /> */}
         <Route path="/tasklist" element={<TaskListExample />} />
@@ -134,6 +158,8 @@ const RoleBasedRoutes = () => {
         {/* <Route path="/tasklist" element={<TaskListExample />} /> */}
         <Route path="/policy" element={<Policy></Policy>}></Route>
         <Route path="/tasklist" element={<TaskListExample />} />
+
+        <Route path="/hrm/attendance/shift_schedule" element={<Schedule />}></Route>
 
         <Route
           path="/performanceindicator"
@@ -196,33 +222,14 @@ const RoleBasedRoutes = () => {
         <Route path="/tasklist1" element={<TaskManagementTable />} />
         <Route path="/projectlist" element={<Project />} />
      
-        <Route path="/high" element={<High_todo></High_todo>}></Route>
-        <Route
-          path="/client"
-          element={
-            <ProtectedRoute allowedRoles={["client", "admin"]}>
-              <ClientDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/Medium" element={<Medium_todo></Medium_todo>}></Route>
-        <Route
-          path="/client"
-          element={
-            <ProtectedRoute allowedRoles={["client", "admin"]}>
-              <ClientDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/Low" element={<Low_todo></Low_todo>}></Route>
-        <Route
-          path="/client"
-          element={
-            <ProtectedRoute allowedRoles={["client"]}>
-              <ClientDashboard />
-            </ProtectedRoute>
-          }
-        />
+
+     {/* Administration */}
+
+     <Route path="/admininistration/user_management/users" element={<Users/>} />
+
+
+
+      
         <Route
           path="/manager"
           element={

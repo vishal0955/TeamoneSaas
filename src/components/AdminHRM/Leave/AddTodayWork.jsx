@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-const LeaveForm = ({ onClose }) => {
+const AddTodayWork = ({ onClose }) => {
   const [formData, setFormData] = useState({
     project: '',
     deadline: '',
@@ -178,7 +178,7 @@ const LeaveForm = ({ onClose }) => {
                 <button
                   type="submit"
                   className="btn btn-primary"
-                  style={{ backgroundColor: '#ff6b35', borderColor: '#ff6b35' }}
+                  // style={{ backgroundColor: '#ff6b35', borderColor: '#ff6b35' }}
                 >
                   Add Changes
                 </button>
@@ -191,4 +191,4 @@ const LeaveForm = ({ onClose }) => {
   );
 };
 
-export default LeaveForm;
+export default AddTodayWork;
