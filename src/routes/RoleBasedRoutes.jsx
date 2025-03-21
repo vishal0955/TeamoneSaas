@@ -50,7 +50,7 @@ import Leave from "../components/AdminHRM/Leave/LeaveList";
 import Overtime from "../components/AdminHRM/Leave/Overtime";
 import CustomPolicyModal from "../components/AdminHRM/Leave/CustomPolicyform";
 import Contacts from "../components/crmold/Contacts";
-import Companies from "../components/crmold/Companies";
+// import Companies from "../components/crmold/Companies";
 import Leads from "../components/crmold/Leads";
 import Deal from "../components/crmold/Deal";
 import Pipeline from "../components/crmold/Pipeline";
@@ -64,6 +64,9 @@ import Users from "../usermanagement/users";
 import CRMDashboard from "../components/crm/dashboard/CRMDashboard";
 import Analytics from "../components/crm/dashboard/Analytics";
 import ContactsList from "../components/crm/contact/Contact";
+import ContactDetailPage from "../components/crm/contact/ContactCard";
+import Company from "../components/crm/companies/Company";
+import CompanyDetails from "../components/crm/companies/CompanyDetails";
 
 const RoleBasedRoutes = () => {
   return (
@@ -105,7 +108,13 @@ const RoleBasedRoutes = () => {
         
         {/* crm-section */}
         <Route path="/crm/customers" element={<ContactsList/>} />
-        <Route path="/crm/companies" element={<Companies />} />
+        <Route path="/crm/contacts" element={<ContactDetailPage />} />
+
+
+        <Route path="/crm/companies" element={<Company />} />
+        <Route path="/crm/companydetails" element={<CompanyDetails />} />
+
+
         <Route path="/crm/leads" element={<Leads />} />
         <Route path="/crm/deals" element={<Deal />} />
         <Route path="/crm/pipeline" element={<Pipeline />} />
@@ -128,6 +137,8 @@ const RoleBasedRoutes = () => {
 
         {/* <Route path="/todolist" element={<TodoList />} /> */}
         <Route path="/tasklist" element={<TaskListExample />} />
+
+        <Route path="/employeegrid" element={<EmployeeGrid/>} />
         <Route
           path="/employeelist"
           element={
