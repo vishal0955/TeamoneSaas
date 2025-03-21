@@ -65,7 +65,7 @@ const CompanyForm = (handleclose) => {
         <Row>
           <Col md={6}>
             <Form.Group className="mb-3">
-              <Form.Label>Company owner</Form.Label>
+              <Form.Label>Company owner</Form.Label><button className="ms-2">Add </button>
               <Form.Select name="owner" value={formData.owner} onChange={handleChange}>
                 <option>Select owner</option>
                 <option>Vishal Solanki</option>
