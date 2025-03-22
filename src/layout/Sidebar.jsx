@@ -50,13 +50,19 @@ const menuItems = [
     path: "/crm",
     icon: <Contact size={16} />,
     subItems: [
+      {name: "Dashboard", path: "/crm/dashboard"},
       { name: "Contacts", path: "/crm/customers" },
       { name: "Companies", path: "/crm/companies" },
-      { name: "Leads", path: "/crm/leads" },
+      // { name: "Leads", path: "/crm/leads" },
       { name: "Deals", path: "/crm/deals" },
-      { name: "Pipeline", path: "/crm/pipeline" },
+      { name: "Quotes", path: "/crm/quotes" },
+      {name : "Invoices", path: "/crm/invoices"},
+      { name: "Payment", path: "/crm/Payment" },
+      // { name: "Pipeline", path: "/crm/pipeline" },
+      { name: "Tasks", path: "/crm/tasks" },
       { name: "Analytics", path: "/crm/analytics" },
-      { name: "Activities", path: "/crm/activities" },
+      
+      // { name: "Activities", path: "/crm/activities" },
       // { name: "Sales", path: "/crm/sales" },
     ],
   },
@@ -119,6 +125,14 @@ const menuItems = [
           },
         ],
       },
+      {
+        name: "Payroll",
+        path: "/hrm/payroll",
+        subMenu: [
+          { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
+          { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
+        ],
+      },
     ],
   },
 
@@ -150,42 +164,42 @@ const menuItems = [
   //         { name: "Taxes", path: "/finance/sales/taxs" },
   //       ],
   //     },
-  //     {
-  //       name: "Payroll",
-  //       path: "/finance/payroll",
-  //       subMenu: [
-  //         { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
-  //         { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
-  //       ],
-  //     },
+      // {
+      //   name: "Payroll",
+      //   path: "/finance/payroll",
+      //   subMenu: [
+      //     { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
+      //     { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
+      //   ],
+      // },
   //   ],
   // },
 
-  // {
-  //   name: "Administration",
-  //   path: "/administration",
+  {
+    name: "Administration",
+    path: "/administration",
 
-  //   subItems: [
-  //     {
-  //       name: "Help & Support",
-  //       path: "/admininistration/help_support",
-  //       subMenu: [
-  //         { name: "FAQs", path: "/admininistration/help_support/faqs" },
-  //       ],
-  //     },
-  //     {
-  //       name: "User Management",
-  //       path: "/admininistration/user_management",
-  //       subMenu: [
-  //         { name: "Users", path: "/admininistration/user_management/users" },
-  //         {
-  //           name: "Roles &Permissions",
-  //           path: "/admininistration/user_management/roles_permissions",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+    subItems: [
+      {
+        name: "Help & Support",
+        path: "/admininistration/help_support",
+        subMenu: [
+          { name: "FAQs", path: "/admininistration/help_support/faqs" },
+        ],
+      },
+      {
+        name: "User Management",
+        path: "/admininistration/user_management",
+        subMenu: [
+          { name: "Users", path: "/admininistration/user_management/users" },
+          {
+            name: "Roles &Permissions",
+            path: "/admininistration/user_management/roles_permissions",
+          },
+        ],
+      },
+    ],
+  },
 
   // {
   //   name: "Reports",

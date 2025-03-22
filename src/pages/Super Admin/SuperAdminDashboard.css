@@ -14,10 +14,10 @@
     border-radius: 10px;
     }
     
-    .card:hover {
+    /* .card:hover {
     transform: translateY(-5px);
     }
-    
+     */
     .card-header {
     background-color: #00879E;
     color: white;
