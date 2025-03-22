@@ -47,6 +47,7 @@ const AddRole = ({handleclose}) => {
             type="button"
             className="btn btn-outline-dark px-4"
             data-bs-dismiss="modal"
+            // onClick={() => handleclose}
           >
             Cancel
           </button>
