@@ -56,7 +56,7 @@ const Login = () => {
     <div className="auth-container">
       <main className="w-100 mt-5">
         {isLogin ? (
-          <div className="login-container">
+          <div className="login-container bg-light">
             <h4 className="text-center mb-4">Welcome Back</h4>
             <button className="social-login">
               <i className="fab fa-google" />
@@ -113,14 +113,8 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                className="login-btn w-100"
-                style={{
-                  background: "#94d2cc",
-                  color: "white",
-                  border: "none",
-                  padding: "10px",
-                  borderRadius: "125px",
-                }}>
+                className="inv-new-button login-btn w-100"
+                >
                 Log In
               </button>
               <p className="text-center mb-0 mt-3">
@@ -217,15 +211,8 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                className="btn btn-signup mb-3 w-100 text-center"
-                style={{
-                  background: "#94d2cc",
-                  display: "block",
-                  color: "white",
-                  border: "none",
-                  padding: "10px",
-                  borderRadius: "125px",
-                }}>
+                className="inv-new-button mb-3 w-100 text-center"
+                >
                 Create Account
               </button>
               <p className="text-center mb-0">
