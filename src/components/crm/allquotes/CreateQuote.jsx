@@ -3,9 +3,11 @@ import Dealsstep from "./create-quotes/Dealsstep";
 import BuyerInfo from "./create-quotes/BuyerInfo";
 import "./Quotes.css";
 import YourInfo from "./create-quotes/YourInfo";
+import SignaturePayment from "./create-quotes/SignaturePayment";
+import Review from "./create-quotes/Review";
 const CreateQuote = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 7;
+  const totalSteps = 5;
 
   const handleNext = () => {
     if (currentStep < totalSteps) {
@@ -37,10 +39,16 @@ const CreateQuote = () => {
       <YourInfo />
     </div>
   );
-  
-  const LineTimes = () => (
+
+  const Signature_Payment = () => (
     <div className="quote-section">
-      <YourInfo />
+      <SignaturePayment />
+    </div>
+  );
+
+  const Review_q = () => (
+    <div className="quote-section">
+      <Review />
     </div>
   );
 
@@ -54,7 +62,9 @@ const CreateQuote = () => {
       case 3:
         return <YourInfoStep />;
       case 4:
-        return <LineTimes />;
+        return <Signature_Payment />;
+      case 5:
+        return <Review_q />;
       default:
         return <div>Step {currentStep} content</div>;
     }
@@ -82,10 +92,10 @@ const CreateQuote = () => {
                 {index === 0 && "DEAL"}
                 {index === 1 && "BUYER INFO"}
                 {index === 2 && "YOUR INFO"}
-                {index === 3 && "LINE ITEMS"}
-                {index === 4 && "SIGNATURE & PAYMENT"}
-                {index === 5 && "TEMPLATE & DETAILS"}
-                {index === 6 && "REVIEW"}
+                {/* {index === 3 && "LINE ITEMS"} */}
+                {index === 3 && "SIGNATURE & PAYMENT"}
+                {/* {index === 5 && "TEMPLATE & DETAILS"} */}
+                {index === 4 && "REVIEW"}
               </span>
             </div>
           ))}
@@ -97,7 +107,7 @@ const CreateQuote = () => {
           <div className="quote-wizard-form">{renderStepContent()}</div>
 
           {/* Right Section */}
-          <div className="quote-wizard-preview">
+          {/* <div className="quote-wizard-preview">
             <div className="quote-preview-section">
               <h2 className="quote-section-title">Quote Preview</h2>
               <div className="quote-preview-card">
@@ -122,7 +132,7 @@ const CreateQuote = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer Actions */}

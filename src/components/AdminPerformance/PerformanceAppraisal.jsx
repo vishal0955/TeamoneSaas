@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import AddAppraisalModal from "./AddAppraisalModal";
 
-const employees = [
+const initialEmployees = [
   {
     name: "Anthony Lewis",
     image: "https://randomuser.me/api/portraits/men/1.jpg",
@@ -54,7 +54,25 @@ const employees = [
 ];
 
 export default function PerformanceAppraisal() {
+  const [employees, setEmployees] = useState(initialEmployees);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [editingEmployee, setEditingEmployee] = useState(null);
+
+  const handleAddOrEdit = (data) => {
+    if (editingEmployee) {
+      setEmployees((prev) =>
+        prev.map((emp) => (emp.name === editingEmployee.name ? data : emp))
+      );
+    } else {
+      setEmployees((prev) => [...prev, data]);
+    }
+    setEditingEmployee(null);
+    setModalOpen(false);
+  };
+
+  const handleDelete = (name) => {
+    setEmployees((prev) => prev.filter((emp) => emp.name !== name));
+  };
   return (
     <div className="p-6">
       {/* Header */}
@@ -70,7 +88,11 @@ export default function PerformanceAppraisal() {
         </div>
         <div className="flex flex-wrap gap-2 sm:gap-4 mt-4 sm:mt-0">
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => {
+              setEditingEmployee(null);
+              setModalOpen(true);
+              //   setEditingEmployee(null);
+            }}
             className="flex items-center px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
           >
             <FaPlus className="mr-2" />
@@ -129,8 +151,16 @@ export default function PerformanceAppraisal() {
                     <Pencil
                       className="text-blue-500 cursor-pointer"
                       size={18}
+                      onClick={() => {
+                        setEditingEmployee(emp);
+                        setModalOpen(true);
+                      }}
                     />
-                    <Trash2 className="text-red-500 cursor-pointer" size={18} />
+                    <Trash2
+                      className="text-red-500 cursor-pointer"
+                      size={18}
+                      onClick={() => handleDelete(emp.name)}
+                    />
                   </td>
                 </tr>
               ))}
@@ -142,6 +172,8 @@ export default function PerformanceAppraisal() {
       <AddAppraisalModal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
+        onSave={handleAddOrEdit}
+        editingEmployee={editingEmployee}
       />
     </div>
   );

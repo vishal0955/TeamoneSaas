@@ -1,10 +1,47 @@
 import { X, Calendar } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function AddAppraisalModal({ isOpen, onClose }) {
+export default function AddAppraisalModal({
+  isOpen,
+  onClose,
+  onSave,
+  editData,
+}) {
   if (!isOpen) return null;
 
   const [activeTab, setActiveTab] = useState("technical");
+
+  const [formData, setFormData] = useState({
+    name: "",
+    appraisalDate: "",
+    department: "",
+    designation: "",
+    status: "Active",
+  });
+
+  useEffect(() => {
+    if (editData) {
+      setFormData(editData);
+    } else {
+      setFormData({
+        name: "",
+        appraisalDate: "",
+        department: "",
+        designation: "",
+        status: "Active",
+      });
+    }
+  }, [editData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    onSave(formData);
+    onClose();
+  };
 
   const technicalCompetencies = [
     { indicator: "Customer Experience", expected: "Intermediate" },
@@ -40,12 +77,19 @@ export default function AddAppraisalModal({ isOpen, onClose }) {
           {/* Employee & Appraisal Date */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium">Employee</label>
-              <select className="w-full border rounded-md p-2">
+              <label className="block text-sm font-medium">Employee Name</label>
+              {/* <select className="w-full border rounded-md p-2">
                 <option>Select</option>
                 <option>Anthony Lewis</option>
                 <option>Brian Villalobos</option>
-              </select>
+              </select> */}
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full border rounded-md p-2"
+              />
             </div>
             <div>
               <label className="block text-sm font-medium">
@@ -54,6 +98,9 @@ export default function AddAppraisalModal({ isOpen, onClose }) {
               <div className="relative">
                 <input
                   type="date"
+                  name="appraisalDate"
+                  value={formData.appraisalDate}
+                  onChange={handleChange}
                   className="w-full border rounded-md p-2 pr-10"
                 />
                 <Calendar
@@ -61,6 +108,38 @@ export default function AddAppraisalModal({ isOpen, onClose }) {
                   size={18}
                 />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium">Department</label>
+              <select
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+                className="w-full border rounded-md p-2"
+              >
+                <option value="">Select</option>
+                <option value="Designing">Designing</option>
+                <option value="Developer">Developer</option>
+                <option value="DevOps">DevOps</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium">Designation</label>
+              <select
+                name="designation"
+                value={formData.designation}
+                onChange={handleChange}
+                className="w-full border rounded-md p-2"
+              >
+                <option value="">Select</option>
+                <option value="Web Designer">Web Designer</option>
+                <option value="Web Developer">Web Developer</option>
+                <option value="iOS Developer">iOS Developer</option>
+                <option value="Android Developer">Android Developer</option>
+                <option value="DevOps Engineer">DevOps Engineer</option>
+              </select>
             </div>
           </div>
 
@@ -129,10 +208,14 @@ export default function AddAppraisalModal({ isOpen, onClose }) {
           {/* Status */}
           <div>
             <label className="block text-sm font-medium">Status</label>
-            <select className="w-full border rounded-md p-2">
-              <option>Select</option>
-              <option>Active</option>
-              <option>Pending</option>
+            <select
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+              className="w-full border rounded-md p-2"
+            >
+              <option value="Active">Active</option>
+              <option value="Pending">Pending</option>
             </select>
           </div>
 
@@ -144,8 +227,11 @@ export default function AddAppraisalModal({ isOpen, onClose }) {
             >
               Cancel
             </button>
-            <button className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-black">
-              Add Appraisal
+            <button
+              onClick={handleSubmit}
+              className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-black"
+            >
+              {editData ? "Update" : "Add"} Appraisal
             </button>
           </div>
         </div>

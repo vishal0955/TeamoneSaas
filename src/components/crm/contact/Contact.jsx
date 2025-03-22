@@ -13,14 +13,14 @@ import { useNavigate } from 'react-router-dom';
 
    const handleCLick = () => {
     console.log("clicked");
-     navigate('/crm/contacts');   
+     navigate('/crm/contactdetails');  
       
    };
  
 
    const handleOpenModal = () => {
      setIsModalOpen(true);
-     document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+     document.body.classList.add("modal-open");
    };
 
    const handleCloseModal = () => {
@@ -108,26 +108,47 @@ import { useNavigate } from 'react-router-dom';
            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
              Contact owner
            </button>
+           <ul className="dropdown-menu">
+               <li><a className="dropdown-item" href="#michael">Michael Chen</a></li>
+               <li><a className="dropdown-item" href="#sarah">Sarah Johnson</a></li>
+             </ul>
          </div>
          <div className="dropdown">
            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
              Create date
            </button>
+           <ul className="dropdown-menu">
+               <li><a className="dropdown-item" href="#michael">Today</a></li>
+               <li><a className="dropdown-item" href="#sarah">Yesterday</a></li>
+               <li><a className="dropdown-item" href="#sarah">Last 7 days</a></li>
+             </ul>
          </div>
          <div className="dropdown">
            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
              Last activity date
            </button>
+           <ul className="dropdown-menu">
+               <li><a className="dropdown-item" href="#michael">Today</a></li>
+               <li><a className="dropdown-item" href="#sarah">Yesterday</a></li>
+               <li><a className="dropdown-item" href="#sarah">Last 7 days</a></li>
+             </ul>
          </div>
          <div className="dropdown">
            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
              Lead status
-           </button>
+           </button>  
+           <ul className="dropdown-menu">
+               <li><a className="dropdown-item" href="#michael">New</a></li>
+               <li><a className="dropdown-item" href="#sarah">Open</a></li>
+               <li><a className="dropdown-item" href="#sarah">Contacted</a></li>
+               <li><a className="dropdown-item" href="#sarah">Unqualified</a></li>
+               <li><a className="dropdown-item" href="#sarah">Closed</a></li>
+             </ul>
          </div>
-         <button className="btn btn-outline-secondary">+ More</button>
-         <button className="btn btn-outline-secondary">
+         {/* <button className="btn btn-outline-secondary">+ More</button> */}
+         {/* <button className="btn btn-outline-secondary">
            <i className="fas fa-sliders-h"></i> Advanced filters
-         </button>
+         </button> */}
        </div>
 
        {/* Search */}
