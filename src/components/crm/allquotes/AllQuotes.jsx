@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./Quotes.css";
 import CreateQuote from './CreateQuote';
+import { FaRegEye } from "react-icons/fa6";
 const AllQuotes = () => {
     const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   
@@ -22,39 +23,38 @@ const AllQuotes = () => {
         <button className="quotes-import-btn btn d-flex align-items-center gap-2">
           <i className="bi bi-upload" /> Import
         </button>
-        <button className="quotes-create-btn btn d-flex align-items-center gap-2" onClick={handleOpenModal}>
+        <button className=" inv-new-button quotes-create-btn btn d-flex align-items-center gap-2" onClick={handleOpenModal}>
           <i className="bi bi-plus-lg" /> Create quote
         </button>
       </div>
     </div>
     <div className="quotes-card">
-      <div className="quotes-card-body">
+      <div className=" quotes-card-body">
         <div className="quotes-filters row mb-4">
-          <div className="col-md-6">
-            <div className="quotes-search">
-              <span className="quotes-search-icon">
-                <i className="bi bi-search" />
-              </span>
-              <input
-                type="text"
-                className="quotes-search-input"
-                placeholder="Search quotes..."
-              />
-            </div>
-          </div>
+        <div className="col-md-6">
+                <div className="inv-search-wrapper">
+                  <i className="bi bi-search inv-search-icon" />
+                  <input
+                    type="text"
+                    className="inv-search-input"
+                    placeholder="Search invoices..."
+                    aria-label="Search invoices"
+                  />
+                </div>
+              </div>
           <div className="col-md-6 d-flex justify-content-end gap-3">
-            <select className="quotes-status-select">
+            <select className=" inv-filter-button quotes-status-select">
               <option>All Status</option>
               <option>Pending</option>
               <option>Approved</option>
               <option>Rejected</option>
             </select>
-            <select className="quotes-user-select">
+            <select className=" inv-filter-button quotes-user-select">
               <option>All Users</option>
             </select>
           </div>
         </div>
-        <div className="quotes-table-wrapper">
+        {/* <div className="quotes-table-wrapper">
           <table className="quotes-table">
             <thead>
               <tr>
@@ -111,7 +111,82 @@ const AllQuotes = () => {
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> */}
+
+
+        <div className="table-responsive">
+            <table className="inv-table">
+              <thead>
+                <tr>
+                  <th style={{ width: "20px" }}>
+                    <input
+                      type="checkbox"
+                      className="inv-checkbox"
+                      id="selectAll"
+                    />
+                  </th>
+                  <th>Quote</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Owner</th>
+                  <th>Created</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="checkbox" className="inv-checkbox" />
+                  </td>
+                  <td>#QT-2024-001</td>
+                  <td>  
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                        
+                      </div>
+                  </td>
+                  <td>
+                    <div className="inv-status  inv-status-pending"> Pending</div>
+                    </td>
+                  <td>
+                  <div className=""></div>
+                  <div className='inv-client-info'>John Smith </div></td>
+                  <td>
+                    <span className="">Jan 15, 2024</span>
+                  </td>
+                 
+                  <td>
+                    <button className="inv-action-button"><FaRegEye /></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" className="inv-checkbox" />
+                  </td>
+                  <td>#QT-2024-001</td>
+                  <td>
+                    <div className="inv-client-wrapper">
+                     
+                      <div className="inv-client-info">
+                        <div className="inv-client-name">$2,500.00</div>
+                       
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="inv-status  inv-status-pending"> Pending</div>
+                    </td>
+                  <td>John Smith</td>
+                 
+                  <td>Jan 15, 2024</td>
+                  <td>
+                    <button className="inv-action-button"><FaRegEye /></button>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
         <div className="quotes-footer d-flex justify-content-between align-items-center mt-4">
           <div className="quotes-results-info">
             Showing 1 to 10 of 97 results

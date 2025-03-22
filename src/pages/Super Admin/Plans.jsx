@@ -1,68 +1,91 @@
 import React from 'react';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 // Demo packages array
-const packages = [
+const plans = [
   {
-    name: "Basic Plan",
-    price: "$19.99",
-    features: ["Feature 1", "Feature 2", "Feature 3"],
+    planName: 'Free Plan',
+    price: '$0',
+    trialDays: 0,
+    features: [
+      'John',
+      '3 Month',
+      '1 Establishment',
+      '14 trial ',
+      '1 establishment',
+      '49$ Price',
+    ],
+    badgeColor: 'success',
   },
   {
-    name: "Pro Plan",
-    price: "$49.99",
-    features: ["Feature A", "Feature B", "Feature C", "Feature D"],
+    planName: 'Platinum',
+    price: '$500',
+    trialDays: 5,
+    features: [
+      'John',
+      '3 Month',
+      '1 Establishment',
+      '14 trial ',
+      '1 establishment',
+      '49$ Price',
+    ],
+    badgeColor: 'primary',
   },
   {
-    name: "Enterprise Plan",
-    price: "$99.99",
-    features: ["Unlimited Feature 1", "Priority Support", "Advanced Tools"],
+    planName: 'Gold',
+    price: '$400',
+    trialDays: 7,
+    features: [
+      'John',
+      '3 Month',
+      '1 Establishment',
+      '14 trial ',
+      '1 establishment',
+      '49$ Price',
+     
+    ],
+    badgeColor: 'warning',
   },
 ];
 
+
 function Plans() {
   return (
-    <div className="container py-5">
-      <div className="text-center mb-5">
-        <h1 className="fw-bold">Choose Your Plan</h1>
-        <p className="text-muted">
-          Select the best plan that suits your business needs.
-        </p>
-      </div>
-      <div className="row justify-content-center">
-        {packages.map((pkg, index) => (
-          <div className="col-lg-4 col-md-6 mb-4" key={index}>
-            <div className="card shadow-lg border-0 rounded-lg text-center p-4">
-              <div
-                className="card-header text-white py-3"
-                style={{ backgroundColor: "#00879E" }}
-              >
-                <h3 className="card-title m-0">{pkg.name}</h3>
-              </div>
-              <div className="card-body">
-                <h4 className="fw-bold" style={{ color: "#00879E" }}>
-                  {pkg.price}
-                </h4>
-                <ul className="list-group list-group-flush text-left my-3">
-                  {pkg.features.map((feature, i) => (
-                    <li className="list-group-item border-0" key={i}>
-                      ✅ {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="card-footer bg-white border-0">
-                <button
-                  className="btn w-100 py-2 text-white"
-                  style={{ backgroundColor: "#00879E" }}
-                >
-                  Choose Plan
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Container className="" style={{ marginTop: '60px' }}>
+    <Link to='#' >
+    <button className='btn btn-warning mb-2' >Add Plan</button></Link>
+    <Row className="card-grid">
+      {plans.map((plan, index) => (
+        <Col key={index} md={4}>
+          <Card className={`plan-card ${plan.badgeColor}`}>
+            <Card.Body>
+              <div className="badge">{plan.planName}</div>
+              <h2>{plan.price} <span>/Per Year</span></h2>
+              <p>Free Trial Days: {plan.trialDays}</p>
+              <ul>
+                {plan.features.map((feature, idx) => (
+                  <li key={idx}>✅ {feature}</li>
+                ))}
+              </ul>
+                    <div className=' d-flex justify-content-end gap-2'>     
+               <Button variant="primary" className="">
+              <FaEdit />
+              </Button>
+             
+                <Button variant="danger" className="">
+                 <MdDeleteOutline />
+                </Button>
+            
+             </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+  </Container>
   );
 }
 

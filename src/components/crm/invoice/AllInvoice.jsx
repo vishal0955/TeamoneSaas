@@ -19,7 +19,7 @@ const AllInvoice = () => {
   return (
     <>
       <div className="inv-dashboard-container">
-        <h1>Invoice</h1>
+        <h1 className="mb-3">Invoice</h1>
         {/* Stats Section */}
         <div className="inv-stats-grid">
           <div className="inv-stat-box">

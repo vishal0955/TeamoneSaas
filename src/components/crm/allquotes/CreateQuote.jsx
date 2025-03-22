@@ -149,13 +149,13 @@ const CreateQuote = () => {
           </div>
           <div className="createquote-btn d-flex">
           <button
-            className="quote-btn-continue"
+            className="inv-new-button"
             onClick={handleNext}
             disabled={currentStep === totalSteps}>
             Continue
             <i className="bi bi-arrow-right" />
           </button>
-          <button className="quote-btn-next ml-4">Save</button>
+          <button className="btn btn-outline-primary ml-4 custom-btn">Save</button>
           </div>
         </div>
       </div>

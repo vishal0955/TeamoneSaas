@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import {Link} from "react-router-dom"
 import "./payment.css";
 
 const CreatePayment = () => {
@@ -65,10 +66,10 @@ const CreatePayment = () => {
     <div className="pay-container">
       {/* Header */}
       <div className="pay-header d-flex justify-content-between align-items-center">
-        <a href="#" className="pay-back-btn">
+        <Link to="/crm/Payment" className="pay-back-btn">
           <i className="bi bi-arrow-left"></i>
           Back
-        </a>
+        </Link>
         <h1 className="pay-title">Add a payment link name</h1>
         <span className="pay-credits">Credits: 0</span>
       </div>
@@ -99,7 +100,7 @@ const CreatePayment = () => {
           <div className="d-flex align-items-center justify-content-between mb-4">
             <div className="dropdown">
               <button
-                className="btn btn-outline-secondary dropdown-toggle"
+                className="btn inv-filter-button dropdown-toggle"
                 type="button"
                 data-bs-toggle="dropdown">
                 British Pound Sterling (GBP) £
@@ -123,11 +124,11 @@ const CreatePayment = () => {
               </ul>
             </div>
             <div className="d-flex gap-2">
-              <button className="btn btn-outline-secondary">
+              <button className="btn inv-filter-button">
                 <i className="bi bi-grid" /> Edit columns
               </button>
               <button
-                className={`btn btn-dark ${
+                className={`inv-new-button ${
                   activeTab === "addlineitem" ? "active" : ""
                 }`}
                 onClick={() => handleTabChange("addlineitem")}>
@@ -403,7 +404,7 @@ const CreatePayment = () => {
           <div className="d-flex justify-content-end gap-3">
             <button
               type="button"
-              className="btn btn-outline-secondary"
+              className="inv-filter-button"
               data-bs-toggle="tooltip"
               title="Discard all changes"
             >
@@ -411,7 +412,7 @@ const CreatePayment = () => {
             </button>
             <button
               type="button"
-              className="btn btn-dark"
+              className="inv-new-button"
               data-bs-toggle="tooltip"
               title="Save all settings"
             >
@@ -678,13 +679,13 @@ const CreatePayment = () => {
             <div className="pay-button-group">
               <button
                 type="button"
-                className="pay-button secondary"
+                className="inv-filter-button"
                 onClick={() => window.history.back()}>
                 Cancel
               </button>
               <button
                 type="button"
-                className="pay-button primary"
+                className="inv-new-button"
                 onClick={handleDone}>
                 Done
               </button>

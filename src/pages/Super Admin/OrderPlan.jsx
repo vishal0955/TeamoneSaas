@@ -1,50 +1,70 @@
 import React from 'react'
+import { Table, Badge, Button, Container } from "react-bootstrap";
 
+
+const orders = [
+  {
+    orderId: "67AB0D6C566B9805259725",
+    name: "test",
+    plan: "Platinum",
+    price: "$500",
+    status: "Success",
+    paymentType: "STRIPE",
+    date: "11 Feb 2025",
+    coupon: "-",
+    invoice: "Receipt",
+  },
+  {
+    orderId: "6762BA7EEE9BB151277160",
+    name: "Workdo",
+    plan: "Platinum",
+    price: "$500",
+    status: "Success",
+    paymentType: "Aamarpay",
+    date: "18 Dec 2024",
+    coupon: "-",
+    invoice: "-",
+  },
+];
 function OrderPlan() {
   return (
-    <div>
-      <table className="table table-hover table-bordered text-center shadow-sm">
-  <thead
-    className="table-primary text-white"
-    style={{ backgroundColor: "#00879E" }}
-  >
-    <tr>
-      <th>Order Id</th>
-      <th>Name</th>
-      <th>Plan Name</th>
-      <th>Price</th>
-      <th>Status</th>
-      <th>Payment Type</th>
-      <th>Date</th>
-      <th>Coupon</th>
-      <th>Invoice</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>001</td>
-      <td>John Doe</td>
-      <td>Premium</td>
-      <td>$99</td>
-      <td>
-        <span className="badge bg-success">Active</span>
-      </td>
-      <td>Credit Card</td>
-      <td>2024-02-19</td>
-      <td>DISCOUNT20</td>
-      <td>
-        <button className="btn btn-sm btn-outline-secondary">Download</button>
-      </td>
-      <td>
-        <button className="btn btn-sm btn-outline-primary me-1">Edit</button>
-        <button className="btn btn-sm btn-outline-danger">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
+    <Container className="mt-4">
+      <h2 className="mb-3 fw-bold">Order Plan</h2>
+      <Table striped bordered hover responsive>
+        <thead className="bg-dark text-white">
+          <tr>
+            <th>Order Id</th>
+            <th>Name</th>
+            <th>Plan</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Payment Type</th>
+            <th>Date</th>
+            <th>Coupon</th>
+            <th>Invoice</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((order, index) => (
+            <tr key={index}>
+              <td>{order.orderId}</td>
+              <td>{order.name}</td>
+              <td>{order.plan}</td>
+              <td>{order.price}</td>
+              <td>
+                <Badge bg="success">{order.status}</Badge>
+              </td>
+              <td>{order.paymentType}</td>
+              <td>{order.date}</td>
+              <td>{order.coupon}</td>
+              <td>{order.invoice}</td>
+             
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
   )
 }
 

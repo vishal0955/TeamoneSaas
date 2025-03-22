@@ -54,7 +54,7 @@ const Company = () => {
         <Button variant="dark" onClick={handleOpenModal}>Add New</Button>
       </div>
       
-      <div className="d-flex gap-2 mb-3">
+      {/* <div className="d-flex gap-2 mb-3">
         <Dropdown>
           <Dropdown.Toggle variant="light">Company owner</Dropdown.Toggle>
         </Dropdown>
@@ -69,8 +69,57 @@ const Company = () => {
           className="w-25"
           onChange={(e) => setSearch(e.target.value)}
         />
-      </div>
+      </div> */}
+         <div className="d-flex flex-wrap gap-2 mb-4 align-items-center">
+         <div className="dropdown">
+           <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+             Company owner
+           </button>
+           <ul className="dropdown-menu">
+               <li><a className="dropdown-item" href="#michael">Michael Chen</a></li>
+               <li><a className="dropdown-item" href="#sarah">Sarah Johnson</a></li>
+             </ul>
+         </div>
+         <div className="dropdown">
+           <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+             Create date
+           </button>
+           <ul className="dropdown-menu">
+               <li><a className="dropdown-item" href="#michael">Today</a></li>
+               <li><a className="dropdown-item" href="#sarah">Yesterday</a></li>
+               <li><a className="dropdown-item" href="#sarah">Last 7 days</a></li>
+             </ul>
+         </div>
+         <div className="dropdown">
+           <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+             Last activity date
+           </button>
+           <ul className="dropdown-menu">
+               <li><a className="dropdown-item" href="#michael">Today</a></li>
+               <li><a className="dropdown-item" href="#sarah">Yesterday</a></li>
+               <li><a className="dropdown-item" href="#sarah">Last 7 days</a></li>
+             </ul>
+         </div>
+         <div className="dropdown">
+           <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+             Lead status
+           </button>  
+           <ul className="dropdown-menu">
+               <li><a className="dropdown-item" href="#michael">New</a></li>
+               <li><a className="dropdown-item" href="#sarah">Open</a></li>
+               <li><a className="dropdown-item" href="#sarah">Contacted</a></li>
+               <li><a className="dropdown-item" href="#sarah">Unqualified</a></li>
+               <li><a className="dropdown-item" href="#sarah">Closed</a></li>
+             </ul>
+         </div>
+         {/* <button className="btn btn-outline-secondary">+ More</button> */}
+         {/* <button className="btn btn-outline-secondary">
+           <i className="fas fa-sliders-h"></i> Advanced filters
+         </button> */}
+       </div>
       
+
+
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -98,7 +147,7 @@ const Company = () => {
         </tbody>
       </Table>
       
-      <Pagination className="justify-content-end">
+      <Pagination className="justify-content-end mt-3">
         <Pagination.Prev />
         <Pagination.Item active>{1}</Pagination.Item>
         <Pagination.Item>{2}</Pagination.Item>
