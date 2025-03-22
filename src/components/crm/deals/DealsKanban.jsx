@@ -124,6 +124,7 @@ const SalesDashboard = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
+        <h3 className='font-bold'>Deals </h3>
       {/* Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
         <MetricCard title="Total Deal Amount" value={metrics.totalDealAmount} />
@@ -201,7 +202,7 @@ const SalesDashboard = () => {
 
                   onClick={handleDealClick}
                 >
-                  <div className="flex justify-between items-start mb-2">
+                  <div className="flex-1 justify-between items-start mb-2">
                     <h4 className="font-medium">{deal.company}</h4>
                     <span className="font-medium">{deal.amount}</span>
                   </div>
