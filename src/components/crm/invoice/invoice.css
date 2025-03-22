@@ -253,3 +253,113 @@
     background-color: #3b82f6;
     border-color: #3b82f6;
 }
+/* newpaymentsetting */
+/* Custom form switch styling */
+.ips-switch__input {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 2.5em !important;
+    height: 1.4em !important;
+}
+
+.ips-switch__input:checked {
+    background-color: #111827;
+    border-color: #111827;
+}
+
+.ips-switch__input:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 0.2rem rgba(129, 140, 248, 0.25);
+}
+
+/* Payment method checkboxes */
+.ips-checkbox {
+    margin-bottom: 0.75rem;
+}
+
+.ips-checkbox__input {
+    width: 1.2em !important;
+    height: 1.2em !important;
+    margin-top: 0.15em;
+    cursor: pointer;
+}
+
+.ips-checkbox__label {
+    font-weight: 400;
+    transition: color 0.15s ease;
+    cursor: pointer;
+}
+
+.ips-checkbox_input:checked ~ .ips-checkbox_label {
+    color: #111827;
+}
+.ips-select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 0.2rem rgba(129, 140, 248, 0.25);
+}
+
+/* Custom accordion styling */
+.ips-accordion__button {
+    padding: 1rem 0;
+    border: none;
+    background: transparent;
+}
+
+.ips-accordion__button:not(.collapsed) {
+    background-color: transparent;
+    color: #111827;
+    box-shadow: none;
+}
+
+.ips-accordion__button:focus {
+    box-shadow: none;
+    border-color: #e5e7eb;
+}
+
+.ips-accordion__body {
+    padding: 1rem 0;
+}
+
+/* Summary section styling */
+.ips-summary {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.ips-summary__item {
+    padding: 8px 0;
+}
+
+.ips-summary__item:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ips-summary__label {
+    color: #6b7280;
+}
+
+.ips-summary__value {
+    font-weight: 500;
+}
+
+/* Custom button styles */
+.ips-btn {
+    padding: 8px 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.ips-btn--dark {
+    background-color: #111827;
+    border-color: #111827;
+    color: #ffffff;
+}
+
+.ips-btn--dark:hover {
+    background-color: #1f2937;
+    border-color: #1f2937;
+    color: white;
+}
+/* newpaymentsetting */

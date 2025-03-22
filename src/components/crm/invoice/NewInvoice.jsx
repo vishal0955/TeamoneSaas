@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import InvoicePaymentSetting from './InvoicePaymentSetting';
 
 const NewInvoice = () => {
+  
+    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  
+    const handleOpenModal = () => {
+      setIsModalOpen(true);
+      document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+    };
+  
+    const handleCloseModal = () => {
+      setIsModalOpen(false);
+      document.body.classList.remove("modal-open"); // Remove modal-open class
+    };
+
   return (
     <>
     <form>
@@ -154,11 +168,39 @@ const NewInvoice = () => {
           <button type="button" className="btn btn-outline-dark px-4">
             Save as Draft
           </button>
-          <button type="submit" className="btn btn-dark px-4">
+          <button type="button" className="btn btn-dark px-4" onClick={handleOpenModal}>
             Create Invoice
           </button>
         </div>
       </form>
+            {/* Modal for new payment setting */}
+                  {isModalOpen && (
+                    <>
+                      <div className="modal fade show d-block" role="dialog">
+                        <div className="modal-dialog modal-lg" role="document">
+                          <div className="modal-content">
+                            <div className="modal-header">
+                              <h5 className="modal-title">payment setting</h5>
+                              <button
+                                type="button"
+                                className="btn-close"
+                                aria-label="Close"
+                                onClick={handleCloseModal}
+                              />
+                            </div>
+                            <div className="modal-body">
+                              <InvoicePaymentSetting />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* Modal backdrop */}
+                      {/* <div
+                        className="modal-backdrop fade show"
+                        onClick={handleCloseModal}
+                      ></div> */}
+                    </>
+                  )}
     </>
   )
 }
