@@ -58,24 +58,24 @@
 // //         </div>
 // //       </header>
 
-    //   <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-4">
-    //     <div className="p-4 rounded-lg shadow-md">
-    //       <h2 className="font-semibold">Overtime Employees</h2>
-    //       <p className="text-3xl">{overtimeData.length}</p>
-    //     </div>
-    //     <div className="p-4 rounded-lg shadow-md">
-    //       <h2 className="font-semibold">Overtime Hours</h2>
-    //       <p className="text-3xl">{overtimeData.reduce((sum, item) => sum + item.hours, 0)}</p>
-    //     </div>
-    //     <div className="p-4 rounded-lg shadow-md">
-    //       <h2 className="font-semibold">Pending Requests</h2>
-    //       <p className="text-3xl">{overtimeData.filter(item => item.status === 'Pending').length}</p>
-    //     </div>
-    //     <div className="p-4 rounded-lg shadow-md">
-    //       <h2 className="font-semibold">Rejected</h2>
-    //       <p className="text-3xl">{overtimeData.filter(item => item.status === 'Rejected').length}</p>
-    //     </div>
-    //   </div>
+//   <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-4">
+//     <div className="p-4 rounded-lg shadow-md">
+//       <h2 className="font-semibold">Overtime Employees</h2>
+//       <p className="text-3xl">{overtimeData.length}</p>
+//     </div>
+//     <div className="p-4 rounded-lg shadow-md">
+//       <h2 className="font-semibold">Overtime Hours</h2>
+//       <p className="text-3xl">{overtimeData.reduce((sum, item) => sum + item.hours, 0)}</p>
+//     </div>
+//     <div className="p-4 rounded-lg shadow-md">
+//       <h2 className="font-semibold">Pending Requests</h2>
+//       <p className="text-3xl">{overtimeData.filter(item => item.status === 'Pending').length}</p>
+//     </div>
+//     <div className="p-4 rounded-lg shadow-md">
+//       <h2 className="font-semibold">Rejected</h2>
+//       <p className="text-3xl">{overtimeData.filter(item => item.status === 'Rejected').length}</p>
+//     </div>
+//   </div>
 
 // //       <div className="my-4">
 // //         <input type="text" placeholder="Date Range" className="text-gray-800 p-2 rounded-md mr-2" />
@@ -145,7 +145,6 @@
 
 // // export default Overtime;
 
-
 // import React, { useState, useEffect } from 'react';
 
 // const Overtime = () => {
@@ -205,8 +204,6 @@
 //       dateOfJoin: "2023-02-01",
 //     },
 //   ];
-
-
 
 //   const handleEdit = (id) => {
 //     const item = overtimeData.find((data) => data.id === id);
@@ -292,20 +289,19 @@
 
 // export default Overtime;
 
-
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { FaPenToSquare, FaTrash } from "react-icons/fa6";
 
 const Overtime = () => {
   const [overtimeData, setOvertimeData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState({
-    employee: '',
-    date: '',
-    hours: '',
-    project: '',
-    approvedBy: '',
-    status: 'Pending',
+    employee: "",
+    date: "",
+    hours: "",
+    project: "",
+    approvedBy: "",
+    status: "Pending",
   });
   const [employees, setEmployees] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -317,21 +313,21 @@ const Overtime = () => {
       const mockData = [
         {
           id: 1,
-          employee: 'Anthony Lewis',
-          date: '2024-01-14',
+          employee: "Anthony Lewis",
+          date: "2024-01-14",
           hours: 32,
-          project: 'Office Management',
-          approvedBy: 'Michael Walker',
-          status: 'Approved',
+          project: "Office Management",
+          approvedBy: "Michael Walker",
+          status: "Approved",
         },
         {
           id: 2,
-          employee: 'John Doe',
-          date: '2024-01-15',
+          employee: "John Doe",
+          date: "2024-01-15",
           hours: 10,
-          project: 'IT Infrastructure',
-          approvedBy: 'Sarah Lee',
-          status: 'Pending',
+          project: "IT Infrastructure",
+          approvedBy: "Sarah Lee",
+          status: "Pending",
         },
       ];
       setOvertimeData(mockData);
@@ -339,9 +335,14 @@ const Overtime = () => {
 
     const fetchDropdownData = async () => {
       // Mock API calls for dropdown data
-      setEmployees(['Anthony Lewis', 'John Doe', 'Sarah Lee', 'Michael Walker']);
-      setProjects(['Office Management', 'IT Infrastructure', 'HR System']);
-      setApprovers(['Michael Walker', 'Sarah Lee', 'David Johnson']);
+      setEmployees([
+        "Anthony Lewis",
+        "John Doe",
+        "Sarah Lee",
+        "Michael Walker",
+      ]);
+      setProjects(["Office Management", "IT Infrastructure", "HR System"]);
+      setApprovers(["Michael Walker", "Sarah Lee", "David Johnson"]);
     };
 
     fetchData();
@@ -356,23 +357,23 @@ const Overtime = () => {
 
   const handleAddOvertime = () => {
     setModalData({
-      employee: '',
-      date: '',
-      hours: '',
-      project: '',
-      approvedBy: '',
-      status: 'Pending',
+      employee: "",
+      date: "",
+      hours: "",
+      project: "",
+      approvedBy: "",
+      status: "Pending",
     });
     setIsModalOpen(true);
   };
 
   const handleDelete = (id) => {
-    setOvertimeData(overtimeData.filter(item => item.id !== id));
+    setOvertimeData(overtimeData.filter((item) => item.id !== id));
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setModalData(prev => ({ ...prev, [name]: value }));
+    setModalData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -380,8 +381,15 @@ const Overtime = () => {
       <header className="flex justify-between items-center py-4 border-b">
         <p className="text-2xl font-bold">Employee / Overtime</p>
         <div>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Export</button>
-          <button onClick={handleAddOvertime} className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded ml-2">Add Overtime</button>
+          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            Export
+          </button>
+          <button
+            onClick={handleAddOvertime}
+            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded ml-2"
+          >
+            Add Overtime
+          </button>
         </div>
       </header>
 
@@ -392,15 +400,21 @@ const Overtime = () => {
         </div>
         <div className="p-4 rounded-lg shadow-md">
           <h2 className="font-semibold">Overtime Hours</h2>
-          <p className="text-3xl">{overtimeData.reduce((sum, item) => sum + item.hours, 0)}</p>
+          <p className="text-3xl">
+            {overtimeData.reduce((sum, item) => sum + item.hours, 0)}
+          </p>
         </div>
         <div className="p-4 rounded-lg shadow-md">
           <h2 className="font-semibold">Pending Requests</h2>
-          <p className="text-3xl">{overtimeData.filter(item => item.status === 'Pending').length}</p>
+          <p className="text-3xl">
+            {overtimeData.filter((item) => item.status === "Pending").length}
+          </p>
         </div>
         <div className="p-4 rounded-lg shadow-md">
           <h2 className="font-semibold">Rejected</h2>
-          <p className="text-3xl">{overtimeData.filter(item => item.status === 'Rejected').length}</p>
+          <p className="text-3xl">
+            {overtimeData.filter((item) => item.status === "Rejected").length}
+          </p>
         </div>
       </div>
 
@@ -427,9 +441,24 @@ const Overtime = () => {
               <td className="p-2">
                 <span className="px-2 rounded text-black">{item.status}</span>
               </td>
-              <td className="p-2">
+              {/* <td className="p-2">
                 <button onClick={() => handleEdit(item.id)} className="text-blue-500 mr-2">Edit</button>
                 <button onClick={() => handleDelete(item.id)} className="text-red-500">Delete</button>
+              </td> */}
+              <td>
+                <button
+                  onClick={() => handleEdit(item.id)}
+                  className=" action-btn  hover:text-blue-800"
+                  style={{ color: "blue" }}
+                >
+                  <FaPenToSquare />
+                </button>
+                <button
+                  onClick={() => handleDelete(item.id)}
+                  className=" action-btn text-danger hover:text-red-800"
+                >
+                  <FaTrash />
+                </button>
               </td>
             </tr>
           ))}
@@ -439,29 +468,86 @@ const Overtime = () => {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="bg-white p-6 rounded-lg w-1/3">
-            <h2 className="text-xl font-bold mb-4">{modalData.id ? 'Edit Overtime' : 'Add Overtime'}</h2>
-            <select name="employee" value={modalData.employee} onChange={handleChange} className="w-full p-2 mb-2 border rounded">
+            <h2 className="text-xl font-bold mb-4">
+              {modalData.id ? "Edit Overtime" : "Add Overtime"}
+            </h2>
+            <select
+              name="employee"
+              value={modalData.employee}
+              onChange={handleChange}
+              className="w-full p-2 mb-2 border rounded"
+            >
               <option value="">Select Employee</option>
-              {employees.map(emp => <option key={emp} value={emp}>{emp}</option>)}
+              {employees.map((emp) => (
+                <option key={emp} value={emp}>
+                  {emp}
+                </option>
+              ))}
             </select>
-            <input type="date" name="date" value={modalData.date} onChange={handleChange} className="w-full p-2 mb-2 border rounded" />
-            <input type="number" name="hours" value={modalData.hours} onChange={handleChange} placeholder="Hours" className="w-full p-2 mb-2 border rounded" />
-            <select name="project" value={modalData.project} onChange={handleChange} className="w-full p-2 mb-2 border rounded">
+            <input
+              type="date"
+              name="date"
+              value={modalData.date}
+              onChange={handleChange}
+              className="w-full p-2 mb-2 border rounded"
+            />
+            <input
+              type="number"
+              name="hours"
+              value={modalData.hours}
+              onChange={handleChange}
+              placeholder="Hours"
+              className="w-full p-2 mb-2 border rounded"
+            />
+            <select
+              name="project"
+              value={modalData.project}
+              onChange={handleChange}
+              className="w-full p-2 mb-2 border rounded"
+            >
               <option value="">Select Project</option>
-              {projects.map(proj => <option key={proj} value={proj}>{proj}</option>)}
+              {projects.map((proj) => (
+                <option key={proj} value={proj}>
+                  {proj}
+                </option>
+              ))}
             </select>
-            <select name="approvedBy" value={modalData.approvedBy} onChange={handleChange} className="w-full p-2 mb-2 border rounded">
+            <select
+              name="approvedBy"
+              value={modalData.approvedBy}
+              onChange={handleChange}
+              className="w-full p-2 mb-2 border rounded"
+            >
               <option value="">Select Approver</option>
-              {approvers.map(appr => <option key={appr} value={appr}>{appr}</option>)}
+              {approvers.map((appr) => (
+                <option key={appr} value={appr}>
+                  {appr}
+                </option>
+              ))}
             </select>
-            <select name="status" value={modalData.status} onChange={handleChange} className="w-full p-2 mb-2 border rounded">
+            <select
+              name="status"
+              value={modalData.status}
+              onChange={handleChange}
+              className="w-full p-2 mb-2 border rounded"
+            >
               <option value="Approved">Approved</option>
               <option value="Pending">Pending</option>
               <option value="Rejected">Rejected</option>
             </select>
             <div className="flex justify-end">
-              <button onClick={() => setIsModalOpen(false)} className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded mr-2">Cancel</button>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onClick={() => setIsModalOpen(false)}>Save</button>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded mr-2"
+              >
+                Cancel
+              </button>
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>

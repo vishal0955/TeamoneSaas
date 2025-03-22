@@ -402,7 +402,7 @@ const TodoApp = () => {
               />
               <FontAwesomeIcon 
                 icon={faSearch} 
-                className="text-gray-400 absolute left-2 top-2 " 
+                className="text-gray-400 absolute right-2 top-2 " 
               />
             </div>
             <button className="ml-2 bg-white border border-gray-200 rounded-md p-1">
