@@ -114,9 +114,9 @@ const CompanyForm = (handleclose) => {
         </Form.Group>
 
         <div className="d-flex justify-content-end gap-2">
-          <Button variant="dark" >Create</Button>
-          <Button variant="dark">Create and add another</Button>
-          <Button variant="danger" onClick={() => handleclose()}>Cancel</Button>
+          <Button className="inv-new-button" style={{height: "fit-content"}}>Create</Button>
+          <Button>Create and add another</Button>
+          <Button className="inv-filter-button" onClick={() => handleclose()} style={{height: "fit-content"}}>Cancel</Button>
         </div>
       </Form>
     </Container>
