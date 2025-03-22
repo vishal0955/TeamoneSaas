@@ -50,10 +50,10 @@ const DealDetails = () => {
   const CurrentTabComponent = tabComponents[activeTab];
 
   const sidebarItems = [
-    { label: 'Contacts', count: 0, },
+    { label: 'Contacts', count: 0 },
     { label: 'Companies', count: 0 },
     { label: 'Leads', count: 0 },
-    { label: 'Deals', count: 0,  },
+    { label: 'Deals', count: 0  },
     { label: 'Quotes', count: 0 },
     { label: 'Invoice Stack', count: 0 },
     { label: 'Tickets', count: 0 },

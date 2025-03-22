@@ -72,10 +72,7 @@ import AllInvoice from "../components/crm/invoice/AllInvoice";
 import SalesDashboard from "../components/crm/deals/DealsKanban";
 import DealDetails from "../components/crm/deals/DealDetails";
 import PaymentList from "../components/crm/Payment/PaymentList";
-<<<<<<< HEAD
-=======
 import NewInvoice from "../components/crm/invoice/NewInvoice";
->>>>>>> 8658d315ba069e95868afcb4af20659d394bb553
 
 const RoleBasedRoutes = () => {
   return (
@@ -261,6 +258,7 @@ const RoleBasedRoutes = () => {
      {/* Administration */}
 
      <Route path="/admininistration/user_management/users" element={<Users/>} />
+ 
 
 
 
