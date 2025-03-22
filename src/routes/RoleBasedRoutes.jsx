@@ -75,6 +75,7 @@ import SalesDashboard from "../components/crm/deals/DealsKanban";
 import DealDetails from "../components/crm/deals/DealDetails";
 import PaymentList from "../components/crm/Payment/PaymentList";
 import NewInvoice from "../components/crm/invoice/NewInvoice";
+import RolesPermission from "../usermanagement/RolesPermission/RolesPermission";
 
 
 const RoleBasedRoutes = () => {
@@ -276,6 +277,7 @@ const RoleBasedRoutes = () => {
         {/* Administration */}
 
      <Route path="/admininistration/user_management/users" element={<Users/>} />
+     <Route path="/admininistration/user_management/roles_permissions" element={<RolesPermission />} />
  
         <Route
           path="/admininistration/user_management/users"

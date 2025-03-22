@@ -5,7 +5,9 @@
   text-align: center;
 }
 
-
+.button {
+  background-color: #9825f8;
+}
 
 .logo {
   height: 6em;

@@ -75,7 +75,7 @@ import { useNavigate } from 'react-router-dom';
                Actions
              </button>
              <ul className="dropdown-menu">
-               {/* <li><a className="dropdown-item" href="#import">Import</a></li> */}
+               <li><a className="dropdown-item" href="#import">Import</a></li>
                <li><a className="dropdown-item" href="#export">Export</a></li>
              </ul>
            </div>
@@ -109,8 +109,8 @@ import { useNavigate } from 'react-router-dom';
              Contact owner
            </button>
            <ul className="dropdown-menu">
-               <li><a className="dropdown-item" href="#michael">Michael Chen</a></li>
-               <li><a className="dropdown-item" href="#sarah">Sarah Johnson</a></li>
+               <li><a className="dropdown-item" href="#michael">John Doe</a></li>
+               <li><a className="dropdown-item" href="#sarah">Jane Smith</a></li>
              </ul>
          </div>
          <div className="dropdown">
