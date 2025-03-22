@@ -72,6 +72,7 @@ import AllInvoice from "../components/crm/invoice/AllInvoice";
 import SalesDashboard from "../components/crm/deals/DealsKanban";
 import DealDetails from "../components/crm/deals/DealDetails";
 import PaymentList from "../components/crm/Payment/PaymentList";
+import NewInvoice from "../components/crm/invoice/NewInvoice";
 
 const RoleBasedRoutes = () => {
   return (

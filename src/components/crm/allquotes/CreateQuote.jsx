@@ -5,7 +5,7 @@ import "./Quotes.css";
 import YourInfo from "./create-quotes/YourInfo";
 const CreateQuote = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 7;
+  const totalSteps = 5;
 
   const handleNext = () => {
     if (currentStep < totalSteps) {

@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import CreatePayment from './CreatePayment';
 
 const PaymentList = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  
+    const handleOpenModal = () => {
+      setIsModalOpen(true);
+      document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+    };
+  
+    const handleCloseModal = () => {
+      setIsModalOpen(false);
+      document.body.classList.remove("modal-open"); // Remove modal-open class
+    };
+  
   return (
     <>
         <div className="container py-4">
@@ -11,10 +24,10 @@ const PaymentList = () => {
       <a href="#" className="btn btn-outline-secondary">
         Go to Commerce
       </a>
-      <a href="#" className="btn btn-dark">
+      <button type='button' className="btn btn-dark" onClick={handleOpenModal}>
         <i className="bi bi-plus-lg me-2" />
         Create Payment Link
-      </a>
+      </button>
     </div>
   </div>
   <div className="shadow-sm ">
@@ -141,6 +154,34 @@ const PaymentList = () => {
     </div>
   </div>
 </div>
+            {/* Modal for Add payment */}
+            {isModalOpen && (
+              <>
+                <div className="modal fade show d-block" role="dialog">
+                  <div className="modal-dialog modal-lg" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title">Add New Payment</h5>
+                        <button
+                          type="button"
+                          className="btn-close"
+                          aria-label="Close"
+                          onClick={handleCloseModal}
+                        />
+                      </div>
+                      <div className="modal-body">
+                        <CreatePayment />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Modal backdrop */}
+                <div
+                  className="modal-backdrop fade show"
+                  onClick={handleCloseModal}
+                ></div>
+              </>
+            )}
     </>
   )
 }

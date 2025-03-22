@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import AllInvoice from './AllInvoice';
+import InvoicePaymentSetting from './InvoicePaymentSetting';
 
 const NewInvoice = () => {
   
@@ -173,14 +173,14 @@ const NewInvoice = () => {
           </button>
         </div>
       </form>
-            {/* Modal for Add contact */}
+            {/* Modal for new payment setting */}
                   {isModalOpen && (
                     <>
                       <div className="modal fade show d-block" role="dialog">
                         <div className="modal-dialog modal-lg" role="document">
                           <div className="modal-content">
                             <div className="modal-header">
-                              <h5 className="modal-title">Add New Contact</h5>
+                              <h5 className="modal-title">payment setting</h5>
                               <button
                                 type="button"
                                 className="btn-close"
@@ -189,16 +189,16 @@ const NewInvoice = () => {
                               />
                             </div>
                             <div className="modal-body">
-                              <AllInvoice />
+                              <InvoicePaymentSetting />
                             </div>
                           </div>
                         </div>
                       </div>
                       {/* Modal backdrop */}
-                      <div
+                      {/* <div
                         className="modal-backdrop fade show"
                         onClick={handleCloseModal}
-                      ></div>
+                      ></div> */}
                     </>
                   )}
     </>
