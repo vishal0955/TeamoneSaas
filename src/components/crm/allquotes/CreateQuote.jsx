@@ -3,6 +3,8 @@ import Dealsstep from "./create-quotes/Dealsstep";
 import BuyerInfo from "./create-quotes/BuyerInfo";
 import "./Quotes.css";
 import YourInfo from "./create-quotes/YourInfo";
+import SignaturePayment from "./create-quotes/SignaturePayment";
+// import Review from "./create-quotes/Review";
 const CreateQuote = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 5;
@@ -38,6 +40,18 @@ const CreateQuote = () => {
     </div>
   );
 
+  const Signature_Payment = () => (
+    <div className="quote-section">
+      <SignaturePayment />
+    </div>
+  );
+
+  // const Review_q = () => (
+  //   <div className="quote-section">
+  //     <Review />
+  //   </div>
+  // );
+
   // Render step content based on current step
   const renderStepContent = () => {
     switch (currentStep) {
@@ -47,6 +61,10 @@ const CreateQuote = () => {
         return <BuyerInfoStep />;
       case 3:
         return <YourInfoStep />;
+      case 4:
+        return <Signature_Payment />;
+      case 5:
+        // return <Review_q />;
       default:
         return <div>Step {currentStep} content</div>;
     }
@@ -89,7 +107,7 @@ const CreateQuote = () => {
           <div className="quote-wizard-form">{renderStepContent()}</div>
 
           {/* Right Section */}
-          <div className="quote-wizard-preview">
+          {/* <div className="quote-wizard-preview">
             <div className="quote-preview-section">
               <h2 className="quote-section-title">Quote Preview</h2>
               <div className="quote-preview-card">
@@ -114,7 +132,7 @@ const CreateQuote = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer Actions */}
