@@ -69,6 +69,7 @@ import Company from "../components/crm/companies/Company";
 import CompanyDetails from "../components/crm/companies/CompanyDetails";
 import AllQuotes from "../components/crm/allquotes/AllQuotes";
 import AllInvoice from "../components/crm/invoice/AllInvoice";
+import PaymentList from "../components/crm/Payment/PaymentList";
 
 const RoleBasedRoutes = () => {
   return (
@@ -126,6 +127,7 @@ const RoleBasedRoutes = () => {
         <Route path="/crm/activities" element={<Activity />} /> */}
         <Route path="/crm/quotes" element={<AllQuotes />} /> 
         <Route path="/crm/invoices" element={<AllInvoice />} /> 
+        <Route path="/crm/Payment" element={<PaymentList />} /> 
 
 
 
