@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Review = () => {
   return (
