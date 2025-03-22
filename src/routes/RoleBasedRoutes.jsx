@@ -304,6 +304,8 @@ const RoleBasedRoutes = () => {
 
         {/* Administration */}
 
+     <Route path="/admininistration/user_management/users" element={<Users/>} />
+ 
         <Route
           path="/admininistration/user_management/users"
           element={<Users />}
