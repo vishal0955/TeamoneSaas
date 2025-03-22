@@ -37,12 +37,6 @@ const CreateQuote = () => {
       <YourInfo />
     </div>
   );
-  
-  const LineTimes = () => (
-    <div className="quote-section">
-      <YourInfo />
-    </div>
-  );
 
   // Render step content based on current step
   const renderStepContent = () => {
@@ -53,8 +47,6 @@ const CreateQuote = () => {
         return <BuyerInfoStep />;
       case 3:
         return <YourInfoStep />;
-      case 4:
-        return <LineTimes />;
       default:
         return <div>Step {currentStep} content</div>;
     }
@@ -82,10 +74,10 @@ const CreateQuote = () => {
                 {index === 0 && "DEAL"}
                 {index === 1 && "BUYER INFO"}
                 {index === 2 && "YOUR INFO"}
-                {index === 3 && "LINE ITEMS"}
-                {index === 4 && "SIGNATURE & PAYMENT"}
-                {index === 5 && "TEMPLATE & DETAILS"}
-                {index === 6 && "REVIEW"}
+                {/* {index === 3 && "LINE ITEMS"} */}
+                {index === 3 && "SIGNATURE & PAYMENT"}
+                {/* {index === 5 && "TEMPLATE & DETAILS"} */}
+                {index === 4 && "REVIEW"}
               </span>
             </div>
           ))}
