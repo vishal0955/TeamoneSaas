@@ -221,6 +221,7 @@ const Holidays = () => {
     }
   };
 
+ 
   return (
     <div className="container-fluid p-3">
       <div className="row mb-4">
@@ -363,7 +364,7 @@ const Holidays = () => {
                         <button className="btn btn-sm btn-outline-primary  me-2" title="Edit">
                           <FontAwesomeIcon icon={faEdit} />
                         </button>
-                        <button className="btn btn-sm btn-outline-danger " title="Delete">
+                        <button   className="btn btn-sm btn-outline-danger " title="Delete">
                           <FontAwesomeIcon icon={faTrash} />
                         </button>
                       </div>

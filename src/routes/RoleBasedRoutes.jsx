@@ -77,6 +77,8 @@ import PaymentList from "../components/crm/Payment/PaymentList";
 import NewInvoice from "../components/crm/invoice/NewInvoice";
 import PayslipPage from "../components/AdminHRM/Payroll/PayslipPage";
 import PayrollItems from "../components/AdminHRM/Payroll/PayrollItems";
+import RolesPermission from "../usermanagement/RolesPermission/RolesPermission";
+
 
 const RoleBasedRoutes = () => {
   return (
@@ -278,8 +280,40 @@ const RoleBasedRoutes = () => {
         <Route path="/tasklist1" element={<TaskManagementTable />} />
         <Route path="/projectlist" element={<Project />} />
 
+        <Route path="/high" element={<High_todo></High_todo>}></Route>
+        <Route
+          path="/client"
+          element={
+            <ProtectedRoute allowedRoles={["client", "admin"]}>
+              <ClientDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/Medium" element={<Medium_todo></Medium_todo>}></Route>
+        <Route
+          path="/client"
+          element={
+            <ProtectedRoute allowedRoles={["client", "admin"]}>
+              <ClientDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/Low" element={<Low_todo></Low_todo>}></Route>
+        <Route
+          path="/client"
+          element={
+            <ProtectedRoute allowedRoles={["client"]}>
+              <ClientDashboard />
+            </ProtectedRoute>
+          }
+        />
+     
+
         {/* Administration */}
 
+     <Route path="/admininistration/user_management/users" element={<Users/>} />
+     <Route path="/admininistration/user_management/roles_permissions" element={<RolesPermission />} />
+ 
         <Route
           path="/admininistration/user_management/users"
           element={<Users />}

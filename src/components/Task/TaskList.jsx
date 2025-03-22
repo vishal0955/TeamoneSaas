@@ -1,5 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  FaPlus,
+  FaFilter,
+  FaDownload,
+  FaPenToSquare,
+  FaTrash,
+  FaUser,
+  FaXmark,
+} from "react-icons/fa6";
 
 const TaskList = () => {
   const navigate = useNavigate();
@@ -77,14 +86,28 @@ const TaskList = () => {
                 </div>
               </td>
               <td>Dec 25, 2023</td>
-              <td>
+              {/* <td>
                 <a href="#" className="action-btn">
                   <i className="bi bi-pencil" />
                 </a>
                 <a href="#" className="action-btn text-danger">
                   <i className="bi bi-trash" />
                 </a>
-              </td>
+              </td> */}
+               <td className="px-4 py-4 flex space-x-2">
+                                <button
+                                
+                                  className=" action-btn  hover:text-blue-800" style={{color:"blue"}}
+                                >
+                                  <FaPenToSquare />
+                                </button>
+                                <button
+                                  className=" action-btn text-danger hover:text-red-800"
+                                
+                                >
+                                  <FaTrash />
+                                </button>
+                              </td>
             </tr>
             {/* Add more task rows as needed */}
           </tbody>

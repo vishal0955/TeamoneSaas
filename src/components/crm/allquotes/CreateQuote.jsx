@@ -4,7 +4,7 @@ import BuyerInfo from "./create-quotes/BuyerInfo";
 import "./Quotes.css";
 import YourInfo from "./create-quotes/YourInfo";
 import SignaturePayment from "./create-quotes/SignaturePayment";
-// import Review from "./create-quotes/Review";
+import Review from "./create-quotes/Review";
 const CreateQuote = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 5;
@@ -46,11 +46,11 @@ const CreateQuote = () => {
     </div>
   );
 
-  // const Review_q = () => (
-  //   <div className="quote-section">
-  //     <Review />
-  //   </div>
-  // );
+  const Review_q = () => (
+    <div className="quote-section">
+      <Review />
+    </div>
+  );
 
   // Render step content based on current step
   const renderStepContent = () => {
@@ -64,7 +64,7 @@ const CreateQuote = () => {
       case 4:
         return <Signature_Payment />;
       case 5:
-        // return <Review_q />;
+        return <Review_q />;
       default:
         return <div>Step {currentStep} content</div>;
     }
@@ -149,13 +149,13 @@ const CreateQuote = () => {
           </div>
           <div className="createquote-btn d-flex">
           <button
-            className="quote-btn-continue"
+            className="inv-new-button"
             onClick={handleNext}
             disabled={currentStep === totalSteps}>
             Continue
             <i className="bi bi-arrow-right" />
           </button>
-          <button className="quote-btn-next ml-4">Save</button>
+          <button className="btn btn-outline-primary ml-4 custom-btn">Save</button>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Form, Button, Row, Col, InputGroup, Table } from 'react-bootstrap';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-const AddUserModal = ({ show, handleClose }) => {
+export const AddUserModal = ({ show, handleClose }) => {
   // State for form fields
   const [formData, setFormData] = useState({
     firstName: '',

@@ -8,6 +8,7 @@ import {
   FolderOpenDot,
   ClipboardCheck,
   FileText,
+  Landmark ,
   Cog,
   Contact,
   User,
@@ -52,14 +53,11 @@ const menuItems = [
     subItems: [
       { name: "Dashboard", path: "/crm/dashboard" },
       { name: "Contacts", path: "/crm/customers" },
-      {name: "Dashboard", path: "/crm/dashboard"},
-      { name: "Contacts", path: "/crm/contacts" },
       { name: "Companies", path: "/crm/companies" },
       // { name: "Leads", path: "/crm/leads" },
       { name: "Deals", path: "/crm/deals" },
       { name: "Quotes", path: "/crm/quotes" },
       { name: "Invoices", path: "/crm/invoices" },
-      {name : "Invoices", path: "/crm/invoices"},
       { name: "Payment", path: "/crm/Payment" },
       // { name: "Pipeline", path: "/crm/pipeline" },
 
@@ -98,10 +96,6 @@ const menuItems = [
         path: "/hrm/holiday",
       },
       {
-        name: "Shift Roster",
-        path: "/shiftroster",
-      },
-      {
         name: "Attendance",
         path: "/hrm/attendance",
         subMenu: [
@@ -138,6 +132,8 @@ const menuItems = [
         subMenu: [
           { name: "Employee Salary", path: "/employeesalary" },
           { name: "Payroll Items", path: "/payrollitem" },
+          { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
+          { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
         ],
       },
     ],
@@ -171,20 +167,21 @@ const menuItems = [
   //         { name: "Taxes", path: "/finance/sales/taxs" },
   //       ],
   //     },
-  // {
-  //   name: "Payroll",
-  //   path: "/finance/payroll",
-  //   subMenu: [
-  //     { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
-  //     { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
-  //   ],
-  // },
+      // {
+      //   name: "Payroll",
+      //   path: "/finance/payroll",
+      //   subMenu: [
+      //     { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
+      //     { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
+      //   ],
+      // },
   //   ],
   // },
 
   {
     name: "Administration",
     path: "/administration",
+    icon: <Landmark size={16} />,  
 
     subItems: [
       {

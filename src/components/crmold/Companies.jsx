@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import './Crm.css';
+import { useState, useEffect } from "react";
+import { List, Grid } from "lucide-react"; // Import new icons for grid and list
 import AddCompanies from './AddCompanies';
 
 const Companies = () => {
   const [viewMode, setViewMode] = useState('grid');
-    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
-  
-    const handleOpenModal = () => {
-      setIsModalOpen(true);
-      document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
-    };
-  
-    const handleCloseModal = () => {
-      setIsModalOpen(false);
-      document.body.classList.remove("modal-open"); // Remove modal-open class
-    };
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    document.body.classList.remove("modal-open"); // Remove modal-open class
+  };
+
   const [companies] = useState([
     {
       id: 1,
@@ -165,92 +166,99 @@ const Companies = () => {
 
   return (
     <>
-       <div className="container py-4">
-      <div className="d-flex justify-content-between align-items-center mb-4 page-header">
-        <div className="d-flex align-items-center header-title">
-          <h4 className="mb-0">Companies</h4>
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 ms-3">
-              <li className="breadcrumb-item">
-                <a href="#" className="text-decoration-none text-muted">CRM</a>
-              </li>
-              <li className="breadcrumb-item active">Companies {viewMode === 'grid' ? 'Grid' : 'List'}</li>
-            </ol>
-          </nav>
-        </div>
-        <div className="d-flex gap-2 header-actions">
-          <div className="d-flex align-items-center">
-            <div className="view-toggle">
-              <button 
-                className={viewMode === 'grid' ? 'active' : ''} 
-                onClick={() => toggleView('grid')}
-              >
-                <i className="bi bi-grid me-2" />
-                Grid
-              </button>
-              <button 
-                className={viewMode === 'list' ? 'active' : ''} 
-                onClick={() => toggleView('list')}
-              >
-                <i className="bi bi-list me-2" />
-                List
-              </button>
-            </div>
+      <div className="container py-4">
+        <div className="d-flex justify-content-between align-items-center mb-4 page-header">
+          <div className="d-flex align-items-center header-title">
+            <h4 className="mb-0">Companies</h4>
+            <nav aria-label="breadcrumb">
+              <ol className="breadcrumb mb-0 ms-3">
+                <li className="breadcrumb-item">
+                  <a href="#" className="text-decoration-none text-muted">CRM</a>
+                </li>
+                <li className="breadcrumb-item active">Companies {viewMode === 'grid' ? 'Grid' : 'List'}</li>
+              </ol>
+            </nav>
           </div>
-          <div className="header-buttons d-flex">
-            <button className="btn btn-outline-secondary d-flex align-items-center gap-2 mx-2">
-              <i className="bi bi-download" /> Export
-            </button>
-            <button className="btn btn-primary d-flex align-items-center gap-2" onClick={handleOpenModal}>
-              <i className="bi bi-plus" /> Add Company
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="view-container">
-        <div className={viewMode === 'grid' ? 'grid-view active' : 'list-view active'}>
-          {viewMode === 'grid' ? (
-            <div className="row g-4">
-              {companies.map(company => (
-                <CompanyCard key={company.id} company={company} isListView={false} />
-              ))}
-            </div>
-          ) : (
-            companies.map(company => (
-              <CompanyCard key={company.id} company={company} isListView={true} />
-            ))
-          )}
-        </div>
-      </div>
-    </div>
-          {/* /* Modal for Add companies */}
-          {isModalOpen && (
-            <>
-              <div className="modal fade show d-block" role="dialog">
-                <div className="modal-dialog modal-lg" role="document">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title">Add New Companies</h5>
-                      <button
-                        type="button"
-                        className="btn-close"
-                        aria-label="Close"
-                        onClick={handleCloseModal}
-                      />
-                    </div>
-                    <div className="modal-body">
-                      <AddCompanies />
-                    </div>
-                  </div>
+
+          <div className="d-flex gap-2 header-actions">
+            <div className="d-flex align-items-center">
+              <div className="view-toggle d-flex gap-3">
+                <div className="mr-2 flex border border-gray-300 rounded">
+                  {/* List View Button */}
+                  <button
+                    className={`p-2 ${viewMode === "list" ? 'bg-black text-white' : 'bg-white text-gray-700'}`}
+                    onClick={() => toggleView("list")}
+                  >
+                    <List size={18} />
+                  </button>
+
+                  {/* Grid View Button */}
+                  <button
+                    className={`p-2 ${viewMode === "grid" ? 'bg-black text-white' : 'bg-white text-gray-700'}`}
+                    onClick={() => toggleView("grid")}
+                  >
+                    <Grid size={18} />
+                  </button>
                 </div>
               </div>
-              {/* Modal backdrop */}
-              <div
-                className="modal-backdrop fade show"
-                onClick={handleCloseModal}
-              ></div>
-            </>
-          )}
+            </div>
+
+            <div className="header-buttons d-flex">
+              <button className="btn btn-outline-secondary d-flex align-items-center gap-2 mx-2">
+                <i className="bi bi-download" /> Export
+              </button>
+              <button className="btn btn-primary d-flex align-items-center gap-2" onClick={handleOpenModal}>
+                <i className="bi bi-plus" /> Add Company
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="view-container">
+          <div className={viewMode === 'grid' ? 'grid-view active' : 'list-view active'}>
+            {viewMode === 'grid' ? (
+              <div className="row g-4">
+                {companies.map(company => (
+                  <CompanyCard key={company.id} company={company} isListView={false} />
+                ))}
+              </div>
+            ) : (
+              companies.map(company => (
+                <CompanyCard key={company.id} company={company} isListView={true} />
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Modal for Add companies */}
+      {isModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Add New Companies</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className="modal-body">
+                  <AddCompanies />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal backdrop */}
+          <div
+            className="modal-backdrop fade show"
+            onClick={handleCloseModal}
+          ></div>
+        </>
+      )}
     </>
   );
 };

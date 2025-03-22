@@ -36,7 +36,7 @@ const ContactForm = ({handleclose}) => {
       firstName: '',
       lastName: '',
       contactOwner: '',
-      jobTitle: '',
+    
       phoneNumber: '',
       lifecycleStage: 'Lead',
       leadStatus: '',
@@ -114,17 +114,7 @@ const ContactForm = ({handleclose}) => {
                 </div>
               </div>
               
-              <div className="mb-3">
-                <label htmlFor="jobTitle" className="form-label">Job title</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="jobTitle"
-                  name="jobTitle"
-                  value={formData.jobTitle}
-                  onChange={handleChange}
-                />
-              </div>
+              
               
               <div className="mb-3">
                 <label htmlFor="phoneNumber" className="form-label">Phone number</label>
@@ -140,7 +130,8 @@ const ContactForm = ({handleclose}) => {
               
               <div className="mb-3">
                 <label htmlFor="source" className="form-label">Source</label>
-                <div className="dropdown">
+              <div className='d-flex align-items-center justify-content-between' >
+                <div className="dropdown flex-grow-1">
                   <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="sourceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.source || 'Select source'}
                   </button>
@@ -150,10 +141,15 @@ const ContactForm = ({handleclose}) => {
                     <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, source: 'Facebook'})}>Facebook</a></li>
                   </ul>
                 </div>
+                <button className="btn btn-outline-info bg-[#4F46E5] " type="button">
+                    <i className="bi bi-plus-lg" />
+                  </button>
+                  </div>
               </div>
               
               <div className="mb-3">
                 <label htmlFor="lifecycleStage" className="form-label">Lifecycle stage</label>
+                
                 <div className="dropdown">
                   <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="lifecycleStageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.lifecycleStage}
@@ -163,6 +159,7 @@ const ContactForm = ({handleclose}) => {
                     <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Customer'})}>Customer</a></li>
                     <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Opportunity'})}>Opportunity</a></li>
                   </ul>
+                  
                 </div>
               </div>
               
@@ -189,6 +186,8 @@ const ContactForm = ({handleclose}) => {
                 <button type="button" className="btn btn-outline-secondary">Cancel</button>
               </div>
             </form>
+
+
        
         </div>
       </div>
