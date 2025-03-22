@@ -260,7 +260,7 @@
 
 /* Main Content */
 .quote-wizard-content {
-    display: flex;
+    /* display: flex; */
     flex: 1;
     padding: 2rem;
     gap: 3rem;
@@ -268,7 +268,7 @@
 
 .quote-wizard-form {
     flex: 1;
-    max-width: 600px;
+    /* max-width: 600px; */
 }
 
 .quote-section {
@@ -461,7 +461,7 @@
 /* Form Section */
 .quote-form-section {
     flex: 1;
-    max-width: 600px;
+    /* max-width: 600px; */
 }
 
 .quote-section-group {
