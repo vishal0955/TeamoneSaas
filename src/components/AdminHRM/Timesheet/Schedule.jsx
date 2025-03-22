@@ -15,31 +15,32 @@ const Schedule = () => {
         <li className="breadcrumb-item active">Schedule Timing</li>
       </ol>
     </nav>
-    <div className="card p-3">
+    <div className="card p-3 mt-3" style={{height:"65px"}}>
       <div className="d-flex justify-content-between">
         <h5>Schedule Timing List</h5>
         <div>
           <button className="btn btn-light">Export</button>
         </div>
       </div>
-      <div className="d-flex justify-content-between mt-3">
-        <div>
+      <div className="d-flex justify-content-between mt-4">
+        <div className=''>
           <label>Row Per Page </label>
-          <select className="form-select d-inline w-auto">
+          <select className="form-select">
             <option>10</option>
             <option>20</option>
           </select>
         </div>
-        <div>
-          <input type="date" className="form-control d-inline w-auto" />
-          <select className="form-select d-inline w-auto">
+        <div className='d-flex gap-2'>
+          <input type="date" className="form-control" style={{height:"50px"}}/>
+          <select className="form-select  " style={{height:"50px"}}>
             <option>Sort By: Last 7 Days</option>
             <option>Sort By: Last 30 Days</option>
           </select>
           <input
             type="text"
-            className="form-control d-inline w-auto"
+            className="form-control"
             placeholder="Search"
+            style={{height:"50px"}}
           />
         </div>
       </div>
@@ -151,7 +152,7 @@ const Schedule = () => {
           </tr>
         </tbody>
       </table>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between mt-2">
         <p>Showing 1 - 3 of 3 entries</p>
         <nav>
           <ul className="pagination">

@@ -1,44 +1,70 @@
 import React from 'react'
+import { Container, Table, Button } from "react-bootstrap";
+import { FaEdit } from "react-icons/fa";
+import { MdOutlineDelete } from "react-icons/md";
 
 function PlanRequest() {
-  return (
-    <div>
-      <table className="table table-hover table-bordered text-center shadow-sm">
-  <thead
-    className="table-primary text-white"
-    style={{ backgroundColor: "#00879E" }}
-  >
-    <tr>
-      <th>Name</th>
-      <th>Plan Name</th>
-      <th>Total Users</th>
-      <th>Total Customers</th>
-      <th>Total Vendors</th>
-      <th>Total Clients</th>
-      <th>Duration</th>
-      <th>Date</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>John Doe</td>
-      <td>Premium</td>
-      <td>500</td>
-      <td>200</td>
-      <td>100</td>
-      <td>50</td>
-      <td>12 Months</td>
-      <td>2024-02-19</td>
-      <td>
-        <button className="btn btn-sm btn-outline-primary me-1">Edit</button>
-        <button className="btn btn-sm btn-outline-danger">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
+  const planRequests = [
+    {
+      name: "Workdo",
+      email: "workdo@gmail.com",
+      phoneNo: 9197956482,
+      contact: "-",
+      description: "text",
+      
+    },
+    {
+      name: "GrowBiz",
+      email: "Gold",
+      phoneNo: 25,
+      contact: "-",
+      description: "text",
+     
+    },
+  ];
+
+  const handleEdit = (name) => {
+    console.log("Edit plan:", name);
+  };
+
+  const handleDelete = (name) => {
+    console.log("Delete plan:", name);
+  };
+  return (
+    <Container className="mt-4">
+    {/* ✅ Fixed heading for mobile screens */}
+    <h2 className="mb-3 fw-bold">Plan Request </h2>
+
+    {/* ✅ Responsive Table with Horizontal Scroll */}
+    <div style={{ overflowX: "auto", width: "100%" }}>
+      <Table striped bordered hover responsive="md" className="text-center">
+        <thead className="bg-dark text-white">
+          <tr>
+            <th>Name</th>
+            <th>Email </th>
+            <th>Phone No</th>
+            <th>Contact Method</th>
+            <th>Description</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          {planRequests.map((request, index) => (
+            <tr key={index}>
+              <td>{request.name}</td>
+              <td>{request.email}</td>
+              <td>{request.phoneNo}</td>
+              <td>{request.contact}</td>
+              <td>{request.description}</td>
+             
+            
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
+  </Container>
   )
 }
 

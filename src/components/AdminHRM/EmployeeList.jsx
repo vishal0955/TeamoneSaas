@@ -585,9 +585,7 @@ const EmployeeList = () => {
               <button
                 className={`p-2 ${
                   activeButton === "list"
-                    ? "bg-orange-600 text-white"
-                    : "bg-white border"
-                } rounded-lg hover:bg-orange-600`}
+                    ? 'bg-black text-white' : 'bg-white text-gray-700' } rounded-lg hover:bg-orange-600`}
               >
                 <FaBars />
               </button>
@@ -597,8 +595,7 @@ const EmployeeList = () => {
               <button
                 className={`p-2 ${
                   activeButton === "grid"
-                    ? "bg-orange-600 text-white"
-                    : "bg-white border"
+                    ?'bg-black text-white' : 'bg-white text-gray-700'
                 } rounded-lg hover:bg-orange-600`}
               >
                 <FaTh />

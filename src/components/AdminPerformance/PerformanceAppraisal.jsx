@@ -7,6 +7,11 @@ import {
   FaEdit,
   FaTimes,
 } from "react-icons/fa";
+import {
+  FaPenToSquare,
+
+} from "react-icons/fa6";
+
 import { useState } from "react";
 import AddAppraisalModal from "./AddAppraisalModal";
 
@@ -147,7 +152,7 @@ export default function PerformanceAppraisal() {
                       {emp.status}
                     </span>
                   </td>
-                  <td className="p-2 flex gap-2">
+                  {/* <td className="p-2 flex gap-2">
                     <Pencil
                       className="text-blue-500 cursor-pointer"
                       size={18}
@@ -161,7 +166,22 @@ export default function PerformanceAppraisal() {
                       size={18}
                       onClick={() => handleDelete(emp.name)}
                     />
-                  </td>
+                    <Trash2 className="text-red-500 cursor-pointer" size={18} />
+                  </td> */}
+                  <td className="">
+                                <button
+                                
+                                  className=" action-btn  hover:text-blue-800" style={{color:"blue"}}
+                                >
+                                  <FaPenToSquare />
+                                </button>
+                                <button
+                                  className=" action-btn text-danger hover:text-red-800"
+                                
+                                >
+                                  <FaTrash />
+                                </button>
+                              </td>
                 </tr>
               ))}
             </tbody>

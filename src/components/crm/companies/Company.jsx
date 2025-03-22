@@ -147,7 +147,7 @@ const Company = () => {
         </tbody>
       </Table>
       
-      <Pagination className="justify-content-end">
+      <Pagination className="justify-content-end mt-3">
         <Pagination.Prev />
         <Pagination.Item active>{1}</Pagination.Item>
         <Pagination.Item>{2}</Pagination.Item>

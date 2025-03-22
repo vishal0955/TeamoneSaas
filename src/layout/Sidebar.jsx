@@ -51,13 +51,13 @@ const menuItems = [
     path: "/crm",
     icon: <Contact size={16} />,
     subItems: [
-      {name: "Dashboard", path: "/crm/dashboard"},
-      { name: "Contacts", path: "/crm/contacts" },
+      { name: "Dashboard", path: "/crm/dashboard" },
+      { name: "Contacts", path: "/crm/customers" },
       { name: "Companies", path: "/crm/companies" },
       // { name: "Leads", path: "/crm/leads" },
       { name: "Deals", path: "/crm/deals" },
       { name: "Quotes", path: "/crm/quotes" },
-      {name : "Invoices", path: "/crm/invoices"},
+      { name: "Invoices", path: "/crm/invoices" },
       { name: "Payment", path: "/crm/Payment" },
       // { name: "Pipeline", path: "/crm/pipeline" },
 

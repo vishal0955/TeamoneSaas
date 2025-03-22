@@ -80,13 +80,13 @@ const Refferal = () => {
                   <input
                     type="text"
                     placeholder="Search..."
-                    className="!rounded-button form-input block w-64 pl-10 pr-3 py-2 border-gray-300 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm"
-                  />
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    className="!rounded-button inline-flex rounded-2 items-center px-4 py-2 bg-custom border border-transparent text-sm font-medium  hover:bg-custom/90"
+                  /> 
+                  <div className="absolute inset-y-0 right-3 pl-3 flex items-center pointer-events-none">
                     <i className="fas fa-search text-gray-400" />
                   </div>
                 </div>
-                <button className="!rounded-button inline-flex items-center px-4 py-2 bg-custom border border-transparent text-sm font-medium text-white hover:bg-custom/90">
+                <button className="!rounded-button inline-flex items-center px-4 py-2 bg-custom border border-transparent text-sm font-medium  hover:bg-custom/90">
                   <i className="fas fa-plus mr-2" />
                   Add
                 </button>
@@ -201,7 +201,7 @@ const Refferal = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <button className="text-custom hover:text-custom/80 mr-3">
-                      <i className="fas fa-edit" />
+                      <i className="fas fa-edit" style={{color:"blue"}} />
                     </button>
                     <button className="text-red-600 hover:text-red-800">
                       <i className="fas fa-trash-alt" />
