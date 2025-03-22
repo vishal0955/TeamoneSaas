@@ -50,7 +50,7 @@ import Leave from "../components/AdminHRM/Leave/LeaveList";
 import Overtime from "../components/AdminHRM/Leave/Overtime";
 import CustomPolicyModal from "../components/AdminHRM/Leave/CustomPolicyform";
 import Contacts from "../components/crmold/Contacts";
-import Companies from "../components/crmold/Companies";
+// import Companies from "../components/crmold/Companies";
 import Leads from "../components/crmold/Leads";
 import Deal from "../components/crmold/Deal";
 import Pipeline from "../components/crmold/Pipeline";
@@ -66,6 +66,16 @@ import Analytics from "../components/crm/dashboard/Analytics";
 import ContactsList from "../components/crm/contact/Contact";
 import ShiftRoster from "../components/AdminHRM/ShiftRoster/ShiftRoster";
 import EmployeeSalary from "../components/AdminHRM/Payroll/EmployeeSalary";
+import ContactDetailPage from "../components/crm/contact/ContactCard";
+import Company from "../components/crm/companies/Company";
+import CompanyDetails from "../components/crm/companies/CompanyDetails";
+import AllQuotes from "../components/crm/allquotes/AllQuotes";
+import AllInvoice from "../components/crm/invoice/AllInvoice";
+import SalesDashboard from "../components/crm/deals/DealsKanban";
+import DealDetails from "../components/crm/deals/DealDetails";
+import PaymentList from "../components/crm/Payment/PaymentList";
+import NewInvoice from "../components/crm/invoice/NewInvoice";
+
 
 const RoleBasedRoutes = () => {
   return (
@@ -107,12 +117,34 @@ const RoleBasedRoutes = () => {
 
         {/* crm-section */}
         <Route path="/crm/customers" element={<ContactsList />} />
+        <Route path="/crm/contacts" element={<ContactsList/>} />
+        <Route path="/crm/contactdetails" element={<ContactDetailPage />} />
+
+
+        <Route path="/crm/companies" element={<Company />} />
+        <Route path="/crm/companydetails" element={<CompanyDetails />} />
+
+
+        {/* <Route path="/crm/customers" element={<ContactsList/>} />
         <Route path="/crm/companies" element={<Companies />} />
         <Route path="/crm/leads" element={<Leads />} />
         <Route path="/crm/deals" element={<Deal />} />
         <Route path="/crm/pipeline" element={<Pipeline />} />
+      
+        <Route path="/crm/activities" element={<Activity />} /> */}
+
+
+        <Route path="/crm/quotes" element={<AllQuotes />} /> 
+        <Route path="/crm/invoices" element={<AllInvoice />} /> 
         <Route path="/crm/analytics" element={<Analytics />} />
-        <Route path="/crm/activities" element={<Activity />} />
+
+        
+        <Route path="/crm/deals" element={<SalesDashboard />} />
+        <Route path="/crm/dealdetails" element={<DealDetails />} />
+  
+        <Route path="/crm/Payment" element={<PaymentList />} /> 
+
+
 
         {/*  CRM Routes  */}
 
@@ -127,6 +159,8 @@ const RoleBasedRoutes = () => {
 
         {/* <Route path="/todolist" element={<TodoList />} /> */}
         <Route path="/tasklist" element={<TaskListExample />} />
+
+        <Route path="/employeegrid" element={<EmployeeGrid/>} />
         <Route
           path="/employeelist"
           element={

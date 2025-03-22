@@ -52,14 +52,19 @@ const menuItems = [
     subItems: [
       { name: "Dashboard", path: "/crm/dashboard" },
       { name: "Contacts", path: "/crm/customers" },
+      {name: "Dashboard", path: "/crm/dashboard"},
+      { name: "Contacts", path: "/crm/contacts" },
       { name: "Companies", path: "/crm/companies" },
       // { name: "Leads", path: "/crm/leads" },
       { name: "Deals", path: "/crm/deals" },
       { name: "Quotes", path: "/crm/quotes" },
       { name: "Invoices", path: "/crm/invoices" },
+      {name : "Invoices", path: "/crm/invoices"},
+      { name: "Payment", path: "/crm/Payment" },
       // { name: "Pipeline", path: "/crm/pipeline" },
-      { name: "Tasks", path: "/crm/tasks" },
+
       { name: "Analytics", path: "/crm/analytics" },
+      
       // { name: "Activities", path: "/crm/activities" },
       // { name: "Sales", path: "/crm/sales" },
     ],

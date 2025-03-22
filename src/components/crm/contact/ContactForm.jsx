@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 
-const ContactForm = () => {
+const ContactForm = ({handleclose}) => {
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
     lastName: '',
-    contactOwner: 'Vishal Salanki',
+    contactOwner: '',
     jobTitle: '',
     phoneNumber: '',
     lifecycleStage: 'Lead',
-    leadStatus: ''
+    leadStatus: '',
+    source: ''
   });
 
   const handleChange = (e) => {
@@ -23,6 +24,7 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
+    handleclose();
     // Here you would typically send the data to your API
   };
 
@@ -33,11 +35,12 @@ const ContactForm = () => {
       email: '',
       firstName: '',
       lastName: '',
-      contactOwner: 'Vishal Salanki',
+      contactOwner: '',
       jobTitle: '',
       phoneNumber: '',
       lifecycleStage: 'Lead',
-      leadStatus: ''
+      leadStatus: '',
+      source: ''
     });
   };
 
@@ -46,19 +49,19 @@ const ContactForm = () => {
       <div className="row g-0">
         <div className="col-12">
           {/* Header */}
-          <div className="bg-info text-white p-3 d-flex justify-content-between align-items-center">
+          {/* <div className="bg-info text-white p-3 d-flex justify-content-between align-items-center">
             <h5 className="m-0">Create Contact</h5>
             <button className="btn-close btn-close-white" aria-label="Close"></button>
-          </div>
+          </div> */}
           
           {/* Form */}
-          <div className="p-3">
-            <div className="d-flex justify-content-end mb-3">
+    
+            {/* <div className="d-flex justify-content-end mb-3">
               <a href="#" className="text-info text-decoration-none">
                 <small>Edit this form</small>
                 <i className="ms-1 bi bi-box-arrow-up-right"></i>
               </a>
-            </div>
+            </div> */}
             
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
@@ -101,10 +104,10 @@ const ContactForm = () => {
                 <label htmlFor="contactOwner" className="form-label">Contact owner</label>
                 <div className="dropdown">
                   <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="contactOwnerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    {formData.contactOwner}
+                    {formData.contactOwner || 'Select contact owner'} 
                   </button>
                   <ul className="dropdown-menu w-100" aria-labelledby="contactOwnerDropdown">
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, contactOwner: 'Vishal Salanki'})}>Vishal Salanki</a></li>
+                    {/* <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, contactOwner: 'Vishal Salanki'})}>Vishal Salanki</a></li> */}
                     <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, contactOwner: 'John Doe'})}>John Doe</a></li>
                     <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, contactOwner: 'Jane Smith'})}>Jane Smith</a></li>
                   </ul>
@@ -133,6 +136,20 @@ const ContactForm = () => {
                   value={formData.phoneNumber}
                   onChange={handleChange}
                 />
+              </div>
+              
+              <div className="mb-3">
+                <label htmlFor="source" className="form-label">Source</label>
+                <div className="dropdown">
+                  <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="sourceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {formData.source || 'Select source'}
+                  </button>
+                  <ul className="dropdown-menu w-100" aria-labelledby="sourceDropdown">
+                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, source: 'LinkedIn'})}>LinkedIn</a></li>
+                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, source: 'Email'})}>Email</a></li>
+                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, source: 'Facebook'})}>Facebook</a></li>
+                  </ul>
+                </div>
               </div>
               
               <div className="mb-3">
@@ -172,7 +189,7 @@ const ContactForm = () => {
                 <button type="button" className="btn btn-outline-secondary">Cancel</button>
               </div>
             </form>
-          </div>
+       
         </div>
       </div>
     </div>
