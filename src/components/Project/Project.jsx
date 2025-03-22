@@ -50,7 +50,7 @@ const Project = () => {
           </div>
         </div>
 
-        {/* Grid View */}
+        {/* Grid View */}  
         <div className={`grid-view ${view === "grid" ? "active" : "d-none"}`}>
           <div className="row g-4">
             {/* Project Cards */}
