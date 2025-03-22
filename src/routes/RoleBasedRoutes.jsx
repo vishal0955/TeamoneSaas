@@ -69,6 +69,8 @@ import Company from "../components/crm/companies/Company";
 import CompanyDetails from "../components/crm/companies/CompanyDetails";
 import AllQuotes from "../components/crm/allquotes/AllQuotes";
 import AllInvoice from "../components/crm/invoice/AllInvoice";
+import SalesDashboard from "../components/crm/deals/DealsKanban";
+import DealDetails from "../components/crm/deals/DealDetails";
 
 const RoleBasedRoutes = () => {
   return (
@@ -122,10 +124,18 @@ const RoleBasedRoutes = () => {
         <Route path="/crm/leads" element={<Leads />} />
         <Route path="/crm/deals" element={<Deal />} />
         <Route path="/crm/pipeline" element={<Pipeline />} />
-        <Route path="/crm/analytics" element={<Analytics />} />
+      
         <Route path="/crm/activities" element={<Activity />} /> */}
+
+
         <Route path="/crm/quotes" element={<AllQuotes />} /> 
         <Route path="/crm/invoices" element={<AllInvoice />} /> 
+        <Route path="/crm/analytics" element={<Analytics />} />
+
+        
+        <Route path="/crm/deals" element={<SalesDashboard />} />
+        <Route path="/crm/dealdetails" element={<DealDetails />} />
+  
 
 
 
