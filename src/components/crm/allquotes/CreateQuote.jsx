@@ -1,89 +1,166 @@
-import React from 'react'
-import "./Quotes.css"; 
+import React, { useState } from "react";
+import Dealsstep from "./create-quotes/Dealsstep";
+import BuyerInfo from "./create-quotes/BuyerInfo";
+import "./Quotes.css";
+import YourInfo from "./create-quotes/YourInfo";
+import SignaturePayment from "./create-quotes/SignaturePayment";
+import Review from "./create-quotes/Review";
 const CreateQuote = () => {
+  const [currentStep, setCurrentStep] = useState(1);
+  const totalSteps = 5;
+
+  const handleNext = () => {
+    if (currentStep < totalSteps) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const handleBack = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  // Step content components
+  const DealStep = () => (
+    <div className="quote-section">
+      <Dealsstep />
+    </div>
+  );
+
+  const BuyerInfoStep = () => (
+    <div className="quote-section">
+      <BuyerInfo />
+    </div>
+  );
+
+  const YourInfoStep = () => (
+    <div className="quote-section">
+      <YourInfo />
+    </div>
+  );
+
+  const Signature_Payment = () => (
+    <div className="quote-section">
+      <SignaturePayment />
+    </div>
+  );
+
+  const Review_q = () => (
+    <div className="quote-section">
+      <Review />
+    </div>
+  );
+
+  // Render step content based on current step
+  const renderStepContent = () => {
+    switch (currentStep) {
+      case 1:
+        return <DealStep />;
+      case 2:
+        return <BuyerInfoStep />;
+      case 3:
+        return <YourInfoStep />;
+      case 4:
+        return <Signature_Payment />;
+      case 5:
+        return <Review_q />;
+      default:
+        return <div>Step {currentStep} content</div>;
+    }
+  };
+
   return (
     <>
-    <div className="wizard-container">
-  {/* Progress Steps */}
-  <div className="steps-progress">
-    <div className="step-item active">
-      <div className="step-number">1</div>
-      <span className="step-text">DEAL</span>
-    </div>
-    <div className="step-item">
-      <div className="step-number">2</div>
-      <span className="step-text">BUYER INFO</span>
-    </div>
-    <div className="step-item">
-      <div className="step-number">3</div>
-      <span className="step-text">YOUR INFO</span>
-    </div>
-    <div className="step-item">
-      <div className="step-number">4</div>
-      <span className="step-text">LINE ITEMS</span>
-    </div>
-    <div className="step-item">
-      <div className="step-number">5</div>
-      <span className="step-text">SIGNATURE &amp; PAYMENT</span>
-    </div>
-    <div className="step-item">
-      <div className="step-number">6</div>
-      <span className="step-text">TEMPLATE &amp; DETAILS</span>
-    </div>
-  </div>
-  {/* Main Content */}
-  <div className="content-wrapper">
-    {/* Left Section */}
-    <div className="form-section">
-      <h2 className="section-title">Deal</h2>
-      <p className="section-description">
-        Associate with a deal
-        <br />
-        Once a deal is associated with a quote in this wizard, any changes you
-        make will affect both the quote and the deal.
-      </p>
-      <div className="form-group">
-        <select className="form-select">
-          <option>Select existing deal...</option>
-        </select>
-      </div>
-    </div>
-    {/* Right Section */}
-    <div className="preview-section">
-      <h2 className="section-title">Quote Preview</h2>
-      <div className="quote-preview">
-        <div className="quote-number">
-          NEW QUOTE
-          <br />
-          #JQ2M2255-25872666
+      <div className="quote-wizard">
+        {/* Progress Steps */}
+        <div className="quote-wizard-steps">
+          {[...Array(totalSteps)].map((_, index) => (
+            <div
+              key={index + 1}
+              className={`quote-step ${
+                currentStep === index + 1 ? "active" : ""
+              }`}>
+              <div className="quote-step-circle">
+                {currentStep > index + 1 ? (
+                  <i className="bi bi-check2" />
+                ) : (
+                  <span className="quote-step-number">{index + 1}</span>
+                )}
+              </div>
+              <span className="quote-step-label">
+                {index === 0 && "DEAL"}
+                {index === 1 && "BUYER INFO"}
+                {index === 2 && "YOUR INFO"}
+                {/* {index === 3 && "LINE ITEMS"} */}
+                {index === 3 && "SIGNATURE & PAYMENT"}
+                {/* {index === 5 && "TEMPLATE & DETAILS"} */}
+                {index === 4 && "REVIEW"}
+              </span>
+            </div>
+          ))}
         </div>
-        <div className="company-info">
-          BPAY Technology Group Ltd
-          <br />
-          123 Business Street
-          <br />
-          Suite 456
-          <br />
-          Business City, BC 12345
-        </div>
-      </div>
-    </div>
-  </div>
-  {/* Action Buttons */}
-  <div className="action-buttons">
-    <button className="btn btn-back" disabled="">
-      <i className="bi bi-arrow-left" />
-      Back
-    </button>
-    <button className="btn btn-continue">
-      Continue
-      <i className="bi bi-arrow-right" />
-    </button>
-  </div>
-</div>
 
+        {/* Main Content */}
+        <div className="quote-wizard-content">
+          {/* Left Section */}
+          <div className="quote-wizard-form">{renderStepContent()}</div>
+
+          {/* Right Section */}
+          {/* <div className="quote-wizard-preview">
+            <div className="quote-preview-section">
+              <h2 className="quote-section-title">Quote Preview</h2>
+              <div className="quote-preview-card">
+                <div className="quote-preview-header">
+                  <div className="quote-preview-title">
+                    NEW QUOTE
+                    <br />
+                    <span className="quote-preview-number">
+                      #JQ2M2255-25872666
+                    </span>
+                  </div>
+                  <div className="quote-preview-logo">logo</div>
+                </div>
+                <div className="quote-preview-company">
+                  XYZ Technology Group Ltd
+                  <br />
+                  123 Business Street
+                  <br />
+                  Suite 456
+                  <br />
+                  Business City, BC 12345
+                </div>
+              </div>
+            </div>
+          </div> */}
+        </div>
+
+        {/* Footer Actions */}
+        <div className="quote-wizard-footer">
+          <button
+            className="quote-btn-back"
+            onClick={handleBack}
+            disabled={currentStep === 1}>
+            <i className="bi bi-arrow-left" />
+            Back
+          </button>
+          <div className="quote-step-indicator">
+            Step {currentStep} of {totalSteps}
+          </div>
+          <div className="createquote-btn d-flex">
+          <button
+            className="inv-new-button"
+            onClick={handleNext}
+            disabled={currentStep === totalSteps}>
+            Continue
+            <i className="bi bi-arrow-right" />
+          </button>
+          <button className="btn btn-outline-primary ml-4 custom-btn">Save</button>
+          </div>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default CreateQuote
+export default CreateQuote;

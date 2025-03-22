@@ -61,13 +61,18 @@ import {
   Pagination,
 } from "react-bootstrap";
 import {
-  FaEye,
-  FaEdit,
+ 
   FaTrash,
   FaCalendarAlt,
   FaSearch,
 } from "react-icons/fa";
 import { FaPenToSquare, FaRegEye } from "react-icons/fa6";
+
+
+
+
+import { Navigate } from 'react-router-dom';
+import { AddUserModal } from './userModal';
 
 const Users = () => {
   // Sample data for initial users
@@ -106,6 +111,8 @@ const Users = () => {
   const [sortBy, setSortBy] = useState("Last 7 Days");
   const [entriesPerPage, setEntriesPerPage] = useState(10);
 
+   const [showAddModal, setShowAddModal] = useState(false);
+  
   // Avatar placeholder component
   const Avatar = ({ name }) => {
     const initials = name
@@ -150,7 +157,7 @@ const Users = () => {
           <Button variant="outline-secondary" className="me-2">
             <i className="bi bi-download me-1"></i> Export
           </Button>
-          <Button variant="dark">
+          <Button variant="dark" onClick={() => setShowAddModal(true)}>
             <i className="bi bi-plus me-1"></i> Add User
           </Button>
         </Col>
@@ -371,6 +378,11 @@ const Users = () => {
             </Pagination>
           </Col>
         </Row>
+
+        <AddUserModal 
+        show={showAddModal} 
+        handleClose={() => setShowAddModal(false)} 
+      />
       </div>
     </Container>
   );
