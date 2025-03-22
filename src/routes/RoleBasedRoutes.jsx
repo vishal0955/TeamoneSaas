@@ -64,6 +64,8 @@ import Users from "../usermanagement/users";
 import CRMDashboard from "../components/crm/dashboard/CRMDashboard";
 import Analytics from "../components/crm/dashboard/Analytics";
 import ContactsList from "../components/crm/contact/Contact";
+import ShiftRoster from "../components/AdminHRM/ShiftRoster/ShiftRoster";
+import EmployeeSalary from "../components/AdminHRM/Payroll/EmployeeSalary";
 import ContactDetailPage from "../components/crm/contact/ContactCard";
 import Company from "../components/crm/companies/Company";
 import CompanyDetails from "../components/crm/companies/CompanyDetails";
@@ -73,6 +75,7 @@ import SalesDashboard from "../components/crm/deals/DealsKanban";
 import DealDetails from "../components/crm/deals/DealDetails";
 import PaymentList from "../components/crm/Payment/PaymentList";
 import NewInvoice from "../components/crm/invoice/NewInvoice";
+
 
 const RoleBasedRoutes = () => {
   return (
@@ -102,17 +105,18 @@ const RoleBasedRoutes = () => {
 
         <Route path="/todo" element={<TodoApp />} />
 
-    {/* Notes Route  */}
-           <Route path="/notesgrid" element={<NotesGrid />} />
-           <Route path="/noteslist" element={<NotesList />} />
+        {/* Notes Route  */}
+        <Route path="/notesgrid" element={<NotesGrid />} />
+        <Route path="/noteslist" element={<NotesList />} />
 
         <Route path="/todoapp" element={<TodoApp />} />
         <Route path="/project/projects" element={<Project />} />
         <Route path="/project/task" element={<Task />} />
         <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
-        
+
         {/* crm-section */}
+        <Route path="/crm/customers" element={<ContactsList />} />
         <Route path="/crm/contacts" element={<ContactsList/>} />
         <Route path="/crm/contactdetails" element={<ContactDetailPage />} />
 
@@ -144,10 +148,7 @@ const RoleBasedRoutes = () => {
 
         {/*  CRM Routes  */}
 
-      <Route path="/crm/dashboard" element={<CRMDashboard />} />
-
-
-
+        <Route path="/crm/dashboard" element={<CRMDashboard />} />
 
         {/* crm-section */}
         {/* recruitment */}
@@ -191,13 +192,25 @@ const RoleBasedRoutes = () => {
         <Route path="/policy" element={<Policy></Policy>}></Route>
         <Route path="/tasklist" element={<TaskListExample />} />
 
-        <Route path="/hrm/attendance/shift_schedule" element={<Schedule />}></Route>
+        <Route
+          path="/hrm/attendance/shift_schedule"
+          element={<Schedule />}
+        ></Route>
+
+        <Route
+          path="/shiftroster"
+          element={<ShiftRoster></ShiftRoster>}
+        ></Route>
 
         <Route
           path="/performanceindicator"
           element={<PerformanceIndicator></PerformanceIndicator>}
         ></Route>
 
+        <Route
+          path="/employeesalary"
+          element={<EmployeeSalary></EmployeeSalary>}
+        ></Route>
         <Route
           path="/performaceappraisal"
           element={<PerformanceAppraisal></PerformanceAppraisal>}
@@ -219,10 +232,13 @@ const RoleBasedRoutes = () => {
         <Route path="/document" element={<Document></Document>}></Route>
         <Route path="/attendance" element={<Attendance></Attendance>}></Route>
 
-{/*  lave */}
+        {/*  lave */}
         <Route path="/hrm/attendance/leaves" element={<Leave />} />
 
-        <Route path="/hrm/attendance/list" element={<AttendanceAdmin />}></Route>
+        <Route
+          path="/hrm/attendance/list"
+          element={<AttendanceAdmin />}
+        ></Route>
 
         <Route
           path="/department"
@@ -245,24 +261,27 @@ const RoleBasedRoutes = () => {
 
         <Route path="/hrm/attendance/timesheet" element={<Timesheet />} />
 
-        <Route path="/hrm/attendance/leave_settings" element={<LeaveSetting />} />
+        <Route
+          path="/hrm/attendance/leave_settings"
+          element={<LeaveSetting />}
+        />
 
         <Route path="/hrm/attendance/overtime" element={<Overtime />} />
 
-        <Route  path="/addcustompolicy" element={<CustomPolicyModal />}></Route>
+        <Route path="/addcustompolicy" element={<CustomPolicyModal />}></Route>
 
         <Route path="/tasklist1" element={<TaskManagementTable />} />
         <Route path="/projectlist" element={<Project />} />
-     
 
-     {/* Administration */}
+        {/* Administration */}
 
      <Route path="/admininistration/user_management/users" element={<Users/>} />
  
+        <Route
+          path="/admininistration/user_management/users"
+          element={<Users />}
+        />
 
-
-
-      
         <Route
           path="/manager"
           element={
