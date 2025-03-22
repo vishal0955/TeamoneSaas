@@ -50,6 +50,7 @@ const SalesDashboard = () => {
     ],
   });
 
+
   // Number of deals per stage
   const dealsCount = {
     Qualified: 3,
