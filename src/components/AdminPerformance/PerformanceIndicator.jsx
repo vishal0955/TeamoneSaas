@@ -228,6 +228,11 @@ const PerformanceIndicator = () => {
         </div>
       </div>
 
+
+      
+      
+
+
       {/* Modal */}
       {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
