@@ -45,8 +45,8 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white w-[900px] max-w-full p-6 rounded-lg shadow-lg relative max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-white w-[800px] max-w-full p-6 rounded-lg shadow-lg relative max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="flex justify-between items-center border-b pb-2">
           <h2 className="text-xl font-semibold">
@@ -95,7 +95,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
                   <span className="text-gray-500">+</span>
                 </div>
                 <button className="mt-2 bg-orange-500 text-white px-3 py-1 rounded-md text-sm">
-                  Upload
+                  <input type="file" placeholder="upload" />
                 </button>
               </div>
 
