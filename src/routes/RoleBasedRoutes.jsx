@@ -108,6 +108,13 @@ const RoleBasedRoutes = () => {
         <Route path="/crm/analytics" element={<Analytics />} />
         <Route path="/crm/activities" element={<Activity />} />
 
+        {/* crm-section */}
+        {/* recruitment */}
+        <Route path="/recruitment/jobs" element={<Job />} />
+        <Route path="/recruitment/candidates" element={<Candidate />} />
+        <Route path="/recruitment/refferals" element={<Refferal />} />
+        {/* recruitment */}
+
         {/* <Route path="/todolist" element={<TodoList />} /> */}
         <Route path="/tasklist" element={<TaskListExample />} />
         <Route
@@ -169,10 +176,10 @@ const RoleBasedRoutes = () => {
         <Route path="/document" element={<Document></Document>}></Route>
         <Route path="/attendance" element={<Attendance></Attendance>}></Route>
 
-        <Route
-          path="/hrm/attendance/list"
-          element={<AttendanceAdmin />}
-        ></Route>
+{/*  lave */}
+        <Route path="/hrm/attendance/leaves" element={<Leave />} />
+
+        <Route path="/hrm/attendance/list" element={<AttendanceAdmin />}></Route>
 
         <Route
           path="/department"
