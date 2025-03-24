@@ -275,7 +275,7 @@ const Company = () => {
                   />
                 </div>
                 <div className="modal-body">
-                  <CompanyForm handleclose={handleCloseModal} />
+                  <CompanyForm handleClose={handleCloseModal} />
                 </div>
               </div>
             </div>
