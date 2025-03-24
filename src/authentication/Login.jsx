@@ -126,7 +126,7 @@ const Login = () => {
             </form>
           </div>
         ) : (
-          <div className="signup-container">
+          <div className="signup-container bg-light">
             <h4 className="text-center mb-4">Create Account</h4>
             <button className="social-signup">
               <i className="fab fa-google" />

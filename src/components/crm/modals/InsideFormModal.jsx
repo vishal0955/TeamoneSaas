@@ -1,75 +1,4 @@
-// import React from 'react'
-
-// const InsideFormModal = ({handleclose}) => {
-//   return (
-//     <div>
-//         <>
-//   {/* Add Role Modal */}
-//   <div className="modal fade" id="addRoleModal" tabIndex={-1}>
-//     <div className="modal-dialog" style={{ maxWidth: 600 }}>
-//       <div className="modal-content">
-//         {/* Modal Header */}
-//         <div className="modal-header border-bottom py-3 px-4">
-//           <h5 className="modal-title fw-semibold">Add Role</h5>
-//           <button type="button" className="btn-close" data-bs-dismiss="modal" />
-//         </div>
-//         {/* Modal Body */}
-//         <div className="modal-body p-4">
-//           <form id="addRoleForm">
-//             {/* Role Name */}
-//             <div className="mb-4">
-//               <label className="form-label fw-medium">
-//                 Role Name <span className="text-danger">*</span>
-//               </label>
-//               <input
-//                 type="text"
-//                 className="form-control"
-//                 placeholder="Enter role name"
-//                 required=""
-//               />
-//             </div>
-//             {/* Status */}
-//             <div className="mb-4">
-//               <label className="form-label fw-medium">
-//                 Status <span className="text-danger">*</span>
-//               </label>
-//               <select className="form-select" required="">
-//                 <option value="">Select</option>
-//                 <option value="active">Active</option>
-//                 <option value="inactive">Inactive</option>
-//               </select>
-//             </div>
-//           </form>
-//         </div>
-//         {/* Modal Footer */}
-//         <div className="modal-footer border-top py-3 px-4">
-//           <button
-//             type="button"
-//             className="btn btn-outline-dark px-4"
-//             data-bs-dismiss="modal"
-//             // onClick={() => handleclose}
-//           >
-//             Cancel
-//           </button>
-//           <button
-//             type="submit"
-//             form="addRoleForm"
-//             className="btn btn-dark px-4"
-//           >
-//             Add Role
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// </>
-//     </div>
-//   )
-// }
-
-// export default InsideFormModal;
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const InsideFormModal = ({ 
   title, 
@@ -77,8 +6,24 @@ const InsideFormModal = ({
   onClose, 
   onSubmit, 
   formFields,
+  initialData = {},
   submitButtonText = 'Submit'
 }) => {
+  const [formData, setFormData] = useState({});
+
+  // Initialize form data when modal opens or initialData changes
+  useEffect(() => {
+    if (isOpen) {
+      setFormData(initialData);
+    }
+  }, [isOpen, initialData]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
+    onClose();
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -100,7 +45,7 @@ const InsideFormModal = ({
 
         {/* Modal Body */}
         <div className="p-4">
-          <form onSubmit={onSubmit} id="modalForm">
+          <form onSubmit={handleSubmit} id="modalForm">
             {formFields.map((field, index) => (
               <div key={index} className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -110,13 +55,16 @@ const InsideFormModal = ({
                 {field.type === 'select' ? (
                   <select
                     name={field.name}
-                    value={field.value}
-                    onChange={field.onChange}
+                    value={formData[field.name] }
+                    onChange={(e) => setFormData(prev => ({
+                      ...prev,
+                      [field.name]: e.target.value
+                    }))}
                     required={field.required}
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">{field.placeholder || 'Select'}</option>
-                    {field.options.map((option, i) => (
+                    {field.options?.map((option, i) => (
                       <option key={i} value={option.value}>
                         {option.label}
                       </option>
@@ -126,8 +74,11 @@ const InsideFormModal = ({
                   <input
                     type={field.type}
                     name={field.name}
-                    value={field.value}
-                    onChange={field.onChange}
+                    value={formData[field.name] }
+                    onChange={(e) => setFormData(prev => ({
+                      ...prev,
+                      [field.name]: e.target.value
+                    }))}
                     placeholder={field.placeholder}
                     required={field.required}
                     className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
