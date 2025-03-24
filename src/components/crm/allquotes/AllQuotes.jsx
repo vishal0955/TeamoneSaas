@@ -20,7 +20,7 @@ const AllQuotes = () => {
     <div className="quotes-header d-flex justify-content-between align-items-center mb-4">
       <h2 className="quotes-title">All Quotes</h2>
       <div className="quotes-actions d-flex gap-3">
-        <button className="quotes-import-btn btn d-flex align-items-center gap-2">
+        <button className="inv-filter-button d-flex align-items-center gap-2">
           <i className="bi bi-upload" /> Import
         </button>
         <button className=" inv-new-button quotes-create-btn btn d-flex align-items-center gap-2" onClick={handleOpenModal}>

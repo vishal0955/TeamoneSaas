@@ -216,7 +216,7 @@ const Company = () => {
             </div>
           </div>
         </div>
-        <Table striped bordered hover>
+        <Table hover>
           <thead>
             <tr>
               <th>
