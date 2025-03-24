@@ -450,6 +450,7 @@
 import React, { useState, useEffect } from "react";
 // import { v4 as uuidv4 } from "uuid";
 import AddEmployeeModal from "./AddEmployeeModal";
+import { FaRegEye } from "react-icons/fa6";
 import {
   FaPlus,
   FaFilter,
@@ -572,7 +573,7 @@ const EmployeeList = () => {
 
   return (
     <div className=" bg-gray-50 font-sans flex flex-col items-center p-6">
-      <div className="w-full bg-white rounded-lg p-6">
+      <div className="w-full rounded-lg p-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <div>
             <h1 className="text-2xl font-semibold text-gray-800">
@@ -585,7 +586,9 @@ const EmployeeList = () => {
               <button
                 className={`p-2 ${
                   activeButton === "list"
-                    ? 'bg-black text-white' : 'bg-white text-gray-700' } rounded-lg hover:bg-orange-600`}
+                    ? "bg-black text-white"
+                    : "bg-white text-gray-700"
+                } rounded-lg hover:bg-orange-600`}
               >
                 <FaBars />
               </button>
@@ -595,7 +598,8 @@ const EmployeeList = () => {
               <button
                 className={`p-2 ${
                   activeButton === "grid"
-                    ?'bg-black text-white' : 'bg-white text-gray-700'
+                    ? "bg-black text-white"
+                    : "bg-white text-gray-700"
                 } rounded-lg hover:bg-orange-600`}
               >
                 <FaTh />
@@ -607,133 +611,183 @@ const EmployeeList = () => {
                 setEditEmployee(null);
                 setModalOpen(true);
               }}
-              className="px-4 py-2 bg-gray-800 text-white rounded-md flex items-center hover:bg-black"
+              className="inv-new-button d-flex"
             >
               <FaPlus className="mr-2" /> Add Employee
             </button>
           </div>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatCard
-            icon={<FaUsers />}
-            title="Total..."
-            count="1007"
-            color="bg-black"
-          />
-          <StatCard
-            icon={<FaUserCheck />}
-            title="Active"
-            count="1007"
-            color="bg-green-500"
-          />
-          <StatCard
-            icon={<FaUserTimes />}
-            title="Inactive"
-            count="1007"
-            color="bg-red-500"
-          />
-          <StatCard
-            icon={<FaUserPlus />}
-            title="New..."
-            count="67"
-            color="bg-blue-500"
-          />
+        {/* Stats Cards Section */}
+        <div className="inv-stats-grid">
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-primary">
+                <FaUsers />
+              </div>
+              <div>
+                <div className="inv-stat-label">Total...</div>
+                <p className="inv-stat-value">1007</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-warning">
+                <FaUserCheck />
+              </div>
+              <div>
+                <div className="inv-stat-label">Active</div>
+                <p className="inv-stat-value">800</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-danger">
+                <FaUserTimes />
+              </div>
+              <div>
+                <div className="inv-stat-label">Inactive</div>
+                <p className="inv-stat-value">150</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-neutral">
+                <FaUserPlus />
+              </div>
+              <div>
+                <div className="inv-stat-label">New...</div>
+                <p className="inv-stat-value">57</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="flex justify-between items-center mb-4 mt-3">
-          <div className="relative w-64 mb-4 z-0">
-            <input
-              type="text"
-              placeholder="Search employees..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-          </div>
-          <div className="flex space-x-2">
-            <button className="px-3 py-2 border border-gray-200 rounded-md hover:bg-gray-50 flex items-center">
-              <FaFilter className="mr-2" /> Filter
-            </button>
-            <button className="px-3 py-2 border border-gray-200 rounded-md hover:bg-gray-50 flex items-center">
-              <FaDownload className="mr-2" /> Export
-            </button>
-          </div>
-        </div>
-
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="bg-gray-50 text-left text-sm font-medium text-gray-600">
-              <th className="px-4 py-3">Employee</th>
-              <th className="px-4 py-3">Designation</th>
-              <th className="px-4 py-3">Department</th>
-              <th className="px-4 py-3">Email</th>
-              <th className="px-4 py-3">Phone</th>
-              <th className="px-4 py-3">Status</th>
-              <th className="px-4 py-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200 text-nowrap">
-            {employees.map((employee) => (
-              <tr key={employee.id} className="hover:bg-gray-50">
-                <td className="px-4 py-3 flex items-center space-x-3">
-                  <img
-                    src={employee.image}
-                    className="w-8 h-8 rounded-full"
-                    alt={employee.name}
+        <div className="quotes-card">
+          <div className=" quotes-card-body">
+            <div className="quotes-filters row mb-4">
+              <div className="col-md-6">
+                <div className="inv-search-wrapper">
+                  <i className="bi bi-search inv-search-icon" />
+                  <input
+                    type="text"
+                    className="inv-search-input"
+                    placeholder="Search Employees..."
+                    aria-label="Search Employees..."
                   />
-                  <div>
-                    <Link to={`/employee/${employee.id}`}>
-                      <div className="font-medium text-gray-900">
-                        {employee.name}
-                      </div>
-                    </Link>
-                    <div className="text-sm text-gray-500">#{employee.id}</div>
-                  </div>
-                </td>
-                <td className="px-4 py-3 text-sm">{employee.designation}</td>
-                <td className="px-4 py-3 text-sm">{employee.department}</td>
-                <td className="px-4 py-3 text-sm">{employee.email}</td>
-                <td className="px-4 py-3 text-sm">{employee.phone}</td>
-                <td className="px-4 py-3">
-                  <span className="px-2 py-1 text-sm text-green-800 bg-green-100 rounded-full">
-                    {employee.status}
-                  </span>
-                </td>
-                <td className="px-4 py-3 flex space-x-2">
-                  <button
-                    onClick={() => handleEditEmployee(employee)}
-                    className="text-blue-600 hover:text-blue-800"
-                  >
-                    <FaPenToSquare />
-                  </button>
-                  <button
-                    className="text-red-600 hover:text-red-800"
-                    onClick={() => handleDeleteEmployee(employee.id)}
-                  >
-                    <FaTrash />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div className="flex justify-between items-center p-4 border-t mt-4">
-          <div className="text-sm text-gray-600">
-            Showing 1 to {employees.length} of {employees.length} entries
-          </div>
-          <div className="flex space-x-2">
-            <button className="px-3 py-1 border border-gray-200 rounded-md disabled:opacity-50">
-              Previous
-            </button>
-            <button className="px-3 py-1 border border-gray-200 rounded-md bg-blue-600 text-white">
-              1
-            </button>
-            <button className="px-3 py-1 border border-gray-200 rounded-md disabled:opacity-50">
-              Next
-            </button>
+                </div>
+              </div>
+              <div className="col-md-6 d-flex justify-content-end gap-3">
+                <button className="inv-filter-button d-flex">
+                  <FaFilter className="mr-2 mt-1" /> Filter
+                </button>
+                <button className="inv-filter-button d-flex">
+                  <FaDownload className="mr-2 mt-1" /> Export
+                </button>
+              </div>
+            </div>
+            <div className="table-responsive">
+              <table className="inv-table">
+                <thead>
+                  <tr className="bg-gray-50 text-left text-sm font-medium text-gray-600">
+                    <th className="px-4 py-3">Employee</th>
+                    <th className="px-4 py-3">Designation</th>
+                    <th className="px-4 py-3">Department</th>
+                    <th className="px-4 py-3">Email</th>
+                    <th className="px-4 py-3">Phone</th>
+                    <th className="px-4 py-3">Status</th>
+                    <th className="px-4 py-3">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 text-nowrap">
+                  {employees.map((employee) => (
+                    <tr key={employee.id} className="hover:bg-gray-50">
+                      <td className="px-4 py-3 flex items-center space-x-3">
+                        <img
+                          src={employee.image}
+                          className="w-8 h-8 rounded-full"
+                          alt={employee.name}
+                        />
+                        <div>
+                          <Link to={`/employee/${employee.id}`}>
+                            <div className="font-medium text-gray-900">
+                              {employee.name}
+                            </div>
+                          </Link>
+                          <div className="text-sm text-gray-500">
+                            #{employee.id}
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 text-sm">
+                        {employee.designation}
+                      </td>
+                      <td className="px-4 py-3 text-sm">
+                        {employee.department}
+                      </td>
+                      <td className="px-4 py-3 text-sm">{employee.email}</td>
+                      <td className="px-4 py-3 text-sm">{employee.phone}</td>
+                      <td className="px-4 py-3">
+                        <span className="px-2 py-1 text-sm text-green-800 bg-green-100 rounded-full">
+                          {employee.status}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 flex space-x-2">
+                        <button
+                          onClick={() => handleEditEmployee(employee)}
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          <FaPenToSquare />
+                        </button>
+                        <button
+                          className="text-red-600 hover:text-red-800"
+                          onClick={() => handleDeleteEmployee(employee.id)}
+                        >
+                          <FaTrash />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="quotes-footer d-flex justify-content-between align-items-center mt-4">
+              <div className="quotes-results-info">
+                Showing 1 to 10 of 97 results
+              </div>
+              <nav className="quotes-pagination">
+                <ul className="pagination mb-0">
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      <i className="bi bi-chevron-left" />
+                    </a>
+                  </li>
+                  <li className="page-item active">
+                    <a className="page-link" href="#">
+                      1
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      2
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      3
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      <i className="bi bi-chevron-right" />
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       </div>

@@ -150,7 +150,7 @@ const ContactForm = ({ handleclose }) => {
               <div className="mb-3">
                 <label htmlFor="contactOwner" className="form-label">Contact owner</label>
                 <div className="dropdown">
-                  <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="contactOwnerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="contactOwnerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.contactOwner || 'Select contact owner'} 
                   </button>
                   <ul className="dropdown-menu w-100" aria-labelledby="contactOwnerDropdown">
@@ -181,7 +181,7 @@ const ContactForm = ({ handleclose }) => {
               <label htmlFor="source" className="form-label">Source</label>
               <div className='d-flex align-items-center justify-content-between'>
                 <div className="dropdown flex-grow-1">
-                  <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="sourceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="sourceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.source || 'Select source'}
                   </button>
                   <ul className="dropdown-menu w-100" aria-labelledby="sourceDropdown">
@@ -204,7 +204,7 @@ const ContactForm = ({ handleclose }) => {
               <label htmlFor="lifecycleStage" className="form-label">Lifecycle stage</label>
               <div className='d-flex align-items-center justify-content-between'>
                 <div className="dropdown flex-grow-1">
-                  <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="lifecycleStageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="form-control text-start dropdown-toggle d-flex  inv-filter-button justify-content-between align-items-center" type="button" id="lifecycleStageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.lifecycleStage}
                   </button>
                   <ul className="dropdown-menu w-100" aria-labelledby="lifecycleStageDropdown">
@@ -227,7 +227,7 @@ const ContactForm = ({ handleclose }) => {
               <label htmlFor="leadStatus" className="form-label">Lead status</label>
               <div className='d-flex align-items-center justify-content-between'>
                 <div className="dropdown flex-grow-1">
-                  <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="leadStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="leadStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.leadStatus || 'Select lead status'}
                   </button>
                   <ul className="dropdown-menu w-100" aria-labelledby="leadStatusDropdown">
@@ -250,9 +250,9 @@ const ContactForm = ({ handleclose }) => {
             <hr className="my-4" />
             
             <div className="d-flex flex-wrap gap-2">
-              <button type="submit" className="btn btn-danger">Create</button>
-              <button type="button" className="btn btn-outline-secondary" onClick={handleCreateAndAdd}>Create and add another</button>
-              <button type="button" className="btn btn-outline-secondary" onClick={handleclose}>Cancel</button>
+              <button type="submit" className="inv-new-button">Create</button>
+              <button type="button" className="btn btn-outline-primary" onClick={handleCreateAndAdd}>Create and add another</button>
+              <button type="button" className="inv-filter-button" onClick={handleclose}>Cancel</button>
             </div>
           </form>
 

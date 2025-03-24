@@ -66,7 +66,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
           <button
             className={`px-4 py-2 ${
               activeTab === "basic"
-                ? "border-orange-500 border-b-2 text-orange-500"
+                ? "border-primary border-b-2 text-primary"
                 : "text-gray-500"
             }`}
             onClick={() => setActiveTab("basic")}
@@ -76,7 +76,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
           <button
             className={`px-4 py-2 ${
               activeTab === "permissions"
-                ? "border-orange-500 border-b-2 text-orange-500"
+                ? "border-primary border-b-2 text-primary"
                 : "text-gray-500"
             }`}
             onClick={() => setActiveTab("permissions")}
@@ -94,7 +94,13 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
                 <div className="border border-gray-300 rounded-full p-2 w-24 h-24 flex items-center justify-center">
                   <span className="text-gray-500">+</span>
                 </div>
-                <button className="mt-2 bg-orange-500 text-white px-3 py-1 rounded-md text-sm">
+                <button
+                  className="mt-2  px-3 py-1 rounded-md text-sm  text-white"
+                  style={{
+                    backgroundColor:
+                      "#2563eb",
+                  }}
+                >
                   <input type="file" placeholder="upload" />
                 </button>
               </div>
@@ -284,16 +290,10 @@ const AddEmployeeModal = ({ isOpen, onClose, onSave, editData }) => {
 
         {/* Buttons */}
         <div className="flex justify-end mt-4 gap-2">
-          <button
-            onClick={onClose}
-            className="border border-gray-300 px-4 py-2 rounded-md"
-          >
+          <button onClick={onClose} className="inv-filter-button">
             Cancel
           </button>
-          <button
-            onClick={() => onSave(formData)}
-            className="bg-orange-500 text-white px-4 py-2 rounded-md"
-          >
+          <button onClick={() => onSave(formData)} className="inv-new-button">
             {editData ? "Update" : "Save"}
           </button>
         </div>

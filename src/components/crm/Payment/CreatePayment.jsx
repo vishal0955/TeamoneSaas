@@ -662,7 +662,7 @@ const CreatePayment = () => {
                 <label className="pay-label" htmlFor="country">
                   Country
                 </label>
-                <select className="pay-select" id="country">
+                <select className="inv-filter-button  w-100" id="country">
                   <option value="US">United States</option>
                   <option value="GB">United Kingdom</option>
                   <option value="CA">Canada</option>
