@@ -174,7 +174,7 @@ const CompanyForm = ({ handleClose }) => {
             <Form.Group className="mb-3">
               <Form.Label>Company owner</Form.Label>
               <div className="d-flex align-items-center">
-                <Form.Select name="owner" value={formData.owner} onChange={handleChange}>
+                <Form.Select className="inv-filter-button" name="owner" value={formData.owner} onChange={handleChange}>
                   <option>Select owner</option>
                   <option>Sarah Johnson</option>
                 </Form.Select>
@@ -186,7 +186,7 @@ const CompanyForm = ({ handleClose }) => {
             <Form.Group className="mb-3">
               <Form.Label>Industry</Form.Label>
               <div className="d-flex align-items-center">
-                <Form.Select name="industry" value={formData.industry} onChange={handleChange}>
+                <Form.Select className="inv-filter-button " name="industry" value={formData.industry} onChange={handleChange}>
                   <option>Select industry</option>
                   <option>Technology</option>
                   <option>Finance</option>
@@ -199,7 +199,7 @@ const CompanyForm = ({ handleClose }) => {
 
         <Form.Group className="mb-3">
           <Form.Label>Type</Form.Label>
-          <Form.Select name="type" value={formData.type} onChange={handleChange}>
+          <Form.Select className="inv-filter-button " name="type" value={formData.type} onChange={handleChange}>
             <option>Select type</option>
             <option>Startup</option>
             <option>Enterprise</option>
@@ -229,7 +229,7 @@ const CompanyForm = ({ handleClose }) => {
         <div className="d-flex justify-content-end gap-2">
           <Button className="inv-new-button" style={{height: "fit-content"}}>Create</Button>
           <Button>Create and add another</Button>
-          <Button className="inv-filter-button" onClick={handleClose} style={{height: "fit-content"}}>Cancel</Button>
+          <Button className="inv-filter-button" onClick={handleClose}>Cancel</Button>
         </div>
       </Form>
 
