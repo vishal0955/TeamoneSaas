@@ -132,8 +132,8 @@ const menuItems = [
         subMenu: [
           { name: "Employee Salary", path: "/employeesalary" },
           { name: "Payroll Items", path: "/payrollitem" },
-          { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
-          { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
+          // { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
+          // { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
         ],
       },
     ],
