@@ -466,7 +466,6 @@ import {
   FaUserPlus,
   FaBars,
   FaTh,
-  FaCog,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
@@ -585,7 +584,9 @@ const EmployeeList = () => {
               <button
                 className={`p-2 ${
                   activeButton === "list"
-                    ? 'bg-black text-white' : 'bg-white text-gray-700' } rounded-lg hover:bg-orange-600`}
+                    ? "bg-black text-white"
+                    : "bg-white text-gray-700"
+                } rounded-lg hover:bg-orange-600`}
               >
                 <FaBars />
               </button>
@@ -595,7 +596,8 @@ const EmployeeList = () => {
               <button
                 className={`p-2 ${
                   activeButton === "grid"
-                    ?'bg-black text-white' : 'bg-white text-gray-700'
+                    ? "bg-black text-white"
+                    : "bg-white text-gray-700"
                 } rounded-lg hover:bg-orange-600`}
               >
                 <FaTh />

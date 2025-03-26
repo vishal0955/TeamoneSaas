@@ -78,7 +78,12 @@ import NewInvoice from "../components/crm/invoice/NewInvoice";
 import PayslipPage from "../components/AdminHRM/Payroll/PayslipPage";
 import PayrollItems from "../components/AdminHRM/Payroll/PayrollItems";
 import RolesPermission from "../usermanagement/RolesPermission/RolesPermission";
-
+import PayrollOvertime from "../components/AdminHRM/Payroll/PayrollOvertime";
+import PayrollDeductions from "../components/AdminHRM/Payroll/PayrollDeductions";
+import PerformanceOverview from "../components/AdminPerformance/PerformanceOverview";
+import GoalsOverview from "../components/AdminPerformance/GoalsOverview";
+import Compensation from "../components/AdminPerformance/Compensation";
+import Telent from "../components/AdminPerformance/Telent";
 
 const RoleBasedRoutes = () => {
   return (
@@ -205,12 +210,33 @@ const RoleBasedRoutes = () => {
         ></Route>
 
         <Route
+          path="/performaceoverview"
+          element={<PerformanceOverview></PerformanceOverview>}
+        ></Route>
+
+        <Route
+          path="/goalsoverview"
+          element={<GoalsOverview></GoalsOverview>}
+        ></Route>
+
+        <Route
+          path="/compensation"
+          element={<Compensation></Compensation>}
+        ></Route>
+
+        <Route path="/telent" element={<Telent></Telent>}></Route>
+        <Route
           path="/employeesalary"
           element={<EmployeeSalary></EmployeeSalary>}
         ></Route>
         <Route
           path="/performaceappraisal"
           element={<PerformanceAppraisal></PerformanceAppraisal>}
+        ></Route>
+
+        <Route
+          path="/payroll/overtime"
+          element={<PayrollOvertime></PayrollOvertime>}
         ></Route>
 
         <Route
@@ -264,6 +290,11 @@ const RoleBasedRoutes = () => {
           element={<PayrollItems></PayrollItems>}
         ></Route>
 
+        <Route
+          path="/payroll/deductions"
+          element={<PayrollDeductions></PayrollDeductions>}
+        ></Route>
+
         <Route path="/hrm/holiday" element={<Holidays />}></Route>
 
         <Route path="/hrm/attendance/timesheet" element={<Timesheet />} />
@@ -307,13 +338,18 @@ const RoleBasedRoutes = () => {
             </ProtectedRoute>
           }
         />
-     
 
         {/* Administration */}
 
-     <Route path="/admininistration/user_management/users" element={<Users/>} />
-     <Route path="/admininistration/user_management/roles_permissions" element={<RolesPermission />} />
- 
+        <Route
+          path="/admininistration/user_management/users"
+          element={<Users />}
+        />
+        <Route
+          path="/admininistration/user_management/roles_permissions"
+          element={<RolesPermission />}
+        />
+
         <Route
           path="/admininistration/user_management/users"
           element={<Users />}

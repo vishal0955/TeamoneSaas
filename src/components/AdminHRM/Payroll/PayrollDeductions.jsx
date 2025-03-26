@@ -1,53 +1,38 @@
 import React, { useState } from "react";
-import { FaPlus, FaTrash, FaEdit, FaFileExport } from "react-icons/fa";
+import { FaEdit, FaTrash, FaPlus, FaFileExport } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const PayrollItems = () => {
-  const [activeTab, setActiveTab] = useState("Additions");
+const PayrollDeductions = () => {
+  const [data, setData] = useState([
+    { name: "Absent amount", amount: "$12" },
+    { name: "Advance", amount: "$7" },
+    { name: "Unpaid leave", amount: "$3" },
+  ]);
+
   const [showModal, setShowModal] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
-    category: "Monthly Remuneration",
     amount: "",
     unitCalc: false,
     assignee: "No Assignee",
   });
 
-  const [data, setData] = useState([
-    {
-      name: "Leave Balance Amount",
-      category: "Monthly Remuneration",
-      amount: "$5",
-    },
-    {
-      name: "Arrears of Salary",
-      category: "Additional Remuneration",
-      amount: "$8",
-    },
-    {
-      name: "Gratuity",
-      category: "Monthly Remuneration",
-      amount: "$20",
-    },
-  ]);
-
   const handleAddOrUpdate = () => {
-    if (!formData.name || !formData.category || !formData.amount) {
-      alert("All fields required!");
+    if (!formData.name || !formData.amount) {
+      alert("All fields are required!");
       return;
     }
 
     const newItem = {
       name: formData.name,
-      category: formData.category,
       amount: `$${formData.amount}`,
     };
 
     if (editIndex !== null) {
-      const updatedData = [...data];
-      updatedData[editIndex] = newItem;
-      setData(updatedData);
+      const updated = [...data];
+      updated[editIndex] = newItem;
+      setData(updated);
     } else {
       setData([...data, newItem]);
     }
@@ -55,7 +40,6 @@ const PayrollItems = () => {
     setShowModal(false);
     setFormData({
       name: "",
-      category: "Monthly Remuneration",
       amount: "",
       unitCalc: false,
       assignee: "No Assignee",
@@ -67,7 +51,6 @@ const PayrollItems = () => {
     const item = data[index];
     setFormData({
       name: item.name,
-      category: item.category,
       amount: item.amount.replace("$", ""),
       unitCalc: false,
       assignee: "No Assignee",
@@ -77,78 +60,56 @@ const PayrollItems = () => {
   };
 
   const handleDelete = (index) => {
-    if (window.confirm("Are you sure you want to delete this item?")) {
-      const updatedData = [...data];
-      updatedData.splice(index, 1);
-      setData(updatedData);
+    if (window.confirm("Are you sure to delete this item?")) {
+      const updated = [...data];
+      updated.splice(index, 1);
+      setData(updated);
     }
   };
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-      <div className="flex justify-between">
-        <div className="mb-6">
+      <div className="flex justify-between items-center mb-6">
+        <div>
           <h1 className="text-2xl font-semibold text-gray-800">
             Payroll Items
           </h1>
           <p className="text-gray-500 text-sm">HR / Payroll Items</p>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex space-x-2">
           <button className="flex items-center px-4 py-2 border rounded">
             <FaFileExport className="mr-2" /> Export
           </button>
           <button
-            onClick={() => setShowModal(true)}
             className="flex items-center px-4 py-2 bg-gray-800 hover:bg-black text-white rounded"
+            onClick={() => setShowModal(true)}
           >
-            <FaPlus className="mr-2" /> Add Addition
+            <FaPlus className="mr-2" /> Add Deduction
           </button>
         </div>
       </div>
 
-      {/* <div className="flex justify-between items-center mb-4">
-        <div className="space-x-2">
-          {["Additions", "Overtime", "Deductions"].map((tab) => (
-            <button
-              key={tab}
-              className={`px-4 py-2 rounded border ${
-                activeTab === tab
-                  ? "bg-[#20626c] text-white"
-                  : "bg-white text-gray-700"
-              }`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-      </div> */}
-
       <div className="flex space-x-2 mb-4">
         <Link
-          to="/payroll/additions"
-          className="px-4 py-2 rounded border bg-[#20626c] text-white"
+          to="/payrollitem"
+          className="px-4 py-2 rounded border bg-white text-gray-700"
         >
           Additions
         </Link>
         <Link
-          to={"/payroll/overtime"}
+          to="/payroll/overtime"
           className="px-4 py-2 rounded border bg-white text-gray-700"
         >
           Overtime
         </Link>
-
-        <Link
-          to="/payroll/deductions"
-          className="px-4 py-2 rounded border bg-white text-gray-700"
-        >
+        <button className="px-4 py-2 rounded border bg-[#20626c] text-white">
           Deductions
-        </Link>
+        </button>
       </div>
 
       <div className="bg-white rounded shadow-md">
-        <div className="flex flex-wrap justify-between items-center border-b px-4 py-2">
-          <h2 className="font-semibold">Additions List</h2>
+        <div className="flex justify-between items-center border-b px-4 py-2">
+          <h2 className="font-semibold">Deductions List</h2>
           <div className="flex items-center space-x-2">
             <select className="border p-2 rounded text-sm">
               <option>Sort By : Last 7 Days</option>
@@ -172,14 +133,13 @@ const PayrollItems = () => {
             </select>
           </div>
 
-          <table className="w-full border-collapse border border-gray-200  text-nowrap">
+          <table className="w-full border-collapse border border-gray-200 text-nowrap">
             <thead>
               <tr className="bg-gray-100 text-left">
                 <th className="p-2 border">
                   <input type="checkbox" />
                 </th>
                 <th className="p-2 border">Name</th>
-                <th className="p-2 border">Category</th>
                 <th className="p-2 border">Default / Unit Amount</th>
                 <th className="p-2 border text-center">Actions</th>
               </tr>
@@ -191,7 +151,6 @@ const PayrollItems = () => {
                     <input type="checkbox" />
                   </td>
                   <td className="p-2 border">{item.name}</td>
-                  <td className="p-2 border">{item.category}</td>
                   <td className="p-2 border">{item.amount}</td>
                   <td className="p-2 border text-center space-x-3">
                     <button
@@ -228,23 +187,22 @@ const PayrollItems = () => {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-gray-400 bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white w-full max-w-lg rounded shadow-lg p-6">
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-40 flex items-center justify-center z-50">
+          <div className="bg-white w-full max-w-md rounded shadow-lg p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold">
-                {editIndex !== null ? "Edit Addition" : "Add Addition"}
+                {editIndex !== null ? "Edit Deduction" : "Add Deduction"}
               </h2>
               <button
                 onClick={() => {
                   setShowModal(false);
-                  setEditIndex(null);
                   setFormData({
                     name: "",
-                    category: "Monthly Remuneration",
                     amount: "",
                     unitCalc: false,
                     assignee: "No Assignee",
                   });
+                  setEditIndex(null);
                 }}
                 className="text-gray-500 text-xl"
               >
@@ -263,21 +221,6 @@ const PayrollItems = () => {
                     setFormData({ ...formData, name: e.target.value })
                   }
                 />
-              </div>
-              <div>
-                <label className="block font-medium text-sm mb-1">
-                  Category Name
-                </label>
-                <select
-                  className="w-full border p-2 rounded"
-                  value={formData.category}
-                  onChange={(e) =>
-                    setFormData({ ...formData, category: e.target.value })
-                  }
-                >
-                  <option>Monthly Remuneration</option>
-                  <option>Additional Remuneration</option>
-                </select>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-full">
@@ -332,14 +275,13 @@ const PayrollItems = () => {
               <button
                 onClick={() => {
                   setShowModal(false);
-                  setEditIndex(null);
                   setFormData({
                     name: "",
-                    category: "Monthly Remuneration",
                     amount: "",
                     unitCalc: false,
                     assignee: "No Assignee",
                   });
+                  setEditIndex(null);
                 }}
                 className="px-4 py-2 rounded border"
               >
@@ -347,9 +289,9 @@ const PayrollItems = () => {
               </button>
               <button
                 onClick={handleAddOrUpdate}
-                className="px-4 py-2 bg-orange-500 text-white rounded"
+                className="px-4 py-2 bg-gray-800 hover:bg-black text-white rounded"
               >
-                {editIndex !== null ? "Update" : "Add Addition"}
+                {editIndex !== null ? "Update" : "Add Deduction"}
               </button>
             </div>
           </div>
@@ -359,4 +301,4 @@ const PayrollItems = () => {
   );
 };
 
-export default PayrollItems;
+export default PayrollDeductions;
