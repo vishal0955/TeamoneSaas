@@ -50,6 +50,7 @@ const SalesDashboard = () => {
     ],
   });
 
+
   // Number of deals per stage
   const dealsCount = {
     Qualified: 3,
@@ -187,7 +188,7 @@ const SalesDashboard = () => {
         {/* Search and Filter */}
         <div className="inv-card-header mb-3">
           <div className="row mt-4">
-            <div className="col-md-5">
+            <div className="col-md-6">
               <div className="inv-search-wrapper">
                 <i className="bi bi-search inv-search-icon" />
                 <input
@@ -198,7 +199,7 @@ const SalesDashboard = () => {
                 />
               </div>
             </div>
-            <div className="col-md-3 d-flex justify-content-end">
+            <div className="col-md-2 d-flex justify-content-end w-auto">
               <div className="dropdown flex-grow-1">
                 <button
                   className="btn inv-filter-button w-100 d-flex justify-content-between align-items-center"
@@ -216,7 +217,7 @@ const SalesDashboard = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-md-2 text-md-end mt-3 mt-md-0">
+            <div className="col-md-2 text-md-center mt-3 mt-md-0">
               <button className="inv-filter-button">
                 <i className="bi bi-funnel me-2" /> Filters
               </button>
@@ -230,7 +231,7 @@ const SalesDashboard = () => {
         </div>
 
         {/* Kanban Board */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-5">
           {Object.keys(stages).map((stageName) => (
             <div
               key={stageName}

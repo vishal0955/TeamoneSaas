@@ -33,10 +33,10 @@ const SignaturePayment = () => {
                 }}
               />
               <div className="flex-grow-1">
-                <h5 className="mb-1">Benjamin Price</h5>
+                <h5 className="mb-1">john</h5>
                 <p className="mb-0 text-muted">No title</p>
-                <p className="mb-0 text-muted">ben.price@bpav.global</p>
-                <p className="mb-0 text-muted">+447876945809</p>
+                <p className="mb-0 text-muted">john@gmai.com</p>
+                <p className="mb-0 text-muted">+44 1234658965</p>
               </div>
             </div>
 
@@ -45,16 +45,16 @@ const SignaturePayment = () => {
               <label>Your Company</label>
               <br />
               <select className="form-select mt-2 border border-secondary rounded">
-                <option>BPAV Technology Group Ltd</option>
+                <option>XYZ Technology Group Ltd</option>
               </select>
             </div>
 
             {/* Company Address */}
             <div className="bg-light p-3 mt-3 rounded">
               <p className="mb-1">
-                Ground Floor, Unit C21, Prisma Park, Berrin,
+              XYZ 
               </p>
-              <p className="mb-1">Basingstoke, Hampshire RG24 8GT</p>
+              <p className="mb-1">America </p>
               <p className="mb-0">United Kingdom</p>
             </div>
           </div>

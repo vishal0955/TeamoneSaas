@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import InsideFormModal from '../modals/InsideFormModal';
 
-const ContactForm = ({handleclose}) => {
+
+const ContactForm = ({ handleclose }) => {
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -12,6 +14,13 @@ const ContactForm = ({handleclose}) => {
     leadStatus: '',
     source: ''
   });
+
+
+  
+  // Modal states
+  const [sourceModalOpen, setSourceModalOpen] = useState(false);
+  const [lifecycleModalOpen, setLifecycleModalOpen] = useState(false);
+  const [leadStatusModalOpen, setLeadStatusModalOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,18 +34,15 @@ const ContactForm = ({handleclose}) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     handleclose();
-    // Here you would typically send the data to your API
   };
 
   const handleCreateAndAdd = () => {
     console.log('Create and add another:', formData);
-    // Handle submission and reset form for another entry
     setFormData({
       email: '',
       firstName: '',
       lastName: '',
       contactOwner: '',
-    
       phoneNumber: '',
       lifecycleStage: 'Lead',
       leadStatus: '',
@@ -44,51 +50,92 @@ const ContactForm = ({handleclose}) => {
     });
   };
 
+  // Source Modal Configuration
+  const handleSourceSubmit = (data) => {
+    console.log('New source:', data);
+    // Add the new source to your sources list
+    setFormData(prev => ({
+      ...prev,
+      source: data.sourceName // Update the source in the main form
+    }));
+    setSourceModalOpen(false);
+  };
+
+  const sourceFormFields = [
+    {
+      label: 'Source Name',
+      name: 'sourceName',
+      type: 'text',
+      required: true,
+      placeholder: 'Enter source name'
+    }
+  ];
+
+  // Lifecycle Stage Modal Configuration
+  const handleLifecycleSubmit = (data) => {
+    console.log('New lifecycle stage:', data);
+    setFormData(prev => ({
+      ...prev,
+      lifecycleStage: data.stageName
+    }));
+    setLifecycleModalOpen(false);
+  };
+
+  const lifecycleFormFields = [
+    {
+      label: 'Stage Name',
+      name: 'stageName',
+      type: 'text',
+      required: true,
+      placeholder: 'Enter stage name'
+    },
+   
+  ];
+
+  // Lead Status Modal Configuration
+  const leadStatusFormFields = [
+    {
+      label: 'Status Name',
+      name: 'statusName',
+      type: 'text',
+      required: true,
+      placeholder: 'Enter status name',
+      value: "",
+      onChange: (e) => console.log(e.target.value)
+    },
+   
+  ];
+
   return (
     <div className="container-fluid p-0">
       <div className="row g-0">
         <div className="col-12">
-          {/* Header */}
-          {/* <div className="bg-info text-white p-3 d-flex justify-content-between align-items-center">
-            <h5 className="m-0">Create Contact</h5>
-            <button className="btn-close btn-close-white" aria-label="Close"></button>
-          </div> */}
-          
-          {/* Form */}
-    
-            {/* <div className="d-flex justify-content-end mb-3">
-              <a href="#" className="text-info text-decoration-none">
-                <small>Edit this form</small>
-                <i className="ms-1 bi bi-box-arrow-up-right"></i>
-              </a>
-            </div> */}
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email</label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
             
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-              
-              <div className="mb-3">
-                <label htmlFor="firstName" className="form-label">First name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                />
-              </div>
-              
-              <div className="mb-3">
+            <div className="mb-3">
+              <label htmlFor="firstName" className="form-label">First name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="mb-3">
                 <label htmlFor="lastName" className="form-label">Last name</label>
                 <input
                   type="text"
@@ -103,7 +150,7 @@ const ContactForm = ({handleclose}) => {
               <div className="mb-3">
                 <label htmlFor="contactOwner" className="form-label">Contact owner</label>
                 <div className="dropdown">
-                  <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="contactOwnerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="contactOwnerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.contactOwner || 'Select contact owner'} 
                   </button>
                   <ul className="dropdown-menu w-100" aria-labelledby="contactOwnerDropdown">
@@ -127,12 +174,14 @@ const ContactForm = ({handleclose}) => {
                   onChange={handleChange}
                 />
               </div>
-              
-              <div className="mb-3">
-                <label htmlFor="source" className="form-label">Source</label>
-              <div className='d-flex align-items-center justify-content-between' >
+            
+            {/* ... other form fields ... */}
+            
+            <div className="mb-3">
+              <label htmlFor="source" className="form-label">Source</label>
+              <div className='d-flex align-items-center justify-content-between'>
                 <div className="dropdown flex-grow-1">
-                  <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="sourceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="sourceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.source || 'Select source'}
                   </button>
                   <ul className="dropdown-menu w-100" aria-labelledby="sourceDropdown">
@@ -141,17 +190,21 @@ const ContactForm = ({handleclose}) => {
                     <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, source: 'Facebook'})}>Facebook</a></li>
                   </ul>
                 </div>
-                <button className="btn btn-outline-info bg-[#4F46E5] " type="button">
-                    <i className="bi bi-plus-lg" />
-                  </button>
-                  </div>
+                <button 
+                  className="btn btn-outline-dark" 
+                  type="button" 
+                  onClick={() => setSourceModalOpen(true)}
+                >
+                  <i className="bi bi-plus-lg" />
+                </button>
               </div>
-              
-              <div className="mb-3">
-                <label htmlFor="lifecycleStage" className="form-label">Lifecycle stage</label>
-                
-                <div className="dropdown">
-                  <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="lifecycleStageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="lifecycleStage" className="form-label">Lifecycle stage</label>
+              <div className='d-flex align-items-center justify-content-between'>
+                <div className="dropdown flex-grow-1">
+                  <button className="form-control text-start dropdown-toggle d-flex  inv-filter-button justify-content-between align-items-center" type="button" id="lifecycleStageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.lifecycleStage}
                   </button>
                   <ul className="dropdown-menu w-100" aria-labelledby="lifecycleStageDropdown">
@@ -159,14 +212,22 @@ const ContactForm = ({handleclose}) => {
                     <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Customer'})}>Customer</a></li>
                     <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Opportunity'})}>Opportunity</a></li>
                   </ul>
-                  
                 </div>
+                <button 
+                  className="btn btn-outline-dark" 
+                  type="button" 
+                  onClick={() => setLifecycleModalOpen(true)}
+                >
+                  <i className="bi bi-plus-lg" />
+                </button>
               </div>
-              
-              <div className="mb-3">
-                <label htmlFor="leadStatus" className="form-label">Lead status</label>
-                <div className="dropdown">
-                  <button className="form-control text-start dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="leadStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="leadStatus" className="form-label">Lead status</label>
+              <div className='d-flex align-items-center justify-content-between'>
+                <div className="dropdown flex-grow-1">
+                  <button className="form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="leadStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.leadStatus || 'Select lead status'}
                   </button>
                   <ul className="dropdown-menu w-100" aria-labelledby="leadStatusDropdown">
@@ -176,19 +237,58 @@ const ContactForm = ({handleclose}) => {
                     <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, leadStatus: 'Closed'})}>Closed</a></li>
                   </ul>
                 </div>
+                <button 
+                  className="btn btn-outline-dark" 
+                  type="button" 
+                  onClick={() => setLeadStatusModalOpen(true)}
+                >
+                  <i className="bi bi-plus-lg" />
+                </button>
               </div>
-              
-              <hr className="my-4" />
-              
-              <div className="d-flex flex-wrap gap-2">
-                <button type="submit" className="btn btn-danger">Create</button>
-                <button type="button" className="btn btn-outline-secondary" onClick={handleCreateAndAdd}>Create and add another</button>
-                <button type="button" className="btn btn-outline-secondary">Cancel</button>
-              </div>
-            </form>
+            </div>
 
+            <hr className="my-4" />
+            
+            <div className="d-flex flex-wrap gap-2">
+              <button type="submit" className="inv-new-button">Create</button>
+              <button type="button" className="btn btn-outline-primary" onClick={handleCreateAndAdd}>Create and add another</button>
+              <button type="button" className="inv-filter-button" onClick={handleclose}>Cancel</button>
+            </div>
+          </form>
 
-       
+          {/* Source Modal */}
+          <InsideFormModal
+            title="Add Source"
+            isOpen={sourceModalOpen}
+            onClose={() => setSourceModalOpen(false)}
+            onSubmit={handleSourceSubmit}
+            formFields={sourceFormFields}
+            submitButtonText="Add Source"
+          />
+
+          {/* Lifecycle Stage Modal */}
+          <InsideFormModal
+            title="Add Lifecycle Stage"
+            isOpen={lifecycleModalOpen}
+            onClose={() => setLifecycleModalOpen(false)}
+            onSubmit={handleLifecycleSubmit}
+            formFields={lifecycleFormFields}
+            submitButtonText="Add Stage"
+          />
+
+          {/* Lead Status Modal */}
+          <InsideFormModal
+            title="Add Lead Status"
+            isOpen={leadStatusModalOpen}
+            onClose={() => setLeadStatusModalOpen(false)}
+            onSubmit={(e) => {
+              e.preventDefault();
+              // Handle lead status form submission
+              setLeadStatusModalOpen(false);
+            }}
+            formFields={leadStatusFormFields}
+            submitButtonText="Add Status"
+          />
         </div>
       </div>
     </div>

@@ -13,11 +13,11 @@ const Review = () => {
 
           {/* Button options for sending quote */}
           <div className="d-grid gap-2">
-            <Button variant="dark" size="lg" className="d-flex justify-content-center align-items-center">
+            <Button variant="dark" size="lg" className=" inv-new-button d-flex justify-content-center align-items-center">
               <i className="bi bi-send-fill me-2" />
               Auto Send Quote
             </Button>
-            <Button variant="outline-dark" size="lg" className="d-flex justify-content-center align-items-center">
+            <Button variant="outline-dark" size="lg" className="btn btn-outline-primary d-flex justify-content-center align-items-center">
               <i className="bi bi-envelope me-2" />
               Custom Email
             </Button>

@@ -9,6 +9,7 @@ import MeetingsTab from '../deals/tabs/MeetingsTab';
 import AboutContactForm from './AboutContactForm';
 import ContactForm from './ContactForm';
 import CreateDealModal from '../deals/ADdDealForm';
+import { Link } from "react-router-dom";
 
 const ContactDetailPage = () => {
   const [activeTab, setActiveTab] = useState('Activity');
@@ -87,16 +88,16 @@ const ContactDetailPage = () => {
       {/* Header */}
       <div className="flex justify-between items-center p-4 border-b">
         <div>
-          <a href="#" className="text-gray-800 hover:text-gray-600 flex items-center">
+          <Link to="/crm/customers" className="text-gray-800 hover:text-gray-600 flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             Back to Contacts
-          </a>
+          </Link>
         </div>
         <div className="flex gap-2">
-          <button className="px-4 py-2 border border-gray-300 rounded text-sm">Actions</button>
-          <button className="px-4 py-2 bg-gray-900 text-white rounded text-sm">Customize record</button>
+          <button className="inv-filter-button">Actions</button>
+          <button className="inv-new-button">Customize record</button>
         </div>
       </div>
 

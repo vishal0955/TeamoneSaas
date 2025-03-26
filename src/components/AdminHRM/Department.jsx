@@ -80,40 +80,40 @@ const Department = () => {
           <p className="text-gray-500 text-sm">Employee / Departments</p>
         </div>
         <div className="flex flex-wrap gap-2 sm:gap-4 mt-4 sm:mt-0">
-          <button className="flex items-center px-4 py-2 border border-black text-black rounded-md">
-            <FaFileExport className="mr-2" />
+          <button className="inv-filter-button d-flex">
+            <FaFileExport className="mr-2 mt-1" />
             Export
           </button>
           <button
-            className="flex items-center px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
+            className="inv-new-button d-flex"
             onClick={() => openModal()} // Open Add Modal
           >
-            <FaPlus className="mr-2" />
+            <FaPlus className="mr-2 mt-1" />
             Add Department
           </button>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white border border-gray-50 rounded-lg">
+      <div className="quotes-card">
         <div className="flex flex-wrap justify-between items-center p-3 rounded-md">
           <h1 className="text-xl font-semibold text-gray-800">
             Department List
           </h1>
           <div className="flex flex-wrap gap-2">
-            <select className="border p-2 rounded-md text-sm">
+            <select className="inv-filter-button">
               <option>Status</option>
               <option>Active</option>
               <option>Inactive</option>
             </select>
-            <select className="border p-2 rounded-md text-sm">
+            <select className="inv-filter-button">
               <option>Sort By : Last 7 Days</option>
               <option>Last 30 Days</option>
             </select>
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-between items-center p-3 rounded-md border-t-2  gap-4">
+        <div className="d-flex justify-content-between items-center p-3 rounded-md border-t-2  gap-4">
           <div className="flex items-center space-x-4">
             <label className="text-sm font-medium">Row Per Page</label>
             <select className="border p-2 rounded-md text-sm">
@@ -125,7 +125,7 @@ const Department = () => {
           <input
             type="text"
             placeholder="Search"
-            className="border p-2 rounded-md text-sm w-full sm:w-auto"
+            className="inv-search-input w-auto"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -233,7 +233,7 @@ const Department = () => {
               </div>
               <button
                 type="submit"
-                className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
+                className="inv-new-button"
               >
                 {editingDepartment ? "Update Department" : "Add Department"}
               </button>

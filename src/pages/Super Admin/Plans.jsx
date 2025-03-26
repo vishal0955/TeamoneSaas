@@ -53,10 +53,16 @@ const plans = [
 
 
 function Plans() {
+
+  const [ customizePlanModalShow, setCustomizePlanModalShow ] = useState(false);
   return (
     <Container className="" style={{ marginTop: '60px' }}>
+      <div className='d-flex justify-content-between'>
     <Link to='#' >
     <button className='btn btn-warning mb-2' >Add Plan</button></Link>
+    <button className='btn btn-danger mb-2' >Customize Plan</button>
+
+    </div>
     <Row className="card-grid">
       {plans.map((plan, index) => (
         <Col key={index} md={4}>

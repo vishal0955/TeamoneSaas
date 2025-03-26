@@ -182,13 +182,13 @@ const CreateDealModal = ({ isOpen, onClose, onSubmit }) => {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+              className="inv-filter-button"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="inv-new-button"
             >
               Create
             </button>

@@ -19,10 +19,10 @@ const YourInfo = () => {
           <div className="d-flex align-items-center gap-3">
             <div className="qp-avatar" />
             <div>
-              <h6 className="mb-1">Benjamin Price</h6>
+              <h6 className="mb-1">john</h6>
               <p className="text-secondary mb-1">No title</p>
-              <p className="text-secondary mb-0">ben.price@bpav.global</p>
-              <p className="text-secondary mb-0">+447876945809</p>
+              <p className="text-secondary mb-0">john@gmail.com</p>
+              <p className="text-secondary mb-0">+44 1234565956</p>
             </div>
           </div>
         </div>
@@ -35,8 +35,8 @@ const YourInfo = () => {
             </select>
           </div>
           <div className="text-secondary">
-            <p className="mb-1">Ground Floor, Unit C1, Prisma Park, Berril,</p>
-            <p className="mb-1">Basingstoke, Hampshire RG24 8GT</p>
+            <p className="mb-1">XYZ Business park</p>
+            <p className="mb-1">America</p>
             <p className="mb-0">United Kingdom</p>
           </div>
         </div>

@@ -1,23 +1,22 @@
-import React, { useState } from 'react'
-import InvoicePaymentSetting from './InvoicePaymentSetting';
+import React, { useState } from "react";
+import InvoicePaymentSetting from "./InvoicePaymentSetting";
 
 const NewInvoice = () => {
-  
-    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
-  
-    const handleOpenModal = () => {
-      setIsModalOpen(true);
-      document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
-    };
-  
-    const handleCloseModal = () => {
-      setIsModalOpen(false);
-      document.body.classList.remove("modal-open"); // Remove modal-open class
-    };
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    document.body.classList.remove("modal-open"); // Remove modal-open class
+  };
 
   return (
     <>
-    <form>
+      <form>
         {/* Invoice Header */}
         <div className="row g-4 mb-4">
           <div className="col-md-4">
@@ -117,23 +116,24 @@ const NewInvoice = () => {
         {/* Line Items */}
         <div className="card bg-light border mb-4">
           <div className="card-body p-4">
-            <h5 className="fw-semibold mb-4">Line Items</h5>
-            <div className="empty-state text-center py-5">
+            <h5 className="fw-semibold mb-2">Line Items</h5>
+            <div className="empty-state text-center py-5 d-flex flex-column justify-content-center align-items-center">
               <img
                 src="https://i.ibb.co/R4Dc5q1L/Screenshot-2025-03-20-191016.png"
                 alt="Empty state"
                 className="mb-3"
+                style={{width: "100px",height:"100px"}}
               />
               <p className="mb-3">Add line items to your invoice</p>
               <p className="text-secondary mb-3">
                 Add the items for the products you're selling to your customer
               </p>
               <div className="d-flex justify-content-center gap-2">
-                <button type="button" className="btn btn-dark px-4">
+                <button type="button" className="inv-new-button px-4">
                   <i className="bi bi-box me-2" />
                   Select from Product Library
                 </button>
-                <button type="button" className="btn btn-outline-dark px-4">
+                <button type="button" className="btn btn-outline-primary px-4">
                   <i className="bi bi-plus-lg me-2" />
                   Create Custom Line Item
                 </button>
@@ -165,44 +165,48 @@ const NewInvoice = () => {
         </div>
         {/* Actions */}
         <div className="d-flex justify-content-end gap-2">
-          <button type="button" className="btn btn-outline-dark px-4">
+          <button type="button" className="inv-filter-button px-4">
             Save as Draft
           </button>
-          <button type="button" className="btn btn-dark px-4" onClick={handleOpenModal}>
+          <button
+            type="button"
+            className="inv-new-button px-4"
+            onClick={handleOpenModal}
+          >
             Create Invoice
           </button>
         </div>
       </form>
-            {/* Modal for new payment setting */}
-                  {isModalOpen && (
-                    <>
-                      <div className="modal fade show d-block" role="dialog">
-                        <div className="modal-dialog modal-lg" role="document">
-                          <div className="modal-content">
-                            <div className="modal-header">
-                              <h5 className="modal-title">payment setting</h5>
-                              <button
-                                type="button"
-                                className="btn-close"
-                                aria-label="Close"
-                                onClick={handleCloseModal}
-                              />
-                            </div>
-                            <div className="modal-body">
-                              <InvoicePaymentSetting />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* Modal backdrop */}
-                      {/* <div
+      {/* Modal for new payment setting */}
+      {isModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">payment setting</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className="modal-body">
+                  <InvoicePaymentSetting />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal backdrop */}
+          {/* <div
                         className="modal-backdrop fade show"
                         onClick={handleCloseModal}
                       ></div> */}
-                    </>
-                  )}
+        </>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default NewInvoice
+export default NewInvoice;
