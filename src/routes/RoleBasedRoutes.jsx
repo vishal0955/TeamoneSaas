@@ -78,6 +78,7 @@ import NewInvoice from "../components/crm/invoice/NewInvoice";
 import PayslipPage from "../components/AdminHRM/Payroll/PayslipPage";
 import PayrollItems from "../components/AdminHRM/Payroll/PayrollItems";
 import RolesPermission from "../usermanagement/RolesPermission/RolesPermission";
+import TrainingList from "../components/Training/TrainingList";
 
 
 const RoleBasedRoutes = () => {
@@ -195,7 +196,7 @@ const RoleBasedRoutes = () => {
         ></Route>
 
         <Route
-          path="/shiftroster"
+          path="/hrm/attendance/shiftroster"
           element={<ShiftRoster></ShiftRoster>}
         ></Route>
 
@@ -203,6 +204,9 @@ const RoleBasedRoutes = () => {
           path="/performanceindicator"
           element={<PerformanceIndicator></PerformanceIndicator>}
         ></Route>
+
+         {/* Training */}
+        <Route path="/hrm/training/training_list" element={<TrainingList />} />
 
         <Route
           path="/employeesalary"

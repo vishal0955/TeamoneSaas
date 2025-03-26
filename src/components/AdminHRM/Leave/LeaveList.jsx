@@ -1,375 +1,318 @@
 import React, { useState } from "react";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import "./LeavePageStyles.css";
-
 import {
   FaUsers,
   FaCalendarCheck,
   FaCalendarTimes,
   FaClock,
   FaFileExport,
-
   FaPlus,
-  FaTrash,
 } from "react-icons/fa";
-import {
-  
-  
-  FaPenToSquare,
-
-  
-} from "react-icons/fa6";
-
-import LeaveForm from "./AddTodayWork";
+import { FaEye, FaPenToSquare, FaTrash } from "react-icons/fa6";
 import AddLeaveForm from "./AddLeaveForm";
 
 const LeavePage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedLeave, setSelectedLeave] = useState(null);
+  const [modalMode, setModalMode] = useState('add'); // 'add', 'edit', or 'view'
 
-  const handleOpenModal = () => {
+  const handleEdit = (entry) => {
+    const formattedData = {
+      leaveType: entry.leaveType,
+      employee: entry.employee.name,
+      fromDate: entry.from,
+      toDate: entry.to,
+      noOfDays: entry.days,
+      reason: entry.reason || '',
+      approvedStatus: entry.status,
+      paidStatus: entry.paidStatus
+    };
+    setSelectedLeave(formattedData);
+    setModalMode('edit');
     setIsModalOpen(true);
-    // document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
   };
 
-  const handleCloseModal = () => {
+  const handleView = (entry) => {
+    const formattedData = {
+      leaveType: entry.leaveType,
+      employee: entry.employee.name,
+      fromDate: entry.from,
+      toDate: entry.to,
+      noOfDays: entry.days,
+      reason: entry.reason || '',
+      approvedStatus: entry.status,
+      paidStatus: entry.paidStatus
+    };
+    setSelectedLeave(formattedData);
+    setModalMode('view');
+    setIsModalOpen(true);
+  };
+
+  const handleAdd = () => {
+    setSelectedLeave(null);
+    setModalMode('add');
+    setIsModalOpen(true);
+  };
+
+  const handleClose = (updatedData) => {
+    if (updatedData) {
+      
+      if (modalMode === 'edit') {
+        
+        console.log('Updated leave:', updatedData);
+      } else if (modalMode === 'add') {
+   
+        
+        console.log('New leave:', updatedData);
+      }
+    }
     setIsModalOpen(false);
-    // document.body.classList.remove("modal-open"); // Remove modal-open class
+    setSelectedLeave(null);
+    setModalMode('add');
   };
 
-  // const [showAddLeave, setShowAddLeave] = useState(false);
   const [entries] = useState([
     {
       id: 1,
       employee: {
         name: "Anthony Lewis",
         department: "Finance",
-        avatar: "https://via.placeholder.com/32",
+        avatar: "https://ui-avatars.com/api/?name=Anthony+Lewis&background=0D8ABC&color=fff",
       },
       leaveType: "Medical Leave",
-      from: "14 Jan 2024",
-      to: "15 Jan 2024",
+      from: "2024-01-14", // Updated date format to match input type="date"
+      to: "2024-01-15",
       days: 2,
+      reason: "Medical appointment",
+      status: "Pending",
+      paidStatus: "Paid"
     },
     {
       id: 2,
       employee: {
         name: "Sarah Wilson",
         department: "HR",
-        avatar: "https://via.placeholder.com/32",
+        avatar: "https://ui-avatars.com/api/?name=Sarah+Wilson&background=0D8ABC&color=fff",
       },
       leaveType: "Vacation",
       from: "20 Jan 2024",
       to: "25 Jan 2024",
       days: 5,
+      status: "Approved",
+      paidStatus: "Unpaid"
     },
-    {
-      id: 3,
-      employee: {
-        name: "Michael Chen",
-        department: "IT",
-        avatar: "https://via.placeholder.com/32",
-      },
-      leaveType: "Personal Leave",
-      from: "18 Jan 2024",
-      to: "19 Jan 2024",
-      days: 2,
-    },
+    // ...existing entries
   ]);
 
-  const [selectedDate, setSelectedDate] = useState("2024-03-11");
-
-  const stats = {
-    totalPresent: { current: 180, total: 200 },
-    plannedLeaves: 10,
-    unplannedLeaves: 10,
-    pendingRequests: 15,
-  };
-
   return (
-    <div className="container-fluid py-4">
+    <div className="bg-gray-50 min-h-screen p-6">
       {/* Header */}
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb mb-0">
-            <li className="breadcrumb-item">Employee</li>
-            <li className="breadcrumb-item active">Leaves</li>
-          </ol>
-        </nav>
-        <div>
-          <button className="btn btn-outline-secondary me-2">
-            <FaFileExport className="me-2" />
+      <div className="flex justify-between items-center mb-6">
+        <div className="text-gray-500 text-sm">
+          <span>Employee</span>
+          <span className="mx-2">/</span>
+          <span className="text-gray-800">Leaves</span>
+        </div>
+        <div className="flex gap-3">
+          <button className="flex items-center px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+            <FaFileExport className="mr-2" />
             Export
           </button>
-          <button className="btn btn-dark" onClick={handleOpenModal}>
-            <FaPlus className="me-2" />
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="flex items-center px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
+          >
+            <FaPlus className="mr-2" />
             Add Leave
           </button>
         </div>
       </div>
 
-      {/* Stats Cards */}
-      <div className="row g-3 mb-4">
-        <div className="col-sm-6 col-lg-3">
-          <div className="card h-100 border-0 shadow-sm">
-            <div className="card-body">
-              <div className="d-flex align-items-center">
-                <div className="rounded-circle p-3 bg-success bg-opacity-10 me-3">
-                  <FaUsers className="text-success" size={24} />
-                </div>
-                <div>
-                  <h6 className="card-subtitle mb-1 text-muted">
-                    Total Present
-                  </h6>
-                  <h4 className="card-title mb-0">
-                    {stats.totalPresent.current}/{stats.totalPresent.total}
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-6 col-lg-3">
-          <div className="card h-100 border-0 shadow-sm">
-            <div className="card-body">
-              <div className="d-flex align-items-center">
-                <div className="rounded-circle p-3 bg-primary bg-opacity-10 me-3">
-                  <FaCalendarCheck className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h6 className="card-subtitle mb-1 text-muted">
-                    Planned Leaves
-                  </h6>
-                  <h4 className="card-title mb-0">{stats.plannedLeaves}</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-6 col-lg-3">
-          <div className="card h-100 border-0 shadow-sm">
-            <div className="card-body">
-              <div className="d-flex align-items-center">
-                <div className="rounded-circle p-3 bg-warning bg-opacity-10 me-3">
-                  <FaCalendarTimes className="text-warning" size={24} />
-                </div>
-                <div>
-                  <h6 className="card-subtitle mb-1 text-muted">
-                    Unplanned Leaves
-                  </h6>
-                  <h4 className="card-title mb-0">{stats.unplannedLeaves}</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-6 col-lg-3">
-          <div className="card h-100 border-0 shadow-sm">
-            <div className="card-body">
-              <div className="d-flex align-items-center">
-                <div className="rounded-circle p-3 bg-info bg-opacity-10 me-3">
-                  <FaClock className="text-info" size={24} />
-                </div>
-                <div>
-                  <h6 className="card-subtitle mb-1 text-muted">
-                    Pending Requests
-                  </h6>
-                  <h4 className="card-title mb-0">{stats.pendingRequests}</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+        <StatCard
+          icon={<FaUsers className="text-green-600" size={24} />}
+          title="Total Present"
+          value="180/200"
+          bgColor="bg-green-50"
+        />
+        <StatCard
+          icon={<FaCalendarCheck className="text-blue-600" size={24} />}
+          title="Planned Leaves"
+          value="10"
+          bgColor="bg-blue-50"
+        />
+        <StatCard
+          icon={<FaCalendarTimes className="text-yellow-600" size={24} />}
+          title="Unplanned Leaves"
+          value="10"
+          bgColor="bg-yellow-50"
+        />
+        <StatCard
+          icon={<FaClock className="text-purple-600" size={24} />}
+          title="Pending Requests"
+          value="15"
+          bgColor="bg-purple-50"
+        />
       </div>
 
       {/* Filters */}
-      <div className="row g-3 mb-4">
-        <div className="col-sm-auto">
-          <select
-            className="form-select shadow-none"
-            style={{ minWidth: "120px" }}
-          >
-            <option>10 Entries</option>
-            <option>25 Entries</option>
-            <option>50 Entries</option>
-          </select>
-        </div>
-        <div className="col-sm">
-          <div className="position-relative">
-            <input
-              type="text"
-              className="form-control shadow-none"
-              placeholder="Search..."
-              style={{ paddingLeft: "35px" }}
-            />
-            <i
-              className="bi bi-search position-absolute"
-              style={{
-                left: "12px",
-                top: "50%",
-                transform: "translateY(-50%)",
-              }}
-            ></i>
-          </div>
-        </div>
-        <div className="col-sm-auto">
-          <input
-            type="date"
-            className="form-control shadow-none"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-          />
-        </div>
-        <div className="col-sm-auto">
-          <select
-            className="form-select shadow-none"
-            style={{ minWidth: "150px" }}
-          >
-            <option>All Leave Types</option>
-            <option>Medical Leave</option>
-            <option>Vacation</option>
-            <option>Personal Leave</option>
-          </select>
-        </div>
-        <div className="col-sm-auto">
-          <select
-            className="form-select shadow-none"
-            style={{ minWidth: "150px" }}
-          >
-            <option>Last 7 Days</option>
-            <option>Last 30 Days</option>
-            <option>Last 90 Days</option>
-          </select>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+        {/* <select className="px-3 py-2 border border-gray-300 rounded-md text-sm">
+          <option>10 Entries</option>
+          <option>25 Entries</option>
+          <option>50 Entries</option>
+        </select> */}
+        <input
+          type="text"
+          placeholder="Search..."
+          className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+        />
+        <input
+          type="date"
+          className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+        />
+        <select className="px-3 py-2 border border-gray-300 rounded-md text-sm">
+          <option>All Leave Types</option>
+          <option>Medical Leave</option>
+          <option>Vacation</option>
+          <option>Personal Leave</option>
+        </select>
+        <select className="px-3 py-2 border border-gray-300 rounded-md text-sm">
+          <option>Last 7 Days</option>
+          <option>Last 30 Days</option>
+          <option>Last 90 Days</option>
+        </select>
       </div>
 
-      <div className="table-responsive">
-        <table className="table align-middle">
-          <thead>
+      {/* Table */}
+      <div className="bg-white rounded-lg shadow">
+        <table className="w-full">
+          <thead className="bg-gray-50 border-b">
             <tr>
-              <th style={{ width: 40 }}>
-                <input type="checkbox" className="form-check-input" />
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">
+                <input type="checkbox" className="rounded border-gray-300" />
               </th>
-              <th>Employee</th>
-              <th>Leave Type</th>
-              <th>From</th>
-              <th>To</th>
-              <th>Days</th>
-              <th style={{ width: "100px" }}>Actions</th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Employee</th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Leave Type</th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">From</th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">To</th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Days</th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Leave Status</th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Paid Status</th>
+              <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
             </tr>
           </thead>
-          <tbody>
-            {/* Sample Task Rows */}
-            {/* <tr onClick={() => handleRowClick(1)} style={{ cursor: 'pointer' }}> */}
-            {entries.length === 0 ? (
-              <tr>
-                <td colSpan="7" className="text-center py-4 text-muted">
-                  No entries found
+          <tbody className="divide-y divide-gray-200">
+            {entries.map((entry) => (
+              <tr key={entry.id} className="hover:bg-gray-50">
+                <td className="px-6 py-4">
+                  <input type="checkbox" className="rounded border-gray-300" />
                 </td>
-              </tr>
-            ) : (
-              entries.map((entry) => (
-                <tr key={entry.id}>
-                  <td>
-                    <div className="form-check">
-                      <input
-                        type="checkbox"
-                        className="form-check-input shadow-none"
-                      />
+                <td className="px-6 py-4">
+                  <div className="flex items-center">
+                    <img
+                      src={entry.employee.avatar}
+                      alt=""
+                      className="h-8 w-8 rounded-full mr-3"
+                    />
+                    <div>
+                      <div className="font-medium text-gray-900">{entry.employee.name}</div>
+                      <div className="text-sm text-gray-500">{entry.employee.department}</div>
                     </div>
-                  </td>
-                  <td>
-                    <div className="d-flex align-items-center">
-                      <img
-                        src={entry.employee.avatar}
-                        alt=""
-                        className="rounded-circle me-2"
-                        width="32"
-                        height="32"
-                        onError={(e) => {
-                          // e.target.src = 'https://via.placeholder.com/32';
-                        }}
-                      />
-                      <div>
-                        <div>{entry.employee.name}</div>
-                        <small className="text-muted">
-                          {entry.employee.department}
-                        </small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span className="badge bg-primary bg-opacity-10 text-primary">
-                      {entry.leaveType}
-                    </span>
-                  </td>
-                  <td>{entry.from}</td>
-                  <td>{entry.to}</td>
-                  <td>{entry.days} Days</td>
-                  <td className="">
-                    <button
-                      className=" action-btn  hover:text-blue-800"
-                      style={{ color: "blue" }}
+                  </div>
+                </td>
+                <td className="px-6 py-4">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    {entry.leaveType}
+                  </span>
+                </td>
+                <td className="px-6 py-4 text-sm text-gray-500">{entry.from}</td>
+                <td className="px-6 py-4 text-sm text-gray-500">{entry.to}</td>
+                <td className="px-6 py-4 text-sm text-gray-500">{entry.days} Days</td>
+                <td className="px-6 py-4">
+                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                    ${entry.status === 'Approved' ? 'bg-green-100 text-green-800' : ''}
+                    ${entry.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' : ''}
+                    ${entry.status === 'Rejected' ? 'bg-red-100 text-red-800' : ''}
+                  `}>
+                    {entry.status}
+                  </span>
+                </td>
+                <td className="px-6 py-4">
+                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                    ${entry.paidStatus === 'Paid' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}
+                  `}>
+                    {entry.paidStatus}
+                  </span>
+                </td>
+                <td className="px-6 py-4">
+                  <div className="flex space-x-3">
+                    <button 
+                      className="text-blue-600 hover:text-blue-900" 
+                      onClick={() => handleEdit(entry)}
                     >
                       <FaPenToSquare />
                     </button>
-                    <button className=" action-btn text-danger hover:text-red-800">
+                    <button 
+                      className="text-yellow-600 hover:text-yellow-900" 
+                      onClick={() => handleView(entry)}
+                    >
+                      <FaEye />
+                    </button>
+                    <button className="text-red-600 hover:text-red-900">
                       <FaTrash />
                     </button>
-                  </td>
-                </tr>
-              ))
-            )}
-            {/* Add more task rows as needed */}
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
-      <div className="d-flex justify-content-between align-items-center mt-4">
-        <div className="text-muted small">
-          Showing 1 to {entries.length} of {entries.length} entries
-        </div>
-        <nav>
-          <ul className="pagination pagination-sm mb-0">
-            <li className="page-item disabled">
-              <button className="page-link">Previous</button>
-            </li>
-            <li className="page-item active">
-              <button className="page-link">1</button>
-            </li>
-            <li className="page-item disabled">
-              <button className="page-link">Next</button>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      {/* Modal */}
       {isModalOpen && (
-        <>
-          <div className="modal fade show d-block" role="dialog">
-            <div className="modal-dialog modal-lg" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button
-                    type="button"
-                    className="btn-close"
-                    aria-label="Close"
-                    onClick={handleCloseModal}
-                  />
-                </div>
-                <div className="modal-body">
-                  <AddLeaveForm />
-                </div>
-              </div>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg max-w-2xl w-full mx-4">
+            <div className="flex justify-end p-4 border-b">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-400 hover:text-gray-500"
+              >
+                <span className="sr-only">Close</span>
+                ×
+              </button>
+            </div>
+            <div className="p-6">
+            <AddLeaveForm
+          onClose={handleClose}
+          initialData={selectedLeave}
+          mode={modalMode}
+        />
+              {/* <AddLeaveForm onClose={() => setIsModalOpen(false)} /> */}
             </div>
           </div>
-          {/* Modal backdrop */}
-          <div
-            className="modal-backdrop fade show"
-            onClick={handleCloseModal}
-          ></div>
-        </>
+        </div>
       )}
+
+
     </div>
   );
 };
+
+// Stat Card Component
+const StatCard = ({ icon, title, value, bgColor }) => (
+  <div className="bg-white rounded-lg shadow p-6">
+    <div className="flex items-center">
+      <div className={`${bgColor} p-3 rounded-full mr-4`}>
+        {icon}
+      </div>
+      <div>
+        <p className="text-sm text-gray-500">{title}</p>
+        <p className="text-xl font-semibold">{value}</p>
+      </div>
+    </div>
+  </div>
+);
 
 export default LeavePage;

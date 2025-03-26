@@ -103,7 +103,7 @@ const menuItems = [
           { name: "Leaves", path: "/hrm/attendance/leaves" },
           { name: "Leave Settings", path: "/hrm/attendance/leave_settings" },
           { name: "Timesheet", path: "/hrm/attendance/timesheet" },
-          { name: "Shift & Schedule", path: "/hrm/attendance/shift_schedule" },
+          { name: "Shift & Schedule", path: "/hrm/attendance/shiftroster" },
           { name: "OverTime", path: "/hrm/attendance/overtime" },
         ],
       },
@@ -125,6 +125,14 @@ const menuItems = [
             path: "/performaceappraisal",
           },
         ],
+      },
+      {
+        name: "Training",
+        path: "/hrm/training", 
+        subMenu: [
+          // { name: "Training Plan", path: "/hrm/training/training_plan" },
+          { name: "Training List", path: "/hrm/training/training_list" },
+        ] 
       },
       {
         name: "Payroll",
