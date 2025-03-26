@@ -64,8 +64,8 @@ export default function AddAppraisalModal({
   ];
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white w-[900px] max-w-full p-6 rounded-lg shadow-lg relative max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white w-[700px] max-w-full p-6 rounded-lg shadow-lg relative max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="flex justify-between items-center border-b pb-3">
           <h2 className="text-xl font-semibold">Add Appraisal</h2>

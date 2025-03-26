@@ -83,14 +83,14 @@ const menuItems = [
           { name: "Policies", path: "/policy" },
         ],
       },
-      {
-        name: "Tickets",
-        path: "/hrm/tickets",
-        // subMenu: [
-        //   { name: "Leave", path: "/hrm/tickets/leave" },
-        //   { name: "Attendance", path: "/hrm/tickets/attendance" },
-        // ]
-      },
+      // {
+      //   name: "Tickets",
+      //   path: "/hrm/tickets",
+      //   // subMenu: [
+      //   //   { name: "Leave", path: "/hrm/tickets/leave" },
+      //   //   { name: "Attendance", path: "/hrm/tickets/attendance" },
+      //   // ]
+      // },
       {
         name: "Holidays",
         path: "/hrm/holiday",

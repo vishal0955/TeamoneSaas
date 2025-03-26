@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import {
-  FaPlus,
-  FaFileExport,
-  FaCog,
-  FaTrash,
-  FaEdit,
-  FaTimes,
-} from "react-icons/fa";
+import { FaPlus, FaTrash, FaEdit, FaEye } from "react-icons/fa";
 import Modal from "./modal";
+import { Link } from "react-router-dom";
 
 const datas = [
   {
     id: 1,
-    designation: "Web Designer",
+    name: "sanjana patel",
     department: "Designing",
     approvedBy: "Doglas Martini",
     createdDate: "14 Jan 2024",
@@ -21,7 +15,7 @@ const datas = [
   },
   {
     id: 2,
-    designation: "Web Developer",
+    name: "sanjana patel",
     department: "Developer",
     approvedBy: "Doglas Martini",
     createdDate: "21 Jan 2024",
@@ -30,7 +24,7 @@ const datas = [
   },
   {
     id: 3,
-    designation: "IOS Developer",
+    name: "sanjana patel",
     department: "Developer",
     approvedBy: "Doglas Martini",
     createdDate: "18 Feb 2024",
@@ -39,7 +33,7 @@ const datas = [
   },
   {
     id: 4,
-    designation: "Android Developer",
+    name: "sanjana patel",
     department: "Developer",
     approvedBy: "Doglas Martini",
     createdDate: "24 Feb 2024",
@@ -48,7 +42,7 @@ const datas = [
   },
   {
     id: 5,
-    designation: "DevOps Engineer",
+    name: "sanjana patel",
     department: "DevOps",
     approvedBy: "Doglas Martini",
     createdDate: "11 Mar 2024",
@@ -63,6 +57,7 @@ const PerformanceIndicator = () => {
   const [formData, setFormData] = useState({
     id: "",
     designation: "",
+    name: "",
     department: "",
     approvedBy: "",
     createdDate: "",
@@ -82,7 +77,7 @@ const PerformanceIndicator = () => {
       setEditMode(false);
       setFormData({
         id: "",
-        designation: "",
+        name: "",
         department: "",
         approvedBy: "",
         createdDate: "",
@@ -119,10 +114,11 @@ const PerformanceIndicator = () => {
       <label className="block text-sm font-medium">{label}</label>
       <select className="w-full border p-2 rounded">
         <option>Select</option>
-        <option>Excellent</option>
-        <option>Good</option>
-        <option>Average</option>
-        <option>Poor</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
       </select>
     </div>
   );
@@ -166,11 +162,11 @@ const PerformanceIndicator = () => {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border rounded-lg">
+          <table className="min-w-full bg-white border rounded-lg text-nowrap">
             <thead className="bg-gray-200">
               <tr>
                 <th className="p-3 text-left">#</th>
-                <th className="p-3 text-left">Designation</th>
+                <th className="p-3 text-left">Name</th>
                 <th className="p-3 text-left">Department</th>
                 <th className="p-3 text-left">Approved By</th>
                 <th className="p-3 text-left">Created Date</th>
@@ -184,7 +180,7 @@ const PerformanceIndicator = () => {
                   <td className="p-3">
                     <input type="checkbox" />
                   </td>
-                  <td className="p-3 font-semibold">{item.designation}</td>
+                  <td className="p-3 font-semibold">{item.name}</td>
                   <td className="p-3">{item.department}</td>
                   <td className="p-3 flex items-center gap-2">
                     <img
@@ -194,7 +190,7 @@ const PerformanceIndicator = () => {
                     />
                     <span className="font-semibold">{item.approvedBy}</span>
                   </td>
-                  <td className="p-3">{item.createdDate}</td>
+                  <td className="p-4">{item.createdDate}</td>
                   <td className="p-3">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold ${
@@ -207,16 +203,25 @@ const PerformanceIndicator = () => {
                     </span>
                   </td>
 
-                  <td className="p-3 flex gap-2">
+                  <td className="p-3 flex gap-2 items-center">
+                    <Link
+                      to={"/performaceoverview"}
+                      className="text-green-500"
+                      title="View"
+                    >
+                      <FaEye />
+                    </Link>
                     <button
                       onClick={() => openModal(item)}
                       className="text-blue-500"
+                      title="Edit"
                     >
                       <FaEdit />
                     </button>
                     <button
                       onClick={() => handleDelete(item.id)}
                       className="text-red-500"
+                      title="Delete"
                     >
                       <FaTrash />
                     </button>
@@ -228,124 +233,137 @@ const PerformanceIndicator = () => {
         </div>
       </div>
 
-
-      
-      
-
-
       {/* Modal */}
       {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <h3 className="text-xl font-bold mb-4">
-          {editMode ? "Edit Indicator" : "Add New Indicator"}
-        </h3>
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          {/* Designation */}
-          {/* {renderSelect("Designation")} */}
-          <div className="grid grid-cols-2 gap-4">
+        <div>
+          <h3 className="text-xl font-bold mb-4">
+            {editMode ? "Edit Indicator" : "Add New Indicator"}
+          </h3>
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            {/* Designation */}
+            {/* {renderSelect("Designation")} */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium">Name</label>
+                <select
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded"
+                  required
+                >
+                  <option value="">Select Employee</option>
+                  <option value="Wade Wilson">Wade Wilson</option>
+                  <option value="Leona">Leona</option>
+                  <option value="Stephen Peralt">Stephen Peralt</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium">Department</label>
+                <select
+                  name="department"
+                  value={formData.department}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded"
+                  required
+                >
+                  <option value="">Select</option>
+                  <option value="Designing">Designing</option>
+                  <option value="Developer">Developer</option>
+                  <option value="DevOps">DevOps</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium">Approved By</label>
+                <select
+                  name="approvedBy"
+                  value={formData.approvedBy}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded"
+                  required
+                >
+                  <option value="">Select</option>
+                  <option value="Doglas Martini">Doglas Martini</option>
+                  <option value="Leona">Leona</option>
+                  <option value="Stephen Peralt">Stephen Peralt</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium">
+                  Created Date
+                </label>
+                <input
+                  type="date"
+                  name="createdDate"
+                  value={formData.createdDate}
+                  onChange={handleChange}
+                  className="w-full border p-2 rounded"
+                  required
+                />
+              </div>
+            </div>
+            {/* Technical Section */}
+            <h4 className="font-semibold mt-4">Technical</h4>
+            <div className="grid grid-cols-2 gap-4">
+              {renderSelect("Customer Experience")}
+              {renderSelect("Marketing")}
+              {renderSelect("Management")}
+              {renderSelect("Administration")}
+              {renderSelect("Presentation Skills")}
+              {renderSelect("Quality of Work")}
+              {renderSelect("Efficiency")}
+            </div>
+
+            {/* Organizational Section */}
+            <h4 className="font-semibold mt-4">Organizational</h4>
+            <div className="grid grid-cols-2 gap-4">
+              {renderSelect("Integrity")}
+              {renderSelect("Professionalism")}
+              {renderSelect("Team Work")}
+              {renderSelect("Critical Thinking")}
+              {renderSelect("Conflict Management")}
+              {renderSelect("Attendance")}
+              {renderSelect("Ability to Meet Deadline")}
+            </div>
+
+            {/* Status */}
             <div>
-              <label className="block text-sm font-medium">Designation</label>
-              <input
-                type="text"
-                name="designation"
-                value={formData.designation}
+              <label className="block text-sm font-medium">Status</label>
+              <select
+                name="status"
+                value={formData.status}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
-                required
-              />
+              >
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
             </div>
-            <div>
-              <label className="block text-sm font-medium">Department</label>
-              <input
-                type="text"
-                name="department"
-                value={formData.department}
-                onChange={handleChange}
-                className="w-full border p-2 rounded"
-                required
-              />
+
+            {/* Buttons */}
+            <div className="text-right">
+              <button
+                type="button"
+                className="bg-gray-400 text-white px-4 py-2 rounded mr-2"
+                onClick={closeModal}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-black"
+              >
+                {editMode ? "Update" : "Save"}
+              </button>
             </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium">Approved By</label>
-              <input
-                type="text"
-                name="approvedBy"
-                value={formData.approvedBy}
-                onChange={handleChange}
-                className="w-full border p-2 rounded"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Created Date</label>
-              <input
-                type="date"
-                name="createdDate"
-                value={formData.createdDate}
-                onChange={handleChange}
-                className="w-full border p-2 rounded"
-                required
-              />
-            </div>
-          </div>
-          {/* Technical Section */}
-          <h4 className="font-semibold mt-4">Technical</h4>
-          <div className="grid grid-cols-2 gap-4">
-            {renderSelect("Customer Experience")}
-            {renderSelect("Marketing")}
-            {renderSelect("Management")}
-            {renderSelect("Administration")}
-            {renderSelect("Presentation Skills")}
-            {renderSelect("Quality of Work")}
-            {renderSelect("Efficiency")}
-          </div>
-
-          {/* Organizational Section */}
-          <h4 className="font-semibold mt-4">Organizational</h4>
-          <div className="grid grid-cols-2 gap-4">
-            {renderSelect("Integrity")}
-            {renderSelect("Professionalism")}
-            {renderSelect("Team Work")}
-            {renderSelect("Critical Thinking")}
-            {renderSelect("Conflict Management")}
-            {renderSelect("Attendance")}
-            {renderSelect("Ability to Meet Deadline")}
-          </div>
-
-          {/* Status */}
-          <div>
-            <label className="block text-sm font-medium">Status</label>
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              className="w-full border p-2 rounded"
-            >
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-            </select>
-          </div>
-
-          {/* Buttons */}
-          <div className="text-right">
-            <button
-              type="button"
-              className="bg-gray-400 text-white px-4 py-2 rounded mr-2"
-              onClick={closeModal}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-black"
-            >
-              {editMode ? "Update" : "Save"}
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </Modal>
     </div>
   );

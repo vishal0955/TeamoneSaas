@@ -467,7 +467,6 @@ import {
   FaUserPlus,
   FaBars,
   FaTh,
-  FaCog,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 

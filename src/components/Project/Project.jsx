@@ -515,7 +515,7 @@ const Project = () => {
                   />
                 </div>
 
-                <div className="mt-4">
+                {/* <div className="mt-4">
                   <label className="block text-sm font-medium mb-1">
                     Public Gantt Chart
                   </label>
@@ -534,7 +534,7 @@ const Project = () => {
                       <span className="ml-2">Disable</span>
                     </label>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="flex justify-end gap-3 pt-4 border-t mt-4">
                 <button
