@@ -86,6 +86,7 @@ import PerformanceOverview from "../components/AdminPerformance/PerformanceOverv
 import GoalsOverview from "../components/AdminPerformance/GoalsOverview";
 import Compensation from "../components/AdminPerformance/Compensation";
 import Telent from "../components/AdminPerformance/Telent";
+import IndividualCandidatePage from "../components/Recruitment/IndividualCandidatePage";
 
 const RoleBasedRoutes = () => {
   return (
@@ -159,6 +160,8 @@ const RoleBasedRoutes = () => {
         <Route path="/recruitment/jobs" element={<Job />} />
         <Route path="/recruitment/candidates" element={<Candidate />} />
         <Route path="/recruitment/refferals" element={<Refferal />} />
+
+        <Route path="/individualcandidatepage" element={<IndividualCandidatePage />} />
         {/* recruitment */}
 
         {/* <Route path="/todolist" element={<TodoList />} /> */}
