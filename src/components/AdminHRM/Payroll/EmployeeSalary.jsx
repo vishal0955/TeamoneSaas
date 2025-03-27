@@ -18,6 +18,8 @@ const defaultEarnings = {
   others: 100,
 };
 
+ 
+
 const defaultDeductions = {
   tds: 200,
   pf: 300,

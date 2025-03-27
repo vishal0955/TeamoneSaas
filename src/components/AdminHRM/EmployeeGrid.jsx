@@ -19,6 +19,7 @@ import {
   FaCog,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import AddEmployeeModal from "./AddEmployeeModal";
 
 const departments = [
   "IT Department",
@@ -106,9 +107,9 @@ const employee = [
 ];
 
 const EmployeeGrid = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [employees, setEmployees] = useState(employee);
-  const [editingEmployee, setEditingEmployee] = useState(null);
+   const [editEmployee, setEditEmployee] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeButton, setActiveButton] = useState("list");
 
@@ -165,9 +166,8 @@ const EmployeeGrid = () => {
   };
 
   const handleEditEmployee = (employee) => {
-    setNewEmployee(employee);
-    setEditingEmployee(employee);
-    setIsModalOpen(true);
+    setEditEmployee(employee);
+    setModalOpen(true);
   };
 
   const handleSearchChange = (e) => {
@@ -216,8 +216,11 @@ const EmployeeGrid = () => {
             </Link>
 
             <button
-              onClick={() => setIsModalOpen(true)}
-              className="inv-new-button d-flex"
+              onClick={() => {
+                setEditEmployee(null);
+                setModalOpen(true);
+              }}
+              className=" d-flex items-center px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
             >
               <FaPlus className="mr-2" /> Add Employee
             </button>
@@ -307,10 +310,10 @@ const EmployeeGrid = () => {
                     className="absolute top-4 left-4 w-5 h-5 text-blue-600 border-gray-300 rounded"
                   />
 
-                  {/* Three-dot menu */}
+                  {/* Three-dot menu
                   <button className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
                     <FaEllipsisV />
-                  </button>
+                  </button> */}
 
                   {/* Profile Picture */}
                   <div className="flex justify-center">
@@ -326,7 +329,12 @@ const EmployeeGrid = () => {
 
                   {/* Employee Name & Role */}
                   <div className="text-center mt-3">
-                    <h3 className="text-lg font-semibold">{employee.name}</h3>
+                    <Link to={`/employee/${employee.id}`}>
+                      <div className="font-medium text-gray-900">
+                        {employee.name}
+                      </div>
+                    </Link>
+                    {/* <h3 className="text-lg font-semibold">{employee.name}</h3> */}
                     <span className="px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-600">
                       {employee.role}
                     </span>
@@ -370,121 +378,6 @@ const EmployeeGrid = () => {
             </div>
           </div>
         </div>
-
-        {isModalOpen && (
-          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-[600px] relative">
-              <button
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-                onClick={() => setIsModalOpen(false)}
-              >
-                <FaXmark size={20} />
-              </button>
-              <h2 className="text-xl font-semibold mb-4">
-                {editingEmployee ? "Edit Employee" : "Add Employee"}
-              </h2>
-              <form className="space-y-4" onSubmit={handleSaveEmployee}>
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Full Name"
-                    className="w-full p-2 border rounded"
-                    value={newEmployee.name}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    className="w-full p-2 border rounded"
-                    value={newEmployee.email}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    className="w-full p-2 border rounded"
-                    value={newEmployee.phone}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <select
-                    name="department"
-                    className="w-full p-2 border rounded"
-                    value={newEmployee.department}
-                    onChange={handleInputChange}
-                  >
-                    {departments.map((dept) => (
-                      <option key={dept} value={dept}>
-                        {dept}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    name="designation"
-                    className="w-full p-2 border rounded"
-                    value={newEmployee.designation}
-                    onChange={handleInputChange}
-                  >
-                    {designations.map((desg) => (
-                      <option key={desg} value={desg}>
-                        {desg}
-                      </option>
-                    ))}
-                  </select>
-                  <input
-                    type="date"
-                    name="dateOfJoin"
-                    className="w-full p-2 border rounded"
-                    value={newEmployee.dateOfJoin}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <input
-                    type="text"
-                    placeholder="Employee ID"
-                    value={newEmployee.id}
-                    className="w-full p-2 border rounded"
-                  />
-                </div>
-                <div className="flex items-center space-x-4 mt-4">
-                  <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center">
-                    <FaUser className="text-3xl text-gray-400" />
-                  </div>
-                  <button
-                    type="button"
-                    className="px-4 py-2 border rounded hover:bg-gray-50"
-                  >
-                    Upload Photo
-                  </button>
-                </div>
-                <textarea
-                  rows="4"
-                  placeholder="Additional Information"
-                  className="w-full p-2 border rounded"
-                ></textarea>
-                <div className="flex justify-end space-x-2">
-                  <button
-                    onClick={() => setIsModalOpen(false)}
-                    className="inv-filter-button"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                  >
-                    {editingEmployee ? "Update Employee" : "Save Employee"}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredEmployees.map((employee) => (
@@ -580,18 +473,16 @@ const EmployeeGrid = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal Component */}
+      <AddEmployeeModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSave={handleSaveEmployee}
+        editData={editEmployee}
+      />
     </div>
   );
 };
-
-const StatCard = ({ icon, title, count, color }) => (
-  <div className="bg-white p-4 rounded-lg shadow flex items-center space-x-4">
-    <div className={`p-4 rounded-full text-white ${color}`}>{icon}</div>
-    <div>
-      <p className="text-gray-500 text-sm">{title}</p>
-      <h2 className="text-xl font-bold">{count}</h2>
-    </div>
-  </div>
-);
 
 export default EmployeeGrid;
