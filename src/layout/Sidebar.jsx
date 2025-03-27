@@ -158,23 +158,30 @@ const menuItems = [
     ],
   },
 
-  // {
-  //   name: "Finance & Accounts",
-  //   path: "/finance",
-  //   icon: <ChartColumn size={16} />,
-  //   subItems: [
-  //     {
-  //       name: "Sales",
-  //       path: "/finance/sales",
-  //       subMenu: [
-  //         { name: "Estimates", path: "/finance/sales/estimates" },
-  //         { name: "Invoices", path: "/finance/sales/invoices" },
-  //         { name: "Payments", path: "/finance/sales/payments" },
-  //         { name: "Expenses", path: "/finance/sales/expenses" },
-  //         { name: "Provident Funds", path: "/finance/sales/provident_funds" },
-  //         { name: "Taxes", path: "/finance/sales/taxs" },
-  //       ],
-  //     },
+  {
+    name: "Finance",
+    path: "/finance",
+    icon: <ChartColumn size={16} />,
+    subItems: [
+      // { name: "Dashboard", path: "/finance/dashboard" },
+      { name: "Accounts Payable", path: "/finance/accounts_payable" },
+      { name: "Accounts Receivable", path: "/finance/accountsreciveable" },
+      { name : "Products", path: "/finance/products" },
+      { name: "Customers", path: "/finance/customers" },
+      { name: "Suppliers", path: "/finance/suppliers" },
+      // {
+       
+      //   name: "Sales",
+      //   path: "/finance/sales",
+      //   subMenu: [
+          
+      //     { name: "Expenses", path: "/finance/sales/expenses" },
+      //     { name: "Provident Funds", path: "/finance/sales/provident_funds" },
+      //     { name: "Taxes", path: "/finance/sales/taxs" },
+      //   ],
+      // },
+    ]
+    },
       // {
       //   name: "Payroll",
       //   path: "/finance/payroll",

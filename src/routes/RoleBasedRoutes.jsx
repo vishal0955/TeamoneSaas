@@ -87,6 +87,16 @@ import GoalsOverview from "../components/AdminPerformance/GoalsOverview";
 import Compensation from "../components/AdminPerformance/Compensation";
 import Telent from "../components/AdminPerformance/Telent";
 import IndividualCandidatePage from "../components/Recruitment/IndividualCandidatePage";
+import Accountspayable from "../components/finance/accountspayable/Accountspayable";
+import AllBills from "../components/finance/accountspayable/Bills/AllBills";
+import Remitance from "../components/finance/accountspayable/Remitance/Remitance";
+import NewRemitance from "../components/finance/accountspayable/Remitance/NewRemitance";
+import NewBill from "../components/finance/accountspayable/Bills/NewBill";
+import CreditNotes from "../components/finance/accountspayable/creditnotes/CreditNotes";
+import Expense from "../components/finance/accountspayable/Expense/Expense";
+import PurchaseOrder from "../components/finance/accountspayable/purchaseorder/PurchaseOrder";
+import NewPurchaseOrder from "../components/finance/accountspayable/purchaseorder/NewPurchaseOrder";
+import NewCreditNote from "../components/finance/accountspayable/creditnotes/NewCreditNote";
 
 const RoleBasedRoutes = () => {
   return (
@@ -347,6 +357,23 @@ const RoleBasedRoutes = () => {
           }
         />
 
+
+        {/* Finance Routes */}
+
+        <Route path="/finance/accounts_payable" element={<Accountspayable />} />
+
+        
+        <Route path="/finance/allbills" element={<AllBills />} />
+        <Route path="/finance/newbill" element={<NewBill />} />
+        <Route path="/finance/remitance" element={<Remitance />} />
+        <Route path="/finance/newremitance" element={<NewRemitance />} />
+         <Route path="/finance/creditnotes" element={<CreditNotes />} />
+           <Route path="/finance/newcreditnote" element={<NewCreditNote />} />
+           <Route path="/finance/expense" element={<Expense />} />
+           {/* <Route path="/finance/newexpense" element={<NewExpense />} /> */}
+
+           <Route path="/finance/Purchaseorder" element={<PurchaseOrder />} />
+           <Route path="/finance/newpurchaseorder" element={<NewPurchaseOrder />} />
         {/* Administration */}
 
         <Route

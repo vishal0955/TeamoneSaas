@@ -14,6 +14,13 @@ const AddTraining = ({ onClose }) => {
     endDate: '',
   });
 
+  const trainers  = [
+    {id:1, name:"John Smith"},
+    {id:2, name:"Jane Doe"},
+    {id:3, name:"John Doe"}
+    
+]
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -66,14 +73,25 @@ const AddTraining = ({ onClose }) => {
                 Trainer
               </label>
               <div className="relative">
-                <input
+                {/* <input
                   type="text"
                   className="w-full px-3 py-2 pl-10 border border-gray-300 rounded-md text-sm"
                   placeholder="Search trainer"
                   value={formData.trainer}
                   onChange={(e) => setFormData({...formData, trainer: e.target.value})}
                   required
-                />
+                /> */}
+                <select 
+                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+                value={formData.trainer}
+                onChange={(e) => setFormData({...formData, trainer: e.target.value})}
+                required
+                >
+                  <option value="">Select Trainer</option>
+                  {trainers.map((trainer) => (
+                    <option key={trainer.id} value={trainer.name}>{trainer.name}</option>
+                  ))}
+                  </select>
                 {/* <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" /> */}
               </div>
             </div>
