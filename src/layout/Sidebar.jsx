@@ -165,9 +165,9 @@ const menuItems = [
     subItems: [
       // { name: "Dashboard", path: "/finance/dashboard" },
       { name: "Accounts Payable", path: "/finance/accounts_payable" },
-      { name: "Accounts Receivable", path: "/finance/accountsreciveable" },
+      { name: "Accounts Receivable", path: "/finance/accounts_receivable" },
       { name : "Products", path: "/finance/products" },
-      { name: "Customers", path: "/finance/customers" },
+      { name: "Customers", path: "/finance/companies" },
       { name: "Suppliers", path: "/finance/suppliers" },
       // {
        
@@ -199,13 +199,13 @@ const menuItems = [
     icon: <Landmark size={16} />,  
 
     subItems: [
-      {
-        name: "Help & Support",
-        path: "/admininistration/help_support",
-        subMenu: [
-          { name: "FAQs", path: "/admininistration/help_support/faqs" },
-        ],
-      },
+      // {
+      //   name: "Help & Support",
+      //   path: "/admininistration/help_support",
+      //   subMenu: [
+      //     { name: "FAQs", path: "/admininistration/help_support/faqs" },
+      //   ],
+      // },
       {
         name: "User Management",
         path: "/admininistration/user_management",

@@ -193,7 +193,7 @@ const Company = () => {
         <div className="inv-card-header">
           <div className="d-flex align-items-center">
             <h5 className="mb-0" id="invoicesTitle">
-            Companies
+            
             </h5>
           </div>
 

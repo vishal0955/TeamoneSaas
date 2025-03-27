@@ -142,12 +142,12 @@ const Remitance = () => {
                 <div className="flex items-center">
                   <img
                     className="h-8 w-8 rounded-full"
-                    src="https://ui-avatars.com/api/?name=Benjamin+Price"
+                    src=""
                     alt=""
                   />
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-900">
-                      Benjamin Price
+                      John Doe
                     </p>
                   </div>
                 </div>

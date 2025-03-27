@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const Expense = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
     <nav className="flex items-center justify-between h-16 border-b border-gray-200">
@@ -22,34 +29,33 @@ const Expense = () => {
       </div>
       <div className="flex items-center space-x-4">
         <div className="relative dropdown">
-          <button className="!rounded-button bg-green-600 hover:bg-green-700 text-white px-4 py-2 flex items-center">
+          <button onClick={toggleDropdown} className="!rounded-button bg-green-600 hover:bg-green-700 text-white px-4 py-2 flex items-center">
             New expense
             <i className="fas fa-chevron-down ml-2" />
           </button>
-          <div
-            className="absolute top-full right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10 hidden"
-            id="expense-dropdown"
-          >
+          {
+            dropdownOpen &&  (
+              <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10">
             <ul className="py-2">
               <li>
-                <a
-                  href="#"
+                <Link to="/finance/newexpenseclaim"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
                 >
                   <i className="fas fa-file-invoice text-gray-400" /> Expense
                   claim
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link to="/finance/newmileageclaim"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
                 >
                   <i className="fas fa-truck text-gray-400" /> Mileage claim
-                </a>
+                </Link>
               </li>
             </ul>
-          </div>
+          </div>)
+          }
+        
         </div>
         <button className="text-gray-400 hover:text-gray-600">
           <i className="fas fa-cog text-xl" />
@@ -105,13 +111,13 @@ const Expense = () => {
         </p>
         <div className="max-w-md mx-auto">
           <h3 className="text-lg font-medium mb-4">
-            Download the Xero Me app and manage expense claims on the go
+            Download the  app and manage expense claims on the go
           </h3>
           <p className="text-gray-600 mb-6">
             Capture your costs as they happen by snapping and submitting your
             expenses and mileage claims anytime, anywhere.
           </p>
-          <p className="mb-4">Scan the QR code to download Xero Me</p>
+          <p className="mb-4">Scan the QR code to download App</p>
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
             className="mx-auto w-48 h-48 bg-gray-200 mb-4"

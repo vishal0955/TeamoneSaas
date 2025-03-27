@@ -97,6 +97,14 @@ import Expense from "../components/finance/accountspayable/Expense/Expense";
 import PurchaseOrder from "../components/finance/accountspayable/purchaseorder/PurchaseOrder";
 import NewPurchaseOrder from "../components/finance/accountspayable/purchaseorder/NewPurchaseOrder";
 import NewCreditNote from "../components/finance/accountspayable/creditnotes/NewCreditNote";
+import NewExpenseClaim from "../components/finance/accountspayable/Expense/NewExpenseClaim";
+import NewMileageClaim from "../components/finance/accountspayable/Expense/NewMileageClaim";
+import Products from "../components/finance/products/Products";
+import CreateProduct from "../components/finance/products/CreateProduct";
+import CompaniesList from "../components/finance/companies/CompaniesList";
+import Suppliers from "../components/finance/suppliers/Suppliers";
+import SuppliersCard from "../components/finance/suppliers/SuppliersCard";
+import SalesOverview from "../components/finance/accountsrecievable/hincoming_newmenu";
 
 const RoleBasedRoutes = () => {
   return (
@@ -370,10 +378,23 @@ const RoleBasedRoutes = () => {
          <Route path="/finance/creditnotes" element={<CreditNotes />} />
            <Route path="/finance/newcreditnote" element={<NewCreditNote />} />
            <Route path="/finance/expense" element={<Expense />} />
-           {/* <Route path="/finance/newexpense" element={<NewExpense />} /> */}
-
+           <Route path="/finance/newexpenseclaim" element={<NewExpenseClaim />} />
+            <Route path="/finance/newmileageclaim" element={<NewMileageClaim />} />
            <Route path="/finance/Purchaseorder" element={<PurchaseOrder />} />
            <Route path="/finance/newpurchaseorder" element={<NewPurchaseOrder />} />
+
+{/* accounts Recievable */}
+
+<Route path="/finance/accounts_receivable" element={<SalesOverview />} />
+
+          <Route path="/finance/products" element={<Products />} />
+           <Route path="/finance/createproduct" element={<CreateProduct />} />
+
+           <Route path="/finance/companies" element={<Company />} />
+
+           <Route path="/finance/suppliers" element={<Suppliers />} />
+            <Route path="/finance/createsupplier" element={<SuppliersCard />} />
+
         {/* Administration */}
 
         <Route
