@@ -188,7 +188,7 @@ const SalesDashboard = () => {
         {/* Search and Filter */}
         <div className="inv-card-header mb-3">
           <div className="row mt-4">
-            <div className="col-md-6">
+            <div className="col-md-5">
               <div className="inv-search-wrapper">
                 <i className="bi bi-search inv-search-icon" />
                 <input
@@ -219,12 +219,12 @@ const SalesDashboard = () => {
             </div>
             <div className="col-md-2 text-md-center mt-3 mt-md-0">
               <button className="inv-filter-button">
-                <i className="bi bi-funnel me-2" /> Filters
+                <i className="bi bi-funnel me-1" /> Filters
               </button>
             </div>
             <div className="col-md-2">
-              <button className="inv-new-button" onClick={addNewDeal}>
-                <i className="bi bi-plus me-2" /> New Deal
+              <button className="inv-new-button mt-md-0 " onClick={addNewDeal}>
+                <i className="bi bi-plus"/> New Deal
               </button>
             </div>
           </div>
