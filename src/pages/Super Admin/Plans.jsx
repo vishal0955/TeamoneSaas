@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import CustomPlanForm from './CustomSelect.jsx/CustomSelect';
+import CreatePlanForm from './CustomSelect.jsx/AddPlan';
 
 // Demo packages array
 const plans = [
@@ -55,12 +57,23 @@ const plans = [
 function Plans() {
 
   const [ customizePlanModalShow, setCustomizePlanModalShow ] = useState(false);
+   const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleShowModal = () => {
+    console.log("cusotomoise btn clicked");
+    setCustomizePlanModalShow(true);
+
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setCustomizePlanModalShow(false);
+  }
   return (
     <Container className="" style={{ marginTop: '60px' }}>
       <div className='d-flex justify-content-between'>
     <Link to='#' >
-    <button className='btn btn-warning mb-2' >Add Plan</button></Link>
-    <button className='btn btn-danger mb-2' >Customize Plan</button>
+    <button className='btn btn-warning mb-2' onClick={() => setIsModalOpen(true)} >Add Plan</button></Link>
+    <button className='btn btn-danger mb-2' onClick={handleShowModal}>Customize Plan</button>
 
     </div>
     <Row className="card-grid">
@@ -91,6 +104,53 @@ function Plans() {
         </Col>
       ))}
     </Row>
+    { customizePlanModalShow &&
+    <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  {/* <h5 className="modal-title">Add New Quotes</h5> */}
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className="modal-body">
+                  <CustomPlanForm onclose={handleCloseModal}/>
+                </div>
+              </div>
+            </div>
+          </div>
+    </>  
+    
+    }
+
+    {/* add Plan */}
+
+    {
+      isModalOpen && 
+      <div className="modal fade show d-block" role="dialog">
+      <div className="modal-dialog modal-lg" role="document">
+        <div className="modal-content">
+          <div className="modal-header">
+            {/* <h5 className="modal-title">Add New Quotes</h5> */}
+            <button
+              type="button"
+              className="btn-close"
+              aria-label="Close"
+              onClick={handleCloseModal}
+            />
+          </div>
+          <div className="modal-body">
+            <CreatePlanForm onclose={handleCloseModal} />
+          </div>
+        </div>
+      </div>
+    </div>
+    }
   </Container>
   );
 }
