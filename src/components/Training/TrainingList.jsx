@@ -359,7 +359,7 @@ const TrainingList = () => {
         {
             id: 1,
             name: "Advanced Web Development",
-            description: "Learn modern web development techniques including React, Node.js and MongoDB...",
+            description: "Learn modern web development techniques including React, Node.js and MongoDB.",
             cost: 999,
             startDate: "2024-01-15",
             endDate: "2024-03-15",
@@ -370,7 +370,7 @@ const TrainingList = () => {
         {
             id: 2,
             name: "UX Design Fundamentals",
-            description: "Master the principles of user experience design and create intuitive interfaces...",
+            description: "Master the principles of user experience design and create intuitive interfaces.",
             cost: 799,
             startDate: "2024-02-01",
             endDate: "2024-04-01",
@@ -381,7 +381,7 @@ const TrainingList = () => {
         {
             id: 3,
             name: "Business Analytics",
-            description: "Learn to analyze business data and make data-driven decisions...",
+            description: "Learn to analyze business data and make data-driven decisions.",
             cost: 1299,
             startDate: "2024-03-01",
             endDate: "2024-05-01",
@@ -482,10 +482,10 @@ const TrainingList = () => {
                                             <FaFileExport className="mr-2" />
                                             Export
                                         </button>
-                                        <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        {/* <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                             <FaPrint className="mr-2" />
                                             Print
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                                 <div className="mt-4">
@@ -537,7 +537,7 @@ const TrainingList = () => {
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <a
                                                             href="#"
-                                                            className="text-blue-600 hover:text-blue-800 font-medium"
+                                                            className=" font-medium"
                                                         >
                                                             {training.name}
                                                         </a>
@@ -545,7 +545,8 @@ const TrainingList = () => {
                                                     <td className="px-6 py-4">
 
                                                         <p>
-
+                                                            {training.description}
+{/* 
                                                             {training.description.length > 50 ? (
                                                                 <>
                                                                     {training.description.substring(0, 10)}...
@@ -556,7 +557,7 @@ const TrainingList = () => {
                                                                 </>
                                                             ) : (
                                                                 training.description
-                                                            )}
+                                                            )} */}
                                                          </p>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -568,8 +569,8 @@ const TrainingList = () => {
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                                                         <a
-                                                            href="#"
-                                                            className="text-blue-600 hover:text-blue-800"
+                                                   
+                                                            className=""
                                                         >
                                                             {training.instructor}
                                                         </a>
@@ -579,12 +580,12 @@ const TrainingList = () => {
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                                                         <div className="flex space-x-2">
-                                                            <button 
+                                                            {/* <button 
                                                                 className="text-blue-600 hover:text-blue-800"
                                                                 title="View"
                                                             >
                                                                 <FaEye /> 
-                                                            </button>
+                                                            </button> */}
                                                             <button 
                                                                 className="text-green-600 hover:text-green-800"
                                                                 title="Edit"
@@ -674,8 +675,8 @@ const TrainingList = () => {
                 </div>
             
                 {isModalOpen && (
-                    <div className="fixed inset-0 z-50 overflow-y-auto">
-                        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <div className="fixed inset-0 z-50 overflow-y-auto  ">
+                        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 w-full">
                             <div className="fixed inset-0 transition-opacity" aria-hidden="true">
                                 <div 
                                     className="absolute inset-0 bg-gray-500 opacity-75"

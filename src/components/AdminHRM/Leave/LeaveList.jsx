@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css'
 import {
   FaUsers,
   FaCalendarCheck,
   FaCalendarTimes,
   FaClock,
   FaFileExport,
+  FaInfoCircle,
   FaPlus,
 } from "react-icons/fa";
 import { FaEye, FaPenToSquare, FaTrash } from "react-icons/fa6";
@@ -97,6 +101,7 @@ const LeavePage = () => {
       from: "20 Jan 2024",
       to: "25 Jan 2024",
       days: 5,
+      reason: "trip ",
       status: "Approved",
       paidStatus: "Unpaid"
     },
@@ -221,11 +226,33 @@ const LeavePage = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4">
+                {/* <td className="px-6 py-4">
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                     {entry.leaveType}
                   </span>
-                </td>
+                </td> */}
+
+<td className="px-6 py-4">
+      <div className="flex items-center">
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+          {entry.leaveType}
+        </span>
+        {entry.reason && (
+          <>
+            <button
+              data-tooltip-id={`reason-tooltip-${entry.id}`}
+              data-tooltip-content={entry.reason}
+              className="ml-2 text-gray-400 hover:text-gray-600"
+            >
+              <FaInfoCircle size={14} />
+            </button>
+            <Tooltip id={`reason-tooltip-${entry.id}`} />
+          </>
+        )}
+      </div>
+    </td>
+
+
                 <td className="px-6 py-4 text-sm text-gray-500">{entry.from}</td>
                 <td className="px-6 py-4 text-sm text-gray-500">{entry.to}</td>
                 <td className="px-6 py-4 text-sm text-gray-500">{entry.days} Days</td>
@@ -253,12 +280,12 @@ const LeavePage = () => {
                     >
                       <FaPenToSquare />
                     </button>
-                    <button 
+                    {/* <button 
                       className="text-yellow-600 hover:text-yellow-900" 
                       onClick={() => handleView(entry)}
                     >
                       <FaEye />
-                    </button>
+                    </button> */}
                     <button className="text-red-600 hover:text-red-900">
                       <FaTrash />
                     </button>

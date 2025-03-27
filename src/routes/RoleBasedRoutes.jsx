@@ -161,7 +161,7 @@ const RoleBasedRoutes = () => {
         <Route path="/recruitment/candidates" element={<Candidate />} />
         <Route path="/recruitment/refferals" element={<Refferal />} />
 
-        <Route path="/individualcandidatepage" element={<IndividualCandidatePage />} />
+        <Route path="/recruitment/individualcandidatepage" element={<IndividualCandidatePage />} />
         {/* recruitment */}
 
         {/* <Route path="/todolist" element={<TodoList />} /> */}
