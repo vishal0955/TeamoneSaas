@@ -111,7 +111,7 @@ const Navbar = ({ toggleSidebar}) => {
               className="h-8 w-8 rounded-full bg-gray-300 overflow-hidden border-2 border-gray-200 focus:outline-none"
             >
               <img
-                src="/api/placeholder/40/40"
+                 src="https://i.ibb.co/dJ68VsWW/image.png"
                 alt="Profile"
                 className="h-full w-full object-cover"
               />
@@ -128,7 +128,7 @@ const Navbar = ({ toggleSidebar}) => {
             <div className="flex items-center space-x-3">
               <div className="h-12 w-12 rounded-full bg-gray-300">
                 <img
-                  src="/api/placeholder/48/48"
+                  src="https://i.ibb.co/dJ68VsWW/image.png"
                   alt="Kevin Larry"
                   className="h-full w-full object-cover rounded-full"
                 />

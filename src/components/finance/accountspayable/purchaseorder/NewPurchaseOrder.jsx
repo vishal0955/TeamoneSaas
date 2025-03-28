@@ -84,7 +84,7 @@ const NewPurchaseOrder = () => {
             Department
           </label>
           <select className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom">
-            <option>BPAV Tech Group</option>
+            <option>XYZ Tech Group</option>
             <option>Finance</option>
             <option>Operations</option>
           </select>
@@ -235,7 +235,7 @@ const NewPurchaseOrder = () => {
                 Shipping Address
               </label>
               <div className="text-sm text-gray-600">
-                <p>BPAV Technology Group Ltd</p>
+                <p>XYZ Technology Group Ltd</p>
                 <p>Ground Floor, Unit 1</p>
                 <p>Prisma Park</p>
                 <p>Berrington Way</p>
