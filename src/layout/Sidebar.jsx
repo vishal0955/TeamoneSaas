@@ -14,6 +14,7 @@ import {
   User,
   ChartColumn,
   SquareCheckBig,
+  Box,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -173,25 +174,33 @@ const menuItems = [
        
       //   name: "Sales",
       //   path: "/finance/sales",
-      //   subMenu: [
+        // subMenu: [
           
-      //     { name: "Expenses", path: "/finance/sales/expenses" },
-      //     { name: "Provident Funds", path: "/finance/sales/provident_funds" },
-      //     { name: "Taxes", path: "/finance/sales/taxs" },
-      //   ],
+        //   { name: "Expenses", path: "/finance/sales/expenses" },
+        //   { name: "Provident Funds", path: "/finance/sales/provident_funds" },
+        //   { name: "Taxes", path: "/finance/sales/taxs" },
+        // ],
       // },
     ]
     },
-      // {
-      //   name: "Payroll",
-      //   path: "/finance/payroll",
-      //   subMenu: [
-      //     { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
-      //     { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
-      //   ],
-      // },
-  //   ],
-  // },
+    
+    {
+      name: "Support Hub",
+      path: "/support",
+      // icon: <Help size={16} />,
+      subItems: [
+          
+        { name: "Settings", path: "/support/settings" },
+       
+   
+      ],
+    },
+
+  {
+    name: "Inventory",
+    path: "/inventory",
+    icon: <Box size={16} />,
+  },
 
   {
     name: "Administration",

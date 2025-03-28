@@ -105,6 +105,27 @@ import CompaniesList from "../components/finance/companies/CompaniesList";
 import Suppliers from "../components/finance/suppliers/Suppliers";
 import SuppliersCard from "../components/finance/suppliers/SuppliersCard";
 import SalesOverview from "../components/finance/accountsrecievable/hincoming_newmenu";
+import InventorySidebar from "../components/Inventory/InventorySidebar";
+import InventoryDashboard from "../components/Inventory/InventoryDashboard";
+import InvetoryLayout from "../components/Inventory/InvetoryLayout";
+import OrderList from "../components/Inventory/orderlist/OrderList";
+import OrderCard from "../components/Inventory/orderlist/OrderCard";
+import CustomerList from "../components/Inventory/customers/CustomerList";
+import InventoryList from "../components/Inventory/inventorylist/InventoryList";
+import InventoryItemCard from "../components/Inventory/inventorylist/InventoryItemCard";
+import ItemCardVariation from "../components/Inventory/inventorylist/ItemCardVariation";
+import InventoryPricing from "../components/Inventory/inventorylist/InventoryPricing";
+import InventorySetting from "../components/Inventory/inventorylist/InventorySetting";
+import InventoryCalendar from "../components/Inventory/calendar/Calendar";
+import HelpDeskDashboard from "../components/supportHub/fullsidebar";
+import SupporthubLayout from "../components/supportHub/SupporthubLayout";
+import Summary from "../components/supportHub/summary_view";
+import AnalyticsView from "../components/supportHub/analytics_view";
+import TicketManagementSystem from "../components/supportHub/ticket_screen";
+import TicketCard from "../components/supportHub/ticketcard";
+import HelpDeskSettings from "../components/supportHub/settingpage";
+import HelpCenter from "../components/supportHub/knowledgebase";
+import Chatbot from "../components/supportHub/chatbox_page";
 
 const RoleBasedRoutes = () => {
   return (
@@ -410,6 +431,36 @@ const RoleBasedRoutes = () => {
           path="/admininistration/user_management/users"
           element={<Users />}
         />
+
+        {/* Inventory Routes */}
+          <Route path="/inventory" element={<InvetoryLayout />} >
+           <Route path="/inventory/dashboard" element={<InventoryDashboard />} />
+            <Route path="/inventory/orerlist" element={<OrderList />} />
+            <Route path="/inventory/ordercard" element={<OrderCard />} />
+            <Route path="/inventory/customerslist" element={<CustomerList />} />
+            <Route path="/inventory/inventory" element={<InventoryList />} />
+            <Route path="/inventory/itemcard" element={<InventoryItemCard />} />
+            <Route path="/inventory/itemcard_variations" element={<ItemCardVariation />} />
+            <Route path="/inventory/itemcard_pricing" element={<InventoryPricing />} />
+            <Route path="/inventory/itemcard_settings" element={<InventorySetting />} />
+            <Route path="/inventory/calendar" element={<InventoryCalendar />} />
+           </Route>
+
+           {/* Support Hub */}
+           <Route path="/support" element={<SupporthubLayout />} >
+           {/* inside Layout  */}
+           <Route path="/support/summary" element={<Summary />} />
+           <Route path="/support/analytics" element={<AnalyticsView />} />
+           <Route path="/support/tickets" element={<TicketManagementSystem />} />
+           <Route path="/support/ticketcard" element={<TicketCard />} />
+           </Route>
+           <Route  path="/support/settings" element={<HelpDeskSettings />} />
+           <Route path="/support/knowledgebase" element={<HelpCenter />} />
+           <Route path="/support/chatbot" element={<Chatbot />} />
+
+
+
+
 
         <Route
           path="/manager"

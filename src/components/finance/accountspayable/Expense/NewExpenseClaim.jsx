@@ -112,7 +112,7 @@ const NewExpenseClaim = () => {
             Company bank account
           </label>
           <select className="w-full bg-white">
-            <option>BPAV Consultants Ltd</option>
+            <option>XYZ Consultants Ltd</option>
           </select>
         </div>
         <div>

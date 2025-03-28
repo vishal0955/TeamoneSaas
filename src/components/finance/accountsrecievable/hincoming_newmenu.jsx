@@ -127,9 +127,10 @@ const SalesOverview = () => {
   return (
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
-      <div className="flex justify-start items-center mb-8 gap-4">
+      <div className=" mb-8 gap-4">
         <h1 className="text-2xl font-semibold text-gray-900">Sales overview</h1>
-        <div className="flex items-center space-x-4 ml-4">
+        <div className="mt-4 flex items-center justify-between">
+         <div className="flex items-center gap-4">
           <DropdownButton />
           <button className="!rounded-button bg-white border border-gray-300 px-4 py-2">
             Send Statements
@@ -137,6 +138,7 @@ const SalesOverview = () => {
           <button className="!rounded-button bg-white border border-gray-300 px-4 py-2">
             Import
           </button>
+          </div>
           <SearchInput />
         </div>
       </div>
