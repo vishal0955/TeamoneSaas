@@ -19,7 +19,7 @@
 //             <div className="flex-shrink-0 flex items-center">
 //               <img
 //                 className="h-8 w-auto"
-//                 src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+//                 src="https://i.ibb.co/dJ68VsWW/image.png"
 //                 alt="Logo"
 //               />
 //             </div>
@@ -456,7 +456,7 @@ const TrainingList = () => {
                             <div className="flex-shrink-0 flex items-center">
                                 <img
                                     className="h-8 w-auto"
-                                    src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+                                    src="https://i.ibb.co/dJ68VsWW/image.png"
                                     alt="Logo"
                                 />
                             </div>

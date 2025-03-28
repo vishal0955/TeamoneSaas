@@ -9,7 +9,7 @@ const HelpCenter = () => {
         <nav className="max-w-8xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center">
             <img
-              src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+              src="https://i.ibb.co/dJ68VsWW/image.png"
               alt="Logo"
               className="h-8"
             />

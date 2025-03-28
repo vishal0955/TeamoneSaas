@@ -1,42 +1,18 @@
-import React from 'react'
+import React, { useState} from 'react';
+import { ChevronDown } from "lucide-react";
 import { Link } from 'react-router-dom'
 
 const OrderList = () => {
+  const [statusOpen, setStatusOpen] = useState(false);
+  const [paymentOpen, setPaymentOpen] = useState(false);
+
   return (
     <div>
-          <div className="min-h-screen flex flex-col">
-    {/* <header className="bg-white border-b border-gray-200">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <div className="flex items-center">
-            <img
-              src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
-              alt="Logo"
-              className="h-8 w-auto"
-            />
-            <h1 className="ml-4 text-xl font-semibold text-gray-900">
-              Inventory - Orders List
-            </h1>
-          </div>
-          <div className="flex items-center space-x-4">
-            <button className="text-gray-500 hover:text-gray-700">
-              <i className="fas fa-bell" />
-            </button>
-            <button className="text-gray-500 hover:text-gray-700">
-              <i className="fas fa-cog" />
-            </button>
-            <div className="flex items-center">
-              <span className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
-                <i className="fas fa-user text-gray-600" />
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header> */}
+          <div className="min-h-screen max-w-full flex flex-col">
+   
     <div> <p>Order List</p></div>
-    <div className=" flex w-full">
-      <aside className="w-48 bg-white border-r border-gray-200 flex-shrink-0">
+    <div className="flex container">
+      {/* <aside className="w-48 bg-white border-r border-gray-200 flex-shrink-0">
         <div className="h-full  w-full flex flex-col">
           <div className="p-4">
             <div className="space-y-4">
@@ -120,8 +96,65 @@ const OrderList = () => {
             </div>
           </div>
         </div>
-      </aside>
+      </aside> */}
       <main className="flex-1 overflow-y-auto bg-white">
+      <div className="w-full bg-white border-b border-gray-200 p-4 flex items-center space-x-4 shadow-sm">
+      {/* Status Dropdown */}
+      <div className="relative">
+        <button
+          onClick={() => setStatusOpen(!statusOpen)}
+          className="flex items-center px-4 py-2 text-sm font-medium text-gray-900 border border-gray-300 rounded-md bg-white hover:bg-gray-50"
+        >
+          Status <ChevronDown className="ml-2 h-4 w-4" />
+        </button>
+        {statusOpen && (
+          <div className="absolute  Z-30left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+            <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+              Draft (0)
+            </button>
+            <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+              Reserved (2)
+            </button>
+            <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+              Picked up (1)
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Payment Status Dropdown */}
+      <div className="relative">
+        <button
+          onClick={() => setPaymentOpen(!paymentOpen)}
+          className="flex items-center px-4 py-2 text-sm font-medium text-gray-900 border border-gray-300 rounded-md bg-white hover:bg-gray-50"
+        >
+          Payment Status <ChevronDown className="ml-2 h-4 w-4" />
+        </button>
+        {paymentOpen && (
+          <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+            <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+              Payment due (0)
+            </button>
+            <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+              Partially paid (1)
+            </button>
+            <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+              Paid (0)
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Date Range Button */}
+      <button className="px-4 py-2 text-sm font-medium text-gray-900 border border-gray-300 rounded-md bg-white hover:bg-gray-50">
+        Select Date Range
+      </button>
+
+      {/* Export Button */}
+      <button className="px-4 py-2 text-sm font-medium text-gray-900 border border-gray-300 rounded-md bg-white hover:bg-gray-50 flex items-center">
+        <i className="fas fa-download mr-2" /> Export
+      </button>
+    </div>
         <div className="px-6 py-4">
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center">

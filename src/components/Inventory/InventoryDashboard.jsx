@@ -65,10 +65,7 @@ const InventoryDashboard = () => {
   return (
     <div className="bg-gray-50 w-full min-h-screen">
       <nav className="bg-white shadow p-4 flex justify-between">
-        <div className="flex items-center">
-          <img className="h-8" src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" />
-          <span className="ml-4 text-gray-900 font-medium">Dashboard</span>
-        </div>
+      
         <div className="text-gray-500">
           <i className="far fa-calendar-alt mr-2"></i>Today: <span id="currentDate"></span>
         </div>

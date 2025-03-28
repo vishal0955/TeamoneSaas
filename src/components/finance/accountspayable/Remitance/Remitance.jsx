@@ -142,7 +142,7 @@ const Remitance = () => {
                 <div className="flex items-center">
                   <img
                     className="h-8 w-8 rounded-full"
-                    src=""
+                    src="https://i.ibb.co/dJ68VsWW/image.png"
                     alt=""
                   />
                   <div className="ml-3">

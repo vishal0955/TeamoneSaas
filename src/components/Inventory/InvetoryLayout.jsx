@@ -11,7 +11,7 @@ const InvetoryLayout = () => {
 
     return (
         <div className="flex" >
-            <InventorySidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
+            <InventorySidebar className="fixed ml-64" toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
             <div className="flex-1">
                 {/* <Navbar toggleSidebar={toggleSidebar} /> */}
                 

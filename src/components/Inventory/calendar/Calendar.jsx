@@ -7,11 +7,7 @@ const InventoryCalendar = () => {
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <img
-                src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
-                alt="Logo"
-                className="h-8 w-auto"
-              />
+              
               <span className="ml-3 text-lg font-semibold text-gray-900">
                 Inventory Calendar
               </span>

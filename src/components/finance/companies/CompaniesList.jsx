@@ -163,7 +163,7 @@ const CompaniesList = () => {
                     <div className="flex-shrink-0 h-10 w-10">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+                        src="https://i.ibb.co/dJ68VsWW/image.png"
                         alt=""
                       />
                     </div>
@@ -179,7 +179,7 @@ const CompaniesList = () => {
                     <div className="flex-shrink-0 h-8 w-8">
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+                        src="https://i.ibb.co/dJ68VsWW/image.png"
                         alt=""
                       />
                     </div>
@@ -212,7 +212,7 @@ const CompaniesList = () => {
                     <div className="flex-shrink-0 h-10 w-10">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+                        src="https://i.ibb.co/dJ68VsWW/image.png"
                         alt=""
                       />
                     </div>
@@ -228,7 +228,7 @@ const CompaniesList = () => {
                     <div className="flex-shrink-0 h-8 w-8">
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+                        src="https://i.ibb.co/dJ68VsWW/image.png"
                         alt=""
                       />
                     </div>

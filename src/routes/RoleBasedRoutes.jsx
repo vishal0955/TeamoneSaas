@@ -126,6 +126,8 @@ import TicketCard from "../components/supportHub/ticketcard";
 import HelpDeskSettings from "../components/supportHub/settingpage";
 import HelpCenter from "../components/supportHub/knowledgebase";
 import Chatbot from "../components/supportHub/chatbox_page";
+import ProjectDashboard from "../components/Project/ProjectDetails";
+import Dashboard from "../components/Project/ProjectDashboard";
 
 const RoleBasedRoutes = () => {
   return (
@@ -160,6 +162,10 @@ const RoleBasedRoutes = () => {
         <Route path="/noteslist" element={<NotesList />} />
 
         <Route path="/todoapp" element={<TodoApp />} />
+
+        {/* Project Route */}
+        <Route path="/project" element={<Dashboard />} />
+        <Route path="/project/details" element={<ProjectDashboard />} />
         <Route path="/project/projects" element={<Project />} />
         <Route path="/project/task" element={<Task />} />
         <Route path="/task/:id" element={<TaskDetail />} />
@@ -434,8 +440,9 @@ const RoleBasedRoutes = () => {
 
         {/* Inventory Routes */}
           <Route path="/inventory" element={<InvetoryLayout />} >
+           <Route index element={<InventoryDashboard />} />
            <Route path="/inventory/dashboard" element={<InventoryDashboard />} />
-            <Route path="/inventory/orerlist" element={<OrderList />} />
+            <Route path="/inventory/orderlist" element={<OrderList />} />
             <Route path="/inventory/ordercard" element={<OrderCard />} />
             <Route path="/inventory/customerslist" element={<CustomerList />} />
             <Route path="/inventory/inventory" element={<InventoryList />} />

@@ -330,7 +330,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <aside
         className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
-          collapsed ? "w-20" : "w-64"
+          collapsed ? "w-20" : "w-56"
         } z-30`}
       >
         {/* Fixed Header */}
@@ -512,10 +512,10 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <main
         className={`transition-all duration-300 ${
-          collapsed ? "ml-20" : "ml-64"
+          collapsed ? "ml-20" : "ml-56"
         }`}
       >
-        {/* Main content */}
+        
       </main>
     </>
   );

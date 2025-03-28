@@ -22,7 +22,7 @@ const SignaturePayment = () => {
               style={{ gap: "15px" }}
             >
               <img
-                src=""
+                
                 alt="User"
                 className="rounded-circle"
                 style={{

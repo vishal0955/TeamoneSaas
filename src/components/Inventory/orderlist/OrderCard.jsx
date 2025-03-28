@@ -55,7 +55,7 @@ const OrderCard = () => {
                 <div className="flex-shrink-0">
                   <img
                     className="h-12 w-12 rounded-full"
-                    src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+                    src="https://i.ibb.co/dJ68VsWW/image.png"
                     alt="BTS Big"
                   />
                 </div>

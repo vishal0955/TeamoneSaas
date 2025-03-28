@@ -8,7 +8,7 @@ const Chatbot = () => {
         <nav className="max-w-8xl mx-auto px-6 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center space-x-2">
             <img
-              src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+              src="https://i.ibb.co/dJ68VsWW/image.png"
               alt="XYZ Logo"
               className="h-8"
             />
@@ -73,7 +73,7 @@ const Chatbot = () => {
       <div className="fixed bottom-4 right-4 w-80 bg-white rounded-lg shadow-lg overflow-hidden z-50">
         <div className="p-4 bg-gray-50 border-b flex items-center space-x-2">
           <img
-            src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+            src="https://i.ibb.co/dJ68VsWW/image.png"
             alt="XYZ Chat"
             className="h-6"
           />
