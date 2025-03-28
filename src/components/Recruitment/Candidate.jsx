@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Candidate = () => {
+  const navigate = useNavigate();
   return (
     <div>
         <>
@@ -94,7 +96,7 @@ const Candidate = () => {
       </div>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white rounded-lg shadow p-6 pointer-cursor" onClick={() => navigate("/recruitment/individualcandidatepage")}>
         <div className="flex items-center space-x-4 mb-6">
           <img
             src="https://creatie.ai/ai/api/search-image?query=A professional headshot of a businessman in a light blue shirt against a neutral background, looking confident and approachable&width=80&height=80&orientation=squarish&flag=39173e97-629f-40a7-a305-17db3eab63d2"

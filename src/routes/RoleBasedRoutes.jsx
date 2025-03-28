@@ -78,7 +78,33 @@ import NewInvoice from "../components/crm/invoice/NewInvoice";
 import PayslipPage from "../components/AdminHRM/Payroll/PayslipPage";
 import PayrollItems from "../components/AdminHRM/Payroll/PayrollItems";
 import RolesPermission from "../usermanagement/RolesPermission/RolesPermission";
+import TrainingList from "../components/Training/TrainingList";
 
+import PayrollOvertime from "../components/AdminHRM/Payroll/PayrollOvertime";
+import PayrollDeductions from "../components/AdminHRM/Payroll/PayrollDeductions";
+import PerformanceOverview from "../components/AdminPerformance/PerformanceOverview";
+import GoalsOverview from "../components/AdminPerformance/GoalsOverview";
+import Compensation from "../components/AdminPerformance/Compensation";
+import Telent from "../components/AdminPerformance/Telent";
+import IndividualCandidatePage from "../components/Recruitment/IndividualCandidatePage";
+import Accountspayable from "../components/finance/accountspayable/Accountspayable";
+import AllBills from "../components/finance/accountspayable/Bills/AllBills";
+import Remitance from "../components/finance/accountspayable/Remitance/Remitance";
+import NewRemitance from "../components/finance/accountspayable/Remitance/NewRemitance";
+import NewBill from "../components/finance/accountspayable/Bills/NewBill";
+import CreditNotes from "../components/finance/accountspayable/creditnotes/CreditNotes";
+import Expense from "../components/finance/accountspayable/Expense/Expense";
+import PurchaseOrder from "../components/finance/accountspayable/purchaseorder/PurchaseOrder";
+import NewPurchaseOrder from "../components/finance/accountspayable/purchaseorder/NewPurchaseOrder";
+import NewCreditNote from "../components/finance/accountspayable/creditnotes/NewCreditNote";
+import NewExpenseClaim from "../components/finance/accountspayable/Expense/NewExpenseClaim";
+import NewMileageClaim from "../components/finance/accountspayable/Expense/NewMileageClaim";
+import Products from "../components/finance/products/Products";
+import CreateProduct from "../components/finance/products/CreateProduct";
+import CompaniesList from "../components/finance/companies/CompaniesList";
+import Suppliers from "../components/finance/suppliers/Suppliers";
+import SuppliersCard from "../components/finance/suppliers/SuppliersCard";
+import SalesOverview from "../components/finance/accountsrecievable/hincoming_newmenu";
 
 const RoleBasedRoutes = () => {
   return (
@@ -152,6 +178,8 @@ const RoleBasedRoutes = () => {
         <Route path="/recruitment/jobs" element={<Job />} />
         <Route path="/recruitment/candidates" element={<Candidate />} />
         <Route path="/recruitment/refferals" element={<Refferal />} />
+
+        <Route path="/recruitment/individualcandidatepage" element={<IndividualCandidatePage />} />
         {/* recruitment */}
 
         {/* <Route path="/todolist" element={<TodoList />} /> */}
@@ -195,7 +223,7 @@ const RoleBasedRoutes = () => {
         ></Route>
 
         <Route
-          path="/shiftroster"
+          path="/hrm/attendance/shiftroster"
           element={<ShiftRoster></ShiftRoster>}
         ></Route>
 
@@ -204,6 +232,25 @@ const RoleBasedRoutes = () => {
           element={<PerformanceIndicator></PerformanceIndicator>}
         ></Route>
 
+         {/* Training */}
+        <Route path="/hrm/training/training_list" element={<TrainingList />} />
+
+        <Route
+          path="/performaceoverview"
+          element={<PerformanceOverview></PerformanceOverview>}
+        ></Route>
+
+        <Route
+          path="/goalsoverview"
+          element={<GoalsOverview></GoalsOverview>}
+        ></Route>
+
+        <Route
+          path="/compensation"
+          element={<Compensation></Compensation>}
+        ></Route>
+
+        <Route path="/telent" element={<Telent></Telent>}></Route>
         <Route
           path="/employeesalary"
           element={<EmployeeSalary></EmployeeSalary>}
@@ -211,6 +258,11 @@ const RoleBasedRoutes = () => {
         <Route
           path="/performaceappraisal"
           element={<PerformanceAppraisal></PerformanceAppraisal>}
+        ></Route>
+
+        <Route
+          path="/payroll/overtime"
+          element={<PayrollOvertime></PayrollOvertime>}
         ></Route>
 
         <Route
@@ -264,6 +316,11 @@ const RoleBasedRoutes = () => {
           element={<PayrollItems></PayrollItems>}
         ></Route>
 
+        <Route
+          path="/payroll/deductions"
+          element={<PayrollDeductions></PayrollDeductions>}
+        ></Route>
+
         <Route path="/hrm/holiday" element={<Holidays />}></Route>
 
         <Route path="/hrm/attendance/timesheet" element={<Timesheet />} />
@@ -307,13 +364,48 @@ const RoleBasedRoutes = () => {
             </ProtectedRoute>
           }
         />
-     
+
+
+        {/* Finance Routes */}
+
+        <Route path="/finance/accounts_payable" element={<Accountspayable />} />
+
+        
+        <Route path="/finance/allbills" element={<AllBills />} />
+        <Route path="/finance/newbill" element={<NewBill />} />
+        <Route path="/finance/remitance" element={<Remitance />} />
+        <Route path="/finance/newremitance" element={<NewRemitance />} />
+         <Route path="/finance/creditnotes" element={<CreditNotes />} />
+           <Route path="/finance/newcreditnote" element={<NewCreditNote />} />
+           <Route path="/finance/expense" element={<Expense />} />
+           <Route path="/finance/newexpenseclaim" element={<NewExpenseClaim />} />
+            <Route path="/finance/newmileageclaim" element={<NewMileageClaim />} />
+           <Route path="/finance/Purchaseorder" element={<PurchaseOrder />} />
+           <Route path="/finance/newpurchaseorder" element={<NewPurchaseOrder />} />
+
+{/* accounts Recievable */}
+
+<Route path="/finance/accounts_receivable" element={<SalesOverview />} />
+
+          <Route path="/finance/products" element={<Products />} />
+           <Route path="/finance/createproduct" element={<CreateProduct />} />
+
+           <Route path="/finance/companies" element={<Company />} />
+
+           <Route path="/finance/suppliers" element={<Suppliers />} />
+            <Route path="/finance/createsupplier" element={<SuppliersCard />} />
 
         {/* Administration */}
 
-     <Route path="/admininistration/user_management/users" element={<Users/>} />
-     <Route path="/admininistration/user_management/roles_permissions" element={<RolesPermission />} />
- 
+        <Route
+          path="/admininistration/user_management/users"
+          element={<Users />}
+        />
+        <Route
+          path="/admininistration/user_management/roles_permissions"
+          element={<RolesPermission />}
+        />
+
         <Route
           path="/admininistration/user_management/users"
           element={<Users />}

@@ -29,7 +29,7 @@ const EMPLOYEES = [
 const PRIORITY_OPTIONS = ['High', 'Medium', 'Low'];
 const TAG_OPTIONS = ['Projects', 'Urgent', 'Internal', 'In progress', 'Reminder', 'Completed'];
 
-const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
+const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => { 
   const [formData, setFormData] = useState({
     text: '',
     description: '',
@@ -78,11 +78,11 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-xl font-semibold mb-4">{editTask ? 'Edit Task' : 'Add New Task'}</h2>
+    <div className="">
+      <div className="bg-white rounded-lg  w-full max-w-md">
+        <h2 className="text-lg  text-indigo-600 font-semibold mb-4">{editTask ? 'Edit Task' : 'Add New Task'}</h2>
         <form onSubmit={handleSubmit}>
-          <div className="space-y-4">
+          <div className="">
             <div>
               <label className="block text-sm font-medium text-gray-700">Title</label>
               <input
@@ -203,7 +203,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
 
 const TaskDropdown = ({ taskId, onEdit, onDelete, onView }) => {
   return (
-    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+    <div className="">
       <div className="py-1" role="menu">
         <button
           onClick={onView}
@@ -291,7 +291,9 @@ const TodoApp = () => {
     });
 
   const [newTask, setNewTask] = useState('');
-  const [showPopup, setShowPopup] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [newTaskForm, setNewTaskForm] = useState({
     text: '',
     description: '',
@@ -302,6 +304,11 @@ const TodoApp = () => {
   });
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+
+};
 
   const handleCheckboxChange = (taskId) => {
     setTasks(tasks.map(task => 
@@ -336,14 +343,14 @@ const TodoApp = () => {
     };
     
     setTasks(prevTasks => [...prevTasks, newTask]);
-    setShowPopup(false);
+    setIsModalOpen(false);
     setEditingTask(null);
   };
 
   // Add these handlers in TodoApp component
   const handleEdit = (task) => {
     setEditingTask(task);
-    setShowPopup(true);
+    setIsModalOpen(true);
     setActiveDropdown(null);
   };
 
@@ -384,12 +391,10 @@ const TodoApp = () => {
         {/* Header */}
         <header className="flex flex-col md:flex-row md:items-center mb-6 space-y-4 md:space-y-0">
           <div className="flex items-center">
-            <div className="bg-purple-600 w-8 h-8 rounded-md flex items-center justify-center mr-2">
-              <FontAwesomeIcon icon={faCheck} className="text-white text-sm" />
-            </div>
+          
             <div className="flex text-gray-700 text-sm">
-              <span>Application</span>
-              <span className="mx-1">/</span>
+              {/* <span>Application</span> */}
+              {/* <span className="mx-1">/</span> */}
               <span className="font-medium">Todo</span>
             </div>
           </div>
@@ -446,7 +451,7 @@ const TodoApp = () => {
                 placeholder="New task" 
                 className="flex-grow py-2 px-1 text-sm border-none outline-none cursor-pointer"
                 value={newTask}
-                onClick={() => setShowPopup(true)}
+                onClick={() => setIsModalOpen(true)}
                 readOnly
               />
             </div>
@@ -544,7 +549,7 @@ const TodoApp = () => {
                 <div className="ml-auto">
                   <button 
                     className="text-xs text-blue-600 mr-2"
-                    onClick={() => setShowPopup(true)}
+                    onClick={() => setIsModalOpen(true)}
                   >
                     Add New
                   </button>
@@ -623,7 +628,7 @@ const TodoApp = () => {
                 <div className="ml-auto">
                   <button 
                     className="text-xs text-blue-600 mr-2"
-                    onClick={() => setShowPopup(true)}
+                    onClick={() => setIsModalOpen(true)}
                   >
                     Add New
                   </button>
@@ -693,16 +698,68 @@ const TodoApp = () => {
           )}
         </main>
       </div>
-      <TaskFormPopup 
-        isOpen={showPopup} 
+
+      {isModalOpen && (
+                    <div className="fixed inset-0 z-50 overflow-y-auto">
+                        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                            <div className="fixed inset-0 transition-opacity" aria-hidden="true">
+                                <div 
+                                    className="absolute inset-0 bg-gray-500 opacity-75"
+                                    onClick={handleClose}
+                                ></div>
+                            </div>
+                            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                                <div className="bg-white px-4 pb-4 sm:p-6 sm:pb-4">
+                                    <div className="flex justify-between items-start">
+                                        <h3 className="text-lg leading-6 font-medium text-gray-900">
+                                            {/* {editingTraining ? 'Edit Training' : 'Add New Training'} */}
+                                        </h3>
+                                        <button
+                                            type="button"
+                                            className="text-gray-400 hover:text-gray-500 focus:outline-none"
+                                            onClick={handleClose}
+                                        >
+                                            <span className="sr-only">Close</span>
+                                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div className="mt-4">
+                                        {/* <AddTraining 
+                                            handleClose={handleClose} 
+                                            handleAddTraining={handleAddTraining}
+                                            training={editingTraining}
+                                        /> */}
+
+<TaskFormPopup 
+        isOpen={isModalOpen} 
         onClose={() => {
-          setShowPopup(false);
+          setIsModalOpen(false);
           setEditingTask(null);
           setNewTask('');
         }} 
         onSubmit={handleAddTask}
         editTask={editingTask}
       />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+      
+      {/* <TaskFormPopup 
+        isOpen={showPopup} 
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditingTask(null);
+          setNewTask('');
+        }} 
+        onSubmit={handleAddTask}
+        editTask={editingTask}
+      /> */}
     </div>
   );
 };

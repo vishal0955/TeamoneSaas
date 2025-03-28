@@ -83,14 +83,14 @@ const menuItems = [
           { name: "Policies", path: "/policy" },
         ],
       },
-      {
-        name: "Tickets",
-        path: "/hrm/tickets",
-        // subMenu: [
-        //   { name: "Leave", path: "/hrm/tickets/leave" },
-        //   { name: "Attendance", path: "/hrm/tickets/attendance" },
-        // ]
-      },
+      // {
+      //   name: "Tickets",
+      //   path: "/hrm/tickets",
+      //   // subMenu: [
+      //   //   { name: "Leave", path: "/hrm/tickets/leave" },
+      //   //   { name: "Attendance", path: "/hrm/tickets/attendance" },
+      //   // ]
+      // },
       {
         name: "Holidays",
         path: "/hrm/holiday",
@@ -103,7 +103,7 @@ const menuItems = [
           { name: "Leaves", path: "/hrm/attendance/leaves" },
           { name: "Leave Settings", path: "/hrm/attendance/leave_settings" },
           { name: "Timesheet", path: "/hrm/attendance/timesheet" },
-          { name: "Shift & Schedule", path: "/hrm/attendance/shift_schedule" },
+          { name: "Shift & Schedule", path: "/hrm/attendance/shiftroster" },
           { name: "OverTime", path: "/hrm/attendance/overtime" },
         ],
       },
@@ -125,6 +125,14 @@ const menuItems = [
             path: "/performaceappraisal",
           },
         ],
+      },
+      {
+        name: "Training",
+        path: "/hrm/training", 
+        subMenu: [
+          // { name: "Training Plan", path: "/hrm/training/training_plan" },
+          { name: "Training List", path: "/hrm/training/training_list" },
+        ] 
       },
       {
         name: "Payroll",
@@ -150,23 +158,30 @@ const menuItems = [
     ],
   },
 
-  // {
-  //   name: "Finance & Accounts",
-  //   path: "/finance",
-  //   icon: <ChartColumn size={16} />,
-  //   subItems: [
-  //     {
-  //       name: "Sales",
-  //       path: "/finance/sales",
-  //       subMenu: [
-  //         { name: "Estimates", path: "/finance/sales/estimates" },
-  //         { name: "Invoices", path: "/finance/sales/invoices" },
-  //         { name: "Payments", path: "/finance/sales/payments" },
-  //         { name: "Expenses", path: "/finance/sales/expenses" },
-  //         { name: "Provident Funds", path: "/finance/sales/provident_funds" },
-  //         { name: "Taxes", path: "/finance/sales/taxs" },
-  //       ],
-  //     },
+  {
+    name: "Finance",
+    path: "/finance",
+    icon: <ChartColumn size={16} />,
+    subItems: [
+      // { name: "Dashboard", path: "/finance/dashboard" },
+      { name: "Accounts Payable", path: "/finance/accounts_payable" },
+      { name: "Accounts Receivable", path: "/finance/accounts_receivable" },
+      { name : "Products", path: "/finance/products" },
+      { name: "Customers", path: "/finance/companies" },
+      { name: "Suppliers", path: "/finance/suppliers" },
+      // {
+       
+      //   name: "Sales",
+      //   path: "/finance/sales",
+      //   subMenu: [
+          
+      //     { name: "Expenses", path: "/finance/sales/expenses" },
+      //     { name: "Provident Funds", path: "/finance/sales/provident_funds" },
+      //     { name: "Taxes", path: "/finance/sales/taxs" },
+      //   ],
+      // },
+    ]
+    },
       // {
       //   name: "Payroll",
       //   path: "/finance/payroll",
@@ -184,13 +199,13 @@ const menuItems = [
     icon: <Landmark size={16} />,  
 
     subItems: [
-      {
-        name: "Help & Support",
-        path: "/admininistration/help_support",
-        subMenu: [
-          { name: "FAQs", path: "/admininistration/help_support/faqs" },
-        ],
-      },
+      // {
+      //   name: "Help & Support",
+      //   path: "/admininistration/help_support",
+      //   subMenu: [
+      //     { name: "FAQs", path: "/admininistration/help_support/faqs" },
+      //   ],
+      // },
       {
         name: "User Management",
         path: "/admininistration/user_management",

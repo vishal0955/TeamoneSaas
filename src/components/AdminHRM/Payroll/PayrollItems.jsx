@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaPlus, FaTrash, FaEdit, FaFileExport } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const PayrollItems = () => {
   const [activeTab, setActiveTab] = useState("Additions");
@@ -105,7 +106,7 @@ const PayrollItems = () => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center mb-4">
+      {/* <div className="flex justify-between items-center mb-4">
         <div className="space-x-2">
           {["Additions", "Overtime", "Deductions"].map((tab) => (
             <button
@@ -121,6 +122,28 @@ const PayrollItems = () => {
             </button>
           ))}
         </div>
+      </div> */}
+
+      <div className="flex space-x-2 mb-4">
+        <Link
+          to="/payroll/additions"
+          className="px-4 py-2 rounded border bg-[#20626c] text-white"
+        >
+          Additions
+        </Link>
+        <Link
+          to={"/payroll/overtime"}
+          className="px-4 py-2 rounded border bg-white text-gray-700"
+        >
+          Overtime
+        </Link>
+
+        <Link
+          to="/payroll/deductions"
+          className="px-4 py-2 rounded border bg-white text-gray-700"
+        >
+          Deductions
+        </Link>
       </div>
 
       <div className="bg-white rounded shadow-md">

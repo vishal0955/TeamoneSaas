@@ -69,6 +69,7 @@ const EmployeeTimeTracker = () => {
 
   return (
     <div className="max-w-full p-4 bg-gray-50 min-h-screen">
+      <h3 className='mb-2'>TimeSheet</h3>
       <div className="bg-white rounded-lg shadow">
         <div className="p-4 md:p-6">
           {/* Search and Filter Bar */}
@@ -125,8 +126,8 @@ const EmployeeTimeTracker = () => {
                 <FaFileExport className="h-3 w-3 mr-2" />
                 Export
               </button>
-              <button className="flex items-center justify-center px-4 py-1/2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={handleOpenModal}>
-                <FaPlus className="h-3 w-3 mr-2" />
+              <button className="flex inv-new-button items-center justify-center px-4 py-1/2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={handleOpenModal}>
+                <FaPlus className="h-3 w-3 mr-2 " />
                 Add Today's Work
               </button>
             </div>

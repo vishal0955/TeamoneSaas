@@ -136,11 +136,11 @@ const CompanyForm = ({ handleClose }) => {
 
         <Form.Group className="mb-3">
           <Form.Label>Type</Form.Label>
-          <Form.Select className="inv-filter-button " name="type" value={formData.type} onChange={handleChange}>
+          <Form.Select className=" " name="type" value={formData.type} onChange={handleChange}>
             <option>Select type</option>
-            {timeZones.map((tz) => (
-                  <option key={tz.value} value={tz.value}>
-                    {tz.label}
+            {companyTypes.map((tz) => (
+                  <option key={tz} value={tz}>
+                    {tz}
                   </option>
                 ))}
           </Form.Select>
