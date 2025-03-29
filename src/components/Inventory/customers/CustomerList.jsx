@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
+import AddCostomerForm from './AddCostomerForm'
 
 const CustomerList = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  
+    const handleOpenModal = () => {
+      setIsModalOpen(true);
+      document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+    };
+  
+    const handleCloseModal = () => {
+      setIsModalOpen(false);
+      document.body.classList.remove("modal-open"); // Remove modal-open class
+    };
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+        <div className="min-h-screen flex flex-col">
     <header className="bg-white border-b border-gray-200">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
@@ -38,7 +51,7 @@ const CustomerList = () => {
             <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           </div>
         </div>
-        <button className="!rounded-button bg-custom text-white px-4 py-2 flex items-center space-x-2">
+        <button className="ml-4 inline-flex items-center px-4 py-2 !rounded-button bg-blue-600 text-white text-sm font-medium hover:bg-blue-600" onClick={handleOpenModal} >
           <i className="fas fa-plus" />
           <span>Add customer</span>
         </button>
@@ -146,6 +159,35 @@ const CustomerList = () => {
       <i className="fas fa-plus text-lg" />
     </button>
   </div>
+        {/* Modal for Add Customer */}
+        {isModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Add New Customer</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className="modal-body">
+                  <AddCostomerForm />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal backdrop */}
+          {/* <div
+                        className="modal-backdrop fade show"
+                        onClick={handleCloseModal}
+                      ></div> */}
+        </>
+      )}
+    </>
   )
 }
 
