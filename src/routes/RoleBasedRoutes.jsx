@@ -128,7 +128,15 @@ import HelpCenter from "../components/supportHub/knowledgebase";
 import Chatbot from "../components/supportHub/chatbox_page";
 import ProjectDashboard from "../components/Project/ProjectDetails";
 import Dashboard from "../components/Project/ProjectDashboard";
+<<<<<<< HEAD
 import AdminCRMDashboard from "../components/crm/dashboard/AdminCRMDashboard";
+=======
+import Files from "../components/Files";
+import Social from "../components/Social";
+import ResourceTimelineCalendar from "../components/ResourceTimlineCalendar";
+import ProjectCalendar from "../components/Project/calendar/ProjectCalendar";
+import ProjectTimelineCalendar from "../components/Project/calendar/ProjectTimeline";
+>>>>>>> a121075048bf17f4b21ba6f1e38160afe6bb8332
 
 const RoleBasedRoutes = () => {
   return (
@@ -459,7 +467,7 @@ const RoleBasedRoutes = () => {
            <Route path="/support" element={<SupporthubLayout />} >
     
            {/* inside Layout  */}
-           <Route index element={<Summary />} />
+                  <Route index element={<Summary />} />
            <Route path="/support/summary" element={<Summary />} />
            <Route path="/support/analytics" element={<AnalyticsView />} />
            <Route path="/support/tickets" element={<TicketManagementSystem />} />
@@ -469,9 +477,17 @@ const RoleBasedRoutes = () => {
            <Route path="/support/knowledgebase" element={<HelpCenter />} />
            <Route path="/support/chatbot" element={<Chatbot />} />
 
+           {/* Files */}
+           <Route path="/files" element={<Files />} ></Route>
+           <Route path="/social" element={<Social />} ></Route>
 
 
 
+
+    <Route path="/calendar" element={<ResourceTimelineCalendar />}  />
+
+    <Route path="/resourcecalendar" element={<ProjectCalendar />}  />
+   <Route path="/ProjectTimelineCalendar" element={<ProjectTimelineCalendar />}  />
 
         <Route
           path="/manager"
