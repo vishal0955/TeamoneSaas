@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* overflow-x: hidden; */
 }
 #taskList::-webkit-scrollbar {
   display: none;
@@ -83,7 +84,7 @@ body {
 
 .divider::before,
 .divider::after {
-  content: '';
+  content: "";
   flex: 1;
   border-bottom: 1px solid #dee2e6;
 }
@@ -92,7 +93,7 @@ body {
   padding: 0 1rem;
 }
 
-.form-floating>label {
+.form-floating > label {
   color: #6c757d;
 }
 
@@ -119,7 +120,7 @@ body {
 .signup-container {
   background: white;
   border-radius: 12px;
-  box-shadow:  0 1px 3px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   padding: 2rem;
   width: 100%;
   max-width: 420px;
@@ -179,7 +180,7 @@ body {
 
 .divider::before,
 .divider::after {
-  content: '';
+  content: "";
   flex: 1;
   border-bottom: 1px solid #dee2e6;
 }

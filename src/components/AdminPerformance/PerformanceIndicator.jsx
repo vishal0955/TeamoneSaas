@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { FaPlus, FaTrash, FaEdit, FaEye } from "react-icons/fa";
 import Modal from "./modal";
 import { Link } from "react-router-dom";
+import AddIndicatorModal from "./AddIndicatorModal";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import GaugeChart from "react-gauge-chart";
 
 const datas = [
   {
@@ -11,6 +15,7 @@ const datas = [
     approvedBy: "Doglas Martini",
     createdDate: "14 Jan 2024",
     status: "Active",
+    score: 45,
     image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
@@ -20,6 +25,7 @@ const datas = [
     approvedBy: "Doglas Martini",
     createdDate: "21 Jan 2024",
     status: "Active",
+    score: 15,
     image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
@@ -29,6 +35,7 @@ const datas = [
     approvedBy: "Doglas Martini",
     createdDate: "18 Feb 2024",
     status: "Active",
+    score: 85,
     image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
@@ -38,6 +45,7 @@ const datas = [
     approvedBy: "Doglas Martini",
     createdDate: "24 Feb 2024",
     status: "Active",
+    score: 55,
     image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
@@ -47,13 +55,15 @@ const datas = [
     approvedBy: "Doglas Martini",
     createdDate: "11 Mar 2024",
     status: "Active",
+    score: 25,
     image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
 ];
 
 const PerformanceIndicator = () => {
   const [data, setData] = useState(datas);
-  const [isModalOpen, setModalOpen] = useState(false);
+  // const [isModalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     id: "",
     designation: "",
@@ -137,7 +147,8 @@ const PerformanceIndicator = () => {
         </div>
         <div className="flex flex-wrap gap-2 sm:gap-4 mt-4 sm:mt-0">
           <button
-            onClick={() => openModal()}
+            // onClick={() => openModal()}
+            onClick={() => setModalOpen(true)}
             className="flex items-center px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
           >
             <FaPlus className="mr-2" />
@@ -165,33 +176,34 @@ const PerformanceIndicator = () => {
           <table className="min-w-full bg-white border rounded-lg text-nowrap">
             <thead className="bg-gray-200">
               <tr>
-                <th className="p-3 text-left">#</th>
+                {/* <th className="p-3 text-left">#</th> */}
                 <th className="p-3 text-left">Name</th>
                 <th className="p-3 text-left">Department</th>
                 <th className="p-3 text-left">Approved By</th>
-                <th className="p-3 text-left">Created Date</th>
-                <th className="p-3 text-left">Status</th>
+                <th className="p-2 text-left">Created Date</th>
+                {/* <th className="p-3 text-left">Status</th> */}
+                <th className="p-3 text-left">Score</th>
                 <th className="p-3 text-left">Actions</th>
               </tr>
             </thead>
             <tbody>
               {data.map((item, index) => (
                 <tr key={item.id} className="border-t">
-                  <td className="p-3">
+                  {/* <td className="p-3">
                     <input type="checkbox" />
-                  </td>
+                  </td> */}
                   <td className="p-3 font-semibold">{item.name}</td>
                   <td className="p-3">{item.department}</td>
                   <td className="p-3 flex items-center gap-2">
-                    <img
+                    {/* <img
                       src={item.image}
                       alt="profile"
                       className="w-8 h-8 rounded-full"
-                    />
+                    /> */}
                     <span className="font-semibold">{item.approvedBy}</span>
                   </td>
-                  <td className="p-4">{item.createdDate}</td>
-                  <td className="p-3">
+                  <td className="p-3">{item.createdDate}</td>
+                  {/* <td className="p-3">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold ${
                         item.status === "Active"
@@ -201,6 +213,58 @@ const PerformanceIndicator = () => {
                     >
                       {item.status}
                     </span>
+                  </td> */}
+                  {/* <td className="p-3">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-semibold border ${
+                        item.score < 50
+                          ? "bg-red-100 text-red-700 border-red-500"
+                          : item.score < 75
+                          ? "bg-yellow-100 text-yellow-700 border-yellow-500"
+                          : "bg-green-100 text-green-700 border-green-500"
+                      }`}
+                    >
+                      {item.score}/100
+                    </span>
+                  </td> */}
+
+                  <td className="p-3 w-24">
+                    <div className="w-14 h-14">
+                      {/* <CircularProgressbar
+                        value={item.score}
+                        text={`${item.score}`}
+                        strokeWidth={12}
+                        styles={buildStyles({
+                          pathColor:
+                            item.score < 50
+                              ? "#f87171" // red
+                              : item.score < 75
+                              ? "#facc15" // yellow
+                              : "#4ade80", // green
+                          textColor: "#111827",
+                          trailColor: "#e5e7eb",
+                        })}
+                      /> */}
+
+                      <GaugeChart
+                        id="gauge-chart"
+                        nrOfLevels={4}
+                        colors={["#f87171", "#facc15", "#4ade80"]}
+                        arcWidth={0.3}
+                        percent={item.score / 100}
+                      />
+                      {/* <span
+                        className={`px-3 py-1 rounded-full text-xs font-semibold border ${
+                          item.score < 50
+                            ? "bg-red-100 text-red-700 border-red-500"
+                            : item.score < 75
+                            ? "bg-yellow-100 text-yellow-700 border-yellow-500"
+                            : "bg-green-100 text-green-700 border-green-500"
+                        }`}
+                      >
+                        {item.score}/100
+                      </span> */}
+                    </div>
                   </td>
 
                   <td className="p-3 flex gap-2 items-center">
@@ -233,138 +297,10 @@ const PerformanceIndicator = () => {
         </div>
       </div>
 
-      {/* Modal */}
-      {/* Modal */}
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <div>
-          <h3 className="text-xl font-bold mb-4">
-            {editMode ? "Edit Indicator" : "Add New Indicator"}
-          </h3>
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            {/* Designation */}
-            {/* {renderSelect("Designation")} */}
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium">Name</label>
-                <select
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full border p-2 rounded"
-                  required
-                >
-                  <option value="">Select Employee</option>
-                  <option value="Wade Wilson">Wade Wilson</option>
-                  <option value="Leona">Leona</option>
-                  <option value="Stephen Peralt">Stephen Peralt</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium">Department</label>
-                <select
-                  name="department"
-                  value={formData.department}
-                  onChange={handleChange}
-                  className="w-full border p-2 rounded"
-                  required
-                >
-                  <option value="">Select</option>
-                  <option value="Designing">Designing</option>
-                  <option value="Developer">Developer</option>
-                  <option value="DevOps">DevOps</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium">Approved By</label>
-                <select
-                  name="approvedBy"
-                  value={formData.approvedBy}
-                  onChange={handleChange}
-                  className="w-full border p-2 rounded"
-                  required
-                >
-                  <option value="">Select</option>
-                  <option value="Doglas Martini">Doglas Martini</option>
-                  <option value="Leona">Leona</option>
-                  <option value="Stephen Peralt">Stephen Peralt</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium">
-                  Created Date
-                </label>
-                <input
-                  type="date"
-                  name="createdDate"
-                  value={formData.createdDate}
-                  onChange={handleChange}
-                  className="w-full border p-2 rounded"
-                  required
-                />
-              </div>
-            </div>
-            {/* Technical Section */}
-            <h4 className="font-semibold mt-4">Technical</h4>
-            <div className="grid grid-cols-2 gap-4">
-              {renderSelect("Customer Experience")}
-              {renderSelect("Marketing")}
-              {renderSelect("Management")}
-              {renderSelect("Administration")}
-              {renderSelect("Presentation Skills")}
-              {renderSelect("Quality of Work")}
-              {renderSelect("Efficiency")}
-            </div>
-
-            {/* Organizational Section */}
-            <h4 className="font-semibold mt-4">Organizational</h4>
-            <div className="grid grid-cols-2 gap-4">
-              {renderSelect("Integrity")}
-              {renderSelect("Professionalism")}
-              {renderSelect("Team Work")}
-              {renderSelect("Critical Thinking")}
-              {renderSelect("Conflict Management")}
-              {renderSelect("Attendance")}
-              {renderSelect("Ability to Meet Deadline")}
-            </div>
-
-            {/* Status */}
-            <div>
-              <label className="block text-sm font-medium">Status</label>
-              <select
-                name="status"
-                value={formData.status}
-                onChange={handleChange}
-                className="w-full border p-2 rounded"
-              >
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-              </select>
-            </div>
-
-            {/* Buttons */}
-            <div className="text-right">
-              <button
-                type="button"
-                className="bg-gray-400 text-white px-4 py-2 rounded mr-2"
-                onClick={closeModal}
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-black"
-              >
-                {editMode ? "Update" : "Save"}
-              </button>
-            </div>
-          </form>
-        </div>
-      </Modal>
+      <AddIndicatorModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 };
