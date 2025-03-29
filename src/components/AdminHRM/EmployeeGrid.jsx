@@ -220,9 +220,9 @@ const EmployeeGrid = () => {
                 setEditEmployee(null);
                 setModalOpen(true);
               }}
-              className=" d-flex items-center px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
+              className="inv-new-button d-flex"
             >
-              <FaPlus className="mr-2" /> Add Employee
+              <FaPlus className="mr-2 mt-1" /> Add Employee
             </button>
           </div>
         </div>

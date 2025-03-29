@@ -98,3 +98,52 @@
     }
   }
    */
+
+/* admincrmdashboard */
+
+
+.chart-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+/* Chart container heights */
+#revenueChart,
+#salesChart {
+  height: 200px !important;
+  width: 100% !important;
+}
+
+#trendChart {
+  height: 400px !important;
+  width: 100% !important;
+}
+
+/* Chart card specific heights */
+.chart-card:has(#revenueChart),
+.chart-card:has(#salesChart) {
+  height: 380px;
+}
+
+.chart-card:has(#trendChart) {
+  height: 480px;
+}
+
+.form-select {
+  border-color: #e9ecef;
+}
+
+.performer-item {
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.performer-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* admincrmdashboard */

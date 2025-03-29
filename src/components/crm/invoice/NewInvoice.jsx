@@ -59,7 +59,7 @@ const NewInvoice = () => {
                     className="form-control"
                     placeholder="Add Contact"
                   />
-                  <button className="btn btn-outline-dark" type="button">
+                  <button className="btn btn-outline-primary" type="button">
                     <i className="bi bi-plus-lg" />
                   </button>
                 </div>
@@ -72,7 +72,7 @@ const NewInvoice = () => {
                     className="form-control"
                     placeholder="Add Company"
                   />
-                  <button className="btn btn-outline-dark" type="button">
+                  <button className="btn btn-outline-primary" type="button">
                     <i className="bi bi-plus-lg" />
                   </button>
                 </div>
@@ -184,7 +184,7 @@ const NewInvoice = () => {
             <div className="modal-dialog modal-lg" role="document">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">payment setting</h5>
+                  <h5 className="modal-title">Payment setting</h5>
                   <button
                     type="button"
                     className="btn-close"

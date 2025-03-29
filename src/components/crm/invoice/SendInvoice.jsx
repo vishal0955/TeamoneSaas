@@ -10,13 +10,10 @@ const SendInvoice = () => {
   aria-modal="true"
 >
   {/* Header */}
-  <div className="modal-header bg-dark text-white rounded-2">
+  <div className="modal-header bg-primary text-white rounded-2">
     <span className="fw-medium" id="modalTitle">
       Invoice created and ready to send!
-    </span>
-    <button type="button" className="close-btn" aria-label="Close modal">
-      <i className="bi bi-x-lg" aria-hidden="true" />
-    </button>
+    </span> 
   </div>
   {/* Body */}
   <div className="p-4">
@@ -57,15 +54,14 @@ const SendInvoice = () => {
           type="text"
           id="ccField"
           className="form-control"
-          placeholder="John Doe from XYZ Technology Group Ltd 
-              (accounts@XYZ.com) "
+          placeholder="John Doe from XYZ Technology Group Ltd (accounts@XYZ.com) "
           aria-describedby="ccHelp"
         />
       </div>
       {/* Help Link */}
       <div className="mb-4">
         <a href="#" className="learn-more text-dark">
-          <i className="bi bi-info-circle" aria-hidden="true" />
+          <i className="bi bi-info-circle me-2" aria-hidden="true" />
           Learn more about sending invoices
         </a>
       </div>
@@ -73,14 +69,14 @@ const SendInvoice = () => {
       <div className="d-flex gap-2 mobile-stack">
         <button
           type="submit"
-          className="btn btn-dark flex-grow-1 btn-mobile-full"
+          className="inv-new-button"
           id="sendBtn"
         >
           <span>Send invoice</span>
         </button>
         <button
           type="button"
-          className="btn btn-outline-dark btn-mobile-full"
+          className="inv-filter-button"
           id="writeBtn"
         >
           Write email manually

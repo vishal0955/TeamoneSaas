@@ -61,7 +61,7 @@ import Candidate from "../components/Recruitment/Candidate";
 import Activity from "../components/crmold/Activity";
 import Refferal from "../components/Recruitment/Refferal";
 import Users from "../usermanagement/users";
-import CRMDashboard from "../components/crm/dashboard/CRMDashboard";
+// import CRMDashboard from "../components/crm/dashboard/CRMDashboard";
 import Analytics from "../components/crm/dashboard/Analytics";
 import ContactsList from "../components/crm/contact/Contact";
 import ShiftRoster from "../components/AdminHRM/ShiftRoster/ShiftRoster";
@@ -128,6 +128,7 @@ import HelpCenter from "../components/supportHub/knowledgebase";
 import Chatbot from "../components/supportHub/chatbox_page";
 import ProjectDashboard from "../components/Project/ProjectDetails";
 import Dashboard from "../components/Project/ProjectDashboard";
+import AdminCRMDashboard from "../components/crm/dashboard/AdminCRMDashboard";
 
 const RoleBasedRoutes = () => {
   return (
@@ -198,7 +199,8 @@ const RoleBasedRoutes = () => {
 
         {/*  CRM Routes  */}
 
-        <Route path="/crm/dashboard" element={<CRMDashboard />} />
+        {/* <Route path="/crm/dashboard" element={<CRMDashboard />} /> */}
+        <Route path="/crm/dashboard" element={<AdminCRMDashboard />} />
 
         {/* crm-section */}
         {/* recruitment */}
