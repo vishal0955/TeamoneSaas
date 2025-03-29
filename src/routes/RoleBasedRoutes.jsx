@@ -456,6 +456,7 @@ const RoleBasedRoutes = () => {
            {/* Support Hub */}
            <Route path="/support" element={<SupporthubLayout />} >
            {/* inside Layout  */}
+           <Route index element={<Summary />} />
            <Route path="/support/summary" element={<Summary />} />
            <Route path="/support/analytics" element={<AnalyticsView />} />
            <Route path="/support/tickets" element={<TicketManagementSystem />} />

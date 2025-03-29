@@ -189,6 +189,8 @@ const menuItems = [
       path: "/support",
       // icon: <Help size={16} />,
       subItems: [
+        {name: "Support Hub", path: "/support"},
+
           
         { name: "Settings", path: "/support/settings" },
        
