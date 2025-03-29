@@ -15,6 +15,7 @@ import {
   ChartColumn,
   SquareCheckBig,
   Box,
+  File,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -202,9 +203,9 @@ const menuItems = [
     icon: <Box size={16} />,
   },
 
-  // {name: "Files" , path: "/files" , icon: <File size={16} /> },
+  {name: "Files" , path: "/files" , icon: <File size={16} /> },
 
-  // {name: "Social" , path: "/social" , icon: <Users size={16} /> },
+  {name: "Social" , path: "/social" , icon: <Users size={16} /> },
 
   {
     name: "Administration",

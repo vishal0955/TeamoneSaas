@@ -128,6 +128,11 @@ import HelpCenter from "../components/supportHub/knowledgebase";
 import Chatbot from "../components/supportHub/chatbox_page";
 import ProjectDashboard from "../components/Project/ProjectDetails";
 import Dashboard from "../components/Project/ProjectDashboard";
+import Files from "../components/Files";
+import Social from "../components/Social";
+import ResourceTimelineCalendar from "../components/ResourceTimlineCalendar";
+import ProjectCalendar from "../components/Project/calendar/ProjectCalendar";
+import ProjectTimelineCalendar from "../components/Project/calendar/ProjectTimeline";
 
 const RoleBasedRoutes = () => {
   return (
@@ -467,9 +472,17 @@ const RoleBasedRoutes = () => {
            <Route path="/support/knowledgebase" element={<HelpCenter />} />
            <Route path="/support/chatbot" element={<Chatbot />} />
 
+           {/* Files */}
+           <Route path="/files" element={<Files />} ></Route>
+           <Route path="/social" element={<Social />} ></Route>
 
 
 
+
+    <Route path="/calendar" element={<ResourceTimelineCalendar />}  />
+
+    <Route path="/resourcecalendar" element={<ProjectCalendar />}  />
+   <Route path="/ProjectTimelineCalendar" element={<ProjectTimelineCalendar />}  />
 
         <Route
           path="/manager"

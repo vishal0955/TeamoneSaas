@@ -255,3 +255,37 @@ body {
 }
 
 /* login-page end */
+
+/* Add these styles to your CSS file */
+.fc {
+  height: 100%;
+}
+
+.fc .fc-resource-timeline-divider {
+  width: 3px;
+  background-color: #edf2f7;
+}
+
+.fc .fc-timeline-slot-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fc .fc-timeline-now-indicator-line {
+  border-color: #e53e3e;
+}
+
+.fc .fc-timeline-now-indicator-arrow {
+  border-color: #e53e3e;
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+}
+
+.fc-event {
+  cursor: pointer;
+}
+
+.fc-event:hover {
+  opacity: 0.9;
+}
