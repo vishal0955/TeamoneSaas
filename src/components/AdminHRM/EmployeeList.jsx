@@ -122,8 +122,8 @@ const EmployeeList = () => {
   };
 
   return (
-    <div className=" bg-gray-50 font-sans flex flex-col items-center p-6">
-      <div className="w-full rounded-lg p-6">
+    <div className=" bg-gray-50 font-sans flex flex-col items-center overflow-x-hidden">
+      <div className="w-full rounded-lg p-2 ">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <div>
             <h1 className="text-2xl font-semibold text-gray-800">
@@ -169,8 +169,8 @@ const EmployeeList = () => {
         </div>
 
         {/* Stats Cards Section */}
-        <div className="inv-stats-grid">
-          <div className="inv-stat-box">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-primary">
                 <FaUsers />
@@ -214,6 +214,45 @@ const EmployeeList = () => {
               </div>
             </div>
           </div>
+        </div> */}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+            <div className="text-blue-600 text-xl">
+              <FaUsers />
+            </div>
+            <div>
+              <div className="text-sm text-gray-500">Total...</div>
+              <p className="text-lg font-semibold">1007</p>
+            </div>
+          </div>
+          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+            <div className="text-yellow-600 text-xl">
+              <FaUserCheck />
+            </div>
+            <div>
+              <div className="text-sm text-gray-500">Active</div>
+              <p className="text-lg font-semibold">800</p>
+            </div>
+          </div>
+          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+            <div className="text-red-600 text-xl">
+              <FaUserTimes />
+            </div>
+            <div>
+              <div className="text-sm text-gray-500">Inactive</div>
+              <p className="text-lg font-semibold">150</p>
+            </div>
+          </div>
+          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+            <div className="text-gray-600 text-xl">
+              <FaUserPlus />
+            </div>
+            <div>
+              <div className="text-sm text-gray-500">New...</div>
+              <p className="text-lg font-semibold">57</p>
+            </div>
+          </div>
         </div>
 
         <div className="quotes-card">
@@ -239,14 +278,14 @@ const EmployeeList = () => {
                 </button>
               </div>
             </div>
-            <div className="table-responsive">
-              <table className="inv-table">
+            <div className="overflow-x-auto w-full">
+              <table className="min-w-full text-sm text-left whitespace-nowrap">
                 <thead>
                   <tr className="bg-gray-50 text-left text-sm font-medium text-gray-600">
                     <th className="px-4 py-3">Employee</th>
                     <th className="px-4 py-3">Designation</th>
                     <th className="px-4 py-3">Department</th>
-                    <th className="px-4 py-3">Email</th>
+                    <th className="px-2 py-3 break-words max-w-xs">Email</th>
                     <th className="px-4 py-3">Phone</th>
                     <th className="px-4 py-3">Status</th>
                     <th className="px-4 py-3">Actions</th>
@@ -255,12 +294,7 @@ const EmployeeList = () => {
                 <tbody className="divide-y divide-gray-200 text-nowrap">
                   {employees.map((employee) => (
                     <tr key={employee.id} className="hover:bg-gray-50">
-                      <td className="px-4 py-3 flex items-center space-x-3">
-                        <img
-                          src={employee.image}
-                          className="w-8 h-8 rounded-full"
-                          alt={employee.name}
-                        />
+                      <td className="px-3 py-3 flex items-center space-x-3">
                         <div>
                           <Link to={`/employee/${employee.id}`}>
                             <div className="font-medium text-gray-900">
@@ -272,14 +306,14 @@ const EmployeeList = () => {
                           </div>
                         </div>
                       </td>
-                      <td className="px-4 py-3 text-sm">
+                      <td className="px-3 py-3 text-sm">
                         {employee.designation}
                       </td>
-                      <td className="px-4 py-3 text-sm">
+                      <td className="px-3 py-3 text-sm">
                         {employee.department}
                       </td>
-                      <td className="px-4 py-3 text-sm">{employee.email}</td>
-                      <td className="px-4 py-3 text-sm">{employee.phone}</td>
+                      <td className="px-3 py-3 text-sm">{employee.email}</td>
+                      <td className="px-3 py-3 text-sm">{employee.phone}</td>
                       <td className="px-4 py-3">
                         <span className="px-2 py-1 text-sm text-green-800 bg-green-100 rounded-full">
                           {employee.status}
