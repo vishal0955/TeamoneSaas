@@ -163,7 +163,7 @@ const CustomerList = () => {
         {isModalOpen && (
         <>
           <div className="modal fade show d-block" role="dialog">
-            <div className="modal-dialog modal-lg" role="document">
+            <div className="modal-dialog modal-md" role="document">
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title">Add New Customer</h5>
@@ -181,10 +181,10 @@ const CustomerList = () => {
             </div>
           </div>
           {/* Modal backdrop */}
-          {/* <div
+          <div
                         className="modal-backdrop fade show"
-                        onClick={handleCloseModal}
-                      ></div> */}
+                        
+                      ></div>
         </>
       )}
     </>
