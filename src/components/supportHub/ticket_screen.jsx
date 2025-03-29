@@ -10,8 +10,8 @@ const TicketManagementSystem = () => {
     navigate("/support/ticketcard");
     };
   return (
-    <div className="bg-gray-50 min-h-screen font-sans">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-gray-50 min-h-screen" >
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="py-4">
           {/* Filters & Actions */}
           <div className="flex items-center justify-between mb-6">
@@ -44,7 +44,7 @@ const TicketManagementSystem = () => {
           </div>
 
           {/* Tickets Table */}
-          <div className="bg-white shadow overflow-hidden border border-gray-200">
+          <div className="bg-white shadow border border-gray-200 overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>

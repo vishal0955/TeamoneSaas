@@ -1,35 +1,42 @@
 import React from "react";
+import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ toggleSidebar, collapsed }) => {
   return (
     <div className="bg-gray-50 flex min-h-screen">
       {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-gray-200 flex-shrink-0">
-        <div className="p-4">
+      <aside
+        className={`min-h-screen bg-white shadow-gray-200 shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
+          collapsed ? "w-16" : "w-64"
+        }`}
+      >
+        <div className="p-2">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-800">Help Desk</h2>
-            <div className="flex gap-2">
-              <button className="text-gray-500 hover:text-gray-700">
-                <i className="fas fa-minus text-xs"></i>
-              </button>
-              <button className="text-gray-500 hover:text-gray-700">
-                <i className="fas fa-plus text-xs"></i>
-              </button>
-            </div>
+            <button
+              onClick={toggleSidebar}
+              className="p-1.5 ronded-lg font-[64px] text-white bg-blue-500 hover:bg-blue-500 active:bg-blue-700 transition-colors"
+            >
+              {collapsed ? <FaChevronCircleLeft /> : <FaChevronCircleRight />}
+            </button>
+            {!collapsed && (
+              <h2 className="text-lg font-semibold text-gray-800">Help Desk</h2>
+            )}
           </div>
 
           {/* Search Box */}
-          <div className="relative mb-6">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-              <i className="fas fa-search text-gray-400"></i>
-            </span>
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-custom focus:border-custom text-sm"
-            />
-          </div>
+          {!collapsed && (
+            <div className="relative mb-6">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                <i className="fas fa-search text-gray-400"></i>
+              </span>
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-custom focus:border-custom text-sm"
+              />
+            </div>
+          )}
 
           {/* Sidebar Menu */}
           <nav className="space-y-1">
@@ -39,28 +46,28 @@ const Sidebar = () => {
               { icon: "far fa-circle", label: "Unassigned", count: 0, path: "/support/tickets" },
               { icon: "fas fa-user", label: "Assigned To Me", count: 37, path: "/support/tickets" },
               { icon: "fas fa-users", label: "My Team's Unassigned", count: 0, path: "/support/tickets" },
-              { icon: "fas fa-folder-open", label: "My Team's Open", count: 42,path: "/support/tickets" },
-              { icon: "fas fa-folder", label: "All Open", count: 77,path: "/support/tickets" },
+              { icon: "fas fa-folder-open", label: "My Team's Open", count: 42, path: "/support/tickets" },
+              { icon: "fas fa-folder", label: "All Open", count: 77, path: "/support/tickets" },
               { icon: "fas fa-star", label: "Following", count: 0, path: "/support/tickets" },
-              { icon: "fas fa-check", label: "All Closed",path: "/support/tickets" },
-              { icon: "fas fa-paper-plane", label: "Sent", count: 2,path: "/support/tickets" },
+              { icon: "fas fa-check", label: "All Closed", path: "/support/tickets" },
+              { icon: "fas fa-paper-plane", label: "Sent", count: 2, path: "/support/tickets" },
               { icon: "fas fa-ban", label: "Spam", count: 966, path: "/support/tickets" },
             ].map((item, index) => (
               <div
                 key={index}
                 className="menu-item flex items-center justify-between py-2 px-3 text-gray-700 hover:bg-gray-100 rounded-md"
               >
-                <Link to ={item.path}>
-                <div className="flex items-center">
-                  <i className={`${item.icon} w-5`}></i>
-                  <span className="ml-3 text-sm">{item.label}</span>
-                </div>
+                <Link to={item.path} className="flex items-center w-full">
+                  <div className="flex items-center">
+                    <i className={`${item.icon} w-5`}></i>
+                    {!collapsed && <span className="ml-3 text-sm">{item.label}</span>}
+                  </div>
+                  {!collapsed && item.count !== undefined && (
+                    <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full ml-auto">
+                      {item.count}
+                    </span>
+                  )}
                 </Link>
-                {item.count !== undefined && (
-                  <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
-                    {item.count}
-                  </span>
-                )}
               </div>
             ))}
 
@@ -69,7 +76,7 @@ const Sidebar = () => {
               {
                 title: "Sales",
                 items: [
-                  { label: "Sales - Unassigned", count: 0, path:"/support/tickets" },
+                  { label: "Sales - Unassigned", count: 0, path: "/support/tickets" },
                   { label: "Sales - All Open", count: 42, path: "/support/tickets" },
                   { label: "Sales - All Closed", count: 316, path: "/support/tickets" },
                 ],
@@ -77,8 +84,8 @@ const Sidebar = () => {
               {
                 title: "Accounts",
                 items: [
-                  { label: "Account - Unassigned", count: 0,path: "/support/tickets" },
-                  { label: "Accounts - All Open", count: 33, path: "/support/tickets"},
+                  { label: "Account - Unassigned", count: 0, path: "/support/tickets" },
+                  { label: "Accounts - All Open", count: 33, path: "/support/tickets" },
                   { label: "Accounts - All Closed", count: 0, path: "/support/tickets" },
                 ],
               },
@@ -95,32 +102,37 @@ const Sidebar = () => {
                 items: [
                   { label: "Technical - Unassigned", count: 5, path: "/support/tickets" },
                   { label: "Technical - All Open", count: 0, path: "/support/tickets" },
-                  { label: "Technical - All Closed", count: 6,path: "/support/tickets" },
+                  { label: "Technical - All Closed", count: 6, path: "/support/tickets" },
                 ],
               },
               {
                 title: "Marketing",
                 items: [
-                  { label: "Marketing - All Open", count: 1,path: "/support/tickets" },
+                  { label: "Marketing - All Open", count: 1, path: "/support/tickets" },
                   { label: "Marketing - All Closed", count: 1, path: "/support/tickets" },
                 ],
               },
             ].map((section, index) => (
               <div key={index} className="pt-4">
+                {!collapsed && (
+                  <h3 className="px-3 text-sm font-medium text-gray-500">{section.title}</h3>
+                )}
                 {section.items.map((item, i) => (
                   <div
                     key={i}
                     className="menu-item flex items-center justify-between py-2 px-3 text-gray-700 hover:bg-gray-100 rounded-md"
                   >
-                    <Link to= {item.path}>
-                    <div className="flex items-center">
-                      <i className="fas fa-folder w-5"></i>
-                      <span className="ml-3 text-sm">{item.label}</span>
-                    </div>
+                    <Link to={item.path} className="flex items-center w-full">
+                      <div className="flex items-center">
+                        <i className="fas fa-folder w-5"></i>
+                        {!collapsed && <span className="ml-3 text-sm">{item.label}</span>}
+                      </div>
+                      {!collapsed && (
+                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full ml-auto">
+                          {item.count}
+                        </span>
+                      )}
                     </Link>
-                    <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
-                      {item.count}
-                    </span>
                   </div>
                 ))}
               </div>
@@ -147,6 +159,5 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
 
 // #fullsii.jsx linked file
