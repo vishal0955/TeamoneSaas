@@ -11,13 +11,13 @@
 // const revenueData = [
 //   { name: "Ezzat Kiwan", revenue: 10000 },
 //   { name: "Andrew Ashraf", revenue: 20000 },
-//   { name: "Benjamin Price", revenue: 300000 },
+//   { name: "John Doe", revenue: 300000 },
 // ];
 
 // const dealsCreatedData = [
 //   { name: "Ezzat Kiwan", deals: 5 },
 //   { name: "Unknown user", deals: 3 },
-//   { name: "Benjamin Price", deals: 28 },
+//   { name: "John Doe", deals: 28 },
 // ];
 
 // const dealClosedGoalData = [

@@ -124,7 +124,7 @@ const ContactsList = () => {
       <div className="inv-main-card">
         <div className="inv-card-header">
           <div className="row mt-4">
-            <div className="col-md-4">
+            <div className="col-md-3">
               <div className="inv-search-wrapper">
                 <i className="bi bi-search inv-search-icon" />
                 <input
@@ -135,7 +135,7 @@ const ContactsList = () => {
                 />
               </div>
             </div>
-            <div className="col-md-2">
+            <div className="col-md-2 me-2">
               <div className="dropdown">
                 <button
                   className="inv-filter-button  dropdown-toggle"
@@ -158,7 +158,7 @@ const ContactsList = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-md-2 text-md-center">
+            <div className="col-md-2 text-md-center me-2">
               <div className="dropdown">
                 <button
                   className="inv-filter-button dropdown-toggle"
@@ -214,7 +214,7 @@ const ContactsList = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-md-2 text-md-end">
+            <div className="col-md-2 text-md-end ms-2">
               <div className="dropdown">
                 <button
                   className="inv-filter-button dropdown-toggle"

@@ -87,6 +87,47 @@ import GoalsOverview from "../components/AdminPerformance/GoalsOverview";
 import Compensation from "../components/AdminPerformance/Compensation";
 import Telent from "../components/AdminPerformance/Telent";
 import IndividualCandidatePage from "../components/Recruitment/IndividualCandidatePage";
+import Accountspayable from "../components/finance/accountspayable/Accountspayable";
+import AllBills from "../components/finance/accountspayable/Bills/AllBills";
+import Remitance from "../components/finance/accountspayable/Remitance/Remitance";
+import NewRemitance from "../components/finance/accountspayable/Remitance/NewRemitance";
+import NewBill from "../components/finance/accountspayable/Bills/NewBill";
+import CreditNotes from "../components/finance/accountspayable/creditnotes/CreditNotes";
+import Expense from "../components/finance/accountspayable/Expense/Expense";
+import PurchaseOrder from "../components/finance/accountspayable/purchaseorder/PurchaseOrder";
+import NewPurchaseOrder from "../components/finance/accountspayable/purchaseorder/NewPurchaseOrder";
+import NewCreditNote from "../components/finance/accountspayable/creditnotes/NewCreditNote";
+import NewExpenseClaim from "../components/finance/accountspayable/Expense/NewExpenseClaim";
+import NewMileageClaim from "../components/finance/accountspayable/Expense/NewMileageClaim";
+import Products from "../components/finance/products/Products";
+import CreateProduct from "../components/finance/products/CreateProduct";
+import CompaniesList from "../components/finance/companies/CompaniesList";
+import Suppliers from "../components/finance/suppliers/Suppliers";
+import SuppliersCard from "../components/finance/suppliers/SuppliersCard";
+import SalesOverview from "../components/finance/accountsrecievable/hincoming_newmenu";
+import InventorySidebar from "../components/Inventory/InventorySidebar";
+import InventoryDashboard from "../components/Inventory/InventoryDashboard";
+import InvetoryLayout from "../components/Inventory/InvetoryLayout";
+import OrderList from "../components/Inventory/orderlist/OrderList";
+import OrderCard from "../components/Inventory/orderlist/OrderCard";
+import CustomerList from "../components/Inventory/customers/CustomerList";
+import InventoryList from "../components/Inventory/inventorylist/InventoryList";
+import InventoryItemCard from "../components/Inventory/inventorylist/InventoryItemCard";
+import ItemCardVariation from "../components/Inventory/inventorylist/ItemCardVariation";
+import InventoryPricing from "../components/Inventory/inventorylist/InventoryPricing";
+import InventorySetting from "../components/Inventory/inventorylist/InventorySetting";
+import InventoryCalendar from "../components/Inventory/calendar/Calendar";
+import HelpDeskDashboard from "../components/supportHub/fullsidebar";
+import SupporthubLayout from "../components/supportHub/SupporthubLayout";
+import Summary from "../components/supportHub/summary_view";
+import AnalyticsView from "../components/supportHub/analytics_view";
+import TicketManagementSystem from "../components/supportHub/ticket_screen";
+import TicketCard from "../components/supportHub/ticketcard";
+import HelpDeskSettings from "../components/supportHub/settingpage";
+import HelpCenter from "../components/supportHub/knowledgebase";
+import Chatbot from "../components/supportHub/chatbox_page";
+import ProjectDashboard from "../components/Project/ProjectDetails";
+import Dashboard from "../components/Project/ProjectDashboard";
 
 const RoleBasedRoutes = () => {
   return (
@@ -121,6 +162,10 @@ const RoleBasedRoutes = () => {
         <Route path="/noteslist" element={<NotesList />} />
 
         <Route path="/todoapp" element={<TodoApp />} />
+
+        {/* Project Route */}
+        <Route path="/project" element={<Dashboard />} />
+        <Route path="/project/details" element={<ProjectDashboard />} />
         <Route path="/project/projects" element={<Project />} />
         <Route path="/project/task" element={<Task />} />
         <Route path="/task/:id" element={<TaskDetail />} />
@@ -347,6 +392,36 @@ const RoleBasedRoutes = () => {
           }
         />
 
+
+        {/* Finance Routes */}
+
+        <Route path="/finance/accounts_payable" element={<Accountspayable />} />
+
+        
+        <Route path="/finance/allbills" element={<AllBills />} />
+        <Route path="/finance/newbill" element={<NewBill />} />
+        <Route path="/finance/remitance" element={<Remitance />} />
+        <Route path="/finance/newremitance" element={<NewRemitance />} />
+         <Route path="/finance/creditnotes" element={<CreditNotes />} />
+           <Route path="/finance/newcreditnote" element={<NewCreditNote />} />
+           <Route path="/finance/expense" element={<Expense />} />
+           <Route path="/finance/newexpenseclaim" element={<NewExpenseClaim />} />
+            <Route path="/finance/newmileageclaim" element={<NewMileageClaim />} />
+           <Route path="/finance/Purchaseorder" element={<PurchaseOrder />} />
+           <Route path="/finance/newpurchaseorder" element={<NewPurchaseOrder />} />
+
+{/* accounts Recievable */}
+
+<Route path="/finance/accounts_receivable" element={<SalesOverview />} />
+
+          <Route path="/finance/products" element={<Products />} />
+           <Route path="/finance/createproduct" element={<CreateProduct />} />
+
+           <Route path="/finance/companies" element={<Company />} />
+
+           <Route path="/finance/suppliers" element={<Suppliers />} />
+            <Route path="/finance/createsupplier" element={<SuppliersCard />} />
+
         {/* Administration */}
 
         <Route
@@ -362,6 +437,39 @@ const RoleBasedRoutes = () => {
           path="/admininistration/user_management/users"
           element={<Users />}
         />
+
+        {/* Inventory Routes */}
+          <Route path="/inventory" element={<InvetoryLayout />} >
+           <Route index element={<InventoryDashboard />} />
+           <Route path="/inventory/dashboard" element={<InventoryDashboard />} />
+            <Route path="/inventory/orderlist" element={<OrderList />} />
+            <Route path="/inventory/ordercard" element={<OrderCard />} />
+            <Route path="/inventory/customerslist" element={<CustomerList />} />
+            <Route path="/inventory/inventory" element={<InventoryList />} />
+            <Route path="/inventory/itemcard" element={<InventoryItemCard />} />
+            <Route path="/inventory/itemcard_variations" element={<ItemCardVariation />} />
+            <Route path="/inventory/itemcard_pricing" element={<InventoryPricing />} />
+            <Route path="/inventory/itemcard_settings" element={<InventorySetting />} />
+            <Route path="/inventory/calendar" element={<InventoryCalendar />} />
+           </Route>
+
+           {/* Support Hub */}
+           <Route path="/support" element={<SupporthubLayout />} >
+    
+           {/* inside Layout  */}
+           <Route index element={<Summary />} />
+           <Route path="/support/summary" element={<Summary />} />
+           <Route path="/support/analytics" element={<AnalyticsView />} />
+           <Route path="/support/tickets" element={<TicketManagementSystem />} />
+           <Route path="/support/ticketcard" element={<TicketCard />} />
+           </Route>
+           <Route  path="/support/settings" element={<HelpDeskSettings />} />
+           <Route path="/support/knowledgebase" element={<HelpCenter />} />
+           <Route path="/support/chatbot" element={<Chatbot />} />
+
+
+
+
 
         <Route
           path="/manager"

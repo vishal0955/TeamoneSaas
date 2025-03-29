@@ -14,6 +14,7 @@ import {
   User,
   ChartColumn,
   SquareCheckBig,
+  Box,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -158,33 +159,48 @@ const menuItems = [
     ],
   },
 
-  // {
-  //   name: "Finance & Accounts",
-  //   path: "/finance",
-  //   icon: <ChartColumn size={16} />,
-  //   subItems: [
-  //     {
-  //       name: "Sales",
-  //       path: "/finance/sales",
-  //       subMenu: [
-  //         { name: "Estimates", path: "/finance/sales/estimates" },
-  //         { name: "Invoices", path: "/finance/sales/invoices" },
-  //         { name: "Payments", path: "/finance/sales/payments" },
-  //         { name: "Expenses", path: "/finance/sales/expenses" },
-  //         { name: "Provident Funds", path: "/finance/sales/provident_funds" },
-  //         { name: "Taxes", path: "/finance/sales/taxs" },
-  //       ],
-  //     },
+  {
+    name: "Finance",
+    path: "/finance",
+    icon: <ChartColumn size={16} />,
+    subItems: [
+      // { name: "Dashboard", path: "/finance/dashboard" },
+      { name: "Accounts Payable", path: "/finance/accounts_payable" },
+      { name: "Accounts Receivable", path: "/finance/accounts_receivable" },
+      { name : "Products", path: "/finance/products" },
+      { name: "Customers", path: "/finance/companies" },
+      { name: "Suppliers", path: "/finance/suppliers" },
       // {
-      //   name: "Payroll",
-      //   path: "/finance/payroll",
-      //   subMenu: [
-      //     { name: "Employee Salary", path: "/finance/payroll/employee_salary" },
-      //     { name: "Payroll Items", path: "/finance/payroll/payroll_items" },
-      //   ],
+       
+      //   name: "Sales",
+      //   path: "/finance/sales",
+        // subMenu: [
+          
+        //   { name: "Expenses", path: "/finance/sales/expenses" },
+        //   { name: "Provident Funds", path: "/finance/sales/provident_funds" },
+        //   { name: "Taxes", path: "/finance/sales/taxs" },
+        // ],
       // },
-  //   ],
-  // },
+    ]
+    },
+    
+    {
+      name: "Support Hub",
+      path: "/support",
+      // icon: <Help size={16} />,
+      subItems: [
+          { name: "Support", path: "/support" },
+        { name: "Settings", path: "/support/settings" },
+       
+   
+      ],
+    },
+
+  {
+    name: "Inventory",
+    path: "/inventory",
+    icon: <Box size={16} />,
+  },
 
   {
     name: "Administration",
@@ -192,13 +208,13 @@ const menuItems = [
     icon: <Landmark size={16} />,  
 
     subItems: [
-      {
-        name: "Help & Support",
-        path: "/admininistration/help_support",
-        subMenu: [
-          { name: "FAQs", path: "/admininistration/help_support/faqs" },
-        ],
-      },
+      // {
+      //   name: "Help & Support",
+      //   path: "/admininistration/help_support",
+      //   subMenu: [
+      //     { name: "FAQs", path: "/admininistration/help_support/faqs" },
+      //   ],
+      // },
       {
         name: "User Management",
         path: "/admininistration/user_management",
@@ -314,7 +330,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <aside
         className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
-          collapsed ? "w-20" : "w-64"
+          collapsed ? "w-20" : "w-56"
         } z-30`}
       >
         {/* Fixed Header */}
@@ -496,10 +512,10 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <main
         className={`transition-all duration-300 ${
-          collapsed ? "ml-20" : "ml-64"
+          collapsed ? "ml-20" : "ml-56"
         }`}
       >
-        {/* Main content */}
+        
       </main>
     </>
   );

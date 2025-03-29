@@ -7,7 +7,7 @@ const IndividualCandidatePage = () => {
         <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
-              <img src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" className="h-8 w-auto" />
+              <img src="https://i.ibb.co/dJ68VsWW/image.png" alt="Logo" className="h-8 w-auto" />
               <div className="ml-10 flex items-center space-x-8">
                 <a href="#" className="text-gray-500 font-medium">Schedule</a>
                 <a href="#" className="text-custom font-medium">Board</a>
@@ -310,7 +310,7 @@ export default IndividualCandidatePage;
       <div className="flex h-16 items-center justify-between">
         <div className="flex items-center">
           <img
-            src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+            src="https://i.ibb.co/dJ68VsWW/image.png"
             alt="Logo"
             className="h-8 w-auto"
           />

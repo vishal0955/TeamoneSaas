@@ -57,8 +57,8 @@ const SendInvoice = () => {
           type="text"
           id="ccField"
           className="form-control"
-          placeholder="Benjamin Price from BPAV Technology Group Ltd 
-              (accounts@bpav.com) "
+          placeholder="John Doe from XYZ Technology Group Ltd 
+              (accounts@XYZ.com) "
           aria-describedby="ccHelp"
         />
       </div>

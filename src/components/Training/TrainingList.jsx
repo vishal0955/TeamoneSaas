@@ -19,7 +19,7 @@
 //             <div className="flex-shrink-0 flex items-center">
 //               <img
 //                 className="h-8 w-auto"
-//                 src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+//                 src="https://i.ibb.co/dJ68VsWW/image.png"
 //                 alt="Logo"
 //               />
 //             </div>
@@ -97,7 +97,7 @@
 //                       scope="col"
 //                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
 //                     >
-//                       Instructor
+//                       trainer
 //                     </th>
 //                     <th
 //                       scope="col"
@@ -353,6 +353,7 @@ import React, { useState } from 'react'
 import { FaEdit, FaEye, FaTrash, FaPlus, FaFileExport, FaPrint, FaSearch, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import AddTraining from './AddTraining';
 
+
 const TrainingList = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [trainings, setTrainings] = useState([
@@ -363,7 +364,7 @@ const TrainingList = () => {
             cost: 999,
             startDate: "2024-01-15",
             endDate: "2024-03-15",
-            instructor: "John Smith",
+            trainer: "John Smith",
             capacity: 30,
             enrolled: 25
         },
@@ -374,7 +375,7 @@ const TrainingList = () => {
             cost: 799,
             startDate: "2024-02-01",
             endDate: "2024-04-01",
-            instructor: "Sarah Johnson",
+            trainer: "Sarah Johnson",
             capacity: 20,
             enrolled: 18
         },
@@ -385,7 +386,7 @@ const TrainingList = () => {
             cost: 1299,
             startDate: "2024-03-01",
             endDate: "2024-05-01",
-            instructor: "Michael Brown",
+            trainer: "Michael Brown",
             capacity: 25,
             enrolled: 15
         }
@@ -394,6 +395,8 @@ const TrainingList = () => {
     const [editingTraining, setEditingTraining] = useState(null);
     const [entriesPerPage, setEntriesPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
+
+   
 
     const handleClose = () => {
         setIsModalOpen(false);
@@ -429,7 +432,7 @@ const TrainingList = () => {
     const filteredTrainings = trainings.filter(training =>
         training.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         training.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        training.instructor.toLowerCase().includes(searchTerm.toLowerCase())
+        training.trainer.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     // Pagination logic
@@ -453,7 +456,7 @@ const TrainingList = () => {
                             <div className="flex-shrink-0 flex items-center">
                                 <img
                                     className="h-8 w-auto"
-                                    src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+                                    src="https://i.ibb.co/dJ68VsWW/image.png"
                                     alt="Logo"
                                 />
                             </div>
@@ -520,7 +523,7 @@ const TrainingList = () => {
                                                 Dates
                                             </th>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Instructor
+                                                trainer
                                             </th>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 People
@@ -544,7 +547,7 @@ const TrainingList = () => {
                                                     </td>
                                                     <td className="px-6 py-4">
 
-                                                        <p>
+                                                        <p className='text-xs'>
                                                             {training.description}
 {/* 
                                                             {training.description.length > 50 ? (
@@ -572,7 +575,7 @@ const TrainingList = () => {
                                                    
                                                             className=""
                                                         >
-                                                            {training.instructor}
+                                                            {training.trainer}
                                                         </a>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">

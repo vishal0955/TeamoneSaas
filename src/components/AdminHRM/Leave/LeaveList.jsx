@@ -298,7 +298,7 @@ const LeavePage = () => {
       </div>
 
       {/* Modal */}
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg max-w-2xl w-full mx-4">
             <div className="flex justify-end p-4 border-b">
@@ -316,7 +316,29 @@ const LeavePage = () => {
           initialData={selectedLeave}
           mode={modalMode}
         />
-              {/* <AddLeaveForm onClose={() => setIsModalOpen(false)} /> */}
+             
+            </div>
+          </div>
+        </div>
+      )} */}
+
+{isModalOpen && (
+        <div className="modal fade show" style={{ display: "block" }} tabIndex="-1" role="dialog">
+          <div className="modal-dialog modal-lg" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Add Leave</h5>
+                <button type="button" className="close" onClick={handleClose}>
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+              <AddLeaveForm
+          onClose={handleClose}
+          initialData={selectedLeave}
+          mode={modalMode}
+        />
+              </div>
             </div>
           </div>
         </div>
