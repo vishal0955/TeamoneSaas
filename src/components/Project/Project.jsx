@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialTasks = [
   {
@@ -141,6 +142,8 @@ const Project = () => {
     setClientForm({ name: "", email: "", company: "", login: "No" });
     setShowClientModal(false);
   };
+
+  const navigate = useNavigate();
   return (
     <div className="container mt-4">
       {/* Header */}
@@ -149,18 +152,22 @@ const Project = () => {
         <div className="add-toggle d-flex">
           <div className="d-flex align-items-center gap-3 mb-4">
             <div className="view-toggle">
+              <Link to="/ProjectTimelineCalendar" >
               <button
               // className={view === "grid" ? "active" : ""}
               // onClick={() => toggleView("grid")}
               >
-                <i className="bi bi-grid me-2" /> Grid View
+                <i className="bi bi-grid me-2" /> Calendar
               </button>
+              </Link>
+              <Link to="/projectlist">
               <button
               // className={view === "list" ? "active" : ""}
               // onClick={() => toggleView("list")}
               >
                 <i className="bi bi-list me-2" /> List View
               </button>
+              </Link>
             </div>
           </div>
           <button
