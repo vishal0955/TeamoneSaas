@@ -1,4 +1,5 @@
 import React from "react";
+import { Accordion, Button } from "react-bootstrap";
 // import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const TicketCard = () => {
@@ -35,7 +36,7 @@ const TicketCard = () => {
       {/* Main Content */}
       <main className="flex-1 flex">
         {/* Sidebar */}
-        <aside className="w-64 border-r border-gray-200 bg-white">
+        {/* <aside className="w-64 border-r border-gray-200 bg-white">
           <div className="p-4">
             <div className="flex items-center space-x-2">
               <i className="fas fa-folder text-gray-400"></i>
@@ -53,7 +54,7 @@ const TicketCard = () => {
               </div>
             </div>
           </div>
-        </aside>
+        </aside> */}
 
         {/* Ticket Content */}
         <div className="flex-1 flex">
@@ -143,17 +144,34 @@ const TicketCard = () => {
 
               {/* Ticket Actions */}
               <div className="space-y-4">
-                {["Ticket Summary", "About this ticket", "Contacts (1)", "Companies (1)", "Deals (0)", "Tasks (0)", "Attachments", "Tickets (0)"].map((text, index) => (
-                  <div key={index} className="flex items-center justify-between">
-                    <div className="text-sm font-medium">{text}</div>
-                    {text === "Tasks (0)" ? (
-                      <button className="!rounded-button bg-custom text-white px-3 py-1 text-xs">Create task</button>
-                    ) : (
-                      <button className="text-custom text-sm">{text.includes("(0)") ? "+ Add" : "Actions"}</button>
-                    )}
-                  </div>
-                ))}
+      <Accordion defaultActiveKey="0">
+        {["Ticket Summary", "About this ticket", "Contacts (1)", "Companies (1)", "Deals (0)", "Tasks (0)", "Attachments", "Tickets (0)"].map((text, index) => (
+          <Accordion.Item eventKey={String(index)} key={index}>
+            <Accordion.Header>
+              <div className="flex items-center justify-between w-full">
+                <div className="text-sm font-medium">{text}</div>
+                {text === "Tasks (0)" ? (
+                  <button className="!rounded-button bg-custom text-white px-3 py-1 text-xs">Create task</button>
+                ) : (
+                  <button className="text-custom text-sm">{text.includes("(0)") ? "+ Add" : "Actions"}</button>
+                )}
               </div>
+            </Accordion.Header>
+            <Accordion.Body>
+              {/* You can add additional content here for each section */}
+              {text === "Ticket Summary" && <div>Ticket details content...</div>}
+              {text === "About this ticket" && <div>About this ticket content...</div>}
+              {text === "Contacts (1)" && <div>Contact details...</div>}
+              {text === "Companies (1)" && <div>Company details...</div>}
+              {text === "Deals (0)" && <div>Deals section content...</div>}
+              {text === "Tasks (0)" && <div>Task details content...</div>}
+              {text === "Attachments" && <div>Attachment details...</div>}
+              {text === "Tickets (0)" && <div>Tickets content...</div>}
+            </Accordion.Body>
+          </Accordion.Item>
+        ))}
+      </Accordion>
+    </div>
             </div>
           </aside>
         </div>
