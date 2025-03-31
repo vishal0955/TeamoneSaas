@@ -61,7 +61,7 @@ import Candidate from "../components/Recruitment/Candidate";
 import Activity from "../components/crmold/Activity";
 import Refferal from "../components/Recruitment/Refferal";
 import Users from "../usermanagement/users";
-import CRMDashboard from "../components/crm/dashboard/CRMDashboard";
+// import CRMDashboard from "../components/crm/dashboard/CRMDashboard";
 import Analytics from "../components/crm/dashboard/Analytics";
 import ContactsList from "../components/crm/contact/Contact";
 import ShiftRoster from "../components/AdminHRM/ShiftRoster/ShiftRoster";
@@ -128,6 +128,14 @@ import HelpCenter from "../components/supportHub/knowledgebase";
 import Chatbot from "../components/supportHub/chatbox_page";
 import ProjectDashboard from "../components/Project/ProjectDetails";
 import Dashboard from "../components/Project/ProjectDashboard";
+import Files from "../components/Files";
+import Social from "../components/Social";
+import ResourceTimelineCalendar from "../components/ResourceTimlineCalendar";
+import ProjectCalendar from "../components/Project/calendar/ProjectCalendar";
+import ProjectTimelineCalendar from "../components/Project/calendar/ProjectTimeline";
+import AdminCRMDashboard from "../components/crm/dashboard/AdminCRMDashboard";
+import FunctionalCalendar from "../components/Home/Calendar";
+import CalendarApp from "../components/Home/CalendarFullCalendar";
 
 const RoleBasedRoutes = () => {
   return (
@@ -155,7 +163,14 @@ const RoleBasedRoutes = () => {
           }
         />
 
+        {/* calendar */}
+
+        <Route path="/homecalendar" element={<FunctionalCalendar />} />
+
+        <Route path="/fullcalendar" element={<CalendarApp />} />
+
         <Route path="/todo" element={<TodoApp />} />
+
 
         {/* Notes Route  */}
         <Route path="/notesgrid" element={<NotesGrid />} />
@@ -198,7 +213,8 @@ const RoleBasedRoutes = () => {
 
         {/*  CRM Routes  */}
 
-        <Route path="/crm/dashboard" element={<CRMDashboard />} />
+        {/* <Route path="/crm/dashboard" element={<CRMDashboard />} /> */}
+        <Route path="/crm/dashboard" element={<AdminCRMDashboard />} />
 
         {/* crm-section */}
         {/* recruitment */}
@@ -457,7 +473,7 @@ const RoleBasedRoutes = () => {
            <Route path="/support" element={<SupporthubLayout />} >
     
            {/* inside Layout  */}
-           <Route index element={<Summary />} />
+                  <Route index element={<Summary />} />
            <Route path="/support/summary" element={<Summary />} />
            <Route path="/support/analytics" element={<AnalyticsView />} />
            <Route path="/support/tickets" element={<TicketManagementSystem />} />
@@ -467,9 +483,17 @@ const RoleBasedRoutes = () => {
            <Route path="/support/knowledgebase" element={<HelpCenter />} />
            <Route path="/support/chatbot" element={<Chatbot />} />
 
+           {/* Files */}
+           <Route path="/files" element={<Files />} ></Route>
+           <Route path="/social" element={<Social />} ></Route>
 
 
 
+
+    <Route path="/calendar" element={<ResourceTimelineCalendar />}  />
+
+    <Route path="/resourcecalendar" element={<ProjectCalendar />}  />
+   <Route path="/ProjectTimelineCalendar" element={<ProjectTimelineCalendar />}  />
 
         <Route
           path="/manager"

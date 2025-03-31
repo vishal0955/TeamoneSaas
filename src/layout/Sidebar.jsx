@@ -15,32 +15,42 @@ import {
   ChartColumn,
   SquareCheckBig,
   Box,
+  File,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const menuItems = [
   {
-    name: "Dashboard",
+    name: "Home",
     path: "/admin",
     icon: <House size={16} />,
+    subItems: [
+      { name: "Calendar", path: "/fullcalendar" },
+      {
+        name: "Todo",
+        path: "/todo",
+        icon: <SquareCheckBig size={16} />,
+      },
+      {
+        name: "Notes",
+        path: "/notesgrid",
+        icon: <ClipboardCheck size={16} />,
+      },
+      
+    ]
   },
-  {
-    name: "Todo",
-    path: "/todo",
-    icon: <SquareCheckBig size={16} />,
-  },
-  {
-    name: "Notes",
-    path: "/notesgrid",
-    icon: <ClipboardCheck size={16} />,
-  },
+ 
   {
     name: "Project",
     path: "/project",
     icon: <FolderOpenDot size={16} />,
     subItems: [
+      { name: "Dashboard" , path: "/project"},
       { name: "Project", path: "/project/projects" },
+      {name: "All Project", path: "/ProjectTimelineCalendar"},
+      {name : "Scheduling", path: "/calendar"},
+
       { name: "Task", path: "/project/task" },
 
       // { name: "Todo", path: "/project/Todo" },
@@ -69,7 +79,7 @@ const menuItems = [
     ],
   },
   {
-    name: "HRM",
+    name: "HR",
     path: "/hrm",
     icon: <Users size={16} />,
     subItems: [
@@ -201,6 +211,10 @@ const menuItems = [
     path: "/inventory",
     icon: <Box size={16} />,
   },
+
+  {name: "Files" , path: "/files" , icon: <File size={16} /> },
+
+  {name: "Social" , path: "/social" , icon: <Users size={16} /> },
 
   {
     name: "Administration",

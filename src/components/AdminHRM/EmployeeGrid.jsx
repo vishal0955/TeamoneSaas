@@ -109,7 +109,7 @@ const employee = [
 const EmployeeGrid = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [employees, setEmployees] = useState(employee);
-   const [editEmployee, setEditEmployee] = useState(null);
+  const [editEmployee, setEditEmployee] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeButton, setActiveButton] = useState("list");
 
@@ -179,8 +179,8 @@ const EmployeeGrid = () => {
   );
 
   return (
-    <div className=" bg-gray-50 font-sans flex flex-col items-center p-6">
-      <div className="w-full rounded-lg p-6">
+    <div className=" bg-gray-50 font-sans flex flex-col items-center">
+      <div className="w-full rounded-lg p-2">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <div>
             <h1 className="text-2xl font-semibold text-gray-800">
@@ -220,57 +220,49 @@ const EmployeeGrid = () => {
                 setEditEmployee(null);
                 setModalOpen(true);
               }}
-              className=" d-flex items-center px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black"
+              className="inv-new-button d-flex"
             >
-              <FaPlus className="mr-2" /> Add Employee
+              <FaPlus className="mr-2 mt-1" /> Add Employee
             </button>
           </div>
         </div>
 
         {/* Stats Cards Section */}
-        <div className="inv-stats-grid">
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-primary">
-                <FaUsers />
-              </div>
-              <div>
-                <div className="inv-stat-label">Total...</div>
-                <p className="inv-stat-value">1007</p>
-              </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+            <div className="text-blue-600 text-xl">
+              <FaUsers />
+            </div>
+            <div>
+              <div className="text-sm text-gray-500">Total...</div>
+              <p className="text-lg font-semibold">1007</p>
             </div>
           </div>
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-warning">
-                <FaUserCheck />
-              </div>
-              <div>
-                <div className="inv-stat-label">Active</div>
-                <p className="inv-stat-value">800</p>
-              </div>
+          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+            <div className="text-yellow-600 text-xl">
+              <FaUserCheck />
+            </div>
+            <div>
+              <div className="text-sm text-gray-500">Active</div>
+              <p className="text-lg font-semibold">800</p>
             </div>
           </div>
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-danger">
-                <FaUserTimes />
-              </div>
-              <div>
-                <div className="inv-stat-label">Inactive</div>
-                <p className="inv-stat-value">150</p>
-              </div>
+          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+            <div className="text-red-600 text-xl">
+              <FaUserTimes />
+            </div>
+            <div>
+              <div className="text-sm text-gray-500">Inactive</div>
+              <p className="text-lg font-semibold">150</p>
             </div>
           </div>
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-neutral">
-                <FaUserPlus />
-              </div>
-              <div>
-                <div className="inv-stat-label">New...</div>
-                <p className="inv-stat-value">57</p>
-              </div>
+          <div className="bg-white shadow rounded-md p-4 flex items-center space-x-4">
+            <div className="text-gray-600 text-xl">
+              <FaUserPlus />
+            </div>
+            <div>
+              <div className="text-sm text-gray-500">New...</div>
+              <p className="text-lg font-semibold">57</p>
             </div>
           </div>
         </div>

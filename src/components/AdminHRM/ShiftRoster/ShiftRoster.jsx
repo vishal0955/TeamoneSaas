@@ -509,11 +509,19 @@ const ShiftRoster = () => {
       {/* Header */}
       <div className="flex justify-between items-center bg-white p-4 shadow-md rounded-md">
         <h1 className="text-xl font-semibold">Shift Roster</h1>
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <FaSearch className="text-gray-600 cursor-pointer" />
           <FaRegBell className="text-gray-600 cursor-pointer" />
           <FaRegUser className="text-gray-600 cursor-pointer" />
           <FaPowerOff className="text-gray-600 cursor-pointer" />
+        </div> */}
+        <div className="flex flex-wrap gap-4 mt-2 md:mt-0">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded-md flex items-center gap-2">
+            <FaPlus /> Assign Bulk Shifts
+          </button>
+          <button className="border px-4 py-2 rounded-md flex items-center gap-2">
+            <FaFileExport /> Export
+          </button>
         </div>
       </div>
 
@@ -525,17 +533,18 @@ const ShiftRoster = () => {
           <select className="border p-2 rounded-md">
             <option>Department</option>
           </select>
-          <select className="border p-2 rounded-md">
+          <select className="border px-4 py-2 rounded-md">
             <option>Weekly View</option>
           </select>
         </div>
-        <div className="flex flex-wrap gap-4 mt-2 md:mt-0">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-md flex items-center gap-2">
-            <FaPlus /> Assign Bulk Shifts
-          </button>
-          <button className="border px-4 py-2 rounded-md flex items-center gap-2">
-            <FaFileExport /> Export
-          </button>
+        <div className="inv-search-wrapper">
+          <i className="bi bi-search inv-search-icon" />
+          <input
+            type="text"
+            className="inv-search-input"
+            placeholder="Search Employees..."
+            aria-label="Search Employees..."
+          />
         </div>
       </div>
 

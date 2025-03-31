@@ -166,7 +166,7 @@ const InvoicePaymentSetting = () => {
               <div className="d-flex justify-content-end gap-2">
                 <button
                   type="button"
-                  className="btn ips-btn ips-btn--dark"
+                  className="inv-new-button"
                   onClick={handleOpenModal}>
                   Create Invoice
                 </button>

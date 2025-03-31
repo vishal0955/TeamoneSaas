@@ -124,7 +124,7 @@ const LeavePage = () => {
           </button>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
+            className=" flex inv-new-button align-items-center"
           >
             <FaPlus className="mr-2" />
             Add Leave

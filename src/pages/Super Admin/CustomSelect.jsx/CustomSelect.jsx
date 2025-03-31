@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CustomPlanForm = () => {
+const CustomPlanForm = ({onclose}) => {
   const [formData, setFormData] = useState({
     modules: {
       hrm: false,
@@ -143,8 +143,8 @@ const CustomPlanForm = () => {
         </div>
 
         <div style={styles.buttonContainer}>
-          <button type="button" onClick={resetForm} style={styles.button}>
-            Reset Form
+          <button type="button" onClick={onclose} style={styles.button}>
+            Cancel
           </button>
           <button type="submit" style={styles.button}>
             Save Plan
