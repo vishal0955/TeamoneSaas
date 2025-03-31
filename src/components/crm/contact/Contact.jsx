@@ -101,7 +101,7 @@ const ContactsList = () => {
           <div className="inv-stat-box">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-primary">
-                <i class="bi bi-currency-pound"></i>
+              <i class="fa-solid fa-address-book"></i>
               </div>
               <div>
                 <div className="inv-stat-label">Total Number Of Contact</div>
@@ -112,7 +112,7 @@ const ContactsList = () => {
           <div className="inv-stat-box">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-warning">
-                <i className="bi bi-clock" />
+              <i class="fa-solid fa-address-card"></i>
               </div>
               <div>
                 <div className="inv-stat-label">Not Contacted</div>
@@ -123,7 +123,7 @@ const ContactsList = () => {
           <div className="inv-stat-box">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-danger">
-                <i class="bi bi-x-circle-fill"></i>
+              <i class="fa-solid fa-id-card-clip"></i>
               </div>
               <div>
                 <div className="inv-stat-label">New Contact This Month</div>
@@ -134,7 +134,7 @@ const ContactsList = () => {
           <div className="inv-stat-box">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-neutral">
-                <i class="bi bi-plus-circle-fill"></i>
+              <i class="fa-solid fa-id-card"></i>
               </div>
               <div>
                 <div className="inv-stat-label">New Recurring Contact</div>
@@ -173,7 +173,7 @@ const ContactsList = () => {
       {/* Filters */}
       <div className="inv-main-card">
         <div className="inv-card-header">
-          <div className="row mt-4">
+          <div className="row">
             <div className="col-md-3">
               <div className="inv-search-wrapper">
                 <i className="bi bi-search inv-search-icon" />

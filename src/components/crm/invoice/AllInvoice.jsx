@@ -3,7 +3,6 @@ import "./invoice.css";
 import NewInvoice from "./NewInvoice";
 
 const AllInvoice = () => {
-
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   const handleOpenModal = () => {
@@ -19,7 +18,14 @@ const AllInvoice = () => {
   return (
     <>
       <div className="inv-dashboard-container">
-        <h1 className="mb-3">Invoice</h1>
+        <div className="d-flex justify-content-between align-items-center mb-2">
+          <h5 className="mb-0" id="invoicesTitle">
+            Invoices
+          </h5>
+          <button className="inv-new-button" onClick={handleOpenModal}>
+            <i className="bi bi-plus me-2" /> New Invoice
+          </button>
+        </div>
         {/* Stats Section */}
         <div className="inv-stats-grid">
           <div className="inv-stat-box">
@@ -71,15 +77,6 @@ const AllInvoice = () => {
         {/* Invoices Section */}
         <div className="inv-main-card">
           <div className="inv-card-header">
-            <div className="d-flex justify-content-between align-items-center">
-              <h5 className="mb-0" id="invoicesTitle">
-                Invoices
-              </h5>
-              <button className="inv-new-button" onClick={handleOpenModal}>
-                <i className="bi bi-plus me-2" /> New Invoice
-              </button>
-            </div>
-
             <div className="row mt-4">
               <div className="col-md-8">
                 <div className="inv-search-wrapper">
@@ -198,34 +195,34 @@ const AllInvoice = () => {
           </div>
         </div>
       </div>
-            {/* Modal for Add contact */}
-            {isModalOpen && (
-              <>
-                <div className="modal fade show d-block" role="dialog">
-                  <div className="modal-dialog modal-lg" role="document">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <h5 className="modal-title">Add New Invoice</h5>
-                        <button
-                          type="button"
-                          className="btn-close"
-                          aria-label="Close"
-                          onClick={handleCloseModal}
-                        />
-                      </div>
-                      <div className="modal-body">
-                        <NewInvoice />
-                      </div>
-                    </div>
-                  </div>
+      {/* Modal for Add contact */}
+      {isModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Add New Invoice</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
                 </div>
-                {/* Modal backdrop */}
-                <div
-                  className="modal-backdrop fade show"
-                  onClick={handleCloseModal}
-                ></div>
-              </>
-            )}
+                <div className="modal-body">
+                  <NewInvoice />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal backdrop */}
+          <div
+            className="modal-backdrop fade show"
+            onClick={handleCloseModal}
+          ></div>
+        </>
+      )}
     </>
   );
 };

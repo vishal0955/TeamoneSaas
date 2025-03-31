@@ -54,7 +54,7 @@ const InventoryItemCard = () => {
         {activeTab === "Variations" && <> <ItemCardVariation /></>}
         {activeTab === "Pricing" && <> <InventoryPricing /></>}
         {activeTab === "Settings" && <> <InventorySetting /></>}
-        {activeTab === "Online store" && <p>Online Store Content</p>}
+        {/* {activeTab === "Online store" && <p>Online Store Content</p>} */}
         {activeTab === "History" && <> <InventoryHistory /></>}
       </div>
 

@@ -18,7 +18,7 @@ const PerformanceOverview = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Navbar */}
-      <nav className="bg-white border-b border-gray-200">
+      {/* <nav className="bg-white border-b border-gray-200">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -54,7 +54,7 @@ const PerformanceOverview = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Main Content */}
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
