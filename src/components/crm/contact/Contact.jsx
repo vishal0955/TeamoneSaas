@@ -59,8 +59,7 @@ const ContactsList = () => {
 
   return (
     <div className="container-fluid px-4 py-3">
-      {/* Header */}
-      <div className="d-flex justify-content-between align-items-center mb-4">
+     <div className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center">
           <h4 className="mb-0 me-2">Contacts</h4>
           {/* <span className="text-muted small">24700 records</span> */}
@@ -96,9 +95,60 @@ const ContactsList = () => {
           </button>
         </div>
       </div>
+      {/* Metrics Cards */}
+      <div className="grid grid-row-1 md:grid-row-5 gap-4 ">
+        <div className="inv-stats-grid">
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-primary">
+                <i class="bi bi-currency-pound"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">Total Number Of Contact</div>
+                <p className="inv-stat-value">2.18M</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-warning">
+                <i className="bi bi-clock" />
+              </div>
+              <div>
+                <div className="inv-stat-label">Not Contacted</div>
+                <p className="inv-stat-value">618.02K</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-danger">
+                <i class="bi bi-x-circle-fill"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">New Contact This Month</div>
+                <p className="inv-stat-value">990.58K</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-neutral">
+                <i class="bi bi-plus-circle-fill"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">New Recurring Contact</div>
+                <p className="inv-stat-value">201.02K</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Header */}
+    
 
       {/* Views */}
-      <div className="d-flex flex-wrap gap-2 mb-4">
+      <div className="d-flex flex-wrap gap-2 ">
         {views.map((view) => (
           <button
             key={view.id}

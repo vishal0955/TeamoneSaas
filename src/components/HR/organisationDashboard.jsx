@@ -101,17 +101,7 @@ const HRAnalyticsDashboard = () => {
 
   return (
     <div className="bg-gray-50 font-sans">
-      <nav className="bg-white border-b border-gray-200">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <img className="h-8 w-8" src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+    
 
       <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-2xl font-semibold text-gray-900">HR Analytics Overview</h1>

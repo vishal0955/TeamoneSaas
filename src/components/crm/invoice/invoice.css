@@ -89,11 +89,14 @@
 .inv-new-button {
     background: linear-gradient(135deg, #3b82f6, #2563eb);
     color: white;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 0.75rem;
+
     border-radius: 10px;
     border: none;
     font-weight: 600;
     transition: all 0.3s ease;
+    height: 40px;
+    text-align: center;
 }
 
 .inv-new-button:hover {
@@ -104,6 +107,8 @@
 .inv-search-wrapper {
     position: relative;
     max-width: 400px;
+   
+    
 }
 
 .inv-search-input {
@@ -129,7 +134,7 @@
 }
 
 .inv-filter-button {
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 0.75rem;
     border: 2px solid #e2e8f0;
     border-radius: 10px;
     background: white;

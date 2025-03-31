@@ -5,43 +5,7 @@ const HRDashboard = () => {
     <div className="bg-gray-50 min-h-screen">
       <div className="max-w-8xl mx-auto">
         {/* Navbar */}
-        <nav className="bg-white shadow-sm mb-8 px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-8">
-              <div className="text-2xl font-bold text-custom">Logo</div>
-              <div className="flex space-x-6">
-                <a href="#" className="text-gray-900 font-medium">
-                  Dashboard
-                </a>
-                <a href="#" className="text-gray-500 hover:text-gray-900">
-                  Projects
-                </a>
-                <a href="#" className="text-gray-500 hover:text-gray-900">
-                  Reports
-                </a>
-              </div>
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="w-64 pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-custom/20"
-                />
-                <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-              </div>
-              <button className="relative text-gray-500 hover:text-gray-900">
-                <i className="fas fa-bell text-xl"></i>
-                <div className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></div>
-              </button>
-              <img
-                src="https://i.pravatar.cc/32?img=1"
-                className="w-8 h-8 rounded-full"
-                alt="Profile"
-              />
-            </div>
-          </div>
-        </nav>
+       
 
         {/* Main Content */}
         <div className="flex gap-8">

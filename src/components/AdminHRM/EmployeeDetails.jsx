@@ -1,8 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 
 const EmployeeDetails = () => {
-  const { id } = useParams(); // URL se ID fetch kar rahe hai
-  const numericId = Number(id.replace("EMP", "")); // "EMP001" -> 1
+  // const { id } = useParams(); // URL se ID fetch kar rahe hai
+  // const numericId = Number(id.replace("EMP", "")); // "EMP001" -> 1
 
   const employees = {
     1: {
@@ -37,11 +37,11 @@ const EmployeeDetails = () => {
     },
   };
 
-  const employee = employees[numericId];
+  // const employee = employees[numericId];
 
-  if (!employee) {
-    return <p className="text-center text-red-500">Employee Not Found</p>;
-  }
+  // if (!employee) {
+  //   return <p className="text-center text-red-500">Employee Not Found</p>;
+  // }
 
   return (
     <main className="mx-auto py-6 sm:px-6 lg:px-8">

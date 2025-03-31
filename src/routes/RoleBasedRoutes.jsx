@@ -137,6 +137,10 @@ import AdminCRMDashboard from "../components/crm/dashboard/AdminCRMDashboard";
 import FunctionalCalendar from "../components/Home/Calendar";
 import CalendarApp from "../components/Home/CalendarFullCalendar";
 import KanbanBoard from "../components/Kanban/Kanban";
+import HRDashboard from "../components/HR/Dashboard";
+import People from "../components/HR/people";
+import RecruitmentPipeline from "../components/HR/recruiting";
+import HRAnalyticsDashboard from "../components/HR/organisationDashboard";
 
 const RoleBasedRoutes = () => {
   return (
@@ -153,6 +157,8 @@ const RoleBasedRoutes = () => {
         <Route path="plan_request" element={<PlanRequest />} />
         <Route path="settings" element={<Setting />} />
       </Route>
+
+      {/* Admin Routes */}
 
       <Route element={<Layout />}>
         <Route
@@ -180,7 +186,7 @@ const RoleBasedRoutes = () => {
         <Route path="/noteslist" element={<NotesList />} />
 
         <Route path="/todoapp" element={<TodoApp />} />
-        {/* <Route path="/kanban" element={<KanbanBoard />} /> */}
+        <Route path="/kanban" element={<KanbanBoard />} />
 
         {/* Project Route */}
         <Route path="/project" element={<Dashboard />} />
@@ -192,6 +198,15 @@ const RoleBasedRoutes = () => {
 
         <Route path="/project/schedule" element={<ProjectCalendar />} />
 
+
+        {/* HR Routes */}
+        <Route path="/hr/dashboard" element={<HRDashboard />} />
+        <Route path="/hr/myprofile" element={  <EmployeeDetails />} />
+        <Route path="/hr/people" element={<People />} />
+        <Route path="/hr/performance" element={<PerformanceOverview />} />
+        <Route path="/hr/recruitment" element={<RecruitmentPipeline />} />
+        <Route path="/hr/company" element={<HRAnalyticsDashboard />} />
+
         {/* crm-section */}
         <Route path="/crm/customers" element={<ContactsList />} />
         <Route path="/crm/contacts" element={<ContactsList />} />
@@ -199,14 +214,6 @@ const RoleBasedRoutes = () => {
 
         <Route path="/crm/companies" element={<Company />} />
         <Route path="/crm/companydetails" element={<CompanyDetails />} />
-
-        {/* <Route path="/crm/customers" element={<ContactsList/>} />
-        <Route path="/crm/companies" element={<Companies />} />
-        <Route path="/crm/leads" element={<Leads />} />
-        <Route path="/crm/deals" element={<Deal />} />
-        <Route path="/crm/pipeline" element={<Pipeline />} />
-      
-        <Route path="/crm/activities" element={<Activity />} /> */}
 
         <Route path="/crm/quotes" element={<AllQuotes />} />
         <Route path="/crm/invoices" element={<AllInvoice />} />

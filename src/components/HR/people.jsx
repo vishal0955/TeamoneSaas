@@ -1,6 +1,6 @@
 import React from "react";
 
-const TimeManagementDashboard = () => {
+const People = () => {
   return (
     <>
       <head>
@@ -151,4 +151,4 @@ const TimeManagementDashboard = () => {
   );
 };
 
-export default TimeManagementDashboard;
+export default People;
