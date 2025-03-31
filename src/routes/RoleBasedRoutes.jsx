@@ -143,6 +143,7 @@ import RecruitmentPipeline from "../components/HR/recruiting";
 import HRAnalyticsDashboard from "../components/HR/organisationDashboard";
 import PerformanceOverview from "../components/HR/Performance";
 import ProjectDetails from "../components/Project/Cards/ProjectDetails";
+import AllProject from "../components/Project/Cards/AllProject";
 
 const RoleBasedRoutes = () => {
   return (
@@ -199,6 +200,7 @@ const RoleBasedRoutes = () => {
         <Route path="/project/task" element={<Task />} />
         <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
+        <Route path="/allproject" element={<AllProject />} />
 
         <Route path="/project/schedule" element={<ProjectCalendar />} />
 
@@ -434,7 +436,7 @@ const RoleBasedRoutes = () => {
         <Route path="/finance/allbills" element={<AllBills />} />
           <Route path="/finance/newbill" element={<NewBill />} />
 
-        <Route path="/finance/remitance" element={<Remitance />} />
+        <Route path="/finance/remittance" element={<Remitance />} />
           <Route path="/finance/newremitance" element={<NewRemitance />} />
 
         <Route path="/finance/creditnotes" element={<CreditNotes />} />
