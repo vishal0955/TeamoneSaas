@@ -123,7 +123,14 @@ const SalesDashboard = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
-      <h1 className="mb-3">Deals </h1>
+      <div className="d-flex justify-content-between mb-2">
+        <h1 className="mb-3">Deals </h1>
+        <div className="">
+          <button className="inv-new-button mt-md-0 " onClick={addNewDeal}>
+            <i className="bi bi-plus" /> New Deal
+          </button>
+        </div>
+      </div>
       {/* Metrics Cards */}
       {/* Metrics Cards */}
       <div className="grid grid-row-1 md:grid-row-5 gap-4">
@@ -187,17 +194,16 @@ const SalesDashboard = () => {
         {/* Search and Filter */}
         <div className="inv-card-header mb-3  ">
           <div className="d-flex justify-content-between">
-           
-              <div className="inv-search-wrapper">
-                <i className="bi bi-search inv-search-icon" />
-                <input
-                  type="text"
-                  className="inv-search-input"
-                  placeholder="Search invoices..."
-                  aria-label="Search invoices"
-                />
-              </div>
-            
+            <div className="inv-search-wrapper">
+              <i className="bi bi-search inv-search-icon" />
+              <input
+                type="text"
+                className="inv-search-input"
+                placeholder="Search invoices..."
+                aria-label="Search invoices"
+              />
+            </div>
+
             <div className="d-flex gap-2">
               <div className=" w-auto">
                 <div className="dropdown flex-grow-1">
@@ -220,14 +226,6 @@ const SalesDashboard = () => {
               <div className=" text-md-center mt-3 mt-md-0">
                 <button className="inv-filter-button">
                   <i className="bi bi-funnel me-1" /> Filters
-                </button>
-              </div>
-              <div className="">
-                <button
-                  className="inv-new-button mt-md-0 "
-                  onClick={addNewDeal}
-                >
-                  <i className="bi bi-plus" /> New Deal
                 </button>
               </div>
             </div>

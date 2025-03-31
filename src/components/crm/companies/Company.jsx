@@ -62,7 +62,7 @@ const Company = () => {
           <div className="inv-stat-box">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-primary">
-                <i class="bi bi-currency-pound"></i>
+              <i class="fa-solid fa-building"></i>
               </div>
               <div>
                 <div className="inv-stat-label">All Amount Companies</div>
@@ -73,7 +73,7 @@ const Company = () => {
           <div className="inv-stat-box">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-warning">
-                <i className="bi bi-clock" />
+              <i class="fa-regular fa-building"></i>
               </div>
               <div>
                 <div className="inv-stat-label">Recently Added</div>
@@ -85,7 +85,7 @@ const Company = () => {
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-danger">
              
-                <i class="bi bi-plus-circle-fill"></i>
+              <i class="fa-solid fa-building"></i>
               </div>
               <div>
                 <div className="inv-stat-label">Active Companies</div>
@@ -96,7 +96,7 @@ const Company = () => {
           <div className="inv-stat-box">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-neutral">
-              <i class="bi bi-x-circle-fill"></i>
+              <i class="fa-regular fa-building"></i>
               </div>
               <div>
                 <div className="inv-stat-label">Inactive Companies</div>
