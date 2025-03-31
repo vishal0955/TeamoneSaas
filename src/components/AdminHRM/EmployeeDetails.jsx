@@ -139,17 +139,15 @@ const EmployeeDetails = () => {
                         >
                           peralt12@example.com
                         </a>
-                        <button className="text-gray-400 hover:text-gray-500">
-                          <i className="fas fa-copy"></i>
-                        </button>
+                       
                       </dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-500">Address</dt>
                       <dd className="text-gray-900 text-right">
-                        1861 Bayonne Ave,
+                         1861 Bayonne Ave,
                         <br />
-                        Manchester, NJ, 08759
+                        Manchester, NJ, 08759<br/>
                       </dd>
                     </div>
                   </dl>
