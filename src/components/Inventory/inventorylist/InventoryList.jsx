@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import InventoryAddProduct from './InventoryAddProduct';
 
 const InventoryList = () => {
     const navigate = useNavigate();
+      
+    const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+    
+      const handleOpenModal = () => {
+        setIsModalOpen(true);
+        document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
+      };
+    
+      const handleCloseModal = () => {
+        setIsModalOpen(false);
+        document.body.classList.remove("modal-open"); // Remove modal-open class
+      };
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+        <div className="min-h-screen flex flex-col">
     <header className="bg-white border-b border-gray-200">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
@@ -93,7 +108,7 @@ const InventoryList = () => {
                 <i className="fas fa-search text-gray-400" />
               </div>
             </div>
-            <button className="ml-4 inline-flex items-center px-4 py-2 !rounded-button bg-blue-600 text-white text-sm font-medium hover:bg-blue-600">
+            <button className="ml-4 inline-flex items-center px-4 py-2 !rounded-button bg-blue-600 text-white text-sm font-medium hover:bg-blue-600" onClick={handleOpenModal}>
               <i className="fas fa-plus mr-2" />
               Add product
             </button>
@@ -218,6 +233,32 @@ const InventoryList = () => {
       </div>
     </main>
   </div>
+        {/* Modal for Add Customer */}
+        {isModalOpen && (
+        <>
+          <div className="modal fade show d-block" role="dialog">
+            <div className="modal-dialog modal-md" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Add New Product</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    aria-label="Close"
+                    onClick={handleCloseModal}
+                  />
+                </div>
+                <div className="modal-body">
+                  <InventoryAddProduct />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal backdrop */}
+          <div className="modal-backdrop fade show"></div>
+        </>
+      )}
+    </>
   )
 }
 

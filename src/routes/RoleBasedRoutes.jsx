@@ -136,6 +136,7 @@ import ProjectTimelineCalendar from "../components/Project/calendar/ProjectTimel
 import AdminCRMDashboard from "../components/crm/dashboard/AdminCRMDashboard";
 import FunctionalCalendar from "../components/Home/Calendar";
 import CalendarApp from "../components/Home/CalendarFullCalendar";
+import KanbanBoard from "../components/Kanban/Kanban";
 
 const RoleBasedRoutes = () => {
   return (
@@ -179,6 +180,7 @@ const RoleBasedRoutes = () => {
         <Route path="/noteslist" element={<NotesList />} />
 
         <Route path="/todoapp" element={<TodoApp />} />
+        {/* <Route path="/kanban" element={<KanbanBoard />} /> */}
 
         {/* Project Route */}
         <Route path="/project" element={<Dashboard />} />
@@ -521,3 +523,5 @@ const RoleBasedRoutes = () => {
 };
 
 export default RoleBasedRoutes;
+
+
