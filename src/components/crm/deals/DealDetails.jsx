@@ -8,11 +8,22 @@ import TasksTab from "./tabs/TasksTab";
 import MeetingsTab from "./tabs/MeetingsTab";
 import CreateDealModal from "./ADdDealForm";
 import ContactForm from "../contact/ContactForm";
+import Accordion from "react-bootstrap/Accordion";
+import Button from "react-bootstrap/Button";
+import {
+  FaChevronRight,
+  FaChevronDown,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
+import {  Dropdown } from "react-bootstrap";
 
 const DealDetails = () => {
   const [activeTab, setActiveTab] = useState("Activity");
   const [filterDate, setFilterDate] = useState("1/5/26");
+  const [isOpen, setIsOpen] = useState(false);
   const [dealDatas , setDealDatas] = useState();
+  const [activeKey, setActiveKey] = useState("0"); // Default open first menu
+
   const [activities, setActivities] = useState([
     {
       id: 1,
@@ -36,6 +47,8 @@ const DealDetails = () => {
     pipeline: "Sales pipeline",
   };
 
+
+  
   const tabs = ['Activity', 'Notes', 'Emails', 'Calls', 'Tasks', 'Meetings', 'Ai'];
   
   const tabComponents = {
@@ -49,19 +62,205 @@ const DealDetails = () => {
 
   const CurrentTabComponent = tabComponents[activeTab];
 
-  const sidebarItems = [
-    { label: "Contacts", count: 0 },
-    { label: "Companies", count: 0 },
-    { label: "Leads", count: 0 },
-    { label: "Deals", count: 0 },
-    { label: "Quotes", count: 0 },
-    { label: "Invoice Stack", count: 0 },
-    { label: "Tickets", count: 0 },
-    { label: "Line items", count: 0 },
-    { label: "Attachments", count: undefined },
-    { label: "Portant - Document Automation", count: 1 },
-    { label: "Portant | Latest Document", count: undefined },
+  const menuItems = [
+    {
+      title: "Companies (1)",
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="badge bg-primary me-2">Primary</span>
+            <span className="fw-bold">zohoinvoice.com</span>
+          </div>
+          <div className="d-flex align-items-center">
+            <a
+              href="https://sender.zohoinvoice.com"
+              className="text-decoration-none text-info"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              sender.zohoinvoice.com <FaExternalLinkAlt className="ms-1" />
+            </a>
+          </div>
+          <p className="mt-2 mb-0">Phone: --</p>
+        </div>
+      ),
+    },
+    {
+      title: "Contact (0)",
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="fw-bold">
+              See the people associated with this record.
+            </span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Leads (0)",
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="badge bg-primary me-2">Primary</span>
+            <span className="fw-bold">zohoinvoice.com</span>
+          </div>
+          <div className="d-flex align-items-center">
+            <a
+              href="https://sender.zohoinvoice.com"
+              className="text-decoration-none text-info"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              sender.zohoinvoice.com <FaExternalLinkAlt className="ms-1" />
+            </a>
+          </div>
+          <p className="mt-2 mb-0">Phone: --</p>
+        </div>
+      ),
+    },
+
+    {
+      title: "Deals (0)",
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="fw-bold">
+              Track the revenue opportunities associated with this record.
+            </span>
+          </div>
+        </div>
+      ),
+    },
+
+    {
+      title: "Tickets (2)",
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="fw-bold">
+              Track the customer requests associated with this record.
+            </span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Invoice (0)",
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="fw-bold">
+              Send your customer a request for payment and associate it with
+              this record.
+            </span>
+          </div>
+          <div className="d-flex align-items-center">
+            <button
+              style={{
+                border: "none",
+                background: "none",
+                color: "blue",
+                cursor: "pointer",
+              }}
+            >
+              Set up Payment
+            </button>
+          </div>
+        </div>
+      ),
+      dropdown: (
+        <Dropdown>
+          <Dropdown.Toggle
+            variant="link"
+            className="p-0 text-secondary fw-bold"
+          >
+            Add
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#">Action</Dropdown.Item>
+            <Dropdown.Item href="#">Another action</Dropdown.Item>
+            <Dropdown.Item href="#">Something else here</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      ),
+    },
+
+    {
+      title: "Health Score",
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="fw-bold">
+              See the people associated with this record.
+            </span>
+          </div>
+        </div>
+      ),
+    },
+
+    {
+      title: "Lead Score",
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="fw-bold">
+              See the people associated with this record.
+            </span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Payment (0)",
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="fw-bold">
+              Give customers a fast, flexible way to pay. Add a payment link to
+              accept a payment and associate it with this record.
+            </span>
+          </div>
+          <div className="d-flex align-items-center justify-content-center borderlessed">
+            <button>set up Payment</button>
+          </div>
+        </div>
+      ),
+    },
+
+    {
+      title: 'Payment {""}',
+      content: (
+        <div>
+          <div className="d-flex align-items-center mb-2">
+            <span className="fw-bold">
+              Automate subscription management and recurring billing from this
+              record.
+            </span>
+          </div>
+        </div>
+      ),
+      dropdown: (
+        <Dropdown>
+          <Dropdown.Toggle
+            variant="link"
+            className="p-0 text-secondary fw-bold"
+          >
+            Add
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#">Action</Dropdown.Item>
+            <Dropdown.Item href="#">Another action</Dropdown.Item>
+            <Dropdown.Item href="#">Something else here</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      ),
+    },
   ];
+
+  const handleToggle = (key) => {
+    setActiveKey(prevKey => (prevKey === key ? null : key));
+  };
 
   const [isContactModalOpen, setIsModalContactOpen] = useState(false);
   const handleOpenModal = () => {
@@ -325,26 +524,29 @@ const DealDetails = () => {
         </div>
 
         {/* Right Sidebar */}
-        <div className="w-64 bg-white m-4 ml-0 rounded-lg shadow">
-          <div className="p-4">
-            {sidebarItems.map((item, index) => (
-              <div
-                key={index}
-                className="flex justify-between items-center py-2"
-              >
-                <span className="text-sm">{item.label}</span>
-                <div className="flex items-center gap-2">
-                  {item.count !== undefined && (
-                    <span className="text-sm text-gray-500">
-                      ({item.count})
-                    </span>
-                  )}
-                  <button className="text-blue-600 text-sm">Add</button>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="col-md-3 bg-white shadow p-3">
+        <Accordion activeKey={activeKey}>
+  {menuItems.map((item, index) => (
+    <Accordion.Item eventKey={index.toString()} key={index}>
+      <Accordion.Header onClick={() => handleToggle(index.toString())} className="w-100">
+        <div className="d-flex align-items-center w-100 justify-content-between">
+          <div className="d-flex align-items-center">{item.title}</div>
+          <Button variant="link" className="p-0">+ Add</Button>
         </div>
+      </Accordion.Header>
+
+      <Accordion.Body>
+        {/* Yeh message sirf tab dikh raha jab yeh wala item active ho */}
+        {activeKey === index.toString() && (
+          <p>{item.content}</p>
+        )}
+      </Accordion.Body>
+    </Accordion.Item>
+  ))}
+</Accordion>
+
+
+    </div>
       </div>
 
       {isContactModalOpen && (
