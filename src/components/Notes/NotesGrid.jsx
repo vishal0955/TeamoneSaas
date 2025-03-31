@@ -16,7 +16,10 @@ import AddNotePopup from './AddNoteForm';
 
 const NotesGrid = () => {
     const [viewMode, setViewMode] = useState('list');
+    const [showAddFolder, setShowAddFolder] = useState(false); 
     const [isAddNoteOpen, setIsAddNoteOpen] = useState(false);
+    const [folderName, setFolderName] = useState('');
+    const [addedFolder, setAddedFolder] = useState(false);
 
     console.log(viewMode);
   const [notes, setNotes] = useState([
@@ -43,7 +46,23 @@ const NotesGrid = () => {
       priority: 'Low',
       category: 'Personal',
       starred: false
-    }
+    },
+    {
+      id: 2,
+      title: 'Client Presentation',
+      description: 'Prepare slides for tomorrow\'s client meeting...',
+      priority: 'High',
+      category: 'Work',
+      starred: false
+    },
+    {
+      id: 1,
+      title: 'Project Planning Meeting',
+      description: 'Review project timeline and assign tasks to team members...',
+      priority: 'Medium',
+      category: 'Personal',
+      starred: false
+    },
   ]);
 
   const handleOpenAddNote = () => {
@@ -95,6 +114,24 @@ const handleToggleStar = (id) => {
     { id: 'high', name: 'High', color: 'bg-red-500' },
     { id: 'low', name: 'Low', color: 'bg-green-500' }
   ]);
+
+  const handlePlusClick = () => {
+    setShowAddFolder(true); // Show folder input
+  };
+
+  // Handle folder name input
+  const handleFolderNameChange = (e) => {
+    setFolderName(e.target.value);
+  };
+
+  // Handle folder addition
+  const handleAddFolder = () => {
+    if (folderName.trim()) {
+      setAddedFolder(true); // Set folder as added
+      setShowAddFolder(false); // Hide the input field
+      setFolderName(''); // Reset folder name
+    }
+  };
 
   const getPriorityClasses = (priority) => {
     switch (priority) {
@@ -152,7 +189,7 @@ const handleToggleStar = (id) => {
         </div>
         
         <div className="px-4 py-2">
-          <h6 className="text-gray-500 text-xs font-medium mb-2">Tags</h6>
+          <h6 className="text-gray-500 text-xs font-medium mb-2 flex justify-between">Tags  <i className="fa-solid fa-plus cursor-pointer" onClick={handlePlusClick}></i></h6>
           <ul>
             {tags.map(tag => (
               <li key={tag.id} className="mb-1">
@@ -168,24 +205,57 @@ const handleToggleStar = (id) => {
         </div>
         
         <div className="px-4 py-2">
-          <h6 className="text-gray-500 text-xs font-medium mb-2">Priority</h6>
-          <ul>
-            {priorities.map(priority => (
-              <li key={priority.id} className="mb-1">
-                <div className="flex items-center px-3 py-2">
-                  <div className="mr-2">
-                    <span className={`inline-block w-3 h-3 rounded-full ${priority.color}`}></span>
-                  </div>
-                  <div>{priority.name}</div>
-                </div>
-              </li>
-            ))}
-          </ul>
+      <h6 className="text-gray-500 text-xs font-medium mb-2 flex justify-between">
+        Priority
+        {/* Plus Icon for adding folder */}
+        <i className="fa-solid fa-plus cursor-pointer" onClick={handlePlusClick}></i>
+      </h6>
+      <ul>
+        {priorities.map((priority) => (
+          <li key={priority.id} className="mb-1 flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="mr-2">
+                {/* Folder Icon */}
+                <i className="fa-solid fa-folder text-gray-600"></i>
+              </div>
+              <div>{priority.name}</div>
+            </div>
+            {/* Folder color indicator */}
+            <div className={`inline-block w-3 h-3 rounded-full ${priority.color}`}></div>
+          </li>
+        ))}
+      </ul>
+
+      {/* Conditionally render the "Add Folder" input */}
+      {showAddFolder && (
+        <div className="mt-3 px-3 py-2 bg-gray-100 border rounded-md">
+          <input
+            type="text"
+            className="border p-2 w-full rounded-md"
+            placeholder="Enter folder name"
+            value={folderName}
+            onChange={handleFolderNameChange} // Update folder name state
+          />
+          <button
+            className="mt-2 bg-blue-500 text-white p-2 rounded-md"
+            onClick={handleAddFolder} // Handle folder addition
+          >
+            Add Folder
+          </button>
         </div>
+      )}
+
+      {/* Conditionally render the added folder */}
+      {addedFolder && (
+        <div className="mt-3 text-green-500 font-medium">
+          Folder "{folderName}" added successfully under Low Priority!
+        </div>
+      )}
+    </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 ">
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
             <div className="flex">
@@ -235,7 +305,7 @@ const handleToggleStar = (id) => {
                         <div className="space-y-4">
                         {notes.map((note) => (
                           <div key={note.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
-                            <div className="p-4">
+                            <div className="p-2">
                               <div className="flex justify-between items-start mb-2">
                                 <div>
                                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${note.priorityColor}`}>
@@ -246,13 +316,13 @@ const handleToggleStar = (id) => {
                                   <MoreVertical size={16} />
                                 </button>
                               </div>
+                            
+                              <div className="flex justify-content-between items-center mt-2">
                               <h5 className="font-medium mb-2">{note.title}</h5>
-                              <p className="text-gray-600 text-sm">{note.description}</p>
-                              <div className="flex items-center mt-4">
-                                <div className="mr-2">
+                                <div className="flex gap-3 ">
                                   <div className="bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center">
                                     <span className="text-gray-600 text-xs">JP</span>
-                                  </div>
+                                 
                                 </div>
                                 <div className="flex-grow">
                                   <div className="text-sm">{note.category}</div>
@@ -265,7 +335,9 @@ const handleToggleStar = (id) => {
                                     <Trash2 size={16} />
                                   </button>
                                 </div>
+                                </div>
                               </div>
+                              <p className="text-gray-600 text-sm">{note.description}</p>
                             </div>
                           </div>
                         ))}
@@ -330,8 +402,8 @@ const handleToggleStar = (id) => {
                                 <span className="text-gray-600 text-xs">JP</span>
                               </div>
                             </div>
-                            <div className="flex-grow">
-                              <div className="text-sm">{note.category}</div>
+                            <div className="flex-grow ">
+                              <div className="text-sm ">{note.category}</div>
                             </div>
                             <div className="flex">
                               <button className="p-1 text-gray-400 hover:text-yellow-500">

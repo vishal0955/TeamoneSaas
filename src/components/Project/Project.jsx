@@ -152,12 +152,12 @@ const Project = () => {
         <div className="add-toggle d-flex">
           <div className="d-flex align-items-center gap-3 mb-4">
             <div className="view-toggle">
-              <Link to="/ProjectTimelineCalendar" >
+              <Link to="/calendar" >
               <button
               // className={view === "grid" ? "active" : ""}
               // onClick={() => toggleView("grid")}
               >
-                <i className="bi bi-grid me-2" /> Calendar
+                <i className="bi bi-grid me-2" /> TimeLine
               </button>
               </Link>
               <Link to="/projectlist">

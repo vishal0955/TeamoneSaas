@@ -46,13 +46,13 @@ const Files = () => {
             <i className="fab fa-google-drive" />
             <span>Drive</span>
           </a>
-          <a
+          {/* <a
             href="#"
             className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
           >
             <i className="fab fa-dropbox" />
             <span>Dropbox</span>
-          </a>
+          </a> */}
           <a
             href="#"
             className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
@@ -81,13 +81,13 @@ const Files = () => {
             <i className="fas fa-star" />
             <span>Important</span>
           </a>
-          <a
+          {/* <a
             href="#"
             className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
           >
             <i className="fas fa-photo-video" />
             <span>Media</span>
-          </a>
+          </a> */}
         </nav>
         <div className="mt-8">
           <h3 className="text-sm font-medium mb-3">Storage Details</h3>
@@ -226,7 +226,7 @@ const Files = () => {
             </div>
           </div>
         </div>
-        <div className="mb-8">
+        {/* <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-medium">Quick Access</h2>
             <div className="flex items-center gap-4">
@@ -300,7 +300,7 @@ const Files = () => {
               <span className="text-xs text-gray-500">2.4 GB</span>
             </div>
           </div>
-        </div>
+        </div> */}
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-medium">Recent Videos</h2>
