@@ -50,7 +50,6 @@ const SalesDashboard = () => {
     ],
   });
 
-
   // Number of deals per stage
   const dealsCount = {
     Qualified: 3,
@@ -132,7 +131,7 @@ const SalesDashboard = () => {
           <div className="inv-stat-box">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-primary">
-              <i class="bi bi-currency-pound"></i>
+                <i class="bi bi-currency-pound"></i>
               </div>
               <div>
                 <div className="inv-stat-label">Total Deal Amount</div>
@@ -186,9 +185,9 @@ const SalesDashboard = () => {
 
       <div className="inv-main-card">
         {/* Search and Filter */}
-        <div className="inv-card-header mb-3">
-          <div className="row mt-4">
-            <div className="col-md-5">
+        <div className="inv-card-header mb-3  ">
+          <div className="d-flex justify-content-between">
+           
               <div className="inv-search-wrapper">
                 <i className="bi bi-search inv-search-icon" />
                 <input
@@ -198,34 +197,39 @@ const SalesDashboard = () => {
                   aria-label="Search invoices"
                 />
               </div>
-            </div>
-            <div className="col-md-2 d-flex justify-content-end w-auto">
-              <div className="dropdown flex-grow-1">
-                <button
-                  className="btn inv-filter-button w-100 d-flex justify-content-between align-items-center"
-                  data-bs-toggle="dropdown"
-                >
-                  <span>Main Pipline</span>
-                  <i className="bi bi-chevron-down" />
-                </button>
-                <ul className="dropdown-menu w-100">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Main Pipline
-                    </a>
-                  </li>
-                </ul>
+            
+            <div className="d-flex gap-2">
+              <div className=" w-auto">
+                <div className="dropdown flex-grow-1">
+                  <button
+                    className="btn inv-filter-button w-100 d-flex justify-content-between align-items-center"
+                    data-bs-toggle="dropdown"
+                  >
+                    <span>Main Pipline</span>
+                    <i className="bi bi-chevron-down" />
+                  </button>
+                  <ul className="dropdown-menu w-100">
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Main Pipline
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div className="col-md-2 text-md-center mt-3 mt-md-0">
-              <button className="inv-filter-button">
-                <i className="bi bi-funnel me-1" /> Filters
-              </button>
-            </div>
-            <div className="col-md-2">
-              <button className="inv-new-button mt-md-0 " onClick={addNewDeal}>
-                <i className="bi bi-plus"/> New Deal
-              </button>
+              <div className=" text-md-center mt-3 mt-md-0">
+                <button className="inv-filter-button">
+                  <i className="bi bi-funnel me-1" /> Filters
+                </button>
+              </div>
+              <div className="">
+                <button
+                  className="inv-new-button mt-md-0 "
+                  onClick={addNewDeal}
+                >
+                  <i className="bi bi-plus" /> New Deal
+                </button>
+              </div>
             </div>
           </div>
         </div>
