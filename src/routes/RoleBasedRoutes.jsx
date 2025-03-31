@@ -82,7 +82,7 @@ import TrainingList from "../components/Training/TrainingList";
 
 import PayrollOvertime from "../components/AdminHRM/Payroll/PayrollOvertime";
 import PayrollDeductions from "../components/AdminHRM/Payroll/PayrollDeductions";
-import PerformanceOverview from "../components/AdminPerformance/PerformanceOverview";
+// import PerformanceOverview from "../components/AdminPerformance/PerformanceOverview";
 import GoalsOverview from "../components/AdminPerformance/GoalsOverview";
 import Compensation from "../components/AdminPerformance/Compensation";
 import Telent from "../components/AdminPerformance/Telent";
@@ -141,6 +141,7 @@ import HRDashboard from "../components/HR/Dashboard";
 import People from "../components/HR/people";
 import RecruitmentPipeline from "../components/HR/recruiting";
 import HRAnalyticsDashboard from "../components/HR/organisationDashboard";
+import PerformanceOverview from "../components/HR/Performance";
 
 const RoleBasedRoutes = () => {
   return (

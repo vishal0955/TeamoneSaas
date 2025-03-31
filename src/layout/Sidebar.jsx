@@ -84,7 +84,7 @@ const menuItems = [
     path: "/hrm",
     icon: <Users size={16} />,
     subItems: [
-      { name: "DashBoard", path: "/hr/dashboard" },
+      { name: "Dashboard", path: "/hr/dashboard" },
       { name: "My Profile", path: "/hr/myprofile" },
       { name: "People", path: "/hr/people" },
       { name: "Performance", path: "/hr/performance" },
