@@ -187,11 +187,11 @@ const Project = () => {
               <th style={{ width: "40px" }}>
                 <input type="checkbox" className="form-check-input" />
               </th>
-              <th>Project Name</th>
+              <th>Client</th> 
               <th>Members</th>
               <th>Start Date</th>
               <th>Deadline</th>
-              <th>Client</th>
+              <th>Project Name</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -202,14 +202,14 @@ const Project = () => {
                 <td>
                   <input type="checkbox" className="form-check-input" />
                 </td>
-                <td>{task.name}</td>
+                <td>{task.client}</td>
                 <td>
                   <img src={task.avatar} className="avatar me-1" alt="avatar" />
                   +3
                 </td>
                 <td>{task.startDate}</td>
                 <td>{task.deadline}</td>
-                <td>{task.client}</td>
+                <td>{task.name}</td>
                 <td>
                   <div className="progress" style={{ height: "10px" }}>
                     <div

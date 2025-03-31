@@ -56,6 +56,57 @@ const Company = () => {
         </Button>
       </div>
 
+
+      <div className="grid grid-row-1 md:grid-row-5 gap-4 ">
+        <div className="inv-stats-grid">
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-primary">
+                <i class="bi bi-currency-pound"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">All Amount Companies</div>
+                <p className="inv-stat-value">14</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-warning">
+                <i className="bi bi-clock" />
+              </div>
+              <div>
+                <div className="inv-stat-label">Recently Added</div>
+                <p className="inv-stat-value">15</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-danger">
+             
+                <i class="bi bi-plus-circle-fill"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">Active Companies</div>
+                <p className="inv-stat-value">10</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-neutral">
+              <i class="bi bi-x-circle-fill"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">Inactive Companies</div>
+                <p className="inv-stat-value">12</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* <div className="d-flex gap-2 mb-3">
         <Dropdown>
           <Dropdown.Toggle variant="light">Company owner</Dropdown.Toggle>
@@ -73,7 +124,7 @@ const Company = () => {
         />
       </div> */}
 
-      <div className="d-flex flex-wrap gap-2 mb-4 align-items-center">
+      <div className="d-flex flex-wrap gap-2 align-items-center">
         <div className="dropdown">
           <button
             className="inv-filter-button dropdown-toggle"

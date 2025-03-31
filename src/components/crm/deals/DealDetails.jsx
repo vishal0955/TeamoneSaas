@@ -36,8 +36,8 @@ const DealDetails = () => {
     pipeline: "Sales pipeline",
   };
 
-  const tabs = ["Activity", "Notes", "Emails", "Calls", "Tasks", "Meetings"];
-
+  const tabs = ['Activity', 'Notes', 'Emails', 'Calls', 'Tasks', 'Meetings', 'Ai'];
+  
   const tabComponents = {
     Activity: ActivityTab,
     Notes: NotesTab,
