@@ -51,7 +51,9 @@ const menuItems = [
       {name: "All Project", path: "allproject"},
       {name : "Scheduling", path: "/project/projects"},
 
-      { name: "Task", path: "/project/task" },
+      {name : "Workload", path: "/project/workload"}, 
+
+      // { name: "Task", path: "/project/task" },
 
       // { name: "Todo", path: "/project/Todo" },
       // { name: "Notes", path: "/project/Notes" },

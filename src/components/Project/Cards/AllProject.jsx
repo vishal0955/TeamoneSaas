@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Kanban } from 'lucide-react';
 
 const initialTasks = [
   {
@@ -166,6 +167,14 @@ const AllProject = () => {
               // onClick={() => toggleView("list")}
               >
                 <i className="bi bi-list me-2" /> List View
+              </button>
+              </Link>
+              <Link to="/kanban">
+              <button
+              // className={view === "list" ? "active" : ""}
+              // onClick={() => toggleView("list")}
+              >
+                  <Kanban /> Board View
               </button>
               </Link>
             </div>

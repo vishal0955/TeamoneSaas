@@ -1213,7 +1213,7 @@ const KanbanBoard = () => {
       tasks: [
         {
           id: '315317',
-          title: '315317 - Triton Partners - EU & NYC - RFP for...',
+          title: '315317 - XYz tech ...',
           project: 'All Projects',
           priority: 'High',
           progress: 100,
