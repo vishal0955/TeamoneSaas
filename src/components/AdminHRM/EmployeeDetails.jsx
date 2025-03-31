@@ -1,8 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 
 const EmployeeDetails = () => {
-  const { id } = useParams(); // URL se ID fetch kar rahe hai
-  const numericId = Number(id.replace("EMP", "")); // "EMP001" -> 1
+  // const { id } = useParams(); // URL se ID fetch kar rahe hai
+  // const numericId = Number(id.replace("EMP", "")); // "EMP001" -> 1
 
   const employees = {
     1: {
@@ -37,34 +37,29 @@ const EmployeeDetails = () => {
     },
   };
 
-  const employee = employees[numericId];
+  // const employee = employees[numericId];
 
-  if (!employee) {
-    return <p className="text-center text-red-500">Employee Not Found</p>;
-  }
+  // if (!employee) {
+  //   return <p className="text-center text-red-500">Employee Not Found</p>;
+  // }
 
   return (
     <main className="mx-auto py-6 sm:px-6 lg:px-8">
       <div className="relative">
         {/* Gradient Header */}
-        <div className="relative h-48 bg-gradient-to-r from-[#1a202c] to-orange-400 rounded-t-lg">
-          <div className="absolute -bottom-12 left-8 md:left-8 z-30">
-            <div className="relative flex items-center">
-              <img
+       
+
+        {/* White Content */}
+        <div className="bg-white rounded-b-lg shadow  pb-6  md:px-6">
+          {/* Profile Info */}
+          <img
                 className="h-24 w-24 rounded-full border-4 border-white bg-gray-100"
                 src="https://via.placeholder.com/96"
                 alt="Profile"
               />
-              <span className="absolute bottom-1 right-1 h-6 w-6 rounded-full bg-green-400 border-2 border-white"></span>
-            </div>
-          </div>
-        </div>
-
-        {/* White Content */}
-        <div className="bg-white rounded-b-lg shadow pt-16 pb-6 px-4 md:px-8">
-          {/* Profile Info */}
           <div className="flex flex-col md:flex-row justify-between items-start">
             <div>
+            
               <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                 Stephen Peralt
                 <i className="fas fa-check-circle text-[#1a202c]"></i>
@@ -89,10 +84,10 @@ const EmployeeDetails = () => {
           </div>
 
           {/* Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-1 mt-6">
             {/* Sidebar Card */}
             <div className="md:col-span-1">
-              <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
+              <div className="bg-white rounded-lg border border-gray-200 p-2 space-y-8">
                 {/* Basic Information */}
                 <div>
                   <h3 className="font-medium text-gray-900">

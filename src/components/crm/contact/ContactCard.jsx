@@ -507,7 +507,7 @@ const ContactDetailPage = () => {
                 <Accordion.Header>
                   <div className="d-flex align-items-center w-100">
                     {/* Dropdown Icon Start Me */}
-                 
+                   {/* <FaChevronRight className="me-2" style={{ color: "blue" }} />  */}
                     <div className="flex-grow-1">{item.title}</div>
                     <Button variant="link" className="p-0 text-info text-decoration-none">
                       + Add

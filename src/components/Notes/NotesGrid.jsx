@@ -19,7 +19,9 @@ const NotesGrid = () => {
     const [showAddFolder, setShowAddFolder] = useState(false); 
     const [isAddNoteOpen, setIsAddNoteOpen] = useState(false);
     const [folderName, setFolderName] = useState('');
-    const [addedFolder, setAddedFolder] = useState(false);
+    
+   
+    const [addedFolders, setAddedFolders] = useState([]);
 
     console.log(viewMode);
   const [notes, setNotes] = useState([
@@ -96,6 +98,36 @@ const handleToggleStar = (id) => {
     );
 };
 
+
+const [showAddTag, setShowAddTag] = useState(false);
+const [tagName, setTagName] = useState("");
+const [addedTags, setAddedTags] = useState([]);
+
+const handlePlusClicked = () => setShowAddTag(true);
+
+// 📌 Input Change Handler
+const handleTagNameChange = (e) => setTagName(e.target.value);
+
+// 📌 Add Tag Function
+const handleAddTag = () => {
+  if (!tagName.trim()) return;
+
+  const newTag = {
+    id: Date.now(),
+    name: tagName,
+    color: "bg-blue-500", // Default color for new tags
+  };
+
+  setAddedTags([...addedTags, newTag]);
+  setTagName("");
+  setShowAddTag(false);
+};
+
+// 📌 Remove Tag Function
+const handleRemoveTag = (id) => {
+  setAddedTags(addedTags.filter(tag => tag.id !== id));
+};
+
   const [categories] = useState([
     { id: 'all', name: 'All Notes', count: 24, icon: 'sticky' },
     { id: 'important', name: 'Starred', icon: 'star' },
@@ -115,22 +147,29 @@ const handleToggleStar = (id) => {
     { id: 'low', name: 'Low', color: 'bg-green-500' }
   ]);
 
-  const handlePlusClick = () => {
-    setShowAddFolder(true); // Show folder input
-  };
+  const handlePlusClick = () => setShowAddFolder(true);
 
-  // Handle folder name input
-  const handleFolderNameChange = (e) => {
-    setFolderName(e.target.value);
-  };
+  // 📌 Input Change Handler
+  const handleFolderNameChange = (e) => setFolderName(e.target.value);
 
-  // Handle folder addition
+  // 📌 Add Folder Function
   const handleAddFolder = () => {
-    if (folderName.trim()) {
-      setAddedFolder(true); // Set folder as added
-      setShowAddFolder(false); // Hide the input field
-      setFolderName(''); // Reset folder name
-    }
+    if (!folderName.trim()) return;
+
+    const newFolder = {
+      id: Date.now(),
+      name: folderName,
+      color: "bg-blue-500", // Default color for new folders
+    };
+
+    setAddedFolders([...addedFolders, newFolder]);
+    setFolderName("");
+    setShowAddFolder(false);
+  };
+
+  // 📌 Remove Folder Function
+  const handleRemoveFolder = (id) => {
+    setAddedFolders(addedFolders.filter(folder => folder.id !== id));
   };
 
   const getPriorityClasses = (priority) => {
@@ -189,44 +228,88 @@ const handleToggleStar = (id) => {
         </div>
         
         <div className="px-4 py-2">
-          <h6 className="text-gray-500 text-xs font-medium mb-2 flex justify-between">Tags  <i className="fa-solid fa-plus cursor-pointer" onClick={handlePlusClick}></i></h6>
-          <ul>
-            {tags.map(tag => (
-              <li key={tag.id} className="mb-1">
-                <div className="flex items-center px-3 py-2">
-                  <div className="mr-2">
-                    <span className={`inline-block w-3 h-3 rounded-full ${tag.color}`}></span>
-                  </div>
-                  <div>{tag.name}</div>
-                </div>
-              </li>
-            ))}
-          </ul>
+      <h6 className="text-gray-500 text-xs font-medium mb-2 flex justify-between">
+        Tags  
+        <i className="fa-solid fa-plus cursor-pointer" onClick={handlePlusClicked}></i>
+      </h6>
+
+      <ul>
+        {tags.map(tag => (
+          <li key={tag.id} className="mb-1">
+            <div className="flex items-center px-3 py-2">
+              <div className="mr-2">
+                <span className={`inline-block w-3 h-3 rounded-full ${tag.color}`}></span>
+              </div>
+              <div>{tag.name}</div>
+            </div>
+          </li>
+        ))}
+
+        {/* Added Tags */}
+        {addedTags.map((tag) => (
+          <li key={tag.id} className="mb-1 flex items-center justify-between bg-gray-200 p-2 rounded">
+            <div className="flex items-center">
+              <span className={`inline-block w-3 h-3 rounded-full ${tag.color} mr-2`}></span>
+              <div>{tag.name}</div>
+            </div>
+            <i className="fa-solid fa-trash text-red-500 cursor-pointer" onClick={() => handleRemoveTag(tag.id)}></i>
+          </li>
+        ))}
+      </ul>
+
+      {/* Add Tag Input Field */}
+      {showAddTag && (
+        <div className="mt-3 px-3 py-2 bg-gray-100 border rounded-md">
+          <input
+            type="text"
+            className="border p-2 w-full rounded-md"
+            placeholder="Enter tag name"
+            value={tagName}
+            onChange={handleTagNameChange}
+          />
+          <button
+            className="mt-2 bg-blue-500 text-white p-2 rounded-md"
+            onClick={handleAddTag}
+          >
+            Add Tag
+          </button>
         </div>
-        
+      )}
+    </div>
         <div className="px-4 py-2">
       <h6 className="text-gray-500 text-xs font-medium mb-2 flex justify-between">
         Priority
         {/* Plus Icon for adding folder */}
         <i className="fa-solid fa-plus cursor-pointer" onClick={handlePlusClick}></i>
       </h6>
+
       <ul>
         {priorities.map((priority) => (
           <li key={priority.id} className="mb-1 flex items-center justify-between">
             <div className="flex items-center">
-              <div className="mr-2">
-                {/* Folder Icon */}
-                <i className="fa-solid fa-folder text-gray-600"></i>
-              </div>
+              <i className="fa-solid fa-folder text-gray-600 mr-2"></i>
               <div>{priority.name}</div>
             </div>
-            {/* Folder color indicator */}
             <div className={`inline-block w-3 h-3 rounded-full ${priority.color}`}></div>
+          </li>
+        ))}
+
+        {/* Added folders */}
+        {addedFolders.map((folder) => (
+          <li key={folder.id} className="mb-1 flex items-center justify-between bg-gray-200 p-2 rounded">
+            <div className="flex items-center">
+              <i className="fa-solid fa-folder text-blue-600 mr-2"></i>
+              <div>{folder.name}</div>
+            </div>
+            <div className="flex items-center">
+              <div className={`inline-block w-3 h-3 rounded-full ${folder.color} mr-2`}></div>
+              <i className="fa-solid fa-trash text-red-500 cursor-pointer" onClick={() => handleRemoveFolder(folder.id)}></i>
+            </div>
           </li>
         ))}
       </ul>
 
-      {/* Conditionally render the "Add Folder" input */}
+      {/* Add Folder Input Field */}
       {showAddFolder && (
         <div className="mt-3 px-3 py-2 bg-gray-100 border rounded-md">
           <input
@@ -234,21 +317,14 @@ const handleToggleStar = (id) => {
             className="border p-2 w-full rounded-md"
             placeholder="Enter folder name"
             value={folderName}
-            onChange={handleFolderNameChange} // Update folder name state
+            onChange={handleFolderNameChange}
           />
           <button
             className="mt-2 bg-blue-500 text-white p-2 rounded-md"
-            onClick={handleAddFolder} // Handle folder addition
+            onClick={handleAddFolder}
           >
             Add Folder
           </button>
-        </div>
-      )}
-
-      {/* Conditionally render the added folder */}
-      {addedFolder && (
-        <div className="mt-3 text-green-500 font-medium">
-          Folder "{folderName}" added successfully under Low Priority!
         </div>
       )}
     </div>

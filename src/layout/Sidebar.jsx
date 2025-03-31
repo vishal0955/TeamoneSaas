@@ -57,6 +57,7 @@ const menuItems = [
       // { name: "Notes", path: "/project/Notes" },
     ],
   },
+
   {
     name: "CRM",
     path: "/crm",
@@ -80,6 +81,20 @@ const menuItems = [
   },
   {
     name: "HR",
+    path: "/hrm",
+    icon: <Users size={16} />,
+    subItems: [
+      { name: "DashBoard", path: "/hr/dashboard" },
+      { name: "My Profile", path: "/hr/myprofile" },
+      { name: "People", path: "/hr/people" },
+      { name: "Performance", path: "/hr/performance" },
+      { name: "Recruitment", path: "/hr/recruitment" },
+      { name: "Company", path: "/hr/company" },
+    ]
+  },
+
+  {
+    name: "HR OLD ",
     path: "/hrm",
     icon: <Users size={16} />,
     subItems: [
