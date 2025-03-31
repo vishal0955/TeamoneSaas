@@ -42,7 +42,7 @@ const Company = () => {
 
   const handleCompanyClick = () => {
     console.log("Company clicked:");
-    navigate("/crm/companydetails");
+    navigate("/crm/contactdetails");
   };
 
   return (
