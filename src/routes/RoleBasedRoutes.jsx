@@ -163,6 +163,8 @@ const RoleBasedRoutes = () => {
           }
         />
 
+
+
         {/* calendar */}
 
         <Route path="/homecalendar" element={<FunctionalCalendar />} />
@@ -185,6 +187,8 @@ const RoleBasedRoutes = () => {
         <Route path="/project/task" element={<Task />} />
         <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
+
+        <Route path="/project/schedule" element={<ProjectCalendar />} />
 
         {/* crm-section */}
         <Route path="/crm/customers" element={<ContactsList />} />
