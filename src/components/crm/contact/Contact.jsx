@@ -96,7 +96,7 @@ const ContactsList = () => {
         </div>
       </div>
       {/* Metrics Cards */}
-      <div className="grid grid-row-1 md:grid-row-5 gap-4 mb-6">
+      <div className="grid grid-row-1 md:grid-row-5 gap-4 ">
         <div className="inv-stats-grid">
           <div className="inv-stat-box">
             <div className="inv-stat-content">
@@ -104,8 +104,8 @@ const ContactsList = () => {
                 <i class="bi bi-currency-pound"></i>
               </div>
               <div>
-                <div className="inv-stat-label">Total Deal Amount</div>
-                <p className="inv-stat-value">£2.18M</p>
+                <div className="inv-stat-label">Total Number Of Contact</div>
+                <p className="inv-stat-value">2.18M</p>
               </div>
             </div>
           </div>
@@ -115,8 +115,8 @@ const ContactsList = () => {
                 <i className="bi bi-clock" />
               </div>
               <div>
-                <div className="inv-stat-label">Total Open Deal Amount</div>
-                <p className="inv-stat-value">£618.02K</p>
+                <div className="inv-stat-label">Not Contacted</div>
+                <p className="inv-stat-value">618.02K</p>
               </div>
             </div>
           </div>
@@ -126,8 +126,8 @@ const ContactsList = () => {
                 <i class="bi bi-x-circle-fill"></i>
               </div>
               <div>
-                <div className="inv-stat-label">Total Closed Deal Amount</div>
-                <p className="inv-stat-value">£990.58K</p>
+                <div className="inv-stat-label">New Contact This Month</div>
+                <p className="inv-stat-value">990.58K</p>
               </div>
             </div>
           </div>
@@ -137,8 +137,8 @@ const ContactsList = () => {
                 <i class="bi bi-plus-circle-fill"></i>
               </div>
               <div>
-                <div className="inv-stat-label">New Deal Amount</div>
-                <p className="inv-stat-value">£201.02K</p>
+                <div className="inv-stat-label">New Recurring Contact</div>
+                <p className="inv-stat-value">201.02K</p>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@ const ContactsList = () => {
     
 
       {/* Views */}
-      <div className="d-flex flex-wrap gap-2 mb-4 justify-content-between">
+      <div className="d-flex flex-wrap gap-2 ">
         {views.map((view) => (
           <button
             key={view.id}

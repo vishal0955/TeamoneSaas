@@ -31,6 +31,60 @@ const AllQuotes = () => {
             </button>
           </div>
         </div>
+
+             
+
+        <div className="grid grid-row-1 md:grid-row-5 gap-4 ">
+        <div className="inv-stats-grid">
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-primary">
+                <i class="bi bi-currency-pound"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">Total Amount Of Quotes.</div>
+                <p className="inv-stat-value">£1.18M</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-warning">
+                <i className="bi bi-clock" />
+              </div>
+              <div>
+                <div className="inv-stat-label">Quotes Per Status</div>
+                <p className="inv-stat-value">£616.62K</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-danger">
+                <i class="bi bi-x-circle-fill"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">Open Deal Amount  </div>
+                <p className="inv-stat-value">£590.58K</p>
+              </div>
+            </div>
+          </div>
+          <div className="inv-stat-box">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-neutral">
+                <i class="bi bi-plus-circle-fill"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">All Amount of Quotes</div>
+                <p className="inv-stat-value">£201.02K</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
         <div className="quotes-card">
           <div className=" quotes-card-body">
             <div className="quotes-filters row mb-4">

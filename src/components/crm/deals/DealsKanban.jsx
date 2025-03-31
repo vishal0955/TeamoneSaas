@@ -126,7 +126,7 @@ const SalesDashboard = () => {
       <h1 className="mb-3">Deals </h1>
       {/* Metrics Cards */}
       {/* Metrics Cards */}
-      <div className="grid grid-row-1 md:grid-row-5 gap-4 mb-6">
+      <div className="grid grid-row-1 md:grid-row-5 gap-4">
         <div className="inv-stats-grid">
           <div className="inv-stat-box">
             <div className="inv-stat-content">
