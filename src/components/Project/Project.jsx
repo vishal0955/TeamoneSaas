@@ -147,9 +147,10 @@ const Project = () => {
 
   const navigate = useNavigate();
   return (
+    
     <div className="container mt-4">
       {/* Header */}
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
         <h4 className="mb-0 text-2xl font-bold">All Projects</h4>
         <div className="add-toggle d-flex">
           <div className="d-flex align-items-center gap-3 mb-4">
@@ -680,6 +681,7 @@ const Project = () => {
         </div>
       )}
     </div>
+    
   );
 };
 
