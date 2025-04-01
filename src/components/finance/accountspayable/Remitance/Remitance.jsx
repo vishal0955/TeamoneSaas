@@ -1,60 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Remitance = () => {
+const Remittance = () => {
   return (
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div className="flex justify-between items-center mb-8">
-      <h1 className="text-2xl font-semibold text-gray-900">Remitance</h1>
+      <h1 className="text-2xl font-semibold text-gray-900">Remittance</h1>
       <div className="flex items-center space-x-4">
-        <div className="relative dropdown">
-          <button className="!rounded-button inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-            Actions
-            <i className="fas fa-chevron-down ml-2" />
-          </button>
-          <div
-            className="absolute top-full right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10 hidden"
-            id="actions-dropdown"
-          >
-            <ul className="py-2">
+      
+      <div className="dropdown">
+            <button
+              className="inv-filter-button  dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+              Actions
+            </button>
+            <ul className="dropdown-menu">
               <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                >
-                  <i className="fas fa-envelope text-gray-400" /> Send Remitance
+                <a className="dropdown-item" href="#import">
+                  Import
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                >
-                  <i className="fas fa-copy text-gray-400" /> Duplicate
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                >
-                  <i className="fas fa-edit text-gray-400" /> Edit Remitance
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                >
-                  <i className="fas fa-trash text-gray-400" /> Delete
+                <a className="dropdown-item" href="#export">
+                  Export
                 </a>
               </li>
             </ul>
           </div>
-        </div>
+
+        
         <Link to='/finance/newremitance'>
         <button className="!rounded-button inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-custom/90">
-          Create Remitance
+          Create Remittance
         </button>
         </Link>
       </div>
@@ -65,7 +44,7 @@ const Remitance = () => {
           <div className="relative flex-1">
             <input
               type="text"
-              placeholder="Search all Remitance"
+              placeholder="Search all Remittance"
               className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-custom focus:border-custom sm:text-sm"
             />
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -78,9 +57,12 @@ const Remitance = () => {
             </select>
             <select className="block w-32 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm rounded-md">
               <option>All users</option>
+              <option>John Doe</option>
+              <option>Sarah johnson</option>
             </select>
             <select className="block w-32 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm rounded-md">
               <option>Active</option>
+              <option>Inactive</option>
             </select>
           </div>
         </div>
@@ -93,13 +75,13 @@ const Remitance = () => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Remitance
+                Remittance
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Remitance Amount
+                Remittance Amount
                 <i className="fas fa-info-circle ml-1 text-gray-400" />
               </th>
               <th
@@ -112,7 +94,7 @@ const Remitance = () => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Remitance Owner
+                Remittance Owner
               </th>
               <th
                 scope="col"
@@ -125,7 +107,7 @@ const Remitance = () => {
           <tbody className="bg-white divide-y divide-gray-200">
             <tr className="hover:bg-gray-50">
               <td className="px-6 py-4 whitespace-nowrap text-sm text-custom font-medium">
-                Remitance #1234
+                Remittance #1234
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                 £14.00
@@ -158,7 +140,7 @@ const Remitance = () => {
             </tr>
             <tr className="hover:bg-gray-50">
               <td className="px-6 py-4 whitespace-nowrap text-sm text-custom font-medium">
-                Remitance #1235
+                Remittance #1235
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                 £2,500.00
@@ -189,7 +171,7 @@ const Remitance = () => {
             </tr>
             <tr className="hover:bg-gray-50">
               <td className="px-6 py-4 whitespace-nowrap text-sm text-custom font-medium">
-                Remitance #1236
+                Remittance #1236
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                 £750.00
@@ -220,7 +202,7 @@ const Remitance = () => {
             </tr>
             <tr className="hover:bg-gray-50">
               <td className="px-6 py-4 whitespace-nowrap text-sm text-custom font-medium">
-                Remitance #1237
+                Remittance #1237
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                 £1,200.00
@@ -306,12 +288,12 @@ const Remitance = () => {
   )
 }
 
-export default Remitance;
+export default Remittance;
 
 {/* <>
   <meta charSet="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Remitance Management</title>
+  <title>Remittance Management</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"

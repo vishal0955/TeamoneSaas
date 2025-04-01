@@ -1,7 +1,7 @@
-import { Kanban } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ProjectCard from "./Cards/proj_card";
+import { Kanban } from 'lucide-react';
+import ProjectCard from "./proj_card";
 
 const initialTasks = [
   {
@@ -39,7 +39,7 @@ const initialTasks = [
   },
 ];
 
-const Project = () => {
+const AllProject = () => {
   const [tasks, setTasks] = useState(initialTasks);
   const [showModal, setShowModal] = useState(false);
   const [showClientModal, setShowClientModal] = useState(false);
@@ -154,7 +154,7 @@ const Project = () => {
         <div className="add-toggle d-flex">
           <div className="d-flex align-items-center gap-3 mb-4">
             <div className="view-toggle">
-              <Link to="/calendar" >
+              <Link to="/ProjectTimelineCalendar" >
               <button
               // className={view === "grid" ? "active" : ""}
               // onClick={() => toggleView("grid")}
@@ -197,11 +197,11 @@ const Project = () => {
               <th style={{ width: "40px" }}>
                 <input type="checkbox" className="form-check-input" />
               </th>
-              <th>Client</th> 
+              <th>Project Name</th>
               <th>Members</th>
               <th>Start Date</th>
               <th>Deadline</th>
-              <th>Project Name</th>
+               <th>Client</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -212,14 +212,15 @@ const Project = () => {
                 <td>
                   <input type="checkbox" className="form-check-input" />
                 </td>
-                <td>{task.client}</td>
+                <td>{task.name}</td>
                 <td>
                   <img src={task.avatar} className="avatar me-1" alt="avatar" />
                   +3
                 </td>
                 <td>{task.startDate}</td>
                 <td>{task.deadline}</td>
-                <td>{task.name}</td>
+                <td>{task.client}</td>
+               
                 <td>
                   <div className="progress" style={{ height: "10px" }}>
                     <div
@@ -416,7 +417,7 @@ const Project = () => {
                 &times;
               </button>
             </div>
-
+                  <ProjectCard/>
             {/* <form onSubmit={handleAddOrEditProject} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -530,7 +531,7 @@ const Project = () => {
                       setNewProject({ ...newProject, members: e.target.value })
                     }
                   />
-                </div> */}
+                </div>
 
                 {/* <div className="mt-4">
                   <label className="block text-sm font-medium mb-1">
@@ -568,8 +569,7 @@ const Project = () => {
                   Save
                 </button>
               </div>
-            </form> */}
-            <ProjectCard/>
+            </form> */} 
           </div>
         </div>
       )}
@@ -683,4 +683,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default AllProject;

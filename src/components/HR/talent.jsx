@@ -1,9 +1,9 @@
 import React from "react";
 
-const PerformanceOverview = () => {
+const Talent = () => {
   return (
     <div className="bg-white min-h-screen">
-      <nav className="bg-white border-b border-gray-200">
+      {/* <nav className="bg-white border-b border-gray-200">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -39,10 +39,10 @@ const PerformanceOverview = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">
+        {/* <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <img
@@ -75,7 +75,7 @@ const PerformanceOverview = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-3">
@@ -151,4 +151,4 @@ const PerformanceOverview = () => {
   );
 };
 
-export default PerformanceOverview;
+export default Talent;

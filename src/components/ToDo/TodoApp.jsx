@@ -387,7 +387,7 @@ const TodoApp = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="container mx-auto p-4 max-w-6xl">
+      <div className="container mx-auto px-2 max-w-8xl">
         {/* Header */}
         <header className="flex flex-col md:flex-row md:items-center mb-6 space-y-4 md:space-y-0">
           <div className="flex items-center">

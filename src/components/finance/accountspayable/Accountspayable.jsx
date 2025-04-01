@@ -21,68 +21,7 @@ const Accountspayable = () => {
       </h1>
       <div className="mt-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          {/* <div className="relative dropdown">
-            <button   onClick={toggleDropdown} className="!rounded-button bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 flex items-center gap-2" >
-              + New <i className="fas fa-chevron-down text-xs"  />
-            </button>
-            <div
-              className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10 hidden"
-              id="new-dropdown"
-            >
-              <ul className="py-2">
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                  >
-                    <i className="fas fa-file-invoice text-gray-400" /> Bills
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                  >
-                    <i className="fas fa-sticky-note text-gray-400" /> Credit
-                    Note
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                  >
-                    <i className="fas fa-receipt text-gray-400" /> Remit Slip
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                  >
-                    <i className="fas fa-wallet text-gray-400" /> Expense
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                  >
-                    <i className="fas fa-shopping-cart text-gray-400" />{" "}
-                    Purchase Order
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-t border-gray-200"
-                  >
-                    Add contact group
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div> */}
+        
 
 
          
@@ -112,8 +51,8 @@ const Accountspayable = () => {
                         </Link>
                       </li>
                       <li>
-                                    <Link to="/finance/remitance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
-                                        <i class="fas fa-receipt text-gray-400"></i> Remit Slip
+                                    <Link to="/finance/remittance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+                                        <i class="fas fa-receipt text-gray-400"></i> Remittance
                                     </Link>
                                 </li>
                                 <li>
