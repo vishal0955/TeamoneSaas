@@ -209,7 +209,7 @@ const RoleBasedRoutes = () => {
         <Route path="/hr/myprofile" element={  <EmployeeDetails />} />
         <Route path="/hr/people" element={<People />} />
         <Route path="/hr/performance" element={<PerformanceOverview />} />
-        <Route path="/hr/recruitment" element={<Recruitmentkanban />} />
+        {/* <Route path="/hr/recruitment" element={<Recruitmentkanban />} /> */}
         <Route path="/hr/company" element={<HRAnalyticsDashboard />} />
 
         {/* crm-section */}
