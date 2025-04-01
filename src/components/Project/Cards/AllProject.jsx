@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Kanban } from 'lucide-react';
+import ProjectCard from "./proj_card";
 
 const initialTasks = [
   {
@@ -404,7 +405,7 @@ const AllProject = () => {
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[90vh]">
+          <div className="bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[100vh]">
             <div className="flex justify-between items-center border-b pb-2 mb-4">
               <h3 className="text-xl font-semibold">
                 {editId ? "Edit" : "Add"} Project
@@ -416,8 +417,8 @@ const AllProject = () => {
                 &times;
               </button>
             </div>
-
-            <form onSubmit={handleAddOrEditProject} className="space-y-4">
+                  <ProjectCard/>
+            {/* <form onSubmit={handleAddOrEditProject} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">
@@ -552,7 +553,7 @@ const AllProject = () => {
                     </label>
                   </div>
                 </div> */}
-              </div>
+              {/* </div>
               <div className="flex justify-end gap-3 pt-4 border-t mt-4">
                 <button
                   type="button"
@@ -568,7 +569,7 @@ const AllProject = () => {
                   Save
                 </button>
               </div>
-            </form>
+            </form> */} 
           </div>
         </div>
       )}

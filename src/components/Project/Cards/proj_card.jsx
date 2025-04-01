@@ -1,6 +1,6 @@
 import React from "react";
 
-const Dashboard = () => {
+const ProjectCard= () => {
   return (
     <div className="bg-gray-50 font-sans min-h-screen flex flex-col">
       {/* Navigation Bar */}
@@ -75,15 +75,15 @@ const Dashboard = () => {
                 <div className="p-6 space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Project Name</label>
-                    <input type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-custom focus:ring-custom sm:text-sm" placeholder="Enter project name"/>
+                    <input type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:border-custom focus:ring-custom sm:text-sm" placeholder="Enter project name"/>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Client Name</label>
-                    <input type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-custom focus:ring-custom sm:text-sm" defaultValue="Acme Corporation"/>
+                    <input type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3  focus:border-custom focus:ring-custom sm:text-sm" defaultValue="Acme Corporation"/>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Project Goal</label>
-                    <textarea rows="3" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-custom focus:ring-custom sm:text-sm">
+                    <textarea rows="3" className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm">
                       Redesign the company website to improve user experience and increase conversion rates.
                     </textarea>
                   </div>
@@ -103,7 +103,7 @@ const Dashboard = () => {
                   <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
                     <div>
                       <label className="block text-sm font-medium text-gray-700">Status</label>
-                      <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-custom focus:ring-custom sm:text-sm">
+                      <select className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm">
                         <option>Planning</option>
                         <option>In Progress</option>
                         <option>Completed</option>
@@ -111,7 +111,7 @@ const Dashboard = () => {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700">Priority</label>
-                      <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-custom focus:ring-custom sm:text-sm">
+                      <select className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm">
                         <option>Normal</option>
                         <option>High</option>
                         <option>Low</option>
@@ -123,9 +123,9 @@ const Dashboard = () => {
                   <div className="mt-6">
                     <label className="block text-sm font-medium text-gray-700">Comments</label>
                     <div className="mt-2">
-                      <textarea rows="3" className="block w-full rounded-md border-gray-300 shadow-sm focus:border-custom focus:ring-custom sm:text-sm" placeholder="Add a comment..."></textarea>
+                      <textarea rows="3" className="block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm" placeholder="Add a comment..."></textarea>
                       <div className="mt-3 flex justify-end">
-                        <button type="button" className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-custom hover:bg-custom focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom">
+                        <button type="button" className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm  bg-custom hover:bg-custom focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom">
                           Send
                         </button>
                       </div>
@@ -150,4 +150,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default ProjectCard;
