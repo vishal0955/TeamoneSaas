@@ -145,6 +145,7 @@ import PerformanceOverview from "../components/HR/Performance";
 import ProjectDetails from "../components/Project/Cards/ProjectDetails";
 import AllProject from "../components/Project/Cards/AllProject";
 import Workload from "../components/Project/Workload";
+import ProjectCard from "../components/Project/Cards/proj_card";
 
 const RoleBasedRoutes = () => {
   return (
@@ -202,6 +203,7 @@ const RoleBasedRoutes = () => {
         <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
         <Route path="/allproject" element={<AllProject />} />
+        <Route path="/projectcard" element={<ProjectCard/>}/>
 
         <Route path="/project/schedule" element={<ProjectCalendar />} />
 

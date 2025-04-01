@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { Table, Button, Form, Dropdown, Pagination } from "react-bootstrap";
+import { Table, Button, Form, Dropdown, Pagination, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import CompanyForm from "./CompanyForm";
-// import "bootstrap/dist/css/bootstrap.min.css";
 
 const Company = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [search, setSearch] = useState("");
   const [companies] = useState([
     {
@@ -32,12 +30,10 @@ const Company = () => {
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
-    // document.body.classList.add("modal-open"); // Add modal-open class to prevent scrolling
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    // document.body.classList.remove("modal-open");  //Remove modal-open class
   };
 
   const handleCompanyClick = () => {
@@ -47,270 +43,202 @@ const Company = () => {
 
   return (
     <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h4>
-          Companies <span className="text-muted">12,453</span>
-        </h4>
-        <Button className="inv-new-button" onClick={handleOpenModal}>
-          <i class="bi bi-plus-lg"></i> Add New
-        </Button>
-      </div>
+      <Row className="mb-3">
+        <Col xs={12} md={6}>
+          <h4>
+            Companies <span className="text-muted">12,453</span>
+          </h4>
+        </Col>
+        <Col xs={12} md={6} className="text-md-end mt-2 mt-md-0">
+          <Button className="inv-new-button" onClick={handleOpenModal}>
+            <i className="bi bi-plus-lg"></i> Add New
+          </Button>
+        </Col>
+      </Row>
 
+      <Row className="mb-4">
+        <Col xs={12}>
+          <Row>
+            <Col xs={12} sm={6}  className="mb-3 mb-sm-0">
+              <div className="inv-stat-box">
+                <div className="inv-stat-content">
+                  <div className="inv-stat-icon inv-stat-icon-primary">
+                    <i className="fa-solid fa-building"></i>
+                  </div>
+                  <div>
+                    <div className="inv-stat-label">All Amount Companies</div>
+                    <p className="inv-stat-value">14</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col xs={12} sm={6} className="mb-3 mb-sm-0">
+              <div className="inv-stat-box">
+                <div className="inv-stat-content">
+                  <div className="inv-stat-icon inv-stat-icon-warning">
+                    <i className="fa-regular fa-building"></i>
+                  </div>
+                  <div>
+                    <div className="inv-stat-label">Recently Added</div>
+                    <p className="inv-stat-value">15</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col xs={12} sm={6} className="mb-3 mb-sm-0">
+              <div className="inv-stat-box">
+                <div className="inv-stat-content">
+                  <div className="inv-stat-icon inv-stat-icon-danger">
+                    <i className="fa-solid fa-building"></i>
+                  </div>
+                  <div>
+                    <div className="inv-stat-label">Active Companies</div>
+                    <p className="inv-stat-value">10</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col xs={12} sm={6}>
+              <div className="inv-stat-box">
+                <div className="inv-stat-content">
+                  <div className="inv-stat-icon inv-stat-icon-neutral">
+                    <i className="fa-regular fa-building"></i>
+                  </div>
+                  <div>
+                    <div className="inv-stat-label">Inactive Companies</div>
+                    <p className="inv-stat-value">12</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
 
-      <div className="grid grid-row-1 md:grid-row-5 gap-4 ">
-        <div className="inv-stats-grid">
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-primary">
-              <i class="fa-solid fa-building"></i>
-              </div>
-              <div>
-                <div className="inv-stat-label">All Amount Companies</div>
-                <p className="inv-stat-value">14</p>
-              </div>
-            </div>
+      <Row className="mb-3">
+        <Col xs={12}>
+          <div className="d-flex flex-wrap gap-2 align-items-center">
+            <Dropdown>
+              <Dropdown.Toggle variant="light" className="inv-filter-button">
+                Company owner
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#michael">Michael Chen</Dropdown.Item>
+                <Dropdown.Item href="#sarah">Sarah Johnson</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            
+            <Dropdown>
+              <Dropdown.Toggle variant="light" className="inv-filter-button">
+                Create date
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#today">Today</Dropdown.Item>
+                <Dropdown.Item href="#yesterday">Yesterday</Dropdown.Item>
+                <Dropdown.Item href="#last7">Last 7 days</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            
+            <Dropdown>
+              <Dropdown.Toggle variant="light" className="inv-filter-button">
+                Last activity date
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#today">Today</Dropdown.Item>
+                <Dropdown.Item href="#yesterday">Yesterday</Dropdown.Item>
+                <Dropdown.Item href="#last7">Last 7 days</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            
+            <Dropdown>
+              <Dropdown.Toggle variant="light" className="inv-filter-button">
+                Lead status
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#new">New</Dropdown.Item>
+                <Dropdown.Item href="#open">Open</Dropdown.Item>
+                <Dropdown.Item href="#contacted">Contacted</Dropdown.Item>
+                <Dropdown.Item href="#unqualified">Unqualified</Dropdown.Item>
+                <Dropdown.Item href="#closed">Closed</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-warning">
-              <i class="fa-regular fa-building"></i>
-              </div>
-              <div>
-                <div className="inv-stat-label">Recently Added</div>
-                <p className="inv-stat-value">15</p>
-              </div>
-            </div>
-          </div>
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-danger">
-             
-              <i class="fa-solid fa-building"></i>
-              </div>
-              <div>
-                <div className="inv-stat-label">Active Companies</div>
-                <p className="inv-stat-value">10</p>
-              </div>
-            </div>
-          </div>
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-neutral">
-              <i class="fa-regular fa-building"></i>
-              </div>
-              <div>
-                <div className="inv-stat-label">Inactive Companies</div>
-                <p className="inv-stat-value">12</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* <div className="d-flex gap-2 mb-3">
-        <Dropdown>
-          <Dropdown.Toggle variant="light">Company owner</Dropdown.Toggle>
-        </Dropdown>
-        <Button variant="light">Create alert</Button>
-        <Dropdown>
-          <Dropdown.Toggle variant="light">Last activity date</Dropdown.Toggle>
-        </Dropdown>
-        <Button variant="light">More filters</Button>
-        <Form.Control
-          type="text"
-          placeholder="Search companies..."
-          className="w-25"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div> */}
-
-      <div className="d-flex flex-wrap gap-2 align-items-center">
-        <div className="dropdown">
-          <button
-            className="inv-filter-button dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-          >
-            Company owner
-          </button>
-          <ul className="dropdown-menu">
-            <li>
-              <a className="dropdown-item" href="#michael">
-                Michael Chen
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#sarah">
-                Sarah Johnson
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="dropdown">
-          <button
-            className="inv-filter-button dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-          >
-            Create date
-          </button>
-          <ul className="dropdown-menu">
-            <li>
-              <a className="dropdown-item" href="#michael">
-                Today
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#sarah">
-                Yesterday
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#sarah">
-                Last 7 days
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="dropdown">
-          <button
-            className="inv-filter-button dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-          >
-            Last activity date
-          </button>
-          <ul className="dropdown-menu">
-            <li>
-              <a className="dropdown-item" href="#michael">
-                Today
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#sarah">
-                Yesterday
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#sarah">
-                Last 7 days
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="dropdown">
-          <button
-            className="inv-filter-button dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-          >
-            Lead status
-          </button>
-          <ul className="dropdown-menu">
-            <li>
-              <a className="dropdown-item" href="#michael">
-                New
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#sarah">
-                Open
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#sarah">
-                Contacted
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#sarah">
-                Unqualified
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#sarah">
-                Closed
-              </a>
-            </li>
-          </ul>
-        </div>
-        {/* <button className="btn btn-outline-secondary">+ More</button> */}
-        {/* <button className="btn btn-outline-secondary">
-           <i className="fas fa-sliders-h"></i> Advanced filters
-         </button> */}
-      </div>
+        </Col>
+      </Row>
 
       <div className="inv-main-card">
         <div className="inv-card-header">
-          <div className="d-flex align-items-center">
-            <h5 className="mb-0" id="invoicesTitle">
-            
-            </h5>
-          </div>
-
-          <div className="row mt-4">
-            <div className="col-md-8">
+          <Row className="align-items-center">
+            <Col xs={12} md={8} className="mb-3 mb-md-0">
               <div className="inv-search-wrapper">
                 <i className="bi bi-search inv-search-icon" />
                 <input
                   type="text"
                   className="inv-search-input"
-                  placeholder="Search invoices..."
-                  aria-label="Search invoices"
+                  placeholder="Search companies..."
+                  aria-label="Search companies"
+                  onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
-            </div>
-            <div className="col-md-4 text-md-end mt-3 mt-md-0">
-              <button className="inv-filter-button">
+            </Col>
+            <Col xs={12} md={4} className="text-md-end">
+              <Button variant="light" className="inv-filter-button">
                 <i className="bi bi-funnel me-2" /> Filters
-              </button>
-            </div>
-          </div>
+              </Button>
+            </Col>
+          </Row>
         </div>
-        <Table hover>
-          <thead>
-            <tr>
-              <th>
-                <Form.Check type="checkbox" />
-              </th>
-              <th>Company Name</th>
-              <th>Owner</th>
-              <th>Created Date</th>
-              <th>Phone</th>
-              <th>Last Activity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {companies
-              .filter((c) =>
-                c.name.toLowerCase().includes(search.toLowerCase())
-              )
-              .map((company, index) => (
-                <tr key={index}>
-                  <td>
-                    <Form.Check type="checkbox" />
-                  </td>
-                  <td onClick={handleCompanyClick}>
-                    {company.logo} {company.name} <br />
-                    <small>{company.website}</small>
-                  </td>
-                  <td>{company.owner}</td>
-                  <td>{company.date}</td>
-                  <td>{company.phone}</td>
-                  <td>{company.activity}</td>
-                </tr>
-              ))}
-          </tbody>
-        </Table>
+        
+        <div className="table-responsive">
+          <Table hover className="mb-0">
+            <thead>
+              <tr>
+                <th>
+                  <Form.Check type="checkbox" />
+                </th>
+                <th>Company Name</th>
+                <th>Owner</th>
+                <th className="d-none d-md-table-cell">Created Date</th>
+                <th className="d-none d-sm-table-cell">Phone</th>
+                <th className="d-none d-sm-table-cell">Last Activity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {companies
+                .filter((c) =>
+                  c.name.toLowerCase().includes(search.toLowerCase())
+                )
+                .map((company, index) => (
+                  <tr key={index}>
+                    <td>
+                      <Form.Check type="checkbox" />
+                    </td>
+                    <td onClick={handleCompanyClick}>
+                      {company.logo} {company.name} <br />
+                      <small className="text-muted">{company.website}</small>
+                    </td>
+                    <td>{company.owner}</td>
+                    <td className="d-none d-md-table-cell">{company.date}</td>
+                    <td className="d-none d-sm-table-cell">{company.phone}</td>
+                    <td className="d-none d-sm-table-cell">{company.activity}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </Table>
+        </div>
       </div>
-      {/* 
-      <Pagination className="justify-content-end mt-3">
-        <Pagination.Prev />
-        <Pagination.Item active>{1}</Pagination.Item>
-        <Pagination.Item>{2}</Pagination.Item>
-        <Pagination.Item>{3}</Pagination.Item>
-        <Pagination.Next />
-      </Pagination> */}
+
+      <Row className="mt-3">
+        <Col xs={12} className="d-flex justify-content-end">
+          <Pagination>
+            <Pagination.Prev />
+            <Pagination.Item active>{1}</Pagination.Item>
+            <Pagination.Item>{2}</Pagination.Item>
+            <Pagination.Item>{3}</Pagination.Item>
+            <Pagination.Next />
+          </Pagination>
+        </Col>
+      </Row>
 
       {isModalOpen && (
         <>
@@ -331,7 +259,6 @@ const Company = () => {
               </div>
             </div>
           </div>
-          {/* Modal backdrop */}
           <div
             className="modal-backdrop fade show"
             onClick={handleCloseModal}

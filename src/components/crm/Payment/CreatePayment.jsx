@@ -124,9 +124,9 @@ const CreatePayment = () => {
               </ul>
             </div>
             <div className="d-flex gap-2">
-              <button className="btn inv-filter-button">
+              {/* <button className="btn inv-filter-button">
                 <i className="bi bi-grid" /> Edit columns
-              </button>
+              </button> */}
               <button
                 className={`inv-new-button ${
                   activeTab === "addlineitem" ? "active" : ""

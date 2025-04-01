@@ -344,9 +344,9 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/30  transition-opacity duration-300 ${
           !collapsed && isMobile
-            ? "opacity-100 z-20"
+            ? "opacity-100 z-200"
             : "opacity-0 pointer-events-none"
         }`}
         onClick={toggleSidebar}
@@ -357,7 +357,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
         //   collapsed ? "w-20" : "w-56"
         // } z-30`}
         className={`fixed left-0 top-0 h-screen bg-white shadow-lg transition-all duration-300 ease-in-out 
-          ${isMobile && collapsed ? "w-0 overflow-hidden" : collapsed ? "w-20" : "w-56"}`}
+          ${isMobile && collapsed ? "w-0 " : collapsed ? "w-20" : "w-56"}`}
       >
         {/* Fixed Header */}
         <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
