@@ -366,8 +366,8 @@ const TodoApp = () => {
   };
 
   return (
-    <div className="bg-light min-vh-100">
-      <div className="container py-4">
+    <div className="bg-gray-50 min-h-screen">
+      <div className="container mx-auto px-2 max-w-8xl">
         {/* Header */}
         <header className="row align-items-center mb-4">
           <div className="col-md-6">

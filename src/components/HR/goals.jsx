@@ -1,10 +1,10 @@
 import React from "react";
 
-const PerformanceOverview = () => {
+const Goals = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Navbar */}
-      <nav className="bg-white border-b border-gray-200">
+      {/* <nav className="bg-white border-b border-gray-200">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -40,12 +40,12 @@ const PerformanceOverview = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Main Content */}
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> */}
         {/* Profile Card */}
-        <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">
+        {/* <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <img
@@ -75,7 +75,7 @@ const PerformanceOverview = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Performance Overview */}
         <div className="grid grid-cols-12 gap-8">
@@ -150,9 +150,9 @@ const PerformanceOverview = () => {
             </div>
           </div>
         </div>
-      </div> 
+      {/* </div>  */}
     </div>
   );
 };
 
-export default PerformanceOverview;
+export default Goals;

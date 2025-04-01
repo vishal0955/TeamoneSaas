@@ -12,7 +12,14 @@ const Dealsstep = () => {
       </p>
       <div className="quote-form-group">
         <label className="quote-form-label">create a deal</label>
-          <input className='quote-select ' type="text" placeholder='Create Deal' />
+          <select className='from-select w-100 border p-3 rounded-3'>
+            <option>Create a deal</option>
+            <option>#Q-2024-001</option>
+            <option>#Q-2024-002</option>
+            <option>#Q-2024-003</option>
+
+
+          </select>
         
       </div>
     </div>

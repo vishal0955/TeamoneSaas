@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const NewRemitance = () => {
   return (
     <div className="max-w-8xl mx-auto p-6">
     <nav className="text-sm mb-4">
-      <a href="#" className="text-custom hover:text-custom/80">
+      <Link to="/finance/remittance" className="text-custom hover:text-custom/80">
         Remittance slips
-      </a>
+      </Link>
       <span className="mx-2 text-gray-400">&gt;</span>
       <a href="#" className="text-custom hover:text-custom/80">
         New slip

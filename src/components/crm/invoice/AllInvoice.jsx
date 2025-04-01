@@ -19,9 +19,9 @@ const AllInvoice = () => {
     <>
       <div className="inv-dashboard-container">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <h5 className="mb-0" id="invoicesTitle">
-            Invoices
-          </h5>
+          <h2 className="d-flex align-items-center fw-bold">
+            <i className="bi bi-file-earmark-text me-2"></i> Invoices
+          </h2>
           <button className="inv-new-button" onClick={handleOpenModal}>
             <i className="bi bi-plus me-2" /> New Invoice
           </button>
