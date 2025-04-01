@@ -156,7 +156,7 @@ const AllProject = () => {
         </h4>
 
         <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
-          <div className="view-toggle d-flex flex-wrap gap-2">
+          <div className="view-toggle d-flex flex-wrap gap-1">
             <Link to="/ProjectTimelineCalendar">
               <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
                 <i className="bi bi-grid" /> TimeLine

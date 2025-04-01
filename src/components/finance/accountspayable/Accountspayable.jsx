@@ -12,266 +12,251 @@ const Accountspayable = () => {
 
   return (
     <div>
-      < div className="container">
+      <>
         {/* Hello world */}
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <header className="mb-8">
-            <h1 className="text-2xl font-semibold text-gray-900">
-              Outgoings Overview
-            </h1>
-            <div className="mt-4 flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="relative dropdown ">
-                  <button
-                    className="!rounded-button bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 flex items-center gap-2"
-                    onClick={toggleDropdown}
-                  >
-                    + New <i className="fas fa-chevron-down text-xs"></i>
-                  </button>
-                  {dropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10">
-                      <ul className="py-2">
-                        <li>
-                          <Link
-                            to="/finance/allbills"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                          >
-                            <i className="fas fa-file-invoice text-gray-400"></i>{" "}
-                            Bills
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/finance/creditnotes"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                          >
-                            <i className="fas fa-sticky-note text-gray-400"></i>{" "}
-                            Credit Note
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/finance/remittance"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                          >
-                            <i class="fas fa-receipt text-gray-400"></i>{" "}
-                            Remittance
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/finance/expense"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                          >
-                            <i class="fas fa-wallet text-gray-400"></i> Expense
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/finance/Purchaseorder"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
-                          >
-                            <i class="fas fa-shopping-cart text-gray-400"></i>{" "}
-                            Purchase Order
-                          </Link>
-                        </li>
-                        {/* <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-t border-gray-200">
-                                        Add contact group
-                                    </a>
-                                </li> */}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-                <button className="!rounded-button bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-gray-50">
-                  Send Statements
-                </button>
-                <button className="!rounded-button bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-gray-50">
-                  Import
-                </button>
-              </div>
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="!rounded-button pl-4 pr-10 py-2 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full"
-                />
-                <i className="fas fa-search absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
-              </div>
-            </div>
-          </header>
-          <div className="grid grid-cols-4 gap-4 mb-8">
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <h3 className="text-sm text-gray-500 mb-1">Total Invoice</h3>
-              <p className="text-2xl font-semibold mb-2">$3,237.94</p>
-              <div className="flex items-center text-green-500 text-sm">
-                <i className="fas fa-arrow-up mr-1" />
-                <span>32.40% from last month</span>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <h3 className="text-sm text-gray-500 mb-1">Outstanding</h3>
-              <p className="text-2xl font-semibold mb-2">$3,237.94</p>
-              <div className="flex items-center text-red-500 text-sm">
-                <i className="fas fa-arrow-down mr-1" />
-                <span>4.40% from last month</span>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <h3 className="text-sm text-gray-500 mb-1">Draft</h3>
-              <p className="text-2xl font-semibold mb-2">$3,237.94</p>
-              <div className="flex items-center text-green-500 text-sm">
-                <i className="fas fa-arrow-up mr-1" />
-                <span>12% from last month</span>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <h3 className="text-sm text-gray-500 mb-1">Total Overdue</h3>
-              <p className="text-2xl font-semibold mb-2">$3,237.94</p>
-              <div className="flex items-center text-red-500 text-sm">
-                <i className="fas fa-arrow-down mr-1" />
-                <span>15.40% from last month</span>
-              </div>
-            </div>
+        <header className="mb-8">
+  <h1 className="text-2xl font-semibold text-gray-900">Outgoings Overview</h1>
+
+  <div className="mt-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    
+    {/* Left Section: Buttons */}
+    <div className="flex flex-wrap gap-2 items-start">
+      <div className="relative">
+        <button
+          className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 flex items-center gap-2"
+          onClick={toggleDropdown}
+        >
+          + New <i className="fas fa-chevron-down text-xs"></i>
+        </button>
+        {dropdownOpen && (
+          <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10">
+            <ul className="py-2">
+              <li>
+                <Link
+                  to="/finance/allbills"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                >
+                  <i className="fas fa-file-invoice text-gray-400"></i> Bills
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/finance/creditnotes"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                >
+                  <i className="fas fa-sticky-note text-gray-400"></i> Credit Note
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/finance/remittance"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                >
+                  <i className="fas fa-receipt text-gray-400"></i> Remittance
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/finance/expense"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                >
+                  <i className="fas fa-wallet text-gray-400"></i> Expense
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/finance/Purchaseorder"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                >
+                  <i className="fas fa-shopping-cart text-gray-400"></i> Purchase Order
+                </Link>
+              </li>
+            </ul>
           </div>
-          <div className="grid grid-cols-2 gap-8 mb-8">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-medium mb-4">
-                Bills you need to pay
-              </h3>
-              <button className="!rounded-button bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 mb-4">
-                New bill
-              </button>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <span className="text-sm font-medium">24</span>
-                    <span className="text-sm text-gray-500 ml-2">
-                      Draft bill
-                    </span>
-                  </div>
-                  <span className="text-sm font-medium">£1234</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <span className="text-sm font-medium">24</span>
-                    <span className="text-sm text-blue-500 ml-2">
-                      Awaiting payment
-                    </span>
-                  </div>
-                  <span className="text-sm font-medium">£1234</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <span className="text-sm font-medium">1</span>
-                    <span className="text-sm text-red-500 ml-2">Overdue</span>
-                  </div>
-                  <span className="text-sm font-medium">£1234</span>
-                </div>
-              </div>
-              <div id="billsChart" className="h-48 mt-4" />
-              <BillsChart />
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-medium text-blue-500 mb-4">
-                Expense claims
-              </h3>
-              <button className="!rounded-button bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-gray-50">
-                Create new expense
-              </button>
-              <div className="mt-4 space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-blue-500">No drafts</span>
-                  <span className="text-sm font-medium">0.00</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-blue-500">
-                    Nothing to review
-                  </span>
-                  <span className="text-sm font-medium">0.00</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-blue-500">6 to pay</span>
-                  <span className="text-sm font-medium">203.65</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm mb-8">
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h3 className="text-xl font-medium mb-1">Expenses</h3>
-                <p className="text-3xl font-semibold mb-1">£1234</p>
-                <div className="flex items-center text-red-500">
-                  <i className="fas fa-arrow-up mr-1" />
-                  <span>133.0% from Dec 2022 – Nov 2023</span>
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="text-gray-600 mb-1">
-                  Cost of goods sold: <span className="font-medium">£1234</span>
-                </p>
-                <p className="text-gray-600">
-                  Operating expenses: <span className="font-medium">£1234</span>
-                </p>
-              </div>
-            </div>
-            <div id="expensesChart" className="h-64" />
-            <ExpensesChart />
-          </div>
-          <div className="grid grid-cols-2 gap-8 mb-8">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="text-xl font-medium mb-4">Suppliers Expenses</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-gray-50 rounded p-4">
-                  <p className="text-sm text-gray-500 mb-1">Customers</p>
-                  <p className="text-2xl font-semibold">200</p>
-                </div>
-                <div className="bg-gray-50 rounded p-4">
-                  <p className="text-sm text-gray-500 mb-1">Owing</p>
-                  <p className="text-2xl font-semibold">£1234</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-medium">Top Suppliers To Pay</h3>
-                <a href="#" className="text-blue-500 text-sm">
-                  All
-                </a>
-              </div>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center bg-gray-50 p-3 rounded">
-                  <span>Client x</span>
-                  <span className="font-medium">£123</span>
-                </div>
-                <div className="flex justify-between items-center bg-gray-50 p-3 rounded">
-                  <span>Client y</span>
-                  <span className="font-medium">£123</span>
-                </div>
-                <div className="flex justify-between items-center bg-gray-50 p-3 rounded">
-                  <span>Client z</span>
-                  <span className="font-medium">£123</span>
-                </div>
-                <div className="flex justify-between items-center bg-gray-50 p-3 rounded">
-                  <span>Client a</span>
-                  <span className="font-medium">£123</span>
-                </div>
-                <div className="flex justify-between items-center bg-gray-50 p-3 rounded">
-                  <span>Client b</span>
-                  <span className="font-medium">£123</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-medium mb-6">Total cash in and out</h3>
-            <div id="cashFlowChart" className="h-64" />
-            <CashFlowChart />
-          </div>
-        </div>
+        )}
       </div>
+
+      <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-gray-50">
+        Send Statements
+      </button>
+      <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-gray-50">
+        Import
+      </button>
+    </div>
+
+    {/* Right Section: Search */}
+    <div className="relative w-full lg:w-auto">
+      <input
+        type="text"
+        placeholder="Search"
+        className="rounded pl-4 pr-10 py-2 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full"
+      />
+      <i className="fas fa-search absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
+    </div>
+  </div>
+</header>
+
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+  <div className="bg-white rounded-lg p-4 shadow-sm">
+    <h3 className="text-sm text-gray-500 mb-1">Total Invoice</h3>
+    <p className="text-2xl font-semibold mb-2">$3,237.94</p>
+    <div className="flex items-center text-green-500 text-sm">
+      <i className="fas fa-arrow-up mr-1" />
+      <span>32.40% from last month</span>
+    </div>
+  </div>
+
+  <div className="bg-white rounded-lg p-4 shadow-sm">
+    <h3 className="text-sm text-gray-500 mb-1">Outstanding</h3>
+    <p className="text-2xl font-semibold mb-2">$3,237.94</p>
+    <div className="flex items-center text-red-500 text-sm">
+      <i className="fas fa-arrow-down mr-1" />
+      <span>4.40% from last month</span>
+    </div>
+  </div>
+
+  <div className="bg-white rounded-lg p-4 shadow-sm">
+    <h3 className="text-sm text-gray-500 mb-1">Draft</h3>
+    <p className="text-2xl font-semibold mb-2">$3,237.94</p>
+    <div className="flex items-center text-green-500 text-sm">
+      <i className="fas fa-arrow-up mr-1" />
+      <span>12% from last month</span>
+    </div>
+  </div>
+
+  <div className="bg-white rounded-lg p-4 shadow-sm">
+    <h3 className="text-sm text-gray-500 mb-1">Total Overdue</h3>
+    <p className="text-2xl font-semibold mb-2">$3,237.94</p>
+    <div className="flex items-center text-red-500 text-sm">
+      <i className="fas fa-arrow-down mr-1" />
+      <span>15.40% from last month</span>
+    </div>
+  </div>
+</div>
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+  {/* Bills You Need to Pay */}
+  <div className="bg-white rounded-lg p-6 shadow-sm">
+    <h3 className="text-lg font-medium mb-4">Bills you need to pay</h3>
+    <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 mb-4">
+      New bill
+    </button>
+    <div className="space-y-4">
+      <div className="flex justify-between items-center">
+        <div>
+          <span className="text-sm font-medium">24</span>
+          <span className="text-sm text-gray-500 ml-2">Draft bill</span>
+        </div>
+        <span className="text-sm font-medium">£1234</span>
+      </div>
+      <div className="flex justify-between items-center">
+        <div>
+          <span className="text-sm font-medium">24</span>
+          <span className="text-sm text-blue-500 ml-2">Awaiting payment</span>
+        </div>
+        <span className="text-sm font-medium">£1234</span>
+      </div>
+      <div className="flex justify-between items-center">
+        <div>
+          <span className="text-sm font-medium">1</span>
+          <span className="text-sm text-red-500 ml-2">Overdue</span>
+        </div>
+        <span className="text-sm font-medium">£1234</span>
+      </div>
+    </div>
+    <div id="billsChart" className="h-48 mt-4" />
+    <BillsChart />
+  </div>
+
+  {/* Expense Claims */}
+  <div className="bg-white rounded-lg p-6 shadow-sm">
+    <h3 className="text-lg font-medium text-blue-500 mb-4">Expense claims</h3>
+    <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-gray-50">
+      Create new expense
+    </button>
+    <div className="mt-4 space-y-2">
+      <div className="flex justify-between items-center">
+        <span className="text-sm text-blue-500">No drafts</span>
+        <span className="text-sm font-medium">0.00</span>
+      </div>
+      <div className="flex justify-between items-center">
+        <span className="text-sm text-blue-500">Nothing to review</span>
+        <span className="text-sm font-medium">0.00</span>
+      </div>
+      <div className="flex justify-between items-center">
+        <span className="text-sm text-blue-500">6 to pay</span>
+        <span className="text-sm font-medium">203.65</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="bg-white rounded-lg p-6 shadow-sm mb-8">
+  {/* Expenses Overview */}
+  <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-4">
+    <div>
+      <h3 className="text-xl font-medium mb-1">Expenses</h3>
+      <p className="text-3xl font-semibold mb-1">£1234</p>
+      <div className="flex items-center text-red-500 text-sm">
+        <i className="fas fa-arrow-up mr-1" />
+        <span>133.0% from Dec 2022 – Nov 2023</span>
+      </div>
+    </div>
+    <div className="text-left lg:text-right">
+      <p className="text-gray-600 mb-1">
+        Cost of goods sold: <span className="font-medium">£1234</span>
+      </p>
+      <p className="text-gray-600">
+        Operating expenses: <span className="font-medium">£1234</span>
+      </p>
+    </div>
+  </div>
+
+  <div id="expensesChart" className="h-64" />
+  <ExpensesChart />
+</div>
+
+{/* Supplier Stats and Top Suppliers */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+  <div className="bg-white rounded-lg p-6 shadow-sm">
+    <h3 className="text-xl font-medium mb-4">Suppliers Expenses</h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="bg-gray-50 rounded p-4">
+        <p className="text-sm text-gray-500 mb-1">Customers</p>
+        <p className="text-2xl font-semibold">200</p>
+      </div>
+      <div className="bg-gray-50 rounded p-4">
+        <p className="text-sm text-gray-500 mb-1">Owing</p>
+        <p className="text-2xl font-semibold">£1234</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="bg-white rounded-lg p-6 shadow-sm">
+    <div className="flex justify-between items-center mb-4">
+      <h3 className="text-xl font-medium">Top Suppliers To Pay</h3>
+      <a href="#" className="text-blue-500 text-sm">All</a>
+    </div>
+    <div className="space-y-3">
+      {["x", "y", "z", "a", "b"].map((client, i) => (
+        <div key={i} className="flex justify-between items-center bg-gray-50 p-3 rounded">
+          <span>Client {client}</span>
+          <span className="font-medium">£123</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+{/* Cash Flow Chart */}
+<div className="bg-white rounded-lg p-6 shadow-sm">
+  <h3 className="text-xl font-medium mb-6">Total cash in and out</h3>
+  <div id="cashFlowChart" className="h-64" />
+  <CashFlowChart />
+</div>
+</div>
+      </>
     </div>
   );
 
