@@ -1,15 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setBoard } from './features/kanban/kanbanSlice';
-import KanbanBoard from './components/KanbanBoard/KanbanBoard';
+import { setBoard } from '../../redux/slices/KanbanSlice';
 import { FileText, Zap, Pause, Check, CreditCard } from 'lucide-react';
+import KanbanBoard from './Kanbanboard';
 
-const App = () => {
+// Create a mapping of column IDs to icons
+export const columnIcons = {
+  'planning': FileText,
+  'in-progress': Zap,
+  'on-hold': Pause,
+  'completed': Check,
+  'billing': CreditCard
+};
+
+const ProjectKanban = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    // Initialize the board with sample data
-    // This would typically come from an API
     const initialData = {
       tasks: {
         'task-1': {
@@ -42,35 +49,30 @@ const App = () => {
           id: 'planning',
           title: 'PLANNING',
           color: 'bg-indigo-500',
-          icon: FileText,
           taskIds: ['task-3']
         },
         'in-progress': {
           id: 'in-progress',
           title: 'IN-PROGRESS',
           color: 'bg-yellow-500',
-          icon: Zap,
           taskIds: ['task-2']
         },
         'on-hold': {
           id: 'on-hold',
           title: 'ON-HOLD',
           color: 'bg-red-500',
-          icon: Pause,
           taskIds: []
         },
         'completed': {
           id: 'completed',
           title: 'COMPLETED',
           color: 'bg-blue-500',
-          icon: Check,
           taskIds: []
         },
         'billing': {
           id: 'billing',
           title: 'BILLING',
           color: 'bg-green-500',
-          icon: CreditCard,
           taskIds: ['task-1']
         }
       },
@@ -83,4 +85,4 @@ const App = () => {
   return <KanbanBoard boardTitle="Project Management" />;
 };
 
-export default App;
+export default ProjectKanban;

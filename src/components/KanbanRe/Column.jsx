@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Plus, MoreVertical } from 'lucide-react';
-import { addTask } from '../../features/kanban/kanbanSlice';
+import { addTask } from '../../redux/slices/KanbanSlice';
 import Task from './Task';
 import AddTaskForm from './AddTaskForm';
+import { getThemeStyles } from './Kanbanboard';
+import { columnIcons } from './ProjectKanban';
 
 const Column = ({ column, index, columnId, TaskComponent = Task }) => {
   const tasks = useSelector(state => state.kanban.tasks);
@@ -13,6 +15,7 @@ const Column = ({ column, index, columnId, TaskComponent = Task }) => {
   const dispatch = useDispatch();
   
   const [isAddingTask, setIsAddingTask] = useState(false);
+  const ColumnIcon = columnIcons[columnId];
   
   const handleAddTask = (taskData) => {
     dispatch(addTask({
@@ -21,7 +24,7 @@ const Column = ({ column, index, columnId, TaskComponent = Task }) => {
     }));
     setIsAddingTask(false);
   };
-  
+
   return (
     <Draggable draggableId={columnId} index={index}>
       {(provided) => (
@@ -35,10 +38,12 @@ const Column = ({ column, index, columnId, TaskComponent = Task }) => {
             {...provided.dragHandleProps}
           >
             <div className={`w-6 h-6 mr-2 rounded-full ${column.color} flex items-center justify-center text-white`}>
-              {column.icon && <column.icon className="w-4 h-4" />}
+              {ColumnIcon && <ColumnIcon className="w-4 h-4" />}
             </div>
             <span className="font-bold">{column.title}</span>
-            <span className={`ml-2 ${themeStyles.secondaryText}`}>{column.taskIds.length}</span>
+            <span className={`ml-2 ${themeStyles.secondaryText}`}>
+              {column.taskIds?.length || 0}
+            </span>
             <div className="flex-1"></div>
             <button className={`p-1 ${themeStyles.secondaryText} hover:${themeStyles.text}`}>
               <MoreVertical className="w-5 h-5" />
@@ -58,13 +63,15 @@ const Column = ({ column, index, columnId, TaskComponent = Task }) => {
                 ref={provided.innerRef}
                 className="min-h-[200px]"
               >
-                {column.taskIds.map((taskId, taskIndex) => (
-                  <TaskComponent 
-                    key={taskId} 
-                    task={tasks[taskId]} 
-                    index={taskIndex} 
-                    columnId={columnId}
-                  />
+                {column.taskIds?.map((taskId, taskIndex) => (
+                  tasks[taskId] ? (
+                    <TaskComponent 
+                      key={taskId} 
+                      task={tasks[taskId]} 
+                      index={taskIndex} 
+                      columnId={columnId}
+                    />
+                  ) : null
                 ))}
                 {provided.placeholder}
                 

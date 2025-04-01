@@ -60,10 +60,18 @@ export const kanbanSlice = createSlice({
     moveTask: (state, action) => {
       const { sourceId, destinationId, sourceIndex, destinationIndex } = action.payload;
       
+      // Ensure taskIds arrays exist
+      if (!state.columns[sourceId].taskIds) {
+        state.columns[sourceId].taskIds = [];
+      }
+      if (!state.columns[destinationId].taskIds) {
+        state.columns[destinationId].taskIds = [];
+      }
+
       // Moving in the same column
       if (sourceId === destinationId) {
         const column = state.columns[sourceId];
-        const newTaskIds = Array.from(column.taskIds);
+        const newTaskIds = Array.from(column.taskIds || []);
         const [removed] = newTaskIds.splice(sourceIndex, 1);
         newTaskIds.splice(destinationIndex, 0, removed);
         
@@ -73,8 +81,8 @@ export const kanbanSlice = createSlice({
       else {
         const sourceColumn = state.columns[sourceId];
         const destColumn = state.columns[destinationId];
-        const sourceTaskIds = Array.from(sourceColumn.taskIds);
-        const destTaskIds = Array.from(destColumn.taskIds);
+        const sourceTaskIds = Array.from(sourceColumn.taskIds || []);
+        const destTaskIds = Array.from(destColumn.taskIds || []);
         
         const [removed] = sourceTaskIds.splice(sourceIndex, 1);
         destTaskIds.splice(destinationIndex, 0, removed);

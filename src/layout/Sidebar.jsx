@@ -357,7 +357,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
         //   collapsed ? "w-20" : "w-56"
         // } z-30`}
         className={`fixed left-0 top-0 h-screen bg-white shadow-lg transition-all duration-300 ease-in-out 
-          ${isMobile && collapsed ? "w-0 overflow-hidden" : collapsed ? "w-20" : "w-56"}`}
+          ${isMobile && collapsed ? "w-0" : collapsed ? "w-20" : "w-56"}`}
       >
         {/* Fixed Header */}
         <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">

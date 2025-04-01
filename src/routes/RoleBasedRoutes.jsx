@@ -145,6 +145,7 @@ import PerformanceOverview from "../components/HR/Performance";
 import ProjectDetails from "../components/Project/Cards/ProjectDetails";
 import AllProject from "../components/Project/Cards/AllProject";
 import Workload from "../components/Project/Workload";
+import ProjectKanban from "../components/KanbanRe/ProjectKanban";
 
 const RoleBasedRoutes = () => {
   return (
@@ -204,6 +205,7 @@ const RoleBasedRoutes = () => {
         <Route path="/allproject" element={<AllProject />} />
 
         <Route path="/project/schedule" element={<ProjectCalendar />} />
+        <Route path="/projectkanban" element={<ProjectKanban />} />
 
 
         {/* HR Routes */}
