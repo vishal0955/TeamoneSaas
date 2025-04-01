@@ -47,11 +47,13 @@ const menuItems = [
     icon: <FolderOpenDot size={16} />,
     subItems: [
       { name: "Dashboard" , path: "/project"},
-      { name: "Project", path: "/project/projects" },
-      {name: "All Project", path: "/ProjectTimelineCalendar"},
-      {name : "Scheduling", path: "/calendar"},
+      // { name: "Project", path: "/project/projects" },
+      {name: "All Project", path: "allproject"},
+      {name : "Scheduling", path: "/project/projects"},
 
-      { name: "Task", path: "/project/task" },
+      {name : "Workload", path: "/project/workload"}, 
+
+      // { name: "Task", path: "/project/task" },
 
       // { name: "Todo", path: "/project/Todo" },
       // { name: "Notes", path: "/project/Notes" },
@@ -84,7 +86,7 @@ const menuItems = [
     path: "/hrm",
     icon: <Users size={16} />,
     subItems: [
-      { name: "DashBoard", path: "/hr/dashboard" },
+      { name: "Dashboard", path: "/hr/dashboard" },
       { name: "My Profile", path: "/hr/myprofile" },
       { name: "People", path: "/hr/people" },
       { name: "Performance", path: "/hr/performance" },
@@ -93,85 +95,85 @@ const menuItems = [
     ]
   },
 
-  {
-    name: "HR OLD ",
-    path: "/hrm",
-    icon: <Users size={16} />,
-    subItems: [
-      {
-        name: "Employees",
-        path: "/hrm/employees",
-        subMenu: [
-          { name: "Employees List", path: "/employeelist" },
-          // { name: "Employees Details", path: "/employeedetails" },
-          { name: "Departments", path: "/department" },
-          { name: "Designations", path: "/designations" },
-          { name: "Policies", path: "/policy" },
-        ],
-      },
-      // {
-      //   name: "Tickets",
-      //   path: "/hrm/tickets",
-      //   // subMenu: [
-      //   //   { name: "Leave", path: "/hrm/tickets/leave" },
-      //   //   { name: "Attendance", path: "/hrm/tickets/attendance" },
-      //   // ]
-      // },
-      {
-        name: "Holidays",
-        path: "/hrm/holiday",
-      },
-      {
-        name: "Attendance",
-        path: "/hrm/attendance",
-        subMenu: [
-          { name: "Attendance", path: "/hrm/attendance/list" },
-          { name: "Leaves", path: "/hrm/attendance/leaves" },
-          { name: "Leave Settings", path: "/hrm/attendance/leave_settings" },
-          { name: "Timesheet", path: "/hrm/attendance/timesheet" },
-          { name: "Shift & Schedule", path: "/hrm/attendance/shiftroster" },
-          { name: "OverTime", path: "/hrm/attendance/overtime" },
-        ],
-      },
-      {
-        name: "Performance",
-        path: "/hrm/performance",
-        subMenu: [
-          {
-            name: "Performance Indicator",
-            path: "/performanceindicator",
-          },
+  // {
+  //   name: "HR OLD ",
+  //   path: "/hrm",
+  //   icon: <Users size={16} />,
+  //   subItems: [
+  //     {
+  //       name: "Employees",
+  //       path: "/hrm/employees",
+  //       subMenu: [
+  //         { name: "Employees List", path: "/employeelist" },
+  //         // { name: "Employees Details", path: "/employeedetails" },
+  //         { name: "Departments", path: "/department" },
+  //         { name: "Designations", path: "/designations" },
+  //         { name: "Policies", path: "/policy" },
+  //       ],
+  //     },
+  //     // {
+  //     //   name: "Tickets",
+  //     //   path: "/hrm/tickets",
+  //     //   // subMenu: [
+  //     //   //   { name: "Leave", path: "/hrm/tickets/leave" },
+  //     //   //   { name: "Attendance", path: "/hrm/tickets/attendance" },
+  //     //   // ]
+  //     // },
+  //     {
+  //       name: "Holidays",
+  //       path: "/hrm/holiday",
+  //     },
+  //     {
+  //       name: "Attendance",
+  //       path: "/hrm/attendance",
+  //       subMenu: [
+  //         { name: "Attendance", path: "/hrm/attendance/list" },
+  //         { name: "Leaves", path: "/hrm/attendance/leaves" },
+  //         { name: "Leave Settings", path: "/hrm/attendance/leave_settings" },
+  //         { name: "Timesheet", path: "/hrm/attendance/timesheet" },
+  //         { name: "Shift & Schedule", path: "/hrm/attendance/shiftroster" },
+  //         { name: "OverTime", path: "/hrm/attendance/overtime" },
+  //       ],
+  //     },
+  //     {
+  //       name: "Performance",
+  //       path: "/hrm/performance",
+  //       subMenu: [
+  //         {
+  //           name: "Performance Indicator",
+  //           path: "/performanceindicator",
+  //         },
 
-          // {
-          //   name: "Performance Review",
-          //   path: "/hrm/performance/performance_review",
-          // },
-          {
-            name: "Performance Appraisal",
-            path: "/performaceappraisal",
-          },
-        ],
-      },
-      {
-        name: "Training",
-        path: "/hrm/training", 
-        subMenu: [
-          // { name: "Training Plan", path: "/hrm/training/training_plan" },
-          { name: "Training List", path: "/hrm/training/training_list" },
-        ] 
-      },
-      {
-        name: "Payroll",
-        path: "/hrm/payroll",
-        subMenu: [
-          { name: "Employee Salary", path: "/employeesalary" },
-          { name: "Payroll Items", path: "/payrollitem" },
-          // { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
-          // { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
-        ],
-      },
-    ],
-  },
+  //         // {
+  //         //   name: "Performance Review",
+  //         //   path: "/hrm/performance/performance_review",
+  //         // },
+  //         {
+  //           name: "Performance Appraisal",
+  //           path: "/performaceappraisal",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       name: "Training",
+  //       path: "/hrm/training", 
+  //       subMenu: [
+  //         // { name: "Training Plan", path: "/hrm/training/training_plan" },
+  //         { name: "Training List", path: "/hrm/training/training_list" },
+  //       ] 
+  //     },
+  //     {
+  //       name: "Payroll",
+  //       path: "/hrm/payroll",
+  //       subMenu: [
+  //         { name: "Employee Salary", path: "/employeesalary" },
+  //         { name: "Payroll Items", path: "/payrollitem" },
+  //         // { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
+  //         // { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
+  //       ],
+  //     },
+  //   ],
+  // },
 
   {
     name: "Recruitment",
@@ -359,7 +361,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <aside
         className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
-          collapsed ? "w-20" : "w-56"
+          collapsed ? "w-0" : "w-56"
         } z-30`}
       >
         {/* Fixed Header */}
@@ -541,7 +543,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <main
         className={`transition-all duration-300 ${
-          collapsed ? "ml-20" : "ml-56"
+          collapsed ? "ml-0" : "ml-56"
         }`}
       >
         

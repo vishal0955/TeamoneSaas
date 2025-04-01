@@ -1,10 +1,10 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 
 const TeamTimeOffCalendar = () => {
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>Team Time Off Calendar</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
@@ -24,11 +24,11 @@ const TeamTimeOffCalendar = () => {
           data-color="#000000"
           data-border-radius="small"
         ></script>
-      </Helmet>
+      </Helmet> */}
 
       <div className="bg-gray-50 font-sans min-h-screen">
         {/* Header */}
-        <header className="bg-white border-b border-gray-200">
+        {/* <header className="bg-white border-b border-gray-200">
           <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16 items-center">
               <div className="flex items-center">
@@ -60,12 +60,12 @@ const TeamTimeOffCalendar = () => {
               </div>
             </div>
           </div>
-        </header>
+        </header> */}
 
         {/* Main Content */}
         <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="mb-8">
-            {/* User Info */}
+          {/* <div className="mb-8">
+           
             <div className="flex items-center mb-6">
               <img
                 src="https://creatie.ai/ai/api/search-image?query=A professional headshot..."
@@ -94,7 +94,7 @@ const TeamTimeOffCalendar = () => {
               </div>
             </div>
 
-            {/* Navigation */}
+         
             <nav className="border-b border-gray-200">
               <div className="-mb-px flex space-x-8">
                 <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 py-4 px-1 border-b-2 font-medium">
@@ -111,7 +111,7 @@ const TeamTimeOffCalendar = () => {
                 </a>
               </div>
             </nav>
-          </div>
+          </div> */}
 
           {/* Stats Section */}
           <div className="bg-white p-6 rounded-lg shadow mb-8 grid grid-cols-4 gap-6">

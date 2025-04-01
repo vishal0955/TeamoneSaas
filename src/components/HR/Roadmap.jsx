@@ -1,10 +1,10 @@
 import React from "react";
 
-const PerformanceOverview = () => {
+const Roadmap = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Navbar */}
-      <nav className="bg-white border-b border-gray-200">
+      {/* <nav className="bg-white border-b border-gray-200">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -40,12 +40,12 @@ const PerformanceOverview = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Main Content */}
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Profile Section */}
-        <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">
+        {/* <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <img
@@ -78,7 +78,7 @@ const PerformanceOverview = () => {
             </div>
           </div>
 
-          {/* Navigation */}
+   
           <div className="flex items-center space-x-8 border-t border-gray-200 pt-4">
             {[
               "Profile",
@@ -95,11 +95,11 @@ const PerformanceOverview = () => {
               </a>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Performance Overview */}
         <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-3">
+          {/* <div className="col-span-3">
             <div className="bg-white rounded-lg p-6 mb-6 border border-gray-200">
               <div className="flex items-center justify-between mb-4">
                 <div className="text-2xl font-bold text-gray-900">Q4 2023</div>
@@ -108,7 +108,7 @@ const PerformanceOverview = () => {
               <div className="text-gray-400">Overall grade</div>
             </div>
 
-            {/* Goal Status */}
+       
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <div className="space-y-4">
                 {[
@@ -129,10 +129,10 @@ const PerformanceOverview = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Employee Goals Timeline */}
-          <div className="col-span-9">
+          <div className="col-span-12">
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <h2 className="text-xl font-bold text-gray-900 mb-2">
                 Employee Goals Timeline
@@ -171,4 +171,4 @@ const PerformanceOverview = () => {
   );
 };
 
-export default PerformanceOverview;
+export default Roadmap;

@@ -1,48 +1,12 @@
 import React from "react";
 
-const ProfilePage = () => {
+const Compensation = () => {
   return (
     <div className="bg-white min-h-screen">
-      <nav className="bg-white border-b border-gray-200">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <img
-                  className="h-8 w-8"
-                  src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
-                  alt="Logo"
-                />
-              </div>
-              <div className="ml-4 text-xl font-semibold text-gray-900">
-                My Profile
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <button className="text-gray-300 hover:text-white">
-                <i className="fas fa-search"></i>
-              </button>
-              <button className="text-gray-300 hover:text-white">
-                <i className="fas fa-bell"></i>
-              </button>
-              <button className="text-gray-300 hover:text-white">
-                <i className="fas fa-ellipsis-v"></i>
-              </button>
-              <div className="flex items-center">
-                <span className="text-gray-300 mr-2">Your Company Name</span>
-                <img
-                  className="h-8 w-8 rounded-full"
-                  src="https://creatie.ai/ai/api/search-image?query=professional headshot of a person smiling warmly against a neutral background&width=100&height=100&orientation=squarish"
-                  alt="Profile"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+    
 
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">
+        {/* <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <img
@@ -92,7 +56,7 @@ const ProfilePage = () => {
               </a>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-3">
@@ -177,4 +141,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default Compensation;

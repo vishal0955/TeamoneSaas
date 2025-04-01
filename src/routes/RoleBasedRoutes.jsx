@@ -82,7 +82,7 @@ import TrainingList from "../components/Training/TrainingList";
 
 import PayrollOvertime from "../components/AdminHRM/Payroll/PayrollOvertime";
 import PayrollDeductions from "../components/AdminHRM/Payroll/PayrollDeductions";
-import PerformanceOverview from "../components/AdminPerformance/PerformanceOverview";
+// import PerformanceOverview from "../components/AdminPerformance/PerformanceOverview";
 import GoalsOverview from "../components/AdminPerformance/GoalsOverview";
 import Compensation from "../components/AdminPerformance/Compensation";
 import Telent from "../components/AdminPerformance/Telent";
@@ -141,6 +141,11 @@ import HRDashboard from "../components/HR/Dashboard";
 import People from "../components/HR/people";
 import RecruitmentPipeline from "../components/HR/recruiting";
 import HRAnalyticsDashboard from "../components/HR/organisationDashboard";
+import PerformanceOverview from "../components/HR/Performance";
+import ProjectDetails from "../components/Project/Cards/ProjectDetails";
+import AllProject from "../components/Project/Cards/AllProject";
+import Workload from "../components/Project/Workload";
+import ProjectCard from "../components/Project/Cards/proj_card";
 
 const RoleBasedRoutes = () => {
   return (
@@ -190,11 +195,15 @@ const RoleBasedRoutes = () => {
 
         {/* Project Route */}
         <Route path="/project" element={<Dashboard />} />
-        <Route path="/project/details" element={<ProjectDashboard />} />
+        <Route path="/project/details" element={<ProjectDashboard />} />  
+        <Route path="/project/projectdetails" element={<ProjectDetails />} />
+
         <Route path="/project/projects" element={<Project />} />
         <Route path="/project/task" element={<Task />} />
         <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
+        <Route path="/allproject" element={<AllProject />} />
+        <Route path="/projectcard" element={<ProjectCard/>}/>
 
         <Route path="/project/schedule" element={<ProjectCalendar />} />
 
@@ -428,28 +437,28 @@ const RoleBasedRoutes = () => {
 
         
         <Route path="/finance/allbills" element={<AllBills />} />
-        <Route path="/finance/newbill" element={<NewBill />} />
-        <Route path="/finance/remitance" element={<Remitance />} />
-        <Route path="/finance/newremitance" element={<NewRemitance />} />
-         <Route path="/finance/creditnotes" element={<CreditNotes />} />
+          <Route path="/finance/newbill" element={<NewBill />} />
+
+        <Route path="/finance/remittance" element={<Remitance />} />
+          <Route path="/finance/newremitance" element={<NewRemitance />} />
+
+        <Route path="/finance/creditnotes" element={<CreditNotes />} />
            <Route path="/finance/newcreditnote" element={<NewCreditNote />} />
-           <Route path="/finance/expense" element={<Expense />} />
-           <Route path="/finance/newexpenseclaim" element={<NewExpenseClaim />} />
-            <Route path="/finance/newmileageclaim" element={<NewMileageClaim />} />
-           <Route path="/finance/Purchaseorder" element={<PurchaseOrder />} />
-           <Route path="/finance/newpurchaseorder" element={<NewPurchaseOrder />} />
 
-{/* accounts Recievable */}
+        <Route path="/finance/expense" element={<Expense />} />
+             <Route path="/finance/newexpenseclaim" element={<NewExpenseClaim />} />
+             <Route path="/finance/newmileageclaim" element={<NewMileageClaim />} />
+             <Route path="/finance/Purchaseorder" element={<PurchaseOrder />} />
+             <Route path="/finance/newpurchaseorder" element={<NewPurchaseOrder />} />
 
-<Route path="/finance/accounts_receivable" element={<SalesOverview />} />
+           {/* accounts Recievable */}
 
+          <Route path="/finance/accounts_receivable" element={<SalesOverview />} />
           <Route path="/finance/products" element={<Products />} />
-           <Route path="/finance/createproduct" element={<CreateProduct />} />
-
-           <Route path="/finance/companies" element={<Company />} />
-
-           <Route path="/finance/suppliers" element={<Suppliers />} />
-            <Route path="/finance/createsupplier" element={<SuppliersCard />} />
+          <Route path="/finance/createproduct" element={<CreateProduct />} />
+          <Route path="/finance/companies" element={<Company />} />
+          <Route path="/finance/suppliers" element={<Suppliers />} />
+          <Route path="/finance/createsupplier" element={<SuppliersCard />} />
 
         {/* Administration */}
 
@@ -507,6 +516,7 @@ const RoleBasedRoutes = () => {
 
     <Route path="/resourcecalendar" element={<ProjectCalendar />}  />
    <Route path="/ProjectTimelineCalendar" element={<ProjectTimelineCalendar />}  />
+   <Route path="/project/workload" element={ <Workload />} />
 
         <Route
           path="/manager"
