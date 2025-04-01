@@ -144,6 +144,7 @@ import HRAnalyticsDashboard from "../components/HR/organisationDashboard";
 import PerformanceOverview from "../components/HR/Performance";
 import ProjectDetails from "../components/Project/Cards/ProjectDetails";
 import AllProject from "../components/Project/Cards/AllProject";
+import Workload from "../components/Project/Workload";
 
 const RoleBasedRoutes = () => {
   return (
@@ -513,6 +514,7 @@ const RoleBasedRoutes = () => {
 
     <Route path="/resourcecalendar" element={<ProjectCalendar />}  />
    <Route path="/ProjectTimelineCalendar" element={<ProjectTimelineCalendar />}  />
+   <Route path="/project/workload" element={ <Workload />} />
 
         <Route
           path="/manager"

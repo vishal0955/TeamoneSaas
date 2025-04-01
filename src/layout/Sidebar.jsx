@@ -16,6 +16,8 @@ import {
   SquareCheckBig,
   Box,
   File,
+  HelpingHandIcon,
+  HelpCircle,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -51,7 +53,9 @@ const menuItems = [
       {name: "All Project", path: "allproject"},
       {name : "Scheduling", path: "/project/projects"},
 
-      { name: "Task", path: "/project/task" },
+      {name : "Workload", path: "/project/workload"}, 
+
+      // { name: "Task", path: "/project/task" },
 
       // { name: "Todo", path: "/project/Todo" },
       // { name: "Notes", path: "/project/Notes" },
@@ -173,16 +177,16 @@ const menuItems = [
   //   ],
   // },
 
-  {
-    name: "Recruitment",
-    path: "/recruitment",
-    icon: <Calendar size={16} />,
-    subItems: [
-      { name: "Jobs", path: "/recruitment/jobs" },
-      { name: "Candidates", path: "/recruitment/candidates" },
-      { name: "Refferals", path: "/recruitment/refferals" },
-    ],
-  },
+  // {
+  //   name: "Recruitment",
+  //   path: "/recruitment",
+  //   icon: <Calendar size={16} />,
+  //   subItems: [
+  //     { name: "Jobs", path: "/recruitment/jobs" },
+  //     { name: "Candidates", path: "/recruitment/candidates" },
+  //     { name: "Refferals", path: "/recruitment/refferals" },
+  //   ],
+  // },
 
   {
     name: "Finance",
@@ -195,24 +199,24 @@ const menuItems = [
       { name : "Products", path: "/finance/products" },
       { name: "Customers", path: "/finance/companies" },
       { name: "Suppliers", path: "/finance/suppliers" },
+     
       // {
-       
       //   name: "Sales",
       //   path: "/finance/sales",
-        // subMenu: [
+      //   subMenu: [
           
-        //   { name: "Expenses", path: "/finance/sales/expenses" },
-        //   { name: "Provident Funds", path: "/finance/sales/provident_funds" },
-        //   { name: "Taxes", path: "/finance/sales/taxs" },
-        // ],
+      //     { name: "Expenses", path: "/finance/sales/expenses" },
+      //     { name: "Provident Funds", path: "/finance/sales/provident_funds" },
+      //     { name: "Taxes", path: "/finance/sales/taxs" },
+      //   ],
       // },
     ]
     },
     
     {
-      name: "Support Hub",
+      name: "Support Desk",
       path: "/support",
-      // icon: <Help size={16} />,
+      icon: <HelpCircle size={16} />,
       subItems: [
           { name: "Support", path: "/support" },
         { name: "Settings", path: "/support/settings" },
@@ -258,16 +262,7 @@ const menuItems = [
     ],
   },
 
-  // {
-  //   name: "Reports",
-  //   path: "/reports",
-  //   icon: <BarChart3 size={14} />,
-  // },
-  // {
-  //   name: "Documents",
-  //   path: "/documents",
-  //   icon: <FileText size={14} />,
-  // },
+ 
 ];
 
 const superAdminMenu = [
@@ -358,9 +353,11 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
       />
 
       <aside
-        className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
-          collapsed ? "w-20" : "w-56"
-        } z-30`}
+        // className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
+        //   collapsed ? "w-20" : "w-56"
+        // } z-30`}
+        className={`fixed left-0 top-0 h-screen bg-white shadow-lg transition-all duration-300 ease-in-out 
+          ${isMobile && collapsed ? "w-0 overflow-hidden" : collapsed ? "w-20" : "w-56"}`}
       >
         {/* Fixed Header */}
         <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
@@ -541,8 +538,11 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <main
         className={`transition-all duration-300 ${
+          isMobile && collapsed ? "ml-0" :
           collapsed ? "ml-20" : "ml-56"
         }`}
+
+        
       >
         
       </main>
