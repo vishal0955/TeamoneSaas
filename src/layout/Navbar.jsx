@@ -45,10 +45,12 @@ const Navbar = ({ toggleSidebar,collapsed}) => {
     <div className="container top-0 z-50" style={{position:"fixed",width:"100%",padding:"0px"}}>
       {/* Navbar */}
       
-      <div className=" bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between">
+      <div className=" bg-white border-b border-gray-200 px-4  flex items-center justify-between">
 
 
       {/* icon */}
+
+      
       <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
           {collapsed ? (
             <span className="text-indigo-600 font-bold text-2xl">H</span>
@@ -66,7 +68,8 @@ const Navbar = ({ toggleSidebar,collapsed}) => {
 
 
         {/* Left section */}
-        <div className="flex items-center space-x-3">
+        <div className='flex '>
+        <div className="flex items-center space-x-3 me-3">
           <button 
             onClick={toggleSidebar} 
             className="text-gray-500 hover:text-gray-700 focus:outline-none"
@@ -137,6 +140,7 @@ const Navbar = ({ toggleSidebar,collapsed}) => {
                 className="h-full w-full object-cover"
               />
             </button>
+          </div>
           </div>
         </div>
       </div>
