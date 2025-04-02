@@ -562,7 +562,7 @@ const TodoApp = () => {
                         <FontAwesomeIcon icon={faEllipsisV} />
                       </button>
                       {activeDropdown === task.id && (
-                        <div className="position-absolute end-0 mt-2">
+                        <div className="position-absolute mt-2" style={{left:"-120px"}}>
                           <TaskDropdown
                             taskId={task.id}
                             onEdit={() => handleEdit(task)}
@@ -644,7 +644,7 @@ const TodoApp = () => {
                         <FontAwesomeIcon icon={faEllipsisV} />
                       </button>
                       {activeDropdown === task.id && (
-                        <div className="position-absolute end-0 mt-2">
+                        <div className="position-absolute mt-2" style={{left:"-120px"}}>
                           <TaskDropdown 
                             taskId={task.id}
                             onEdit={() => handleEdit(task)}
