@@ -361,7 +361,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
       >
          
         {/* Fixed Header */}
-        <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
+        {/* <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
           {collapsed ? (
             <span className="text-indigo-600 font-bold text-2xl">H</span>
           ) : (
@@ -373,7 +373,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
           >
             {collapsed ? "→" : "←"}
           </button>
-        </div>
+        </div> */}
 
         {/* Scrollable Navigation */}
         <nav className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400">
