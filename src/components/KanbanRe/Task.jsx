@@ -10,12 +10,19 @@ const Task = ({ task, index, columnId }) => {
   
   return (
     <Draggable draggableId={task.id} index={index}>
-      {(provided) => (
+      {(provided, snapshot) => (
         <div
+          // ref={provided.innerRef}
+          // {...provided.draggableProps}
+          // {...provided.dragHandleProps}
+          // className={`${themeStyles.cardBg} p-3 mb-2 rounded shadow`}
+
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          className={`${themeStyles.cardBg} p-3 mb-2 rounded shadow`}
+          className={`p-3 mb-2 bg-white rounded shadow ${
+            snapshot.isDragging ? 'opacity-75' : ''
+          }`}
         >
           <div className="text-sm">{task.title}</div>
           {task.project && (

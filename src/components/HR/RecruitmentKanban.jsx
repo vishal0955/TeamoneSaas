@@ -219,11 +219,11 @@ const Column = ({ column, columnIndex, moveColumn, moveTask, startAddTask, isAdd
 
   const getColumnIcon = (columnId) => {
     switch (columnId) {
-      case 'planning': return <FileText className="w-4 h-4" />;
-      case 'in-progress': return <Zap className="w-4 h-4" />;
-      case 'on-hold': return <Pause className="w-4 h-4" />;
-      case 'completed': return <Check className="w-4 h-4" />;
-      case 'billing': return <CreditCard className="w-4 h-4" />;
+      case 'Incoming': return <FileText className="w-4 h-4" />;
+      case 'Interview Booked': return <Zap className="w-4 h-4" />;
+      case 'Interviewed': return <Pause className="w-4 h-4" />;
+      case 'Shortlisted': return <Check className="w-4 h-4" />;
+      case 'Offer sent': return <CreditCard className="w-4 h-4" />;
       default: return null;
     }
   };
@@ -278,7 +278,7 @@ const Column = ({ column, columnIndex, moveColumn, moveTask, startAddTask, isAdd
               className={`w-full p-2 mb-2 text-sm border ${themeStyles.inputBorder} rounded ${themeStyles.inputBg}`}
               placeholder="Enter task title..."
               value={newTaskText[column.id] || ''}
-              onChange={(e) => setNewTaskText({...newTaskText, [column.id]: e.target.value})}
+              onChange={(e) => setNewTaskText({...newTaskText , [column.id]: e.target.value})}
               autoFocus
             />
             <div className="flex justify-end space-x-2">
@@ -310,7 +310,7 @@ const Column = ({ column, columnIndex, moveColumn, moveTask, startAddTask, isAdd
   );
 };
 
-const KanbanBoard = () => {
+const Recruitmentkanban = () => {
   // Theme state
   const [isDarkMode, setIsDarkMode] = useState(false);
   
@@ -325,49 +325,61 @@ const KanbanBoard = () => {
 
   // Initial board data - use a simplified structure first
   const [columnOrder, setColumnOrder] = useState([
-    'planning', 'in-progress', 'on-hold', 'completed', 'billing'
+    'Incoming', 'Interview Booked', 'Interviewed', 'Shortlisted', 'Offer sent', 'Hired', 'Unsuccessful'
   ]);
   
   const [columns, setColumns] = useState({
-    'planning': {
-      id: 'planning',
-      title: 'PLANNING',
+    'Incoming': {
+      id: 'incoming',
+      title: 'Incoming',
       color: 'bg-indigo-500',
       tasks: []
     },
-    'in-progress': {
-      id: 'in-progress',
-      title: 'IN-PROGRESS',
+    'Interview Booked': {
+      id: 'interview-booked',
+      title: 'Interview Booked',
       color: 'bg-yellow-500',
       tasks: []
     },
-    'on-hold': {
-      id: 'on-hold',
-      title: 'ON-HOLD',
+    'Interviewed': {
+      id: 'interviewed',
+      title: 'Interviewed',
       color: 'bg-red-500',
       tasks: []
     },
-    'completed': {
-      id: 'completed',
-      title: 'COMPLETED',
+    'Shortlisted': {
+      id: 'shortlisted',
+      title: 'Shortlisted',
       color: 'bg-blue-500',
       tasks: []
     },
-    'billing': {
-      id: 'billing',
-      title: 'BILLING',
+    'Offer sent': {
+      id: 'offer-sent',
+      title: 'Offer sent',
       color: 'bg-green-500',
       tasks: [
         {
           id: '315317',
-          title: '315317 - XYz tech ...',
-          project: 'All Projects',
-          priority: 'High',
+          title: 'John smith',
+          project: 'Developer',
+        //   priority: 'High',
           progress: 100,
           assignee: 'B'
         }
       ]
-    }
+    },
+    'Hired': {
+      id: 'hired',
+      title: 'Hired',
+      color: 'bg-blue-500',
+      tasks: []
+    },
+    'Unsuccessful': {
+      id: 'unsuccessful',
+      title: 'Unsuccessful',
+      color: 'bg-blue-500',
+      tasks: []
+    },
   });
 
   // Start adding a task
@@ -525,9 +537,9 @@ const KanbanBoard = () => {
             <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
               <span>Group: Status</span>
             </button>
-            {/* <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
+            <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
               <span>Subtasks: Collapse all</span>
-            </button> */}
+            </button>
             <button className={`px-3 py-1 ${themeStyles.buttonBg} rounded flex items-center text-sm`}>
               <Filter className="w-4 h-4 mr-1" />
               <span>Filter</span>
@@ -645,4 +657,5 @@ const KanbanBoard = () => {
   );
 };
 
-export default KanbanBoard;
+export default Recruitmentkanban;
+    

@@ -3,30 +3,8 @@ import React from "react";
 const People = () => {
   return (
     <>
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Time Management Dashboard</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          rel="stylesheet"
-        />
-        <link
-          href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css"
-          rel="stylesheet"
-        />
-        <script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
-        <script
-          src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js"
-          data-color="#000000"
-          data-border-radius="small"
-        ></script>
-      </head>
-      <body className="bg-white text-gray-900 min-h-screen">
+     
+      <div className="bg-white text-gray-900 min-h-screen">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Navbar */}
           <nav className="flex items-center justify-between py-4">
@@ -146,7 +124,7 @@ const People = () => {
             </div>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };

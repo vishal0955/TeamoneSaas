@@ -141,6 +141,7 @@ import AllProject from "../components/Project/Cards/AllProject";
 import Workload from "../components/Project/Workload";
 import ProjectCard from "../components/Project/Cards/proj_card";
 import ProjectKanban from "../components/KanbanRe/ProjectKanban";
+import Recruitmentkanban from "../components/HR/RecruitmentKanban";
 
 const RoleBasedRoutes = () => {
   return (
