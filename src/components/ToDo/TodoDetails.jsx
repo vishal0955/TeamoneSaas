@@ -12,7 +12,7 @@ const TodoDetail = () => {
 
   return (
     <div>
-      <div className="container py-5">
+      <div className="container py-5 ">
         <div className="task-card">
           <div className="d-flex justify-content-between align-items-start mb-4">
             <h4 className="mb-0">Task Details</h4>

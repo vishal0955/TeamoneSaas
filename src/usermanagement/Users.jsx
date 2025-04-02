@@ -100,12 +100,12 @@ const Users = () => {
   return (
     <Container fluid className="p-4">
       {/* Header */}
-      <Row className="mb-4">
-        <Col>
+      <Row className="mb-4 ">
+        <Col md={6}>
           <h2>Users</h2>
           <div className="text-muted">Administration / Users</div>
         </Col>
-        <Col className="text-end">
+        <Col md={6}className="text-end ">
           <Button variant="outline-secondary" className="me-2">
             <i className="bi bi-download me-1"></i> Export
           </Button>
@@ -121,7 +121,7 @@ const Users = () => {
           <Col>
             <h5>Users List</h5>
           </Col>
-          <Col xs={12} md={2}>
+          <Col xs={12} md={2} className="mt-2">
             <InputGroup>
               <Form.Control
                 type="date"
@@ -134,7 +134,7 @@ const Users = () => {
               </InputGroup.Text>
             </InputGroup>
           </Col>
-          <Col xs={12} md={2}>
+          <Col xs={12} md={2} className="mt-2">
             <Dropdown>
               <Dropdown.Toggle
                 variant="light"
@@ -155,7 +155,7 @@ const Users = () => {
               </Dropdown.Menu>
             </Dropdown>
           </Col>
-          <Col xs={12} md={2}>
+          <Col xs={12} md={2} className="mt-2">
             <Dropdown>
               <Dropdown.Toggle
                 variant="light"
@@ -176,7 +176,7 @@ const Users = () => {
               </Dropdown.Menu>
             </Dropdown>
           </Col>
-          <Col xs={12} md={2}>
+          <Col xs={12} md={2} className="mt-2">
             <Dropdown>
               <Dropdown.Toggle
                 variant="light"
