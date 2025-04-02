@@ -1,38 +1,3 @@
-// import React, { useState } from 'react';
-// import { Button, Container, Row, Col } from 'react-bootstrap';
-
-// const Review = () => {
-//   return (
-//     <>
-//         <Container className="mt-5">
-//       <Row className="justify-content-center">
-//         <Col md={4} sm={12} className="text-center">
-//           <h3>Send Quote</h3>
-//           <p>How would you like to send this quote to your client?</p>
-
-//           {/* Button options for sending quote */}
-//           <div className="d-grid gap-2">
-//             <Button variant="dark" size="lg" className=" inv-new-button d-flex justify-content-center align-items-center">
-//               <i className="bi bi-send-fill me-2" />
-//               Auto Send Quote
-//             </Button>
-//             <Button variant="outline-dark" size="lg" className="btn btn-outline-primary d-flex justify-content-center align-items-center">
-//               <i className="bi bi-envelope me-2" />
-//               Custom Email
-//             </Button>
-//           </div>
-//         </Col>
-//       </Row>
-//     </Container>
-//     </>
-//   )
-// }
-
-// export default Review
-
-
-
-
 import React from 'react'
 
 const Review = () => {
@@ -113,7 +78,7 @@ const Review = () => {
             <div>
               <img 
                 src="/api/placeholder/200/60" 
-                alt="BPAV Logo" 
+                alt="XYZ Logo" 
                 style={styles.bpavLogo} 
               />
             </div>
@@ -136,25 +101,25 @@ const Review = () => {
           {/* Right Column */}
           <div className="col-md-6">
             <div style={styles.bpavCompanyInfo}>
-              <div className="fw-bold">BPAV Technology Group Ltd</div>
-              <div>Benjamin Price</div>
-              <div>ben.price@bpav.global</div>
+              <div className="fw-bold">XYZ Technology Group Ltd</div>
+              <div>XYZ</div>
+              <div>heloo@xyz.global</div>
               <div>
-                Ground Floor, Unit C1<br />
-                Prisma Park, Berrington Way<br />
-                Basingstoke, Hampshire<br />
-                RG24 8GT<br />
-                United Kingdom
+                Floor 4, Unit D4<br />
+                in Park, <br />
+                  india<br />
+                park new<br />
+                  in
               </div>
               <div className="mt-2">
-                Sales@bpav.global<br />
-                (UK) +44 333 344 3201<br />
-                (USA) +1 (347) 352-9667<br />
-                www.bpav.co.uk
+                hello@xyz.global<br />
+                (in) +91 333 344 0000<br />
+                (in) +11 (000) 528-8520<br />
+                www.xyz.co.uk
               </div>
               <div className="mt-2">
                 Reg no. 14304458<br />
-                VAT no. 423338514
+                VAT no. 87654321
               </div>
               
               <div style={styles.bpavRecipient} className="mt-5">
