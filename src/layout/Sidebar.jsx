@@ -353,7 +353,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
       />
 
       <aside
-        className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out mt-5 ${isMobile && collapsed ? "w-0 " : collapsed ? "w-20" : "w-56"}`}
+        className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out mt-5 pb-5 ${isMobile && collapsed ? "w-0 " : collapsed ? "w-20" : "w-56"}`}
        
       >
         {/* Fixed Header */}
