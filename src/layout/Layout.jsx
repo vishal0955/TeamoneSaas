@@ -25,7 +25,7 @@ const Layout = () => {
         <Navbar toggleSidebar={toggleSidebar} className="" />
             <div className="flex">
             <Sidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
-                <div className="flex-1 mt-5" style={{overflow:"hidden"}}>
+                <div className="flex-1" style={{overflow:"hidden",paddingTop:"65px"}}>
                 <Outlet />
                 </div>
             </div>
