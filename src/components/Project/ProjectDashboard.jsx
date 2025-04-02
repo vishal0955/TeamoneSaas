@@ -53,18 +53,7 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Navbar */}
-      <nav className="bg-white border-b border-gray-200">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            
-            <div className="flex items-center">
-              <button className="!rounded-button bg-custom text-white px-4 py-2 text-sm font-medium">
-                <i className="fas fa-plus mr-2"></i>New Task
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+    
 
       {/* Main Content */}
       <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
