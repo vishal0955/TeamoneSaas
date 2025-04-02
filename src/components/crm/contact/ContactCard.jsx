@@ -412,10 +412,10 @@ const ContactDetailPage = () => {
         </div>
 
         {/* Middle Section - Activities */}
-        <div className="flex-1 bg-white rounded-lg shadow">
+        <div className="bg-white rounded-lg shadow">
           {/* Tabs */}
           <div className="border-b">
-            <div className="flex">
+            <div className="">
               {tabs.map((tab) => (
                 <button
                   key={tab}
@@ -434,7 +434,7 @@ const ContactDetailPage = () => {
 
           {/* Search and Filter */}
           <div className="p-4 border-b">
-            <div className="flex gap-4">
+            <div className=" gap-4">
               <div className="flex-1">
                 <input
                   type="text"
