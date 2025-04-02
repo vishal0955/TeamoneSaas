@@ -8,7 +8,6 @@ import {
   Trash2,
   List,
   Grid,
-  
 } from "lucide-react";
 import { FaStar, FaTrash, FaEllipsisV, FaPlus } from "react-icons/fa";
 import AddNotePopup from "./AddNoteForm";
@@ -186,11 +185,12 @@ const NotesGrid = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <>
+    <div className="container">
+    <div className="row bg-gray-50">
+      <div className="col-md-2">
       {/* Sidebar */}
-      <Row>
-     <Col>
-     <div className="w-48 bg-white border-r border-gray-200 flex-shrink-0">
+      <div className="w-100 bg-white border-r border-gray-200 flex-shrink-0">
         <div className="flex items-center px-3 py-4">
           <div className="bg-indigo-100 rounded p-2 mr-2">
             {/* <span className="text-indigo-600 font-bold">GD</span> */}
@@ -396,10 +396,9 @@ const NotesGrid = () => {
           )}
         </div>
       </div>
-     </Col>
-
+      </div>
+          <div className="col-md-10">
       {/* Main Content */}
-      <Col>
       <div className="flex-1 ">
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
@@ -646,9 +645,10 @@ const NotesGrid = () => {
           onSave={handleSaveNote}
         />
       </div>
-      </Col>
-      </Row>
+          </div>
     </div>
+    </div>
+    </>
   );
 };
 

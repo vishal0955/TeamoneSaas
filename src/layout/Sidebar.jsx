@@ -352,7 +352,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
         onClick={toggleSidebar}
       />
 
-      <aside style={{marginTop:"65px",zIndex:"200"}}
+      <aside style={{marginTop:"65px",zIndex:"900"}}
         // className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
         //   collapsed ? "w-20" : "w-56"
         // } z-30`}
