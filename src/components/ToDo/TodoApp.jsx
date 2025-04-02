@@ -367,10 +367,10 @@ const TodoApp = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="container mx-auto px-2 max-w-8xl">
+      <div className="container mx-auto px-2 max-w-8xl ">
         {/* Header */}
-        <header className="row align-items-center mb-4">
-          <div className="col-md-6">
+        <header className="row align-items-center mb-4 ">
+          <div className="col-md-6 mt-5">
             <h1 className="h3 mb-0">Todo</h1>
           </div>
           <div className="col-md-6 d-flex justify-content-md-end">
@@ -519,7 +519,7 @@ const TodoApp = () => {
             {highPriorityTasks.map((task, index) => (
               <div key={task.id} className="card mb-2">
                 <div className="card-body d-flex align-items-center p-2">
-                  <div className="form-check me-3">
+                  <div className="form-check me-1">
                     <input 
                       type="checkbox" 
                       className="form-check-input" 
@@ -601,7 +601,7 @@ const TodoApp = () => {
             {mediumPriorityTasks.map(task => (
               <div key={task.id} className="card mb-2">
                 <div className="card-body d-flex align-items-center p-2">
-                  <div className="form-check me-3">
+                  <div className="form-check me-2">
                     <input 
                       type="checkbox" 
                       className="form-check-input" 

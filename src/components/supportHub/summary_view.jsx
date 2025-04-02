@@ -42,7 +42,7 @@ const Summary = () => {
       </aside> */}
 
       {/* Main Content */}
-      <main className="container ">
+      <main className="container p-0">
         <header className="bg-white border-b border-gray-200 px-8 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-semibold">Summary</h1>
