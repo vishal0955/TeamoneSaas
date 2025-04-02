@@ -12,6 +12,20 @@ const QuoteTemplateInterface = () => {
   const [buyerComments, setBuyerComments] = useState('');
   const [purchaseTerms, setPurchaseTerms] = useState('');
   const [showMoreOptions, setShowMoreOptions] = useState(false);
+
+
+   const [image, setImage] = useState(null);
+    const [content, setContent] = useState('');
+    const editorRef = useRef(null);
+  
+    const handleContentChange = (event) => {
+      setContent(event.target.value);
+    };
+  
+    const handleCommand = (command) => {
+      document.execCommand(command, false, null);
+    };
+  
   
   // Ref for the textarea
   const textareaRef = useRef(null);
@@ -393,117 +407,86 @@ const QuoteTemplateInterface = () => {
             </div>
 
             {/* Comments to Buyer */}
-            <div style={styles.bpavFormSection}>
-              <label htmlFor="buyerComments" className="form-label">
-                Comments to buyer
-              </label>
-              <div style={styles.bpavTextEditorToolbar} className="position-relative">
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('**') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('bold')}
-                  title="Bold"
-                >
-                  <i className="bi bi-type-bold"></i>
+            <div className="row">
+            <div
+              className="col bg-white border rounded p-3 mb-4"
+              style={{ maxWidth: '649px' }}>
+              <div className="d-flex flex-wrap gap-1 mb-3 align-items-center">
+                <select
+                  className="form-select border-0 d-inline-block me-2"
+                  style={{ width: '130px', fontSize: '15px' }}>
+                  <option>Normal text</option>
+                </select>
+                <select
+                  className="form-select border-0 d-inline-block me-2"
+                  style={{ width: '50px' }}>
+                  <option></option>
+                </select>
+                <select
+                  className="form-select border-0 d-inline-block me-2"
+                  style={{ width: '50px' }}>
+                  <option></option>
+                  <option></option>
+                </select>
+
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('bold')}>
+                  <b>B</b>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('*') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('italic')}
-                  title="Italic"
-                >
-                  <i className="bi bi-type-italic"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('italic')}>
+                  <i>I</i>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('_') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('underline')}
-                  title="Underline"
-                >
-                  <i className="bi bi-type-underline"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('underline')}>
+                  <u>U</u>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('~~') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('strikethrough')}
-                  title="Strikethrough"
-                >
-                  <i className="bi bi-type-strikethrough"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('strikeThrough')}>
+                  <s>S</s>
                 </button>
-                <button 
-                  type="button" 
-                  style={styles.bpavDropdownBtn}
-                  onClick={() => setShowMoreOptions(!showMoreOptions)}
-                >
-                  More
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('superscript')}>
+                  <i className="fa-solid fa-greater-than"></i>
+                  <i className="fa-solid fa-less-than"></i>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('](') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('link')}
-                  title="Insert Link"
-                >
-                  <i className="bi bi-link-45deg"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('insertHTML')}>
+                  <i className="fa-solid fa-code"></i>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('![') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('image')}
-                  title="Insert Image"
-                >
-                  <i className="bi bi-image"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('removeFormat')}>
+                  <i className="fa-solid fa-minus"></i>
                 </button>
-                
-                {/* More options dropdown */}
-                <div style={styles.bpavMoreOptionsMenu} className="mt-1">
-                  <div 
-                    style={styles.bpavMoreOptionItem} 
-                    onClick={() => {
-                      applyFormatting('heading');
-                      setShowMoreOptions(false);
-                    }}
-                  >
-                    <i className="bi bi-type-h2 me-2"></i> Heading
-                  </div>
-                  <div 
-                    style={styles.bpavMoreOptionItem} 
-                    onClick={() => {
-                      applyFormatting('list');
-                      setShowMoreOptions(false);
-                    }}
-                  >
-                    <i className="bi bi-list-ul me-2"></i> Bullet List
-                  </div>
-                  <div 
-                    style={styles.bpavMoreOptionItem} 
-                    onClick={() => {
-                      applyFormatting('numbered-list');
-                      setShowMoreOptions(false);
-                    }}
-                  >
-                    <i className="bi bi-list-ol me-2"></i> Numbered List
-                  </div>
-                  <div 
-                    style={styles.bpavMoreOptionItem} 
-                    onClick={() => {
-                      applyFormatting('quote');
-                      setShowMoreOptions(false);
-                    }}
-                  >
-                    <i className="bi bi-blockquote-left me-2"></i> Blockquote
-                  </div>
-                </div>
               </div>
-              <textarea
-                className="form-control"
-                id="buyerComments"
-                rows="4"
-                placeholder="Enter any extra notes that you would like to appear in this quote."
-                value={buyerComments}
-                onChange={(e) => setBuyerComments(e.target.value)}
-                ref={textareaRef}
-              ></textarea>
-              
+
+              <div
+                ref={editorRef}
+                contentEditable
+                className="border p-3"
+                style={{
+                  minHeight: '200px',
+                  borderRadius: '5px',
+                  border: '1px solid #ccc'
+                }}>
+                Start typing here...
+              </div>
+            </div>
+          
               {/* Preview section - only show if there's content */}
               {buyerComments && (
                 <div className="mt-2">
