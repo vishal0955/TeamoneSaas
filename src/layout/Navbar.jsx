@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Search, Grid, Settings, Maximize, Bell, Mail, ChevronLeft, User, Activity, CreditCard, HelpCircle, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ toggleSidebar}) => {
+const Navbar = ({ toggleSidebar,collapsed}) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -42,9 +42,29 @@ const Navbar = ({ toggleSidebar}) => {
   
   return (
     <>
-    <div className="container top-0 z-50">
+    <div className="container top-0 z-50" style={{position:"fixed",width:"100%",padding:"0px"}}>
       {/* Navbar */}
+      
       <div className=" bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between">
+
+
+      {/* icon */}
+      <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
+          {collapsed ? (
+            <span className="text-indigo-600 font-bold text-2xl">H</span>
+          ) : (
+            <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
+          )}
+          <button
+            onClick={toggleSidebar}
+            className="p-1.5 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
+          >
+            {collapsed ? "→" : "←"}
+          </button>
+        </div>
+      {/* icon */}
+
+
         {/* Left section */}
         <div className="flex items-center space-x-3">
           <button 

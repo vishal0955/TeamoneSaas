@@ -11,15 +11,26 @@ const Layout = () => {
     };
 
     return (
-        <div className="flex" >
-            <Sidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
-            <div className="flex-1">
-                <Navbar toggleSidebar={toggleSidebar} className="" />
+        // <div className="flex" >
+        //     <Sidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
+        //     <div className="flex-1">
+        //         <Navbar toggleSidebar={toggleSidebar} className="" />
                 
-                <Outlet />
+        //         <Outlet />
                
+        //     </div>
+        // </div>
+        <>
+        <div className="main-content-nav">
+        <Navbar toggleSidebar={toggleSidebar} className="" />
+            <div className="flex">
+            <Sidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
+                <div className="flex-1 mt-5" style={{overflow:"hidden"}}>
+                <Outlet />
+                </div>
             </div>
         </div>
+        </>
     );
 };
 

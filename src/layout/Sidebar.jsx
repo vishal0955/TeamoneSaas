@@ -16,6 +16,7 @@ import {
   SquareCheckBig,
   Box,
   File,
+  HelpingHandIcon,
   HelpCircle,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
@@ -264,7 +265,6 @@ const menuItems = [
  
 ];
 
-
 const superAdminMenu = [
   {
     name: "Dashboard",
@@ -344,7 +344,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black/30 transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/30  transition-opacity duration-300 ${
           !collapsed && isMobile
             ? "opacity-100 z-200"
             : "opacity-0 pointer-events-none"
@@ -353,13 +353,11 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
       />
 
       <aside
-        className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
-          isMobile && collapsed ? "w-0" :
-          collapsed ? "w-20" : "w-56"
-        } z-30`}
+        className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out mt-5 ${isMobile && collapsed ? "w-0 " : collapsed ? "w-20" : "w-56"}`}
+       
       >
         {/* Fixed Header */}
-        <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
+        {/* <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
           {collapsed ? (
             <span className="text-indigo-600 font-bold text-2xl">H</span>
           ) : (
@@ -371,7 +369,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
           >
             {collapsed ? "→" : "←"}
           </button>
-        </div>
+        </div> */}
 
         {/* Scrollable Navigation */}
         <nav className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400">
@@ -537,9 +535,11 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <main
         className={`transition-all duration-300 ${
-          isMobile && collapsed ? "w-0":
+          isMobile && collapsed ? "ml-0" :
           collapsed ? "ml-20" : "ml-56"
         }`}
+
+        
       >
         
       </main>
