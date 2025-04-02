@@ -70,16 +70,16 @@ const Navbar = ({ toggleSidebar,collapsed}) => {
         {/* Left section */}
         <div className='flex '>
         <div className="flex items-center space-x-3 me-3">
-          <button 
+          {/* <button 
             onClick={toggleSidebar} 
             className="text-gray-500 hover:text-gray-700 focus:outline-none"
             
           >
             <ChevronLeft size={20} />
-          </button>
+          </button> */}
           
           <div className="relative">
-            <div className="flex items-center bg-gray-100 rounded-md px-2 py-1">
+            <div className="flex items-center bg-gray-100 rounded-md px-2 py-1 nav-search-btn">
               <Search size={16} className="text-gray-500 mr-2" />
               <input
                 type="text"
