@@ -35,7 +35,7 @@ const QuoteNotification = () => {
           id="quote-link"
           type="text"
           className="quote-link-input"
-          value="https://email.bpav.global/ZyGeRcxZY8"
+          value="https://email.xyz.global/ZyGeRcxZY8"
           readOnly
         />
         <button className="quote-copy-btn" onClick={handleCopyLink}>

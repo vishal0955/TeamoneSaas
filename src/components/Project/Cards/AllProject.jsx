@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Kanban } from 'lucide-react';
+import { Kanban } from "lucide-react";
 import ProjectCard from "./proj_card";
 
 const initialTasks = [
@@ -147,41 +147,35 @@ const AllProject = () => {
 
   const navigate = useNavigate();
   return (
+    <>    
     <div className="container mt-4">
       {/* Header */}
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h4 className="mb-0 text-2xl font-bold">All Projects</h4>
-        <div className="add-toggle d-flex">
-          <div className="d-flex align-items-center gap-3 mb-4">
-            <div className="view-toggle">
-              <Link to="/ProjectTimelineCalendar" >
-              <button
-              // className={view === "grid" ? "active" : ""}
-              // onClick={() => toggleView("grid")}
-              >
-                <i className="bi bi-grid me-2" /> TimeLine
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+        <h4 className="mb-0 text-2xl font-bold text-center text-md-start">
+          All Projects
+        </h4>
+
+        <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
+          <div className="view-toggle d-flex flex-wrap gap-1">
+            <Link to="/ProjectTimelineCalendar">
+              <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+                <i className="bi bi-grid" /> TimeLine
               </button>
-              </Link>
-              <Link to="/projectlist">
-              <button
-              // className={view === "list" ? "active" : ""}
-              // onClick={() => toggleView("list")}
-              >
-                <i className="bi bi-list me-2" /> List View
+            </Link>
+            <Link to="/projectlist">
+              <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+                <i className="bi bi-list" /> List View
               </button>
-              </Link>
-              <Link to="/kanban">
-              <button
-              // className={view === "list" ? "active" : ""}
-              // onClick={() => toggleView("list")}
-              >
-                  <Kanban /> Board View
+            </Link>
+            <Link to="/kanban">
+              <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+                <Kanban /> Board View
               </button>
-              </Link>
-            </div>
+            </Link>
           </div>
+
           <button
-            className="btn add-project-btn ms-3"
+            className="btn btn-primary add-project-btn mt-2 mt-md-0"
             style={{ height: "fit-content" }}
             onClick={handleOpenModal}
           >
@@ -190,65 +184,75 @@ const AllProject = () => {
         </div>
       </div>
 
-      <div className="table-responsive">
-        <table className="table align-middle text-nowrap">
-          <thead className="text-nowrap">
-            <tr>
-              <th style={{ width: "40px" }}>
-                <input type="checkbox" className="form-check-input" />
-              </th>
-              <th>Project Name</th>
-              <th>Members</th>
-              <th>Start Date</th>
-              <th>Deadline</th>
-               <th>Client</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tasks.map((task) => (
-              <tr key={task.id}>
-                <td>
-                  <input type="checkbox" className="form-check-input" />
-                </td>
-                <td>{task.name}</td>
-                <td>
-                  <img src={task.avatar} className="avatar me-1" alt="avatar" />
-                  +3
-                </td>
-                <td>{task.startDate}</td>
-                <td>{task.deadline}</td>
-                <td>{task.client}</td>
-               
-                <td>
-                  <div className="progress" style={{ height: "10px" }}>
-                    <div
-                      className="progress-bar bg-success"
-                      style={{ width: `${task.progress}%` }}
-                    ></div>
-                  </div>
-                  <span className="badge bg-info mt-1">{task.status}</span>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleOpenModal(task)}
-                    className="text-blue-500"
-                  >
-                    <i className="bi bi-pencil"></i>
-                  </button>
-                  <button
-                    onClick={() => handleDelete(task.id)}
-                    className="text-red-500"
-                  >
-                    <i className="bi bi-trash"></i>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <div
+  className="table-responsive"
+  style={{ maxHeight: "500px", overflowX: "auto", overflowY: "auto" }}
+>
+  <table className="table table-bordered align-middle text-nowrap">
+    <thead className="table-light">
+      <tr>
+        <th style={{ width: "40px" }}>
+          <input type="checkbox" className="form-check-input" />
+        </th>
+        <th>Project Name</th>
+        <th>Members</th>
+        <th>Start Date</th>
+        <th>Deadline</th>
+        <th>Client</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {tasks.map((task) => (
+        <tr key={task.id}>
+          <td>
+            <input type="checkbox" className="form-check-input" />
+          </td>
+          <td>{task.name}</td>
+          <td className="d-flex align-items-center">
+            <img
+              src={task.avatar}
+              className="rounded-circle me-1"
+              width="30"
+              height="30"
+              alt="avatar"
+            />
+            +3
+          </td>
+          <td>{task.startDate}</td>
+          <td>{task.deadline}</td>
+          <td>{task.client}</td>
+          <td>
+            <div className="progress" style={{ height: "10px" }}>
+              <div
+                className="progress-bar bg-success"
+                style={{ width: `${task.progress}%` }}
+              ></div>
+            </div>
+            <span className="badge bg-info mt-1">{task.status}</span>
+          </td>
+          <td className="d-flex gap-2">
+            <button
+              onClick={() => handleOpenModal(task)}
+              className="btn btn-sm btn-outline-primary"
+            >
+              <i className="bi bi-pencil" />
+            </button>
+            <button
+              onClick={() => handleDelete(task.id)}
+              className="btn btn-sm btn-outline-danger"
+            >
+              <i className="bi bi-trash" />
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+
 
       {/* Pagination */}
       <div className="d-flex justify-content-between align-items-center mt-4">
@@ -284,125 +288,6 @@ const AllProject = () => {
         </nav>
       </div>
 
-      {/* Modal */}
-      {/* {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[90vh]">
-            <div className="flex justify-between items-center border-b pb-2 mb-4">
-              <h3 className="text-xl font-semibold">Add Project</h3>
-              <button
-                onClick={handleCloseModal}
-                className="text-gray-500 hover:text-black text-2xl"
-              >
-                &times;
-              </button>
-            </div>
-
-            <form className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Project Name *
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full border px-3 py-2 rounded"
-                    placeholder="Write a project name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Deadline *
-                  </label>
-                  <input
-                    type="date"
-                    className="w-full border px-3 py-2 rounded"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Start Date
-                  </label>
-                  <input
-                    type="date"
-                    className="w-full border px-3 py-2 rounded"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Department
-                  </label>
-                  <select className="w-full border px-3 py-2 rounded">
-                    <option>Nothing selected</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Client
-                  </label>
-                  <select className="w-full border px-3 py-2 rounded">
-                    <option>--</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Project Category
-                  </label>
-                  <select className="w-full border px-3 py-2 rounded">
-                    <option>--</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Add Project Members *
-                  </label>
-                  <select className="w-full border px-3 py-2 rounded">
-                    <option>Nothing selected</option>
-                  </select>
-                </div>
-              </div>
-
-              // <div className="mt-4">
-              //   <label className="block text-sm font-medium mb-1">
-              //     Public Gantt Chart
-              //   </label>
-              //   <div className="flex items-center gap-4">
-              //     <label className="inline-flex items-center">
-              //       <input
-              //         type="radio"
-              //         name="gantt"
-              //         defaultChecked
-              //         className="form-radio"
-              //       />
-              //       <span className="ml-2">Enable</span>
-              //     </label>
-              //     <label className="inline-flex items-center">
-              //       <input type="radio" name="gantt" className="form-radio" />
-              //       <span className="ml-2">Disable</span>
-              //     </label>
-              //   </div>
-              // </div>
-
-              <div className="flex justify-end gap-3 pt-4 border-t mt-4">
-                <button
-                  type="button"
-                  onClick={handleCloseModal}
-                  className="px-4 py-2 bg-gray-300 rounded"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded"
-                >
-                  Save
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )} */}
-
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[100vh]">
@@ -417,7 +302,7 @@ const AllProject = () => {
                 &times;
               </button>
             </div>
-                  <ProjectCard/>
+            <ProjectCard />
             {/* <form onSubmit={handleAddOrEditProject} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -553,7 +438,7 @@ const AllProject = () => {
                     </label>
                   </div>
                 </div> */}
-              {/* </div>
+            {/* </div>
               <div className="flex justify-end gap-3 pt-4 border-t mt-4">
                 <button
                   type="button"
@@ -569,7 +454,7 @@ const AllProject = () => {
                   Save
                 </button>
               </div>
-            </form> */} 
+            </form> */}
           </div>
         </div>
       )}
@@ -680,6 +565,8 @@ const AllProject = () => {
         </div>
       )}
     </div>
+    </>
+
   );
 };
 

@@ -5,14 +5,15 @@ const RecruitmentPipeline = () => {
     <div className="bg-gray-50 font-sans">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <header className="flex items-center justify-between h-16 border-b border-gray-200">
-          <div className="flex items-center">
+        <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 py-4 px-4 border-b border-gray-200">
+          {/* Left Section */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center w-full sm:w-auto gap-3 sm:gap-8">
             <img
               src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
               alt="Logo"
-              className="h-8 w-auto mr-8"
+              className="h-8 w-auto"
             />
-            <nav className="flex space-x-8">
+            <nav className="flex flex-wrap gap-4 sm:gap-8 text-sm sm:text-base">
               <a href="#" className="text-custom font-medium">
                 Staff Scheduling
               </a>
@@ -21,44 +22,50 @@ const RecruitmentPipeline = () => {
               </a>
             </nav>
           </div>
-          <div className="flex items-center space-x-4">
-            <div className="relative">
+
+          {/* Right Section */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center w-full sm:w-auto gap-3 sm:gap-4">
+            <div className="relative w-full sm:w-auto">
               <i className="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
               <input
                 type="text"
                 placeholder="Search"
-                className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-lg focus:ring-2 focus:ring-custom focus:border-transparent"
+                className="pl-10 pr-4 py-2 w-full sm:w-64 border border-gray-300 rounded-lg focus:ring-2 focus:ring-custom focus:border-transparent"
               />
             </div>
-            <button className="!rounded-button bg-custom text-white px-4 py-2 font-medium hover:bg-opacity-90">
+            <button className="rounded bg-dark text-white px-4 py-2 font-medium hover:bg-opacity-90 w-full sm:w-auto">
               Add Task
             </button>
           </div>
         </header>
 
         {/* Controls */}
-        <div className="flex justify-between items-center my-4">
-          <div className="flex space-x-4">
-            <button className="!rounded-button flex items-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50">
-              <i className="fas fa-layer-group mr-2"></i>
-              Group: Status
-            </button>
-            <button className="!rounded-button flex items-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50">
-              <i className="fas fa-tasks mr-2"></i>
-              Subtasks
-            </button>
-          </div>
-          <div className="flex space-x-4">
-            <button className="!rounded-button flex items-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50">
-              <i className="fas fa-filter mr-2"></i>
-              Filter
-            </button>
-            <button className="!rounded-button flex items-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50">
-              <i className="fas fa-sort mr-2"></i>
-              Sort
-            </button>
-          </div>
-        </div>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 my-4">
+  {/* Left Button Group */}
+  <div className="flex flex-wrap gap-2">
+    <button className="rounded flex items-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50 text-sm">
+      <i className="fas fa-layer-group mr-2"></i>
+      Group: Status
+    </button>
+    <button className="rounded flex items-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50 text-sm">
+      <i className="fas fa-tasks mr-2"></i>
+      Subtasks
+    </button>
+  </div>
+
+  {/* Right Button Group */}
+  <div className="flex flex-wrap gap-2">
+    <button className="rounded flex items-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50 text-sm">
+      <i className="fas fa-filter mr-2"></i>
+      Filter
+    </button>
+    <button className="rounded flex items-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50 text-sm">
+      <i className="fas fa-sort mr-2"></i>
+      Sort
+    </button>
+  </div>
+</div>
+
 
         {/* Pipeline Stages */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -144,7 +151,9 @@ const RecruitmentPipeline = () => {
             <div key={index} className="w-full">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
-                  <span className={`w-2 h-2 rounded-full ${stage.color} mr-2`}></span>
+                  <span
+                    className={`w-2 h-2 rounded-full ${stage.color} mr-2`}
+                  ></span>
                   <h3 className="font-medium">{stage.title}</h3>
                   <span className="ml-2 text-gray-500">{stage.count}</span>
                 </div>
@@ -155,7 +164,9 @@ const RecruitmentPipeline = () => {
               <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
                 <div className="flex justify-between items-start mb-2">
                   <span className="text-gray-500">{stage.id}</span>
-                  <span className={`px-2 py-1 text-xs font-medium rounded ${stage.statusColor}`}>
+                  <span
+                    className={`px-2 py-1 text-xs font-medium rounded ${stage.statusColor}`}
+                  >
                     {stage.status}
                   </span>
                 </div>
