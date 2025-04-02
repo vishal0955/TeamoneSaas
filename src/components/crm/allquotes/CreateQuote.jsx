@@ -5,9 +5,15 @@ import "./Quotes.css";
 import YourInfo from "./create-quotes/YourInfo";
 import SignaturePayment from "./create-quotes/SignaturePayment";
 import Review from "./create-quotes/Review";
-const CreateQuote = () => {
+import ReviewLineItem from "./create-quotes/ReviewLineItem";
+import QuoteTemplateInterface from "./create-quotes/QuoteTemplateInterface";
+import QuoteNotification from "./create-quotes/QuoteNotification";
+import { Link } from "react-router-dom";
+
+const CreateQuote = ({ close }) => {
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 5;
+  const [showPopup, setShowPopup] = useState(false);
+  const totalSteps = 7;
 
   const handleNext = () => {
     if (currentStep < totalSteps) {
@@ -19,6 +25,17 @@ const CreateQuote = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
     }
+  };
+
+  const handleCreate = () => {
+    setShowPopup(true);
+
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+    close();
+
   };
 
   // Step content components
@@ -40,9 +57,21 @@ const CreateQuote = () => {
     </div>
   );
 
+  const Review_lineitem = () => (
+    <div className="quote-section">
+      <ReviewLineItem />
+    </div>
+  );
+
   const Signature_Payment = () => (
     <div className="quote-section">
       <SignaturePayment />
+    </div>
+  );
+
+  const Quote_Templatet = () => (
+    <div className="quote-section">
+      <QuoteTemplateInterface />
     </div>
   );
 
@@ -62,8 +91,12 @@ const CreateQuote = () => {
       case 3:
         return <YourInfoStep />;
       case 4:
-        return <Signature_Payment />;
+        return <Review_lineitem />;
       case 5:
+        return <Signature_Payment />;
+      case 6:
+        return <Quote_Templatet />;
+      case 7:
         return <Review_q />;
       default:
         return <div>Step {currentStep} content</div>;
@@ -92,10 +125,10 @@ const CreateQuote = () => {
                 {index === 0 && "DEAL"}
                 {index === 1 && "BUYER INFO"}
                 {index === 2 && "YOUR INFO"}
-                {/* {index === 3 && "LINE ITEMS"} */}
-                {index === 3 && "SIGNATURE & PAYMENT"}
-                {/* {index === 5 && "TEMPLATE & DETAILS"} */}
-                {index === 4 && "REVIEW"}
+                {index === 3 && "LINE ITEMS"}
+                {index === 4 && "SIGNATURE & PAYMENT"}
+                {index === 5 && "TEMPLATE & DETAILS"}
+                {index === 6 && "REVIEW"}
               </span>
             </div>
           ))}
@@ -148,17 +181,44 @@ const CreateQuote = () => {
             Step {currentStep} of {totalSteps}
           </div>
           <div className="createquote-btn d-flex">
-          <button
-            className="inv-new-button"
-            onClick={handleNext}
-            disabled={currentStep === totalSteps}>
-            Continue
-            <i className="bi bi-arrow-right" />
-          </button>
-          <button className="btn btn-outline-primary ml-4 custom-btn">Save</button>
+            {currentStep < totalSteps ? (
+              <button className="inv-new-button" onClick={handleNext}>
+                Continue
+                <i className="bi bi-arrow-right" />
+              </button>
+            ) : (
+              <Link to="/crm/quotes" >
+              <button type="submit" className="inv-new-button" onClick={handleCreate}>
+                Create
+                <i className="bi bi-check-circle" />
+              </button>
+              </Link>
+            )}
+            <button className="btn btn-outline-primary ml-4 custom-btn">
+              Save
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Popup when quote is created */}
+      {showPopup && (
+        <div className="quote-popup-overlay">
+          <div className="quote-popup">
+            <div className="quote-popup-content">
+              <QuoteNotification />
+            </div>
+            <div className="quote-popup-actions">
+              <button className="quote-email-btn">
+                Write email with quote
+              </button>
+              <button className="quote-close-btn" onClick={closePopup}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

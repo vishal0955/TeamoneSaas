@@ -303,7 +303,7 @@ const AllQuotes = () => {
                   />
                 </div>
                 <div className="modal-body">
-                  <CreateQuote />
+                  <CreateQuote close={handleCloseModal}/>
                 </div>
               </div>
             </div>
