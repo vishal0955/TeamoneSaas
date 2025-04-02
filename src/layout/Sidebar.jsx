@@ -350,6 +350,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
             : "opacity-0 pointer-events-none"
         }`}
         onClick={toggleSidebar}
+       
       />
 
       <aside style={{marginTop:"65px",zIndex:"900"}}
