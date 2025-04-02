@@ -2,10 +2,10 @@ import React from 'react'
 
 const Files = () => {
   return (
-    <div className="min-h-screen flex">
-    <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div className="min-h-screen">
+    <aside className="w-100 bg-white border-r border-gray-200 flex flex-col">
       <div className="p-6">
-        <div className="flex items-center gap-4 mb-8">
+        <div className=" items-center gap-4 mb-8">
           <img
             src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
             alt="Logo"
@@ -140,7 +140,7 @@ const Files = () => {
         </div>
       </header>
       <div className="p-8">
-        <div className="grid grid-cols-4 gap-6 mb-8">
+        <div className="grid  gap-6 mb-8">
           <div className="bg-white p-6 rounded-xl border border-gray-200">
             <div className="flex items-center justify-between mb-4">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
