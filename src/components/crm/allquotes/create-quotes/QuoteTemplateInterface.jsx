@@ -4,7 +4,7 @@ const QuoteTemplateInterface = () => {
   // State for form fields
   const [quoteTemplate, setQuoteTemplate] = useState('Quote Master Main');
   const [quoteName, setQuoteName] = useState('test');
-  const [domain, setDomain] = useState('email.bpav.global');
+  const [domain, setDomain] = useState('email.xyz.global');
   const [contentSlug, setContentSlug] = useState('ZyGeRcxZY8');
   const [expirationDate, setExpirationDate] = useState('In 30 days (24 January 2025)');
   const [quoteLanguage, setQuoteLanguage] = useState('English');
@@ -524,7 +524,7 @@ const QuoteTemplateInterface = () => {
               <div style={styles.bpavQuoteHeader}>
                 <div className="row">
                   <div className="col-md-7">
-                    <div style={styles.bpavQuoteLogo}>BPAV</div>
+                    <div style={styles.bpavQuoteLogo}>XYZ</div>
                     <div style={styles.bpavQuoteTest}>TEST</div>
                     <div style={styles.bpavQuoteNumber}>#20241225-231724666</div>
                     <div style={styles.bpavQuoteDates}>
@@ -542,28 +542,28 @@ const QuoteTemplateInterface = () => {
                   </div>
                   <div className="col-md-5">
                     <div style={styles.bpavQuoteCompanyInfo}>
-                      BPAV Technology Group Ltd
+                      XYZ Technology Group Ltd
                       <br />
-                      Ground Floor, Unit C1
+                      Floor 8, Unit D4
                       <br />
-                      Fairoaks Airport, Chobham, Woking Way
+                      india Airport, Chobham, Park
                       <br />
-                      Basingstoke, Hampshire RG24 8QT
+                      india Airport
                       <br />
-                      United Kingdom
+                       india
                       <br />
                       <br />
-                      Sales: +44 (0)1234 567890
+                      Sales: +11 (0)012356789
                       <br />
-                      (UK) +44 333 343 3101
+                      (in) +91 012 3456 789
                       <br />
-                      (USA) +1(347)352-9627
+                      (RK) +1(000)000-0000
                       <br />
-                      hello@bpav.global
+                      hello@xyz.global
                       <br />
                       Reg No. 12345678
                       <br />
-                      VAT No. 431398144
+                      VAT No. 87654321
                     </div>
                   </div>
                 </div>
@@ -571,9 +571,9 @@ const QuoteTemplateInterface = () => {
                   <div className="col-md-7"></div>
                   <div className="col-md-5 text-end">
                     <div>
-                      Benjamin Price
+                      XYZ
                       <br />
-                      ben.price@bpav.global
+                      hello@xyz.global
                     </div>
                   </div>
                 </div>
@@ -601,10 +601,10 @@ const QuoteTemplateInterface = () => {
 
             {/* Company Info Section */}
             <div style={styles.bpavQuoteFooter}>
-              BPAV
+             XYZ
               <br />
               <p>
-                BPAV Technology Group Ltd is a leading independent multidisciplinary technology consultancy &
+                XYZ Technology Group Ltd is a leading independent multidisciplinary technology consultancy &
                 <br />
                 software development company specializing in the design and implementation of commercial audio
                 <br />
@@ -623,7 +623,7 @@ const QuoteTemplateInterface = () => {
 
             {/* Video Preview */}
             <div style={styles.bpavVideoPreview} className="mt-3">
-              <i className="bi bi-play-circle"></i> BPAV Technology Group: We innovate, create, listen and solve
+              <i className="bi bi-play-circle"></i> XYZ Technology Group: We innovate, create, listen and solve
             </div>
           </div>
         </div>

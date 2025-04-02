@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { getThemeStyles } from './Kanbanboard';
 
 const AddTaskForm = ({ onAdd, onCancel, initialData = {} }) => {
   const themeStyles = useSelector(state => getThemeStyles(state.kanban.isDarkMode));

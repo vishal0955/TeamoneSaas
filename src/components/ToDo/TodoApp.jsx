@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faCheck, 
@@ -11,9 +11,8 @@ import {
   faEllipsisV 
 } from '@fortawesome/free-solid-svg-icons';
 
-// import { useHistory } from 'react-router-dom';
 const PROJECTS = [
-  { id: null, name: 'None' }, // Option for no project
+  { id: null, name: 'None' },
   { id: 1, name: 'Project Alpha' },
   { id: 2, name: 'Project Beta' },
   { id: 3, name: 'Project Gamma' },
@@ -29,7 +28,7 @@ const EMPLOYEES = [
 const PRIORITY_OPTIONS = ['High', 'Medium', 'Low'];
 const TAG_OPTIONS = ['Projects', 'Urgent', 'Internal', 'In progress', 'Reminder', 'Completed'];
 
-const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => { 
+const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   const [formData, setFormData] = useState({
     text: '',
     description: '',
@@ -37,16 +36,16 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
     dueDate: '',
     tags: [],
     assignees: [],
-    project: null // Default to none
+    project: null
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (editTask) {
       setFormData({
         ...editTask,
         tags: Array.isArray(editTask.tags) ? editTask.tags : [],
         assignees: Array.isArray(editTask.assignees) ? editTask.assignees : [],
-        project: editTask.project || null // Set project if exists
+        project: editTask.project || null
       });
     } else {
       setFormData({
@@ -56,7 +55,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
         dueDate: '',
         tags: [],
         assignees: [],
-        project: null // Default to none
+        project: null
       });
     }
   }, [editTask]);
@@ -71,177 +70,178 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
       dueDate: '',
       tags: [],
       assignees: [],
-      project: null // Reset to none
+      project: null
     });
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="">
-      <div className="bg-white rounded-lg  w-full max-w-md">
-        <h2 className="text-lg  text-indigo-600 font-semibold mb-4">{editTask ? 'Edit Task' : 'Add New Task'}</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Title</label>
-              <input
-                type="text"
-                value={formData.text}
-                onChange={(e) => setFormData({ ...formData, text: e.target.value })}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Description</label>
-              <textarea
-                value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                rows="3"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Priority</label>
-              <select
-                value={formData.priority}
-                onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-              >
-                {PRIORITY_OPTIONS.map((priority) => (
-                  <option key={priority} value={priority.toLowerCase()}>
-                    {priority}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Due Date</label>
-              <input
-                type="date"
-                value={formData.dueDate}
-                onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Project</label>
-              <select
-                value={formData.project || ''} // Set to empty string if project is null
-                onChange={(e) => setFormData({ ...formData, project: e.target.value ? Number(e.target.value) : null })}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-              >
-                {PROJECTS.map((project) => (
-                  <option key={project.id} value={project.id}>
-                    {project.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Tags</label>
-              <select
-              
-                value={formData.tags}
-                onChange={(e) => {
-                  const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
-                  setFormData({ ...formData, tags: selectedOptions });
-                }}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-              >
-                {TAG_OPTIONS.map((tag) => (
-                  <option key={tag} value={tag}>
-                    {tag}
-                  </option>
-                ))}
-              </select>
-              <p className="text-xs text-gray-500 mt-1">Hold Ctrl/Cmd to select multiple tags</p>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Assignees</label>
-              <select
-            
-                value={formData.assignees}
-                onChange={(e) => {
-                  const selectedOptions = Array.from(e.target.selectedOptions, (option) => Number(option.value));
-                  setFormData({ ...formData, assignees: selectedOptions });
-                }}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-              >
-                {EMPLOYEES.map((employee) => (
-                  <option key={employee.id} value={employee.id}>
-                    {employee.name}
-                  </option>
-                ))}
-              </select>
-              <p className="text-xs text-gray-500 mt-1">Hold Ctrl/Cmd to select multiple assignees</p>
-            </div>
+    <div className="modal show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+      <div className="modal-dialog modal-dialog-centered" role="document">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title text-indigo-600">
+              {editTask ? 'Edit Task' : 'Add New Task'}
+            </h5>
+            <button type="button" className="btn-close" onClick={onClose}></button>
           </div>
-          <div className="mt-6 flex justify-end space-x-3">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-purple-600 text-white rounded-md text-sm font-medium hover:bg-purple-700"
-            >
-              {editTask ? 'Update Task' : 'Add Task'}
-            </button>
-          </div>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <div className="modal-body">
+              {/* Title */}
+              <div className="mb-3">
+                <label className="form-label">Title</label>
+                <input
+                  type="text"
+                  value={formData.text}
+                  onChange={(e) => setFormData({ ...formData, text: e.target.value })}
+                  className="form-control"
+                  required
+                />
+              </div>
+              {/* Description */}
+              <div className="mb-3">
+                <label className="form-label">Description</label>
+                <textarea
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  className="form-control"
+                  rows="3"
+                />
+              </div>
+              <div className="row">
+                {/* Priority */}
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Priority</label>
+                  <select
+                    value={formData.priority}
+                    onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
+                    className="form-select"
+                  >
+                    {PRIORITY_OPTIONS.map((priority) => (
+                      <option key={priority} value={priority.toLowerCase()}>
+                        {priority}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                {/* Due Date */}
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Due Date</label>
+                  <input
+                    type="date"
+                    value={formData.dueDate}
+                    onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
+                    className="form-control"
+                  />
+                </div>
+              </div>
+              <div className="row">
+                {/* Project */}
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Project</label>
+                  <select
+                    value={formData.project || ''}
+                    onChange={(e) => setFormData({ ...formData, project: e.target.value ? Number(e.target.value) : null })}
+                    className="form-select"
+                  >
+                    {PROJECTS.map((project) => (
+                      <option key={project.id} value={project.id}>
+                        {project.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                {/* Tags */}
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Tags</label>
+                  <select
+                    multiple
+                    value={formData.tags}
+                    onChange={(e) => {
+                      const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+                      setFormData({ ...formData, tags: selectedOptions });
+                    }}
+                    className="form-select"
+                  >
+                    {TAG_OPTIONS.map((tag) => (
+                      <option key={tag} value={tag}>
+                        {tag}
+                      </option>
+                    ))}
+                  </select>
+                  <small className="form-text text-muted">
+                    Hold Ctrl/Cmd to select multiple tags
+                  </small>
+                </div>
+              </div>
+              {/* Assignees */}
+              <div className="mb-3">
+                <label className="form-label">Assignees</label>
+                <select
+                  multiple
+                  value={formData.assignees}
+                  onChange={(e) => {
+                    const selectedOptions = Array.from(e.target.selectedOptions, (option) => Number(option.value));
+                    setFormData({ ...formData, assignees: selectedOptions });
+                  }}
+                  className="form-select"
+                >
+                  {EMPLOYEES.map((employee) => (
+                    <option key={employee.id} value={employee.id}>
+                      {employee.name}
+                    </option>
+                  ))}
+                </select>
+                <small className="form-text text-muted">
+                  Hold Ctrl/Cmd to select multiple assignees
+                </small>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" onClick={onClose} className="btn btn-secondary">
+                Cancel
+              </button>
+              <button type="submit" className="btn btn-primary">
+                {editTask ? 'Update Task' : 'Add Task'}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
 };
 
-
-
 const TaskDropdown = ({ taskId, onEdit, onDelete, onView }) => {
   return (
-    <div className="">
-      <div className="py-1" role="menu">
-        <button
-          onClick={onView}
-          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-          role="menuitem"
-        >
-          View Details
-        </button>
-        <button
-          onClick={onEdit}
-          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-          role="menuitem"
-        >
-          Edit
-        </button>
-        <button
-          onClick={onDelete}
-          className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-          role="menuitem"
-        >
-          Delete
-        </button>
-      </div>
+    <div className="dropdown-menu show">
+      <button
+        onClick={onView}
+        className="dropdown-item"
+        type="button"
+      >
+        View Details
+      </button>
+      <button
+        onClick={onEdit}
+        className="dropdown-item"
+        type="button"
+      >
+        Edit
+      </button>
+      <button
+        onClick={onDelete}
+        className="dropdown-item text-danger"
+        type="button"
+      >
+        Delete
+      </button>
     </div>
   );
 };
 
 const TodoApp = () => {
-
- 
-
-  // Inside your TodoApp component
-  // const history = useHistory();
-  
-  // const handleViewDetails = (task) => {
-  //   history.push(`/task/${task.id}`, { task }); // Pass the task data as state
-  // };
-
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -291,63 +291,49 @@ const TodoApp = () => {
     });
 
   const [newTask, setNewTask] = useState('');
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [newTaskForm, setNewTaskForm] = useState({
-    text: '',
-    description: '',
-    priority: 'medium',
-    dueDate: '',
-    tags: [],
-    assignees: []
-  });
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
 
   const handleClose = () => {
     setIsModalOpen(false);
-
-};
+    setEditingTask(null);
+  };
 
   const handleCheckboxChange = (taskId) => {
-    setTasks(tasks.map(task => 
+    setTasks(tasks.map(task =>
       task.id === taskId ? { ...task, completed: !task.completed } : task
     ));
   };
 
   const getTagColor = (tag) => {
     switch(tag) {
-      case 'Projects': return 'bg-green-100 text-green-600';
-      case 'Urgent': return 'bg-red-100 text-red-600';
-      case 'Internal': return 'bg-red-100 text-red-600';
-      case 'In progress': return 'bg-purple-100 text-purple-600';
-      case 'Reminder': return 'bg-blue-100 text-blue-600';
-      case 'Completed': return 'bg-green-100 text-green-600';
-      default: return 'bg-gray-100 text-gray-600';
+      case 'Projects': return 'badge bg-success text-light';
+      case 'Urgent': return 'badge bg-danger text-light';
+      case 'Internal': return 'badge bg-danger text-light';
+      case 'In progress': return 'badge bg-primary text-light';
+      case 'Reminder': return 'badge bg-info text-dark';
+      case 'Completed': return 'badge bg-success text-light';
+      default: return 'badge bg-secondary text-light';
     }
   };
 
   const highPriorityTasks = tasks.filter(task => task.priority === 'high');
   const mediumPriorityTasks = tasks.filter(task => task.priority === 'medium');
 
-  // Add this function with other handlers in TodoApp
   const handleAddTask = (newTaskData) => {
-    const newTask = {
+    const newTaskObj = {
       id: tasks.length + 1,
       ...newTaskData,
       completed: false,
-      // Ensure tags and assignees are arrays
       tags: Array.isArray(newTaskData.tags) ? newTaskData.tags : [],
       assignees: Array.isArray(newTaskData.assignees) ? newTaskData.assignees : []
     };
-    
-    setTasks(prevTasks => [...prevTasks, newTask]);
+    setTasks(prevTasks => [...prevTasks, newTaskObj]);
     setIsModalOpen(false);
     setEditingTask(null);
   };
 
-  // Add these handlers in TodoApp component
   const handleEdit = (task) => {
     setEditingTask(task);
     setIsModalOpen(true);
@@ -360,26 +346,20 @@ const TodoApp = () => {
   };
 
   const handleViewDetails = (task) => {
-    // Implement view details functionality
     console.log('View details:', task);
     setActiveDropdown(null);
   };
 
-  // Add this useEffect in TodoApp component
-  React.useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event) => {
-      if (activeDropdown && !event.target.closest('.relative')) {
+      if (activeDropdown && !event.target.closest('.position-relative')) {
         setActiveDropdown(null);
       }
     };
-
     document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
+    return () => document.removeEventListener('click', handleClickOutside);
   }, [activeDropdown]);
 
-  // Add this helper function in TodoApp component
   const getAssigneeName = (id) => {
     const employee = EMPLOYEES.find(emp => emp.id === id);
     return employee ? employee.name : '';
@@ -389,377 +369,313 @@ const TodoApp = () => {
     <div className="bg-gray-50 min-h-screen">
       <div className="container mx-auto px-2 max-w-8xl">
         {/* Header */}
-        <header className="flex flex-col md:flex-row md:items-center mb-6 space-y-4 md:space-y-0">
-          <div className="flex items-center">
-          
-            <div className="flex text-gray-700 text-sm">
-              {/* <span>Application</span> */}
-              {/* <span className="mx-1">/</span> */}
-              <span className="font-medium">Todo</span>
-            </div>
+        <header className="row align-items-center mb-4">
+          <div className="col-md-6">
+            <h1 className="h3 mb-0">Todo</h1>
           </div>
-          <div className="md:ml-auto flex items-center">
-            <div className="relative flex-grow md:flex-grow-0 justify-between">
+          <div className="col-md-6 d-flex justify-content-md-end">
+            <div className="input-group me-2">
+              <span className="input-group-text">
+                <FontAwesomeIcon icon={faSearch} />
+              </span>
               <input 
                 type="text" 
+                className="form-control" 
                 placeholder="Search Todo List" 
-                className="w-full bg-white border border-gray-200 rounded-md py-1 px-3 pl-8 text-sm"
-              />
-              <FontAwesomeIcon 
-                icon={faSearch} 
-                className="text-gray-400 absolute right-2 top-2 " 
               />
             </div>
-            <button className="ml-2 bg-white border border-gray-200 rounded-md p-1">
-              <FontAwesomeIcon icon={faCog} className="text-gray-500" />
+            <button className="btn btn-outline-secondary">
+              <FontAwesomeIcon icon={faCog} />
             </button>
           </div>
         </header>
 
-        {/* Main Content */}
-        <main>
-          {/* Total Todo Header */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 space-y-4 md:space-y-0">
-            <div className="flex items-center">
-              <h1 className="text-lg font-semibold">Total Todo</h1>
-              <span className="ml-2 text-gray-500 text-sm">41</span>
-            </div>
-            <div className="flex flex-wrap items-center text-sm text-gray-500 gap-4">
-              <div>
-                <span>Total Tasks:</span>
-                <span className="font-medium ml-1">55</span>
-              </div>
-              <div>
-                <span>Pending:</span>
-                <span className="font-medium ml-1">15</span>
-              </div>
-              <div>
-                <span>Completed:</span>
-                <span className="font-medium ml-1">40</span>
-              </div>
-            </div>
+        {/* Stats */}
+        <div className="row align-items-center mb-4">
+          <div className="col-md-6">
+            <h2 className="h5 mb-0">Total Todo <small className="text-muted">41</small></h2>
           </div>
-
-          {/* New Task Input */}
-          <div className="mb-4 relative">
-            <div className="flex items-center border border-gray-200 rounded-md bg-white pr-2">
-              <div className="p-2">
-                <FontAwesomeIcon icon={faPlus} className="text-gray-400 text-xs" />
-              </div>
-              <input 
-                type="text" 
-                placeholder="New task" 
-                className="flex-grow py-2 px-1 text-sm border-none outline-none cursor-pointer"
-                value={newTask}
-                onClick={() => setIsModalOpen(true)}
-                readOnly
-              />
-            </div>
+          <div className="col-md-6 text-md-end">
+            <span className="me-3">Total Tasks: <strong>55</strong></span>
+            <span className="me-3">Pending: <strong>15</strong></span>
+            <span>Completed: <strong>40</strong></span>
           </div>
+        </div>
 
-          {/* Priority Filter */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 space-y-4 md:space-y-0">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs text-gray-500">Priority</span>
+        {/* New Task Input */}
+        <div className="mb-4">
+          <div className="input-group">
+            <span className="input-group-text bg-white">
+              <FontAwesomeIcon icon={faPlus} className="text-muted" />
+            </span>
+            <input 
+              type="text" 
+              className="form-control" 
+              placeholder="New task" 
+              value={newTask}
+              onClick={() => setIsModalOpen(true)}
+              readOnly
+            />
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div className="row mb-4">
+          <div className="col-md-6 mb-2 mb-md-0">
+            <div className="btn-group" role="group">
               <button 
-                className={`px-3 py-1 text-xs rounded-md ${activeFilter === 'all' ? 'bg-black text-white' : 'bg-white text-gray-700'}`}
+                className={`btn btn-sm ${activeFilter === 'all' ? 'btn-dark' : 'btn-light'}`}
                 onClick={() => setActiveFilter('all')}
               >
                 All
               </button>
               <button 
-                className={`px-3 py-1 text-xs rounded-md ${activeFilter === 'high' ? 'bg-black text-white' : 'bg-white text-gray-700'}`}
+                className={`btn btn-sm ${activeFilter === 'high' ? 'btn-dark' : 'btn-light'}`}
                 onClick={() => setActiveFilter('high')}
               >
                 High
               </button>
               <button 
-                className={`px-3 py-1 text-xs rounded-md ${activeFilter === 'medium' ? 'bg-black text-white' : 'bg-white text-gray-700'}`}
+                className={`btn btn-sm ${activeFilter === 'medium' ? 'btn-dark' : 'btn-light'}`}
                 onClick={() => setActiveFilter('medium')}
               >
                 Medium
               </button>
               <button 
-                className={`px-3 py-1 text-xs rounded-md ${activeFilter === 'low' ? 'bg-black text-white' : 'bg-white text-gray-700'}`}
+                className={`btn btn-sm ${activeFilter === 'low' ? 'btn-dark' : 'btn-light'}`}
                 onClick={() => setActiveFilter('low')}
               >
                 Low
               </button>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="flex flex-wrap items-center gap-2">
-  {/* Due Date Filter */}
-  <div>
-    <label className="text-xs text-gray-500">Due Date</label>
-    <select
-      value={dueDateFilter}
-      onChange={(e) => setDueDateFilter(e.target.value)}
-      className="block w-full border border-gray-300 rounded-md shadow-sm p-2 text-xs mt-1"
-    >
-      <option value="">All</option>
-      {Array.from(new Set(tasks.map((task) => task.dueDate))).map((date) => (
-        <option key={date} value={date}>
-          {new Date(date).toLocaleDateString()}
-        </option>
-      ))}
-    </select>
-  </div>
-
-  {/* All Tags Filter */}
-  <div>
-    <label className="text-xs text-gray-500">All Tags</label>
-    <select
-      value={tagFilter}
-      onChange={(e) => setTagFilter(e.target.value)}
-      className="block w-full border border-gray-300 rounded-md shadow-sm p-2 text-xs mt-1"
-    >
-      <option value="">All</option>
-      {TAG_OPTIONS.map((tag) => (
-        <option key={tag} value={tag}>
-          {tag}
-        </option>
-      ))}
-    </select>
-  </div>
-
-  {/* Sort By Filter */}
-  <div>
-    <label className="text-xs text-gray-500">Sort By</label>
-    <select
-      value={sortBy}
-      onChange={(e) => setSortBy(e.target.value)}
-      className="block w-full border border-gray-300 rounded-md shadow-sm p-2 text-xs mt-1"
-    >
-      <option value="createdDate">Created Date</option>
-      <option value="dueDate">Due Date</option>
-    </select>
-  </div>
-</div>
-
+          </div>
+          <div className="col-md-6">
+            <div className="row g-2">
+              <div className="col-12 col-sm-4">
+                <label className="form-label small">Due Date</label>
+                <select
+                  value={dueDateFilter}
+                  onChange={(e) => setDueDateFilter(e.target.value)}
+                  className="form-select form-select-sm"
+                >
+                  <option value="">All</option>
+                  {Array.from(new Set(tasks.map((task) => task.dueDate))).map((date) => (
+                    <option key={date} value={date}>
+                      {new Date(date).toLocaleDateString()}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="col-12 col-sm-4">
+                <label className="form-label small">All Tags</label>
+                <select
+                  value={tagFilter}
+                  onChange={(e) => setTagFilter(e.target.value)}
+                  className="form-select form-select-sm"
+                >
+                  <option value="">All</option>
+                  {TAG_OPTIONS.map((tag) => (
+                    <option key={tag} value={tag}>
+                      {tag}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="col-12 col-sm-4">
+                <label className="form-label small">Sort By</label>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="form-select form-select-sm"
+                >
+                  <option value="createdDate">Created Date</option>
+                  <option value="dueDate">Due Date</option>
+                </select>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* High Priority Section */}
-          {(activeFilter === 'all' || activeFilter === 'high') && (
-            <div className="mb-6">
-              <div className="flex items-center mb-2">
-                <FontAwesomeIcon icon={faChevronDown} className="text-xs mr-2 text-gray-500" />
-                <h2 className="text-sm font-semibold">High</h2>
-                <span className="ml-2 text-xs text-gray-500">{highPriorityTasks.length}</span>
-                <div className="ml-auto">
-                  <button 
-                    className="text-xs text-blue-600 mr-2"
-                    onClick={() => setIsModalOpen(true)}
-                  >
-                    Add New
-                  </button>
-                  <button className="text-xs text-gray-500">See All</button>
-                </div>
+        {/* Task Sections */}
+        {/* High Priority Section */}
+        {(activeFilter === 'all' || activeFilter === 'high') && (
+          <div className="mb-5">
+            <div className="d-flex align-items-center mb-2">
+              <FontAwesomeIcon icon={faChevronDown} className="me-2 text-muted" />
+              <h3 className="h6 mb-0">High</h3>
+              <span className="ms-2 text-muted small">{highPriorityTasks.length}</span>
+              <div className="ms-auto">
+                <button 
+                  className="btn btn-link btn-sm text-decoration-none"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Add New
+                </button>
+                <button className="btn btn-link btn-sm text-decoration-none text-muted">
+                  See All
+                </button>
               </div>
-
-              {/* High Priority Tasks */}
-              {highPriorityTasks.map((task, index) => (
-                <div key={task.id} className={`border border-gray-200 rounded-md bg-white ${index < highPriorityTasks.length - 1 ? 'mb-2' : ''}`}>
-                  <div className="flex items-center p-3">
-                    <div className="mr-3">
-                      <input 
-                        type="checkbox" 
-                        checked={task.completed}
-                        onChange={() => handleCheckboxChange(task.id)}
-                        className="w-4 h-4 rounded"
-                      />
-                    </div>
-                    <div className="flex-grow">
-                      <p className={`font-medium text-sm ${task.completed ? 'line-through text-gray-500' : ''}`}>
-                        {task.text}
-                      </p>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs text-gray-500">{task.dueDate}</span>
-                      {task.tags.map(tag => (
-                        <span key={tag} className={`px-2 py-1 ${getTagColor(tag)} text-xs rounded`}>
-                          {tag}
-                        </span>
-                      ))}
-                      <div className="flex -space-x-2">
-                        {task.assignees.map(assigneeId => (
-                          <div 
-                            key={assigneeId}
-                            className="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs font-medium"
-                            title={getAssigneeName(assigneeId)}
-                          >
-                            {getAssigneeName(assigneeId).charAt(0)}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="relative">
-                        <button 
-                          className="text-gray-400 p-1"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveDropdown(activeDropdown === task.id ? null : task.id);
-                          }}
+            </div>
+            {highPriorityTasks.map((task, index) => (
+              <div key={task.id} className="card mb-2">
+                <div className="card-body d-flex align-items-center p-2">
+                  <div className="form-check me-3">
+                    <input 
+                      type="checkbox" 
+                      className="form-check-input" 
+                      checked={task.completed}
+                      onChange={() => handleCheckboxChange(task.id)}
+                    />
+                  </div>
+                  <div className="flex-grow-1">
+                    <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
+                      {task.text}
+                    </p>
+                  </div>
+                  <div className="d-flex align-items-center gap-2">
+                    <span className="text-muted small">{task.dueDate}</span>
+                    {task.tags.map(tag => (
+                      <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
+                        {tag}
+                      </span>
+                    ))}
+                    <div className="d-flex">
+                      {task.assignees.map(assigneeId => (
+                        <div 
+                          key={assigneeId}
+                          className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
+                          style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                          title={getAssigneeName(assigneeId)}
                         >
-                          <FontAwesomeIcon icon={faEllipsisV} />
-                        </button>
-                        {activeDropdown === task.id && (
+                          {getAssigneeName(assigneeId).charAt(0)}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="position-relative">
+                      <button 
+                        className="btn btn-sm btn-light"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveDropdown(activeDropdown === task.id ? null : task.id);
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faEllipsisV} />
+                      </button>
+                      {activeDropdown === task.id && (
+                        <div className="position-absolute end-0 mt-2">
                           <TaskDropdown
                             taskId={task.id}
                             onEdit={() => handleEdit(task)}
                             onDelete={() => handleDelete(task.id)}
                             onView={() => handleViewDetails(task)}
                           />
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
-
-          {/* Medium Priority Section */}
-          {(activeFilter === 'all' || activeFilter === 'medium') && (
-            <div>
-              <div className="flex items-center mb-2">
-                <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 text-gray-500" />
-                <h2 className="text-sm font-semibold">Medium</h2>
-                <span className="ml-2 text-xs text-gray-500">{mediumPriorityTasks.length}</span>
-                <div className="ml-auto">
-                  <button 
-                    className="text-xs text-blue-600 mr-2"
-                    onClick={() => setIsModalOpen(true)}
-                  >
-                    Add New
-                  </button>
-                  <button className="text-xs text-gray-500">See All</button>
-                </div>
               </div>
+            ))}
+          </div>
+        )}
 
-              {/* Medium Priority Tasks */}
-              {mediumPriorityTasks.map(task => (
-                <div key={task.id} className="border border-gray-200 rounded-md bg-white">
-                  <div className="flex items-center p-3">
-                    <div className="mr-3">
-                      <input 
-                        type="checkbox" 
-                        checked={task.completed}
-                        onChange={() => handleCheckboxChange(task.id)}
-                        className="w-4 h-4 rounded"
-                      />
-                    </div>
-                    <div className="flex-grow">
-                      <p className={`font-medium text-sm ${task.completed ? 'line-through text-gray-500' : ''}`}>
-                        {task.text}
-                      </p>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs text-gray-500">{task.dueDate}</span>
-                      {task.tags.map(tag => (
-                        <span key={tag} className={`px-2 py-1 ${getTagColor(tag)} text-xs rounded`}>
-                          {tag}
-                        </span>
-                      ))}
-                      <div className="flex -space-x-2">
-                        {task.assignees.map(assigneeId => (
-                          <div 
-                            key={assigneeId}
-                            className="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs font-medium"
-                            title={getAssigneeName(assigneeId)}
-                          >
-                            {getAssigneeName(assigneeId).charAt(0)}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="relative">
-                        <button 
-                          className="text-gray-400 p-1"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveDropdown(activeDropdown === task.id ? null : task.id);
-                          }}
+        {/* Medium Priority Section */}
+        {(activeFilter === 'all' || activeFilter === 'medium') && (
+          <div>
+            <div className="d-flex align-items-center mb-2">
+              <FontAwesomeIcon icon={faChevronRight} className="me-2 text-muted" />
+              <h3 className="h6 mb-0">Medium</h3>
+              <span className="ms-2 text-muted small">{mediumPriorityTasks.length}</span>
+              <div className="ms-auto">
+                <button 
+                  className="btn btn-link btn-sm text-decoration-none"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Add New
+                </button>
+                <button className="btn btn-link btn-sm text-decoration-none text-muted">
+                  See All
+                </button>
+              </div>
+            </div>
+            {mediumPriorityTasks.map(task => (
+              <div key={task.id} className="card mb-2">
+                <div className="card-body d-flex align-items-center p-2">
+                  <div className="form-check me-3">
+                    <input 
+                      type="checkbox" 
+                      className="form-check-input" 
+                      checked={task.completed}
+                      onChange={() => handleCheckboxChange(task.id)}
+                    />
+                  </div>
+                  <div className="flex-grow-1">
+                    <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
+                      {task.text}
+                    </p>
+                  </div>
+                  <div className="d-flex align-items-center gap-2">
+                    <span className="text-muted small">{task.dueDate}</span>
+                    {task.tags.map(tag => (
+                      <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
+                        {tag}
+                      </span>
+                    ))}
+                    <div className="d-flex">
+                      {task.assignees.map(assigneeId => (
+                        <div 
+                          key={assigneeId}
+                          className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
+                          style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                          title={getAssigneeName(assigneeId)}
                         >
-                          <FontAwesomeIcon icon={faEllipsisV} />
-                        </button>
-                        {activeDropdown === task.id && (
+                          {getAssigneeName(assigneeId).charAt(0)}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="position-relative">
+                      <button 
+                        className="btn btn-sm btn-light"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveDropdown(activeDropdown === task.id ? null : task.id);
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faEllipsisV} />
+                      </button>
+                      {activeDropdown === task.id && (
+                        <div className="position-absolute end-0 mt-2">
                           <TaskDropdown 
                             taskId={task.id}
                             onEdit={() => handleEdit(task)}
                             onDelete={() => handleDelete(task.id)}
                             onView={() => handleViewDetails(task)}
                           />
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
-        </main>
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
 
+      {/* Modal for Task Form */}
       {isModalOpen && (
-                    <div className="fixed inset-0 z-50 overflow-y-auto">
-                        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                            <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-                                <div 
-                                    className="absolute inset-0 bg-gray-500 opacity-75"
-                                    onClick={handleClose}
-                                ></div>
-                            </div>
-                            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                                <div className="bg-white px-4 pb-4 sm:p-6 sm:pb-4">
-                                    <div className="flex justify-between items-start">
-                                        <h3 className="text-lg leading-6 font-medium text-gray-900">
-                                            {/* {editingTraining ? 'Edit Training' : 'Add New Training'} */}
-                                        </h3>
-                                        <button
-                                            type="button"
-                                            className="text-gray-400 hover:text-gray-500 focus:outline-none"
-                                            onClick={handleClose}
-                                        >
-                                            <span className="sr-only">Close</span>
-                                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div className="mt-4">
-                                        {/* <AddTraining 
-                                            handleClose={handleClose} 
-                                            handleAddTraining={handleAddTraining}
-                                            training={editingTraining}
-                                        /> */}
-
-<TaskFormPopup 
-        isOpen={isModalOpen} 
-        onClose={() => {
-          setIsModalOpen(false);
-          setEditingTask(null);
-          setNewTask('');
-        }} 
-        onSubmit={handleAddTask}
-        editTask={editingTask}
-      />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-      
-      {/* <TaskFormPopup 
-        isOpen={showPopup} 
-        onClose={() => {
-          setIsModalOpen(false);
-          setEditingTask(null);
-          setNewTask('');
-        }} 
-        onSubmit={handleAddTask}
-        editTask={editingTask}
-      /> */}
+        <TaskFormPopup 
+          isOpen={isModalOpen} 
+          onClose={() => {
+            setIsModalOpen(false);
+            setEditingTask(null);
+            setNewTask('');
+          }} 
+          onSubmit={handleAddTask}
+          editTask={editingTask}
+        />
+      )}
     </div>
   );
 };
