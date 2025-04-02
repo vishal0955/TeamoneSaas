@@ -4,7 +4,7 @@ const QuoteTemplateInterface = () => {
   // State for form fields
   const [quoteTemplate, setQuoteTemplate] = useState('Quote Master Main');
   const [quoteName, setQuoteName] = useState('test');
-  const [domain, setDomain] = useState('email.bpav.global');
+  const [domain, setDomain] = useState('email.xyz.global');
   const [contentSlug, setContentSlug] = useState('ZyGeRcxZY8');
   const [expirationDate, setExpirationDate] = useState('In 30 days (24 January 2025)');
   const [quoteLanguage, setQuoteLanguage] = useState('English');
@@ -12,6 +12,20 @@ const QuoteTemplateInterface = () => {
   const [buyerComments, setBuyerComments] = useState('');
   const [purchaseTerms, setPurchaseTerms] = useState('');
   const [showMoreOptions, setShowMoreOptions] = useState(false);
+
+
+   const [image, setImage] = useState(null);
+    const [content, setContent] = useState('');
+    const editorRef = useRef(null);
+  
+    const handleContentChange = (event) => {
+      setContent(event.target.value);
+    };
+  
+    const handleCommand = (command) => {
+      document.execCommand(command, false, null);
+    };
+  
   
   // Ref for the textarea
   const textareaRef = useRef(null);
@@ -393,117 +407,86 @@ const QuoteTemplateInterface = () => {
             </div>
 
             {/* Comments to Buyer */}
-            <div style={styles.bpavFormSection}>
-              <label htmlFor="buyerComments" className="form-label">
-                Comments to buyer
-              </label>
-              <div style={styles.bpavTextEditorToolbar} className="position-relative">
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('**') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('bold')}
-                  title="Bold"
-                >
-                  <i className="bi bi-type-bold"></i>
+            <div className="row">
+            <div
+              className="col bg-white border rounded p-3 mb-4"
+              style={{ maxWidth: '649px' }}>
+              <div className="d-flex flex-wrap gap-1 mb-3 align-items-center">
+                <select
+                  className="form-select border-0 d-inline-block me-2"
+                  style={{ width: '130px', fontSize: '15px' }}>
+                  <option>Normal text</option>
+                </select>
+                <select
+                  className="form-select border-0 d-inline-block me-2"
+                  style={{ width: '50px' }}>
+                  <option></option>
+                </select>
+                <select
+                  className="form-select border-0 d-inline-block me-2"
+                  style={{ width: '50px' }}>
+                  <option></option>
+                  <option></option>
+                </select>
+
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('bold')}>
+                  <b>B</b>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('*') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('italic')}
-                  title="Italic"
-                >
-                  <i className="bi bi-type-italic"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('italic')}>
+                  <i>I</i>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('_') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('underline')}
-                  title="Underline"
-                >
-                  <i className="bi bi-type-underline"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('underline')}>
+                  <u>U</u>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('~~') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('strikethrough')}
-                  title="Strikethrough"
-                >
-                  <i className="bi bi-type-strikethrough"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('strikeThrough')}>
+                  <s>S</s>
                 </button>
-                <button 
-                  type="button" 
-                  style={styles.bpavDropdownBtn}
-                  onClick={() => setShowMoreOptions(!showMoreOptions)}
-                >
-                  More
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('superscript')}>
+                  <i className="fa-solid fa-greater-than"></i>
+                  <i className="fa-solid fa-less-than"></i>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('](') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('link')}
-                  title="Insert Link"
-                >
-                  <i className="bi bi-link-45deg"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('insertHTML')}>
+                  <i className="fa-solid fa-code"></i>
                 </button>
-                <button 
-                  type="button" 
-                  style={{...styles.bpavToolbarBtn, ...(buyerComments.includes('![') ? styles.activeBtn : {})}} 
-                  onClick={() => applyFormatting('image')}
-                  title="Insert Image"
-                >
-                  <i className="bi bi-image"></i>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary border-0 d-inline-block me-2"
+                  onClick={() => handleCommand('removeFormat')}>
+                  <i className="fa-solid fa-minus"></i>
                 </button>
-                
-                {/* More options dropdown */}
-                <div style={styles.bpavMoreOptionsMenu} className="mt-1">
-                  <div 
-                    style={styles.bpavMoreOptionItem} 
-                    onClick={() => {
-                      applyFormatting('heading');
-                      setShowMoreOptions(false);
-                    }}
-                  >
-                    <i className="bi bi-type-h2 me-2"></i> Heading
-                  </div>
-                  <div 
-                    style={styles.bpavMoreOptionItem} 
-                    onClick={() => {
-                      applyFormatting('list');
-                      setShowMoreOptions(false);
-                    }}
-                  >
-                    <i className="bi bi-list-ul me-2"></i> Bullet List
-                  </div>
-                  <div 
-                    style={styles.bpavMoreOptionItem} 
-                    onClick={() => {
-                      applyFormatting('numbered-list');
-                      setShowMoreOptions(false);
-                    }}
-                  >
-                    <i className="bi bi-list-ol me-2"></i> Numbered List
-                  </div>
-                  <div 
-                    style={styles.bpavMoreOptionItem} 
-                    onClick={() => {
-                      applyFormatting('quote');
-                      setShowMoreOptions(false);
-                    }}
-                  >
-                    <i className="bi bi-blockquote-left me-2"></i> Blockquote
-                  </div>
-                </div>
               </div>
-              <textarea
-                className="form-control"
-                id="buyerComments"
-                rows="4"
-                placeholder="Enter any extra notes that you would like to appear in this quote."
-                value={buyerComments}
-                onChange={(e) => setBuyerComments(e.target.value)}
-                ref={textareaRef}
-              ></textarea>
-              
+
+              <div
+                ref={editorRef}
+                contentEditable
+                className="border p-3"
+                style={{
+                  minHeight: '200px',
+                  borderRadius: '5px',
+                  border: '1px solid #ccc'
+                }}>
+                Start typing here...
+              </div>
+            </div>
+          
               {/* Preview section - only show if there's content */}
               {buyerComments && (
                 <div className="mt-2">
@@ -541,7 +524,7 @@ const QuoteTemplateInterface = () => {
               <div style={styles.bpavQuoteHeader}>
                 <div className="row">
                   <div className="col-md-7">
-                    <div style={styles.bpavQuoteLogo}>BPAV</div>
+                    <div style={styles.bpavQuoteLogo}>XYZ</div>
                     <div style={styles.bpavQuoteTest}>TEST</div>
                     <div style={styles.bpavQuoteNumber}>#20241225-231724666</div>
                     <div style={styles.bpavQuoteDates}>
@@ -559,28 +542,28 @@ const QuoteTemplateInterface = () => {
                   </div>
                   <div className="col-md-5">
                     <div style={styles.bpavQuoteCompanyInfo}>
-                      BPAV Technology Group Ltd
+                      XYZ Technology Group Ltd
                       <br />
-                      Ground Floor, Unit C1
+                      Floor 8, Unit D4
                       <br />
-                      Fairoaks Airport, Chobham, Woking Way
+                      india Airport, Chobham, Park
                       <br />
-                      Basingstoke, Hampshire RG24 8QT
+                      india Airport
                       <br />
-                      United Kingdom
+                       india
                       <br />
                       <br />
-                      Sales: +44 (0)1234 567890
+                      Sales: +11 (0)012356789
                       <br />
-                      (UK) +44 333 343 3101
+                      (in) +91 012 3456 789
                       <br />
-                      (USA) +1(347)352-9627
+                      (RK) +1(000)000-0000
                       <br />
-                      hello@bpav.global
+                      hello@xyz.global
                       <br />
                       Reg No. 12345678
                       <br />
-                      VAT No. 431398144
+                      VAT No. 87654321
                     </div>
                   </div>
                 </div>
@@ -588,9 +571,9 @@ const QuoteTemplateInterface = () => {
                   <div className="col-md-7"></div>
                   <div className="col-md-5 text-end">
                     <div>
-                      Benjamin Price
+                      XYZ
                       <br />
-                      ben.price@bpav.global
+                      hello@xyz.global
                     </div>
                   </div>
                 </div>
@@ -618,10 +601,10 @@ const QuoteTemplateInterface = () => {
 
             {/* Company Info Section */}
             <div style={styles.bpavQuoteFooter}>
-              BPAV
+             XYZ
               <br />
               <p>
-                BPAV Technology Group Ltd is a leading independent multidisciplinary technology consultancy &
+                XYZ Technology Group Ltd is a leading independent multidisciplinary technology consultancy &
                 <br />
                 software development company specializing in the design and implementation of commercial audio
                 <br />
@@ -640,7 +623,7 @@ const QuoteTemplateInterface = () => {
 
             {/* Video Preview */}
             <div style={styles.bpavVideoPreview} className="mt-3">
-              <i className="bi bi-play-circle"></i> BPAV Technology Group: We innovate, create, listen and solve
+              <i className="bi bi-play-circle"></i> XYZ Technology Group: We innovate, create, listen and solve
             </div>
           </div>
         </div>

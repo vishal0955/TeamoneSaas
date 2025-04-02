@@ -41,6 +41,7 @@ const Navbar = ({ toggleSidebar}) => {
 //   };
   
   return (
+    <>
     <div className="container top-0 z-50">
       {/* Navbar */}
       <div className=" bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between">
@@ -176,6 +177,7 @@ const Navbar = ({ toggleSidebar}) => {
       
       {/* Calendar content would go below the navbar */}
     </div>
+    </>
   );};
 
 export default Navbar;

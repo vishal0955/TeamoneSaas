@@ -2,6 +2,7 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useSelector } from 'react-redux';
 import { Calendar } from 'lucide-react';
+import { getThemeStyles } from './Kanbanboard';
 
 const Task = ({ task, index, columnId }) => {
   const themeStyles = useSelector(state => getThemeStyles(state.kanban.isDarkMode));

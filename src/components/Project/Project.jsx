@@ -147,48 +147,41 @@ const Project = () => {
 
   const navigate = useNavigate();
   return (
+    
     <div className="container mt-4">
       {/* Header */}
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h4 className="mb-0 text-2xl font-bold">All Projects</h4>
-        <div className="add-toggle d-flex">
-          <div className="d-flex align-items-center gap-3 mb-4">
-            <div className="view-toggle">
-              <Link to="/calendar" >
-              <button
-              // className={view === "grid" ? "active" : ""}
-              // onClick={() => toggleView("grid")}
-              >
-                <i className="bi bi-grid me-2" /> TimeLine
-              </button>
-              </Link>
-              <Link to="/projectlist">
-              <button
-              // className={view === "list" ? "active" : ""}
-              // onClick={() => toggleView("list")}
-              >
-                <i className="bi bi-list me-2" /> List View
-              </button>
-              </Link>
-              <Link to="/kanban">
-              <button
-              // className={view === "list" ? "active" : ""}
-              // onClick={() => toggleView("list")}
-              >
-                  <Kanban /> Board View
-              </button>
-              </Link>
-            </div>
-          </div>
-          <button
-            className="btn add-project-btn ms-3"
-            style={{ height: "fit-content" }}
-            onClick={handleOpenModal}
-          >
-            <i className="bi bi-plus" /> Add New Project
-          </button>
-        </div>
-      </div>
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+  <h4 className="mb-0 text-2xl font-bold text-start text-md-start w-100 w-md-auto">All Projects</h4>
+
+  <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
+    <div className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
+      <Link to="/calendar">
+        <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+          <i className="bi bi-grid" /> TimeLine
+        </button>
+      </Link>
+      <Link to="/projectlist">
+        <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+          <i className="bi bi-list" /> List View
+        </button>
+      </Link>
+      <Link to="/kanban">
+        <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+          <Kanban /> Board View
+        </button>
+      </Link>
+    </div>
+
+    <button
+      className="btn btn-primary add-project-btn"
+      style={{ height: "fit-content" }}
+      onClick={handleOpenModal}
+    >
+      <i className="bi bi-plus" /> Add New Project
+    </button>
+  </div>
+</div>
+
 
       <div className="table-responsive">
         <table className="table align-middle text-nowrap">
@@ -680,6 +673,7 @@ const Project = () => {
         </div>
       )}
     </div>
+    
   );
 };
 

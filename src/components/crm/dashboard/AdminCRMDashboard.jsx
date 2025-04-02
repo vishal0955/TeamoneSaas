@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef } from "react";
-import Chart from "chart.js/auto"; // Import Chart.js
+import Chart from "chart.js/auto";
 import "./crmdashboard.css";
 
 const AdminCRMDashboard = () => {
@@ -8,13 +8,11 @@ const AdminCRMDashboard = () => {
   const trendChartRef = useRef(null);
 
   useLayoutEffect(() => {
-    // Ensure the canvas elements have the correct height set before creating charts
     if (
       revenueChartRef.current &&
       salesChartRef.current &&
       trendChartRef.current
     ) {
-      // Set canvas height for all charts to 200px
       revenueChartRef.current.style.height = "200px";
       salesChartRef.current.style.height = "200px";
       trendChartRef.current.style.height = "200px";
@@ -35,7 +33,7 @@ const AdminCRMDashboard = () => {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true, // Maintain aspect ratio
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: false,
@@ -58,7 +56,7 @@ const AdminCRMDashboard = () => {
     });
 
     const salesChart = new Chart(salesChartRef.current, {
-      type: "doughnut", // Doughnut chart (circle chart)
+      type: "doughnut",
       data: {
         labels: ["Branch 1", "Branch 2", "Branch 3"],
         datasets: [
@@ -71,13 +69,13 @@ const AdminCRMDashboard = () => {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true, // Maintain aspect ratio
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             position: "right",
           },
         },
-        cutout: "70%", // Control the "hole" size in the middle of the doughnut
+        cutout: "70%",
       },
     });
 
@@ -106,7 +104,7 @@ const AdminCRMDashboard = () => {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true, // Maintain aspect ratio
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             position: "top",
@@ -136,62 +134,69 @@ const AdminCRMDashboard = () => {
   }, []);
 
   return (
-    <div className="container bg-light p-4">
+    <div className="container-fluid bg-light p-3 p-md-4">
       <h1 className="mb-3">CRM Dashboard</h1>
-      {/* Stats Section */}
-      <div className="inv-stats-grid">
-        <div className="inv-stat-box">
-          <div className="inv-stat-content">
-            <div className="inv-stat-icon inv-stat-icon-primary">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-            <div>
-              <div className="inv-stat-label">Number of sales</div>
-              <p className="inv-stat-value">2431</p>
-            </div>
-          </div>
-        </div>
-        <div className="inv-stat-box">
-          <div className="inv-stat-content">
-            <div className="inv-stat-icon inv-stat-icon-warning">
-              <i class="fa-solid fa-money-bill-trend-up"></i>
-            </div>
-            <div>
-              <div className="inv-stat-label">Sales Revenue</div>
-              <p className="inv-stat-value">$24,403</p>
+      
+      {/* Stats Section - Responsive Grid */}
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-4">
+        <div className="col">
+          <div className="inv-stat-box h-100">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-primary">
+                <i className="fa-solid fa-chart-line"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">Number of sales</div>
+                <p className="inv-stat-value">2431</p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="inv-stat-box">
-          <div className="inv-stat-content">
-            <div className="inv-stat-icon inv-stat-icon-neutral">
-              <i class="fa-solid fa-hand-holding-dollar"></i>
-            </div>
-            <div>
-              <div className="inv-stat-label">Average Price</div>
-              <p className="inv-stat-value">$2431</p>
+        <div className="col">
+          <div className="inv-stat-box h-100">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-warning">
+                <i className="fa-solid fa-money-bill-trend-up"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">Sales Revenue</div>
+                <p className="inv-stat-value">$24,403</p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="inv-stat-box">
-          <div className="inv-stat-content">
-            <div className="inv-stat-icon inv-stat-icon-danger">
-              <i class="fa-solid fa-users"></i>
+        <div className="col">
+          <div className="inv-stat-box h-100">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-neutral">
+                <i className="fa-solid fa-hand-holding-dollar"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">Average Price</div>
+                <p className="inv-stat-value">$2431</p>
+              </div>
             </div>
-            <div>
-              <div className="inv-stat-label">Total Customers</div>
-              <p className="inv-stat-value">64732</p>
+          </div>
+        </div>
+        <div className="col">
+          <div className="inv-stat-box h-100">
+            <div className="inv-stat-content">
+              <div className="inv-stat-icon inv-stat-icon-danger">
+                <i className="fa-solid fa-users"></i>
+              </div>
+              <div>
+                <div className="inv-stat-label">Total Customers</div>
+                <p className="inv-stat-value">64732</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {/* Charts Row */}
-      <div className="row g-4">
-        <div className="col-md-6">
-          <div
-            className="chart-card shadow-sm p-3 rounded-3"
-            style={{ height: "500px" }}
-          >
+      
+      {/* Charts Row - Responsive Layout */}
+      <div className="row g-3 mb-4">
+        <div className="col-lg-6">
+          <div className="chart-card shadow-sm p-3 rounded-3 h-100">
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h5 className="m-0">Revenue Analytics</h5>
               <div className="dropdown">
@@ -211,18 +216,16 @@ const AdminCRMDashboard = () => {
                 </ul>
               </div>
             </div>
-            <canvas
-              ref={revenueChartRef}
-              className="chart-canvas"
-              style={{ height: "200px", width: "100%" }} // Set height for the chart
-            />
+            <div className="chart-container" style={{ height: "300px" }}>
+              <canvas
+                ref={revenueChartRef}
+                className="chart-canvas w-100 h-100"
+              />
+            </div>
           </div>
         </div>
-        <div className="col-md-6">
-          <div
-            className="chart-card shadow-sm p-3 rounded-3"
-            style={{ height: "500px" }}
-          >
+        <div className="col-lg-6">
+          <div className="chart-card shadow-sm p-3 rounded-3 h-100">
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h5 className="m-0">Sales Analytics</h5>
               <div className="dropdown">
@@ -242,98 +245,104 @@ const AdminCRMDashboard = () => {
                 </ul>
               </div>
             </div>
-            <canvas
-              ref={salesChartRef}
-              className="chart-canvas"
-              style={{
-                height: "200px",
-                width: "100%",
-                position: "relative",
-                left: "90px",
-              }} // Set height for the chart
-            />
+            <div className="chart-container" style={{ height: "300px" }}>
+              <canvas
+                ref={salesChartRef}
+                className="chart-canvas w-100 h-100 mx-auto"
+                style={{ maxWidth: "400px" }}
+              />
+            </div>
           </div>
         </div>
-        <div className="col-md-8 col-12">
-          <div
-            className="chart-card shadow-sm p-3 rounded-3"
-            style={{ height: "500px", width: "809px" }}
-          >
+      </div>
+      
+      <div className="row g-3">
+        <div className="col-lg-8">
+          <div className="chart-card shadow-sm p-3 rounded-3 h-100">
             <h5 className="mb-3">Sales Trend</h5>
-            <canvas
-              ref={trendChartRef}
-              className="chart-canvas"
-              style={{ height: "300px", width: "100%" }} // Set height for the chart
-            />
+            <div className="chart-container" style={{ height: "300px" }}>
+              <canvas
+                ref={trendChartRef}
+                className="chart-canvas w-100 h-100"
+              />
+            </div>
           </div>
         </div>
-        <div className="col-md-4">
-          <div className="chart-card shadow-sm p-3 rounded-3">
+        <div className="col-lg-4">
+          <div className="chart-card shadow-sm p-3 rounded-3 h-100">
             <h5 className="mb-3">Top Performer</h5>
-            <div className="performer-item d-flex align-items-center mb-3 border-bottom">
-              <img
-                src="https://i.ibb.co/99s1Tczy/user-11.jpg"
-                className="rounded-circle me-3"
-                width={40}
-              />
-              <div>
-                <h6 className="mb-0">Isabella Becker</h6>
-                <small className="text-muted">isabellabecker@gmail.com</small>
+            <div className="performer-list">
+              <div className="performer-item d-flex align-items-center mb-3 border-bottom pb-3">
+                <img
+                  src="https://i.ibb.co/99s1Tczy/user-11.jpg"
+                  className="rounded-circle me-3"
+                  width={40}
+                  alt="Isabella Becker"
+                />
+                <div>
+                  <h6 className="mb-0">Isabella Becker</h6>
+                  <small className="text-muted">isabellabecker@gmail.com</small>
+                </div>
               </div>
-            </div>
-            <div className="performer-item d-flex align-items-center border-bottom">
-              <img
-                src="https://i.ibb.co/PZn720Jx/Ellipse-5-6.png"
-                className="rounded-circle me-3"
-                width={40}
-              />
-              <div>
-                <h6 className="mb-0">John Doe</h6>
-                <small className="text-muted">john@gmail.com</small>
+              <div className="performer-item d-flex align-items-center mb-3 border-bottom pb-3">
+                <img
+                  src="https://i.ibb.co/PZn720Jx/Ellipse-5-6.png"
+                  className="rounded-circle me-3"
+                  width={40}
+                  alt="John Doe"
+                />
+                <div>
+                  <h6 className="mb-0">John Doe</h6>
+                  <small className="text-muted">john@gmail.com</small>
+                </div>
               </div>
-            </div>
-            <div className="performer-item d-flex align-items-center border-bottom">
-              <img
-                src="https://i.ibb.co/vCJC86Jw/Ellipse-5-3.png"
-                className="rounded-circle me-3"
-                width={40}
-              />
-              <div>
-                <h6 className="mb-0">Alex Joshi</h6>
-                <small className="text-muted">alex00123@gmail.com</small>
+              <div className="performer-item d-flex align-items-center mb-3 border-bottom pb-3">
+                <img
+                  src="https://i.ibb.co/vCJC86Jw/Ellipse-5-3.png"
+                  className="rounded-circle me-3"
+                  width={40}
+                  alt="Alex Joshi"
+                />
+                <div>
+                  <h6 className="mb-0">Alex Joshi</h6>
+                  <small className="text-muted">alex00123@gmail.com</small>
+                </div>
               </div>
-            </div>
-            <div className="performer-item d-flex align-items-center border-bottom">
-              <img
-                src="https://i.ibb.co/tf61ZY9/Ellipse-5-5.png"
-                className="rounded-circle me-3"
-                width={40}
-              />
-              <div>
-                <h6 className="mb-0">Jane Smith</h6>
-                <small className="text-muted">jane@gmail.com</small>
+              <div className="performer-item d-flex align-items-center mb-3 border-bottom pb-3">
+                <img
+                  src="https://i.ibb.co/tf61ZY9/Ellipse-5-5.png"
+                  className="rounded-circle me-3"
+                  width={40}
+                  alt="Jane Smith"
+                />
+                <div>
+                  <h6 className="mb-0">Jane Smith</h6>
+                  <small className="text-muted">jane@gmail.com</small>
+                </div>
               </div>
-            </div>
-            <div className="performer-item d-flex align-items-center border-bottom">
-              <img
-                src="https://i.ibb.co/S4snbKKb/Ellipse-5-2.png"
-                className="rounded-circle me-3"
-                width={40}
-              />
-              <div>
-                <h6 className="mb-0">Michael Johnson</h6>
-                <small className="text-muted">michael@gmail.com</small>
+              <div className="performer-item d-flex align-items-center mb-3 border-bottom pb-3">
+                <img
+                  src="https://i.ibb.co/S4snbKKb/Ellipse-5-2.png"
+                  className="rounded-circle me-3"
+                  width={40}
+                  alt="Michael Johnson"
+                />
+                <div>
+                  <h6 className="mb-0">Michael Johnson</h6>
+                  <small className="text-muted">michael@gmail.com</small>
+                </div>
               </div>
-            </div>
-            <div className="performer-item d-flex align-items-center border-bottom">
-              <img
-                src="https://i.ibb.co/bM3TbY82/Ellipse-5-1.png"
-                className="rounded-circle me-3"
-                width={40}
-              />
-              <div>
-                <h6 className="mb-0">William Brown</h6>
-                <small className="text-muted">william@gmail.com</small>
+              <div className="performer-item d-flex align-items-center mb-3 border-bottom pb-3">
+                <img
+                  src="https://i.ibb.co/bM3TbY82/Ellipse-5-1.png"
+                  className="rounded-circle me-3"
+                  width={40}
+                  alt="William Brown"
+                />
+                <div>
+                  <h6 className="mb-0">William Brown</h6>
+                  <small className="text-muted">william@gmail.com</small>
+                </div>
               </div>
             </div>
           </div>

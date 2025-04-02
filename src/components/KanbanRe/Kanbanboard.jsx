@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable,Draggable } from 'react-beautiful-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Plus, Search, Filter, SortAsc, Users, XCircle, Moon, Sun } from 'lucide-react';
-import { moveTask, moveColumn, addColumn, toggleTheme } from '../../features/kanban/kanbanSlice';
+import { moveTask, moveColumn, addColumn, toggleTheme } from '../../redux/slices/KanbanSlice';
 import Column from './Column';
-import AddColumnForm from './AddColumnForm';
+import AddColumnForm from './AddColumnform';
+
 
 // Utility function to get theme styles
 export const getThemeStyles = (isDarkMode) => ({

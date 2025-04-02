@@ -30,42 +30,48 @@ const DropdownButton = () => {
       </button>
 
       {isOpen && (
-          <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10">
+        <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10">
           <ul className="py-2">
-            <li >
-            
-                <Link to='/crm/quotes'   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
-             
+            <li>
+              <Link
+                to="/crm/quotes"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+              >
                 <i className="fas fa-file-invoice text-gray-400"></i> Qoutes
-                
-                </Link>
+              </Link>
             </li>
             <li>
-              <Link to="/crm/quotes"
+              <Link
+                to="/crm/quotes"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
               >
                 <i className="fas fa-sticky-note text-gray-400"></i> Statements
               </Link>
             </li>
             <li>
-                          <Link to="/crm/Payment" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
-                              <i class="fas fa-receipt text-gray-400"></i> Payment Link
-                          </Link>
-                      </li>
-                      <li>
-                          <Link to="/crm/invoices" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
-                              <i class="fas fa-wallet text-gray-400"></i> Invoice
-                          </Link>
-                      </li>
-                    
-                      {/* <li>
+              <Link
+                to="/crm/Payment"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+              >
+                <i class="fas fa-receipt text-gray-400"></i> Payment Link
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/crm/invoices"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+              >
+                <i class="fas fa-wallet text-gray-400"></i> Invoice
+              </Link>
+            </li>
+
+            {/* <li>
                           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-t border-gray-200">
                               Add contact group
                           </a>
                       </li> */}
           </ul>
         </div>
-
       )}
     </div>
   );
@@ -113,9 +119,18 @@ const Chart = () => {
     const option = {
       animation: false,
       grid: { left: "3%", right: "4%", bottom: "3%", containLabel: true },
-      xAxis: { type: "category", data: ["Older", "Sep", "Oct", "Nov", "Dec", "Future"] },
+      xAxis: {
+        type: "category",
+        data: ["Older", "Sep", "Oct", "Nov", "Dec", "Future"],
+      },
       yAxis: { type: "value", axisLabel: { formatter: "£{value}" } },
-      series: [{ data: [120, 200, 150, 80, 70, 110], type: "bar", itemStyle: { color: "#00B5D8" } }]
+      series: [
+        {
+          data: [120, 200, 150, 80, 70, 110],
+          type: "bar",
+          itemStyle: { color: "#00B5D8" },
+        },
+      ],
     };
     chart.setOption(option);
   }, []);
@@ -127,31 +142,53 @@ const SalesOverview = () => {
   return (
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
-      <div className=" mb-8 gap-4">
+      <div className="mb-8">
         <h1 className="text-2xl font-semibold text-gray-900">Sales overview</h1>
-        <div className="mt-4 flex items-center justify-between">
-         <div className="flex items-center gap-4">
-          <DropdownButton />
-          <button className="!rounded-button bg-white border border-gray-300 px-4 py-2">
-            Send Statements
-          </button>
-          <button className="!rounded-button bg-white border border-gray-300 px-4 py-2">
-            Import
-          </button>
+
+        {/* Wrapper Flex for Buttons + Search */}
+        <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          {/* Left: Dropdown + Buttons */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <DropdownButton />
+            <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm">
+              Send Statements
+            </button>
+            <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm">
+              Import
+            </button>
           </div>
-          <SearchInput />
+
+          {/* Right: Search */}
+          <div className="w-full md:w-auto">
+            <SearchInput />
+          </div>
         </div>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-3 gap-6 mb-8">
-        <StatCard title="Outstanding" amount="$3,237.94" change="4.46%" changeType="down" />
-        <StatCard title="Draft" amount="$3,237.94" change="12%" changeType="down" />
-        <StatCard title="Total Overdue" amount="$3,237.94" change="15.46%" changeType="down" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <StatCard
+          title="Outstanding"
+          amount="$3,237.94"
+          change="4.46%"
+          changeType="down"
+        />
+        <StatCard
+          title="Draft"
+          amount="$3,237.94"
+          change="12%"
+          changeType="down"
+        />
+        <StatCard
+          title="Total Overdue"
+          amount="$3,237.94"
+          change="15.46%"
+          changeType="down"
+        />
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <SummaryCard title="Awaiting Approval" amount="£1234" />
         <SummaryCard title="Draft" amount="£1234" />
         <SummaryCard title="Awaiting Payment (36)" amount="£1234" />
@@ -159,33 +196,40 @@ const SalesOverview = () => {
       </div>
 
       {/* Charts & Data */}
-      <div className="grid grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div className="bg-white p-6 rounded-lg shadow-sm">
           <h3 className="text-lg font-medium mb-4">Money coming in</h3>
           <Chart />
         </div>
+
         <div className="bg-white p-6 rounded-lg shadow-sm">
           <h3 className="text-lg font-medium mb-4">Customers owing the most</h3>
           <div className="space-y-4">
-            {["Client x", "Client y", "Client z", "Client a", "Client b"].map((client) => (
-              <div key={client} className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">{client}</span>
-                <span className="font-medium">£123</span>
-              </div>
-            ))}
+            {["Client x", "Client y", "Client z", "Client a", "Client b"].map(
+              (client) => (
+                <div key={client} className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">{client}</span>
+                  <span className="font-medium">£123</span>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>
 
       {/* Quotes */}
       <div>
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
           <h3 className="text-lg font-medium">Quotes</h3>
-          <a href="#" className="text-custom hover:text-custom-dark text-sm">
+          <a
+            href="#"
+            className="text-custom hover:text-custom-dark text-sm mt-2 sm:mt-0"
+          >
             See all
           </a>
         </div>
-        <div className="grid grid-cols-4 gap-6">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {["Draft", "Sent", "Accepted", "Expired"].map((status) => (
             <SummaryCard key={status} title={status} amount="£1234" />
           ))}

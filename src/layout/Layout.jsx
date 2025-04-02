@@ -13,7 +13,7 @@ const Layout = () => {
     return (
         <div className="flex" >
             <Sidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
-            <div className="flex-1">
+            <div className="container">
                 <Navbar toggleSidebar={toggleSidebar} className="" />
                 
                

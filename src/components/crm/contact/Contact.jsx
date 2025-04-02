@@ -58,19 +58,16 @@ const ContactsList = () => {
   };
 
   return (
-    <div className="container-fluid px-4 py-3">
-     <div className="d-flex justify-content-between align-items-center mb-4">
-        <div className="d-flex align-items-center">
+    <div className="container-fluid px-3 px-md-4 py-3">
+      <div className="d-flex   justify-content-between mb-4 gap-2 gap-md-0">
+        <div className=" align-items-center">
           <h4 className="mb-0 me-2">Contacts</h4>
           {/* <span className="text-muted small">24700 records</span> */}
         </div>
-        <div className="d-flex gap-2">
-          {/* <button className="btn btn-outline-secondary">
-             Data Quality <span className="badge bg-success ms-1">98%</span>
-           </button> */}
-          <div className="dropdown">
+        
+          <div className="dropdown order-sm-1 d-flex gap-1">
             <button
-              className="inv-filter-button  dropdown-toggle"
+              className="inv-filter-button dropdown-toggle w-100"
               type="button"
               data-bs-toggle="dropdown"
             >
@@ -88,20 +85,22 @@ const ContactsList = () => {
                 </a>
               </li>
             </ul>
-          </div>
-          <button className="inv-new-button " onClick={handleOpenModal}>
-            {" "}
+            <button className="inv-new-button order-sm-2" onClick={handleOpenModal}>
             Create contact
           </button>
-        </div>
+          </div>
+          
+          
+        
       </div>
+      
       {/* Metrics Cards */}
-      <div className="grid grid-row-1 md:grid-row-5 gap-4 ">
-        <div className="inv-stats-grid">
-          <div className="inv-stat-box">
+      <div className="row g-3 mb-4">
+        <div className="col-12 col-sm-6 col-md-3">
+          <div className="inv-stat-box h-100">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-primary">
-              <i class="fa-solid fa-address-book"></i>
+                <i className="fa-solid fa-address-book"></i>
               </div>
               <div>
                 <div className="inv-stat-label">Total Number Of Contact</div>
@@ -109,10 +108,12 @@ const ContactsList = () => {
               </div>
             </div>
           </div>
-          <div className="inv-stat-box">
+        </div>
+        <div className="col-12 col-sm-6 col-md-3">
+          <div className="inv-stat-box h-100">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-warning">
-              <i class="fa-solid fa-address-card"></i>
+                <i className="fa-solid fa-address-card"></i>
               </div>
               <div>
                 <div className="inv-stat-label">Not Contacted</div>
@@ -120,10 +121,12 @@ const ContactsList = () => {
               </div>
             </div>
           </div>
-          <div className="inv-stat-box">
+        </div>
+        <div className="col-12 col-sm-6 col-md-3">
+          <div className="inv-stat-box h-100">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-danger">
-              <i class="fa-solid fa-id-card-clip"></i>
+                <i className="fa-solid fa-id-card-clip"></i>
               </div>
               <div>
                 <div className="inv-stat-label">New Contact This Month</div>
@@ -131,10 +134,12 @@ const ContactsList = () => {
               </div>
             </div>
           </div>
-          <div className="inv-stat-box">
+        </div>
+        <div className="col-12 col-sm-6 col-md-3">
+          <div className="inv-stat-box h-100">
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-neutral">
-              <i class="fa-solid fa-id-card"></i>
+                <i className="fa-solid fa-id-card"></i>
               </div>
               <div>
                 <div className="inv-stat-label">New Recurring Contact</div>
@@ -144,37 +149,32 @@ const ContactsList = () => {
           </div>
         </div>
       </div>
-      {/* Header */}
-    
 
       {/* Views */}
-      <div className="d-flex flex-wrap gap-2 ">
+      <div className="d-flex flex-wrap gap-2 mb-3">
         {views.map((view) => (
           <button
             key={view.id}
             className={`btn btn-sm ${
               selectedView === view.id
-                ? "inv-new-button text-white  active"
-                : "inv-filter-button  text-dark"
+                ? "inv-new-button text-white active"
+                : "inv-filter-button text-dark"
             }`}
             onClick={() => setSelectedView(view.id)}
           >
             {view.name}
           </button>
         ))}
-        {/* <button className="btn btn-sm btn-outline-secondary">
-           + Add view (5/50)
-         </button> */}
-        <button className="btn btn-sm btn-outline-primary rounded-3 px-4">
+        <button className="btn btn-sm btn-outline-primary rounded-3 px-3 px-sm-4">
           All Views
         </button>
       </div>
 
       {/* Filters */}
-      <div className="inv-main-card">
-        <div className="inv-card-header">
-          <div className="row">
-            <div className="col-md-3">
+      <div className="card inv-main-card mb-4">
+        <div className="card-body">
+          <div className="row g-2 mb-3">
+            <div className="col-12 col-md-6 col-lg-3">
               <div className="inv-search-wrapper">
                 <i className="bi bi-search inv-search-icon" />
                 <input
@@ -185,10 +185,10 @@ const ContactsList = () => {
                 />
               </div>
             </div>
-            <div className="col-md-2 me-2">
+            <div className="col-6 col-md-3 col-lg-2">
               <div className="dropdown">
                 <button
-                  className="inv-filter-button  dropdown-toggle"
+                  className="inv-filter-button dropdown-toggle w-100 text-start"
                   type="button"
                   data-bs-toggle="dropdown"
                 >
@@ -208,10 +208,10 @@ const ContactsList = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-md-2 text-md-center me-2">
+            <div className="col-6 col-md-3 col-lg-2">
               <div className="dropdown">
                 <button
-                  className="inv-filter-button dropdown-toggle"
+                  className="inv-filter-button dropdown-toggle w-100 text-start"
                   type="button"
                   data-bs-toggle="dropdown"
                 >
@@ -236,10 +236,10 @@ const ContactsList = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-md-2">
+            <div className="col-6 col-md-3 col-lg-2">
               <div className="dropdown">
                 <button
-                  className="inv-filter-button dropdown-toggle"
+                  className="inv-filter-button dropdown-toggle w-100 text-start"
                   type="button"
                   data-bs-toggle="dropdown"
                 >
@@ -264,10 +264,10 @@ const ContactsList = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-md-2 text-md-end ms-2">
+            <div className="col-6 col-md-3 col-lg-2">
               <div className="dropdown">
                 <button
-                  className="inv-filter-button dropdown-toggle"
+                  className="inv-filter-button dropdown-toggle w-100 text-start"
                   type="button"
                   data-bs-toggle="dropdown"
                 >
@@ -303,55 +303,61 @@ const ContactsList = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Table */}
-        <div className="table-responsive">
-          <table className="inv-table">
-            <thead>
-              <tr>
-                <th style={{ width: "20px" }}>
-                  <input
-                    type="checkbox"
-                    className="inv-checkbox"
-                    id="selectAll"
-                  />
-                </th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Company Name</th>
-                <th>Lead Status</th>
-                <th>Lifecycle Stage</th>
-                <th>Source</th>
-                <th>Contact Owner</th>
-              </tr>
-            </thead>
-            <tbody>
-              {contacts.map((contact) => (
-                <tr key={contact.id} onClick={handleCLick}>
-                  <td>
-                    <input type="checkbox" className="form-check-input" />
-                  </td>
-                  <td>
-                    <div className="d-flex align-items-center">
-                      <div className="contact-avatar me-2">
-                        {contact.initials}
-                      </div>
-                      {contact.name}
-                    </div>
-                  </td>
-                  <td>{contact.email}</td>
-                  <td>{contact.phoneNumber}</td>
-                  <td>{contact.companyName}</td>
-                  <td>{contact.leadStatus}</td>
-                  <td>{contact.lifecycleStage}</td>
-                  <td>{contact.source}</td>
-                  <td>{contact.contactOwner}</td>
+          {/* Table */}
+          <div className="table-responsive">
+            <table className="table inv-table">
+              <thead>
+                <tr>
+                  <th style={{ width: "20px" }}>
+                    <input
+                      type="checkbox"
+                      className="inv-checkbox"
+                      id="selectAll"
+                    />
+                  </th>
+                  <th>Name</th>
+                  <th className="d-none d-md-table-cell">Email</th>
+                  <th className="d-none d-sm-table-cell">Phone Number</th>
+                  <th className="d-none d-lg-table-cell">Company Name</th>
+                  <th className="d-none d-xl-table-cell">Lead Status</th>
+                  <th className="d-none d-xl-table-cell">Lifecycle Stage</th>
+                  <th className="d-none d-xl-table-cell">Source</th>
+                  <th className="d-none d-xl-table-cell">Contact Owner</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {contacts.map((contact) => (
+                  <tr key={contact.id} onClick={handleCLick}>
+                    <td>
+                      <input type="checkbox" className="form-check-input" />
+                    </td>
+                    <td>
+                      <div className="d-flex align-items-center">
+                        <div className="contact-avatar me-2">
+                          {contact.initials}
+                        </div>
+                        <span className="d-inline-block text-truncate" style={{maxWidth: '150px'}}>
+                          {contact.name}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="d-none d-md-table-cell">
+                      <span className="d-inline-block text-truncate" style={{maxWidth: '150px'}}>
+                        {contact.email}
+                      </span>
+                    </td>
+                    <td className="d-none d-sm-table-cell">{contact.phoneNumber}</td>
+                    <td className="d-none d-lg-table-cell">{contact.companyName}</td>
+                    <td className="d-none d-xl-table-cell">{contact.leadStatus}</td>
+                    <td className="d-none d-xl-table-cell">{contact.lifecycleStage}</td>
+                    <td className="d-none d-xl-table-cell">{contact.source}</td>
+                    <td className="d-none d-xl-table-cell">{contact.contactOwner}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
