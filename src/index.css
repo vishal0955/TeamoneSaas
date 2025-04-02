@@ -291,3 +291,10 @@ body {
   opacity: 0.9;
 }
 /* >>>>>>> a121075048bf17f4b21ba6f1e38160afe6bb8332 */
+
+@media (max-width: 600px) {
+  .nav-search-btn{
+  display: none;
+  }
+
+}
