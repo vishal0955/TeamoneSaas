@@ -171,8 +171,6 @@ const RoleBasedRoutes = () => {
           }
         />
 
-
-
         {/* calendar */}
 
         <Route path="/homecalendar" element={<FunctionalCalendar />} />
@@ -180,7 +178,6 @@ const RoleBasedRoutes = () => {
         <Route path="/fullcalendar" element={<CalendarApp />} />
 
         <Route path="/todo" element={<TodoApp />} />
-
 
         {/* Notes Route  */}
         <Route path="/notesgrid" element={<NotesGrid />} />
@@ -191,7 +188,7 @@ const RoleBasedRoutes = () => {
 
         {/* Project Route */}
         <Route path="/project" element={<Dashboard />} />
-        <Route path="/project/details" element={<ProjectDashboard />} />  
+        <Route path="/project/details" element={<ProjectDashboard />} />
         <Route path="/project/projectdetails" element={<ProjectDetails />} />
 
         <Route path="/project/projects" element={<Project />} />
@@ -199,18 +196,17 @@ const RoleBasedRoutes = () => {
         <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/addtask" element={<AddTask />} />
         <Route path="/allproject" element={<AllProject />} />
-        <Route path="/projectcard" element={<ProjectCard/>}/>
+        <Route path="/projectcard" element={<ProjectCard />} />
 
         <Route path="/project/schedule" element={<ProjectCalendar />} />
         <Route path="/projectkanban" element={<ProjectKanban />} />
 
-
         {/* HR Routes */}
         <Route path="/hr/dashboard" element={<HRDashboard />} />
-        <Route path="/hr/myprofile" element={  <EmployeeDetails />} />
+        <Route path="/hr/myprofile" element={<EmployeeDetails />} />
         <Route path="/hr/people" element={<People />} />
         <Route path="/hr/performance" element={<PerformanceOverview />} />
-        {/* <Route path="/hr/recruitment" element={<Recruitmentkanban />} /> */}
+        <Route path="/hr/recruitment" element={<Recruitmentkanban />} />
         <Route path="/hr/company" element={<HRAnalyticsDashboard />} />
 
         {/* crm-section */}
@@ -241,7 +237,10 @@ const RoleBasedRoutes = () => {
         <Route path="/recruitment/candidates" element={<Candidate />} />
         <Route path="/recruitment/refferals" element={<Refferal />} />
 
-        <Route path="/recruitment/individualcandidatepage" element={<IndividualCandidatePage />} />
+        <Route
+          path="/recruitment/individualcandidatepage"
+          element={<IndividualCandidatePage />}
+        />
         {/* recruitment */}
 
         {/* <Route path="/todolist" element={<TodoList />} /> */}
@@ -294,7 +293,7 @@ const RoleBasedRoutes = () => {
           element={<PerformanceIndicator></PerformanceIndicator>}
         ></Route>
 
-         {/* Training */}
+        {/* Training */}
         <Route path="/hrm/training/training_list" element={<TrainingList />} />
 
         <Route
@@ -427,35 +426,39 @@ const RoleBasedRoutes = () => {
           }
         />
 
-
         {/* Finance Routes */}
 
         <Route path="/finance/accounts_payable" element={<Accountspayable />} />
 
-        
         <Route path="/finance/allbills" element={<AllBills />} />
-          <Route path="/finance/newbill" element={<NewBill />} />
+        <Route path="/finance/newbill" element={<NewBill />} />
 
         <Route path="/finance/remittance" element={<Remitance />} />
-          <Route path="/finance/newremitance" element={<NewRemitance />} />
+        <Route path="/finance/newremitance" element={<NewRemitance />} />
 
         <Route path="/finance/creditnotes" element={<CreditNotes />} />
-           <Route path="/finance/newcreditnote" element={<NewCreditNote />} />
+        <Route path="/finance/newcreditnote" element={<NewCreditNote />} />
 
         <Route path="/finance/expense" element={<Expense />} />
-             <Route path="/finance/newexpenseclaim" element={<NewExpenseClaim />} />
-             <Route path="/finance/newmileageclaim" element={<NewMileageClaim />} />
-             <Route path="/finance/Purchaseorder" element={<PurchaseOrder />} />
-             <Route path="/finance/newpurchaseorder" element={<NewPurchaseOrder />} />
+        <Route path="/finance/newexpenseclaim" element={<NewExpenseClaim />} />
+        <Route path="/finance/newmileageclaim" element={<NewMileageClaim />} />
+        <Route path="/finance/Purchaseorder" element={<PurchaseOrder />} />
+        <Route
+          path="/finance/newpurchaseorder"
+          element={<NewPurchaseOrder />}
+        />
 
-           {/* accounts Recievable */}
+        {/* accounts Recievable */}
 
-          <Route path="/finance/accounts_receivable" element={<SalesOverview />} />
-          <Route path="/finance/products" element={<Products />} />
-          <Route path="/finance/createproduct" element={<CreateProduct />} />
-          <Route path="/finance/companies" element={<Company />} />
-          <Route path="/finance/suppliers" element={<Suppliers />} />
-          <Route path="/finance/createsupplier" element={<SuppliersCard />} />
+        <Route
+          path="/finance/accounts_receivable"
+          element={<SalesOverview />}
+        />
+        <Route path="/finance/products" element={<Products />} />
+        <Route path="/finance/createproduct" element={<CreateProduct />} />
+        <Route path="/finance/companies" element={<Company />} />
+        <Route path="/finance/suppliers" element={<Suppliers />} />
+        <Route path="/finance/createsupplier" element={<SuppliersCard />} />
 
         {/* Administration */}
 
@@ -474,46 +477,54 @@ const RoleBasedRoutes = () => {
         />
 
         {/* Inventory Routes */}
-          <Route path="/inventory" element={<InvetoryLayout />} >
-           <Route index element={<InventoryDashboard />} />
-           <Route path="/inventory/dashboard" element={<InventoryDashboard />} />
-            <Route path="/inventory/orderlist" element={<OrderList />} />
-            <Route path="/inventory/ordercard" element={<OrderCard />} />
-            <Route path="/inventory/customerslist" element={<CustomerList />} />
-            <Route path="/inventory/inventory" element={<InventoryList />} />
-            <Route path="/inventory/itemcard" element={<InventoryItemCard />} />
-            <Route path="/inventory/itemcard_variations" element={<ItemCardVariation />} />
-            <Route path="/inventory/itemcard_pricing" element={<InventoryPricing />} />
-            <Route path="/inventory/itemcard_settings" element={<InventorySetting />} />
-            <Route path="/inventory/calendar" element={<InventoryCalendar />} />
-           </Route>
+        <Route path="/inventory" element={<InvetoryLayout />}>
+          <Route index element={<InventoryDashboard />} />
+          <Route path="/inventory/dashboard" element={<InventoryDashboard />} />
+          <Route path="/inventory/orderlist" element={<OrderList />} />
+          <Route path="/inventory/ordercard" element={<OrderCard />} />
+          <Route path="/inventory/customerslist" element={<CustomerList />} />
+          <Route path="/inventory/inventory" element={<InventoryList />} />
+          <Route path="/inventory/itemcard" element={<InventoryItemCard />} />
+          <Route
+            path="/inventory/itemcard_variations"
+            element={<ItemCardVariation />}
+          />
+          <Route
+            path="/inventory/itemcard_pricing"
+            element={<InventoryPricing />}
+          />
+          <Route
+            path="/inventory/itemcard_settings"
+            element={<InventorySetting />}
+          />
+          <Route path="/inventory/calendar" element={<InventoryCalendar />} />
+        </Route>
 
-           {/* Support Hub */}
-           <Route path="/support" element={<SupporthubLayout />} >
-    
-           {/* inside Layout  */}
-                  <Route index element={<Summary />} />
-           <Route path="/support/summary" element={<Summary />} />
-           <Route path="/support/analytics" element={<AnalyticsView />} />
-           <Route path="/support/tickets" element={<TicketManagementSystem />} />
-           <Route path="/support/ticketcard" element={<TicketCard />} />
-           </Route>
-           <Route  path="/support/settings" element={<HelpDeskSettings />} />
-           <Route path="/support/knowledgebase" element={<HelpCenter />} />
-           <Route path="/support/chatbot" element={<Chatbot />} />
+        {/* Support Hub */}
+        <Route path="/support" element={<SupporthubLayout />}>
+          {/* inside Layout  */}
+          <Route index element={<Summary />} />
+          <Route path="/support/summary" element={<Summary />} />
+          <Route path="/support/analytics" element={<AnalyticsView />} />
+          <Route path="/support/tickets" element={<TicketManagementSystem />} />
+          <Route path="/support/ticketcard" element={<TicketCard />} />
+        </Route>
+        <Route path="/support/settings" element={<HelpDeskSettings />} />
+        <Route path="/support/knowledgebase" element={<HelpCenter />} />
+        <Route path="/support/chatbot" element={<Chatbot />} />
 
-           {/* Files */}
-           <Route path="/files" element={<Files />} ></Route>
-           <Route path="/social" element={<Social />} ></Route>
+        {/* Files */}
+        <Route path="/files" element={<Files />}></Route>
+        <Route path="/social" element={<Social />}></Route>
 
+        <Route path="/calendar" element={<ResourceTimelineCalendar />} />
 
-
-
-    <Route path="/calendar" element={<ResourceTimelineCalendar />}  />
-
-    <Route path="/resourcecalendar" element={<ProjectCalendar />}  />
-   <Route path="/ProjectTimelineCalendar" element={<ProjectTimelineCalendar />}  />
-   <Route path="/project/workload" element={ <Workload />} />
+        <Route path="/resourcecalendar" element={<ProjectCalendar />} />
+        <Route
+          path="/ProjectTimelineCalendar"
+          element={<ProjectTimelineCalendar />}
+        />
+        <Route path="/project/workload" element={<Workload />} />
 
         <Route
           path="/manager"
@@ -537,5 +548,3 @@ const RoleBasedRoutes = () => {
 };
 
 export default RoleBasedRoutes;
-
-

@@ -8,7 +8,7 @@ import {
   FolderOpenDot,
   ClipboardCheck,
   FileText,
-  Landmark ,
+  Landmark,
   Cog,
   Contact,
   User,
@@ -16,6 +16,8 @@ import {
   SquareCheckBig,
   Box,
   File,
+  HelpingHandIcon,
+  HelpCircle,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -37,19 +39,18 @@ const menuItems = [
         path: "/notesgrid",
         icon: <ClipboardCheck size={16} />,
       },
-      
-    ]
+    ],
   },
- 
+
   {
     name: "Project",
     path: "/project",
     icon: <FolderOpenDot size={16} />,
     subItems: [
-      { name: "Dashboard" , path: "/project"},
+      { name: "Dashboard", path: "/project" },
       { name: "Project", path: "/project/projects" },
-      {name: "All Project", path: "/ProjectTimelineCalendar"},
-      {name : "Scheduling", path: "/calendar"},
+      { name: "All Project", path: "/ProjectTimelineCalendar" },
+      { name: "Scheduling", path: "/calendar" },
 
       { name: "Task", path: "/project/task" },
 
@@ -74,7 +75,7 @@ const menuItems = [
       // { name: "Pipeline", path: "/crm/pipeline" },
 
       { name: "Analytics", path: "/crm/analytics" },
-      
+
       // { name: "Activities", path: "/crm/activities" },
       // { name: "Sales", path: "/crm/sales" },
     ],
@@ -90,7 +91,7 @@ const menuItems = [
       { name: "Performance", path: "/hr/performance" },
       { name: "Recruitment", path: "/hr/recruitment" },
       { name: "Company", path: "/hr/company" },
-    ]
+    ],
   },
 
   {
@@ -154,11 +155,11 @@ const menuItems = [
       },
       {
         name: "Training",
-        path: "/hrm/training", 
+        path: "/hrm/training",
         subMenu: [
           // { name: "Training Plan", path: "/hrm/training/training_plan" },
           { name: "Training List", path: "/hrm/training/training_list" },
-        ] 
+        ],
       },
       {
         name: "Payroll",
@@ -192,34 +193,32 @@ const menuItems = [
       // { name: "Dashboard", path: "/finance/dashboard" },
       { name: "Accounts Payable", path: "/finance/accounts_payable" },
       { name: "Accounts Receivable", path: "/finance/accounts_receivable" },
-      { name : "Products", path: "/finance/products" },
+      { name: "Products", path: "/finance/products" },
       { name: "Customers", path: "/finance/companies" },
       { name: "Suppliers", path: "/finance/suppliers" },
       // {
-       
+
       //   name: "Sales",
       //   path: "/finance/sales",
-        // subMenu: [
-          
-        //   { name: "Expenses", path: "/finance/sales/expenses" },
-        //   { name: "Provident Funds", path: "/finance/sales/provident_funds" },
-        //   { name: "Taxes", path: "/finance/sales/taxs" },
-        // ],
+      // subMenu: [
+
+      //   { name: "Expenses", path: "/finance/sales/expenses" },
+      //   { name: "Provident Funds", path: "/finance/sales/provident_funds" },
+      //   { name: "Taxes", path: "/finance/sales/taxs" },
+      // ],
       // },
-    ]
-    },
-    
-    {
-      name: "Support Hub",
-      path: "/support",
-      // icon: <Help size={16} />,
-      subItems: [
-          { name: "Support", path: "/support" },
-        { name: "Settings", path: "/support/settings" },
-       
-   
-      ],
-    },
+    ],
+  },
+
+  {
+    name: "Support Hub",
+    path: "/support",
+    // icon: <Help size={16} />,
+    subItems: [
+      { name: "Support", path: "/support" },
+      { name: "Settings", path: "/support/settings" },
+    ],
+  },
 
   {
     name: "Inventory",
@@ -227,14 +226,14 @@ const menuItems = [
     icon: <Box size={16} />,
   },
 
-  {name: "Files" , path: "/files" , icon: <File size={16} /> },
+  { name: "Files", path: "/files", icon: <File size={16} /> },
 
-  {name: "Social" , path: "/social" , icon: <Users size={16} /> },
+  { name: "Social", path: "/social", icon: <Users size={16} /> },
 
   {
     name: "Administration",
     path: "/administration",
-    icon: <Landmark size={16} />,  
+    icon: <Landmark size={16} />,
 
     subItems: [
       // {
@@ -349,7 +348,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black/30 transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/30  transition-opacity duration-300 ${
           !collapsed && isMobile
             ? "opacity-100 z-200"
             : "opacity-0 pointer-events-none"
@@ -358,13 +357,12 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
       />
 
       <aside
-        className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
-          isMobile && collapsed ? "w-0" :
-          collapsed ? "w-20" : "w-56"
-        } z-30`}
+        className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out mt-5 ${
+          isMobile && collapsed ? "w-0 " : collapsed ? "w-20" : "w-56"
+        }`}
       >
         {/* Fixed Header */}
-        <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
+        {/* <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
           {collapsed ? (
             <span className="text-indigo-600 font-bold text-2xl">H</span>
           ) : (
@@ -376,7 +374,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
           >
             {collapsed ? "→" : "←"}
           </button>
-        </div>
+        </div> */}
 
         {/* Scrollable Navigation */}
         <nav className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400">
@@ -542,12 +540,9 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       <main
         className={`transition-all duration-300 ${
-          isMobile && collapsed ? "w-0":
-          collapsed ? "ml-20" : "ml-56"
+          isMobile && collapsed ? "ml-0" : collapsed ? "ml-20" : "ml-56"
         }`}
-      >
-        
-      </main>
+      ></main>
     </>
   );
 }
