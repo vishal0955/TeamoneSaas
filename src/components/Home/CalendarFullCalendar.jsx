@@ -279,7 +279,7 @@ const CalendarApp = () => {
 
       {/* Sidebar */}
       <div
-        className={`bg-white text-black fixed inset-y-0 left-0 w-64 z-10 transform transition-transform duration-300 ease-in-out 
+        className={`bg-white text-black fixed inset-y-0 left-0 w-64 z-10 transform transition-transform duration-300 ease-in-out mt-5
           ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0`}
       >
         <div className="p-4 border-b border-gray-700 flex justify-between items-center">
