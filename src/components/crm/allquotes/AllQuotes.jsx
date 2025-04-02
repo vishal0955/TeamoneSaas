@@ -28,7 +28,7 @@ const AllQuotes = () => {
     <>
       <div className=" container py-4">
         {/* Header */}
-        <Row className="mb-3 align-items-center justify-content-end">
+        <Row className="mb-3 align-items-center justify-content-end d-flex">
           <Col xs={12} className="mb-2 mb-md-0">
             <h4 className="text-center text-md-start">All Quotes</h4>
           </Col>
