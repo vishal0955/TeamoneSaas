@@ -43,23 +43,25 @@ const Company = () => {
 
   return (
     <div className="container mt-4">
-      <Row className="mb-3">
-        <Col xs={12} md={6}>
+      <Row className="mb-3 ">
+        <div className="d-flex justify-content-between">
+        <div >
           <h4>
             Companies <span className="text-muted">12,453</span>
           </h4>
-        </Col>
-        <Col xs={12} md={6} className="text-md-end mt-2 mt-md-0">
+        </div>
+        <div className="text-md-end mt-2 mt-md-0">
           <Button className="inv-new-button" onClick={handleOpenModal}>
             <i className="bi bi-plus-lg"></i> Add New
           </Button>
-        </Col>
+        </div>
+        </div>
       </Row>
 
       <Row className="mb-4">
         <Col xs={12}>
           <Row>
-            <Col xs={12} sm={6}  className="mb-3 mb-sm-0">
+            <Col xs={12} sm={3}  className="mb-3 mb-sm-0">
               <div className="inv-stat-box">
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-primary">
@@ -72,7 +74,7 @@ const Company = () => {
                 </div>
               </div>
             </Col>
-            <Col xs={12} sm={6} className="mb-3 mb-sm-0">
+            <Col xs={12} sm={3} className="mb-3 mb-sm-0">
               <div className="inv-stat-box">
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-warning">
@@ -85,7 +87,7 @@ const Company = () => {
                 </div>
               </div>
             </Col>
-            <Col xs={12} sm={6} className="mb-3 mb-sm-0">
+            <Col xs={12} sm={3} className="mb-3 mb-sm-0">
               <div className="inv-stat-box">
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-danger">
@@ -98,7 +100,7 @@ const Company = () => {
                 </div>
               </div>
             </Col>
-            <Col xs={12} sm={6}>
+            <Col xs={12} sm={3}>
               <div className="inv-stat-box">
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-neutral">
