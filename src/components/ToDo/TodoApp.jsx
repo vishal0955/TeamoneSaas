@@ -570,212 +570,209 @@ const TodoApp = () => {
 
         {/* Task Sections */}
         {(activeFilter === 'all' || activeFilter === 'high') && (
-          <div className="mb-5">
-            <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
-              <div className="d-flex align-items-center mb-2 mb-sm-0">
-                <FontAwesomeIcon icon={faChevronDown} className="me-2 text-muted" />
-                <h3 className="h6 mb-0 me-2">High</h3>
-                <span className="text-muted small">{highPriorityTasks.length}</span>
-              </div>
-              <div className="ms-sm-auto d-flex">
-                <button 
-                  className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  Add New
-                </button>
-                <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
-                  See All
-                </button>
-              </div>
-            </div>
-            {highPriorityTasks.map((task) => (
-              <div key={task.id} className="card mb-2">
-                <div className="card-body p-2">
-                  <div className="d-flex align-items-center">
-                    <div className="form-check me-3">
-                      <input 
-                        type="checkbox" 
-                        className="form-check-input" 
-                        checked={task.completed}
-                        onChange={() => handleCheckboxChange(task.id)}
-                      />
-                    </div>
-                    <div className="flex-grow-1 me-2 me-md-3">
-                      <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
-                        {task.text}
-                      </p>
-                    </div>
-                    <div className="d-flex align-items-center">
-                      <div className="d-none d-md-flex align-items-center gap-2 me-2">
-                        <span className="text-muted small">{task.dueDate}</span>
-                        {task.tags.map(tag => (
-                          <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="d-flex me-2">
-                        {task.assignees.slice(0, 2).map(assigneeId => (
-                          <div 
-                            key={assigneeId}
-                            className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
-                            style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                            title={getAssigneeName(assigneeId)}
-                          >
-                            {getAssigneeName(assigneeId).charAt(0)}
-                          </div>
-                        ))}
-                        {task.assignees.length > 2 && (
-                          <div 
-                            className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
-                            style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                            title={`+${task.assignees.length - 2} more`}
-                          >
-                            +{task.assignees.length - 2}
-                          </div>
-                        )}
-                      </div>
-                      <div className="position-relative">
-                        <button 
-                          className="btn btn-sm btn-light"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveDropdown(activeDropdown === task.id ? null : task.id);
-                          }}
-                        >
-                          <FontAwesomeIcon icon={faEllipsisV} />
-                        </button>
-                        {activeDropdown === task.id && (
-                          <div className="position-absolute end-0 mt-2" style={{left:"-120px"}}>
-                            <TaskDropdown
-                              taskId={task.id}
-                              onEdit={() => handleEdit(task)}
-                              onDelete={() => handleDelete(task.id)}
-                              onView={() => handleViewDetails(task)}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="d-flex d-md-none align-items-center flex-wrap gap-2 mt-2 ms-4">
-                    <span className="text-muted small">{task.dueDate}</span>
-                    {task.tags.map(tag => (
-                      <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+  <div className="mb-5">
+    <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
+      <div className="d-flex align-items-center mb-2 mb-sm-0">
+        <FontAwesomeIcon icon={faChevronDown} className="me-2 text-muted" />
+        <h3 className="h6 mb-0 me-2">High</h3>
+        <span className="text-muted small">{highPriorityTasks.length}</span>
+      </div>
+      <div className="ms-sm-auto d-flex">
+        <button 
+          className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Add New
+        </button>
+        <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
+          See All
+        </button>
+      </div>
+    </div>
+    
+    <table className="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Task</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Tags</th>
+          <th scope="col">Assignees</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {highPriorityTasks.map(task => (
+          <tr key={task.id}>
+            <td>
+              <div className="d-flex align-items-center">
+                <div className="form-check me-3">
+                  <input 
+                    type="checkbox" 
+                    className="form-check-input" 
+                    checked={task.completed}
+                    onChange={() => handleCheckboxChange(task.id)}
+                  />
                 </div>
+                <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
+                  {task.text}
+                </p>
               </div>
-            ))}
-          </div>
-        )}
+            </td>
+            <td className="text-muted small">{task.dueDate}</td>
+            <td>
+              {task.tags.map(tag => (
+                <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded me-1`}>
+                  {tag}
+                </span>
+              ))}
+            </td>
+            <td>
+              <div className="d-flex">
+                {task.assignees.slice(0, 2).map(assigneeId => (
+                  <div 
+                    key={assigneeId}
+                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
+                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                    title={getAssigneeName(assigneeId)}
+                  >
+                    {getAssigneeName(assigneeId).charAt(0)}
+                  </div>
+                ))}
+                {task.assignees.length > 2 && (
+                  <div 
+                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
+                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                    title={`+${task.assignees.length - 2} more`}
+                  >
+                    +{task.assignees.length - 2}
+                  </div>
+                )}
+              </div>
+            </td>
+            <td className="position-relative">
+              <button 
+                className="btn btn-sm btn-light"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveDropdown(activeDropdown === task.id ? null : task.id);
+                }}
+              >
+                <FontAwesomeIcon icon={faEllipsisV} />
+              </button>
+              {activeDropdown === task.id && (
+                <div className="position-absolute end-0 mt-2" style={{left:"-120px"}}>
+                  <TaskDropdown
+                    taskId={task.id}
+                    onEdit={() => handleEdit(task)}
+                    onDelete={() => handleDelete(task.id)}
+                    onView={() => handleViewDetails(task)}
+                  />
+                </div>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
 
-        {(activeFilter === 'all' || activeFilter === 'medium') && (
-          <div>
-            <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
-              <div className="d-flex align-items-center mb-2 mb-sm-0">
-                <FontAwesomeIcon icon={faChevronRight} className="me-2 text-muted" />
-                <h3 className="h6 mb-0 me-2">Medium</h3>
-                <span className="text-muted small">{mediumPriorityTasks.length}</span>
-              </div>
-              <div className="ms-sm-auto d-flex">
-                <button 
-                  className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  Add New
-                </button>
-                <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
-                  See All
-                </button>
-              </div>
-            </div>
-            {mediumPriorityTasks.map(task => (
-              <div key={task.id} className="card mb-2">
-                <div className="card-body p-2">
-                  <div className="d-flex align-items-center">
-                    <div className="form-check me-3">
-                      <input 
-                        type="checkbox" 
-                        className="form-check-input" 
-                        checked={task.completed}
-                        onChange={() => handleCheckboxChange(task.id)}
-                      />
-                    </div>
-                    <div className="flex-grow-1 me-2 me-md-3">
-                      <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
-                        {task.text}
-                      </p>
-                    </div>
-                    <div className="d-flex align-items-center">
-                      <div className="d-none d-md-flex align-items-center gap-2 me-2">
-                        <span className="text-muted small">{task.dueDate}</span>
-                        {task.tags.map(tag => (
-                          <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="d-flex me-2">
-                        {task.assignees.slice(0, 2).map(assigneeId => (
-                          <div 
-                            key={assigneeId}
-                            className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
-                            style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                            title={getAssigneeName(assigneeId)}
-                          >
-                            {getAssigneeName(assigneeId).charAt(0)}
-                          </div>
-                        ))}
-                        {task.assignees.length > 2 && (
-                          <div 
-                            className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
-                            style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                            title={`+${task.assignees.length - 2} more`}
-                          >
-                            +{task.assignees.length - 2}
-                          </div>
-                        )}
-                      </div>
-                      <div className="position-relative">
-                        <button 
-                          className="btn btn-sm btn-light"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveDropdown(activeDropdown === task.id ? null : task.id);
-                          }}
-                        >
-                          <FontAwesomeIcon icon={faEllipsisV} />
-                        </button>
-                        {activeDropdown === task.id && (
-                          <div className="position-absolute end-0 mt-2" style={{left:"-100px"}}>
-                            <TaskDropdown 
-                              taskId={task.id}
-                              onEdit={() => handleEdit(task)}
-                              onDelete={() => handleDelete(task.id)}
-                              onView={() => handleViewDetails(task)}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="d-flex d-md-none align-items-center flex-wrap gap-2 mt-2 ms-4">
-                    <span className="text-muted small">{task.dueDate}</span>
-                    {task.tags.map(tag => (
-                      <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+{(activeFilter === 'all' || activeFilter === 'medium') && (
+  <div>
+    <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
+      <div className="d-flex align-items-center mb-2 mb-sm-0">
+        <FontAwesomeIcon icon={faChevronRight} className="me-2 text-muted" />
+        <h3 className="h6 mb-0 me-2">Medium</h3>
+        <span className="text-muted small">{mediumPriorityTasks.length}</span>
+      </div>
+    </div>
+    
+    <table className="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Task</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Tags</th>
+          <th scope="col">Assignees</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {mediumPriorityTasks.map(task => (
+          <tr key={task.id}>
+            <td>
+              <div className="d-flex align-items-center">
+                <div className="form-check me-3">
+                  <input 
+                    type="checkbox" 
+                    className="form-check-input" 
+                    checked={task.completed}
+                    onChange={() => handleCheckboxChange(task.id)}
+                  />
                 </div>
+                <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
+                  {task.text}
+                </p>
               </div>
-            ))}
-          </div>
-        )}
+            </td>
+            <td className="text-muted small">{task.dueDate}</td>
+            <td>
+              {task.tags.map(tag => (
+                <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded me-1`}>
+                  {tag}
+                </span>
+              ))}
+            </td>
+            <td>
+              <div className="d-flex">
+                {task.assignees.slice(0, 2).map(assigneeId => (
+                  <div 
+                    key={assigneeId}
+                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
+                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                    title={getAssigneeName(assigneeId)}
+                  >
+                    {getAssigneeName(assigneeId).charAt(0)}
+                  </div>
+                ))}
+                {task.assignees.length > 2 && (
+                  <div 
+                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
+                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                    title={`+${task.assignees.length - 2} more`}
+                  >
+                    +{task.assignees.length - 2}
+                  </div>
+                )}
+              </div>
+            </td>
+            <td className="position-relative">
+              <button 
+                className="btn btn-sm btn-light"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveDropdown(activeDropdown === task.id ? null : task.id);
+                }}
+              >
+                <FontAwesomeIcon icon={faEllipsisV} />
+              </button>
+              {activeDropdown === task.id && (
+                <div className="position-absolute end-0 mt-2" style={{left:"-100px"}}>
+                  <TaskDropdown 
+                    taskId={task.id}
+                    onEdit={() => handleEdit(task)}
+                    onDelete={() => handleDelete(task.id)}
+                    onView={() => handleViewDetails(task)}
+                  />
+                </div>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
       </div>
 
       {isModalOpen && (
