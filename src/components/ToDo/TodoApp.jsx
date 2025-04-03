@@ -11,6 +11,7 @@ import {
   faEllipsisV 
 } from '@fortawesome/free-solid-svg-icons';
 
+// Constants
 const PROJECTS = [
   { id: null, name: 'None' },
   { id: 1, name: 'Project Alpha' },
@@ -28,6 +29,7 @@ const EMPLOYEES = [
 const PRIORITY_OPTIONS = ['High', 'Medium', 'Low'];
 const TAG_OPTIONS = ['Projects', 'Urgent', 'Internal', 'In progress', 'Reminder', 'Completed'];
 
+// TaskFormPopup Component
 const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   const [formData, setFormData] = useState({
     text: '',
@@ -38,6 +40,13 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
     assignees: [],
     project: null
   });
+
+  const [newTag, setNewTag] = useState('');
+  const [newAssignee, setNewAssignee] = useState('');
+  const [tagOptions, setTagOptions] = useState(TAG_OPTIONS);
+  const [employeeOptions, setEmployeeOptions] = useState(EMPLOYEES);
+  const [showTagInput, setShowTagInput] = useState(false);
+  const [showAssigneeInput, setShowAssigneeInput] = useState(false);
 
   useEffect(() => {
     if (editTask) {
@@ -63,22 +72,42 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({
-      text: '',
-      description: '',
-      priority: PRIORITY_OPTIONS[0].toLowerCase(),
-      dueDate: '',
-      tags: [],
-      assignees: [],
-      project: null
-    });
+  };
+
+  const addNewTag = () => {
+    if (newTag.trim() && !tagOptions.includes(newTag)) {
+      setTagOptions([...tagOptions, newTag]);
+      setFormData({
+        ...formData,
+        tags: [...formData.tags, newTag]
+      });
+      setNewTag('');
+      setShowTagInput(false);
+    }
+  };
+
+  const addNewAssignee = () => {
+    if (newAssignee.trim()) {
+      const newId = Math.max(...employeeOptions.map(e => e.id), 0) + 1;
+      const newEmployee = {
+        id: newId,
+        name: newAssignee
+      };
+      setEmployeeOptions([...employeeOptions, newEmployee]);
+      setFormData({
+        ...formData,
+        assignees: [...formData.assignees, newId]
+      });
+      setNewAssignee('');
+      setShowAssigneeInput(false);
+    }
   };
 
   if (!isOpen) return null;
 
   return (
     <div className="modal show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-      <div className="modal-dialog modal-dialog-centered" role="document">
+      <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title text-indigo-600">
@@ -88,7 +117,6 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="modal-body">
-              {/* Title */}
               <div className="mb-3">
                 <label className="form-label">Title</label>
                 <input
@@ -99,7 +127,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                   required
                 />
               </div>
-              {/* Description */}
+              
               <div className="mb-3">
                 <label className="form-label">Description</label>
                 <textarea
@@ -109,8 +137,8 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                   rows="3"
                 />
               </div>
+              
               <div className="row">
-                {/* Priority */}
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Priority</label>
                   <select
@@ -125,7 +153,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                     ))}
                   </select>
                 </div>
-                {/* Due Date */}
+                
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Due Date</label>
                   <input
@@ -136,8 +164,8 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                   />
                 </div>
               </div>
+              
               <div className="row">
-                {/* Project */}
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Project</label>
                   <select
@@ -152,52 +180,107 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                     ))}
                   </select>
                 </div>
-                {/* Tags */}
+                
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Tags</label>
-                  <select
-                    multiple
-                    value={formData.tags}
-                    onChange={(e) => {
-                      const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
-                      setFormData({ ...formData, tags: selectedOptions });
-                    }}
-                    className="form-select"
-                  >
-                    {TAG_OPTIONS.map((tag) => (
-                      <option key={tag} value={tag}>
-                        {tag}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="input-group mb-2">
+                    <select
+                      multiple
+                      value={formData.tags}
+                      onChange={(e) => {
+                        const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+                        setFormData({ ...formData, tags: selectedOptions });
+                      }}
+                      className="form-select"
+                    >
+                      {tagOptions.map((tag) => (
+                        <option key={tag} value={tag}>
+                          {tag}
+                        </option>
+                      ))}
+                    </select>
+                    <button 
+                      className="btn btn-outline-secondary" 
+                      type="button"
+                      onClick={() => setShowTagInput(!showTagInput)}
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  </div>
+                  {showTagInput && (
+                    <div className="input-group mb-2">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="New tag name"
+                        value={newTag}
+                        onChange={(e) => setNewTag(e.target.value)}
+                      />
+                      <button
+                        className="btn btn-primary"
+                        type="button"
+                        onClick={addNewTag}
+                      >
+                        Add
+                      </button>
+                    </div>
+                  )}
                   <small className="form-text text-muted">
                     Hold Ctrl/Cmd to select multiple tags
                   </small>
                 </div>
               </div>
-              {/* Assignees */}
+              
               <div className="mb-3">
                 <label className="form-label">Assignees</label>
-                <select
-                  multiple
-                  value={formData.assignees}
-                  onChange={(e) => {
-                    const selectedOptions = Array.from(e.target.selectedOptions, (option) => Number(option.value));
-                    setFormData({ ...formData, assignees: selectedOptions });
-                  }}
-                  className="form-select"
-                >
-                  {EMPLOYEES.map((employee) => (
-                    <option key={employee.id} value={employee.id}>
-                      {employee.name}
-                    </option>
-                  ))}
-                </select>
+                <div className="input-group mb-2">
+                  <select
+                    multiple
+                    value={formData.assignees}
+                    onChange={(e) => {
+                      const selectedOptions = Array.from(e.target.selectedOptions, (option) => Number(option.value));
+                      setFormData({ ...formData, assignees: selectedOptions });
+                    }}
+                    className="form-select"
+                  >
+                    {employeeOptions.map((employee) => (
+                      <option key={employee.id} value={employee.id}>
+                        {employee.name}
+                      </option>
+                    ))}
+                  </select>
+                  <button 
+                    className="btn btn-outline-secondary" 
+                    type="button"
+                    onClick={() => setShowAssigneeInput(!showAssigneeInput)}
+                  >
+                    <FontAwesomeIcon icon={faPlus} />
+                  </button>
+                </div>
+                {showAssigneeInput && (
+                  <div className="input-group mb-2">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="New assignee name"
+                      value={newAssignee}
+                      onChange={(e) => setNewAssignee(e.target.value)}
+                    />
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={addNewAssignee}
+                    >
+                      Add
+                    </button>
+                  </div>
+                )}
                 <small className="form-text text-muted">
                   Hold Ctrl/Cmd to select multiple assignees
                 </small>
               </div>
             </div>
+            
             <div className="modal-footer">
               <button type="button" onClick={onClose} className="btn btn-secondary">
                 Cancel
@@ -213,34 +296,24 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   );
 };
 
+// TaskDropdown Component
 const TaskDropdown = ({ taskId, onEdit, onDelete, onView }) => {
   return (
     <div className="dropdown-menu show">
-      <button
-        onClick={onView}
-        className="dropdown-item"
-        type="button"
-      >
+      <button onClick={onView} className="dropdown-item" type="button">
         View Details
       </button>
-      <button
-        onClick={onEdit}
-        className="dropdown-item"
-        type="button"
-      >
+      <button onClick={onEdit} className="dropdown-item" type="button">
         Edit
       </button>
-      <button
-        onClick={onDelete}
-        className="dropdown-item text-danger"
-        type="button"
-      >
+      <button onClick={onDelete} className="dropdown-item text-danger" type="button">
         Delete
       </button>
     </div>
   );
 };
 
+// Main TodoApp Component
 const TodoApp = () => {
   const [tasks, setTasks] = useState([
     {
@@ -276,6 +349,10 @@ const TodoApp = () => {
   const [dueDateFilter, setDueDateFilter] = useState('');
   const [tagFilter, setTagFilter] = useState('');
   const [sortBy, setSortBy] = useState('createdDate');
+  const [newTask, setNewTask] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [editingTask, setEditingTask] = useState(null);
 
   const filteredTasks = tasks
     .filter((task) => {
@@ -289,11 +366,6 @@ const TodoApp = () => {
       if (sortBy === 'dueDate') return new Date(a.dueDate) - new Date(b.dueDate);
       return 0;
     });
-
-  const [newTask, setNewTask] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const [editingTask, setEditingTask] = useState(null);
 
   const handleClose = () => {
     setIsModalOpen(false);
@@ -318,8 +390,8 @@ const TodoApp = () => {
     }
   };
 
-  const highPriorityTasks = tasks.filter(task => task.priority === 'high');
-  const mediumPriorityTasks = tasks.filter(task => task.priority === 'medium');
+  const highPriorityTasks = filteredTasks.filter(task => task.priority === 'high');
+  const mediumPriorityTasks = filteredTasks.filter(task => task.priority === 'medium');
 
   const handleAddTask = (newTaskData) => {
     const newTaskObj = {
@@ -497,228 +569,215 @@ const TodoApp = () => {
         </div>
 
         {/* Task Sections */}
-        {/* High Priority Section */}
         {(activeFilter === 'all' || activeFilter === 'high') && (
-  <div className="mb-5">
-    <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
-      <div className="d-flex align-items-center mb-2 mb-sm-0">
-        <FontAwesomeIcon icon={faChevronDown} className="me-2 text-muted" />
-        <h3 className="h6 mb-0 me-2">High</h3>
-        <span className="text-muted small">{highPriorityTasks.length}</span>
-      </div>
-      <div className="ms-sm-auto d-flex">
-        <button 
-          className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Add New
-        </button>
-        <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
-          See All
-        </button>
-      </div>
-    </div>
-    
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Task</th>
-          <th scope="col">Due Date</th>
-          <th scope="col">Tags</th>
-          <th scope="col">Assignees</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {highPriorityTasks.map(task => (
-          <tr key={task.id}>
-            <td>
-              <div className="d-flex align-items-center">
-                <div className="form-check me-3">
-                  <input 
-                    type="checkbox" 
-                    className="form-check-input" 
-                    checked={task.completed}
-                    onChange={() => handleCheckboxChange(task.id)}
-                  />
-                </div>
-                <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
-                  {task.text}
-                </p>
+          <div className="mb-5">
+            <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
+              <div className="d-flex align-items-center mb-2 mb-sm-0">
+                <FontAwesomeIcon icon={faChevronDown} className="me-2 text-muted" />
+                <h3 className="h6 mb-0 me-2">High</h3>
+                <span className="text-muted small">{highPriorityTasks.length}</span>
               </div>
-            </td>
-            <td className="text-muted small">{task.dueDate}</td>
-            <td>
-              {task.tags.map(tag => (
-                <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded me-1`}>
-                  {tag}
-                </span>
-              ))}
-            </td>
-            <td>
-              <div className="d-flex">
-                {task.assignees.slice(0, 2).map(assigneeId => (
-                  <div 
-                    key={assigneeId}
-                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
-                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                    title={getAssigneeName(assigneeId)}
-                  >
-                    {getAssigneeName(assigneeId).charAt(0)}
-                  </div>
-                ))}
-                {task.assignees.length > 2 && (
-                  <div 
-                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
-                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                    title={`+${task.assignees.length - 2} more`}
-                  >
-                    +{task.assignees.length - 2}
-                  </div>
-                )}
+              <div className="ms-sm-auto d-flex">
+                <button 
+                  className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Add New
+                </button>
+                <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
+                  See All
+                </button>
               </div>
-            </td>
-            <td className="position-relative">
-              <button 
-                className="btn btn-sm btn-light"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveDropdown(activeDropdown === task.id ? null : task.id);
-                }}
-              >
-                <FontAwesomeIcon icon={faEllipsisV} />
-              </button>
-              {activeDropdown === task.id && (
-                <div className="position-absolute end-0 mt-2" style={{left:"-120px"}}>
-                  <TaskDropdown
-                    taskId={task.id}
-                    onEdit={() => handleEdit(task)}
-                    onDelete={() => handleDelete(task.id)}
-                    onView={() => handleViewDetails(task)}
-                  />
+            </div>
+            {highPriorityTasks.map((task) => (
+              <div key={task.id} className="card mb-2">
+                <div className="card-body p-2">
+                  <div className="d-flex align-items-center">
+                    <div className="form-check me-3">
+                      <input 
+                        type="checkbox" 
+                        className="form-check-input" 
+                        checked={task.completed}
+                        onChange={() => handleCheckboxChange(task.id)}
+                      />
+                    </div>
+                    <div className="flex-grow-1 me-2 me-md-3">
+                      <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
+                        {task.text}
+                      </p>
+                    </div>
+                    <div className="d-flex align-items-center">
+                      <div className="d-none d-md-flex align-items-center gap-2 me-2">
+                        <span className="text-muted small">{task.dueDate}</span>
+                        {task.tags.map(tag => (
+                          <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="d-flex me-2">
+                        {task.assignees.slice(0, 2).map(assigneeId => (
+                          <div 
+                            key={assigneeId}
+                            className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
+                            style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                            title={getAssigneeName(assigneeId)}
+                          >
+                            {getAssigneeName(assigneeId).charAt(0)}
+                          </div>
+                        ))}
+                        {task.assignees.length > 2 && (
+                          <div 
+                            className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
+                            style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                            title={`+${task.assignees.length - 2} more`}
+                          >
+                            +{task.assignees.length - 2}
+                          </div>
+                        )}
+                      </div>
+                      <div className="position-relative">
+                        <button 
+                          className="btn btn-sm btn-light"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDropdown(activeDropdown === task.id ? null : task.id);
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faEllipsisV} />
+                        </button>
+                        {activeDropdown === task.id && (
+                          <div className="position-absolute end-0 mt-2" style={{left:"-120px"}}>
+                            <TaskDropdown
+                              taskId={task.id}
+                              onEdit={() => handleEdit(task)}
+                              onDelete={() => handleDelete(task.id)}
+                              onView={() => handleViewDetails(task)}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="d-flex d-md-none align-items-center flex-wrap gap-2 mt-2 ms-4">
+                    <span className="text-muted small">{task.dueDate}</span>
+                    {task.tags.map(tag => (
+                      <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
+              </div>
+            ))}
+          </div>
+        )}
 
-        {/* Medium Priority Section */}
         {(activeFilter === 'all' || activeFilter === 'medium') && (
-  <div>
-    <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
-      <div className="d-flex align-items-center mb-2 mb-sm-0">
-        <FontAwesomeIcon icon={faChevronRight} className="me-2 text-muted" />
-        <h3 className="h6 mb-0 me-2">Medium</h3>
-        <span className="text-muted small">{mediumPriorityTasks.length}</span>
-      </div>
-      <div className="ms-sm-auto d-flex">
-        <button 
-          className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Add New
-        </button>
-        <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
-          See All
-        </button>
-      </div>
-    </div>
-    
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Task</th>
-          <th scope="col">Due Date</th>
-          <th scope="col">Tags</th>
-          <th scope="col">Assignees</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {mediumPriorityTasks.map(task => (
-          <tr key={task.id}>
-            <td>
-              <div className="d-flex align-items-center">
-                <div className="form-check me-3">
-                  <input 
-                    type="checkbox" 
-                    className="form-check-input" 
-                    checked={task.completed}
-                    onChange={() => handleCheckboxChange(task.id)}
-                  />
-                </div>
-                <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
-                  {task.text}
-                </p>
+          <div>
+            <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
+              <div className="d-flex align-items-center mb-2 mb-sm-0">
+                <FontAwesomeIcon icon={faChevronRight} className="me-2 text-muted" />
+                <h3 className="h6 mb-0 me-2">Medium</h3>
+                <span className="text-muted small">{mediumPriorityTasks.length}</span>
               </div>
-            </td>
-            <td className="text-muted small">{task.dueDate}</td>
-            <td>
-              {task.tags.map(tag => (
-                <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded me-1`}>
-                  {tag}
-                </span>
-              ))}
-            </td>
-            <td>
-              <div className="d-flex">
-                {task.assignees.slice(0, 2).map(assigneeId => (
-                  <div 
-                    key={assigneeId}
-                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
-                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                    title={getAssigneeName(assigneeId)}
-                  >
-                    {getAssigneeName(assigneeId).charAt(0)}
-                  </div>
-                ))}
-                {task.assignees.length > 2 && (
-                  <div 
-                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
-                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                    title={`+${task.assignees.length - 2} more`}
-                  >
-                    +{task.assignees.length - 2}
-                  </div>
-                )}
+              <div className="ms-sm-auto d-flex">
+                <button 
+                  className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Add New
+                </button>
+                <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
+                  See All
+                </button>
               </div>
-            </td>
-            <td className="position-relative">
-              <button 
-                className="btn btn-sm btn-light"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveDropdown(activeDropdown === task.id ? null : task.id);
-                }}
-              >
-                <FontAwesomeIcon icon={faEllipsisV} />
-              </button>
-              {activeDropdown === task.id && (
-                <div className="position-absolute end-0 mt-2" style={{left:"-100px"}}>
-                  <TaskDropdown 
-                    taskId={task.id}
-                    onEdit={() => handleEdit(task)}
-                    onDelete={() => handleDelete(task.id)}
-                    onView={() => handleViewDetails(task)}
-                  />
+            </div>
+            {mediumPriorityTasks.map(task => (
+              <div key={task.id} className="card mb-2">
+                <div className="card-body p-2">
+                  <div className="d-flex align-items-center">
+                    <div className="form-check me-3">
+                      <input 
+                        type="checkbox" 
+                        className="form-check-input" 
+                        checked={task.completed}
+                        onChange={() => handleCheckboxChange(task.id)}
+                      />
+                    </div>
+                    <div className="flex-grow-1 me-2 me-md-3">
+                      <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
+                        {task.text}
+                      </p>
+                    </div>
+                    <div className="d-flex align-items-center">
+                      <div className="d-none d-md-flex align-items-center gap-2 me-2">
+                        <span className="text-muted small">{task.dueDate}</span>
+                        {task.tags.map(tag => (
+                          <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="d-flex me-2">
+                        {task.assignees.slice(0, 2).map(assigneeId => (
+                          <div 
+                            key={assigneeId}
+                            className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
+                            style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                            title={getAssigneeName(assigneeId)}
+                          >
+                            {getAssigneeName(assigneeId).charAt(0)}
+                          </div>
+                        ))}
+                        {task.assignees.length > 2 && (
+                          <div 
+                            className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
+                            style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                            title={`+${task.assignees.length - 2} more`}
+                          >
+                            +{task.assignees.length - 2}
+                          </div>
+                        )}
+                      </div>
+                      <div className="position-relative">
+                        <button 
+                          className="btn btn-sm btn-light"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDropdown(activeDropdown === task.id ? null : task.id);
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faEllipsisV} />
+                        </button>
+                        {activeDropdown === task.id && (
+                          <div className="position-absolute end-0 mt-2" style={{left:"-100px"}}>
+                            <TaskDropdown 
+                              taskId={task.id}
+                              onEdit={() => handleEdit(task)}
+                              onDelete={() => handleDelete(task.id)}
+                              onView={() => handleViewDetails(task)}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="d-flex d-md-none align-items-center flex-wrap gap-2 mt-2 ms-4">
+                    <span className="text-muted small">{task.dueDate}</span>
+                    {task.tags.map(tag => (
+                      <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded`}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
-
-
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Modal for Task Form */}
       {isModalOpen && (
         <TaskFormPopup 
           isOpen={isModalOpen} 
