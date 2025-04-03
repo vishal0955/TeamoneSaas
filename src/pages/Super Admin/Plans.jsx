@@ -15,7 +15,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import "./Plans.css";
 
-function Plans({ show, handleClose, plan }) {
+function Plans({ show, plan }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [value, setValue] = useState([]);
   const [customizePlanModalShow, setCustomizePlanModalShow] = useState(false);
@@ -24,6 +24,7 @@ function Plans({ show, handleClose, plan }) {
 
   const [customizeModalShow, setCustomizeModalShow] = useState(false);
   const [customizePlanData, setCustomizePlanData] = useState(null);
+
 
   const [newEmployee, setNewEmployee] = useState({
     fullName: "",
@@ -110,18 +111,6 @@ function Plans({ show, handleClose, plan }) {
     setPlans(updatedPlans);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setCurrentStep(2);
-  };
-
-  const handleFinalSubmit = (e) => {
-    e.preventDefault();
-    console.log(newEmployee);
-    setCustomizePlanModalShow(false);
-    setCurrentStep(1);
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditedPlan((prev) => ({ ...prev, [name]: value }));
@@ -157,11 +146,39 @@ function Plans({ show, handleClose, plan }) {
     setEditModalShow(true);
   };
 
-  const handleCustomizeClick = (plan) => {
-    setCustomizePlanData(plan);
-    setCurrentStep(1);
+  
+
+  const handleShow = () => setCustomizePlanModalShow(true);
+  const handleAddPlanClose = () => setAddPlanModalShow(false);
+  const handleAddPlanShow = () => setAddPlanModalShow(true);
+
+  const handleCustomizeClick = () => {
     setCustomizeModalShow(true);
+    setCurrentStep(1);
   };
+
+  const handleClose = () => {
+    setCustomizeModalShow(false);
+    setCurrentStep(1); // reset back to step 1
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCurrentStep(2);
+  };
+
+  const handleFinalSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted Info:", newEmployee);
+    handleClose();
+  };
+
+ // Declare this in your component
+const handleModalClose = () => {
+  setCustomizePlanModalShow(false);
+  setCurrentStep(1); // Optional: reset to first step if using multi-step
+};
+
 
   return (
     <Container style={{ marginTop: "60px" }}>
@@ -172,9 +189,9 @@ function Plans({ show, handleClose, plan }) {
         >
           Add Plan
         </button>
-        <Button variant="primary" onClick={() => handleCustomizeClick(plan)} style={{height:"40px"}}>
-          Customize Plan
-        </Button>
+        <Button variant="primary" onClick={() => handleCustomizeClick(plan)} style={{ height: "40px" }}>
+        Customize Plan
+      </Button>
       </div>
 
       {/* Step 1 Modal */}
@@ -233,17 +250,6 @@ function Plans({ show, handleClose, plan }) {
                   />
                 </Form.Group>
               </Col>
-              {/* <Col md={6}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Feature</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={newEmployee.companyname}
-                    onChange={(e) => setNewEmployee({ ...newEmployee, companyname: e.target.value })}
-                    required
-                  />
-                </Form.Group>
-              </Col> */}
             </Row>
 
             <Form.Group className="mb-3">
@@ -268,12 +274,9 @@ function Plans({ show, handleClose, plan }) {
             </div>
 
             <div className="d-flex justify-content-end">
-              <Button
-                variant="secondary"
-                onClick={() => setCustomizePlanModalShow(false)}
-              >
-                Cancel
-              </Button>
+               <Button variant="outline-secondary" onClick={handleModalClose}>
+          Cancel
+        </Button>
               <Button className="ms-3" type="submit">
                 Save
               </Button>
@@ -282,83 +285,123 @@ function Plans({ show, handleClose, plan }) {
         </Modal.Body>
       </Modal>
 
-      <Modal
-        show={customizeModalShow && currentStep === 1}
-        onHide={() => setCustomizeModalShow(false)}
-      >
+      <Modal show={customizeModalShow && currentStep === 1} onHide={handleClose} className="custom-modal">
         <Modal.Header closeButton>
-          <Modal.Title>Customize Plan – Step 1</Modal.Title>
+          <Modal.Title>Customize Plan</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Plan Name</Form.Label>
-              <Form.Control
-                type="text"
-                value={customizePlanData?.planName || ""}
-                readOnly
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Price</Form.Label>
-              <Form.Control
-                type="text"
-                value={customizePlanData?.price || ""}
-                readOnly
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Trial Days</Form.Label>
-              <Form.Control
-                type="number"
-                value={customizePlanData?.trialDays || 0}
-                readOnly
-              />
-            </Form.Group>
-            <div className="d-flex justify-content-end">
-              <Button variant="primary" onClick={() => setCurrentStep(2)}>
+        <Modal.Body className="modal-body-custom">
+          <Form onSubmit={handleSubmit} className="custom-form">
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-4">
+                  <Form.Label>Full Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={newEmployee.fullName}
+                    onChange={(e) => setNewEmployee({ ...newEmployee, fullName: e.target.value })}
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-4">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    value={newEmployee.email}
+                    onChange={(e) => setNewEmployee({ ...newEmployee, email: e.target.value })}
+                    placeholder="Enter your email"
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-4">
+                  <Form.Label>Phone</Form.Label>
+                  <Form.Control
+                    type="tel"
+                    value={newEmployee.phone}
+                    onChange={(e) => setNewEmployee({ ...newEmployee, phone: e.target.value })}
+                    placeholder="Enter your phone number"
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-4">
+                  <Form.Label>Company Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={newEmployee.companyname}
+                    onChange={(e) => setNewEmployee({ ...newEmployee, companyname: e.target.value })}
+                    placeholder="Enter your company name"
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={12}>
+                <Form.Group className="mb-4">
+                  <Form.Label>Company Size</Form.Label>
+                  <Form.Select
+                    value={newEmployee.department}
+                    onChange={(e) => setNewEmployee({ ...newEmployee, department: e.target.value })}
+                    required
+                  >
+                    <option value="">Select company size</option>
+                    <option value="1-10">1-10 employees</option>
+                    <option value="10-50">10-50 employees</option>
+                    <option value="50-150">50-150 employees</option>
+                    <option value="100+">100+ employees</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <div className="d-flex justify-content-end mt-4">
+              <Button variant="outline-secondary" className="me-3" onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button variant="primary" type="submit">
                 Next
               </Button>
             </div>
           </Form>
         </Modal.Body>
       </Modal>
-
       {/* Step 2 Modal */}
 
-      <Modal
-        show={customizeModalShow && currentStep === 2}
-        onHide={() => setCustomizeModalShow(false)}
-      >
+      <Modal show={customizeModalShow && currentStep === 2} onHide={handleClose} className="custom-modal feature-modal modal-lg">
         <Modal.Header closeButton>
-          <Modal.Title>Choose Features – Step 2</Modal.Title>
+          <Modal.Title>Customize Your Plan Features</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form
-            onSubmit={(e) => {
-              e.preventDefault();
-              // You can handle final submission here
-              setCustomizeModalShow(false);
-            }}
-          >
-            <Row>
-              {planFeatures.map((feature, index) => (
-                <Col md={6} key={index}>
-                  <Card className="mb-3">
-                    <Card.Body>
+        <Modal.Body className="modal-body-custom">
+          <Form onSubmit={handleFinalSubmit} className="feature-form">
+            <Form.Group className="mb-4">
+              <Form.Label>Select the features you need</Form.Label>
+              <Row className="g-4">
+                {planFeatures.map((feature, index) => (
+                  <Col md={6} key={index}>
+                    <Card className="h-100 feature-card p-3">
                       <Form.Check
                         type="checkbox"
                         id={`feature-${index}`}
+                        className="feature-checkbox mb-2"
                         label={feature.name}
-                        className="mb-2"
                       />
-                      <Card.Text>{feature.description}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-            <div className="d-flex justify-content-between">
+                      <Card.Text className="text-muted">{feature.description}</Card.Text>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </Form.Group>
+            <div className="d-flex justify-content-end mt-4 gap-3">
               <Button variant="secondary" onClick={() => setCurrentStep(1)}>
                 Back
               </Button>
@@ -369,7 +412,6 @@ function Plans({ show, handleClose, plan }) {
           </Form>
         </Modal.Body>
       </Modal>
-
       {/* Plans Display */}
       <Row>
         {plans.map((plan, index) => (
