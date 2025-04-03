@@ -401,7 +401,7 @@ const NotesGrid = () => {
       {/* Main Content */}
       <div className="flex-1 ">
         <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-6 ">
             <div className="flex">
               <div className="relative">
                 <button className="flex items-center bg-white border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
@@ -426,7 +426,7 @@ const NotesGrid = () => {
                 Apply
               </button>
             </div>
-            <div className="flex">
+            <div className="flex mt-2">
               <div className="flex items-center">
                 <div className="mr-2 flex border border-gray-300 rounded">
                   <button
