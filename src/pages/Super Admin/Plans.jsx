@@ -25,7 +25,6 @@ function Plans({ show, plan }) {
   const [customizeModalShow, setCustomizeModalShow] = useState(false);
   const [customizePlanData, setCustomizePlanData] = useState(null);
 
-
   const [newEmployee, setNewEmployee] = useState({
     fullName: "",
     email: "",
@@ -104,6 +103,16 @@ function Plans({ show, plan }) {
       name: "Inventory Management",
       description: "Stock management with real-time tracking and alerts",
     },
+    {
+      name: "Finance",
+      description:
+        "Finance is the study and management of money, investments, and other financial instruments.",
+    },
+    {
+      name: "Support desk",
+      description:
+        "Support desk assists users with technical issues and service requests.",
+    },
   ];
 
   const handleDelete = (indexToDelete) => {
@@ -146,8 +155,6 @@ function Plans({ show, plan }) {
     setEditModalShow(true);
   };
 
-  
-
   const handleShow = () => setCustomizePlanModalShow(true);
   const handleAddPlanClose = () => setAddPlanModalShow(false);
   const handleAddPlanShow = () => setAddPlanModalShow(true);
@@ -173,13 +180,22 @@ function Plans({ show, plan }) {
     handleClose();
   };
 
- // Declare this in your component
-const handleModalClose = () => {
-  setCustomizePlanModalShow(false);
-  setCurrentStep(1); // Optional: reset to first step if using multi-step
-};
+  // Declare this in your component
+  const handleModalClose = () => {
+    setCustomizePlanModalShow(false);
+    setCurrentStep(1); // Optional: reset to first step if using multi-step
+  };
 
 
+   const [checkedFeatures, setCheckedFeatures] = useState({});
+
+  // Handle checkbox change
+  const handleCheckboxChange = (index) => {
+    setCheckedFeatures((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index], // Toggle checkbox state
+    }));
+  };
   return (
     <Container style={{ marginTop: "60px" }}>
       <div className="d-flex gap-3">
@@ -189,9 +205,13 @@ const handleModalClose = () => {
         >
           Add Plan
         </button>
-        <Button variant="primary" onClick={() => handleCustomizeClick(plan)} style={{ height: "40px" }}>
-        Customize Plan
-      </Button>
+        <Button
+          variant="primary"
+          onClick={() => handleCustomizeClick(plan)}
+          style={{ height: "40px" }}
+        >
+          Customize Plan
+        </Button>
       </div>
 
       {/* Step 1 Modal */}
@@ -274,9 +294,9 @@ const handleModalClose = () => {
             </div>
 
             <div className="d-flex justify-content-end">
-               <Button variant="outline-secondary" onClick={handleModalClose}>
-          Cancel
-        </Button>
+              <Button variant="outline-secondary" onClick={handleModalClose}>
+                Cancel
+              </Button>
               <Button className="ms-3" type="submit">
                 Save
               </Button>
@@ -285,7 +305,11 @@ const handleModalClose = () => {
         </Modal.Body>
       </Modal>
 
-      <Modal show={customizeModalShow && currentStep === 1} onHide={handleClose} className="custom-modal">
+      <Modal
+        show={customizeModalShow && currentStep === 1}
+        onHide={handleClose}
+        className="custom-modal"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Customize Plan</Modal.Title>
         </Modal.Header>
@@ -298,7 +322,12 @@ const handleModalClose = () => {
                   <Form.Control
                     type="text"
                     value={newEmployee.fullName}
-                    onChange={(e) => setNewEmployee({ ...newEmployee, fullName: e.target.value })}
+                    onChange={(e) =>
+                      setNewEmployee({
+                        ...newEmployee,
+                        fullName: e.target.value,
+                      })
+                    }
                     placeholder="Enter your full name"
                     required
                   />
@@ -310,7 +339,9 @@ const handleModalClose = () => {
                   <Form.Control
                     type="email"
                     value={newEmployee.email}
-                    onChange={(e) => setNewEmployee({ ...newEmployee, email: e.target.value })}
+                    onChange={(e) =>
+                      setNewEmployee({ ...newEmployee, email: e.target.value })
+                    }
                     placeholder="Enter your email"
                     required
                   />
@@ -325,7 +356,9 @@ const handleModalClose = () => {
                   <Form.Control
                     type="tel"
                     value={newEmployee.phone}
-                    onChange={(e) => setNewEmployee({ ...newEmployee, phone: e.target.value })}
+                    onChange={(e) =>
+                      setNewEmployee({ ...newEmployee, phone: e.target.value })
+                    }
                     placeholder="Enter your phone number"
                     required
                   />
@@ -337,7 +370,12 @@ const handleModalClose = () => {
                   <Form.Control
                     type="text"
                     value={newEmployee.companyname}
-                    onChange={(e) => setNewEmployee({ ...newEmployee, companyname: e.target.value })}
+                    onChange={(e) =>
+                      setNewEmployee({
+                        ...newEmployee,
+                        companyname: e.target.value,
+                      })
+                    }
                     placeholder="Enter your company name"
                     required
                   />
@@ -351,7 +389,12 @@ const handleModalClose = () => {
                   <Form.Label>Company Size</Form.Label>
                   <Form.Select
                     value={newEmployee.department}
-                    onChange={(e) => setNewEmployee({ ...newEmployee, department: e.target.value })}
+                    onChange={(e) =>
+                      setNewEmployee({
+                        ...newEmployee,
+                        department: e.target.value,
+                      })
+                    }
                     required
                   >
                     <option value="">Select company size</option>
@@ -365,7 +408,11 @@ const handleModalClose = () => {
             </Row>
 
             <div className="d-flex justify-content-end mt-4">
-              <Button variant="outline-secondary" className="me-3" onClick={handleClose}>
+              <Button
+                variant="outline-secondary"
+                className="me-3"
+                onClick={handleClose}
+              >
                 Cancel
               </Button>
               <Button variant="primary" type="submit">
@@ -388,14 +435,24 @@ const handleModalClose = () => {
               <Row className="g-4">
                 {planFeatures.map((feature, index) => (
                   <Col md={6} key={index}>
-                    <Card className="h-100 feature-card p-3">
-                      <Form.Check
-                        type="checkbox"
-                        id={`feature-${index}`}
-                        className="feature-checkbox mb-2"
-                        label={feature.name}
-                      />
-                      <Card.Text className="text-muted">{feature.description}</Card.Text>
+                    <Card className="h-100 feature-card p-3 " onClick={() => handleCheckboxChange(index)} style={{backgroundColor:"DeepSkyBlue"}}>
+                      <Card.Body>
+                        <div className="d-flex flex-wrap">
+                          <input
+                            type="checkbox"
+                            className="me-2"
+                            checked={checkedFeatures[index] || false}
+                            onChange={() => handleCheckboxChange(index)} // To update state directly on checkbox click
+                          />
+                          {/* Displaying name side-by-side for words */}
+                          {feature.name.split(" ").map((word, i) => (
+                            <span key={i} className="me-2 fw-bold" style={{ color: "white" }}>
+                              {word}
+                            </span>
+                          ))}
+                        </div>
+                        <Card.Text className=" mt-2 " style={{color:"white" ,fontSize:"18px", fontFamily:"Roboto"}}>{feature.description}</Card.Text>
+                      </Card.Body>
                     </Card>
                   </Col>
                 ))}
@@ -412,6 +469,7 @@ const handleModalClose = () => {
           </Form>
         </Modal.Body>
       </Modal>
+
       {/* Plans Display */}
       <Row>
         {plans.map((plan, index) => (

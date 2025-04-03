@@ -519,7 +519,7 @@ const TodoApp = () => {
         </div>
 
         {/* Filters */}
-        <div className="row mb-4">
+        <div className="row mb-4  ">
           <div className="col-12 col-md-6 mb-3 mb-md-0">
             <div className="btn-group " role="group">
               <button 
