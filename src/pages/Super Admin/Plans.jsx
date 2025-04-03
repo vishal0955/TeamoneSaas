@@ -9,7 +9,7 @@ function Plans() {
   const [currentStep, setCurrentStep] = useState(1);
   const [customizePlanModalShow, setCustomizePlanModalShow] = useState(false);
   const [addPlanModalShow, setAddPlanModalShow] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState(0); // Default to Free plan (index 0)
+  
   const [newEmployee, setNewEmployee] = useState({
     fullName: '',
     email: '',
@@ -20,7 +20,7 @@ function Plans() {
     companyname:''
   });
 
-  const plans = [
+  const [plans, setPlans] = useState([
     {
       planName: 'Free Plan',
       price: '$0',
@@ -63,7 +63,16 @@ function Plans() {
       ],
       badgeColor: 'warning',
     },
-  ];
+  ]);
+
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  const handleDelete = (index) => {
+    const updatedPlans = plans.filter((_, i) => i !== index);
+    setPlans(updatedPlans);
+    if (selectedPlan === index) setSelectedPlan(null); // optional reset selection
+  };
+
 
   const planFeatures = [
     {

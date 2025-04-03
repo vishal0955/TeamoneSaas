@@ -434,12 +434,12 @@ const DealDetails = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex">
+      <div className="">
         {/* Left Content */}
         <div className="flex-1 bg-white m-4 rounded-lg shadow">
           {/* Tabs */}
           <div className="border-b">
-            <div className="flex">
+            <div className="">
               {tabs.map((tab) => (
                 <button
                   key={tab}
@@ -457,8 +457,8 @@ const DealDetails = () => {
           </div>
 
           {/* Search and Filter */}
-          <div className="p-4 border-b">
-            <div className="flex gap-4">
+          <div className="p-1 border-b">
+            <div className=" gap-4">
               <div className="flex-1">
                 <input
                   type="text"
