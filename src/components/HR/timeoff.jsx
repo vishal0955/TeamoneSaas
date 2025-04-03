@@ -138,7 +138,7 @@ const TeamTimeOffCalendar = () => {
               ))}
             </div>
             <div className="grid grid-cols-7 gap-px bg-gray-200">
-              {[...Array(35)].map((_, index) => (
+              {[...Array(31)].map((_, index) => (
                 <div key={index} className="bg-white p-4 min-h-[120px]">{index + 1}</div>
               ))}
             </div>

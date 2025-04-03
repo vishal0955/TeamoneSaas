@@ -152,7 +152,7 @@ const RoleBasedRoutes = () => {
       <Route path="/superadmin" element={<SuperAdminLayout />}>
         <Route index element={<SuperAdminDashboard />} />
         <Route path="dashboard" element={<SuperAdminDashboard />} />
-        <Route path="plans" element={<Plans />} />
+        <Route path="plans" element={<Plans/>} />
         <Route path="user_info" element={<UserInfo />} />
         <Route path="order_plan" element={<OrderPlan />} />
         <Route path="plan_request" element={<PlanRequest />} />
