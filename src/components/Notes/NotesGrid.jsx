@@ -401,66 +401,68 @@ const NotesGrid = () => {
       {/* Main Content */}
       <div className="flex-1 ">
         <div className="p-6">
-          <div className="flex justify-between items-center mb-6 ">
-            <div className="flex">
-              <div className="relative">
-                <button className="flex items-center bg-white border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                  Bulk Actions
-                  <svg
-                    className="ml-1 w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <button className="bg-white border border-gray-300 rounded px-4 py-2 text-sm ml-2">
-                Apply
-              </button>
-            </div>
-            <div className="flex mt-2">
-              <div className="flex items-center">
-                <div className="mr-2 flex border border-gray-300 rounded">
-                  <button
-                    className={`p-2 ${
-                      viewMode === "list"
-                        ? "bg-gray-900 text-white"
-                        : "bg-white text-gray-700"
-                    }`}
-                    onClick={() => setViewMode("list")}
-                  >
-                    <List size={18} />
-                  </button>
-                  <button
-                    className={`p-2 ${
-                      viewMode === "grid"
-                        ? "bg-gray-900 text-white"
-                        : "bg-white text-gray-700"
-                    }`}
-                    onClick={() => setViewMode("grid")}
-                  >
-                    <Grid size={18} />
-                  </button>
-                </div>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-6">
+  {/* Left side: Bulk Actions + Apply */}
+  <div className="flex flex-col sm:flex-row gap-2">
+    <div className="relative w-full sm:w-auto">
+      <button className="flex items-center justify-between w-full bg-white border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        Bulk Actions
+        <svg
+          className="ml-1 w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </button>
+    </div>
+    <button className="bg-white border border-gray-300 rounded px-4 py-2 text-sm w-full sm:w-auto">
+      Apply
+    </button>
+  </div>
 
-                <button
-                  className="bg-gray-900 text-white rounded px-4 py-2 text-sm flex items-center"
-                  onClick={handleOpenAddNote}
-                >
-                  <Plus size={16} className="mr-1" />
-                  Add Note
-                </button>
-              </div>
-            </div>
-          </div>
+  {/* Right side: View toggle + Add Note */}
+  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
+    <div className="flex border border-gray-300 rounded w-full sm:w-auto">
+      <button
+        className={`p-2 flex-1 ${
+          viewMode === "list"
+            ? "bg-gray-900 text-white"
+            : "bg-white text-gray-700"
+        }`}
+        onClick={() => setViewMode("list")}
+      >
+        <List size={18} />
+      </button>
+      <button
+        className={`p-2 flex-1 ${
+          viewMode === "grid"
+            ? "bg-gray-900 text-white"
+            : "bg-white text-gray-700"
+        }`}
+        onClick={() => setViewMode("grid")}
+      >
+        <Grid size={18} />
+      </button>
+    </div>
+
+    <button
+      className="bg-gray-900 text-white rounded px-4 py-2 text-sm flex items-center w-full sm:w-auto"
+      onClick={handleOpenAddNote}
+    >
+      <Plus size={16} className="mr-1" />
+      Add Note
+    </button>
+  </div>
+</div>
+
 
           <h4 className="text-xl font-medium mb-4">Important Notes</h4>
 
