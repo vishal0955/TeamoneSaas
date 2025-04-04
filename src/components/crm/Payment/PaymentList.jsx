@@ -127,7 +127,7 @@ const PaymentList = () => {
                         </div>
                       </div>
                     </td>
-                    <td>$199.99</td>
+                    <td>£199.99</td>
                     <td className="d-none d-lg-table-cell">2024-01-15</td>
                     <td>295</td>
                     <td className="d-none d-sm-table-cell">89</td>
@@ -145,7 +145,439 @@ const PaymentList = () => {
                         </div>
                       </div>
                     </td>
-                    <td>$49.99</td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-14</td>
+                    <td>189</td>
+                    <td className="d-none d-sm-table-cell">67</td>
+                    <td className="d-none d-xl-table-cell">35.4%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Premium Package</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">3 Items</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£199.99</td>
+                    <td className="d-none d-lg-table-cell">2024-01-15</td>
+                    <td>295</td>
+                    <td className="d-none d-sm-table-cell">89</td>
+                    <td className="d-none d-xl-table-cell">36.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>Basic Plan</td>
+                    <td className="d-none d-md-table-cell">
+                      <div className="inv-client-wrapper">
+                        <div className="inv-client-info">
+                          <div className="inv-client-name">1 item</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>£49.99</td>
                     <td className="d-none d-lg-table-cell">2024-01-14</td>
                     <td>189</td>
                     <td className="d-none d-sm-table-cell">67</td>

@@ -190,6 +190,111 @@ const Products = () => {
             sku: "Control-Automation-Consultant",
             date: "6 Dec 2024 10:49 GMT",
           },
+          {
+            name: "Administration Per Hour",
+            sku: "ADMINISTRATION-HOUR",
+            date: "6 Dec 2024 15:46 GMT",
+          },
+          {
+            name: "[ControlLabs] Commissioning Hour",
+            sku: "Commissioning-Hour",
+            date: "6 Dec 2024 12:04 GMT",
+          },
+          {
+            name: "Control & Automation Consultant",
+            sku: "Control-Automation-Consultant",
+            date: "6 Dec 2024 10:49 GMT",
+          },
+          {
+            name: "Administration Per Hour",
+            sku: "ADMINISTRATION-HOUR",
+            date: "6 Dec 2024 15:46 GMT",
+          },
+          {
+            name: "[ControlLabs] Commissioning Hour",
+            sku: "Commissioning-Hour",
+            date: "6 Dec 2024 12:04 GMT",
+          },
+          {
+            name: "Control & Automation Consultant",
+            sku: "Control-Automation-Consultant",
+            date: "6 Dec 2024 10:49 GMT",
+          },
+          {
+            name: "Administration Per Hour",
+            sku: "ADMINISTRATION-HOUR",
+            date: "6 Dec 2024 15:46 GMT",
+          },
+          {
+            name: "[ControlLabs] Commissioning Hour",
+            sku: "Commissioning-Hour",
+            date: "6 Dec 2024 12:04 GMT",
+          },
+          {
+            name: "Control & Automation Consultant",
+            sku: "Control-Automation-Consultant",
+            date: "6 Dec 2024 10:49 GMT",
+          },
+          {
+            name: "Administration Per Hour",
+            sku: "ADMINISTRATION-HOUR",
+            date: "6 Dec 2024 15:46 GMT",
+          },
+          {
+            name: "[ControlLabs] Commissioning Hour",
+            sku: "Commissioning-Hour",
+            date: "6 Dec 2024 12:04 GMT",
+          },
+          {
+            name: "Control & Automation Consultant",
+            sku: "Control-Automation-Consultant",
+            date: "6 Dec 2024 10:49 GMT",
+          },
+          {
+            name: "Administration Per Hour",
+            sku: "ADMINISTRATION-HOUR",
+            date: "6 Dec 2024 15:46 GMT",
+          },
+          {
+            name: "[ControlLabs] Commissioning Hour",
+            sku: "Commissioning-Hour",
+            date: "6 Dec 2024 12:04 GMT",
+          },
+          {
+            name: "Control & Automation Consultant",
+            sku: "Control-Automation-Consultant",
+            date: "6 Dec 2024 10:49 GMT",
+          },
+          {
+            name: "Administration Per Hour",
+            sku: "ADMINISTRATION-HOUR",
+            date: "6 Dec 2024 15:46 GMT",
+          },
+          {
+            name: "[ControlLabs] Commissioning Hour",
+            sku: "Commissioning-Hour",
+            date: "6 Dec 2024 12:04 GMT",
+          },
+          {
+            name: "Control & Automation Consultant",
+            sku: "Control-Automation-Consultant",
+            date: "6 Dec 2024 10:49 GMT",
+          },
+          {
+            name: "Administration Per Hour",
+            sku: "ADMINISTRATION-HOUR",
+            date: "6 Dec 2024 15:46 GMT",
+          },
+          {
+            name: "[ControlLabs] Commissioning Hour",
+            sku: "Commissioning-Hour",
+            date: "6 Dec 2024 12:04 GMT",
+          },
+          {
+            name: "Control & Automation Consultant",
+            sku: "Control-Automation-Consultant",
+            date: "6 Dec 2024 10:49 GMT",
+          },
         ].map((product, index) => (
           <tr key={index} className="hover:bg-gray-50">
             <td className="px-6 py-4 whitespace-nowrap">

@@ -25,7 +25,7 @@ const AllInvoice = () => {
         email: "john@example.com",
         initial: "A"
       },
-      amount: "$2,000.00",
+      amount: "£2,000.00",
       status: "Paid",
       dueDate: "Jan 25, 2024"
     },
@@ -37,7 +37,7 @@ const AllInvoice = () => {
         email: "sarah@example.com",
         initial: "T"
       },
-      amount: "$3,500.00",
+      amount: "£3,500.00",
       status: "Pending",
       dueDate: "Jan 30, 2024"
     },
@@ -49,10 +49,191 @@ const AllInvoice = () => {
         email: "mike@example.com",
         initial: "G"
       },
-      amount: "$1,750.00",
+      amount: "£1,750.00",
+      status: "Draft",
+      dueDate: "Feb 5, 2024"
+    },
+    {
+      id: 1,
+      invoiceNo: "#INV-2024001",
+      client: {
+        name: "Acme Corp",
+        email: "john@example.com",
+        initial: "A"
+      },
+      amount: "£2,000.00",
+      status: "Paid",
+      dueDate: "Jan 25, 2024"
+    },
+    {
+      id: 2,
+      invoiceNo: "#INV-2024002",
+      client: {
+        name: "TechStart Inc",
+        email: "sarah@example.com",
+        initial: "T"
+      },
+      amount: "£3,500.00",
+      status: "Pending",
+      dueDate: "Jan 30, 2024"
+    },
+    {
+      id: 3,
+      invoiceNo: "#INV-2024003",
+      client: {
+        name: "Global Solutions",
+        email: "mike@example.com",
+        initial: "G"
+      },
+      amount: "£1,750.00",
+      status: "Draft",
+      dueDate: "Feb 5, 2024"
+    },
+    {
+      id: 1,
+      invoiceNo: "#INV-2024001",
+      client: {
+        name: "Acme Corp",
+        email: "john@example.com",
+        initial: "A"
+      },
+      amount: "£2,000.00",
+      status: "Paid",
+      dueDate: "Jan 25, 2024"
+    },
+    {
+      id: 2,
+      invoiceNo: "#INV-2024002",
+      client: {
+        name: "TechStart Inc",
+        email: "sarah@example.com",
+        initial: "T"
+      },
+      amount: "£3,500.00",
+      status: "Pending",
+      dueDate: "Jan 30, 2024"
+    },
+    {
+      id: 3,
+      invoiceNo: "#INV-2024003",
+      client: {
+        name: "Global Solutions",
+        email: "mike@example.com",
+        initial: "G"
+      },
+      amount: "£1,750.00",
+      status: "Draft",
+      dueDate: "Feb 5, 2024"
+    },
+    {
+      id: 1,
+      invoiceNo: "#INV-2024001",
+      client: {
+        name: "Acme Corp",
+        email: "john@example.com",
+        initial: "A"
+      },
+      amount: "£2,000.00",
+      status: "Paid",
+      dueDate: "Jan 25, 2024"
+    },
+    {
+      id: 2,
+      invoiceNo: "#INV-2024002",
+      client: {
+        name: "TechStart Inc",
+        email: "sarah@example.com",
+        initial: "T"
+      },
+      amount: "£3,500.00",
+      status: "Pending",
+      dueDate: "Jan 30, 2024"
+    },
+    {
+      id: 3,
+      invoiceNo: "#INV-2024003",
+      client: {
+        name: "Global Solutions",
+        email: "mike@example.com",
+        initial: "G"
+      },
+      amount: "£1,750.00",
+      status: "Draft",
+      dueDate: "Feb 5, 2024"
+    },
+    {
+      id: 1,
+      invoiceNo: "#INV-2024001",
+      client: {
+        name: "Acme Corp",
+        email: "john@example.com",
+        initial: "A"
+      },
+      amount: "£2,000.00",
+      status: "Paid",
+      dueDate: "Jan 25, 2024"
+    },
+    {
+      id: 2,
+      invoiceNo: "#INV-2024002",
+      client: {
+        name: "TechStart Inc",
+        email: "sarah@example.com",
+        initial: "T"
+      },
+      amount: "£3,500.00",
+      status: "Pending",
+      dueDate: "Jan 30, 2024"
+    },
+    {
+      id: 3,
+      invoiceNo: "#INV-2024003",
+      client: {
+        name: "Global Solutions",
+        email: "mike@example.com",
+        initial: "G"
+      },
+      amount: "£1,750.00",
+      status: "Draft",
+      dueDate: "Feb 5, 2024"
+    },
+    {
+      id: 1,
+      invoiceNo: "#INV-2024001",
+      client: {
+        name: "Acme Corp",
+        email: "john@example.com",
+        initial: "A"
+      },
+      amount: "£2,000.00",
+      status: "Paid",
+      dueDate: "Jan 25, 2024"
+    },
+    {
+      id: 2,
+      invoiceNo: "#INV-2024002",
+      client: {
+        name: "TechStart Inc",
+        email: "sarah@example.com",
+        initial: "T"
+      },
+      amount: "£3,500.00",
+      status: "Pending",
+      dueDate: "Jan 30, 2024"
+    },
+    {
+      id: 3,
+      invoiceNo: "#INV-2024003",
+      client: {
+        name: "Global Solutions",
+        email: "mike@example.com",
+        initial: "G"
+      },
+      amount: "£1,750.00",
       status: "Draft",
       dueDate: "Feb 5, 2024"
     }
+    
   ];
 
   return (
@@ -80,7 +261,7 @@ const AllInvoice = () => {
                 </div>
                 <div>
                   <div className="inv-stat-label">Monthly Total</div>
-                  <p className="inv-stat-value">$24,500</p>
+                  <p className="inv-stat-value">£24,500</p>
                 </div>
               </div>
             </div>
@@ -93,7 +274,7 @@ const AllInvoice = () => {
                 </div>
                 <div>
                   <div className="inv-stat-label">Outstanding</div>
-                  <p className="inv-stat-value">$8,250</p>
+                  <p className="inv-stat-value">£8,250</p>
                 </div>
               </div>
             </div>
@@ -106,7 +287,7 @@ const AllInvoice = () => {
                 </div>
                 <div>
                   <div className="inv-stat-label">Draft</div>
-                  <p className="inv-stat-value">$3,800</p>
+                  <p className="inv-stat-value">£3,800</p>
                 </div>
               </div>
             </div>
@@ -119,7 +300,7 @@ const AllInvoice = () => {
                 </div>
                 <div>
                   <div className="inv-stat-label">Overdue</div>
-                  <p className="inv-stat-value">$2,150</p>
+                  <p className="inv-stat-value">£2,150</p>
                 </div>
               </div>
             </div>
