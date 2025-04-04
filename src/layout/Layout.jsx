@@ -29,9 +29,9 @@ const Layout = () => {
         <Navbar toggleSidebar={toggleSidebar} className="" />
             <div className="flex">
             <Sidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
-                <div className="flex-1" style={{overflow:"hidden",paddingTop:"65px"}}>
-                    <div className="container">
-                <Outlet className={`${darkMode? "dark-mode" : null}`} />
+                <div className={`flex-1 ${darkMode ? "dark-mode" : null } `} style={{overflow:"hidden",paddingTop:"65px"}}>
+                    <div className={`${darkMode ? "dark-mode" : null }  container`}>
+                <Outlet className={`${darkMode ? "dark-mode" : null} `} />
                     </div>
                 </div>
             </div>

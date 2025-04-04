@@ -2,6 +2,7 @@ import { Kanban } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ProjectCard from "./Cards/proj_card";
+import { useSelector } from "react-redux";
 
 const initialTasks = [
   {
@@ -277,10 +278,12 @@ const Project = () => {
     setShowClientModal(false);
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   const navigate = useNavigate();
   return (
     
-    <div className="container mt-4">
+    <div className="container mt-4" >
       {/* Header */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
   <h4 className="mb-0 text-2xl font-bold text-start text-md-start w-100 w-md-auto">All Projects</h4>
