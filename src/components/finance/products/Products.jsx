@@ -44,39 +44,48 @@ const Products = () => {
           <Col xs={12}>
             <Row className="g-3">
               <Col xs={12} sm={6} md={3}>
-                <div className="inv-stat-box p-3 border rounded text-center">
+                <div className="inv-stat-box p-3 border rounded text-center d-flex gap-2">
                   <div className="inv-stat-icon inv-stat-icon-primary mb-2">
                     <i className="bi bi-currency-pound" style={{ fontSize: "1.5rem" }} />
                   </div>
+                  <div>
                   <div className="inv-stat-label">Total Products</div>
                   <p className="inv-stat-value mb-0">£1.18M</p>
+                  </div>
                 </div>
               </Col>
               <Col xs={12} sm={6} md={3}>
-                <div className="inv-stat-box p-3 border rounded text-center">
+                <div className="inv-stat-box p-3 border rounded text-center d-flex gap-2">
                   <div className="inv-stat-icon inv-stat-icon-warning mb-2">
                     <i className="bi bi-clock" style={{ fontSize: "1.5rem" }} />
                   </div>
+                  <div>                  
                   <div className="inv-stat-label">Product selling</div>
                   <p className="inv-stat-value mb-0">£616.62K</p>
+                  </div>
+
                 </div>
               </Col>
               <Col xs={12} sm={6} md={3}>
-                <div className="inv-stat-box p-3 border rounded text-center">
+                <div className="inv-stat-box p-3 border rounded text-center d-flex gap-2">
                   <div className="inv-stat-icon inv-stat-icon-danger mb-2">
                     <i className="bi bi-x-circle-fill" style={{ fontSize: "1.5rem" }} />
                   </div>
+                  <div>
                   <div className="inv-stat-label">Recently Selling  Product</div>
                   <p className="inv-stat-value mb-0">£590.58K</p>
+                  </div>
                 </div>
               </Col>
               <Col xs={12} sm={6} md={3}>
-                <div className="inv-stat-box p-3 border rounded text-center">
+                <div className="inv-stat-box p-3 border rounded text-center d-flex gap-2">
                   <div className="inv-stat-icon inv-stat-icon-neutral mb-2">
                     <i className="bi bi-plus-circle-fill" style={{ fontSize: "1.5rem" }} />
                   </div>
+                  <div>
                   <div className="inv-stat-label">Total Amount of Product</div>
                   <p className="inv-stat-value mb-0">£201.02K</p>
+                  </div>
                 </div>
               </Col>
             </Row>

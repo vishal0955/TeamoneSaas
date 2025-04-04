@@ -34,7 +34,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   const [formData, setFormData] = useState({
     text: '',
     description: '',
-    priority: PRIORITY_OPTIONS[0].toLowerCase(),
+    priority: 'high',
     dueDate: '',
     tags: [],
     assignees: [],
@@ -51,7 +51,10 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   useEffect(() => {
     if (editTask) {
       setFormData({
-        ...editTask,
+        text: editTask.text || '',
+        description: editTask.description || '',
+        priority: editTask.priority || 'high',
+        dueDate: editTask.dueDate || '',
         tags: Array.isArray(editTask.tags) ? editTask.tags : [],
         assignees: Array.isArray(editTask.assignees) ? editTask.assignees : [],
         project: editTask.project || null
@@ -60,7 +63,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
       setFormData({
         text: '',
         description: '',
-        priority: PRIORITY_OPTIONS[0].toLowerCase(),
+        priority: 'high',
         dueDate: '',
         tags: [],
         assignees: [],
@@ -71,7 +74,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    onSubmit(formData, employeeOptions);
   };
 
   const addNewTag = () => {
@@ -91,7 +94,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
       const newId = Math.max(...employeeOptions.map(e => e.id), 0) + 1;
       const newEmployee = {
         id: newId,
-        name: newAssignee
+        name: newAssignee.trim()
       };
       setEmployeeOptions([...employeeOptions, newEmployee]);
       setFormData({
@@ -299,7 +302,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
 // TaskDropdown Component
 const TaskDropdown = ({ taskId, onEdit, onDelete, onView }) => {
   return (
-    <div className="dropdown-menu show">
+    <div className="dropdown-menu show" style={{ position: 'absolute', right: 0 }}>
       <button onClick={onView} className="dropdown-item" type="button">
         View Details
       </button>
@@ -319,29 +322,35 @@ const TodoApp = () => {
     {
       id: 1,
       text: 'Finalize project proposal',
+      description: 'Complete the final draft of the project proposal document',
       priority: 'high',
       completed: false,
       dueDate: '2025-01-15',
       tags: ['Projects', 'Urgent'],
       assignees: [1, 2],
+      project: 1
     },
     {
       id: 2,
       text: 'Submit to supervisor by EOD',
+      description: 'Email the completed documents to supervisor',
       priority: 'high',
       completed: false,
       dueDate: '2024-05-23',
       tags: ['Internal', 'In progress'],
       assignees: [1],
+      project: 2
     },
     {
       id: 3,
       text: 'Check and respond to emails',
+      description: 'Go through unread emails and respond to important ones',
       priority: 'medium',
       completed: true,
       dueDate: '2025-03-18',
       tags: ['Reminder', 'Completed'],
       assignees: [1, 2],
+      project: 3
     },
   ]);
 
@@ -353,6 +362,7 @@ const TodoApp = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
+  const [allEmployees, setAllEmployees] = useState(EMPLOYEES);
 
   const filteredTasks = tasks
     .filter((task) => {
@@ -382,7 +392,7 @@ const TodoApp = () => {
     switch(tag) {
       case 'Projects': return 'badge bg-success text-light';
       case 'Urgent': return 'badge bg-danger text-light';
-      case 'Internal': return 'badge bg-danger text-light';
+      case 'Internal': return 'badge bg-warning text-dark';
       case 'In progress': return 'badge bg-primary text-light';
       case 'Reminder': return 'badge bg-info text-dark';
       case 'Completed': return 'badge bg-success text-light';
@@ -392,16 +402,27 @@ const TodoApp = () => {
 
   const highPriorityTasks = filteredTasks.filter(task => task.priority === 'high');
   const mediumPriorityTasks = filteredTasks.filter(task => task.priority === 'medium');
+  const lowPriorityTasks = filteredTasks.filter(task => task.priority === 'low');
 
-  const handleAddTask = (newTaskData) => {
-    const newTaskObj = {
-      id: tasks.length + 1,
-      ...newTaskData,
-      completed: false,
-      tags: Array.isArray(newTaskData.tags) ? newTaskData.tags : [],
-      assignees: Array.isArray(newTaskData.assignees) ? newTaskData.assignees : []
-    };
-    setTasks(prevTasks => [...prevTasks, newTaskObj]);
+  const handleAddTask = (newTaskData, updatedEmployees) => {
+    if (updatedEmployees) {
+      setAllEmployees(updatedEmployees);
+    }
+    
+    if (editingTask) {
+      setTasks(tasks.map(task => 
+        task.id === editingTask.id ? { ...task, ...newTaskData } : task
+      ));
+    } else {
+      const newTaskObj = {
+        id: Math.max(...tasks.map(t => t.id), 0) + 1,
+        ...newTaskData,
+        completed: false,
+        tags: Array.isArray(newTaskData.tags) ? newTaskData.tags : [],
+        assignees: Array.isArray(newTaskData.assignees) ? newTaskData.assignees : []
+      };
+      setTasks(prevTasks => [...prevTasks, newTaskObj]);
+    }
     setIsModalOpen(false);
     setEditingTask(null);
   };
@@ -418,13 +439,13 @@ const TodoApp = () => {
   };
 
   const handleViewDetails = (task) => {
-    console.log('View details:', task);
+    alert(`Task Details:\n\nTitle: ${task.text}\nDescription: ${task.description}\nPriority: ${task.priority}\nDue Date: ${task.dueDate}\nTags: ${task.tags.join(', ')}`);
     setActiveDropdown(null);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (activeDropdown && !event.target.closest('.position-relative')) {
+      if (activeDropdown && !event.target.closest('.dropdown-container')) {
         setActiveDropdown(null);
       }
     };
@@ -433,8 +454,13 @@ const TodoApp = () => {
   }, [activeDropdown]);
 
   const getAssigneeName = (id) => {
-    const employee = EMPLOYEES.find(emp => emp.id === id);
-    return employee ? employee.name : '';
+    const employee = allEmployees.find(emp => emp.id === id);
+    return employee ? employee.name : 'Unknown';
+  };
+
+  const getProjectName = (id) => {
+    const project = PROJECTS.find(proj => proj.id === id);
+    return project ? project.name : 'None';
   };
 
   return (
@@ -465,12 +491,12 @@ const TodoApp = () => {
         {/* Stats */}
         <div className="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
           <div className="mb-2 mb-md-0">
-            <h2 className="h5 mb-0">Total Todo <small className="text-muted">41</small></h2>
+            <h2 className="h5 mb-0">Total Todo <small className="text-muted">{tasks.length}</small></h2>
           </div>
           <div className="d-flex flex-wrap justify-content-center justify-content-md-end gap-2 gap-md-3">
-            <span>Total Tasks: <strong>55</strong></span>
-            <span>Pending: <strong>15</strong></span>
-            <span>Completed: <strong>40</strong></span>
+            <span>Total Tasks: <strong>{tasks.length}</strong></span>
+            <span>Pending: <strong>{tasks.filter(t => !t.completed).length}</strong></span>
+            <span>Completed: <strong>{tasks.filter(t => t.completed).length}</strong></span>
           </div>
         </div>
 
@@ -486,6 +512,7 @@ const TodoApp = () => {
               placeholder="New task" 
               value={newTask}
               onClick={() => setIsModalOpen(true)}
+              onChange={(e) => setNewTask(e.target.value)}
               readOnly
             />
           </div>
@@ -494,7 +521,7 @@ const TodoApp = () => {
         {/* Filters */}
         <div className="row mb-4  ">
           <div className="col-12 col-md-6 mb-3 mb-md-0">
-            <div className="btn-group w-100" role="group">
+            <div className="btn-group " role="group">
               <button 
                 className={`btn btn-sm ${activeFilter === 'all' ? 'btn-dark' : 'btn-light'}`}
                 onClick={() => setActiveFilter('all')}
@@ -569,220 +596,350 @@ const TodoApp = () => {
         </div>
 
         {/* Task Sections */}
-        {(activeFilter === 'all' || activeFilter === 'high') && (
-  <div className="mb-5">
-    <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
-      <div className="d-flex align-items-center mb-2 mb-sm-0">
-        <FontAwesomeIcon icon={faChevronDown} className="me-2 text-muted" />
-        <h3 className="h6 mb-0 me-2">High</h3>
-        <span className="text-muted small">{highPriorityTasks.length}</span>
-      </div>
-      <div className="ms-sm-auto d-flex">
-        <button 
-          className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Add New
-        </button>
-        <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
-          See All
-        </button>
-      </div>
-    </div>
-    
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Task</th>
-          <th scope="col">Due Date</th>
-          <th scope="col">Tags</th>
-          <th scope="col">Assignees</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {highPriorityTasks.map(task => (
-          <tr key={task.id}>
-            <td>
-              <div className="d-flex align-items-center">
-                <div className="form-check me-3">
-                  <input 
-                    type="checkbox" 
-                    className="form-check-input" 
-                    checked={task.completed}
-                    onChange={() => handleCheckboxChange(task.id)}
-                  />
-                </div>
-                <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
-                  {task.text}
-                </p>
+        {(activeFilter === 'all' || activeFilter === 'high') && highPriorityTasks.length > 0 && (
+          <div className="mb-5">
+            <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
+              <div className="d-flex align-items-center mb-2 mb-sm-0">
+                <FontAwesomeIcon icon={faChevronDown} className="me-2 text-muted" />
+                <h3 className="h6 mb-0 me-2">High</h3>
+                <span className="text-muted small">{highPriorityTasks.length}</span>
               </div>
-            </td>
-            <td className="text-muted small">{task.dueDate}</td>
-            <td>
-              {task.tags.map(tag => (
-                <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded me-1`}>
-                  {tag}
-                </span>
-              ))}
-            </td>
-            <td>
-              <div className="d-flex">
-                {task.assignees.slice(0, 2).map(assigneeId => (
-                  <div 
-                    key={assigneeId}
-                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
-                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                    title={getAssigneeName(assigneeId)}
-                  >
-                    {getAssigneeName(assigneeId).charAt(0)}
-                  </div>
-                ))}
-                {task.assignees.length > 2 && (
-                  <div 
-                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
-                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                    title={`+${task.assignees.length - 2} more`}
-                  >
-                    +{task.assignees.length - 2}
-                  </div>
-                )}
+              <div className="ms-sm-auto d-flex">
+                <button 
+                  className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Add New
+                </button>
+                <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
+                  See All
+                </button>
               </div>
-            </td>
-            <td className="position-relative">
-              <button 
-                className="btn btn-sm btn-light"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveDropdown(activeDropdown === task.id ? null : task.id);
-                }}
-              >
-                <FontAwesomeIcon icon={faEllipsisV} />
-              </button>
-              {activeDropdown === task.id && (
-                <div className="position-absolute end-0 mt-2" style={{left:"-120px"}}>
-                  <TaskDropdown
-                    taskId={task.id}
-                    onEdit={() => handleEdit(task)}
-                    onDelete={() => handleDelete(task.id)}
-                    onView={() => handleViewDetails(task)}
-                  />
-                </div>
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
+            </div>
+            
+            <div className="table-responsive " >
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Task</th>
+                    <th scope="col">Project</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Tags</th>
+                    <th scope="col">Assignees</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {highPriorityTasks.map(task => (
+                    <tr key={task.id}>
+                      <td>
+                        <div className="d-flex align-items-center">
+                          <div className="form-check me-3">
+                            <input 
+                              type="checkbox" 
+                              className="form-check-input" 
+                              checked={task.completed}
+                              onChange={() => handleCheckboxChange(task.id)}
+                            />
+                          </div>
+                          <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
+                            {task.text}
+                          </p>
+                        </div>
+                      </td>
+                      <td>{getProjectName(task.project)}</td>
+                      <td>{task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No date'}</td>
+                      <td>
+                        <div className="d-flex flex-wrap">
+                          {task.tags.map(tag => (
+                            <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded me-1 mb-1`}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </td>
+                      <td>
+                        <div className="d-flex">
+                          {task.assignees.slice(0, 2).map(assigneeId => {
+                            const name = getAssigneeName(assigneeId);
+                            return (
+                              <div 
+                                key={assigneeId}
+                                className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
+                                style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                                title={name}
+                              >
+                                {name.charAt(0).toUpperCase()}
+                              </div>
+                            );
+                          })}
+                          {task.assignees.length > 2 && (
+                            <div 
+                              className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
+                              style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                              title={`${task.assignees.length - 2} more`}
+                            >
+                              +{task.assignees.length - 2}
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                      <td className="dropdown-container position-relative">
+                        <button 
+                          className="btn btn-sm btn-light"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDropdown(activeDropdown === task.id ? null : task.id);
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faEllipsisV} />
+                        </button>
+                        {activeDropdown === task.id && (
+                          <TaskDropdown
+                            taskId={task.id}
+                            onEdit={() => handleEdit(task)}
+                            onDelete={() => handleDelete(task.id)}
+                            onView={() => handleViewDetails(task)}
+                          />
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
 
-{(activeFilter === 'all' || activeFilter === 'medium') && (
-  <div>
-    <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
-      <div className="d-flex align-items-center mb-2 mb-sm-0">
-        <FontAwesomeIcon icon={faChevronRight} className="me-2 text-muted" />
-        <h3 className="h6 mb-0 me-2">Medium</h3>
-        <span className="text-muted small">{mediumPriorityTasks.length}</span>
-      </div>
-    </div>
-    
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Task</th>
-          <th scope="col">Due Date</th>
-          <th scope="col">Tags</th>
-          <th scope="col">Assignees</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {mediumPriorityTasks.map(task => (
-          <tr key={task.id}>
-            <td>
-              <div className="d-flex align-items-center">
-                <div className="form-check me-3">
-                  <input 
-                    type="checkbox" 
-                    className="form-check-input" 
-                    checked={task.completed}
-                    onChange={() => handleCheckboxChange(task.id)}
-                  />
-                </div>
-                <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
-                  {task.text}
-                </p>
+        {(activeFilter === 'all' || activeFilter === 'medium') && mediumPriorityTasks.length > 0 && (
+          <div className="mb-5">
+            <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
+              <div className="d-flex align-items-center mb-2 mb-sm-0">
+                <FontAwesomeIcon icon={faChevronRight} className="me-2 text-muted" />
+                <h3 className="h6 mb-0 me-2">Medium</h3>
+                <span className="text-muted small">{mediumPriorityTasks.length}</span>
               </div>
-            </td>
-            <td className="text-muted small">{task.dueDate}</td>
-            <td>
-              {task.tags.map(tag => (
-                <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded me-1`}>
-                  {tag}
-                </span>
-              ))}
-            </td>
-            <td>
-              <div className="d-flex">
-                {task.assignees.slice(0, 2).map(assigneeId => (
-                  <div 
-                    key={assigneeId}
-                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
-                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                    title={getAssigneeName(assigneeId)}
-                  >
-                    {getAssigneeName(assigneeId).charAt(0)}
-                  </div>
-                ))}
-                {task.assignees.length > 2 && (
-                  <div 
-                    className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
-                    style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
-                    title={`+${task.assignees.length - 2} more`}
-                  >
-                    +{task.assignees.length - 2}
-                  </div>
-                )}
+              {/* <div className="ms-sm-auto d-flex">
+                <button 
+                  className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Add New
+                </button>
+              </div> */}
+            </div>
+            
+            <div className="table-responsive" >
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Task</th>
+                    <th scope="col">Project</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Tags</th>
+                    <th scope="col">Assignees</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {mediumPriorityTasks.map(task => (
+                    <tr key={task.id}>
+                      <td>
+                        <div className="d-flex align-items-center">
+                          <div className="form-check me-3">
+                            <input 
+                              type="checkbox" 
+                              className="form-check-input" 
+                              checked={task.completed}
+                              onChange={() => handleCheckboxChange(task.id)}
+                            />
+                          </div>
+                          <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
+                            {task.text}
+                          </p>
+                        </div>
+                      </td>
+                      <td>{getProjectName(task.project)}</td>
+                      <td>{task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No date'}</td>
+                      <td>
+                        <div className="d-flex flex-wrap">
+                          {task.tags.map(tag => (
+                            <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded me-1 mb-1`}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </td>
+                      <td>
+                        <div className="d-flex">
+                          {task.assignees.slice(0, 2).map(assigneeId => {
+                            const name = getAssigneeName(assigneeId);
+                            return (
+                              <div 
+                                key={assigneeId}
+                                className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
+                                style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                                title={name}
+                              >
+                                {name.charAt(0).toUpperCase()}
+                              </div>
+                            );
+                          })}
+                          {task.assignees.length > 2 && (
+                            <div 
+                              className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
+                              style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                              title={`${task.assignees.length - 2} more`}
+                            >
+                              +{task.assignees.length - 2}
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                      <td className="dropdown-container position-relative">
+                        <button 
+                          className="btn btn-sm btn-light"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDropdown(activeDropdown === task.id ? null : task.id);
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faEllipsisV} />
+                        </button>
+                        {activeDropdown === task.id && (
+                          <TaskDropdown
+                            taskId={task.id}
+                            onEdit={() => handleEdit(task)}
+                            onDelete={() => handleDelete(task.id)}
+                            onView={() => handleViewDetails(task)}
+                          />
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {(activeFilter === 'all' || activeFilter === 'low') && lowPriorityTasks.length > 0 && (
+          <div className="mb-5">
+            <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
+              <div className="d-flex align-items-center mb-2 mb-sm-0">
+                <FontAwesomeIcon icon={faChevronRight} className="me-2 text-muted" />
+                <h3 className="h6 mb-0 me-2">Low</h3>
+                <span className="text-muted small">{lowPriorityTasks.length}</span>
               </div>
-            </td>
-            <td className="position-relative">
-              <button 
-                className="btn btn-sm btn-light"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveDropdown(activeDropdown === task.id ? null : task.id);
-                }}
-              >
-                <FontAwesomeIcon icon={faEllipsisV} />
-              </button>
-              {activeDropdown === task.id && (
-                <div className="position-absolute end-0 mt-2" style={{left:"-100px"}}>
-                  <TaskDropdown 
-                    taskId={task.id}
-                    onEdit={() => handleEdit(task)}
-                    onDelete={() => handleDelete(task.id)}
-                    onView={() => handleViewDetails(task)}
-                  />
-                </div>
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
+              <div className="ms-sm-auto d-flex">
+                <button 
+                  className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Add New
+                </button>
+              </div>
+            </div>
+            
+            <div className="table-responsive">
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Task</th>
+                    <th scope="col">Project</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Tags</th>
+                    <th scope="col">Assignees</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {lowPriorityTasks.map(task => (
+                    <tr key={task.id}>
+                      <td>
+                        <div className="d-flex align-items-center">
+                          <div className="form-check me-3">
+                            <input 
+                              type="checkbox" 
+                              className="form-check-input" 
+                              checked={task.completed}
+                              onChange={() => handleCheckboxChange(task.id)}
+                            />
+                          </div>
+                          <p className={`mb-0 ${task.completed ? 'text-decoration-line-through text-muted' : ''}`}>
+                            {task.text}
+                          </p>
+                        </div>
+                      </td>
+                      <td>{getProjectName(task.project)}</td>
+                      <td>{task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No date'}</td>
+                      <td>
+                        <div className="d-flex flex-wrap">
+                          {task.tags.map(tag => (
+                            <span key={tag} className={`${getTagColor(tag)} small px-2 py-1 rounded me-1 mb-1`}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </td>
+                      <td>
+                        <div className="d-flex">
+                          {task.assignees.slice(0, 2).map(assigneeId => {
+                            const name = getAssigneeName(assigneeId);
+                            return (
+                              <div 
+                                key={assigneeId}
+                                className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center me-n1"
+                                style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                                title={name}
+                              >
+                                {name.charAt(0).toUpperCase()}
+                              </div>
+                            );
+                          })}
+                          {task.assignees.length > 2 && (
+                            <div 
+                              className="rounded-circle border border-white bg-secondary text-white d-flex align-items-center justify-content-center"
+                              style={{ width: '32px', height: '32px', fontSize: '0.75rem' }}
+                              title={`${task.assignees.length - 2} more`}
+                            >
+                              +{task.assignees.length - 2}
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                      <td className="dropdown-container position-relative">
+                        <button 
+                          className="btn btn-sm btn-light"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDropdown(activeDropdown === task.id ? null : task.id);
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faEllipsisV} />
+                        </button>
+                        {activeDropdown === task.id && (
+                          <TaskDropdown
+                            taskId={task.id}
+                            onEdit={() => handleEdit(task)}
+                            onDelete={() => handleDelete(task.id)}
+                            onView={() => handleViewDetails(task)}
+                          />
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </div>
 
       {isModalOpen && (
         <TaskFormPopup 
           isOpen={isModalOpen} 
-          onClose={() => {
-            setIsModalOpen(false);
-            setEditingTask(null);
-            setNewTask('');
-          }} 
+          onClose={handleClose}
           onSubmit={handleAddTask}
           editTask={editingTask}
         />

@@ -100,7 +100,7 @@ const Accountspayable = () => {
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
   <div className="bg-white rounded-lg p-4 shadow-sm">
     <h3 className="text-sm text-gray-500 mb-1">Total Invoice</h3>
-    <p className="text-2xl font-semibold mb-2">$3,237.94</p>
+    <p className="text-2xl font-semibold mb-2">£3,237.94</p>
     <div className="flex items-center text-green-500 text-sm">
       <i className="fas fa-arrow-up mr-1" />
       <span>32.40% from last month</span>
@@ -109,7 +109,7 @@ const Accountspayable = () => {
 
   <div className="bg-white rounded-lg p-4 shadow-sm">
     <h3 className="text-sm text-gray-500 mb-1">Outstanding</h3>
-    <p className="text-2xl font-semibold mb-2">$3,237.94</p>
+    <p className="text-2xl font-semibold mb-2">£3,237.94</p>
     <div className="flex items-center text-red-500 text-sm">
       <i className="fas fa-arrow-down mr-1" />
       <span>4.40% from last month</span>
@@ -118,7 +118,7 @@ const Accountspayable = () => {
 
   <div className="bg-white rounded-lg p-4 shadow-sm">
     <h3 className="text-sm text-gray-500 mb-1">Draft</h3>
-    <p className="text-2xl font-semibold mb-2">$3,237.94</p>
+    <p className="text-2xl font-semibold mb-2">£3,237.94</p>
     <div className="flex items-center text-green-500 text-sm">
       <i className="fas fa-arrow-up mr-1" />
       <span>12% from last month</span>
@@ -127,7 +127,7 @@ const Accountspayable = () => {
 
   <div className="bg-white rounded-lg p-4 shadow-sm">
     <h3 className="text-sm text-gray-500 mb-1">Total Overdue</h3>
-    <p className="text-2xl font-semibold mb-2">$3,237.94</p>
+    <p className="text-2xl font-semibold mb-2">£3,237.94</p>
     <div className="flex items-center text-red-500 text-sm">
       <i className="fas fa-arrow-down mr-1" />
       <span>15.40% from last month</span>

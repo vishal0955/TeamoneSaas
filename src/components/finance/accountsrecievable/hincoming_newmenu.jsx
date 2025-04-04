@@ -169,19 +169,19 @@ const SalesOverview = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <StatCard
           title="Outstanding"
-          amount="$3,237.94"
+          amount="£3,237.94"
           change="4.46%"
           changeType="down"
         />
         <StatCard
           title="Draft"
-          amount="$3,237.94"
+          amount="£3,237.94"
           change="12%"
           changeType="down"
         />
         <StatCard
           title="Total Overdue"
-          amount="$3,237.94"
+          amount="£3,237.94"
           change="15.46%"
           changeType="down"
         />
