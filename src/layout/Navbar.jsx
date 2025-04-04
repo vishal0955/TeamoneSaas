@@ -39,8 +39,10 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
           </div>
         </div>
 
-        {/* Middle section - Search (hidden on mobile) */}
-        <div className="hidden md:flex flex-1 mx-4 max-w-md">
+        {/* Right section - Icons and profile */}
+        <div className="flex items-center space-x-3 sm:space-x-4">
+          {/* Middle section - Search (hidden on mobile) */}
+        <div className="hidden md:flex flex-1 mx-4 max-w-md .nav-search-btn">
           <div className="relative w-full">
             <div className="flex items-center bg-gray-100 rounded-md px-3 py-2 w-full">
               <Search size={16} className="text-gray-500 mr-2" />
@@ -54,12 +56,9 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
             </div>
           </div>
         </div>
-
-        {/* Right section - Icons and profile */}
-        <div className="flex items-center space-x-3 sm:space-x-4">
           {/* Mobile search button (hidden on desktop) */}
           <button className="md:hidden text-gray-500 hover:text-gray-700">
-            <Search size={20} />
+            {/* <Search size={20} /> */}
           </button>
 
           {/* Notification icon */}
