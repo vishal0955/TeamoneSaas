@@ -436,7 +436,7 @@ const DealDetails = () => {
       {/* Main Content */}
       <div className="">
         {/* Left Content */}
-        <div className="flex-1 bg-white m-4 rounded-lg shadow">
+        <div className=" w-full  bg-white m-4 rounded-lg shadow">
           {/* Tabs */}
           <div className="border-b">
             <div className="">
@@ -457,13 +457,13 @@ const DealDetails = () => {
           </div>
 
           {/* Search and Filter */}
-          <div className="p-1 border-b">
-            <div className=" gap-4">
+          <div className=" p-1 border-b">
+            <div className=" gap-4" style={{ display: "flex" }}>
               <div className="flex-1">
                 <input
                   type="text"
                   placeholder="Search activities"
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="px-3 py-2 border rounded-lg"
                 />
               </div>
               <div className="flex gap-2">

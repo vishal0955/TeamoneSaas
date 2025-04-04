@@ -247,6 +247,396 @@ const AllQuotes = () => {
                       </button>
                     </td>
                   </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
+                   <tr>
+                    <td>
+                      <input type="checkbox" className="inv-checkbox" />
+                    </td>
+                    <td>#QT-2024-001</td>
+                    <td>
+                      <div className="inv-client-info">
+                        <div className="inv-client-name"> $2,500.00</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="inv-status  inv-status-pending">
+                        {" "}
+                        Pending
+                      </div>
+                    </td>
+                    <td>
+                      <div className=""></div>
+                      <div className="inv-client-info">John Smith </div>
+                    </td>
+                    <td>
+                      <span className="">Jan 15, 2024</span>
+                    </td>
+
+                    <td>
+                      <button className="inv-action-button">
+                        <FaRegEye />
+                      </button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
