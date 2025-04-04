@@ -2,9 +2,13 @@ import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Layout = () => {
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+    const darkMode = useSelector((state) => state.theme.isDarkMode);
+    console.log(darkMode)
 
     const toggleSidebar = () => {
       setIsSidebarCollapsed((prev) => !prev);
@@ -27,7 +31,7 @@ const Layout = () => {
             <Sidebar  toggleSidebar={toggleSidebar}  collapsed={isSidebarCollapsed}/>
                 <div className="flex-1" style={{overflow:"hidden",paddingTop:"65px"}}>
                     <div className="container">
-                <Outlet />
+                <Outlet className={`${darkMode? "dark-mode" : null}`} />
                     </div>
                 </div>
             </div>

@@ -21,6 +21,9 @@ import {
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../redux/slices/ThemeSlice";
+
 
 const menuItems = [
   {
@@ -49,16 +52,13 @@ const menuItems = [
     icon: <FolderOpenDot size={16} />,
     subItems: [
       { name: "Dashboard" , path: "/project"},
-      // { name: "Project", path: "/project/projects" },
+    
       {name: "All Project", path: "allproject"},
       {name : "Scheduling", path: "/project/projects"},
 
       {name : "Workload", path: "/project/workload"}, 
 
-      // { name: "Task", path: "/project/task" },
-
-      // { name: "Todo", path: "/project/Todo" },
-      // { name: "Notes", path: "/project/Notes" },
+    
     ],
   },
 
@@ -70,17 +70,15 @@ const menuItems = [
       { name: "Dashboard", path: "/crm/dashboard" },
       { name: "Contacts", path: "/crm/customers" },
       { name: "Companies", path: "/crm/companies" },
-      // { name: "Leads", path: "/crm/leads" },
+
       { name: "Deals", path: "/crm/deals" },
       { name: "Quotes", path: "/crm/quotes" },
       { name: "Invoices", path: "/crm/invoices" },
       { name: "Payment", path: "/crm/Payment" },
-      // { name: "Pipeline", path: "/crm/pipeline" },
+  
 
       { name: "Analytics", path: "/crm/analytics" },
-      
-      // { name: "Activities", path: "/crm/activities" },
-      // { name: "Sales", path: "/crm/sales" },
+
     ],
   },
   {
@@ -97,119 +95,20 @@ const menuItems = [
     ]
   },
 
-  // {
-  //   name: "HR OLD ",
-  //   path: "/hrm",
-  //   icon: <Users size={16} />,
-  //   subItems: [
-  //     {
-  //       name: "Employees",
-  //       path: "/hrm/employees",
-  //       subMenu: [
-  //         { name: "Employees List", path: "/employeelist" },
-  //         // { name: "Employees Details", path: "/employeedetails" },
-  //         { name: "Departments", path: "/department" },
-  //         { name: "Designations", path: "/designations" },
-  //         { name: "Policies", path: "/policy" },
-  //       ],
-  //     },
-  //     // {
-  //     //   name: "Tickets",
-  //     //   path: "/hrm/tickets",
-  //     //   // subMenu: [
-  //     //   //   { name: "Leave", path: "/hrm/tickets/leave" },
-  //     //   //   { name: "Attendance", path: "/hrm/tickets/attendance" },
-  //     //   // ]
-  //     // },
-  //     {
-  //       name: "Holidays",
-  //       path: "/hrm/holiday",
-  //     },
-  //     {
-  //       name: "Attendance",
-  //       path: "/hrm/attendance",
-  //       subMenu: [
-  //         { name: "Attendance", path: "/hrm/attendance/list" },
-  //         { name: "Leaves", path: "/hrm/attendance/leaves" },
-  //         { name: "Leave Settings", path: "/hrm/attendance/leave_settings" },
-  //         { name: "Timesheet", path: "/hrm/attendance/timesheet" },
-  //         { name: "Shift & Schedule", path: "/hrm/attendance/shiftroster" },
-  //         { name: "OverTime", path: "/hrm/attendance/overtime" },
-  //       ],
-  //     },
-  //     {
-  //       name: "Performance",
-  //       path: "/hrm/performance",
-  //       subMenu: [
-  //         {
-  //           name: "Performance Indicator",
-  //           path: "/performanceindicator",
-  //         },
-
-  //         // {
-  //         //   name: "Performance Review",
-  //         //   path: "/hrm/performance/performance_review",
-  //         // },
-  //         {
-  //           name: "Performance Appraisal",
-  //           path: "/performaceappraisal",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       name: "Training",
-  //       path: "/hrm/training", 
-  //       subMenu: [
-  //         // { name: "Training Plan", path: "/hrm/training/training_plan" },
-  //         { name: "Training List", path: "/hrm/training/training_list" },
-  //       ] 
-  //     },
-  //     {
-  //       name: "Payroll",
-  //       path: "/hrm/payroll",
-  //       subMenu: [
-  //         { name: "Employee Salary", path: "/employeesalary" },
-  //         { name: "Payroll Items", path: "/payrollitem" },
-  //         // { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
-  //         // { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
-  //       ],
-  //     },
-  //   ],
-  // },
-
-  // {
-  //   name: "Recruitment",
-  //   path: "/recruitment",
-  //   icon: <Calendar size={16} />,
-  //   subItems: [
-  //     { name: "Jobs", path: "/recruitment/jobs" },
-  //     { name: "Candidates", path: "/recruitment/candidates" },
-  //     { name: "Refferals", path: "/recruitment/refferals" },
-  //   ],
-  // },
-
+ 
   {
     name: "Finance",
     path: "/finance",
     icon: <ChartColumn size={16} />,
     subItems: [
-      // { name: "Dashboard", path: "/finance/dashboard" },
+      
       { name: "Accounts Payable", path: "/finance/accounts_payable" },
       { name: "Accounts Receivable", path: "/finance/accounts_receivable" },
       { name : "Products", path: "/finance/products" },
       { name: "Customers", path: "/finance/companies" },
       { name: "Suppliers", path: "/finance/suppliers" },
      
-      // {
-      //   name: "Sales",
-      //   path: "/finance/sales",
-      //   subMenu: [
-          
-      //     { name: "Expenses", path: "/finance/sales/expenses" },
-      //     { name: "Provident Funds", path: "/finance/sales/provident_funds" },
-      //     { name: "Taxes", path: "/finance/sales/taxs" },
-      //   ],
-      // },
+    
     ]
     },
     
@@ -241,13 +140,7 @@ const menuItems = [
     icon: <Landmark size={16} />,  
 
     subItems: [
-      // {
-      //   name: "Help & Support",
-      //   path: "/admininistration/help_support",
-      //   subMenu: [
-      //     { name: "FAQs", path: "/admininistration/help_support/faqs" },
-      //   ],
-      // },
+     
       {
         name: "User Management",
         path: "/admininistration/user_management",
@@ -299,6 +192,10 @@ const superAdminMenu = [
 ];
 
 export default function Sidebar({ toggleSidebar, collapsed }) {
+ 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+  console.log(darkMode);
+
   const userRole = localStorage.getItem("userRole");
   const menu = userRole === "superadmin" ? superAdminMenu : menuItems;
   const [openMenus, setOpenMenus] = useState({ Project: true, CRM: true });
@@ -377,7 +274,8 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
         </div> */}
 
         {/* Scrollable Navigation */}
-        <nav className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400">
+        <nav className={`${darkMode ? 
+        'dark-mode': "bg-white" } flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400`}>
           <div className="p-4">
             <ul className="space-y-1.5">
               {menu.map((item) => (
@@ -392,7 +290,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                     className={`group flex items-center gap-x-3 px-3 py-2 rounded-lg transition-all duration-150
                                             ${
                                               openMenus[item.name]
-                                                ? "bg-indigo-50 text-indigo-600"
+                                                ?  "bg-indigo-50 text-indigo-600"
                                                 : "hover:bg-gray-50"
                                             }
                                         `}
