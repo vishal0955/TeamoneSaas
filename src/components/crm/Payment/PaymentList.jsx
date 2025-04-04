@@ -18,9 +18,9 @@ const PaymentList = () => {
     <>
       <div className="container py-4">
         {/* Header - Improved responsive layout */}
-        <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3 gap-md-0">
-          <h4 className="mb-0 text-gray-900">Payment Links</h4>
-          <div className="d-flex flex-column flex-sm-row gap-3 w-100 w-md-auto">
+        <div className="d-flex flex-column flex-md-row   align-items-start align-items-md-center mb-4 gap-3 gap-md-0">
+        <div>  <h4 className="mb-0 text-gray-900 ">Payment Links</h4></div>
+          <div className="d-flex flex-column flex-sm-row gap-3 w-100 w-md-auto justify-content-end">
             <a href="#" className="btn inv-filter-button">
               Go to Commerce
             </a>

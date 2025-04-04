@@ -85,8 +85,8 @@ const ContactsList = () => {
                 </a>
               </li>
             </ul>
-            <button className="inv-new-button order-sm-2" onClick={handleOpenModal}>
-            Create contact
+            <button className="inv-new-button order-sm-2 w-100" onClick={handleOpenModal}>
+            + Create
           </button>
           </div>
           
