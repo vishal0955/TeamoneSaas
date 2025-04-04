@@ -281,7 +281,7 @@ const Navbar = ({ toggleSidebar,collapsed}) => {
       {/* Navbar */}
       
       <div className={`${darkMode ? 
-        'dark-mode': "bg-white"  } border-b border-gray-200 px-4  flex items-center justify-between`}>
+        'dark-mode': "bg-white"  } border-b border-gray-200 px-4  flex items-center justify-between` }>
 
 
       {/* icon */}
