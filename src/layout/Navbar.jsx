@@ -42,7 +42,7 @@ const Navbar = ({ toggleSidebar,collapsed}) => {
   
   return (
     <>
-    <div className="container top-0 z-50" style={{position:"fixed",width:"100%",padding:"0px"}}>
+    <div className="container top-0 z-20" style={{position:"fixed",width:"100%",padding:"0px"}}>
       {/* Navbar */}
       
       <div className=" bg-white border-b border-gray-200 px-4  flex items-center justify-between">
