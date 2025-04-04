@@ -160,7 +160,7 @@ const AdminCRMDashboard = () => {
               </div>
               <div>
                 <div className="inv-stat-label">Sales Revenue</div>
-                <p className="inv-stat-value">$24,403</p>
+                <p className="inv-stat-value">£24,403</p>
               </div>
             </div>
           </div>
@@ -173,7 +173,7 @@ const AdminCRMDashboard = () => {
               </div>
               <div>
                 <div className="inv-stat-label">Average Price</div>
-                <p className="inv-stat-value">$2431</p>
+                <p className="inv-stat-value">£2431</p>
               </div>
             </div>
           </div>

@@ -197,7 +197,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -228,7 +228,7 @@ const AllQuotes = () => {
                     <td>
                       <div className="inv-client-wrapper">
                         <div className="inv-client-info">
-                          <div className="inv-client-name">$2,500.00</div>
+                          <div className="inv-client-name">£2,500.00</div>
                         </div>
                       </div>
                     </td>
@@ -254,7 +254,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -284,7 +284,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -314,7 +314,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -344,7 +344,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -374,7 +374,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -404,7 +404,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -434,7 +434,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -464,7 +464,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -494,7 +494,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -524,7 +524,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -554,7 +554,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -584,7 +584,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
@@ -614,7 +614,7 @@ const AllQuotes = () => {
                     <td>#QT-2024-001</td>
                     <td>
                       <div className="inv-client-info">
-                        <div className="inv-client-name"> $2,500.00</div>
+                        <div className="inv-client-name"> £2,500.00</div>
                       </div>
                     </td>
                     <td>
