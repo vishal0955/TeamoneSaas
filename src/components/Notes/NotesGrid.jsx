@@ -229,7 +229,7 @@ const NotesGrid = () => {
             ))}
 
             {addedTags.map((tag) => (
-              <li key={tag.id} className="mb-1 flex items-center justify-between bg-gray-200 p-2 rounded">
+              <li key={tag.id} className="mb-1 flex items-center justify-between bg-gray-200 p-2 rounded" style={{margin:"10px"}}>
                 <div className="flex items-center">
                   <span className={`inline-block w-3 h-3 rounded-full ${tag.color} mr-2`}></span>
                   <div>{tag.name}</div>
@@ -247,10 +247,12 @@ const NotesGrid = () => {
                 placeholder="Enter tag name"
                 value={tagName}
                 onChange={handleTagNameChange}
+                
               />
               <button
-                className="mt-2 bg-blue-500 text-white p-2 rounded-md w-full"
+                className="mt-2 bg-blue-500 text-white rounded-md w-full "
                 onClick={handleAddTag}
+               
               >
                 Add Tag
               </button>
@@ -276,14 +278,14 @@ const NotesGrid = () => {
             ))}
 
             {addedFolders.map((folder) => (
-              <li key={folder.id} className="mb-1 flex items-center justify-between bg-gray-200 p-2 rounded">
+              <li key={folder.id} className="mb-1 flex items-center justify-between bg-gray-200  rounded"  style={{margin:"0px -13px", padding:"8px 13px" }}>
                 <div className="flex items-center">
                   <i className="fa-solid fa-folder text-blue-600 mr-2"></i>
                   <div>{folder.name}</div>
                 </div>
                 <div className="flex items-center">
-                  <div className={`inline-block w-3 h-3 rounded-full ${folder.color} mr-2`}></div>
-                  <FaTrash className="text-red-500 cursor-pointer" onClick={() => handleRemoveFolder(folder.id)} />
+                  <FaTrash className="text-red-500 cursor-pointer mr-2" onClick={() => handleRemoveFolder(folder.id)} />
+                  <div className={`inline-block w-3 h-3 rounded-full ${folder.color} `}></div>
                 </div>
               </li>
             ))}
