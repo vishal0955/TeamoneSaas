@@ -1,385 +1,315 @@
-import React from 'react'
+import React from "react";
+import {
+  FaFolder,
+  FaFilePdf,
+  FaFileImage,
+  FaFileAlt,
+  FaStar,
+  FaUserCircle,
+  FaFolderPlus,
+  FaGoogleDrive,
+  FaSearch,
+  FaEllipsisV,
+  FaTh,
+  FaList,
+  FaUpload,
+  FaShare,
+  FaTrash,
+  FaDownload
+} from "react-icons/fa";
 
-const Files = () => {
+// Sidebar Component with Drive-like styling
+const Sidebar = () => {
   return (
-    <div className="min-h-screen">
-    <aside className="w-100 bg-white border-r border-gray-200 flex flex-col">
-      <div className="p-6">
-        <div className=" items-center gap-4 mb-8">
-          <img
-            src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
-            alt="Logo"
-            className="w-8 h-8"
-          />
-          <h1 className="text-xl font-semibold">File Manager</h1>
-        </div>
-        <div className="bg-gray-50 rounded-lg p-4 mb-6">
-          <div className="flex items-center gap-3 mb-3">
-            <img
-              src="https://creatie.ai/ai/api/search-image?query=professional headshot portrait with neutral background&width=40&height=40&orientation=squarish&flag=0775adc1-1f0d-4173-b8f2-beb4e94bf093"
-              alt="Profile"
-              className="w-10 h-10 rounded-full"
+    <div className="p-3" style={{ backgroundColor: '#f8f9fa' }}>
+      <div className="d-flex align-items-center mb-4">
+        <h2 className="" style={{fontSize:"30px"}}>File</h2>
+      </div>
+      
+      <div className="mb-4 d-none d-md-block">
+        <button className="btn btn-primary w-100 d-flex align-items-center justify-content-center">
+          <FaFolderPlus className="me-2" /> New
+        </button>
+      </div>
+      
+      <ul className="list-unstyled">
+        <li className="my-2 py-2 px-3 rounded hover-bg">
+          <div className="d-flex align-items-center">
+            <FaFolder className="text-warning me-2" />
+            <span className="d-none d-md-inline">My Drive</span>
+          </div>
+        </li>
+        <li className="my-2 py-2 px-3 rounded hover-bg">
+          <div className="d-flex align-items-center">
+            <FaStar className="text-warning me-2" />
+            <span className="d-none d-md-inline">Starred</span>
+          </div>
+        </li>
+        <li className="my-2 py-2 px-3 rounded hover-bg">
+          <div className="d-flex align-items-center">
+            <FaTrash className="text-secondary me-2" />
+            <span className="d-none d-md-inline">Trash</span>
+          </div>
+        </li>
+        <li className="my-2 py-2 px-3 rounded hover-bg">
+          <div className="d-flex align-items-center">
+            <FaFilePdf className="text-danger me-2" />
+            <span className="d-none d-md-inline">PDFs</span>
+          </div>
+        </li>
+        <li className="my-2 py-2 px-3 rounded hover-bg">
+          <div className="d-flex align-items-center">
+            <FaFileImage className="text-success me-2" />
+            <span className="d-none d-md-inline">Images</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+// FileContent Component with Drive-like styling
+const FileContent = () => {
+  // Sample data for recent folders and files
+  const recentFolders = [
+    { name: "Personal Assets", icon: <FaFolder className="text-warning" />, count: 10, color: "bg-warning-light" },
+    { name: "Documents", icon: <FaFolder className="text-primary" />, count: 3, color: "bg-primary-light" },
+    { name: "Images", icon: <FaFolder className="text-success" />, count: 8, color: "bg-success-light" },
+    { name: "Projects", icon: <FaFolder className="text-danger" />, count: 5, color: "bg-danger-light" },
+  ];
+
+  const files = [
+    {
+      name: "Secret Document",
+      size: "7.4 MB",
+      type: "PDF",
+      modified: "Mar 15, 2025",
+      starred: true,
+      icon: <FaFilePdf className="text-danger" />,
+    },
+    {
+      name: "Rewards Program",
+      size: "1.2 MB",
+      type: "PDF",
+      modified: "Jan 10, 2025",
+      starred: false,
+      icon: <FaFilePdf className="text-danger" />,
+    },
+    {
+      name: "Vacation Photos",
+      size: "1.8 MB",
+      type: "Image",
+      modified: "Aug 25, 2025",
+      starred: false,
+      icon: <FaFileImage className="text-success" />,
+    },
+    {
+      name: "Resume",
+      size: "500 KB",
+      type: "Word",
+      modified: "Apr 21, 2025",
+      starred: false,
+      icon: <FaFileAlt className="text-info" />,
+    },
+    {
+      name: "Project Notes",
+      size: "2 MB",
+      type: "Text",
+      modified: "Oct 12, 2025",
+      starred: false,
+      icon: <FaFileAlt className="text-secondary" />,
+    },
+  ];
+
+  return (
+    <div className="p-3">
+      {/* Header / Navbar */}
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+        <div className="d-flex align-items-center mb-3 mb-md-0 w-100">
+          <h4 className="mb-0 me-3 d-none d-md-block">File</h4>
+          <div className="input-group w-100" style={{ maxWidth: '400px' }}>
+            <span className="input-group-text bg-white">
+              <FaSearch className="text-muted" />
+            </span>
+            <input 
+              type="text" 
+              className="form-control" 
+              placeholder="Search in Drive" 
             />
-            <div>
-              <h3 className="font-medium">James Hong</h3>
-              <p className="text-sm text-gray-500">jin343@example.com</p>
-            </div>
-          </div>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
-            <i className="fas fa-cloud-upload-alt text-gray-400 text-xl mb-2" />
-            <p className="text-sm text-gray-600">Drop files here</p>
-            <p className="text-xs text-gray-500">or browse from computer</p>
           </div>
         </div>
-        <nav className="space-y-1">
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-custom bg-gray-100 rounded-lg"
-          >
-            <i className="fas fa-folder" />
-            <span>All Folders/Files</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fab fa-google-drive" />
-            <span>Drive</span>
-          </a>
-          {/* <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fab fa-dropbox" />
-            <span>Dropbox</span>
-          </a> */}
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-share-alt" />
-            <span>Shared with Me</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-file-alt" />
-            <span>Documents</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-clock" />
-            <span>Recent Files</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-star" />
-            <span>Important</span>
-          </a>
-          {/* <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-photo-video" />
-            <span>Media</span>
-          </a> */}
-        </nav>
-        <div className="mt-8">
-          <h3 className="text-sm font-medium mb-3">Storage Details</h3>
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
-            <div id="storage-chart" className="h-32" />
-            <div className="mt-3">
-              <div className="flex justify-between text-sm mb-1">
-                <span className="text-gray-600">Used Space</span>
-                <span className="font-medium">75%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-1">
-                <div
-                  className="bg-custom h-1 rounded-full"
-                  style={{ width: "75%" }}
-                />
-              </div>
-            </div>
-          </div>
+        <div className="d-flex w-100 w-md-auto justify-content-between justify-content-md-end">
+          <button className="btn btn-light me-2 d-flex align-items-center">
+            <FaUpload className="me-2" /> <span className="d-none d-md-inline">Upload</span>
+          </button>
+          <button className="btn btn-light me-2 d-none d-md-block">
+            <FaTh />
+          </button>
+          <button className="btn btn-light d-none d-md-block">
+            <FaList />
+          </button>
         </div>
       </div>
-    </aside>
-    <main className="flex-1 overflow-auto">
-      <header className="bg-white border-b border-gray-200 px-8 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4 flex-1">
-            <div className="relative flex-1 max-w-2xl">
-              <input
-                type="text"
-                placeholder="Search files and folders..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-custom focus:border-custom"
-              />
-              <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+
+      {/* Recent Folders */}
+      <h5 className="mb-3">Folders</h5>
+      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3 mb-4 justify-content-between">
+        {recentFolders.map((folder, idx) => (
+          <div className="col" style={{width:"25%"}} key={idx}>
+            <div className={`card h-100 border-0 ${folder.color} hover-shadow`}>
+              <div className="card-body text-center">
+                <div className="fs-2 mb-2">{folder.icon}</div>
+                <h6 className="card-title text-truncate">{folder.name}</h6>
+                <p className="card-text small text-muted d-none d-md-block">{folder.count} items</p>
+              </div>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <button className="p-2 text-gray-500 hover:text-gray-700">
-              <i className="fas fa-expand" />
-            </button>
-            <button className="p-2 text-gray-500 hover:text-gray-700">
-              <i className="fas fa-bell" />
-            </button>
-            <button className="p-2 text-gray-500 hover:text-gray-700">
-              <i className="fas fa-cog" />
-            </button>
-            <button className="bg-custom text-white px-4 py-2 rounded-lg !rounded-button flex items-center gap-2">
-              <i className="fas fa-plus" />
-              Create Folder
-            </button>
-          </div>
-        </div>
-      </header>
-      <div className="p-8">
-        <div className="grid  gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <i className="fab fa-dropbox text-blue-600 text-2xl" />
-              </div>
-              <button className="text-gray-400 hover:text-gray-600">
-                <i className="fas fa-ellipsis-h" />
-              </button>
-            </div>
-            <h3 className="font-medium mb-1">Dropbox</h3>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">200 Files</span>
-              <span className="font-medium">28GB</span>
-            </div>
-            <div className="mt-3 w-full bg-gray-200 rounded-full h-1">
-              <div
-                className="bg-blue-600 h-1 rounded-full"
-                style={{ width: "65%" }}
-              />
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <i className="fab fa-google-drive text-green-600 text-2xl" />
-              </div>
-              <button className="text-gray-400 hover:text-gray-600">
-                <i className="fas fa-ellipsis-h" />
-              </button>
-            </div>
-            <h3 className="font-medium mb-1">Google Drive</h3>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">144 Files</span>
-              <span className="font-medium">54GB</span>
-            </div>
-            <div className="mt-3 w-full bg-gray-200 rounded-full h-1">
-              <div
-                className="bg-green-600 h-1 rounded-full"
-                style={{ width: "45%" }}
-              />
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <i className="fas fa-cloud text-purple-600 text-2xl" />
-              </div>
-              <button className="text-gray-400 hover:text-gray-600">
-                <i className="fas fa-ellipsis-h" />
-              </button>
-            </div>
-            <h3 className="font-medium mb-1">Cloud Storage</h3>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">144 Files</span>
-              <span className="font-medium">54GB</span>
-            </div>
-            <div className="mt-3 w-full bg-gray-200 rounded-full h-1">
-              <div
-                className="bg-purple-600 h-1 rounded-full"
-                style={{ width: "55%" }}
-              />
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                <i className="fas fa-hdd text-gray-600 text-2xl" />
-              </div>
-              <button className="text-gray-400 hover:text-gray-600">
-                <i className="fas fa-ellipsis-h" />
-              </button>
-            </div>
-            <h3 className="font-medium mb-1">Internal Storage</h3>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">144 Files</span>
-              <span className="font-medium">54GB</span>
-            </div>
-            <div className="mt-3 w-full bg-gray-200 rounded-full h-1">
-              <div
-                className="bg-gray-600 h-1 rounded-full"
-                style={{ width: "35%" }}
-              />
-            </div>
-          </div>
-        </div>
-        {/* <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-medium">Quick Access</h2>
-            <div className="flex items-center gap-4">
-              <button className="text-gray-500 hover:text-gray-700">
-                Close
-              </button>
-              <button className="text-custom hover:text-custom-dark">
-                View All
-              </button>
-            </div>
-          </div>
-          <div className="grid grid-cols-5 gap-6">
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-file-word text-blue-600" />
-                </div>
-                <button className="text-yellow-400">
-                  <i className="fas fa-star" />
-                </button>
-              </div>
-              <h4 className="font-medium text-sm mb-1">Final Change.doc</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-file-pdf text-red-600" />
-                </div>
-                <button className="text-gray-400 hover:text-yellow-400">
-                  <i className="far fa-star" />
-                </button>
-              </div>
-              <h4 className="font-medium text-sm mb-1">Marklist.pdf</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-file-excel text-green-600" />
-                </div>
-                <button className="text-gray-400 hover:text-yellow-400">
-                  <i className="far fa-star" />
-                </button>
-              </div>
-              <h4 className="font-medium text-sm mb-1">List.xlsx</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-folder text-yellow-600" />
-                </div>
-                <button className="text-gray-400 hover:text-yellow-400">
-                  <i className="far fa-star" />
-                </button>
-              </div>
-              <h4 className="font-medium text-sm mb-1">Group Photos</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-image text-purple-600" />
-                </div>
-                <button className="text-yellow-400">
-                  <i className="fas fa-star" />
-                </button>
-              </div>
-              <h4 className="font-medium text-sm mb-1">Nature.png</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
-          </div>
-        </div> */}
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-medium">Recent Videos</h2>
-            <select className="border-0 text-sm text-gray-500 focus:ring-0">
-              <option>Last 7 Days</option>
-              <option>Last 30 Days</option>
-              <option>Last 3 Months</option>
+        ))}
+      </div>
+
+      {/* Files Table */}
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+        <h5 className="mb-3 mb-md-0">Files</h5>
+        <div className="d-flex">
+          <div className="me-3">
+            <label htmlFor="sortBy" className="me-2 small d-none d-md-inline">
+              Sort:
+            </label>
+            <select
+              id="sortBy"
+              className="form-select form-select-sm d-inline-block"
+              style={{ width: 'auto' }}
+            >
+              <option>Name</option>
+              <option>Modified</option>
+              <option>Size</option>
+              <option>Type</option>
             </select>
           </div>
-          <div className="grid grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-              <div className="relative">
-                <img
-                  src="https://creatie.ai/ai/api/search-image?query=futuristic sci-fi movie scene with glowing neon circles&width=400&height=225&orientation=landscape&flag=ad6f4e4b-374c-4803-a194-485d808704ed"
-                  alt="Video thumbnail"
-                  className="w-full h-48 object-cover"
-                />
-                <button className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 text-white">
-                  <i className="fas fa-play text-2xl" />
-                </button>
-              </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-medium">Inertia Movie</h4>
-                  <button className="text-yellow-400">
-                    <i className="fas fa-star" />
-                  </button>
-                </div>
-                <span className="text-sm text-gray-500">2.4 GB</span>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-              <div className="relative">
-                <img
-                  src="https://creatie.ai/ai/api/search-image?query=modern smartphone devices with glowing screens on clean background&width=400&height=225&orientation=landscape&flag=bcfeef7e-e39a-4a66-93d6-cf1a67cd4805"
-                  alt="Video thumbnail"
-                  className="w-full h-48 object-cover"
-                />
-                <button className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 text-white">
-                  <i className="fas fa-play text-2xl" />
-                </button>
-              </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-medium">2028 Nov 10.mp4</h4>
-                  <button className="text-yellow-400">
-                    <i className="fas fa-star" />
-                  </button>
-                </div>
-                <span className="text-sm text-gray-500">2.4 GB</span>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-              <div className="relative">
-                <img
-                  src="https://creatie.ai/ai/api/search-image?query=colorful liquid art abstract motion with vibrant colors&width=400&height=225&orientation=landscape&flag=ac9c3284-1ad8-4c98-ba6b-f1c9f18267bd"
-                  alt="Video thumbnail"
-                  className="w-full h-48 object-cover"
-                />
-                <button className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 text-white">
-                  <i className="fas fa-play text-2xl" />
-                </button>
-              </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-medium">AI Liquid Color</h4>
-                  <button className="text-yellow-400">
-                    <i className="fas fa-star" />
-                  </button>
-                </div>
-                <span className="text-sm text-gray-500">2.4 GB</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-    </main>
-  </div>
-  )
-}
+      <div className="table-responsive">
+        <table className="table align-middle table-hover">
+          <thead className="table-light">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col" className="d-none d-md-table-cell">Size</th>
+              <th scope="col" className="d-none d-md-table-cell">Type</th>
+              <th scope="col" className="d-none d-md-table-cell">Modified</th>
+              <th scope="col" className="text-center">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {files.map((file, idx) => (
+              <tr key={idx}>
+                <td>
+                  <div className="d-flex align-items-center">
+                    <span className="me-3">{file.icon}</span>
+                    <span className="text-truncate" style={{maxWidth: '150px'}}>{file.name}</span>
+                    {file.starred && <FaStar className="text-warning ms-2" size={14} />}
+                  </div>
+                </td>
+                <td className="text-muted d-none d-md-table-cell">{file.size}</td>
+                <td className="text-muted d-none d-md-table-cell">{file.type}</td>
+                <td className="text-muted d-none d-md-table-cell">{file.modified}</td>
+                <td className="text-center">
+                  <div className="d-flex justify-content-center">
+                    <button className="btn btn-sm btn-light me-1">
+                      <FaShare size={14} />
+                    </button>
+                    <button className="btn btn-sm btn-light me-1">
+                      <FaDownload size={14} />
+                    </button>
+                    <button className="btn btn-sm btn-light">
+                      <FaEllipsisV size={14} />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-export default Files;
+      {/* Pagination */}
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3">
+        <div className="text-muted small mb-2 mb-md-0">
+          Showing 1 to {files.length} of {files.length} items
+        </div>
+        <nav>
+          <ul className="pagination pagination-sm mb-0">
+            <li className="page-item disabled">
+              <button className="page-link">Previous</button>
+            </li>
+            <li className="page-item active">
+              <button className="page-link">1</button>
+            </li>
+            <li className="page-item">
+              <button className="page-link">2</button>
+            </li>
+            <li className="page-item">
+              <button className="page-link">Next</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  );
+};
+
+// Main FileManager Component
+const FileManager = () => {
+  return (
+    <div className="container-fluid">
+      <div className="row g-0">
+        {/* Sidebar Column - Hidden on mobile, shown on tablet and up */}
+        <div
+          className="col-12 col-md-3 col-lg-2 border-end d-none d-md-block"
+          style={{ minHeight: "100vh", backgroundColor: '#f8f9fa' }}
+        >
+          <Sidebar />
+        </div>
+        {/* Main Content Column - Full width on mobile, adjusted on tablet and up */}
+        <div className="col-12 col-md-9 col-lg-10 p-3" style={{ backgroundColor: '#fff' }}>
+          <FileContent />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Add these styles to your CSS
+const styles = `
+  .hover-bg:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+  }
+  .hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.2s ease;
+  }
+  .bg-warning-light {
+    background-color: rgba(255, 193, 7, 0.1);
+  }
+  .bg-primary-light {
+    background-color: rgba(13, 110, 253, 0.1);
+  }
+  .bg-success-light {
+    background-color: rgba(25, 135, 84, 0.1);
+  }
+  .bg-danger-light {
+    background-color: rgba(220, 53, 69, 0.1);
+  }
+  .bg-info-light {
+    background-color: rgba(13, 202, 240, 0.1);
+  }
+`;
+
+export default FileManager;
+
+// Add the styles to the head
+const styleElement = document.createElement('style');
+styleElement.innerHTML = styles;
+document.head.appendChild(styleElement);
