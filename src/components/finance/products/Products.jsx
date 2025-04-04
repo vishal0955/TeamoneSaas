@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {Row , Col , Dropdown} from 'react-bootstrap'
 
 const Products = () => {
   return (
@@ -37,6 +38,50 @@ const Products = () => {
     </Link>
   </div>
 </div>
+
+
+ <Row className="mb-4">
+          <Col xs={12}>
+            <Row className="g-3">
+              <Col xs={12} sm={6} md={3}>
+                <div className="inv-stat-box p-3 border rounded text-center">
+                  <div className="inv-stat-icon inv-stat-icon-primary mb-2">
+                    <i className="bi bi-currency-pound" style={{ fontSize: "1.5rem" }} />
+                  </div>
+                  <div className="inv-stat-label">Total Products</div>
+                  <p className="inv-stat-value mb-0">£1.18M</p>
+                </div>
+              </Col>
+              <Col xs={12} sm={6} md={3}>
+                <div className="inv-stat-box p-3 border rounded text-center">
+                  <div className="inv-stat-icon inv-stat-icon-warning mb-2">
+                    <i className="bi bi-clock" style={{ fontSize: "1.5rem" }} />
+                  </div>
+                  <div className="inv-stat-label">Product selling</div>
+                  <p className="inv-stat-value mb-0">£616.62K</p>
+                </div>
+              </Col>
+              <Col xs={12} sm={6} md={3}>
+                <div className="inv-stat-box p-3 border rounded text-center">
+                  <div className="inv-stat-icon inv-stat-icon-danger mb-2">
+                    <i className="bi bi-x-circle-fill" style={{ fontSize: "1.5rem" }} />
+                  </div>
+                  <div className="inv-stat-label">Recently Selling  Product</div>
+                  <p className="inv-stat-value mb-0">£590.58K</p>
+                </div>
+              </Col>
+              <Col xs={12} sm={6} md={3}>
+                <div className="inv-stat-box p-3 border rounded text-center">
+                  <div className="inv-stat-icon inv-stat-icon-neutral mb-2">
+                    <i className="bi bi-plus-circle-fill" style={{ fontSize: "1.5rem" }} />
+                  </div>
+                  <div className="inv-stat-label">Total Amount of Product</div>
+                  <p className="inv-stat-value mb-0">£201.02K</p>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
 
 <div className="bg-white shadow rounded-lg">
   {/* Filter Header */}

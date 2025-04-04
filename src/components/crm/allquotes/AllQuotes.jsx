@@ -94,8 +94,8 @@ const AllQuotes = () => {
         <div className="quotes-card border rounded shadow-sm">
           <div className="quotes-card-body p-3">
             {/* Search & Filters */}
-            <Row className="mb-3">
-              <Col xs={12} md={6} className="mb-2 mb-md-0">
+            <Row className="mb-3 d-flex justify-content-between">
+              <Col xs={12} md={6} lg={3} className="mb-2 mb-md-0">
                 <InputGroup>
                   <InputGroup.Text>
                     <i className="bi bi-search" />
@@ -110,7 +110,7 @@ const AllQuotes = () => {
               <Col
                 xs={12}
                 md={6}
-                className="d-flex flex-wrap justify-content-center justify-content-md-end gap-2"
+                className="d-flex  justify-content-center justify-content-md-end gap-2"
               >
                 <Form.Select className="inv-filter-button quotes-status-select" size="sm">
                   <option>All Status</option>

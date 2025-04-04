@@ -24,7 +24,7 @@ const Accountspayable = () => {
     <div className="flex flex-wrap gap-2 items-start">
       <div className="relative">
         <button
-          className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 flex items-center gap-2"
+          className="rounded bg-primary text-white border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 flex items-center gap-2"
           onClick={toggleDropdown}
         >
           + New <i className="fas fa-chevron-down text-xs"></i>
@@ -77,10 +77,10 @@ const Accountspayable = () => {
         )}
       </div>
 
-      <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-gray-50">
+      <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium  hover:bg-gray-50">
         Send Statements
       </button>
-      <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-gray-50">
+      <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm font-medium  hover:bg-gray-50">
         Import
       </button>
     </div>

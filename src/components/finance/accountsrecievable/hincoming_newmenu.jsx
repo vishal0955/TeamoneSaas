@@ -37,7 +37,7 @@ const DropdownButton = () => {
                 to="/crm/quotes"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
               >
-                <i className="fas fa-file-invoice text-gray-400"></i> Qoutes
+                <i className="fas fa-file-invoice text-gray-400"></i> Quotes
               </Link>
             </li>
             <li>
