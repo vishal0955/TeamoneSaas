@@ -315,9 +315,9 @@ const ContactDetailPage = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row">
+      <div className="row">
         {/* Left Sidebar */}
-        <div className="w-full md:w-1/4 p-4 border-r">
+        <div className="col-md-3 p-4 border-r">
           <div className="mb-6 text-center">
             <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
               <span className="text-2xl">{contactData.name[0]}</span>
@@ -412,7 +412,7 @@ const ContactDetailPage = () => {
         </div>
 
         {/* Middle Section - Activities */}
-        <div className="bg-white rounded-lg shadow">
+        <div className="col-md-6 bg-white rounded-lg shadow">
           {/* Tabs */}
           <div className="border-b">
             <div className="">
@@ -500,7 +500,7 @@ const ContactDetailPage = () => {
         </div>
 
         {/* Right Sidebar */}
-        <div className="w-full md:w-1/4 p-4 border-l">
+        <div className="col-md-3 p-4 border-l">
           <Accordion defaultActiveKey="0">
             {menuItems.map((item, index) => (
               <Accordion.Item eventKey={index.toString()} key={index}>
