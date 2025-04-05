@@ -301,8 +301,8 @@ body {
 
 .card-dark {
   background-color: #292727 !important;
-  color: #fff !important;
-  border: 1px solid gray;
+  color: #E0E0E0 !important;
+  border: 1px solid rgb(202, 199, 199);
 
 }
 /* >>>>>>> a121075048bf17f4b21ba6f1e38160afe6bb8332 */
