@@ -6,7 +6,7 @@ const Social = () => {
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left Sidebar - Hidden on mobile, shown on lg screens */}
         <div className="hidden lg:block w-full lg:w-72 flex-shrink-0">
-          <div className="bg-white rounded-lg p-6 mb-6">
+          <div className="bg-white rounded-lg p-6 mb-6" style={{boxShadow:"rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset"}}>
             <div className="text-center">
               <img
                 src="https://creatie.ai/ai/api/search-image?query=professional headshot of a business person on white background&width=80&height=80&orientation=squarish&flag=3032fcfb-87df-4be1-96a4-c0a7a27f5187"
@@ -34,7 +34,7 @@ const Social = () => {
               </button>
             </div>
           </div>
-          <nav className="bg-white rounded-lg p-2 mb-6">
+          <nav className="bg-white rounded-lg p-2 mb-6" style={{boxShadow:"rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset"}}>
             <a
               href="#"
               className="flex items-center px-4 py-3 text-custom rounded-lg bg-orange-50"
@@ -59,13 +59,13 @@ const Social = () => {
                 3
               </span>
             </a>
-            <a
+            {/* <a
               href="#"
               className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg"
             >
               <i className="fas fa-list w-5" />
               <span className="ml-3">Lists</span>
-            </a>
+            </a> */}
             <a
               href="#"
               className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg"
@@ -73,14 +73,14 @@ const Social = () => {
               <i className="fas fa-bookmark w-5" />
               <span className="ml-3">Bookmark</span>
             </a>
-            <a
+            {/* <a
               href="#"
               className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg"
             >
               <i className="fas fa-store w-5" />
               <span className="ml-3">Marketplace</span>
-            </a>
-            <a
+            </a> */}
+            {/* <a
               href="#"
               className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg"
             >
@@ -89,14 +89,14 @@ const Social = () => {
               <span className="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
                 14
               </span>
-            </a>
-            <a
+            </a> */}
+            {/* <a
               href="#"
               className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg"
             >
               <i className="fas fa-photo-video w-5" />
               <span className="ml-3">Media</span>
-            </a>
+            </a> */}
             <a
               href="#"
               className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg"
@@ -105,7 +105,7 @@ const Social = () => {
               <span className="ml-3">Profile</span>
             </a>
           </nav>
-          <div className="bg-white rounded-lg p-4">
+          <div className="bg-white rounded-lg p-4" style={{boxShadow:"rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset"}}>
             <h3 className="font-semibold mb-4">Pages You Liked</h3>
             <div className="space-y-4">
               <a href="#" className="flex items-center">
@@ -209,7 +209,7 @@ const Social = () => {
             </div>
           </div>
           <div className="space-y-6">
-            <div className="bg-white rounded-lg p-6">
+            <div className="bg-white rounded-lg p-6" style={{boxShadow:"rgba(17, 17, 26, 0.1) 0px 0px 16px"}}>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
                   <img

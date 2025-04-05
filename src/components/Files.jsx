@@ -512,8 +512,6 @@ const styles = `
     background-color: white;
     padding: 1.5rem;
     border-radius: 0.5rem;
-    width: 400px;
-    max-width: 90%;
   }
 `;
 
