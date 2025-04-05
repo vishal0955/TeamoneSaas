@@ -11,6 +11,7 @@ import {
   faEllipsisV 
 } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 // Constants
 const PROJECTS = [
@@ -465,6 +466,13 @@ const TodoApp = () => {
   }; 
   const darkMode = useSelector((state) => state.theme.isDarkMode);
 
+  const navigate = useNavigate();
+
+  const handleRowClick = (taskId) => {
+    navigate(`/task/${taskId}`);
+    // navigate("/tododetails")
+  };
+
   return (
     <div className={` ${darkMode ? "bg-gray-800" : null } bg-gray-50 min-h-screen `}>
       <div className=" mx-auto px-3 px-md-4 px-lg-5 py-4">
@@ -634,7 +642,7 @@ const TodoApp = () => {
                 </thead>
                 <tbody>
                   {highPriorityTasks.map(task => (
-                    <tr key={task.id}>
+                    <tr key={task.id} onClick={() => handleRowClick(task.id)} style={{ cursor: 'pointer' }}>
                       <td>
                         <div className="d-flex align-items-center">
                           <div className="form-check me-3">
