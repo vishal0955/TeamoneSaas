@@ -19,21 +19,21 @@ import {
 } from "react-icons/fa";
 
 // Sidebar Component with Drive-like styling
-const Sidebar = ({ onAddFile }) => {
+const Sidebar = ({ onAddFolder }) => {
   return (
     <div className="p-3" style={{ backgroundColor: '#f8f9fa' }}>
       <div className="d-flex align-items-center mb-4">
         <h2 className="" style={{fontSize:"30px"}}>File</h2>
       </div>
       
-      <div className="mb-4 d-none d-md-block">
+      {/* <div className="mb-4 d-none d-md-block">
         <button 
           className="btn btn-primary w-100 d-flex align-items-center justify-content-center"
-          onClick={onAddFile}
+          onClick={() => setShowAddFolderModal(true)}
         >
-          <FaFolderPlus className="me-2" /> New
+           <FaFolderPlus className="me-1" /> New Folder
         </button>
-      </div>
+      </div> */}
       
       <ul className="list-unstyled">
         <li className="my-2 py-2 px-3 rounded hover-bg">
@@ -116,21 +116,46 @@ const FileContent = () => {
     },
   ]);
 
+  const [folders, setFolders] = useState([
+    { name: "Personal Assets", icon: <FaFolder className="text-warning" />, count: 10, color: "bg-warning-light" },
+    { name: "Documents", icon: <FaFolder className="text-primary" />, count: 3, color: "bg-primary-light" },
+    { name: "Images", icon: <FaFolder className="text-success" />, count: 8, color: "bg-success-light" },
+    { name: "Projects", icon: <FaFolder className="text-danger" />, count: 5, color: "bg-danger-light" },
+  ]);
+
+  const [showAddFolderModal, setShowAddFolderModal] = useState(false);
+  const [newFolderName, setNewFolderName] = useState("");
   const [showAddFileModal, setShowAddFileModal] = useState(false);
   const [newFileName, setNewFileName] = useState("");
   const [newFileType, setNewFileType] = useState("PDF");
   const [uploadFile, setUploadFile] = useState(null);
 
-  // Sample data for recent folders
-  const recentFolders = [
-    { name: "Personal Assets", icon: <FaFolder className="text-warning" />, count: 10, color: "bg-warning-light" },
-    { name: "Documents", icon: <FaFolder className="text-primary" />, count: 3, color: "bg-primary-light" },
-    { name: "Images", icon: <FaFolder className="text-success" />, count: 8, color: "bg-success-light" },
-    { name: "Projects", icon: <FaFolder className="text-danger" />, count: 5, color: "bg-danger-light" },
-  ];
+  const handleAddFolder = () => {
+    setShowAddFolderModal(true);
+  };
 
-  const handleAddFile = () => {
-    setShowAddFileModal(true);
+  const handleAddFolderSubmit = (e) => {
+    e.preventDefault();
+    if (!newFolderName) return;
+    
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+    
+    const newFolder = {
+      name: newFolderName,
+      icon: <FaFolder className="text-warning" />,
+      count: 0,
+      color: "bg-info-light",
+      modified: formattedDate
+    };
+    
+    setFolders([...folders, newFolder]);
+    setNewFolderName("");
+    setShowAddFolderModal(false);
   };
 
   const handleAddFileSubmit = (e) => {
@@ -198,20 +223,47 @@ const FileContent = () => {
 
   return (
     <div className="p-3">
+      {/* Add Folder Modal */}
+      {showAddFolderModal && (
+        <div className="modal-backdrop">
+          <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h5>Create New Folder</h5>
+              <button 
+                className="btn-close" 
+                onClick={() => setShowAddFolderModal(false)}
+              ></button>
+            </div>
+            <form onSubmit={handleAddFolderSubmit}>
+              <div className="mb-3">
+                <label htmlFor="folderName" className="form-label">Folder Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="folderName"
+                  value={newFolderName}
+                  onChange={(e) => setNewFolderName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="d-flex justify-content-end">
+                <button 
+                  type="button" 
+                  className="btn btn-secondary me-2"
+                  onClick={() => setShowAddFolderModal(false)}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary">Create</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* Add File Modal */}
       {showAddFileModal && (
-        <div className="modal-backdrop" style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 1050,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
+        <div className="modal-backdrop">
           <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h5>Add New File</h5>
@@ -262,18 +314,7 @@ const FileContent = () => {
 
       {/* Upload File Modal */}
       {uploadFile && (
-        <div className="modal-backdrop" style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 1050,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
+        <div className="modal-backdrop">
           <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h5>Upload File</h5>
@@ -322,6 +363,12 @@ const FileContent = () => {
           </div>
         </div>
         <div className="d-flex w-100 w-md-auto justify-content-between justify-content-md-end">
+          <button 
+            className="btn btn-light me-2 d-flex align-items-center"
+            onClick={() => setShowAddFileModal(true)}
+          >
+            <FaFileAlt className="me-2" /> <span className="d-none d-md-inline">New File</span>
+          </button>
           <form className="me-2">
             <label htmlFor="fileUpload" className="btn btn-light d-flex align-items-center mb-0">
               <FaUpload className="me-2" /> <span className="d-none d-md-inline">Upload</span>
@@ -343,9 +390,17 @@ const FileContent = () => {
       </div>
 
       {/* Recent Folders */}
-      <h5 className="mb-3">Folders</h5>
-      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3 mb-4 justify-content-between">
-        {recentFolders.map((folder, idx) => (
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h5 className="mb-0">Folders</h5>
+        <button 
+          className="btn btn-primary  align-items-center justify-content-center d-flex"
+          onClick={() => setShowAddFolderModal(true)}
+        >
+          <FaFolderPlus className="me-1" /> New
+        </button>
+      </div>
+      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3 mb-4">
+        {folders.map((folder, idx) => (
           <div className="col" style={{width:"25%"}} key={idx}>
             <div className={`card h-100 border-0 ${folder.color} hover-shadow`}>
               <div className="card-body text-center">
@@ -460,7 +515,7 @@ const FileManager = () => {
           className="col-12 col-md-3 col-lg-2 border-end d-none d-md-block"
           style={{ minHeight: "100vh", backgroundColor: '#f8f9fa' }}
         >
-          <Sidebar onAddFile={() => document.getElementById('fileUpload').click()} />
+          <Sidebar onAddFolder={() => {}} />
         </div>
         {/* Main Content Column - Full width on mobile, adjusted on tablet and up */}
         <div className="col-12 col-md-9 col-lg-10 p-3" style={{ backgroundColor: '#fff' }}>
@@ -512,6 +567,8 @@ const styles = `
     background-color: white;
     padding: 1.5rem;
     border-radius: 0.5rem;
+    width: 400px;
+    max-width: 90%;
   }
 `;
 
