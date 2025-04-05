@@ -279,7 +279,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
       {/* Sidebar */}
       <aside
-        style={{ marginTop: "65px", zIndex: "900" }}
+        style={{ marginTop: "65px", zIndex: "60" }}
         className={`fixed left-0 top-0 h-screen ${sidebarTheme.background} shadow-xl flex flex-col transition-all duration-300 ease-in-out pb-5
           ${isMobile && collapsed ? "w-0" : collapsed ? "w-20" : "w-56"}
           ${darkMode ? 'border-r border-gray-800' : 'border-r border-gray-100'}`}

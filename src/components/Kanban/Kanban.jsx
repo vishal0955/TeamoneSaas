@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Plus, Search, Filter, SortAsc, Users, XCircle, Settings, ChevronDown, MoreVertical, FileText, Zap, Pause, Check, CreditCard, Calendar, Moon, Sun } from 'lucide-react';
+import { use } from 'react';
+import { useSelector } from 'react-redux';
 
 
 const ItemTypes = {
@@ -312,8 +314,8 @@ const Column = ({ column, columnIndex, moveColumn, moveTask, startAddTask, isAdd
 
 const KanbanBoard = () => {
   // Theme state
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  
+  // const [isDarkMode, setIsDarkMode] = useState(false);
+   const isDarkMode = useSelector((state) => state.theme.isDarkMode)
   // Add task states
   const [newTaskText, setNewTaskText] = useState({});
   const [isAddingTask, setIsAddingTask] = useState({});
@@ -558,9 +560,9 @@ const KanbanBoard = () => {
           <button className="px-2 py-1">
             <MoreVertical className="w-5 h-5" />
           </button>
-          <button className="px-2 py-1 ml-2" onClick={toggleTheme}>
+          {/* <button className="px-2 py-1 ml-2" onClick={toggleTheme}>
             {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+          </button> */}
         </div>
 
         {/* Kanban Board */}
