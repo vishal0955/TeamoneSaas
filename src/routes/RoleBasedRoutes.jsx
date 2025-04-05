@@ -123,7 +123,7 @@ import Chatbot from "../components/supportHub/chatbox_page";
 import ProjectDashboard from "../components/Project/ProjectDetails";
 import Dashboard from "../components/Project/ProjectDashboard";
 import Files from "../components/Files";
-import Social from "../components/Social";
+import Social from "../components/Social/Social";
 import ResourceTimelineCalendar from "../components/ResourceTimlineCalendar";
 import ProjectCalendar from "../components/Project/calendar/ProjectCalendar";
 import ProjectTimelineCalendar from "../components/Project/calendar/ProjectTimeline";
