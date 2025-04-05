@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 const Social = () => {
+    // State to manage bookmarks
+    const [bookmarked, setBookmarked] = useState(false);
+    const [bookmarkCount, setBookmarkCount] = useState(0);
+  
+    // Event handler for bookmark click
+    const handleBookmarkClick = () => {
+      setBookmarked(!bookmarked);
+      setBookmarkCount(bookmarked ? bookmarkCount - 1 : bookmarkCount + 1);
+    };
   return (
     <div className="max-w-8xl mx-auto px-4 py-6">
       <div className="flex flex-col lg:flex-row gap-6">
@@ -72,6 +81,9 @@ const Social = () => {
             >
               <i className="fas fa-bookmark w-5" />
               <span className="ml-3">Bookmark</span>
+              <span className="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+                {bookmarkCount}
+              </span>
             </a>
             {/* <a
               href="#"
@@ -209,6 +221,7 @@ const Social = () => {
             </div>
           </div>
           <div className="space-y-6">
+
             <div className="bg-white rounded-lg p-6" style={{boxShadow:"rgba(17, 17, 26, 0.1) 0px 0px 16px"}}>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
@@ -253,11 +266,69 @@ const Social = () => {
                     <span>Share</span>
                   </button>
                 </div>
-                <button className="text-gray-500 hover:text-gray-700">
-                  <i className="far fa-bookmark" />
-                </button>
+                <button 
+                className={`text-gray-500 hover:text-gray-700 ${bookmarked ? 'text-black' : ''}`} 
+                onClick={handleBookmarkClick}
+              >
+                <i className={`far ${bookmarked ? 'fa-solid fa-bookmark' : 'fa-bookmark'}`} />
+              </button>
               </div>
             </div>
+            
+
+            <div className="bg-white rounded-lg p-6" style={{boxShadow:"rgba(17, 17, 26, 0.1) 0px 0px 16px"}}>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <img
+                    src="https://creatie.ai/ai/api/search-image?query=professional headshot of a business person on white background&width=40&height=40&orientation=squarish&flag=2c7180fa-11bb-42d2-9443-a299ae434b58"
+                    className="w-10 h-10 rounded-full"
+                    alt="User"
+                  />
+                  <div className="ml-3">
+                    <h4 className="font-semibold">John Smith</h4>
+                    <p className="text-sm text-gray-500">
+                      United Kingdom • 1h ago
+                    </p>
+                  </div>
+                </div>
+                <button className="text-gray-400">
+                  <i className="fas fa-ellipsis-h" />
+                </button>
+              </div>
+              <p className="mb-4">
+                Believe in yourself and all that you are. Know that there is
+                something inside you that is greater than any obstacle.
+                #MotivationMonday #Inspiration ✨
+              </p>
+              <img
+                src="https://creatie.ai/ai/api/search-image?query=A red target with arrows hitting bullseye on orange background, representing success and achievement&width=600&height=400&orientation=landscape&flag=b42b550a-70ab-45db-8e46-3f4825cc5c59"
+                className="w-full rounded-lg mb-4"
+                alt="Post"
+              />
+              <div className="flex items-center justify-between">
+                <div className="flex gap-4">
+                  <button className="flex items-center gap-2 text-gray-500 hover:text-gray-700">
+                    <i className="far fa-heart" />
+                    <span>2.5K</span>
+                  </button>
+                  <button className="flex items-center gap-2 text-gray-500 hover:text-gray-700">
+                    <i className="far fa-comment" />
+                    <span>48</span>
+                  </button>
+                  <button className="flex items-center gap-2 text-gray-500 hover:text-gray-700">
+                    <i className="far fa-share-square" />
+                    <span>Share</span>
+                  </button>
+                </div>
+                <button 
+                className={`text-gray-500 hover:text-gray-700 ${bookmarked ? 'text-black' : ''}`} 
+                onClick={handleBookmarkClick}
+              >
+                <i className={`far ${bookmarked ? 'fa-solid fa-bookmark' : 'fa-bookmark'}`} />
+              </button>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -365,3 +436,56 @@ const Social = () => {
 }
 
 export default Social
+
+// import React, { useState } from 'react';
+
+// const Social = () => {
+//   // State to manage bookmarks
+//   const [bookmarked, setBookmarked] = useState(false);
+//   const [bookmarkCount, setBookmarkCount] = useState(0);
+
+//   // Event handler for bookmark click
+//   const handleBookmarkClick = () => {
+//     setBookmarked(!bookmarked);
+//     setBookmarkCount(bookmarked ? bookmarkCount - 1 : bookmarkCount + 1);
+//   };
+
+//   return (
+//     <div className="max-w-8xl mx-auto px-4 py-6">
+//       <div className="flex flex-col lg:flex-row gap-6">
+//         {/* Left Sidebar */}
+//         <div className="hidden lg:block w-full lg:w-72 flex-shrink-0">
+//           <nav className="bg-white rounded-lg p-2 mb-6">
+//             <a
+//               href="#"
+//               className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg"
+//             >
+//               <i className="fas fa-bookmark w-5" />
+//               <span className="ml-3">Bookmark</span>
+//               <span className="ml-auto bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+//                 {bookmarkCount}
+//               </span>
+//             </a>
+//           </nav>
+//         </div>
+
+//         {/* Main Content */}
+//         <div className="flex-1 w-full">
+//           <div className="bg-white rounded-lg p-6">
+//             <div className="flex items-center justify-between">
+//               <h4 className="font-semibold">Richard Smith</h4>
+//               <button 
+//                 className={`text-gray-500 hover:text-gray-700 ${bookmarked ? 'text-black' : ''}`} 
+//                 onClick={handleBookmarkClick}
+//               >
+//                 <i className={`far ${bookmarked ? 'fa-bookmark' : 'fa-bookmark'}`} />
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Social;
