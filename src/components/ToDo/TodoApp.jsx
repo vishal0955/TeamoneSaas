@@ -10,6 +10,7 @@ import {
   faChevronRight, 
   faEllipsisV 
 } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
 
 // Constants
 const PROJECTS = [
@@ -461,11 +462,12 @@ const TodoApp = () => {
   const getProjectName = (id) => {
     const project = PROJECTS.find(proj => proj.id === id);
     return project ? project.name : 'None';
-  };
+  }; 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <div className="container mx-auto px-3 px-md-4 px-lg-5 py-4">
+    <div className={` ${darkMode ? "bg-gray-800" : null } bg-gray-50 min-h-screen `}>
+      <div className=" mx-auto px-3 px-md-4 px-lg-5 py-4">
         {/* Header */}
         <header className="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
           <div className="mb-3 mb-md-0">
@@ -473,12 +475,12 @@ const TodoApp = () => {
           </div>
           <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center w-30  w-md-auto">
             <div className="input-group me-sm-2 mb-2 mb-sm-0 flex-grow-1">
-              <span className="input-group-text">
+              <span className={` ${darkMode ? "dark-mode" : null }  input-group-text `}>
                 <FontAwesomeIcon icon={faSearch} />
               </span>
               <input 
                 type="text" 
-                className="form-control" 
+                className={` ${darkMode ? "dark-mode" : null } form-control color-gray-300 `} 
                 placeholder="Search Todo List" 
               />
             </div>
@@ -508,7 +510,8 @@ const TodoApp = () => {
             </span>
             <input 
               type="text" 
-              className="form-control" 
+              className= {` ${darkMode ? "dark-mode" : null } form-control `}
+              aria-label="New task"
               placeholder="New task" 
               value={newTask}
               onClick={() => setIsModalOpen(true)}
