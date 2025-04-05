@@ -302,6 +302,7 @@ body {
 .card-dark {
   background-color: #292727 !important;
   color: #fff !important;
+  border: 1px solid gray;
 
 }
 /* >>>>>>> a121075048bf17f4b21ba6f1e38160afe6bb8332 */

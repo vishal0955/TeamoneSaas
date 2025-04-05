@@ -17,7 +17,7 @@ const PerformanceOverview = () => {
    
   return (
     <div className="container">
-  <div className="bg-white min-h-screen">
+  <div className=" min-h-screen">
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Profile Header */}
       <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">

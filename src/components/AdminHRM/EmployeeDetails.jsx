@@ -50,7 +50,7 @@ const EmployeeDetails = () => {
        
 
         {/* White Content */}
-        <div className="bg-white rounded-b-lg shadow  pb-6  md:px-6">
+        <div className=" rounded-b-lg shadow  pb-6  md:px-6">
           {/* Profile Info */}
           <img
                 className="h-24 w-24 rounded-full border-4 border-white bg-gray-100"

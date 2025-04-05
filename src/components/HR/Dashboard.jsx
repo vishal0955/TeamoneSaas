@@ -3,7 +3,7 @@ import React from "react";
 const HRDashboard = () => {
   return (
     <div className="container">
-    <div className="bg-gray-50 min-h-screen p-4">
+    <div className=" min-h-screen p-4">
       <div>
         {/* Main Content */}
         <div className="flex flex-col lg:flex-row gap-8">

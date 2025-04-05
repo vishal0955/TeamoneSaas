@@ -14,10 +14,10 @@ const Sidebar = ({ toggleSidebar, collapsed }) => {
     }));
   };
   return (
-    <div className="bg-gray-50 flex min-h-screen">
+    <div className=" flex min-h-screen">
       {/* Sidebar */}
       <aside
-        className={`min-h-screen bg-white shadow-gray-200 shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
+        className={`min-h-screen shadow-gray-200 shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
           collapsed ? "w-16" : "w-64"
         }`}
       >

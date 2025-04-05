@@ -474,7 +474,7 @@ const TodoApp = () => {
   };
 
   return (
-    <div className={` ${darkMode ? "bg-gray-800" : null } bg-gray-50 min-h-screen `}>
+    <div className={` ${darkMode ? "" : null } min-h-screen `}>
       <div className=" mx-auto px-3 px-md-4 px-lg-5 py-4">
         {/* Header */}
         <header className="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
@@ -562,11 +562,11 @@ const TodoApp = () => {
           <div className="col-12 col-md-6">
             <div className="row g-2">
               <div className="col-4 col-sm-4">
-                <label className="form-label small">Due Date</label>
+                <label className= {` ${darkMode ? "dark-mode" : null }  form-label small`}>Due Date</label>
                 <select
                   value={dueDateFilter}
                   onChange={(e) => setDueDateFilter(e.target.value)}
-                  className="form-select form-select-sm"
+                  className={` ${darkMode ? "dark-mode" : null } form-select form-select-sm`}
                 >
                   <option value="">All</option>
                   {Array.from(new Set(tasks.map((task) => task.dueDate))).map((date) => (
@@ -577,11 +577,11 @@ const TodoApp = () => {
                 </select>
               </div>
               <div className="col-4 col-sm-4">
-                <label className="form-label small">All Tags</label>
+                <label className={` ${darkMode ? "dark-mode" : null } form-label small`}>All Tags</label>
                 <select
                   value={tagFilter}
                   onChange={(e) => setTagFilter(e.target.value)}
-                  className="form-select form-select-sm"
+                  className={` ${darkMode ? "dark-mode" : null } form-select form-select-sm`}
                 >
                   <option value="">All</option>
                   {TAG_OPTIONS.map((tag) => (
@@ -592,12 +592,11 @@ const TodoApp = () => {
                 </select>
               </div>
               <div className="col-4 col-sm-4">
-                <label className="form-label small">Sort By</label>
+                <label className={` ${darkMode ? "dark-mode" : null } form-label small`}>Sort By</label>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="form-select form-select-sm"
-                >
+                  className={` ${darkMode ? "dark-mode" : null } form-select form-select-sm`}>
                   <option value="createdDate">Created Date</option>
                   <option value="dueDate">Due Date</option>
                 </select>
@@ -608,7 +607,7 @@ const TodoApp = () => {
 
         {/* Task Sections */}
         {(activeFilter === 'all' || activeFilter === 'high') && highPriorityTasks.length > 0 && (
-          <div className="mb-5">
+          <div className={`${darkMode ? "dark-mode" : null } `}>
             <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
               <div className="d-flex align-items-center mb-2 mb-sm-0">
                 <FontAwesomeIcon icon={faChevronDown} className="me-2 text-muted" />
@@ -629,7 +628,7 @@ const TodoApp = () => {
             </div>
             
             <div className="table-responsive " >
-              <table className="table table-striped">
+              <table className= {` ${darkMode ? "table-dark" : null }  table table-striped`}>
                 <thead>
                   <tr>
                     <th scope="col">Task</th>
@@ -741,7 +740,7 @@ const TodoApp = () => {
             </div>
             
             <div className="table-responsive" >
-              <table className="table table-striped">
+              <table className= {` ${darkMode ? "table-dark" : null }  table table-striped`}>
                 <thead>
                   <tr>
                     <th scope="col">Task</th>

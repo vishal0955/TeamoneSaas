@@ -58,7 +58,7 @@ const AnalyticsView = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen">
             {/* Main Content */}
             <div className="flex-1 flex flex-col">
                 <header className="bg-white border-b border-gray-200">

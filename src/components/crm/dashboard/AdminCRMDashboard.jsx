@@ -134,7 +134,7 @@ const AdminCRMDashboard = () => {
   }, []);
 
   return (
-    <div className="container-fluid bg-light p-3 p-md-4">
+    <div className="container-fluid  p-3 p-md-4">
       <h1 className="mb-3">CRM Dashboard</h1>
       
       {/* Stats Section - Responsive Grid */}

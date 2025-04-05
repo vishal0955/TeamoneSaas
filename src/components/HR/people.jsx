@@ -237,7 +237,7 @@ const People = () => {
   return (
     <>
      
-      <div className="bg-white text-gray-900 min-h-screen">
+      <div className=" text-gray-900 min-h-screen">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Navbar */}
           {/* <nav className="flex items-center justify-between py-4">
