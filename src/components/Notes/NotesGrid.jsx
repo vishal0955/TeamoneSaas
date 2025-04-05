@@ -436,7 +436,7 @@ const NotesGrid = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredNotes.map((note) => (
-                <div key={note.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div key={note.id} className={`${darkMode ? "dark-mode" : "bg-white" } rounded-lg shadow-sm overflow-hidden`}>
                   <div className="p-4">
                     <div className="flex justify-between items-center mb-3">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityClasses(note.priority)}`}>
