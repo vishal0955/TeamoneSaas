@@ -142,6 +142,7 @@ import Workload from "../components/Project/Workload";
 import ProjectCard from "../components/Project/Cards/proj_card";
 import ProjectKanban from "../components/KanbanRe/ProjectKanban";
 import Recruitmentkanban from "../components/HR/RecruitmentKanban";
+import TodoDetail from "../components/ToDo/TodoDetails";
 
 const RoleBasedRoutes = () => {
   return (
@@ -184,6 +185,7 @@ const RoleBasedRoutes = () => {
         <Route path="/noteslist" element={<NotesList />} />
 
         <Route path="/todoapp" element={<TodoApp />} />
+        <Route path="/tododetails" element={<TodoDetail />} />
         <Route path="/kanban" element={<KanbanBoard />} />
 
         {/* Project Route */}

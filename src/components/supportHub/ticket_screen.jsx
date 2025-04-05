@@ -68,10 +68,10 @@ const TicketManagementSystem = () => {
                 <i className="fas fa-plus mr-2"></i>
                 <span>More</span>
               </button>
-              <button className="!rounded-button inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+              {/* <button className="!rounded-button inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
               <i className="fas fa-filter mr-2"></i>
               <span>Advanced filters</span>
-            </button>
+            </button> */}
             </div>
             
           </div>
@@ -79,9 +79,9 @@ const TicketManagementSystem = () => {
           {/* Tickets Info */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 space-y-2 sm:space-y-0">
             <span className="text-sm text-gray-700">86 tickets</span>
-            <button className="!rounded-button inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+            {/* <button className="!rounded-button inline-flex items-center px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
               Edit columns
-            </button>
+            </button> */}
           </div>
 
           {/* Tickets Table */}
