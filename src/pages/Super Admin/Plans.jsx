@@ -220,7 +220,7 @@ function Plans({ show, plan }) {
         onHide={() => setCustomizePlanModalShow(false)}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Basic Information</Modal.Title>
+          <Modal.Title>Add Plan</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>

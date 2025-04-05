@@ -471,7 +471,7 @@ const TodoApp = () => {
           <div className="mb-3 mb-md-0">
             <h1 className="h3 mb-0">Todo</h1>
           </div>
-          <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center w-100 w-md-auto">
+          <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center w-30  w-md-auto">
             <div className="input-group me-sm-2 mb-2 mb-sm-0 flex-grow-1">
               <span className="input-group-text">
                 <FontAwesomeIcon icon={faSearch} />
