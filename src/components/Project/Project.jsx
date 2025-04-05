@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ProjectCard from "./Cards/proj_card";
 import { useSelector } from "react-redux";
+import ResourceTimelineCalendar from "../ResourceTimlineCalendar";
+import KanbanBoard from "../Kanban/Kanban";
 
 const initialTasks = [
   {
@@ -172,7 +174,10 @@ const initialTasks = [
   },
 ];
 
+
 const Project = () => {
+
+  const [activeTab, setActiveTab] = useState(1);
   const [tasks, setTasks] = useState(initialTasks);
   const [showModal, setShowModal] = useState(false);
   const [showClientModal, setShowClientModal] = useState(false);
@@ -289,7 +294,7 @@ const Project = () => {
   <h4 className="mb-0 text-2xl font-bold text-start text-md-start w-100 w-md-auto">All Projects</h4>
 
   <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
-    <div className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
+    {/* <div className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
       <Link to="/calendar">
         <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
           <i className="bi bi-grid" /> TimeLine
@@ -305,7 +310,26 @@ const Project = () => {
           <Kanban /> Board View
         </button>
       </Link>
-    </div>
+    </div> */}
+
+     <div className="view-toggle d-flex flex-wrap gap-1">
+                  {/* <Link to="/ProjectTimelineCalendar"> */}
+                  <button className="btn btn-outline-secondary d-flex align-items-center gap-1" onClick={() => setActiveTab(0)} >
+                    <i className="bi bi-grid" /> TimeLine
+                  </button>
+                  {/* </Link> */}
+                  {/* <Link to="/projectlist"> */}
+                  <button className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                    onClick={() => setActiveTab(1)} >
+                    <i className="bi bi-list" /> List View
+                  </button>
+                  {/* </Link> */}
+                  {/* <Link to="/kanban"> */}
+                  <button className="btn btn-outline-secondary d-flex align-items-center gap-1" onClick={() => setActiveTab(2)} >
+                    <Kanban /> Board View
+                  </button>
+                  {/* </Link> */}
+                </div>
 
     <button
       className="btn btn-primary add-project-btn"
@@ -317,7 +341,12 @@ const Project = () => {
   </div>
 </div>
 
+{activeTab === 0 && <ResourceTimelineCalendar />}
+{activeTab === 2 && <KanbanBoard />}
 
+{activeTab === 1 && (
+
+<>
       <div className="table-responsive">
         <table className="table align-middle text-nowrap">
           <thead className="text-nowrap">
@@ -410,6 +439,9 @@ const Project = () => {
           </ul>
         </nav>
       </div>
+
+      </>
+)}
 
       {/* Modal */}
       {/* {showModal && (
