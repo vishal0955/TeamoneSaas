@@ -11,8 +11,12 @@ import {
 } from "lucide-react";
 import { FaStar, FaTrash, FaEllipsisV, FaPlus } from "react-icons/fa";
 import AddNotePopup from "./AddNoteForm";
+import { useSelector } from "react-redux";
 
 const NotesGrid = () => {
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+    const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState("list");
   const [showAddFolder, setShowAddFolder] = useState(false);
   const [isAddNoteOpen, setIsAddNoteOpen] = useState(false);
@@ -161,10 +165,21 @@ const NotesGrid = () => {
     }
   };
 
+  const lowerCaseSearch = searchTerm.toLowerCase();
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  
+  const filteredNotes = notes.filter((note) =>
+    note.title.toLowerCase().includes(lowerCaseSearch) ||
+    note.description.toLowerCase().includes(lowerCaseSearch)
+  );
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* Sidebar - Collapsible on mobile */}
-      <div className="w-full md:w-64 bg-white border-r border-gray-200 flex-shrink-0">
+      <div className="w-full md:w-64 border-r border-gray-200 flex-shrink-0 shadow-xs">
         <div className="flex items-center px-3 py-4">
           <div className="bg-indigo-100 rounded p-2 mr-2"></div>
           <h5 className="font-medium">Notes</h5>
@@ -243,7 +258,7 @@ const NotesGrid = () => {
             <div className="mt-3 px-3 py-2 bg-gray-100 border rounded-md">
               <input
                 type="text"
-                className="border p-2 w-full rounded-md"
+                className={`${darkMode ? "dark-mode" : "bg-white" } border p-2 w-full rounded-md `}
                 placeholder="Enter tag name"
                 value={tagName}
                 onChange={handleTagNameChange}
@@ -318,14 +333,14 @@ const NotesGrid = () => {
             {/* Left side: Bulk Actions + Apply */}
             <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
               <div className="relative w-full">
-                <button className="flex items-center justify-between w-full bg-white border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <button className="flex items-center justify-between w-full  border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   Bulk Actions
                   {/* <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg> */}
                 </button>
               </div>
-              <button className=" bg-white btn border border-gray-300 rounded  text-sm w-full">
+              <button className="btn border border-gray-300 rounded  text-sm w-full">
                 Apply
               </button>
             </div>
@@ -339,6 +354,8 @@ const NotesGrid = () => {
                   className="inv-search-input h-11"
                   placeholder="Search Notes..."
                   aria-label="Search Notes"
+                  value={searchTerm}
+                onChange={handleSearch}
                 />
               </div>
               <div className="flex border border-gray-300 rounded w-full sm:w-auto">
@@ -361,7 +378,7 @@ const NotesGrid = () => {
               </div>
 
               <button
-                className="bg-gray-900 text-white rounded px-4 py-2 text-sm flex items-center justify-center w-full sm:w-auto"
+                className={`${darkMode ? "dark-mode" : null } rounded px-4 py-2 text-sm flex items-center justify-center w-full sm:w-auto`}
                 onClick={handleOpenAddNote}
               >
                 <Plus size={16} className="mr-1" />
@@ -418,7 +435,7 @@ const NotesGrid = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {notes.map((note) => (
+              {filteredNotes.map((note) => (
                 <div key={note.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
                   <div className="p-4">
                     <div className="flex justify-between items-center mb-3">
@@ -467,6 +484,7 @@ const NotesGrid = () => {
         isOpen={isAddNoteOpen}
         onClose={handleCloseAddNote}
         onSave={handleSaveNote}
+   
       />
     </div>
   );
