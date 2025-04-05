@@ -63,7 +63,7 @@ const InventoryDashboard = () => {
   };
 
   return (
-    <div className="bg-gray-50 w-full min-h-screen">
+    <div className=" w-full min-h-screen">
       <nav className="bg-white shadow p-4 flex justify-between">
       
         <div className="text-gray-500">

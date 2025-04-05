@@ -3,7 +3,7 @@ import React from "react";
 
 const Summary = () => {
   return (
-    <div className="bg-gray-50 font-sans min-h-screen">
+    <div className=" font-sans min-h-screen">
       {/* Main Content */}
       <main className="container p-0">
         <header className="bg-white border-b border-gray-200 px-8 py-4">

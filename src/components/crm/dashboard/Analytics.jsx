@@ -145,7 +145,7 @@ const data = [
 
 const Analytics = () => {
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6  min-h-screen">
       <h2 className="text-xl font-semibold mb-4">Sales</h2>
 
       <div className="grid md:grid-cols-2 gap-6">

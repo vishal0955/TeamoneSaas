@@ -142,7 +142,7 @@ const menuItems = [
      
       {
         name: "User Management",
-        path: "/admininistration/user_management",
+        path: "/admininistration/user_management/users",
         subMenu: [
           { name: "Users", path: "/admininistration/user_management/users" },
           {

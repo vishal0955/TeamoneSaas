@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Kanban } from "lucide-react";
 import ProjectCard from "./proj_card";
+import ProjectTimelineCalendar from "../calendar/ProjectTimeline";
+import KanbanBoard from "../../Kanban/Kanban";
+import Project from "../Project";
+import { useSelector } from "react-redux";
 
 const initialTasks = [
   {
@@ -171,7 +175,13 @@ const initialTasks = [
   },
 ];
 
+// const darkMode = useSelector((state) => (state.theme.isDarkMode))
+
+
 const AllProject = () => {
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+  const [activeTab, setActiveTab] = useState(1);
   const [tasks, setTasks] = useState(initialTasks);
   const [showModal, setShowModal] = useState(false);
   const [showClientModal, setShowClientModal] = useState(false);
@@ -235,13 +245,13 @@ const AllProject = () => {
         tasks.map((task) =>
           task.id === editId
             ? {
-                ...task,
-                name: newProject.name,
-                deadline: newProject.deadline,
-                startDate: newProject.startDate,
-                client: newProject.client,
-                members: newProject.members,
-              }
+              ...task,
+              name: newProject.name,
+              deadline: newProject.deadline,
+              startDate: newProject.startDate,
+              client: newProject.client,
+              members: newProject.members,
+            }
             : task
         )
       );
@@ -279,49 +289,53 @@ const AllProject = () => {
 
   const navigate = useNavigate();
   return (
-    <>    
-    <div className="container mt-4">
-      {/* Header */}
-      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
-        <h4 className="mb-0 text-2xl font-bold text-center text-md-start">
-          All Projects
-        </h4>
+    <>
+      <div className="container mt-4">
+        {/* Header */}
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+          <h4 className="mb-0 text-2xl font-bold text-center text-md-start">
+            All Projects
+          </h4>
 
-        <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
-          <div className="view-toggle d-flex flex-wrap gap-1">
-            <Link to="/ProjectTimelineCalendar">
-              <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+          <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
+            <div className="view-toggle d-flex flex-wrap gap-1">
+              {/* <Link to="/ProjectTimelineCalendar"> */}
+              <button className="btn btn-outline-secondary d-flex align-items-center gap-1" onClick={() => setActiveTab(0)} >
                 <i className="bi bi-grid" /> TimeLine
               </button>
-            </Link>
-            <Link to="/projectlist">
-              <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+              {/* </Link> */}
+              {/* <Link to="/projectlist"> */}
+              <button className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                onClick={() => setActiveTab(1)} >
                 <i className="bi bi-list" /> List View
               </button>
-            </Link>
-            <Link to="/kanban">
-              <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+              {/* </Link> */}
+              {/* <Link to="/kanban"> */}
+              <button className="btn btn-outline-secondary d-flex align-items-center gap-1" onClick={() => setActiveTab(2)} >
                 <Kanban /> Board View
               </button>
-            </Link>
+              {/* </Link> */}
+            </div>
+
+            <button
+              className="btn btn-primary add-project-btn mt-2 mt-md-0"
+              style={{ height: "fit-content" }}
+              onClick={handleOpenModal}
+            >
+              <i className="bi bi-plus" /> Add New Project
+            </button>
           </div>
-
-          <button
-            className="btn btn-primary add-project-btn mt-2 mt-md-0"
-            style={{ height: "fit-content" }}
-            onClick={handleOpenModal}
-          >
-            <i className="bi bi-plus" /> Add New Project
-          </button>
         </div>
-      </div>
 
-      <div
+        {activeTab === 0 && <ProjectTimelineCalendar />}
+        {activeTab === 1 && (  
+          <>     
+          <div
   className="table-responsive"
   style={{ maxHeight: "500px", overflowX: "auto", overflowY: "auto" }}
 >
-  <table className="table table-bordered align-middle text-nowrap">
-    <thead className="table-light">
+  <table className={` ${darkMode ? "table-dark" : null } table table-bordered align-middle text-nowrap `}>
+    <thead className={` ${darkMode ? "table-dark" : null } table-light`}>
       <tr>
         <th style={{ width: "40px" }}>
           <input type="checkbox" className="form-check-input" />
@@ -384,58 +398,73 @@ const AllProject = () => {
   </table>
 </div>
 
+<div
+className="table-responsive"
+style={{ maxHeight: "500px", overflowX: "auto", overflowY: "auto" }}
+>
+
+</div>
 
 
-      {/* Pagination */}
-      <div className="d-flex justify-content-between align-items-center mt-4">
-        <div className="text-muted">Showing 1 to 3 of 12 results</div>
-        <nav>
-          <ul className="pagination">
-            <li className="page-item disabled">
-              <a className="page-link" href="#">
-                <i className="bi bi-chevron-left"></i>
-              </a>
-            </li>
-            <li className="page-item active">
-              <a className="page-link" href="#">
-                1
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                2
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                3
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                <i className="bi bi-chevron-right"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
 
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[100vh]">
-            <div className="flex justify-between items-center border-b pb-2 mb-4">
-              <h3 className="text-xl font-semibold">
-                {editId ? "Edit" : "Add"} Project
-              </h3>
-              <button
-                onClick={handleCloseModal}
-                className="text-gray-500 hover:text-black text-2xl"
-              >
-                &times;
-              </button>
-            </div>
-            <ProjectCard />
-            {/* <form onSubmit={handleAddOrEditProject} className="space-y-4">
+    {/* Pagination */}
+    <div className="d-flex justify-content-between align-items-center mt-4">
+      <div className="text-muted">Showing 1 to 3 of 12 results</div>
+      <nav>
+        <ul className="pagination">
+          <li className="page-item disabled">
+            <a className="page-link" href="#">
+              <i className="bi bi-chevron-left"></i>
+            </a>
+          </li>
+          <li className="page-item active">
+            <a className="page-link" href="#">
+              1
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              2
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              3
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              <i className="bi bi-chevron-right"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+</>
+
+      
+     )}
+        {activeTab === 2 && <KanbanBoard />}
+
+
+
+        {showModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[100vh]">
+              <div className="flex justify-between items-center border-b pb-2 mb-4">
+                <h3 className="text-xl font-semibold">
+                  {editId ? "Edit" : "Add"} Project
+                </h3>
+                <button
+                  onClick={handleCloseModal}
+                  className="text-gray-500 hover:text-black text-2xl"
+                >
+                  &times;
+                </button>
+              </div>
+              <ProjectCard />
+              {/* <form onSubmit={handleAddOrEditProject} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">
@@ -570,7 +599,7 @@ const AllProject = () => {
                     </label>
                   </div>
                 </div> */}
-            {/* </div>
+              {/* </div>
               <div className="flex justify-end gap-3 pt-4 border-t mt-4">
                 <button
                   type="button"
@@ -587,116 +616,116 @@ const AllProject = () => {
                 </button>
               </div>
             </form> */}
-          </div>
-        </div>
-      )}
-      {showClientModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white w-full max-w-md rounded-lg p-6">
-            <div className="flex justify-between items-center border-b pb-2 mb-4">
-              <h3 className="text-xl font-semibold">Client</h3>
-              <button
-                onClick={() => setShowClientModal(false)}
-                className="text-gray-500 hover:text-black text-2xl"
-              >
-                &times;
-              </button>
             </div>
-            <form onSubmit={handleClientSave} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Client Name *
-                </label>
-                <input
-                  type="text"
-                  className="w-full border px-3 py-2 rounded"
-                  value={clientForm.name}
-                  onChange={(e) =>
-                    setClientForm({ ...clientForm, name: e.target.value })
-                  }
-                  placeholder="e.g. John Doe"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
-                <input
-                  type="email"
-                  className="w-full border px-3 py-2 rounded"
-                  value={clientForm.email}
-                  onChange={(e) =>
-                    setClientForm({ ...clientForm, email: e.target.value })
-                  }
-                  placeholder="e.g. johndoe@example.com"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Company Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full border px-3 py-2 rounded"
-                  value={clientForm.company}
-                  onChange={(e) =>
-                    setClientForm({ ...clientForm, company: e.target.value })
-                  }
-                  placeholder="e.g. Acme Corporation"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Login Allowed?
-                </label>
-                <div className="flex items-center gap-4">
-                  <label className="inline-flex items-center">
-                    <input
-                      type="radio"
-                      name="login"
-                      value="Yes"
-                      checked={clientForm.login === "Yes"}
-                      onChange={(e) =>
-                        setClientForm({ ...clientForm, login: e.target.value })
-                      }
-                      className="form-radio"
-                    />
-                    <span className="ml-2">Yes</span>
-                  </label>
-                  <label className="inline-flex items-center">
-                    <input
-                      type="radio"
-                      name="login"
-                      value="No"
-                      checked={clientForm.login === "No"}
-                      onChange={(e) =>
-                        setClientForm({ ...clientForm, login: e.target.value })
-                      }
-                      className="form-radio"
-                    />
-                    <span className="ml-2">No</span>
-                  </label>
-                </div>
-              </div>
-              <div className="flex justify-end gap-3 pt-4 border-t mt-4">
-                <button
-                  type="button"
-                  onClick={() => setShowClientModal(false)}
-                  className="px-4 py-2 bg-gray-300 rounded"
-                >
-                  Close
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded"
-                >
-                  Save
-                </button>
-              </div>
-            </form>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+        {showClientModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white w-full max-w-md rounded-lg p-6">
+              <div className="flex justify-between items-center border-b pb-2 mb-4">
+                <h3 className="text-xl font-semibold">Client</h3>
+                <button
+                  onClick={() => setShowClientModal(false)}
+                  className="text-gray-500 hover:text-black text-2xl"
+                >
+                  &times;
+                </button>
+              </div>
+              <form onSubmit={handleClientSave} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Client Name *
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full border px-3 py-2 rounded"
+                    value={clientForm.name}
+                    onChange={(e) =>
+                      setClientForm({ ...clientForm, name: e.target.value })
+                    }
+                    placeholder="e.g. John Doe"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Email</label>
+                  <input
+                    type="email"
+                    className="w-full border px-3 py-2 rounded"
+                    value={clientForm.email}
+                    onChange={(e) =>
+                      setClientForm({ ...clientForm, email: e.target.value })
+                    }
+                    placeholder="e.g. johndoe@example.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full border px-3 py-2 rounded"
+                    value={clientForm.company}
+                    onChange={(e) =>
+                      setClientForm({ ...clientForm, company: e.target.value })
+                    }
+                    placeholder="e.g. Acme Corporation"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Login Allowed?
+                  </label>
+                  <div className="flex items-center gap-4">
+                    <label className="inline-flex items-center">
+                      <input
+                        type="radio"
+                        name="login"
+                        value="Yes"
+                        checked={clientForm.login === "Yes"}
+                        onChange={(e) =>
+                          setClientForm({ ...clientForm, login: e.target.value })
+                        }
+                        className="form-radio"
+                      />
+                      <span className="ml-2">Yes</span>
+                    </label>
+                    <label className="inline-flex items-center">
+                      <input
+                        type="radio"
+                        name="login"
+                        value="No"
+                        checked={clientForm.login === "No"}
+                        onChange={(e) =>
+                          setClientForm({ ...clientForm, login: e.target.value })
+                        }
+                        className="form-radio"
+                      />
+                      <span className="ml-2">No</span>
+                    </label>
+                  </div>
+                </div>
+                <div className="flex justify-end gap-3 pt-4 border-t mt-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowClientModal(false)}
+                    className="px-4 py-2 bg-gray-300 rounded"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-blue-600 text-white rounded"
+                  >
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
     </>
 
   );

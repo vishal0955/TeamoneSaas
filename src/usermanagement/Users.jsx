@@ -308,7 +308,7 @@ const Users = () => {
       </Row>
 
       {/* Filters */}
-      <div className="bg-white p-4 rounded shadow-sm mb-4">
+      <div className=" p-4 rounded shadow-sm mb-4">
         <Row className="mb-4">
           <Col>
             <h5>Users List</h5>
