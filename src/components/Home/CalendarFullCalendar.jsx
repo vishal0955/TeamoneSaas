@@ -250,7 +250,7 @@ const CalendarApp = () => {
     }
 
     return (
-      <div className="mb-4 p-4 border-t border-gray-700">
+      <div className={` ${darkMode ? "dark-mode" : null } mb-4 p-4 border-t border-gray-700`}>
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-semibold">
             {currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
@@ -270,7 +270,7 @@ const CalendarApp = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-gray-100">
+    <div className= {` ${darkMode ? "dark-mode" : null } flex flex-col md:flex-row h-screen bg-gray-100 `}>
       {/* Mobile Menu Toggle */}
       <button
         className={`md:hidden fixed top-4 left-4 z-20 p-2 rounded-md ${
@@ -283,7 +283,7 @@ const CalendarApp = () => {
 
       {/* Sidebar */}
       <div
-        className={`bg-white text-black fixed inset-y-0 left-0 w-64 z-10 transform transition-transform duration-300 ease-in-out mt-5
+        className= {` ${darkMode ? "dark-mode" : null }  fixed inset-y-0 left-0 w-64 z-10 transform transition-transform duration-300 ease-in-out mt-5
           ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0`}
       >
         <div className="p-4 border-b border-gray-700 flex justify-between items-center">
@@ -351,8 +351,8 @@ const CalendarApp = () => {
       </div>
 
       {/* Main Calendar Content */}
-      <div className= {`flex-1 ${darkMode ? "dark-mode" : null } flex-1 p-4 overflow-hidden mt-16 md:mt-0`}>
-        <div className="bg-white rounded-lg shadow p-4 h-full flex flex-col">
+      <div className= {` flex-1 p-4 overflow-hidden mt-16 md:mt-0`}>
+        <div className={`flex-1 ${darkMode ? "dark-mode" : null } rounded-lg shadow p-4 h-full flex flex-col`}>
           {/* Calendar Header */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-4">
             <div className="flex items-center mb-2 md:mb-0">
@@ -451,14 +451,14 @@ const CalendarApp = () => {
       {/* Event Modal */}
       {showEventModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-          <div className="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mx-auto">
+          <div className={`${darkMode ? "dark-mode" : "bg-white" } w-full p-2 border rounded  p-4 rounded-lg shadow-lg w-full max-w-md mx-auto`}>
             <h3 className="text-lg font-bold mb-4">Add Event</h3>
             <form onSubmit={handleAddEvent}>
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1">Title</label>
                 <input
                   type="text"
-                  className="w-full p-2 border rounded"
+                  className={` ${darkMode ? "dark-mode" : null } w-full p-2 border rounded `}
                   value={newEvent.title}
                   onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
                   required
@@ -470,7 +470,7 @@ const CalendarApp = () => {
                   <label className="block text-sm font-medium mb-1">Start</label>
                   <input
                     type="datetime-local"
-                    className="w-full p-2 border rounded"
+                    className= {` ${darkMode ? "dark-mode" : null } w-full p-2 border rounded `}
                     value={newEvent.start ? new Date(newEvent.start).toISOString().slice(0, 16) : ''}
                     onChange={(e) => setNewEvent({ ...newEvent, start: e.target.value })}
                   />
@@ -479,7 +479,7 @@ const CalendarApp = () => {
                   <label className="block text-sm font-medium mb-1">End</label>
                   <input
                     type="datetime-local"
-                    className="w-full p-2 border rounded"
+                    className= {` ${darkMode ? "dark-mode" : null } w-full p-2 border rounded `}
                     value={newEvent.end ? new Date(newEvent.end).toISOString().slice(0, 16) : ''}
                     onChange={(e) => setNewEvent({ ...newEvent, end: e.target.value })}
                   />
@@ -503,7 +503,7 @@ const CalendarApp = () => {
               <div className="flex justify-end space-x-2">
                 <button
                   type="button"
-                  className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                  className="px-4 py-2 bg-gray-500 rounded hover:bg-gray-600 text-white"
                   onClick={() => setShowEventModal(false)}
                 >
                   Cancel
