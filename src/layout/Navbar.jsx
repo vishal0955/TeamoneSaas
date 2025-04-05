@@ -1,8 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { Search, Bell, User, Settings, Activity, CreditCard, HelpCircle, LogOut, Menu } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { toggleTheme } from '../redux/slices/ThemeSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Navbar = ({ toggleSidebar, collapsed }) => {
+  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
@@ -15,6 +19,9 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
     localStorage.removeItem("userEmail");
     navigate('/');
   };
+ 
+
+
 
   const toggleProfileDropdown = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
@@ -32,8 +39,15 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
     }
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+   const toggleDarkMode = () => {
+    dispatch(toggleTheme());
+    console.log("Dark mode toggled");
+   };
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200">
+    <div className={ `${darkMode ? 
+        'dark-mode': "bg-white"  } fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200`}>
       <div className="flex items-center justify-between px-4 py-3 sm:px-6">
         {/* Left section - Logo and toggle button */}
         <div className="flex items-center">

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import "./invoice.css";
 import NewInvoice from "./NewInvoice";
+import { useSelector } from "react-redux";
 
 const AllInvoice = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   const handleOpenModal = () => {
     setIsModalOpen(true);
     document.body.classList.add("modal-open");
@@ -238,7 +241,7 @@ const AllInvoice = () => {
 
   return (
     <>
-      <div className="inv-dashboard-container container-fluid px-3 px-md-4 py-3">
+      <div className= {`${darkMode ? "dark-mode" : null } inv-dashboard-container container-fluid px-3 px-md-4 py-3`} >
         {/* Header Section */}
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 mb-md-4">
           <h2 className="fw-bold mb-3 mb-md-0">Invoices</h2>

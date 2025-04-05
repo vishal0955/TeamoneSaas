@@ -20,7 +20,9 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../redux/slices/ThemeSlice";
 
 const menuItems = [
   {
@@ -49,16 +51,13 @@ const menuItems = [
     icon: <FolderOpenDot size={16} />,
     subItems: [
       { name: "Dashboard" , path: "/project"},
-      // { name: "Project", path: "/project/projects" },
+    
       {name: "All Project", path: "allproject"},
       {name : "Scheduling", path: "/project/projects"},
 
       {name : "Workload", path: "/project/workload"}, 
 
-      // { name: "Task", path: "/project/task" },
-
-      // { name: "Todo", path: "/project/Todo" },
-      // { name: "Notes", path: "/project/Notes" },
+    
     ],
   },
 
@@ -70,17 +69,15 @@ const menuItems = [
       { name: "Dashboard", path: "/crm/dashboard" },
       { name: "Contacts", path: "/crm/customers" },
       { name: "Companies", path: "/crm/companies" },
-      // { name: "Leads", path: "/crm/leads" },
+
       { name: "Deals", path: "/crm/deals" },
       { name: "Quotes", path: "/crm/quotes" },
       { name: "Invoices", path: "/crm/invoices" },
       { name: "Payment", path: "/crm/Payment" },
-      // { name: "Pipeline", path: "/crm/pipeline" },
+  
 
       { name: "Analytics", path: "/crm/analytics" },
-      
-      // { name: "Activities", path: "/crm/activities" },
-      // { name: "Sales", path: "/crm/sales" },
+
     ],
   },
   {
@@ -97,119 +94,20 @@ const menuItems = [
     ]
   },
 
-  // {
-  //   name: "HR OLD ",
-  //   path: "/hrm",
-  //   icon: <Users size={16} />,
-  //   subItems: [
-  //     {
-  //       name: "Employees",
-  //       path: "/hrm/employees",
-  //       subMenu: [
-  //         { name: "Employees List", path: "/employeelist" },
-  //         // { name: "Employees Details", path: "/employeedetails" },
-  //         { name: "Departments", path: "/department" },
-  //         { name: "Designations", path: "/designations" },
-  //         { name: "Policies", path: "/policy" },
-  //       ],
-  //     },
-  //     // {
-  //     //   name: "Tickets",
-  //     //   path: "/hrm/tickets",
-  //     //   // subMenu: [
-  //     //   //   { name: "Leave", path: "/hrm/tickets/leave" },
-  //     //   //   { name: "Attendance", path: "/hrm/tickets/attendance" },
-  //     //   // ]
-  //     // },
-  //     {
-  //       name: "Holidays",
-  //       path: "/hrm/holiday",
-  //     },
-  //     {
-  //       name: "Attendance",
-  //       path: "/hrm/attendance",
-  //       subMenu: [
-  //         { name: "Attendance", path: "/hrm/attendance/list" },
-  //         { name: "Leaves", path: "/hrm/attendance/leaves" },
-  //         { name: "Leave Settings", path: "/hrm/attendance/leave_settings" },
-  //         { name: "Timesheet", path: "/hrm/attendance/timesheet" },
-  //         { name: "Shift & Schedule", path: "/hrm/attendance/shiftroster" },
-  //         { name: "OverTime", path: "/hrm/attendance/overtime" },
-  //       ],
-  //     },
-  //     {
-  //       name: "Performance",
-  //       path: "/hrm/performance",
-  //       subMenu: [
-  //         {
-  //           name: "Performance Indicator",
-  //           path: "/performanceindicator",
-  //         },
-
-  //         // {
-  //         //   name: "Performance Review",
-  //         //   path: "/hrm/performance/performance_review",
-  //         // },
-  //         {
-  //           name: "Performance Appraisal",
-  //           path: "/performaceappraisal",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       name: "Training",
-  //       path: "/hrm/training", 
-  //       subMenu: [
-  //         // { name: "Training Plan", path: "/hrm/training/training_plan" },
-  //         { name: "Training List", path: "/hrm/training/training_list" },
-  //       ] 
-  //     },
-  //     {
-  //       name: "Payroll",
-  //       path: "/hrm/payroll",
-  //       subMenu: [
-  //         { name: "Employee Salary", path: "/employeesalary" },
-  //         { name: "Payroll Items", path: "/payrollitem" },
-  //         // { name: "Employee Salary", path: "/hrm/payroll/employee_salary" },
-  //         // { name: "Payroll Items", path: "/hrm/payroll/payroll_items" },
-  //       ],
-  //     },
-  //   ],
-  // },
-
-  // {
-  //   name: "Recruitment",
-  //   path: "/recruitment",
-  //   icon: <Calendar size={16} />,
-  //   subItems: [
-  //     { name: "Jobs", path: "/recruitment/jobs" },
-  //     { name: "Candidates", path: "/recruitment/candidates" },
-  //     { name: "Refferals", path: "/recruitment/refferals" },
-  //   ],
-  // },
-
+ 
   {
     name: "Finance",
     path: "/finance",
     icon: <ChartColumn size={16} />,
     subItems: [
-      // { name: "Dashboard", path: "/finance/dashboard" },
+      
       { name: "Accounts Payable", path: "/finance/accounts_payable" },
       { name: "Accounts Receivable", path: "/finance/accounts_receivable" },
       { name : "Products", path: "/finance/products" },
       { name: "Customers", path: "/finance/companies" },
       { name: "Suppliers", path: "/finance/suppliers" },
      
-      // {
-      //   name: "Sales",
-      //   path: "/finance/sales",
-      //   subMenu: [
-          
-      //     { name: "Expenses", path: "/finance/sales/expenses" },
-      //     { name: "Provident Funds", path: "/finance/sales/provident_funds" },
-      //     { name: "Taxes", path: "/finance/sales/taxs" },
-      //   ],
-      // },
+    
     ]
     },
     
@@ -241,13 +139,7 @@ const menuItems = [
     icon: <Landmark size={16} />,  
 
     subItems: [
-      // {
-      //   name: "Help & Support",
-      //   path: "/admininistration/help_support",
-      //   subMenu: [
-      //     { name: "FAQs", path: "/admininistration/help_support/faqs" },
-      //   ],
-      // },
+     
       {
         name: "User Management",
         path: "/admininistration/user_management",
@@ -299,12 +191,44 @@ const superAdminMenu = [
 ];
 
 export default function Sidebar({ toggleSidebar, collapsed }) {
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+  console.log(darkMode);
+
   const userRole = localStorage.getItem("userRole");
   const menu = userRole === "superadmin" ? superAdminMenu : menuItems;
   const [openMenus, setOpenMenus] = useState({ Project: true, CRM: true });
   const [openSubMenus, setOpenSubMenus] = useState({});
   const [isMobile, setIsMobile] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+
+  const location = useLocation();
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
+  const isMenuActive = (item) => {
+    if (isActive(item.path)) return true;
+    if (item.subItems) {
+      return item.subItems.some(subItem => isActive(subItem.path));
+    }
+    return false;
+  };
+
+  const sidebarTheme = {
+    background: darkMode ? 'bg-gray-900' : 'bg-white',
+    text: darkMode ? 'text-gray-300' : 'text-indgo-700',
+    hover: darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-50',
+    activeBackground: darkMode ? 'bg-gray-800' : 'bg-indigo-50',
+    activeText: darkMode ? 'text-indigo-400' : 'text-indigo-600',
+    border: darkMode ? 'border-gray-700' : 'border-gray-200',
+    icon: darkMode ? 'text-gray-400' : 'text-gray-500',
+    scrollbar: darkMode ? 'scrollbar-dark' : 'scrollbar-light',
+    submenuActive: darkMode ? 'border-l-indigo-500' : 'border-l-indigo-600',
+    submenuHover: darkMode ? 'hover:bg-gray-800/50' : 'hover:bg-indigo-50/50',
+    submenuText: darkMode ? 'text-gray-400' : 'text-gray-600',
+    submenuActiveText: darkMode ? 'text-indigo-400' : 'text-indigo-600',
+  };
 
   useEffect(() => {
     const checkMobile = () => {
@@ -343,6 +267,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
   return (
     <>
+      {/* Overlay */}
       <div
         className={`fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
           !collapsed && isMobile
@@ -350,34 +275,17 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
             : "opacity-0 pointer-events-none"
         }`}
         onClick={toggleSidebar}
-       
       />
 
-      <aside style={{marginTop:"65px",zIndex:"40"}}
-        // className={`fixed left-0 top-0 h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
-        //   collapsed ? "w-20" : "w-56"
-        // } z-30`}
-        className={`fixed left-0 top-0 h-screen bg-white shadow-lg  flex flex-col transition-all duration-300 ease-in-out pb-5
-          ${isMobile && collapsed ? "w-0 " : collapsed ? "w-20" : "w-56"}`}
+      {/* Sidebar */}
+      <aside
+        style={{ marginTop: "65px", zIndex: "900" }}
+        className={`fixed left-0 top-0 h-screen ${sidebarTheme.background} shadow-xl flex flex-col transition-all duration-300 ease-in-out pb-5
+          ${isMobile && collapsed ? "w-0" : collapsed ? "w-20" : "w-56"}
+          ${darkMode ? 'border-r border-gray-800' : 'border-r border-gray-100'}`}
       >
-         
-        {/* Fixed Header */}
-        {/* <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-gray-100">
-          {collapsed ? (
-            <span className="text-indigo-600 font-bold text-2xl">H</span>
-          ) : (
-            <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
-          )}
-          <button
-            onClick={toggleSidebar}
-            className="p-1.5 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
-          >
-            {collapsed ? "→" : "←"}
-          </button>
-        </div> */}
-
-        {/* Scrollable Navigation */}
-        <nav className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400">
+        {/* Navigation */}
+        <nav className={`flex-1 overflow-y-auto overflow-x-hidden ${sidebarTheme.scrollbar}`}>
           <div className="p-4">
             <ul className="space-y-1.5">
               {menu.map((item) => (
@@ -389,118 +297,67 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
                 >
                   <Link
                     to={item.path}
-                    className={`group flex items-center gap-x-3 px-3 py-2 rounded-lg transition-all duration-150
-                                            ${
-                                              openMenus[item.name]
-                                                ? "bg-indigo-50 text-indigo-600"
-                                                : "hover:bg-gray-50"
-                                            }
-                                        `}
+                    className={`group flex items-center gap-x-3 px-3 py-2.5 rounded-lg transition-all duration-150
+                      ${isMenuActive(item)
+                        ? sidebarTheme.activeBackground + ' ' + sidebarTheme.activeText
+                        : sidebarTheme.text + ' ' + sidebarTheme.hover
+                      }`}
                     onClick={(e) => {
                       if (item.subItems) {
-                        toggleMenu(item.name, e);
+                        e.preventDefault();
+                        toggleMenu(item.name);
                       }
                     }}
                   >
-                    <span
-                      className={`flex-shrink-0 transition-colors duration-150
-                                            ${
-                                              openMenus[item.name]
-                                                ? "text-indigo-600"
-                                                : "text-black group-hover:text-gray-700"
-                                            }
-                                        `}
+                    <span className={`flex-shrink-0 transition-colors duration-150
+                      ${isMenuActive(item) ? sidebarTheme.activeText : sidebarTheme.icon}`}
                     >
                       {item.icon}
                     </span>
 
                     {!collapsed && (
                       <>
-                        <span
-                          className={`font-medium transition-colors duration-150
-                                                    ${
-                                                      openMenus[item.name]
-                                                        ? "text-indigo-600"
-                                                        : "text-black group-hover:text-gray-900"
-                                                    }
-                                                `}
-                        >
+                        <span className="font-medium text-sm">
                           {item.name}
                         </span>
-
                         {item.subItems && (
-                          <span
-                            className={`ml-auto transition-transform duration-200 ${
-                              openMenus[item.name] ? "rotate-180" : ""
-                            }`}
-                          >
-                            <FaAngleDown size={14} />
-                          </span>
+                          <FaAngleDown
+                            size={14}
+                            className={`ml-auto transition-transform duration-200 
+                              ${openMenus[item.name] ? "rotate-180" : ""}`}
+                          />
                         )}
                       </>
                     )}
                   </Link>
 
-                  {/* Tooltip for collapsed state */}
+                  {/* Tooltip */}
                   {collapsed && hoveredItem === item.name && (
-                    <div className="absolute left-full top-0 ml-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg whitespace-nowrap">
+                    <div className="absolute left-full top-0 ml-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg whitespace-nowrap z-50">
                       {item.name}
                     </div>
                   )}
 
                   {/* Submenu */}
                   {!collapsed && item.subItems && openMenus[item.name] && (
-                    <ul className="mt-1 ml-4 pl-3 border-l border-gray-200 space-y-1">
+                    <ul className={`mt-1 ml-4 space-y-1`}>
                       {item.subItems.map((subItem) => (
                         <li key={subItem.name}>
-                          <div className="relative">
-                            <Link
-                              to={subItem.path}
-                              className={`group flex items-center justify-between py-2 pl-3 pr-2 rounded-md text-sm transition-colors
-                                                                ${
-                                                                  openSubMenus[
-                                                                    subItem.name
-                                                                  ]
-                                                                    ? "text-indigo-600 bg-indigo-50"
-                                                                    : "text-black hover:text-gray-900 hover:bg-gray-50"
-                                                                }
-                                                            `}
-                              onClick={(e) => {
-                                if (subItem.subMenu) {
-                                  toggleSubMenu(subItem.name, e);
-                                }
-                              }}
-                            >
-                              <span>{subItem.name}</span>
-                              {subItem.subMenu && (
-                                <span
-                                  className={`transition-transform duration-200 ${
-                                    openSubMenus[subItem.name]
-                                      ? "rotate-180"
-                                      : ""
-                                  }`}
-                                >
-                                  <FaAngleDown size={12} />
-                                </span>
-                              )}
-                            </Link>
-
-                            {/* Third level menu */}
-                            {subItem.subMenu && openSubMenus[subItem.name] && (
-                              <ul className="mt-1 ml-3 pl-3 border-l border-gray-200 space-y-1">
-                                {subItem.subMenu.map((nestedItem) => (
-                                  <li key={nestedItem.name}>
-                                    <Link
-                                      to={nestedItem.path}
-                                      className="block py-1.5 pl-3 text-sm text-black hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
-                                    >
-                                      {nestedItem.name}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
+                          <Link
+                            to={subItem.path}
+                            className={`group flex items-center px-3 py-2 text-sm rounded-md border-l-2 transition-all duration-150
+                              ${isActive(subItem.path) 
+                                ? `${sidebarTheme.submenuActive} ${sidebarTheme.submenuActiveText} ${sidebarTheme.activeBackground}` 
+                                : `border-l-transparent ${sidebarTheme.submenuText} ${sidebarTheme.submenuHover}`
+                              }`}
+                          >
+                            <span>{subItem.name}</span>
+                            {subItem.icon && (
+                              <span className={`ml-auto ${isActive(subItem.path) ? sidebarTheme.submenuActiveText : sidebarTheme.icon}`}>
+                                {subItem.icon}
+                              </span>
                             )}
-                          </div>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -511,42 +368,46 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
           </div>
         </nav>
 
+        {/* Styles */}
         <style jsx>{`
-          /* Custom scrollbar styles */
-          .scrollbar-thin::-webkit-scrollbar {
+          .scrollbar-light::-webkit-scrollbar {
             width: 6px;
           }
-
-          .scrollbar-thin::-webkit-scrollbar-track {
+          .scrollbar-light::-webkit-scrollbar-track {
             background: transparent;
           }
-
-          .scrollbar-thin::-webkit-scrollbar-thumb {
+          .scrollbar-light::-webkit-scrollbar-thumb {
             background-color: #d1d5db;
             border-radius: 3px;
           }
-
-          .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+          .scrollbar-light::-webkit-scrollbar-thumb:hover {
             background-color: #9ca3af;
           }
 
-          /* Hide scrollbar for IE, Edge and Firefox */
-          .scrollbar-thin {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: thin; /* Firefox */
+          .scrollbar-dark::-webkit-scrollbar {
+            width: 6px;
+          }
+          .scrollbar-dark::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          .scrollbar-dark::-webkit-scrollbar-thumb {
+            background-color: #4b5563;
+            border-radius: 3px;
+          }
+          .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+            background-color: #6b7280;
           }
         `}</style>
       </aside>
 
+      {/* Main Content */}
       <main
         className={`transition-all duration-300 ${
           isMobile && collapsed ? "ml-0" :
           collapsed ? "ml-20" : "ml-56"
         }`}
-
-        
       >
-        
+        {/* ...existing main content... */}
       </main>
     </>
   );
