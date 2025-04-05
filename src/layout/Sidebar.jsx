@@ -34,12 +34,12 @@ const menuItems = [
       {
         name: "Todo",
         path: "/todo",
-        icon: <SquareCheckBig size={16} />,
+        // icon: <SquareCheckBig size={16} />,
       },
       {
         name: "Notes",
         path: "/notesgrid",
-        icon: <ClipboardCheck size={16} />,
+        // icon: <ClipboardCheck size={16} />,
       },
       
     ]
@@ -196,7 +196,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
 
   const userRole = localStorage.getItem("userRole");
   const menu = userRole === "superadmin" ? superAdminMenu : menuItems;
-  const [openMenus, setOpenMenus] = useState({ Project: true, CRM: true });
+  const [openMenus, setOpenMenus] = useState({ Home: true});
   const [openSubMenus, setOpenSubMenus] = useState({});
   const [isMobile, setIsMobile] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -226,7 +226,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
     scrollbar: darkMode ? 'scrollbar-dark' : 'scrollbar-light',
     submenuActive: darkMode ? 'border-l-indigo-500' : 'border-l-indigo-600',
     submenuHover: darkMode ? 'hover:bg-gray-800/50' : 'hover:bg-indigo-50/50',
-    submenuText: darkMode ? 'text-gray-400' : 'text-gray-600',
+    submenuText: darkMode ? 'text-gray-400' : 'text-gray-900 font-semibold',
     submenuActiveText: darkMode ? 'text-indigo-400' : 'text-indigo-600',
   };
 

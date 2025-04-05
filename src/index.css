@@ -297,6 +297,13 @@ body {
   color: #fff !important;
 
 }
+
+
+.card-dark {
+  background-color: #121212 !important;
+  color: #fff !important;
+
+}
 /* >>>>>>> a121075048bf17f4b21ba6f1e38160afe6bb8332 */
 
 @media (max-width: 600px) {

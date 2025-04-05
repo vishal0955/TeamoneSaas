@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Search, Bell, User, Settings, Activity, CreditCard, HelpCircle, LogOut, Menu } from 'lucide-react';
+import { Search, Bell, User, Settings, Activity, CreditCard, HelpCircle, LogOut, Menu, Sun, Moon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { toggleTheme } from '../redux/slices/ThemeSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -90,6 +90,9 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
           {/* Notification icon with dropdown */}
           <div className="relative" ref={dropdownRef}>
+          <button className="px-2 py-1 ml-2" onClick={toggleDarkMode}>
+                       {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                     </button>
             <button 
               onClick={toggleNotificationDropdown}
               className="text-gray-500 hover:text-gray-700 relative"
