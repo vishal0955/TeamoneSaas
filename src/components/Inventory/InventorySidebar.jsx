@@ -23,7 +23,7 @@ const InventorySidebar = ({ toggleSidebar, collapsed }) => {
     <div className="flex h-screen">
       {/* Overlay for mobile */}
       <div
-        className={`inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`inset-0  backdrop-blur-sm transition-opacity duration-300 ${
           !collapsed && isMobile
             ? "opacity-100 z-20"
             : "opacity-0 pointer-events-none"
@@ -33,7 +33,7 @@ const InventorySidebar = ({ toggleSidebar, collapsed }) => {
 
       {/* Sidebar */}
       <aside 
-        className={`absolute min-h-screen bg-white shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
+        className={`absolute min-h-screen  shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
           collapsed ? "w-20" : "w-48"
         } `}
       >

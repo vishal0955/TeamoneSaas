@@ -174,9 +174,7 @@ const initialTasks = [
   },
 ];
 
-
 const Project = () => {
-
   const [activeTab, setActiveTab] = useState(1);
   const [tasks, setTasks] = useState(initialTasks);
   const [showModal, setShowModal] = useState(false);
@@ -287,14 +285,15 @@ const Project = () => {
 
   const navigate = useNavigate();
   return (
-    
-    <div className="container mt-4" >
+    <div className="container mt-4">
       {/* Header */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
-  <h4 className="mb-0 text-2xl font-bold text-start text-md-start w-100 w-md-auto">All Projects</h4>
+        <h4 className="mb-0 text-2xl font-bold text-start text-md-start w-100 w-md-auto">
+          All Projects
+        </h4>
 
-  <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
-    {/* <div className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
+        <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
+          {/* <div className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
       <Link to="/calendar">
         <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
           <i className="bi bi-grid" /> TimeLine
@@ -312,136 +311,146 @@ const Project = () => {
       </Link>
     </div> */}
 
-     <div className="view-toggle d-flex flex-wrap gap-1">
-                  {/* <Link to="/ProjectTimelineCalendar"> */}
-                  <button className="btn btn-outline-secondary d-flex align-items-center gap-1" onClick={() => setActiveTab(0)} >
-                    <i className="bi bi-grid" /> TimeLine
-                  </button>
-                  {/* </Link> */}
-                  {/* <Link to="/projectlist"> */}
-                  <button className="btn btn-outline-secondary d-flex align-items-center gap-1"
-                    onClick={() => setActiveTab(1)} >
-                    <i className="bi bi-list" /> List View
-                  </button>
-                  {/* </Link> */}
-                  {/* <Link to="/kanban"> */}
-                  <button className="btn btn-outline-secondary d-flex align-items-center gap-1" onClick={() => setActiveTab(2)} >
-                    <Kanban /> Board View
-                  </button>
-                  {/* </Link> */}
-                </div>
+          <div className= {` ${darkMode ? "dark-mode" : null } view-toggle d-flex flex-wrap gap-1`}>
+            {/* <Link to="/ProjectTimelineCalendar"> */}
+            <button
+              className="btn btn-outline-secondary d-flex align-items-center gap-1"
+              onClick={() => setActiveTab(0)}
+            >
+              <i className="bi bi-grid" /> TimeLine
+            </button>
+            {/* </Link> */}
+            {/* <Link to="/projectlist"> */}
+            <button
+              className="btn btn-outline-secondary d-flex align-items-center gap-1"
+              onClick={() => setActiveTab(1)}
+            >
+              <i className="bi bi-list" /> List View
+            </button>
+            {/* </Link> */}
+            {/* <Link to="/kanban"> */}
+            <button
+              className="btn btn-outline-secondary d-flex align-items-center gap-1"
+              onClick={() => setActiveTab(2)}
+            >
+              <Kanban /> Board View
+            </button>
+            {/* </Link> */}
+          </div>
 
-    <button
-      className="btn btn-primary add-project-btn"
-      style={{ height: "fit-content" }}
-      onClick={handleOpenModal}
-    >
-      <i className="bi bi-plus" /> Add New Project
-    </button>
-  </div>
-</div>
-
-{activeTab === 0 && <ResourceTimelineCalendar />}
-{activeTab === 2 && <KanbanBoard />}
-
-{activeTab === 1 && (
-
-<>
-      <div className="table-responsive">
-        <table className="table align-middle text-nowrap">
-          <thead className="text-nowrap">
-            <tr>
-              <th style={{ width: "40px" }}>
-                <input type="checkbox" className="form-check-input" />
-              </th>
-              <th>Client</th> 
-              <th>Members</th>
-              <th>Start Date</th>
-              <th>Deadline</th>
-              <th>Project Name</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tasks.map((task) => (
-              <tr key={task.id}>
-                <td>
-                  <input type="checkbox" className="form-check-input" />
-                </td>
-                <td>{task.client}</td>
-                <td>
-                  <img src={task.avatar} className="avatar me-1" alt="avatar" />
-                  +3
-                </td>
-                <td>{task.startDate}</td>
-                <td>{task.deadline}</td>
-                <td>{task.name}</td>
-                <td>
-                  <div className="progress" style={{ height: "10px" }}>
-                    <div
-                      className="progress-bar bg-success"
-                      style={{ width: `${task.progress}%` }}
-                    ></div>
-                  </div>
-                  <span className="badge bg-info mt-1">{task.status}</span>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleOpenModal(task)}
-                    className="text-blue-500"
-                  >
-                    <i className="bi bi-pencil"></i>
-                  </button>
-                  <button
-                    onClick={() => handleDelete(task.id)}
-                    className="text-red-500"
-                  >
-                    <i className="bi bi-trash"></i>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <button
+            className="btn btn-primary add-project-btn"
+            style={{ height: "fit-content" }}
+            onClick={handleOpenModal}
+          >
+            <i className="bi bi-plus" /> Add New Project
+          </button>
+        </div>
       </div>
 
-      {/* Pagination */}
-      <div className="d-flex justify-content-between align-items-center mt-4">
-        <div className="text-muted">Showing 1 to 3 of 12 results</div>
-        <nav>
-          <ul className="pagination">
-            <li className="page-item disabled">
-              <a className="page-link" href="#">
-                <i className="bi bi-chevron-left"></i>
-              </a>
-            </li>
-            <li className="page-item active">
-              <a className="page-link" href="#">
-                1
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                2
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                3
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                <i className="bi bi-chevron-right"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      {activeTab === 0 && <ResourceTimelineCalendar />}
+      {activeTab === 2 && <KanbanBoard />}
 
-      </>
-)}
+      {activeTab === 1 && (
+        <>
+          <div className={` ${darkMode ? "dark-mode" : null } table-responsive `}>
+            <table className= {` ${darkMode ? "table-dark" : null } table align-middle text-nowrap`}>
+              <thead className={` ${darkMode ? "table-mode" : null } text-nowrap`}>
+                <tr>
+                  <th style={{ width: "40px" }}>
+                    <input type="checkbox" className="form-check-input" />
+                  </th>
+                  <th>Client</th>
+                  <th>Members</th>
+                  <th>Start Date</th>
+                  <th>Deadline</th>
+                  <th>Project Name</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tasks.map((task) => (
+                  <tr key={task.id}>
+                    <td>
+                      <input type="checkbox" className="form-check-input" />
+                    </td>
+                    <td>{task.client}</td>
+                    <td>
+                      <img
+                        src={task.avatar}
+                        className="avatar me-1"
+                        alt="avatar"
+                      />
+                      +3
+                    </td>
+                    <td>{task.startDate}</td>
+                    <td>{task.deadline}</td>
+                    <td>{task.name}</td>
+                    <td>
+                      <div className="progress" style={{ height: "10px" }}>
+                        <div
+                          className="progress-bar bg-success"
+                          style={{ width: `${task.progress}%` }}
+                        ></div>
+                      </div>
+                      <span className="badge bg-info mt-1">{task.status}</span>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleOpenModal(task)}
+                        className="text-blue-500"
+                      >
+                        <i className="bi bi-pencil"></i>
+                      </button>
+                      <button
+                        onClick={() => handleDelete(task.id)}
+                        className="text-red-500"
+                      >
+                        <i className="bi bi-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination */}
+          <div className="d-flex justify-content-between align-items-center mt-4">
+            <div className="text-muted">Showing 1 to 3 of 12 results</div>
+            <nav>
+              <ul className="pagination">
+                <li className="page-item disabled">
+                  <a className="page-link" href="#">
+                    <i className="bi bi-chevron-left"></i>
+                  </a>
+                </li>
+                <li className="page-item active">
+                  <a className="page-link" href="#">
+                    1
+                  </a>
+                </li>
+                <li className="page-item">
+                  <a className="page-link" href="#">
+                    2
+                  </a>
+                </li>
+                <li className="page-item">
+                  <a className="page-link" href="#">
+                    3
+                  </a>
+                </li>
+                <li className="page-item">
+                  <a className="page-link" href="#">
+                    <i className="bi bi-chevron-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </>
+      )}
 
       {/* Modal */}
       {/* {showModal && (
@@ -692,7 +701,7 @@ const Project = () => {
                   />
                 </div> */}
 
-                {/* <div className="mt-4">
+            {/* <div className="mt-4">
                   <label className="block text-sm font-medium mb-1">
                     Public Gantt Chart
                   </label>
@@ -712,7 +721,7 @@ const Project = () => {
                     </label>
                   </div>
                 </div> */}
-              {/* </div>
+            {/* </div>
               <div className="flex justify-end gap-3 pt-4 border-t mt-4">
                 <button
                   type="button"
@@ -729,7 +738,7 @@ const Project = () => {
                 </button>
               </div>
             </form> */}
-            <ProjectCard/>
+            <ProjectCard />
           </div>
         </div>
       )}
@@ -840,7 +849,6 @@ const Project = () => {
         </div>
       )}
     </div>
-    
   );
 };
 

@@ -5,6 +5,7 @@ import ProjectCard from "./proj_card";
 import ProjectTimelineCalendar from "../calendar/ProjectTimeline";
 import KanbanBoard from "../../Kanban/Kanban";
 import Project from "../Project";
+import { useSelector } from "react-redux";
 
 const initialTasks = [
   {
@@ -174,12 +175,10 @@ const initialTasks = [
   },
 ];
 
-
-
-
-
+// const darkMode = useSelector((state) => (state.theme.isDarkMode))
 
 const AllProject = () => {
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   const [activeTab, setActiveTab] = useState(1);
   const [tasks, setTasks] = useState(initialTasks);
   const [showModal, setShowModal] = useState(false);
@@ -244,13 +243,13 @@ const AllProject = () => {
         tasks.map((task) =>
           task.id === editId
             ? {
-              ...task,
-              name: newProject.name,
-              deadline: newProject.deadline,
-              startDate: newProject.startDate,
-              client: newProject.client,
-              members: newProject.members,
-            }
+                ...task,
+                name: newProject.name,
+                deadline: newProject.deadline,
+                startDate: newProject.startDate,
+                client: newProject.client,
+                members: newProject.members,
+              }
             : task
         )
       );
@@ -297,20 +296,28 @@ const AllProject = () => {
           </h4>
 
           <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
-            <div className="view-toggle d-flex flex-wrap gap-1">
+            <div className= {` ${darkMode ? "table-dark" : null }view-toggle d-flex flex-wrap gap-1`}>
               {/* <Link to="/ProjectTimelineCalendar"> */}
-              <button className="btn btn-outline-secondary d-flex align-items-center gap-1" onClick={() => setActiveTab(0)} >
+              <button
+                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                onClick={() => setActiveTab(0)}
+              >
                 <i className="bi bi-grid" /> TimeLine
               </button>
               {/* </Link> */}
               {/* <Link to="/projectlist"> */}
-              <button className="btn btn-outline-secondary d-flex align-items-center gap-1"
-                onClick={() => setActiveTab(1)} >
+              <button
+                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                onClick={() => setActiveTab(1)}
+              >
                 <i className="bi bi-list" /> List View
               </button>
               {/* </Link> */}
               {/* <Link to="/kanban"> */}
-              <button className="btn btn-outline-secondary d-flex align-items-center gap-1" onClick={() => setActiveTab(2)} >
+              <button
+                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                onClick={() => setActiveTab(2)}
+              >
                 <Kanban /> Board View
               </button>
               {/* </Link> */}
@@ -327,187 +334,133 @@ const AllProject = () => {
         </div>
 
         {activeTab === 0 && <ProjectTimelineCalendar />}
-        {activeTab === 1 && (  
-          <>     
-          <div
-  className="table-responsive"
-  style={{ maxHeight: "500px", overflowX: "auto", overflowY: "auto" }}
->
-  <table className="table table-bordered align-middle text-nowrap">
-    <thead className="table-light">
-      <tr>
-        <th style={{ width: "40px" }}>
-          <input type="checkbox" className="form-check-input" />
-        </th>
-        <th>Project Name</th>
-        <th>Members</th>
-        <th>Start Date</th>
-        <th>Deadline</th>
-        <th>Client</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {tasks.map((task) => (
-        <tr key={task.id}>
-          <td>
-            <input type="checkbox" className="form-check-input" />
-          </td>
-          <td>{task.name}</td>
-          <td className="d-flex align-items-center">
-            <img
-              src={task.avatar}
-              className="rounded-circle me-1"
-              width="30"
-              height="30"
-              alt="avatar"
-            />
-            +3
-          </td>
-          <td>{task.startDate}</td>
-          <td>{task.deadline}</td>
-          <td>{task.client}</td>
-          <td>
-            <div className="progress" style={{ height: "10px" }}>
-              <div
-                className="progress-bar bg-success"
-                style={{ width: `${task.progress}%` }}
-              ></div>
-            </div>
-            <span className="badge bg-info mt-1">{task.status}</span>
-          </td>
-          <td className="d-flex gap-2">
-            <button
-              onClick={() => handleOpenModal(task)}
-              className="btn btn-sm btn-outline-primary"
-            >
-              <i className="bi bi-pencil" />
-            </button>
-            <button
-              onClick={() => handleDelete(task.id)}
-              className="btn btn-sm btn-outline-danger"
-            >
-              <i className="bi bi-trash" />
-            </button>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-
-<div
-className="table-responsive"
-style={{ maxHeight: "500px", overflowX: "auto", overflowY: "auto" }}
->
-<table className="table table-bordered align-middle text-nowrap">
-  <thead className="table-light">
-    <tr>
-      <th style={{ width: "40px" }}>
-        <input type="checkbox" className="form-check-input" />
-      </th>
-      <th>Project Name</th>
-      <th>Members</th>
-      <th>Start Date</th>
-      <th>Deadline</th>
-      <th>Client</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {tasks.map((task) => (
-      <tr key={task.id}>
-        <td>
-          <input type="checkbox" className="form-check-input" />
-        </td>
-        <td>{task.name}</td>
-        <td className="d-flex align-items-center">
-          <img
-            src={task.avatar}
-            className="rounded-circle me-1"
-            width="30"
-            height="30"
-            alt="avatar"
-          />
-          +3
-        </td>
-        <td>{task.startDate}</td>
-        <td>{task.deadline}</td>
-        <td>{task.client}</td>
-        <td>
-          <div className="progress" style={{ height: "10px" }}>
+        {activeTab === 1 && (
+          <>
             <div
-              className="progress-bar bg-success"
-              style={{ width: `${task.progress}%` }}
+              className="table-responsive"
+              style={{
+                maxHeight: "500px",
+                overflowX: "auto",
+                overflowY: "auto",
+              }}
+            >
+              <table
+                className={` ${
+                  darkMode ? "table-dark" : null
+                } table table-bordered align-middle text-nowrap `}
+              >
+                <thead
+                  className={` ${darkMode ? "table-dark" : null} table-light`}
+                >
+                  <tr>
+                    <th style={{ width: "40px" }}>
+                      <input type="checkbox" className="form-check-input" />
+                    </th>
+                    <th>Project Name</th>
+                    <th>Members</th>
+                    <th>Start Date</th>
+                    <th>Deadline</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tasks.map((task) => (
+                    <tr key={task.id}>
+                      <td>
+                        <input type="checkbox" className="form-check-input" />
+                      </td>
+                      <td>{task.name}</td>
+                      <td className="d-flex align-items-center">
+                        <img
+                          src={task.avatar}
+                          className="rounded-circle me-1"
+                          width="30"
+                          height="30"
+                          alt="avatar"
+                        />
+                        +3
+                      </td>
+                      <td>{task.startDate}</td>
+                      <td>{task.deadline}</td>
+                      <td>{task.client}</td>
+                      <td>
+                        <div className="progress" style={{ height: "10px" }}>
+                          <div
+                            className="progress-bar bg-success"
+                            style={{ width: `${task.progress}%` }}
+                          ></div>
+                        </div>
+                        <span className="badge bg-info mt-1">
+                          {task.status}
+                        </span>
+                      </td>
+                      <td className="d-flex gap-2">
+                        <button
+                          onClick={() => handleOpenModal(task)}
+                          className="btn btn-sm btn-outline-primary"
+                        >
+                          <i className="bi bi-pencil" />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(task.id)}
+                          className="btn btn-sm btn-outline-danger"
+                        >
+                          <i className="bi bi-trash" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              className="table-responsive"
+              style={{
+                maxHeight: "500px",
+                overflowX: "auto",
+                overflowY: "auto",
+              }}
             ></div>
-          </div>
-          <span className="badge bg-info mt-1">{task.status}</span>
-        </td>
-        <td className="d-flex gap-2">
-          <button
-            onClick={() => handleOpenModal(task)}
-            className="btn btn-sm btn-outline-primary"
-          >
-            <i className="bi bi-pencil" />
-          </button>
-          <button
-            onClick={() => handleDelete(task.id)}
-            className="btn btn-sm btn-outline-danger"
-          >
-            <i className="bi bi-trash" />
-          </button>
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-</div>
 
-
-
-    {/* Pagination */}
-    <div className="d-flex justify-content-between align-items-center mt-4">
-      <div className="text-muted">Showing 1 to 3 of 12 results</div>
-      <nav>
-        <ul className="pagination">
-          <li className="page-item disabled">
-            <a className="page-link" href="#">
-              <i className="bi bi-chevron-left"></i>
-            </a>
-          </li>
-          <li className="page-item active">
-            <a className="page-link" href="#">
-              1
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              2
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              3
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              <i className="bi bi-chevron-right"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-</>
-
-      
-     )}
+            {/* Pagination */}
+            <div className="d-flex justify-content-between align-items-center mt-4">
+              <div className="text-muted">Showing 1 to 3 of 12 results</div>
+              <nav>
+                <ul className="pagination">
+                  <li className="page-item disabled">
+                    <a className="page-link" href="#">
+                      <i className="bi bi-chevron-left"></i>
+                    </a>
+                  </li>
+                  <li className="page-item active">
+                    <a className="page-link" href="#">
+                      1
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      2
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      3
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      <i className="bi bi-chevron-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </>
+        )}
         {activeTab === 2 && <KanbanBoard />}
-
-
 
         {showModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -708,7 +661,9 @@ style={{ maxHeight: "500px", overflowX: "auto", overflowY: "auto" }}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Email</label>
+                  <label className="block text-sm font-medium mb-1">
+                    Email
+                  </label>
                   <input
                     type="email"
                     className="w-full border px-3 py-2 rounded"
@@ -745,7 +700,10 @@ style={{ maxHeight: "500px", overflowX: "auto", overflowY: "auto" }}
                         value="Yes"
                         checked={clientForm.login === "Yes"}
                         onChange={(e) =>
-                          setClientForm({ ...clientForm, login: e.target.value })
+                          setClientForm({
+                            ...clientForm,
+                            login: e.target.value,
+                          })
                         }
                         className="form-radio"
                       />
@@ -758,7 +716,10 @@ style={{ maxHeight: "500px", overflowX: "auto", overflowY: "auto" }}
                         value="No"
                         checked={clientForm.login === "No"}
                         onChange={(e) =>
-                          setClientForm({ ...clientForm, login: e.target.value })
+                          setClientForm({
+                            ...clientForm,
+                            login: e.target.value,
+                          })
                         }
                         className="form-radio"
                       />
@@ -787,7 +748,6 @@ style={{ maxHeight: "500px", overflowX: "auto", overflowY: "auto" }}
         )}
       </div>
     </>
-
   );
 };
 

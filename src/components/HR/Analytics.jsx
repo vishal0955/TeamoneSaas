@@ -2,7 +2,7 @@ import React from "react";
 
 const MyProfile = () => {
   return (
-    <div className="bg-white min-h-screen">
+    <div className=" min-h-screen">
       <nav className="bg-white border-b border-gray-200">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">

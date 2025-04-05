@@ -2,6 +2,7 @@ import { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import interactionPlugin from '@fullcalendar/interaction';
+import { useSelector } from 'react-redux';
 
 const ResourceTimelineCalendar = () => {
   const [events, setEvents] = useState([
@@ -155,10 +156,11 @@ const ResourceTimelineCalendar = () => {
   const toggleWeekends = () => {
     setShowWeekends(!showWeekends);
   };
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
-    <div className="h-screen p-4 bg-white">
-      <div className="bg-white rounded-lg shadow-lg p-6 h-full">
+    <div className={` ${darkMode ? "dark-mode" : null } h-screen p-4`}>
+      <div className={` ${darkMode ? "dark-mode" : null } rounded-lg shadow-lg p-6 h-full`}>
         <div className="flex justify-between items-center mb-4">
           <div className="flex space-x-2">
             <input type="text" placeholder="Search" className="px-3 py-1 border rounded-md" />

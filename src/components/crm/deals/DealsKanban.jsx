@@ -122,7 +122,7 @@ const SalesDashboard = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
+    <div className=" min-h-screen p-6">
       <div className="d-flex justify-content-between mb-2">
         <h1 className="mb-3">Deals </h1>
         <div className="">
