@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaFolder,
   FaFilePdf,
@@ -19,7 +19,7 @@ import {
 } from "react-icons/fa";
 
 // Sidebar Component with Drive-like styling
-const Sidebar = () => {
+const Sidebar = ({ onAddFile }) => {
   return (
     <div className="p-3" style={{ backgroundColor: '#f8f9fa' }}>
       <div className="d-flex align-items-center mb-4">
@@ -27,7 +27,10 @@ const Sidebar = () => {
       </div>
       
       <div className="mb-4 d-none d-md-block">
-        <button className="btn btn-primary w-100 d-flex align-items-center justify-content-center">
+        <button 
+          className="btn btn-primary w-100 d-flex align-items-center justify-content-center"
+          onClick={onAddFile}
+        >
           <FaFolderPlus className="me-2" /> New
         </button>
       </div>
@@ -70,15 +73,7 @@ const Sidebar = () => {
 
 // FileContent Component with Drive-like styling
 const FileContent = () => {
-  // Sample data for recent folders and files
-  const recentFolders = [
-    { name: "Personal Assets", icon: <FaFolder className="text-warning" />, count: 10, color: "bg-warning-light" },
-    { name: "Documents", icon: <FaFolder className="text-primary" />, count: 3, color: "bg-primary-light" },
-    { name: "Images", icon: <FaFolder className="text-success" />, count: 8, color: "bg-success-light" },
-    { name: "Projects", icon: <FaFolder className="text-danger" />, count: 5, color: "bg-danger-light" },
-  ];
-
-  const files = [
+  const [files, setFiles] = useState([
     {
       name: "Secret Document",
       size: "7.4 MB",
@@ -119,10 +114,198 @@ const FileContent = () => {
       starred: false,
       icon: <FaFileAlt className="text-secondary" />,
     },
+  ]);
+
+  const [showAddFileModal, setShowAddFileModal] = useState(false);
+  const [newFileName, setNewFileName] = useState("");
+  const [newFileType, setNewFileType] = useState("PDF");
+  const [uploadFile, setUploadFile] = useState(null);
+
+  // Sample data for recent folders
+  const recentFolders = [
+    { name: "Personal Assets", icon: <FaFolder className="text-warning" />, count: 10, color: "bg-warning-light" },
+    { name: "Documents", icon: <FaFolder className="text-primary" />, count: 3, color: "bg-primary-light" },
+    { name: "Images", icon: <FaFolder className="text-success" />, count: 8, color: "bg-success-light" },
+    { name: "Projects", icon: <FaFolder className="text-danger" />, count: 5, color: "bg-danger-light" },
   ];
+
+  const handleAddFile = () => {
+    setShowAddFileModal(true);
+  };
+
+  const handleAddFileSubmit = (e) => {
+    e.preventDefault();
+    if (!newFileName) return;
+    
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+    
+    const newFile = {
+      name: newFileName,
+      size: "1.0 MB",
+      type: newFileType,
+      modified: formattedDate,
+      starred: false,
+      icon: newFileType === "PDF" 
+        ? <FaFilePdf className="text-danger" /> 
+        : newFileType === "Image" 
+          ? <FaFileImage className="text-success" /> 
+          : <FaFileAlt className="text-info" />
+    };
+    
+    setFiles([...files, newFile]);
+    setNewFileName("");
+    setShowAddFileModal(false);
+  };
+
+  const handleFileUpload = (e) => {
+    e.preventDefault();
+    if (!uploadFile) return;
+    
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+    
+    const fileType = uploadFile.name.split('.').pop().toUpperCase();
+    const sizeInMB = (uploadFile.size / (1024 * 1024)).toFixed(1);
+    
+    const newFile = {
+      name: uploadFile.name,
+      size: `${sizeInMB} MB`,
+      type: fileType,
+      modified: formattedDate,
+      starred: false,
+      icon: fileType === "PDF" 
+        ? <FaFilePdf className="text-danger" /> 
+        : ["JPG", "PNG", "GIF"].includes(fileType)
+          ? <FaFileImage className="text-success" /> 
+          : <FaFileAlt className="text-info" />
+    };
+    
+    setFiles([...files, newFile]);
+    setUploadFile(null);
+    
+    // Reset file input
+    document.getElementById('fileUpload').value = '';
+  };
 
   return (
     <div className="p-3">
+      {/* Add File Modal */}
+      {showAddFileModal && (
+        <div className="modal-backdrop" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          zIndex: 1050,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h5>Add New File</h5>
+              <button 
+                className="btn-close" 
+                onClick={() => setShowAddFileModal(false)}
+              ></button>
+            </div>
+            <form onSubmit={handleAddFileSubmit}>
+              <div className="mb-3">
+                <label htmlFor="fileName" className="form-label">File Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="fileName"
+                  value={newFileName}
+                  onChange={(e) => setNewFileName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="fileType" className="form-label">File Type</label>
+                <select
+                  className="form-select"
+                  id="fileType"
+                  value={newFileType}
+                  onChange={(e) => setNewFileType(e.target.value)}
+                >
+                  <option value="PDF">PDF</option>
+                  <option value="Image">Image</option>
+                  <option value="Text">Text</option>
+                </select>
+              </div>
+              <div className="d-flex justify-content-end">
+                <button 
+                  type="button" 
+                  className="btn btn-secondary me-2"
+                  onClick={() => setShowAddFileModal(false)}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary">Add File</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Upload File Modal */}
+      {uploadFile && (
+        <div className="modal-backdrop" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          zIndex: 1050,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h5>Upload File</h5>
+              <button 
+                className="btn-close" 
+                onClick={() => setUploadFile(null)}
+              ></button>
+            </div>
+            <div className="mb-3">
+              <p>File: {uploadFile.name}</p>
+              <p>Size: {(uploadFile.size / (1024 * 1024)).toFixed(2)} MB</p>
+            </div>
+            <div className="d-flex justify-content-end">
+              <button 
+                type="button" 
+                className="btn btn-secondary me-2"
+                onClick={() => setUploadFile(null)}
+              >
+                Cancel
+              </button>
+              <button 
+                type="button" 
+                className="btn btn-primary"
+                onClick={handleFileUpload}
+              >
+                Upload
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Header / Navbar */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center mb-3 mb-md-0 w-100">
@@ -139,9 +322,17 @@ const FileContent = () => {
           </div>
         </div>
         <div className="d-flex w-100 w-md-auto justify-content-between justify-content-md-end">
-          <button className="btn btn-light me-2 d-flex align-items-center">
-            <FaUpload className="me-2" /> <span className="d-none d-md-inline">Upload</span>
-          </button>
+          <form className="me-2">
+            <label htmlFor="fileUpload" className="btn btn-light d-flex align-items-center mb-0">
+              <FaUpload className="me-2" /> <span className="d-none d-md-inline">Upload</span>
+              <input 
+                type="file" 
+                id="fileUpload" 
+                style={{ display: 'none' }} 
+                onChange={(e) => setUploadFile(e.target.files[0])}
+              />
+            </label>
+          </form>
           <button className="btn btn-light me-2 d-none d-md-block">
             <FaTh />
           </button>
@@ -269,7 +460,7 @@ const FileManager = () => {
           className="col-12 col-md-3 col-lg-2 border-end d-none d-md-block"
           style={{ minHeight: "100vh", backgroundColor: '#f8f9fa' }}
         >
-          <Sidebar />
+          <Sidebar onAddFile={() => document.getElementById('fileUpload').click()} />
         </div>
         {/* Main Content Column - Full width on mobile, adjusted on tablet and up */}
         <div className="col-12 col-md-9 col-lg-10 p-3" style={{ backgroundColor: '#fff' }}>
@@ -304,6 +495,25 @@ const styles = `
   }
   .bg-info-light {
     background-color: rgba(13, 202, 240, 0.1);
+  }
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    width: 400px;
+    max-width: 90%;
   }
 `;
 
