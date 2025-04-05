@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ContactForm from "./ContactForm";
 import { useNavigate } from "react-router-dom";
+import { Pagination } from "react-bootstrap";
 
 const ContactsList = () => {
   const [expand, setExpand] = useState(false);
@@ -20,8 +21,10 @@ const ContactsList = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    document.body.classList.remove("modal-open"); //Remove modal-open class
+    document.body.classList.remove("modal-open");//Remove modal-open class
   };
+
+ 
   const [contacts] = useState([
     {
       id: 1,
@@ -32,8 +35,148 @@ const ContactsList = () => {
       phoneNumber: "+91 ",
       companyName: "—",
     },
+    {
+      id: 2,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 3,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 4,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 5,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 6,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 7,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 8,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 9,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 10,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 11,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 12,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 13,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 14,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+    {
+      id: 15,
+      name: "Nikurj Kumar",
+      //  initials: 'NK',
+      email: "nikurj@example.com",
+      jobTitle: "—",
+      phoneNumber: "+91 ",
+      companyName: "—",
+    },
+
   ]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+
+  const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const paginatedContacts = contacts.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(contacts.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+ 
   const [selectedView, setSelectedView] = useState("all-contacts");
   const [selectedFilters, setSelectedFilters] = useState([]);
 
@@ -150,26 +293,7 @@ const ContactsList = () => {
         </div>
       </div>
 
-      {/* Views */}
-      <div className="d-flex flex-wrap gap-2 mb-3">
-        {views.map((view) => (
-          <button
-            key={view.id}
-            className={`btn btn-sm ${
-              selectedView === view.id
-                ? "inv-new-button text-white active"
-                : "inv-filter-button text-dark"
-            }`}
-            onClick={() => setSelectedView(view.id)}
-          >
-            {view.name}
-          </button>
-        ))}
-        <button className="btn btn-sm btn-outline-primary rounded-3 px-3 px-sm-4">
-          All Views
-        </button>
-      </div>
-
+    
       {/* Filters */}
       <div className="card inv-main-card mb-4">
         <div className="card-body">
@@ -327,7 +451,7 @@ const ContactsList = () => {
                 </tr>
               </thead>
               <tbody>
-                {contacts.map((contact) => (
+                {paginatedContacts.map((contact) => (
                   <tr key={contact.id} onClick={handleCLick}>
                     <td>
                       <input type="checkbox" className="form-check-input" />
@@ -359,6 +483,32 @@ const ContactsList = () => {
             </table>
           </div>
         </div>
+      </div>
+
+      <div className="d-flex justify-content-between align-items-center mt-3">
+        <div>
+          Showing {indexOfFirstItem + 1} to{" "}
+          {Math.min(indexOfLastItem, contacts.length)} of {contacts.length} entries
+        </div>
+        <Pagination>
+          <Pagination.Prev
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+          />
+          {Array.from({ length: totalPages }, (_, index) => (
+            <Pagination.Item
+              key={index}
+              active={index + 1 === currentPage}
+              onClick={() => handlePageChange(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          ))}
+          <Pagination.Next
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+          />
+        </Pagination>
       </div>
 
       {isModalOpen && (
