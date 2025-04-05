@@ -320,18 +320,27 @@ const NotesGrid = () => {
               <div className="relative w-full">
                 <button className="flex items-center justify-between w-full bg-white border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   Bulk Actions
-                  <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {/* <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                  </svg> */}
                 </button>
               </div>
-              <button className="bg-white border border-gray-300 rounded px-4 py-2 text-sm w-full">
+              <button className=" bg-white btn border border-gray-300 rounded  text-sm w-full">
                 Apply
               </button>
             </div>
 
             {/* Right side: View toggle + Add Note */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full md:w-auto">
+            <div className="inv-search-wrapper">
+                <i className="bi bi-search inv-search-icon" />
+                <input
+                  type="text"
+                  className="inv-search-input h-11"
+                  placeholder="Search Notes..."
+                  aria-label="Search Notes"
+                />
+              </div>
               <div className="flex border border-gray-300 rounded w-full sm:w-auto">
                 <button
                   className={`p-2 flex-1 ${
