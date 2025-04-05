@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { Menu, X, Plus, Calendar as CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useSelector } from 'react-redux';
 
 const CalendarApp = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -22,6 +23,9 @@ const CalendarApp = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDates, setSelectedDates] = useState([new Date()]);
   const calendarRef = useRef(null);
+
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   // Sample events
   const [events, setEvents] = useState([
@@ -332,7 +336,7 @@ const CalendarApp = () => {
         </div>
 
         {/* Add Event Button */}
-        <div className="p-4">
+        {/* <div className="p-4">
           <button
             onClick={() => {
               setNewEvent({ ...newEvent, start: new Date().toISOString() });
@@ -343,11 +347,11 @@ const CalendarApp = () => {
             <Plus size={18} className="mr-1" />
             Add Event
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Main Calendar Content */}
-      <div className="flex-1 p-4 overflow-hidden mt-16 md:mt-0">
+      <div className= {`flex-1 ${darkMode ? "dark-mode" : null } flex-1 p-4 overflow-hidden mt-16 md:mt-0`}>
         <div className="bg-white rounded-lg shadow p-4 h-full flex flex-col">
           {/* Calendar Header */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-4">
