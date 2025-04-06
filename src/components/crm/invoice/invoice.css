@@ -60,6 +60,13 @@
     color: white;
 }
 
+.inv-stat-icon-success {
+    background: linear-gradient(135deg, #9beeb8, #dcfce7);
+    
+    color: white;
+}
+
+
 .inv-stat-label {
     font-size: 0.875rem;
     color: #64748b;

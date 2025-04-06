@@ -143,6 +143,7 @@ import ProjectCard from "../components/Project/Cards/proj_card";
 import ProjectKanban from "../components/KanbanRe/ProjectKanban";
 import Recruitmentkanban from "../components/HR/RecruitmentKanban";
 import TodoDetail from "../components/ToDo/TodoDetails";
+import SalesPipelineKanban from "../components/crm/deals/Deals";
 
 const RoleBasedRoutes = () => {
   return (
@@ -211,6 +212,8 @@ const RoleBasedRoutes = () => {
         <Route path="/hr/recruitment" element={<Recruitmentkanban />} />
         <Route path="/hr/company" element={<HRAnalyticsDashboard />} />
 
+
+
         {/* crm-section */}
         <Route path="/crm/customers" element={<ContactsList />} />
         <Route path="/crm/contacts" element={<ContactsList />} />
@@ -224,6 +227,8 @@ const RoleBasedRoutes = () => {
         <Route path="/crm/analytics" element={<Analytics />} />
 
         <Route path="/crm/deals" element={<SalesDashboard />} />
+
+        <Route path="/deals" element={<SalesPipelineKanban />} />
         <Route path="/crm/dealdetails" element={<DealDetails />} />
 
         <Route path="/crm/Payment" element={<PaymentList />} />
