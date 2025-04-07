@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import "./crmdashboard.css";
+import { useSelector } from "react-redux";
 
 const AdminCRMDashboard = () => {
   const revenueChartRef = useRef(null);
@@ -133,6 +134,8 @@ const AdminCRMDashboard = () => {
     };
   }, []);
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <div className="container-fluid  p-3 p-md-4">
       <h1 className="mb-3">CRM Dashboard</h1>
@@ -140,7 +143,7 @@ const AdminCRMDashboard = () => {
       {/* Stats Section - Responsive Grid */}
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-4">
         <div className="col">
-          <div className="inv-stat-box h-100">
+          <div className={`${darkMode ? "card-dark" : null } inv-stat-box h-100`}>
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-primary">
                 <i className="fa-solid fa-chart-line"></i>
@@ -153,7 +156,7 @@ const AdminCRMDashboard = () => {
           </div>
         </div>
         <div className="col">
-          <div className="inv-stat-box h-100">
+          <div className={`${darkMode ? "card-dark" : null } inv-stat-box h-100`}>
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-warning">
                 <i className="fa-solid fa-money-bill-trend-up"></i>
@@ -166,7 +169,7 @@ const AdminCRMDashboard = () => {
           </div>
         </div>
         <div className="col">
-          <div className="inv-stat-box h-100">
+          <div className={`${darkMode ? "card-dark" : null } inv-stat-box h-100`}>
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-neutral">
                 <i className="fa-solid fa-hand-holding-dollar"></i>
@@ -179,7 +182,7 @@ const AdminCRMDashboard = () => {
           </div>
         </div>
         <div className="col">
-          <div className="inv-stat-box h-100">
+          <div className={`${darkMode ? "card-dark" : null } inv-stat-box h-100`}>
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-danger">
                 <i className="fa-solid fa-users"></i>
@@ -196,12 +199,12 @@ const AdminCRMDashboard = () => {
       {/* Charts Row - Responsive Layout */}
       <div className="row g-3 mb-4">
         <div className="col-lg-6">
-          <div className="chart-card shadow-sm p-3 rounded-3 h-100">
+          <div className={`${darkMode ? "card-dark" : null } chart-card shadow-sm p-3 rounded-3 h-100`}>
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h5 className="m-0">Revenue Analytics</h5>
               <div className="dropdown">
                 <button
-                  className="btn inv-filter-button w-auto d-flex justify-content-between align-items-center"
+                  className={`${darkMode ? "dark-mode" : null } btn inv-filter-button w-auto d-flex justify-content-between align-items-center`}
                   data-bs-toggle="dropdown"
                 >
                   <span>This Month</span>
@@ -225,12 +228,12 @@ const AdminCRMDashboard = () => {
           </div>
         </div>
         <div className="col-lg-6">
-          <div className="chart-card shadow-sm p-3 rounded-3 h-100">
+          <div className={`${darkMode ? "card-dark" : null } chart-card shadow-sm p-3 rounded-3 h-100`}>
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h5 className="m-0">Sales Analytics</h5>
               <div className="dropdown">
                 <button
-                  className="btn inv-filter-button w-auto d-flex justify-content-between align-items-center"
+                  className={`${darkMode ? "dark-mode" : null } btn inv-filter-button w-auto d-flex justify-content-between align-items-center`}
                   data-bs-toggle="dropdown"
                 >
                   <span>This Month</span>
@@ -258,7 +261,7 @@ const AdminCRMDashboard = () => {
       
       <div className="row g-3">
         <div className="col-lg-8">
-          <div className="chart-card shadow-sm p-3 rounded-3 h-100">
+          <div className={`${darkMode ? "card-dark" : null } chart-card shadow-sm p-3 rounded-3 h-100`}>
             <h5 className="mb-3">Sales Trend</h5>
             <div className="chart-container" style={{ height: "300px" }}>
               <canvas
@@ -269,7 +272,7 @@ const AdminCRMDashboard = () => {
           </div>
         </div>
         <div className="col-lg-4">
-          <div className="chart-card shadow-sm p-3 rounded-3 h-100">
+          <div className={`${darkMode ? "card-dark" : null } chart-card shadow-sm p-3 rounded-3 h-100`}>
             <h5 className="mb-3">Top Performer</h5>
             <div className="performer-list">
               <div className="performer-item d-flex align-items-center mb-3 border-bottom pb-3">

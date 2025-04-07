@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AboutContactForm = ({ data, onChange }) => {
+const AboutDealsForm = ({ data, onChange }) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const handleChange = (field, value) => {
@@ -32,7 +32,7 @@ const AboutContactForm = ({ data, onChange }) => {
               d="M19 9l-7 7-7-7"
             />
           </svg>
-          <span className="text-sm font-medium">About this contact</span>
+          <span className="text-sm font-medium">About this deal</span>
         </div>
         <button className="text-blue-600 text-sm">Actions</button>
       </div>
@@ -173,4 +173,4 @@ const AboutContactForm = ({ data, onChange }) => {
   );
 };
 
-export default AboutContactForm;
+export default AboutDealsForm;

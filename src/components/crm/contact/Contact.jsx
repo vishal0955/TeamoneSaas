@@ -244,7 +244,7 @@ const ContactsList = () => {
       {/* Metrics Cards */}
       <div className="row g-3 mb-4">
         <div className="col-12 col-sm-6 col-md-3">
-          <div className={`${darkMode ? "dark-mode" : null } inv-stat-box h-100 `}>
+          <div className={`${darkMode ? "card-dark" : null } inv-stat-box h-100 `}>
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-primary">
                 <i className="fa-solid fa-address-book"></i>
@@ -257,7 +257,7 @@ const ContactsList = () => {
           </div>
         </div>
         <div className="col-12 col-sm-6 col-md-3">
-          <div className="inv-stat-box h-100">
+          <div className={`${darkMode ? "card-dark" : null } inv-stat-box h-100 `}>
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-warning">
                 <i className="fa-solid fa-address-card"></i>
@@ -270,7 +270,7 @@ const ContactsList = () => {
           </div>
         </div>
         <div className="col-12 col-sm-6 col-md-3">
-          <div className="inv-stat-box h-100">
+          <div className={`${darkMode ? "card-dark" : null } inv-stat-box h-100 `}>
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-danger">
                 <i className="fa-solid fa-id-card-clip"></i>
@@ -283,7 +283,7 @@ const ContactsList = () => {
           </div>
         </div>
         <div className="col-12 col-sm-6 col-md-3">
-          <div className="inv-stat-box h-100">
+          <div className={`${darkMode ? "card-dark" : null } inv-stat-box h-100 `}>
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-neutral">
                 <i className="fa-solid fa-id-card"></i>
@@ -297,9 +297,28 @@ const ContactsList = () => {
         </div>
       </div>
 
-    
+      {/* Views */}
+      <div className="d-flex flex-wrap gap-2 mb-3">
+        {views.map((view) => (
+          <button
+            key={view.id}
+            className={`${darkMode ? "card-dark" : null } btn btn-sm ${
+              selectedView === view.id
+                ? "inv-new-button text-white active"
+                : "inv-filter-button text-dark"
+            }`}
+            onClick={() => setSelectedView(view.id)}
+          >
+            {view.name}
+          </button>
+        ))}
+        <button className="btn btn-sm btn-outline-primary rounded-3 px-3 px-sm-4">
+          All Views
+        </button>
+      </div>
+
       {/* Filters */}
-      <div className="card inv-main-card mb-4">
+      <div className={`${darkMode ? "dark-mode" : null } card inv-main-card mb-4 `}>
         <div className="card-body">
           <div className="row g-2 mb-3">
             <div className="col-12 col-md-6 col-lg-3">
@@ -307,7 +326,7 @@ const ContactsList = () => {
                 <i className="bi bi-search inv-search-icon" />
                 <input
                   type="text"
-                  className="inv-search-input h-11"
+                  className={`${darkMode ? "dark-mode" : null } inv-search-input h-11`}
                   placeholder="Search Contacts..."
                   aria-label="Search Contacts"
                 />
@@ -316,7 +335,7 @@ const ContactsList = () => {
             <div className="col-6 col-md-3 col-lg-2">
               <div className="dropdown">
                 <button
-                  className="inv-filter-button dropdown-toggle w-100 text-start"
+                  className={`${darkMode ? "dark-mode" : null } inv-filter-button dropdown-toggle w-100 text-start`}
                   type="button"
                   data-bs-toggle="dropdown"
                 >
@@ -339,7 +358,7 @@ const ContactsList = () => {
             <div className="col-6 col-md-3 col-lg-2">
               <div className="dropdown">
                 <button
-                  className="inv-filter-button dropdown-toggle w-100 text-start"
+                  className={`${darkMode ? "dark-mode" : null } inv-filter-button dropdown-toggle w-100 text-start`}
                   type="button"
                   data-bs-toggle="dropdown"
                 >
@@ -367,7 +386,7 @@ const ContactsList = () => {
             <div className="col-6 col-md-3 col-lg-2">
               <div className="dropdown">
                 <button
-                  className="inv-filter-button dropdown-toggle w-100 text-start"
+                  className={`${darkMode ? "dark-mode" : null } inv-filter-button dropdown-toggle w-100 text-start`}
                   type="button"
                   data-bs-toggle="dropdown"
                 >
@@ -395,7 +414,7 @@ const ContactsList = () => {
             <div className="col-6 col-md-3 col-lg-2">
               <div className="dropdown">
                 <button
-                  className="inv-filter-button dropdown-toggle w-100 text-start"
+                  className={`${darkMode ? "dark-mode" : null } inv-filter-button dropdown-toggle w-100 text-start`}
                   type="button"
                   data-bs-toggle="dropdown"
                 >
@@ -434,9 +453,9 @@ const ContactsList = () => {
 
           {/* Table */}
           <div className="table-responsive">
-            <table className="table inv-table">
-              <thead>
-                <tr>
+            <table className={`${darkMode ? "table-dark" : null } table inv-table`}>
+              <thead >
+                <tr className={`${darkMode ? "dark-mode" : null }`}>
                   <th style={{ width: "20px" }}>
                     <input
                       type="checkbox"
