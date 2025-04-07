@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
 const EmployeeDetails = () => {
@@ -43,6 +44,9 @@ const EmployeeDetails = () => {
   //   return <p className="text-center text-red-500">Employee Not Found</p>;
   // }
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
+
   return (
     <main className="mx-auto py-6 sm:px-6 lg:px-8">
       <div className="relative">
@@ -50,23 +54,23 @@ const EmployeeDetails = () => {
        
 
         {/* White Content */}
-        <div className=" rounded-b-lg shadow  pb-6  md:px-6">
+        <div className={`${darkMode ? "dark-mode" : null } rounded-b-lg shadow  pb-6  md:px-6`}>
           {/* Profile Info */}
           <img
-                className="h-24 w-24 rounded-full border-4 border-white bg-gray-100"
+                className="h-24 w-24 rounded-full border-4 border-white "
                 src="https://via.placeholder.com/96"
                 alt="Profile"
               />
           <div className="flex flex-col md:flex-row justify-between items-start">
             <div>
             
-              <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <h1 className="text-2xl font-bold  flex items-center gap-2">
                 Stephen Peralt
                 <i className="fas fa-check-circle text-[#1a202c]"></i>
               </h1>
               <div className="mt-1 flex items-center gap-2">
-                <span className="text-gray-600">Software Developer</span>
-                <span className="text-sm text-[#1a202c] bg-[#1a202c]/10 px-2 py-0.5 rounded">
+                <span className="">Software Developer</span>
+                <span className="text-sm  bg-[#1a202c]/10 px-2 py-0.5 rounded">
                   10+ years of Experience
                 </span>
               </div>
@@ -87,34 +91,34 @@ const EmployeeDetails = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-1 mt-6">
             {/* Sidebar Card */}
             <div className="md:col-span-1">
-              <div className="bg-white rounded-lg border border-gray-200 p-2 space-y-8">
+              <div className= {`${darkMode ? "dark-mode" : null } rounded-lg border border-gray-200 p-2 space-y-8`}>
                 {/* Basic Information */}
                 <div>
-                  <h3 className="font-medium text-gray-900">
+                  <h3 className="font-medium ">
                     Basic Information
                   </h3>
                   <dl className="mt-4 space-y-4">
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">Client ID</dt>
-                      <dd className="text-gray-900">CLT-0024</dd>
+                      <dt className="">Client ID</dt>
+                      <dd className="">CLT-0024</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">Team</dt>
-                      <dd className="text-gray-900">UI/UX Design</dd>
+                      <dt className="">Team</dt>
+                      <dd className="">UI/UX Design</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">Join Date</dt>
-                      <dd className="text-gray-900">1st Jan 2023</dd>
+                      <dt className="">Join Date</dt>
+                      <dd className="">1st Jan 2023</dd>
                     </div>
                     <div className="flex justify-between items-center">
-                      <dt className="text-gray-500">Reports to</dt>
+                      <dt className="">Reports to</dt>
                       <dd className="flex items-center gap-2">
                         <img
                           className="h-6 w-6 rounded-full"
                           src="https://via.placeholder.com/24"
                           alt="Manager"
                         />
-                        <span className="text-gray-900">Douglas Martini</span>
+                        <span className="">Douglas Martini</span>
                       </dd>
                     </div>
                   </dl>
@@ -122,20 +126,20 @@ const EmployeeDetails = () => {
 
                 {/* Contact Information */}
                 <div>
-                  <h3 className="font-medium text-gray-900">
+                  <h3 className="font-medium ">
                     Contact Information
                   </h3>
                   <dl className="mt-4 space-y-4">
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">Phone</dt>
-                      <dd className="text-gray-900">(163) 2459 315</dd>
+                      <dt className="">Phone</dt>
+                      <dd className="">(163) 2459 315</dd>
                     </div>
                     <div className="flex justify-between items-center">
-                      <dt className="text-gray-500">Email</dt>
+                      <dt className="">Email</dt>
                       <dd className="flex items-center gap-2">
                         <a
                           href="mailto:peralt12@example.com"
-                          className="text-[#1a202c]"
+                          className=""
                         >
                           peralt12@example.com
                         </a>
@@ -143,8 +147,8 @@ const EmployeeDetails = () => {
                       </dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">Address</dt>
-                      <dd className="text-gray-900 text-right">
+                      <dt className="">Address</dt>
+                      <dd className=" text-right">
                          1861 Bayonne Ave,
                         <br />
                         Manchester, NJ, 08759<br/>
@@ -155,25 +159,25 @@ const EmployeeDetails = () => {
 
                 {/* Personal Information */}
                 <div>
-                  <h3 className="font-medium text-gray-900">
+                  <h3 className="font-medium ">
                     Personal Information
                   </h3>
                   <dl className="mt-4 space-y-4">
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">Birthday</dt>
-                      <dd className="text-gray-900">24th July 2000</dd>
+                      <dt className="">Birthday</dt>
+                      <dd className="">24th July 2000</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">Nationality</dt>
-                      <dd className="text-gray-900">Indian</dd>
+                      <dt className="">Nationality</dt>
+                      <dd className="">Indian</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">Religion</dt>
-                      <dd className="text-gray-900">Christianity</dd>
+                      <dt className="">Religion</dt>
+                      <dd className="">Christianity</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">Marital Status</dt>
-                      <dd className="text-gray-900">Married</dd>
+                      <dt className="">Marital Status</dt>
+                      <dd className="">Married</dd>
                     </div>
                   </dl>
                 </div>
@@ -183,17 +187,17 @@ const EmployeeDetails = () => {
             {/* Main Content Cards */}
             <div className="md:col-span-3 space-y-6">
               {/* About Employee */}
-              <div className="bg-white rounded-lg border border-gray-200">
+              <div className=" rounded-lg border border-gray-200">
                 <div className="p-6">
                   <div className="flex justify-between items-center">
-                    <h3 className="font-medium text-gray-900">
+                    <h3 className="font-medium ">
                       About Employee
                     </h3>
-                    <button className="text-gray-400 hover:text-gray-500">
+                    <button className=" hover:text-gray-500">
                       <i className="fas fa-pen"></i>
                     </button>
                   </div>
-                  <p className="mt-4 text-gray-600">
+                  <p className="mt-4">
                     As an award winning designer, I deliver exceptional quality
                     work and bring value to your brand! With 10 years of
                     experience and 350+ projects completed worldwide with
@@ -207,13 +211,13 @@ const EmployeeDetails = () => {
               {/* Education & Experience */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Education */}
-                <div className="bg-white rounded-lg border border-gray-200">
+                <div className=" rounded-lg border border-gray-200">
                   <div className="p-6">
                     <div className="flex justify-between items-center">
-                      <h3 className="font-medium text-gray-900">
+                      <h3 className="font-medium ">
                         Education Details
                       </h3>
-                      <i className="fas fa-chevron-down text-gray-400"></i>
+                      <i className="fas fa-chevron-down "></i>
                     </div>
                     <div className="mt-4 space-y-4">
                       <div className="flex gap-4">
@@ -221,10 +225,10 @@ const EmployeeDetails = () => {
                           <i className="fas fa-graduation-cap text-blue-600"></i>
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">
+                          <h4 className="font-medium ">
                             Master in Computer Science
                           </h4>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm ">
                             Stanford University • 2018 - 2020
                           </p>
                         </div>
@@ -234,10 +238,10 @@ const EmployeeDetails = () => {
                           <i className="fas fa-university text-green-600"></i>
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">
+                          <h4 className="font-medium ">
                             Bachelor in Software Engineering
                           </h4>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm ">
                             MIT • 2014 - 2018
                           </p>
                         </div>
@@ -247,11 +251,11 @@ const EmployeeDetails = () => {
                 </div>
 
                 {/* Experience */}
-                <div className="bg-white rounded-lg border border-gray-200">
+                <div className=" rounded-lg border border-gray-200">
                   <div className="p-6">
                     <div className="flex justify-between items-center">
-                      <h3 className="font-medium text-gray-900">Experience</h3>
-                      <i className="fas fa-chevron-down text-gray-400"></i>
+                      <h3 className="font-medium ">Experience</h3>
+                      <i className="fas fa-chevron-down "></i>
                     </div>
                     <div className="mt-4 space-y-4">
                       <div className="flex gap-4">
@@ -259,10 +263,10 @@ const EmployeeDetails = () => {
                           <i className="fas fa-briefcase text-purple-600"></i>
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">
+                          <h4 className="font-medium ">
                             Senior Software Developer
                           </h4>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm ">
                             Google • 2020 - Present
                           </p>
                         </div>
@@ -272,10 +276,10 @@ const EmployeeDetails = () => {
                           <i className="fas fa-laptop-code text-yellow-600"></i>
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">
+                          <h4 className="font-medium ">
                             Software Developer
                           </h4>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm ">
                             Microsoft • 2018 - 2020
                           </p>
                         </div>
@@ -286,13 +290,13 @@ const EmployeeDetails = () => {
               </div>
 
               {/* Projects Section */}
-              <div className="bg-white rounded-lg border border-gray-200">
+              <div className=" rounded-lg border border-gray-200">
                 <div className="border-b border-gray-200">
                   <nav className="flex -mb-px">
-                    <button className="px-6 py-4 text-[#1a202c] font-medium border-b-2 border-[#1a202c]">
+                    <button className="px-6 py-4  font-medium border-b-2 border-[#1a202c]">
                       Projects
                     </button>
-                    <button className="px-6 py-4 text-gray-500 font-medium">
+                    <button className="px-6 py-4  font-medium">
                       Assets
                     </button>
                   </nav>
@@ -306,18 +310,18 @@ const EmployeeDetails = () => {
                           <i className="fas fa-hospital text-blue-600 text-xl"></i>
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">
+                          <h4 className="font-medium ">
                             World Health
                           </h4>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm ">
                             8 tasks • 15 Completed
                           </p>
                         </div>
                       </div>
                       <div className="mt-6 flex justify-between items-center">
                         <div>
-                          <p className="text-sm text-gray-500">Deadline</p>
-                          <p className="font-medium text-gray-900">
+                          <p className="text-sm ">Deadline</p>
+                          <p className="font-medium ">
                             31 July 2025
                           </p>
                         </div>
@@ -328,10 +332,10 @@ const EmployeeDetails = () => {
                             alt="Project Lead"
                           />
                           <div>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm ">
                               Project Lead
                             </p>
-                            <p className="font-medium text-gray-900">Leona</p>
+                            <p className="font-medium ">Leona</p>
                           </div>
                         </div>
                       </div>
@@ -344,18 +348,18 @@ const EmployeeDetails = () => {
                           <i className="fas fa-hospital-user text-purple-600 text-xl"></i>
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">
+                          <h4 className="font-medium ">
                             Hospital Administration
                           </h4>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm ">
                             8 tasks • 15 Completed
                           </p>
                         </div>
                       </div>
                       <div className="mt-6 flex justify-between items-center">
                         <div>
-                          <p className="text-sm text-gray-500">Deadline</p>
-                          <p className="font-medium text-gray-900">
+                          <p className="text-sm ">Deadline</p>
+                          <p className="font-medium ">
                             31 July 2025
                           </p>
                         </div>
@@ -366,10 +370,10 @@ const EmployeeDetails = () => {
                             alt="Project Lead"
                           />
                           <div>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm ">
                               Project Lead
                             </p>
-                            <p className="font-medium text-gray-900">Leona</p>
+                            <p className="font-medium ">Leona</p>
                           </div>
                         </div>
                       </div>

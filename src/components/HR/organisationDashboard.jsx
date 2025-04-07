@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import * as echarts from "echarts";
+import { useSelector } from "react-redux";
 
 const HRAnalyticsDashboard = () => {
   useEffect(() => {
@@ -99,31 +100,34 @@ const HRAnalyticsDashboard = () => {
     return () => window.removeEventListener("resize", () => {});
   }, []);
 
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <div className="font-sans">
     
 
       <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-2xl font-semibold text-gray-900">HR Analytics Overview</h1>
+        <h1 className="text-2xl font-semibold ">HR Analytics Overview</h1>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <div className="bg-white !rounded-button p-6 shadow-sm">
-            <h3 className="text-lg font-medium text-gray-900 mb-6">Department Distribution</h3>
+          <div className={`${darkMode ? "card-dark" : null } !rounded-button p-6 shadow-sm`}>
+            <h3 className="text-lg font-medium mb-6">Department Distribution</h3>
             <div id="departmentChart" className="h-80"></div>
           </div>
 
-          <div className="bg-white !rounded-button p-6 shadow-sm">
-            <h3 className="text-lg font-medium text-gray-900 mb-6">Employee Turnover Trend</h3>
+          <div className={`${darkMode ? "card-dark" : null } !rounded-button p-6 shadow-sm`}>
+            <h3 className="text-lg font-medium  mb-6">Employee Turnover Trend</h3>
             <div id="turnoverChart" className="h-80"></div>
           </div>
 
-          <div className="bg-white !rounded-button p-6 shadow-sm">
-            <h3 className="text-lg font-medium text-gray-900 mb-6">Working Hours Analysis</h3>
+          <div className={`${darkMode ? "card-dark" : null } !rounded-button p-6 shadow-sm`}>
+            <h3 className="text-lg font-medium  mb-6">Working Hours Analysis</h3>
             <div id="workingHoursChart" className="h-80"></div>
           </div>
 
-          <div className="bg-white !rounded-button p-6 shadow-sm">
-            <h3 className="text-lg font-medium text-gray-900 mb-6">Employee Satisfaction</h3>
+          <div className={`${darkMode ? "card-dark" : null } !rounded-button p-6 shadow-sm`}>
+            <h3 className="text-lg font-medium  mb-6">Employee Satisfaction</h3>
             <div id="satisfactionChart" className="h-80"></div>
           </div>
         </div>

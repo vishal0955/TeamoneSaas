@@ -17,11 +17,17 @@ import {
   FaTrash,
   FaDownload
 } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 // Sidebar Component with Drive-like styling
 const Sidebar = ({ onAddFolder, setActiveFolder }) => {
+
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
+
   return (
-    <div className="p-3" style={{ backgroundColor: '#f8f9fa' }}>
+    <div className={`${darkMode ? "dark-mode" : null } p-3`} style={{ backgroundColor: '#f8f9fa' }}>
       <div className="d-flex align-items-center mb-4">
         <h2 className="" style={{fontSize:"30px"}}>File</h2>
       </div>
@@ -30,7 +36,7 @@ const Sidebar = ({ onAddFolder, setActiveFolder }) => {
         <li className="my-2 py-2 px-3 rounded hover-bg" onClick={() => setActiveFolder(null)}>
           <div className="d-flex align-items-center">
             <FaFolder className="text-warning me-2" />
-            <span className="d-none d-md-inline">My Drive</span>
+            <span className="d-none d-md-inline">My File</span>
           </div>
         </li>
         <li className="my-2 py-2 px-3 rounded hover-bg">
@@ -65,11 +71,12 @@ const Sidebar = ({ onAddFolder, setActiveFolder }) => {
 // FileDropdown Component
 const FileDropdown = ({ file, onDelete, onShare, onDownload, onStar, onMoveToFolder }) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
     <div className="position-relative">
       <button 
-        className="btn btn-sm btn-light"
+        className={`${darkMode ? "dark-mode" : null } btn btn-sm `}
         onClick={() => setShowDropdown(!showDropdown)}
       >
         <FaEllipsisV size={14} />
@@ -411,12 +418,14 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
     document.getElementById('fileUpload').value = '';
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <div className="p-3">
       {/* Add Folder Modal */}
       {showAddFolderModal && (
         <div className="modal-backdrop">
-          <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
+          <div className="modal-content  p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h5>Create New Folder</h5>
               <button 
@@ -594,7 +603,7 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
             style={{ cursor: 'pointer' }}
             onClick={() => setActiveFolder(null)}
           >
-            My Drive
+           
           </li>
           {activeFolder && (
             <li className="breadcrumb-item active" aria-current="page">
@@ -611,8 +620,8 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
             {activeFolder ? activeFolder.name : 'My Drive'}
           </h4>
           <div className="input-group w-100" style={{ maxWidth: '400px' }}>
-            <span className="input-group-text bg-white">
-              <FaSearch className="text-muted" />
+            <span className="input-group-text ">
+              <FaSearch className=""/>
             </span>
             <input 
               type="text" 
@@ -623,13 +632,13 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
         </div>
         <div className="d-flex w-100 w-md-auto justify-content-between justify-content-md-end">
           <button 
-            className="btn btn-light me-2 d-flex align-items-center"
+            className={`${darkMode ? "card-dark" : null } btn btn-light me-2 d-flex align-items-center`}
             onClick={() => setShowAddFileModal(true)}
           >
             <FaFileAlt className="me-2" /> <span className="d-none d-md-inline">New File</span>
           </button>
           <form className="me-2">
-            <label htmlFor="fileUpload" className="btn btn-light d-flex align-items-center mb-0">
+            <label htmlFor="fileUpload" className={`${darkMode ? "card-dark" : null } btn btn-light d-flex align-items-center mb-0`}>
               <FaUpload className="me-2" /> <span className="d-none d-md-inline">Upload</span>
               <input 
                 type="file" 
@@ -654,7 +663,7 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
           <div className="d-flex justify-content-between align-items-center mb-3">
             <h5 className="mb-0">Folders</h5>
             <button 
-              className="btn btn-primary align-items-center justify-content-center d-flex"
+              className= {`${darkMode ? "card-dark" : null } btn btn-primary align-items-center justify-content-center d-flex`}
               onClick={handleAddFolder}
             >
               <FaFolderPlus className="me-1" /> New
@@ -694,7 +703,7 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
         <h5 className="mb-3 mb-md-0">
           {activeFolder ? `Files in ${activeFolder.name}` : 'Files'}
         </h5>
-        <div className="d-flex">
+        <div className={`${darkMode ? "dark-mode" : null } d-flex`}>
           <div className="me-3">
             <label htmlFor="sortBy" className="me-2 small d-none d-md-inline">
               Sort:
@@ -713,11 +722,11 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
         </div>
       </div>
       <div className="table-responsive">
-        <table className="table align-middle table-hover">
-          <thead className="table-light">
+        <table className={`${darkMode ? "table-dark" : null } table align-middle table-hover`}>
+          <thead className="table-active">
             <tr>
               <th scope="col">Name</th>
-              <th scope="col" className="d-none d-md-table-cell">Size</th>
+              <th scope="col" className=" d-md-table-cell">Size</th>
               <th scope="col" className="d-none d-md-table-cell">Type</th>
               <th scope="col" className="d-none d-md-table-cell">Modified</th>
               <th scope="col" className="d-none d-md-table-cell">Folder</th>
@@ -789,6 +798,7 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
 // Main FileManager Component
 const FileManager = () => {
   const [activeFolder, setActiveFolder] = useState(null);
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
     <div className="container-fluid">
@@ -796,12 +806,12 @@ const FileManager = () => {
         {/* Sidebar Column - Hidden on mobile, shown on tablet and up */}
         <div
           className="col-12 col-md-3 col-lg-2 border-end d-none d-md-block"
-          style={{ minHeight: "100vh", backgroundColor: '#f8f9fa' }}
+          style={{ minHeight: "100vh",  }}
         >
           <Sidebar onAddFolder={() => {}} setActiveFolder={setActiveFolder} />
         </div>
         {/* Main Content Column - Full width on mobile, adjusted on tablet and up */}
-        <div className="col-12 col-md-9 col-lg-10 p-3" style={{ backgroundColor: '#fff' }}>
+        <div className={`${darkMode ? "dark-mode" : null } col-12 col-md-9 col-lg-10 p-3`}>
           <FileContent activeFolder={activeFolder} setActiveFolder={setActiveFolder} />
         </div>
       </div>
