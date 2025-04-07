@@ -97,7 +97,7 @@ const PaymentList = () => {
             </div>
 
             {/* Table - Made more responsive */}
-            <div className={`${darkMode ? "dark-mode" : null } table-responsive`}>
+            <div className=" table-responsive">
               <table className={`${darkMode ? "table-dark" : null } table w-100`}>
                 <thead>
                   <tr>

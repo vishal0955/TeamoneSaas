@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ContactForm from "./ContactForm";
 import { useNavigate } from "react-router-dom";
+import { Pagination } from "react-bootstrap";
 import { use } from "react";
 import { useSelector } from "react-redux";
 
@@ -22,8 +23,10 @@ const ContactsList = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    document.body.classList.remove("modal-open"); //Remove modal-open class
+    document.body.classList.remove("modal-open");//Remove modal-open class
   };
+
+ 
   const [contacts] = useState([
     {
       id: 1,
@@ -163,6 +166,19 @@ const ContactsList = () => {
 
   ]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+
+  const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const paginatedContacts = contacts.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(contacts.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+ 
   const [selectedView, setSelectedView] = useState("all-contacts");
   const [selectedFilters, setSelectedFilters] = useState([]);
 
@@ -458,7 +474,7 @@ const ContactsList = () => {
                 </tr>
               </thead>
               <tbody>
-                {contacts.map((contact) => (
+                {paginatedContacts.map((contact) => (
                   <tr key={contact.id} onClick={handleCLick}>
                     <td>
                       <input type="checkbox" className="form-check-input" />
@@ -490,6 +506,32 @@ const ContactsList = () => {
             </table>
           </div>
         </div>
+      </div>
+
+      <div className="d-flex justify-content-between align-items-center mt-3">
+        <div>
+          Showing {indexOfFirstItem + 1} to{" "}
+          {Math.min(indexOfLastItem, contacts.length)} of {contacts.length} entries
+        </div>
+        <Pagination>
+          <Pagination.Prev
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+          />
+          {Array.from({ length: totalPages }, (_, index) => (
+            <Pagination.Item
+              key={index}
+              active={index + 1 === currentPage}
+              onClick={() => handlePageChange(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          ))}
+          <Pagination.Next
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+          />
+        </Pagination>
       </div>
 
       {isModalOpen && (

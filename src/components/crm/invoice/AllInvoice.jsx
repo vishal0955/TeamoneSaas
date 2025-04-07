@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./invoice.css";
 import NewInvoice from "./NewInvoice";
 import { useSelector } from "react-redux";
+import {Pagination} from "react-bootstrap";
 
 const AllInvoice = () => {
 
@@ -239,12 +240,19 @@ const AllInvoice = () => {
     
   ];
 
+  const [tasks, setTasks] = useState(invoices);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
 
+  const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const paginatedDesignations = tasks.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(tasks.length / itemsPerPage);
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
-
-
-  
   return (
     <>
       <div className= {`${darkMode ? "dark-mode" : null } inv-dashboard-container container-fluid px-3 px-md-4 py-3`} >
@@ -362,7 +370,8 @@ const AllInvoice = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {invoices.map((invoice) => (
+                  {paginatedDesignations.map((invoice) => (
+                   
                       <tr key={invoice.id}>
                         <td>
                           <input type="checkbox" className="form-check-input" />
@@ -401,6 +410,32 @@ const AllInvoice = () => {
                 </table>
               </div>
             </div>
+
+            <div className="d-flex justify-content-between align-items-center mt-3">
+          <div>
+            Showing {indexOfFirstItem + 1} to{" "}
+            {Math.min(indexOfLastItem, tasks.length)} of {tasks.length} entries
+          </div>
+          <Pagination>
+            <Pagination.Prev
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            />
+            {Array.from({ length: totalPages }, (_, index) => (
+              <Pagination.Item
+                key={index}
+                active={index + 1 === currentPage}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </Pagination.Item>
+            ))}
+            <Pagination.Next
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            />
+          </Pagination>
+        </div>
 
             {/* Cards for Mobile */}
             <div className="d-md-none">

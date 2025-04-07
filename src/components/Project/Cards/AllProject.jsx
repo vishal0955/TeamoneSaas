@@ -1,186 +1,23 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Kanban } from "lucide-react";
+import { Pagination } from "react-bootstrap";
 import ProjectCard from "./proj_card";
 import ProjectTimelineCalendar from "../calendar/ProjectTimeline";
 import KanbanBoard from "../../Kanban/Kanban";
 import Project from "../Project";
 import { useSelector } from "react-redux";
 
-const initialTasks = [
-  {
-    id: 1,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 2,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 3,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 4,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 5,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 6,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 7,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 8,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 9,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 10,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 11,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 12,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 13,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 14,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-  {
-    id: 15,
-    name: "Chatbots",
-    members: "Sarah Chen",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
-    startDate: "29-12-2024",
-    deadline: "29-04-2025",
-    client: "Kailee Kuvalis",
-    progress: 86,
-    status: "In Progress",
-  },
-];
+import { Avatar } from "primereact/avatar";
+import { AvatarGroup } from "primereact/avatargroup";
+import { Badge } from "primereact/badge";
+import { IoIosArrowForward } from "react-icons/io";
 
-// const darkMode = useSelector((state) => (state.theme.isDarkMode))
+
 
 const AllProject = () => {
   const darkMode = useSelector((state) => state.theme.isDarkMode);
-  const [activeTab, setActiveTab] = useState(1);
-  const [tasks, setTasks] = useState(initialTasks);
+
   const [showModal, setShowModal] = useState(false);
   const [showClientModal, setShowClientModal] = useState(false);
   const [clients, setClients] = useState(["Kailee Kuvalis"]);
@@ -203,6 +40,197 @@ const AllProject = () => {
   // const [showModal, setShowModal] = useState(false);
   // const handleOpenModal = () => setShowModal(true);
   // const handleCloseModal = () => setShowModal(false);
+
+  const [initialTasks] = useState([
+    {
+      id: 1,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 2,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 3,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 4,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 5,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 6,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 7,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 8,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 9,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 10,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 11,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 12,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 13,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 14,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 15,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+    {
+      id: 16,
+      name: "Chatbots",
+      members: "Sarah Chen",
+      avatar: "https://ui-avatars.com/api/?name=Sarah+Chen",
+      startDate: "29-12-2024",
+      deadline: "29-04-2025",
+      client: "Kailee Kuvalis",
+      progress: 86,
+      status: "In Progress",
+    },
+  ]);
+  const [tasks, setTasks] = useState(initialTasks);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+
+  const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const paginatedDesignations = tasks.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(tasks.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleOpenModal = (task = null) => {
     if (task) {
@@ -296,28 +324,28 @@ const AllProject = () => {
           </h4>
 
           <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
-            <div className= {` ${darkMode ? "table-dark" : null }view-toggle d-flex flex-wrap gap-1`}>
+            <div
+              className={` ${
+                darkMode ? "table-dark" : null
+              }view-toggle d-flex flex-wrap gap-1`}>
               {/* <Link to="/ProjectTimelineCalendar"> */}
               <button
                 className="btn btn-outline-secondary d-flex align-items-center gap-1"
-                onClick={() => setActiveTab(0)}
-              >
+                onClick={() => setActiveTab(0)}>
                 <i className="bi bi-grid" /> TimeLine
               </button>
               {/* </Link> */}
               {/* <Link to="/projectlist"> */}
               <button
                 className="btn btn-outline-secondary d-flex align-items-center gap-1"
-                onClick={() => setActiveTab(1)}
-              >
+                onClick={() => setActiveTab(1)}>
                 <i className="bi bi-list" /> List View
               </button>
               {/* </Link> */}
               {/* <Link to="/kanban"> */}
               <button
                 className="btn btn-outline-secondary d-flex align-items-center gap-1"
-                onClick={() => setActiveTab(2)}
-              >
+                onClick={() => setActiveTab(2)}>
                 <Kanban /> Board View
               </button>
               {/* </Link> */}
@@ -326,141 +354,139 @@ const AllProject = () => {
             <button
               className="btn btn-primary add-project-btn mt-2 mt-md-0"
               style={{ height: "fit-content" }}
-              onClick={handleOpenModal}
-            >
+              onClick={handleOpenModal}>
               <i className="bi bi-plus" /> Add New Project
             </button>
           </div>
         </div>
 
-        {activeTab === 0 && <ProjectTimelineCalendar />}
-        {activeTab === 1 && (
-          <>
-            <div
-              className="table-responsive"
-              style={{
-                maxHeight: "500px",
-                overflowX: "auto",
-                overflowY: "auto",
-              }}
-            >
-              <table
-                className={` ${
+        <div className="table-responsive">
+          <table  className={` ${
                   darkMode ? "table-dark" : null
-                } table table-bordered align-middle text-nowrap `}
-              >
-                <thead
-                  className={` ${darkMode ? "table-dark" : null} table-light`}
-                >
+                } table table-bordered align-middle text-nowrap `}>
+          <thead
+                  className={` ${darkMode ? "table-dark" : null} table-light`}>
                   <tr>
                     <th style={{ width: "40px" }}>
                       <input type="checkbox" className="form-check-input" />
                     </th>
                     <th>Project Name</th>
+                    <th>Status</th>
+                    <th>Current Phases</th>
+                    <th>Progress</th>
+                    <th>Phases</th>
+                    <th>Deadline</th>
                     <th>Members</th>
                     <th>Start Date</th>
-                    <th>Deadline</th>
                     <th>Client</th>
-                    <th>Status</th>
+                   
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {tasks.map((task) => (
-                    <tr key={task.id}>
-                      <td>
-                        <input type="checkbox" className="form-check-input" />
-                      </td>
-                      <td>{task.name}</td>
-                      <td className=" align-items-center">
-                        <img
-                          src={task.avatar}
-                          className="rounded-circle me-1"
-                          width="30"
-                          height="30"
-                          alt="avatar"
+            <tbody>
+              {paginatedDesignations.map((task) => (
+                <tr key={task.id}>
+                  <td>
+                    <input type="checkbox" className="form-check-input" />
+                  </td>
+                  <td>{task.name}</td>
+                  <td>
+                    {/* <div className="progress" style={{ height: "10px" }}>
+                                          <div
+                                            className="progress-bar bg-success"
+                                            style={{ width: `${task.progress}%` }}></div>
+                                        </div> */}
+                    <span className="badge bg-info mt-1">{task.status}</span>
+                  </td>
+                  <td>---</td>
+                  <td>
+                    <div className="progress" style={{ height: "10px" }}>
+                      <div
+                        className="progress-bar bg-success"
+                        style={{ width: `${task.progress}%` }}></div>
+                    </div>
+                  </td>
+                  <td>
+                    <IoIosArrowForward />
+                  </td>
+                  <td>{task.deadline}</td>
+                  <td>
+                    <div
+                      className="card flex justify-content-center"
+                      style={{
+                        backgroundColor: "transparent",
+                        border: "none",
+                      }}>
+                      <AvatarGroup>
+                        <Avatar
+                          image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png"
+                          size="large"
+                          shape="circle"
                         />
-                        +3
-                      </td>
-                      <td>{task.startDate}</td>
-                      <td>{task.deadline}</td>
-                      <td>{task.client}</td>
-                      <td>
-                        <div className="progress" style={{ height: "10px" }}>
-                          <div
-                            className="progress-bar bg-success"
-                            style={{ width: `${task.progress}%` }}
-                          ></div>
-                        </div>
-                        <span className="badge bg-info mt-1">
-                          {task.status}
-                        </span>
-                      </td>
-                      <td className="d-flex gap-2">
-                        <button
-                          onClick={() => handleOpenModal(task)}
-                          className="btn btn-sm btn-outline-primary"
-                        >
-                          <i className="bi bi-pencil" />
-                        </button>
-                        <button
-                          onClick={() => handleDelete(task.id)}
-                          className="btn btn-sm btn-outline-danger"
-                        >
-                          <i className="bi bi-trash" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                        <Avatar
+                          image="https://primefaces.org/cdn/primereact/images/avatar/ionibowcher.png"
+                          size="large"
+                          shape="circle"
+                        />
+                        <Avatar
+                          image="https://primefaces.org/cdn/primereact/images/avatar/xuxuefeng.png"
+                          size="large"
+                          shape="circle"
+                        />
+                        <Avatar
+                          label="+2"
+                          shape="circle"
+                          size="large"
+                          className={` ${darkMode ? "table-dark" : null} `}
+                        />
+                      </AvatarGroup>
+                    </div>
+                  </td>
+                  <td>{task.startDate}</td>
+                  <td>{task.client}</td>
+                  <td className="d-flex gap-2">
+                    <button
+                      onClick={() => handleOpenModal(task)}
+                      className="btn btn-sm btn-outline-primary">
+                      <i className="bi bi-pencil" />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(task.id)}
+                      className="btn btn-sm btn-outline-danger">
+                      <i className="bi bi-trash" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-            <div
-              className="table-responsive"
-              style={{
-                maxHeight: "500px",
-                overflowX: "auto",
-                overflowY: "auto",
-              }}
-            ></div>
-
-            {/* Pagination */}
-            <div className="d-flex justify-content-between align-items-center mt-4">
-              <div className="text-muted">Showing 1 to 3 of 12 results</div>
-              <nav>
-                <ul className="pagination">
-                  <li className="page-item disabled">
-                    <a className="page-link" href="#">
-                      <i className="bi bi-chevron-left"></i>
-                    </a>
-                  </li>
-                  <li className="page-item active">
-                    <a className="page-link" href="#">
-                      1
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#">
-                      2
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#">
-                      3
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#">
-                      <i className="bi bi-chevron-right"></i>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </>
-        )}
-        {activeTab === 2 && <KanbanBoard />}
+        {/* Pagination */}
+        <div className="d-flex justify-content-between align-items-center mt-3">
+          <div>
+            Showing {indexOfFirstItem + 1} to{" "}
+            {Math.min(indexOfLastItem, tasks.length)} of {tasks.length} entries
+          </div>
+          <Pagination>
+            <Pagination.Prev
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            />
+            {Array.from({ length: totalPages }, (_, index) => (
+              <Pagination.Item
+                key={index}
+                active={index + 1 === currentPage}
+                onClick={() => handlePageChange(index + 1)}>
+                {index + 1}
+              </Pagination.Item>
+            ))}
+            <Pagination.Next
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            />
+          </Pagination>
+        </div>
 
         {showModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -471,8 +497,7 @@ const AllProject = () => {
                 </h3>
                 <button
                   onClick={handleCloseModal}
-                  className="text-gray-500 hover:text-black text-2xl"
-                >
+                  className="text-gray-500 hover:text-black text-2xl">
                   &times;
                 </button>
               </div>
@@ -639,8 +664,7 @@ const AllProject = () => {
                 <h3 className="text-xl font-semibold">Client</h3>
                 <button
                   onClick={() => setShowClientModal(false)}
-                  className="text-gray-500 hover:text-black text-2xl"
-                >
+                  className="text-gray-500 hover:text-black text-2xl">
                   &times;
                 </button>
               </div>
@@ -731,14 +755,12 @@ const AllProject = () => {
                   <button
                     type="button"
                     onClick={() => setShowClientModal(false)}
-                    className="px-4 py-2 bg-gray-300 rounded"
-                  >
+                    className="px-4 py-2 bg-gray-300 rounded">
                     Close
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-blue-600 text-white rounded"
-                  >
+                    className="px-4 py-2 bg-blue-600 text-white rounded">
                     Save
                   </button>
                 </div>
