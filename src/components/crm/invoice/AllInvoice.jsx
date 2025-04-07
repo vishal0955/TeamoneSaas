@@ -239,6 +239,12 @@ const AllInvoice = () => {
     
   ];
 
+
+
+
+
+
+  
   return (
     <>
       <div className= {`${darkMode ? "dark-mode" : null } inv-dashboard-container container-fluid px-3 px-md-4 py-3`} >
@@ -257,7 +263,7 @@ const AllInvoice = () => {
         {/* Stats Section - Responsive Grid */}
         <div className="row g-3 mb-4">
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="inv-stat-box">
+            <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-primary">
                   <i className="bi bi-arrow-left-right" />
@@ -270,7 +276,7 @@ const AllInvoice = () => {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="inv-stat-box">
+            <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-warning">
                   <i className="bi bi-clock" />
@@ -283,7 +289,7 @@ const AllInvoice = () => {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="inv-stat-box">
+            <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-neutral">
                   <i className="bi bi-file-text" />
@@ -296,7 +302,7 @@ const AllInvoice = () => {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className="inv-stat-box">
+            <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-danger">
                   <i className="bi bi-exclamation-circle" />
@@ -312,7 +318,7 @@ const AllInvoice = () => {
 
         {/* Invoices Section */}
         <div className="inv-main-card card">
-          <div className="card-body">
+          <div className={`${darkMode ? "dark-mode" : null } card-body`}>
             {/* Search and Filter Row */}
             <div className="row g-3 mb-4">
               <div className="col-12 col-md-8">
@@ -320,14 +326,14 @@ const AllInvoice = () => {
                   <i className="bi bi-search inv-search-icon position-absolute" />
                   <input
                     type="text"
-                    className="inv-search-input form-control ps-4"
+                    className={`${darkMode ? "dark-mode" : null } inv-search-input form-control ps-4`}
                     placeholder="Search invoices..."
                     aria-label="Search invoices"
                   />
                 </div>
               </div>
               <div className="col-12 col-md-4 d-flex justify-content-end">
-                <button className="inv-filter-button btn btn-outline-secondary d-flex align-items-center">
+                <button className={`${darkMode ? "dark-mode" : null } inv-filter-button btn btn-outline-secondary d-flex align-items-center`}>
                   <i className="bi bi-funnel me-2" /> 
                   <span className="d-none d-sm-inline">Filters</span>
                 </button>
@@ -337,7 +343,7 @@ const AllInvoice = () => {
             {/* Table for Desktop */}
             <div className="d-none d-md-block">
               <div className="table-responsive">
-                <table className="inv-table table table-hover">
+                <table className={`${darkMode ? "table-dark" : null } inv-table table table-hover`}>
                   <thead>
                     <tr>
                       <th style={{ width: "20px" }}>
@@ -371,7 +377,7 @@ const AllInvoice = () => {
                               <div className="inv-client-name fw-semibold">
                                 {invoice.client.name}
                               </div>
-                              <div className="inv-client-email text-muted small">
+                              <div className="inv-client-email  small">
                                 {invoice.client.email}
                               </div>
                             </div>

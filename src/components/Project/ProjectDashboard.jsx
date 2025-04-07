@@ -72,13 +72,13 @@ const Dashboard = () => {
         </div>
 
         {/* Charts */}
-        <div className={` ${darkMode ? "dark-mode" : null } grid grid-cols-1 gap-6 lg:grid-cols-2`}>
-          <div className=" shadow rounded-lg p-6">
+        <div className= "grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className={` ${darkMode ? "card-dark" : null } shadow rounded-lg p-6`}>
             <h3 className="text-lg font-medium  mb-4">Total Tasks by Assignee</h3>
             <div id="pieChart" style={{ height: "400px" }}></div>
           </div>
 
-          <div className=" shadow rounded-lg p-6">
+          <div className={` ${darkMode ? "card-dark" : null } shadow rounded-lg p-6`}>
             <h3 className="text-lg font-medium  mb-4">Open Tasks by Assignee</h3>
             <div id="barChart" style={{ height: "400px" }}></div>
           </div>

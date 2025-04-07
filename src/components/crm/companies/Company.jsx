@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Table, Button, Form, Dropdown, Pagination, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import CompanyForm from "./CompanyForm";
+import { useSelector } from "react-redux";
 
 const Company = () => {
   const navigate = useNavigate();
@@ -151,7 +152,7 @@ const Company = () => {
       date: "Jan 14, 2024",
       phone: "+1 (555) 987-6543",
       activity: "1 day ago",
-    },
+    },  
   ]);
 
   const handleOpenModal = () => {
@@ -167,17 +168,21 @@ const Company = () => {
     navigate("/crm/contactdetails");
   };
 
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
+
   return (
     <div className="container mt-4">
       <Row className="mb-3 ">
         <div className="d-flex justify-content-between">
         <div >
           <h4>
-            Companies <span className="text-muted">12,453</span>
+            Companies <span className="">12,453</span>
           </h4>
         </div>
         <div className="text-md-end mt-2 mt-md-0">
-          <Button className="inv-new-button" onClick={handleOpenModal}>
+          <Button className={`${darkMode ? "card-dark" : null } inv-new-button`} onClick={handleOpenModal}>
             <i className="bi bi-plus-lg"></i> Add New
           </Button>
         </div>
@@ -188,7 +193,7 @@ const Company = () => {
         <Col xs={12}>
           <Row>
             <Col xs={12} sm={3}  className="mb-3 mb-sm-0">
-              <div className="inv-stat-box">
+              <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-primary">
                     <i className="fa-solid fa-building"></i>
@@ -201,7 +206,7 @@ const Company = () => {
               </div>
             </Col>
             <Col xs={12} sm={3} className="mb-3 mb-sm-0">
-              <div className="inv-stat-box">
+              <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-warning">
                     <i className="fa-regular fa-building"></i>
@@ -214,7 +219,7 @@ const Company = () => {
               </div>
             </Col>
             <Col xs={12} sm={3} className="mb-3 mb-sm-0">
-              <div className="inv-stat-box">
+              <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-danger">
                     <i className="fa-solid fa-building"></i>
@@ -227,7 +232,7 @@ const Company = () => {
               </div>
             </Col>
             <Col xs={12} sm={3}>
-              <div className="inv-stat-box">
+              <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-neutral">
                     <i className="fa-regular fa-building"></i>
@@ -247,7 +252,7 @@ const Company = () => {
         <Col xs={12}>
           <div className="d-flex flex-wrap gap-2 align-items-center">
             <Dropdown>
-              <Dropdown.Toggle variant="light" className="inv-filter-button">
+              <Dropdown.Toggle variant="light" className={`${darkMode ? "card-dark" : null } inv-filter-button`}>
                 Company owner
               </Dropdown.Toggle>
               <Dropdown.Menu>
@@ -257,7 +262,7 @@ const Company = () => {
             </Dropdown>
             
             <Dropdown>
-              <Dropdown.Toggle variant="light" className="inv-filter-button">
+              <Dropdown.Toggle variant="light" className={`${darkMode ? "card-dark" : null } inv-filter-button`}>
                 Create date
               </Dropdown.Toggle>
               <Dropdown.Menu>
@@ -268,7 +273,7 @@ const Company = () => {
             </Dropdown>
             
             <Dropdown>
-              <Dropdown.Toggle variant="light" className="inv-filter-button">
+              <Dropdown.Toggle variant="light" className={`${darkMode ? "card-dark" : null } inv-filter-button`}>
                 Last activity date
               </Dropdown.Toggle>
               <Dropdown.Menu>
@@ -279,7 +284,7 @@ const Company = () => {
             </Dropdown>
             
             <Dropdown>
-              <Dropdown.Toggle variant="light" className="inv-filter-button">
+              <Dropdown.Toggle variant="light" className={`${darkMode ? "card-dark" : null } inv-filter-button`}>
                 Lead status
               </Dropdown.Toggle>
               <Dropdown.Menu>
@@ -294,7 +299,7 @@ const Company = () => {
         </Col>
       </Row>
 
-      <div className="inv-main-card">
+      <div className={`${darkMode ? "card-dark" : null } inv-main-card`}>
         <div className="inv-card-header">
           <Row className="align-items-center">
             <Col xs={12} md={8} className="mb-3 mb-md-0">
@@ -302,7 +307,7 @@ const Company = () => {
                 <i className="bi bi-search inv-search-icon" />
                 <input
                   type="text"
-                  className="inv-search-input"
+                  className={`${darkMode ? "card-dark" : null } inv-search-input`}
                   placeholder="Search companies..."
                   aria-label="Search companies"
                   onChange={(e) => setSearch(e.target.value)}
@@ -310,7 +315,7 @@ const Company = () => {
               </div>
             </Col>
             <Col xs={12} md={4} className="text-md-end">
-              <Button variant="light" className="inv-filter-button">
+              <Button variant="light" className={`${darkMode ? "card-dark" : null } inv-filter-button`}>
                 <i className="bi bi-funnel me-2" /> Filters
               </Button>
             </Col>
@@ -318,7 +323,7 @@ const Company = () => {
         </div>
         
         <div className="table-responsive">
-          <Table hover className="mb-0">
+          <Table hover className={`${darkMode ? "table-dark" : null } mb-0`}>
             <thead>
               <tr>
                 <th>

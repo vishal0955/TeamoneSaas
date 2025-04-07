@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CreatePayment from "./CreatePayment";
+import { useSelector } from "react-redux";
 
 const PaymentList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,12 +15,14 @@ const PaymentList = () => {
     document.body.classList.remove("modal-open");
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <>
       <div className="container py-4">
         {/* Header - Improved responsive layout */}
-        <div className="d-flex flex-column flex-md-row   align-items-start align-items-md-center mb-4 gap-3 gap-md-0">
-        <div>  <h4 className="mb-0 text-gray-900 ">Payment Links</h4></div>
+        <div className={`${darkMode ? "dark-mode" : null } d-flex flex-column flex-md-row   align-items-start align-items-md-center mb-4 gap-3 gap-md-0`}>
+        <div>  <h4 className="mb-0  ">Payment Links</h4></div>
           <div className="d-flex flex-column flex-sm-row gap-3 w-100 w-md-auto justify-content-end">
             <a href="#" className="btn inv-filter-button">
               Go to Commerce
@@ -38,7 +41,7 @@ const PaymentList = () => {
         <div className="shadow-sm">
           {/* Payment Links Card */}
           <div className="inv-main-card">
-            <div className="inv-card-header">
+            <div className= {`${darkMode ? "dark-mode" : null } inv-card-header`}>
               <div className="d-flex justify-content-between align-items-center">
                 <h5 className="mb-0">Payment List</h5>
               </div>
@@ -50,7 +53,7 @@ const PaymentList = () => {
                     <i className="bi bi-search inv-search-icon" />
                     <input
                       type="text"
-                      className="inv-search-input"
+                      className={`${darkMode ? "dark-mode" : null } inv-search-input`}
                       placeholder="Search invoices..."
                       aria-label="Search invoices"
                     />
@@ -59,7 +62,7 @@ const PaymentList = () => {
                 <div className="col-6 col-md-2">
                   <div className="dropdown w-100">
                     <button
-                      className="btn inv-filter-button w-100 d-flex justify-content-between align-items-center"
+                      className={`${darkMode ? "dark-mode" : null } btn inv-filter-button w-100 d-flex justify-content-between align-items-center`}
                       data-bs-toggle="dropdown"
                     >
                       <span className="text-truncate">Status: All</span>
@@ -85,7 +88,7 @@ const PaymentList = () => {
                   </div>
                 </div>
                 <div className="col-6 col-md-2 text-end">
-                  <button className="btn inv-filter-button w-100">
+                  <button className={`${darkMode ? "dark-mode" : null } btn inv-filter-button w-100`}>
                     <i className="bi bi-funnel me-2" /> 
                     <span className="d-none d-md-inline">Filters</span>
                   </button>
@@ -94,8 +97,8 @@ const PaymentList = () => {
             </div>
 
             {/* Table - Made more responsive */}
-            <div className="table-responsive">
-              <table className="inv-table w-100">
+            <div className={`${darkMode ? "dark-mode" : null } table-responsive`}>
+              <table className={`${darkMode ? "table-dark" : null } table w-100`}>
                 <thead>
                   <tr>
                     <th style={{ width: "20px" }}>

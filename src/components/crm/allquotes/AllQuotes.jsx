@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Quotes.css";
 import CreateQuote from "./CreateQuote";
 import { FaRegEye } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 const AllQuotes = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
@@ -14,13 +15,20 @@ const AllQuotes = () => {
     setIsModalOpen(false);
     document.body.classList.remove("modal-open"); // Remove modal-open class
   };
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <>
       <div className="quotes-container container py-4">
         <div className="quotes-header d-flex justify-content-between align-items-center mb-4">
           <h2 className="quotes-title">All Quotes</h2>
           <div className="quotes-actions d-flex gap-3">
-            <button className="inv-filter-button d-flex align-items-center gap-2">
+            <button
+              className={`${
+                darkMode ? "dark-mode" : null
+              } inv-filter-button d-flex align-items-center gap-2`}
+            >
               <i className="bi bi-upload" /> Import
             </button>
             <button
@@ -32,81 +40,77 @@ const AllQuotes = () => {
           </div>
         </div>
 
-             
-
         <div className="grid grid-row-1 md:grid-row-5 gap-4 ">
-        <div className="inv-stats-grid">
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-primary">
-                <i class="bi bi-currency-pound"></i>
-              </div>
-              <div>
-                <div className="inv-stat-label">Total Amount Of Quotes.</div>
-                <p className="inv-stat-value">£1.18M</p>
-              </div>
-            </div>
-          </div>
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-warning">
-                <i className="bi bi-clock" />
-              </div>
-              <div>
-                <div className="inv-stat-label">Quotes Per Status</div>
-                <p className="inv-stat-value">£616.62K</p>
+          <div className="inv-stats-grid">
+            <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+              <div className="inv-stat-content">
+                <div className="inv-stat-icon inv-stat-icon-primary">
+                  <i class="bi bi-currency-pound"></i>
+                </div>
+                <div>
+                  <div className="inv-stat-label">Total Amount Of Quotes.</div>
+                  <p className="inv-stat-value">£1.18M</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-danger">
-                <i class="bi bi-x-circle-fill"></i>
-              </div>
-              <div>
-                <div className="inv-stat-label">Open Deal Amount  </div>
-                <p className="inv-stat-value">£590.58K</p>
+            <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+              <div className="inv-stat-content">
+                <div className="inv-stat-icon inv-stat-icon-warning">
+                  <i className="bi bi-clock" />
+                </div>
+                <div>
+                  <div className="inv-stat-label">Quotes Per Status</div>
+                  <p className="inv-stat-value">£616.62K</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="inv-stat-box">
-            <div className="inv-stat-content">
-              <div className="inv-stat-icon inv-stat-icon-neutral">
-                <i class="bi bi-plus-circle-fill"></i>
+            <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+              <div className="inv-stat-content">
+                <div className="inv-stat-icon inv-stat-icon-danger">
+                  <i class="bi bi-x-circle-fill"></i>
+                </div>
+                <div>
+                  <div className="inv-stat-label">Open Deal Amount </div>
+                  <p className="inv-stat-value">£590.58K</p>
+                </div>
               </div>
-              <div>
-                <div className="inv-stat-label">All Amount of Quotes</div>
-                <p className="inv-stat-value">£201.02K</p>
+            </div>
+            <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+              <div className="inv-stat-content">
+                <div className="inv-stat-icon inv-stat-icon-neutral">
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+                <div>
+                  <div className="inv-stat-label">All Amount of Quotes</div>
+                  <p className="inv-stat-value">£201.02K</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-
 
         <div className="quotes-card">
-          <div className=" quotes-card-body">
+          <div className={`${darkMode ? "card-dark" : null} quotes-card-body`}>
             <div className="quotes-filters row mb-4">
               <div className="col-md-6">
                 <div className="inv-search-wrapper">
                   <i className="bi bi-search inv-search-icon" />
                   <input
                     type="text"
-                    className="inv-search-input"
+                    className={`${darkMode ? "dark-mode" : null } inv-search-input`}
                     placeholder="Search invoices..."
                     aria-label="Search invoices"
                   />
                 </div>
               </div>
               <div className="col-md-6 d-flex justify-content-end gap-3">
-                <select className=" inv-filter-button quotes-status-select">
+                <select className={`${darkMode ? "dark-mode" : null }  inv-filter-button quotes-status-select`}>
                   <option>All Status</option>
                   <option>Pending</option>
                   <option>Approved</option>
                   <option>Rejected</option>
                 </select>
-                <select className=" inv-filter-button quotes-user-select">
+                <select className={`${darkMode ? "dark-mode" : null }  inv-filter-button quotes-status-select`}>
                   <option>All Users</option>
                 </select>
               </div>
@@ -171,7 +175,7 @@ const AllQuotes = () => {
         </div> */}
 
             <div className="table-responsive">
-              <table className="inv-table">
+              <table className={`${darkMode ? "table-dark" : null } table`}>
                 <thead>
                   <tr>
                     <th style={{ width: "20px" }}>
@@ -607,7 +611,7 @@ const AllQuotes = () => {
                       </button>
                     </td>
                   </tr>
-                   <tr>
+                  <tr>
                     <td>
                       <input type="checkbox" className="inv-checkbox" />
                     </td>
@@ -693,7 +697,7 @@ const AllQuotes = () => {
                   />
                 </div>
                 <div className="modal-body">
-                  <CreateQuote close={handleCloseModal}/>
+                  <CreateQuote close={handleCloseModal} />
                 </div>
               </div>
             </div>

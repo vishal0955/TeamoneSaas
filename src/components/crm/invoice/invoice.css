@@ -13,7 +13,7 @@
 }
 
 .inv-stat-box {
-    background: linear-gradient(145deg, #ffffff, #f5f7fa);
+    /* background: linear-gradient(145deg, #ffffff, #f5f7fa); */
     border-radius: 16px;
     padding: 1.5rem;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
@@ -77,7 +77,7 @@
 .inv-stat-value {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1e293b;
+   
     margin: 0;
 }
 
@@ -164,10 +164,10 @@
 }
 
 .inv-table th {
-    background-color: #f8fafc;
+    /* background-color: #f8fafc; */
     padding: 1rem 1.5rem;
     font-weight: 600;
-    color: #475569;
+    /* color: #475569; */
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -208,13 +208,13 @@
 
 .inv-client-name {
     font-weight: 600;
-    color: #1e293b;
+    /* color: #1e293b; */
     margin-bottom: 0.25rem;
 }
 
 .inv-client-email {
     font-size: 0.875rem;
-    color: #64748b;
+    /* color: #64748b; */
 }
 
 .inv-status {
