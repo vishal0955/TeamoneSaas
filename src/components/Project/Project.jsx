@@ -5,6 +5,7 @@ import ProjectCard from "./Cards/proj_card";
 import { useSelector } from "react-redux";
 import ResourceTimelineCalendar from "../ResourceTimlineCalendar";
 import KanbanBoard from "../Kanban/Kanban";
+import { Pagination } from "react-bootstrap";
 
 const initialTasks = [
   {
@@ -186,6 +187,20 @@ const Project = () => {
     company: "",
     login: "No",
   });
+
+
+   
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(10);
+  
+    const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const paginatedDesignations = tasks.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(tasks.length / itemsPerPage);
+  
+    const handlePageChange = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    };
   const [editId, setEditId] = useState(null);
   const [newProject, setNewProject] = useState({
     name: "",
@@ -370,7 +385,8 @@ const Project = () => {
                 </tr>
               </thead>
               <tbody>
-                {tasks.map((task) => (
+              {paginatedDesignations.map((task) => (
+               
                   <tr key={task.id}>
                     <td>
                       <input type="checkbox" className="form-check-input" />
@@ -417,38 +433,31 @@ const Project = () => {
           </div>
 
           {/* Pagination */}
-          <div className="d-flex justify-content-between align-items-center mt-4">
-            <div className="text-muted">Showing 1 to 3 of 12 results</div>
-            <nav>
-              <ul className="pagination">
-                <li className="page-item disabled">
-                  <a className="page-link" href="#">
-                    <i className="bi bi-chevron-left"></i>
-                  </a>
-                </li>
-                <li className="page-item active">
-                  <a className="page-link" href="#">
-                    1
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    2
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    3
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    <i className="bi bi-chevron-right"></i>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+          <div className="d-flex justify-content-between align-items-center mt-3">
+          <div>
+            Showing {indexOfFirstItem + 1} to{" "}
+            {Math.min(indexOfLastItem, tasks.length)} of {tasks.length} entries
           </div>
+          <Pagination>
+            <Pagination.Prev
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            />
+            {Array.from({ length: totalPages }, (_, index) => (
+              <Pagination.Item
+                key={index}
+                active={index + 1 === currentPage}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </Pagination.Item>
+            ))}
+            <Pagination.Next
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            />
+          </Pagination>
+        </div>
         </>
       )}
 
