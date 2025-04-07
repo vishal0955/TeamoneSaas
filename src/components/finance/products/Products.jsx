@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Dropdown, Pagination } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const Products = () => {
   const [products] = React.useState([
@@ -138,6 +139,8 @@ const Products = () => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
   return (
     <div className="conatiner">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -146,7 +149,7 @@ const Products = () => {
             {/* Left: Dropdown + Record Count */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 gap-2">
               <div className="relative">
-                <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50">
+                <button className={`${darkMode ? "dark-mode" : "bg-white" } inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50`}>
                   Products
                   <i className="fas fa-chevron-down ml-2 text-xs" />
                 </button>
@@ -156,11 +159,11 @@ const Products = () => {
 
             {/* Right: Actions */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 gap-2">
-              <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50">
+              <button className={`${darkMode ? "dark-mode" : "bg-white" } inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50`}>
                 Actions
                 <i className="fas fa-chevron-down ml-2 text-xs" />
               </button>
-              <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50">
+              <button className={`${darkMode ? "dark-mode" : "bg-white" } inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50`}>
                 <i className="fas fa-file-import mr-2" />
                 Import
               </button>
@@ -240,12 +243,12 @@ const Products = () => {
             </Col>
           </Row>
 
-          <div className="bg-white shadow rounded-lg">
+          <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white shadow rounded-lg`}>
             {/* Filter Header */}
             <div className="border-b border-gray-200 px-4 py-4">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div className="flex flex-wrap items-center gap-2">
-                  <button className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50">
+                  <button className={`${darkMode ? "dark-mode" : "bg-white" } inline-flex items-center px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50`}>
                     All products
                     <i className="fas fa-times ml-2 text-xs" />
                   </button>
@@ -253,7 +256,7 @@ const Products = () => {
                     <input
                       type="text"
                       placeholder="Search..."
-                      className="w-60 pl-3 pr-10 py-1.5 text-sm border-gray-300 rounded focus:ring-custom focus:border-custom"
+                      className={`${darkMode ? "dark-mode" : "bg-white" } w-60 pl-3 pr-10 py-1.5 text-sm border-gray-300 rounded focus:ring-custom focus:border-custom`}
                     />
                   </div>
                 </div>
@@ -272,15 +275,15 @@ const Products = () => {
             <div className="border-b border-gray-200 px-4 py-4">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 <div className="flex flex-wrap items-center gap-3">
-                  <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50">
+                  <button className={`${darkMode ? "dark-mode" : "bg-white" } inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50`}>
                     Create date
                     <i className="fas fa-chevron-down ml-2 text-xs" />
                   </button>
-                  <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50">
+                  <button className={`${darkMode ? "dark-mode" : "bg-white" } inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50`}>
                     <i className="fas fa-plus mr-2" />
                     More
                   </button>
-                  <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50">
+                  <button className={`${darkMode ? "dark-mode" : "bg-white" } inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50`}>
                     <i className="fas fa-filter mr-2" />
                     Advanced filters
                   </button>
@@ -290,7 +293,7 @@ const Products = () => {
                   <input
                     type="text"
                     placeholder="Search name, description..."
-                    className="w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded focus:ring-custom focus:border-custom"
+                    className={`${darkMode ? "dark-mode" : "bg-white" } w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded focus:ring-custom focus:border-custom`}
                   />
                   <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
                     <i className="fas fa-search text-gray-400" />
@@ -300,9 +303,9 @@ const Products = () => {
             </div>
 
             {/* Table Section */}
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+            <div className={`${darkMode ? "dark-mode" : null } overflow-x-auto`}>
+              <table className={`${darkMode ? "table-dark" : null } min-w-full divide-y `}>
+                <thead>
                   <tr>
                     <th className="w-12 px-6 py-3">
                       <input
@@ -321,7 +324,7 @@ const Products = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="divide-y divide-gray-200">
                   {paginatedDesignations.map((products) => (
                     <tr key={products.id}>
                       <td className="">
@@ -346,12 +349,12 @@ const Products = () => {
             </div>
 
             <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
-              <div style={{marginLeft: "20px" ,marginBottom:"10px"}}>
+              <div style={{ marginLeft: "20px", marginBottom: "10px" }}>
                 Showing {indexOfFirstItem + 1} to{" "}
                 {Math.min(indexOfLastItem, products.length)} of{" "}
                 {products.length} entries
               </div>
-              <Pagination style={{marginRight: "20px" ,marginBottom:"10px"}}>
+              <Pagination style={{ marginRight: "20px", marginBottom: "10px" }}>
                 <Pagination.Prev
                   disabled={currentPage === 1}
                   onClick={() => handlePageChange(currentPage - 1)}
