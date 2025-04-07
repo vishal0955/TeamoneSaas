@@ -3,6 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Kanban } from "lucide-react";
 import { Pagination } from "react-bootstrap";
 import ProjectCard from "./proj_card";
+import ProjectTimelineCalendar from "../calendar/ProjectTimeline";
+import KanbanBoard from "../../Kanban/Kanban";
+import Project from "../Project";
+import { useSelector } from "react-redux";
 
 const AllProject = () => {
   
@@ -312,22 +316,31 @@ const AllProject = () => {
           </h4>
 
           <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
-            <div className="view-toggle d-flex flex-wrap gap-1">
-              <Link to="/ProjectTimelineCalendar">
-                <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
-                  <i className="bi bi-grid" /> TimeLine
-                </button>
-              </Link>
-              <Link to="/projectlist">
-                <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
-                  <i className="bi bi-list" /> List View
-                </button>
-              </Link>
-              <Link to="/kanban">
-                <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
-                  <Kanban /> Board View
-                </button>
-              </Link>
+            <div className= {` ${darkMode ? "table-dark" : null }view-toggle d-flex flex-wrap gap-1`}>
+              {/* <Link to="/ProjectTimelineCalendar"> */}
+              <button
+                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                onClick={() => setActiveTab(0)}
+              >
+                <i className="bi bi-grid" /> TimeLine
+              </button>
+              {/* </Link> */}
+              {/* <Link to="/projectlist"> */}
+              <button
+                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                onClick={() => setActiveTab(1)}
+              >
+                <i className="bi bi-list" /> List View
+              </button>
+              {/* </Link> */}
+              {/* <Link to="/kanban"> */}
+              <button
+                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                onClick={() => setActiveTab(2)}
+              >
+                <Kanban /> Board View
+              </button>
+              {/* </Link> */}
             </div>
 
             <button

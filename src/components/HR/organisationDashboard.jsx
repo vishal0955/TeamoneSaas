@@ -100,7 +100,7 @@ const HRAnalyticsDashboard = () => {
   }, []);
 
   return (
-    <div className="bg-gray-50 font-sans">
+    <div className="font-sans">
     
 
       <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

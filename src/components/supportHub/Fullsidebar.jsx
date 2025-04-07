@@ -14,10 +14,10 @@ const Sidebar = ({ toggleSidebar, collapsed }) => {
     }));
   };
   return (
-    <div className="bg-gray-50 flex min-h-screen">
+    <div className=" flex min-h-screen">
       {/* Sidebar */}
       <aside
-        className={`min-h-screen bg-white shadow-gray-200 shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
+        className={`min-h-screen shadow-gray-200 shadow-lg flex flex-col transition-all duration-300 ease-in-out ${
           collapsed ? "w-16" : "w-64"
         }`}
       >
@@ -144,16 +144,19 @@ const Sidebar = ({ toggleSidebar, collapsed }) => {
                     label: "Sales - Unassigned",
                     count: 0,
                     path: "/support/tickets",
+                    icon:"fa-brands fa-salesforce",
                   },
                   {
                     label: "Sales - All Open",
                     count: 42,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-universal-access",
                   },
                   {
                     label: "Sales - All Closed",
                     count: 316,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-sleigh",
                   },
                 ],
               },
@@ -164,16 +167,19 @@ const Sidebar = ({ toggleSidebar, collapsed }) => {
                     label: "Account - Unassigned",
                     count: 0,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-scale-unbalanced-flip",
                   },
                   {
                     label: "Accounts - All Open",
                     count: 33,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-satellite-dish",
                   },
                   {
                     label: "Accounts - All Closed",
                     count: 0,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-satellite",
                   },
                 ],
               },
@@ -184,16 +190,19 @@ const Sidebar = ({ toggleSidebar, collapsed }) => {
                     label: "Support - All Open",
                     count: 0,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-weight-scale"
                   },
                   {
                     label: "Support - Unassigned",
                     count: 0,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-money-bill"
                   },
                   {
                     label: "Support - All Closed",
                     count: 86,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-life-ring"
                   },
                 ],
               },
@@ -204,16 +213,20 @@ const Sidebar = ({ toggleSidebar, collapsed }) => {
                     label: "Technical - Unassigned",
                     count: 5,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-radiation"
                   },
                   {
                     label: "Technical - All Open",
                     count: 0,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-universal-access"
                   },
                   {
                     label: "Technical - All Closed",
                     count: 6,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-people-roof"
+                    
                   },
                 ],
               },
@@ -224,11 +237,13 @@ const Sidebar = ({ toggleSidebar, collapsed }) => {
                     label: "Marketing - All Open",
                     count: 1,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-maximize"
                   },
                   {
                     label: "Marketing - All Closed",
                     count: 1,
                     path: "/support/tickets",
+                    icon:"fa-solid fa-shield-cat"
                   },
                 ],
               },
@@ -261,7 +276,7 @@ const Sidebar = ({ toggleSidebar, collapsed }) => {
                           className="flex items-center w-full"
                         >
                           <div className="flex items-center">
-                            <i className="fas fa-folder w-5"></i>
+                          <i className={`${item.icon} w-5`}></i>
                             <span className="ml-3 text-sm">{item.label}</span>
                           </div>
                           <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full ml-auto">

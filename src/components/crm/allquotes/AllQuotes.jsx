@@ -205,9 +205,11 @@ const AllQuotes = () => {
                 />
               </Pagination>
             </div>
+            </div>
+         
           </div>
         </div>
-      </div>
+     
 
       {/* Modal for Add Quote */}
       {isModalOpen && (

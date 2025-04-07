@@ -402,6 +402,7 @@ import { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import interactionPlugin from '@fullcalendar/interaction';
+import { useSelector } from 'react-redux';
 
 const ProjectTimelineCalendar = () => {
   const [allEvents, setAllEvents] = useState([
@@ -616,9 +617,11 @@ const ProjectTimelineCalendar = () => {
     setSearchTerm('');
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
-    <div className="h-screen p-4 bg-white">
-      <div className="bg-white rounded-lg shadow-lg p-6 h-full">
+    <div className={`${darkMode ? "dark-mode" : null } h-screen p-4 `}>
+      <div className={` ${darkMode ? "dark-mode" : null }  rounded-lg shadow-lg p-6 h-full`}>
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center space-x-2 w-1/2">
             <div className="flex items-center w-full">

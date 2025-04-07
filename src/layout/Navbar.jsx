@@ -1,11 +1,16 @@
 import React, { useState, useRef } from 'react';
-import { Search, Bell, User, Settings, Activity, CreditCard, HelpCircle, LogOut } from 'lucide-react';
+import { Search, Bell, User, Settings, Activity, CreditCard, HelpCircle, LogOut, Menu, Sun, Moon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { toggleTheme } from '../redux/slices/ThemeSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Navbar = ({ toggleSidebar, collapsed }) => {
+  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [isNotificationDropdownOpen, setIsNotificationDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const handleLogout = () => {
@@ -14,13 +19,35 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
     localStorage.removeItem("userEmail");
     navigate('/');
   };
+ 
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+
+
+  const toggleProfileDropdown = () => {
+    setIsProfileDropdownOpen(!isProfileDropdownOpen);
+    // Close notification dropdown if open
+    if (isNotificationDropdownOpen) {
+      setIsNotificationDropdownOpen(false);
+    }
   };
 
+  const toggleNotificationDropdown = () => {
+    setIsNotificationDropdownOpen(!isNotificationDropdownOpen);
+    // Close profile dropdown if open
+    if (isProfileDropdownOpen) {
+      setIsProfileDropdownOpen(false);
+    }
+  };
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+   const toggleDarkMode = () => {
+    dispatch(toggleTheme());
+    console.log("Dark mode toggled");
+   };
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200">
+    <div className={ `${darkMode ? 
+        'dark-mode': "bg-white"  } fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200`}>
       <div className="flex items-center justify-between px-4 py-3 sm:px-6">
         {/* Left section - Logo and toggle button */}
         <div className="flex items-center">
@@ -34,7 +61,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
               onClick={toggleSidebar}
               className="ml-4 p-1.5 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
             >
-              {collapsed ? "→" : "←"}
+              <Menu size={20} className="text-gray-600" />
             </button>
           </div>
         </div>
@@ -42,39 +69,96 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
         {/* Right section - Icons and profile */}
         <div className="flex items-center space-x-3 sm:space-x-4">
           {/* Middle section - Search (hidden on mobile) */}
-        <div className="hidden md:flex flex-1 mx-4 max-w-md .nav-search-btn">
-          <div className="relative w-full">
-            <div className="flex items-center bg-gray-100 rounded-md px-3 py-2 w-full">
-              <Search size={16} className="text-gray-500 mr-2" />
-              <input
-                type="text"
-                placeholder="Search in HRMS"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-transparent border-none outline-none text-sm w-full"
-              />
+          <div className="hidden md:flex flex-1 mx-4 max-w-md .nav-search-btn">
+            <div className="relative w-full">
+              <div className="flex items-center bg-gray-100 rounded-md px-3 py-2 w-full">
+                <Search size={16} className="text-gray-500 mr-2" />
+                <input
+                  type="text"
+                  placeholder="Search in HRMS"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="bg-transparent border-none outline-none text-sm w-full"
+                />
+              </div>
             </div>
           </div>
-        </div>
           {/* Mobile search button (hidden on desktop) */}
           <button className="md:hidden text-gray-500 hover:text-gray-700">
             {/* <Search size={20} /> */}
           </button>
 
-          {/* Notification icon */}
-          <div className="relative">
-            <button className="text-gray-500 hover:text-gray-700">
+          {/* Notification icon with dropdown */}
+          <div className="relative" ref={dropdownRef}>
+          <button className="px-2 py-1 ml-2" onClick={toggleDarkMode}>
+                       {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                     </button>
+            <button 
+              onClick={toggleNotificationDropdown}
+              className="text-gray-500 hover:text-gray-700 relative"
+            >
               <Bell size={20} />
+              <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                2
+              </span>
             </button>
-            <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-              2
-            </span>
+
+            {/* Notification dropdown menu */}
+            {isNotificationDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                <div className="p-4 border-b border-gray-200">
+                  <h3 className="text-base font-medium text-gray-800">Notifications</h3>
+                </div>
+                
+                <div className="py-1 max-h-96 overflow-y-auto">
+                  {/* Notification items */}
+                  <a href="#" className="flex items-start px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100">
+                    <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <User size={16} className="text-blue-500" />
+                    </div>
+                    <div>
+                      <p className="font-medium">New employee joined</p>
+                      <p className="text-xs text-gray-500">John Doe has joined your team</p>
+                      <p className="text-xs text-gray-400 mt-1">2 hours ago</p>
+                    </div>
+                  </a>
+                  
+                  <a href="#" className="flex items-start px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100">
+                    <div className="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                      <Activity size={16} className="text-green-500" />
+                    </div>
+                    <div>
+                      <p className="font-medium">Leave request approved</p>
+                      <p className="text-xs text-gray-500">Your leave request has been approved</p>
+                      <p className="text-xs text-gray-400 mt-1">1 day ago</p>
+                    </div>
+                  </a>
+                  
+                  <a href="#" className="flex items-start px-4 py-3 text-sm text-gray-700 hover:bg-gray-100">
+                    <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                      <CreditCard size={16} className="text-purple-500" />
+                    </div>
+                    <div>
+                      <p className="font-medium">Payslip generated</p>
+                      <p className="text-xs text-gray-500">Your payslip for March is ready</p>
+                      <p className="text-xs text-gray-400 mt-1">3 days ago</p>
+                    </div>
+                  </a>
+                </div>
+                
+                <div className="py-2 border-t border-gray-200 text-center">
+                  <a href="#" className="text-sm text-blue-500 hover:text-blue-700 font-medium">
+                    View all notifications
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Profile dropdown */}
-          <div className="relative" ref={dropdownRef}>
+          <div className="relative">
             <button
-              onClick={toggleDropdown}
+              onClick={toggleProfileDropdown}
               className="h-8 w-8 rounded-full bg-gray-300 overflow-hidden border-2 border-gray-200 focus:outline-none"
             >
               <img
@@ -84,8 +168,8 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
               />
             </button>
 
-            {/* Dropdown menu */}
-            {isDropdownOpen && (
+            {/* Profile dropdown menu */}
+            {isProfileDropdownOpen && (
               <div className="absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
                 {/* Profile Info */}
                 <div className="p-4 border-b border-gray-200">
@@ -140,16 +224,6 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
           </div>
         </div>
       </div>
-
-      {/* Mobile search bar (shown only on mobile when activated) */}
-      {/* You would need to implement the state and toggle for this */}
-      {/* <div className="md:hidden px-4 py-2 bg-gray-100">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="w-full px-3 py-2 rounded-md border border-gray-300"
-        />
-      </div> */}
     </div>
   );
 };

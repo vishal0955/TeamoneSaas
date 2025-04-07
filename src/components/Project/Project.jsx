@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Pagination } from "react-bootstrap";
 import ProjectCard from "./Cards/proj_card";
+import { useSelector } from "react-redux";
+import ResourceTimelineCalendar from "../ResourceTimlineCalendar";
+import KanbanBoard from "../Kanban/Kanban";
 
 const Project = () => {
   const [designations] = useState([
@@ -185,6 +188,8 @@ const Project = () => {
     setCurrentPage(pageNumber);
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   const navigate = useNavigate();
   return (
     <div className="container mt-4">
@@ -195,28 +200,55 @@ const Project = () => {
         </h4>
 
         <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
-          <div className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
-            <Link to="/calendar">
-              <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
-                <i className="bi bi-grid" /> TimeLine
-              </button>
-            </Link>
-            <Link to="/projectlist">
-              <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
-                <i className="bi bi-list" /> List View
-              </button>
-            </Link>
-            <Link to="/kanban">
-              <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
-                <Kanban /> Board View
-              </button>
-            </Link>
+          {/* <div className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
+      <Link to="/calendar">
+        <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+          <i className="bi bi-grid" /> TimeLine
+        </button>
+      </Link>
+      <Link to="/projectlist">
+        <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+          <i className="bi bi-list" /> List View
+        </button>
+      </Link>
+      <Link to="/kanban">
+        <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
+          <Kanban /> Board View
+        </button>
+      </Link>
+    </div> */}
+
+          <div className= {` ${darkMode ? "dark-mode" : null } view-toggle d-flex flex-wrap gap-1`}>
+            {/* <Link to="/ProjectTimelineCalendar"> */}
+            <button
+              className="btn btn-outline-secondary d-flex align-items-center gap-1"
+              onClick={() => setActiveTab(0)}
+            >
+              <i className="bi bi-grid" /> TimeLine
+            </button>
+            {/* </Link> */}
+            {/* <Link to="/projectlist"> */}
+            <button
+              className="btn btn-outline-secondary d-flex align-items-center gap-1"
+              onClick={() => setActiveTab(1)}
+            >
+              <i className="bi bi-list" /> List View
+            </button>
+            {/* </Link> */}
+            {/* <Link to="/kanban"> */}
+            <button
+              className="btn btn-outline-secondary d-flex align-items-center gap-1"
+              onClick={() => setActiveTab(2)}
+            >
+              <Kanban /> Board View
+            </button>
+            {/* </Link> */}
           </div>
 
           <button
             className="btn btn-primary add-project-btn"
             style={{ height: "fit-content" }}
-            // onClick={handleOpenModal}
+            onClick={handleOpenModal}
           >
             <i className="bi bi-plus" /> Add New Project
           </button>

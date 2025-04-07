@@ -1,385 +1,870 @@
-import React from 'react'
+import React, { useState } from "react";
+import {
+  FaFolder,
+  FaFilePdf,
+  FaFileImage,
+  FaFileAlt,
+  FaStar,
+  FaUserCircle,
+  FaFolderPlus,
+  FaGoogleDrive,
+  FaSearch,
+  FaEllipsisV,
+  FaTh,
+  FaList,
+  FaUpload,
+  FaShare,
+  FaTrash,
+  FaDownload
+} from "react-icons/fa";
 
-const Files = () => {
+// Sidebar Component with Drive-like styling
+const Sidebar = ({ onAddFolder, setActiveFolder }) => {
   return (
-    <div className="min-h-screen">
-    <aside className="w-100 bg-white border-r border-gray-200 flex flex-col">
-      <div className="p-6">
-        <div className=" items-center gap-4 mb-8">
-          <img
-            src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
-            alt="Logo"
-            className="w-8 h-8"
-          />
-          <h1 className="text-xl font-semibold">File Manager</h1>
+    <div className="p-3" style={{ backgroundColor: '#f8f9fa' }}>
+      <div className="d-flex align-items-center mb-4">
+        <h2 className="" style={{fontSize:"30px"}}>File</h2>
+      </div>
+      
+      <ul className="list-unstyled">
+        <li className="my-2 py-2 px-3 rounded hover-bg" onClick={() => setActiveFolder(null)}>
+          <div className="d-flex align-items-center">
+            <FaFolder className="text-warning me-2" />
+            <span className="d-none d-md-inline">My Drive</span>
+          </div>
+        </li>
+        <li className="my-2 py-2 px-3 rounded hover-bg">
+          <div className="d-flex align-items-center">
+            <FaStar className="text-warning me-2" />
+            <span className="d-none d-md-inline">Starred</span>
+          </div>
+        </li>
+        <li className="my-2 py-2 px-3 rounded hover-bg">
+          <div className="d-flex align-items-center">
+            <FaTrash className="text-secondary me-2" />
+            <span className="d-none d-md-inline">Trash</span>
+          </div>
+        </li>
+        <li className="my-2 py-2 px-3 rounded hover-bg">
+          <div className="d-flex align-items-center">
+            <FaFilePdf className="text-danger me-2" />
+            <span className="d-none d-md-inline">PDFs</span>
+          </div>
+        </li>
+        <li className="my-2 py-2 px-3 rounded hover-bg">
+          <div className="d-flex align-items-center">
+            <FaFileImage className="text-success me-2" />
+            <span className="d-none d-md-inline">Images</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+// FileDropdown Component
+const FileDropdown = ({ file, onDelete, onShare, onDownload, onStar, onMoveToFolder }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  return (
+    <div className="position-relative">
+      <button 
+        className="btn btn-sm btn-light"
+        onClick={() => setShowDropdown(!showDropdown)}
+      >
+        <FaEllipsisV size={14} />
+      </button>
+      
+      {showDropdown && (
+        <div className="dropdown-menu show" style={{ 
+          position: 'absolute', 
+          right: 0, 
+          top: '100%',
+          zIndex: 1000
+        }}>
+          <button className="dropdown-item" onClick={() => { onStar(file); setShowDropdown(false); }}>
+            <FaStar className="me-2" /> {file.starred ? "Unstar" : "Star"}
+          </button>
+          <button className="dropdown-item" onClick={() => { onShare(file); setShowDropdown(false); }}>
+            <FaShare className="me-2" /> Share
+          </button>
+          <button className="dropdown-item" onClick={() => { onDownload(file); setShowDropdown(false); }}>
+            <FaDownload className="me-2" /> Download
+          </button>
+          <button className="dropdown-item" onClick={() => { onMoveToFolder(file); setShowDropdown(false); }}>
+            <FaFolder className="me-2" /> Move to Folder
+          </button>
+          <div className="dropdown-divider"></div>
+          <button className="dropdown-item text-danger" onClick={() => { onDelete(file); setShowDropdown(false); }}>
+            <FaTrash className="me-2" /> Delete
+          </button>
         </div>
-        <div className="bg-gray-50 rounded-lg p-4 mb-6">
-          <div className="flex items-center gap-3 mb-3">
-            <img
-              src="https://creatie.ai/ai/api/search-image?query=professional headshot portrait with neutral background&width=40&height=40&orientation=squarish&flag=0775adc1-1f0d-4173-b8f2-beb4e94bf093"
-              alt="Profile"
-              className="w-10 h-10 rounded-full"
-            />
-            <div>
-              <h3 className="font-medium">James Hong</h3>
-              <p className="text-sm text-gray-500">jin343@example.com</p>
+      )}
+    </div>
+  );
+};
+
+// FolderDropdown Component
+const FolderDropdown = ({ folder, onDelete, onShare, onDownload, onOpen }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  return (
+    <div className="position-relative">
+      <button 
+        className="btn btn-sm btn-light position-absolute top-0 end-0 m-1"
+        onClick={() => setShowDropdown(!showDropdown)}
+      >
+        <FaEllipsisV size={12} />
+      </button>
+      
+      {showDropdown && (
+        <div className="dropdown-menu show" style={{ 
+          position: 'absolute', 
+          right: 0, 
+          top: '100%',
+          zIndex: 1000
+        }}>
+          <button className="dropdown-item" onClick={() => { onOpen(folder); setShowDropdown(false); }}>
+            <FaFolder className="me-2" /> Open
+          </button>
+          <button className="dropdown-item" onClick={() => { onShare(folder); setShowDropdown(false); }}>
+            <FaShare className="me-2" /> Share
+          </button>
+          <button className="dropdown-item" onClick={() => { onDownload(folder); setShowDropdown(false); }}>
+            <FaDownload className="me-2" /> Download
+          </button>
+          <div className="dropdown-divider"></div>
+          <button className="dropdown-item text-danger" onClick={() => { onDelete(folder); setShowDropdown(false); }}>
+            <FaTrash className="me-2" /> Delete
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// FileContent Component with Drive-like styling
+const FileContent = ({ activeFolder, setActiveFolder }) => {
+  const [files, setFiles] = useState([
+    {
+      id: 1,
+      name: "Secret Document",
+      size: "7.4 MB",
+      type: "PDF",
+      modified: "Mar 15, 2025",
+      starred: true,
+      folderId: 1,
+      icon: <FaFilePdf className="text-danger" />,
+    },
+    {
+      id: 2,
+      name: "Rewards Program",
+      size: "1.2 MB",
+      type: "PDF",
+      modified: "Jan 10, 2025",
+      starred: false,
+      folderId: 2,
+      icon: <FaFilePdf className="text-danger" />,
+    },
+    {
+      id: 3,
+      name: "Vacation Photos",
+      size: "1.8 MB",
+      type: "Image",
+      modified: "Aug 25, 2025",
+      starred: false,
+      folderId: 3,
+      icon: <FaFileImage className="text-success" />,
+    },
+    {
+      id: 4,
+      name: "Resume",
+      size: "500 KB",
+      type: "Word",
+      modified: "Apr 21, 2025",
+      starred: false,
+      folderId: null,
+      icon: <FaFileAlt className="text-info" />,
+    },
+    {
+      id: 5,
+      name: "Project Notes",
+      size: "2 MB",
+      type: "Text",
+      modified: "Oct 12, 2025",
+      starred: false,
+      folderId: 4,
+      icon: <FaFileAlt className="text-secondary" />,
+    },
+  ]);
+
+  const [folders, setFolders] = useState([
+    { id: 1, name: "Personal Assets", icon: <FaFolder className="text-warning" />, count: 1, color: "bg-warning-light" },
+    { id: 2, name: "Documents", icon: <FaFolder className="text-primary" />, count: 1, color: "bg-primary-light" },
+    { id: 3, name: "Images", icon: <FaFolder className="text-success" />, count: 1, color: "bg-success-light" },
+    { id: 4, name: "Projects", icon: <FaFolder className="text-danger" />, count: 1, color: "bg-danger-light" },
+  ]);
+
+  const [showAddFolderModal, setShowAddFolderModal] = useState(false);
+  const [newFolderName, setNewFolderName] = useState("");
+  const [showAddFileModal, setShowAddFileModal] = useState(false);
+  const [newFileName, setNewFileName] = useState("");
+  const [newFileType, setNewFileType] = useState("PDF");
+  const [uploadFile, setUploadFile] = useState(null);
+  const [showMoveToFolderModal, setShowMoveToFolderModal] = useState(false);
+  const [fileToMove, setFileToMove] = useState(null);
+  const [selectedFolderId, setSelectedFolderId] = useState(null);
+
+  // Filter files based on active folder
+  const filteredFiles = activeFolder 
+    ? files.filter(file => file.folderId === activeFolder.id)
+    : files.filter(file => !file.folderId);
+
+  // Folder actions
+  const handleDeleteFolder = (folder) => {
+    // Remove folder and any files in it
+    setFolders(folders.filter(f => f.id !== folder.id));
+    setFiles(files.filter(f => f.folderId !== folder.id));
+  };
+
+  const handleShareFolder = (folder) => {
+    alert(`Sharing folder: ${folder.name}`);
+  };
+
+  const handleDownloadFolder = (folder) => {
+    alert(`Downloading folder: ${folder.name}`);
+  };
+
+  const handleOpenFolder = (folder) => {
+    setActiveFolder(folder);
+  };
+
+  // File actions
+  const handleDeleteFile = (file) => {
+    setFiles(files.filter(f => f.id !== file.id));
+    // Update folder count
+    if (file.folderId) {
+      setFolders(folders.map(folder => 
+        folder.id === file.folderId 
+          ? { ...folder, count: folder.count - 1 } 
+          : folder
+      ));
+    }
+  };
+
+  const handleShareFile = (file) => {
+    alert(`Sharing file: ${file.name}`);
+  };
+
+  const handleDownloadFile = (file) => {
+    alert(`Downloading file: ${file.name}`);
+  };
+
+  const handleStarFile = (file) => {
+    setFiles(files.map(f => 
+      f.id === file.id ? { ...f, starred: !f.starred } : f
+    ));
+  };
+
+  const handleMoveToFolder = (file) => {
+    setFileToMove(file);
+    setShowMoveToFolderModal(true);
+  };
+
+  const handleMoveToFolderSubmit = () => {
+    if (!fileToMove || !selectedFolderId) return;
+    
+    // Update the file's folderId
+    setFiles(files.map(file => 
+      file.id === fileToMove.id 
+        ? { ...file, folderId: selectedFolderId } 
+        : file
+    ));
+    
+    // Update folder counts
+    setFolders(folders.map(folder => {
+      if (folder.id === selectedFolderId) {
+        return { ...folder, count: folder.count + 1 };
+      }
+      if (folder.id === fileToMove.folderId) {
+        return { ...folder, count: folder.count - 1 };
+      }
+      return folder;
+    }));
+    
+    setShowMoveToFolderModal(false);
+    setFileToMove(null);
+    setSelectedFolderId(null);
+  };
+
+  const handleAddFolder = () => {
+    setShowAddFolderModal(true);
+  };
+
+  const handleAddFolderSubmit = (e) => {
+    e.preventDefault();
+    if (!newFolderName) return;
+    
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+    
+    const newFolder = {
+      id: folders.length + 1,
+      name: newFolderName,
+      icon: <FaFolder className="text-warning" />,
+      count: 0,
+      color: "bg-info-light",
+      modified: formattedDate
+    };
+    
+    setFolders([...folders, newFolder]);
+    setNewFolderName("");
+    setShowAddFolderModal(false);
+  };
+
+  const handleAddFileSubmit = (e) => {
+    e.preventDefault();
+    if (!newFileName) return;
+    
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+    
+    const newFile = {
+      id: files.length + 1,
+      name: newFileName,
+      size: "1.0 MB",
+      type: newFileType,
+      modified: formattedDate,
+      starred: false,
+      folderId: activeFolder ? activeFolder.id : null,
+      icon: newFileType === "PDF" 
+        ? <FaFilePdf className="text-danger" /> 
+        : newFileType === "Image" 
+          ? <FaFileImage className="text-success" /> 
+          : <FaFileAlt className="text-info" />
+    };
+    
+    setFiles([...files, newFile]);
+    
+    // Update folder count if added to a folder
+    if (activeFolder) {
+      setFolders(folders.map(folder => 
+        folder.id === activeFolder.id 
+          ? { ...folder, count: folder.count + 1 } 
+          : folder
+      ));
+    }
+    
+    setNewFileName("");
+    setShowAddFileModal(false);
+  };
+
+  const handleFileUpload = (e) => {
+    e.preventDefault();
+    if (!uploadFile) return;
+    
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+    
+    const fileType = uploadFile.name.split('.').pop().toUpperCase();
+    const sizeInMB = (uploadFile.size / (1024 * 1024)).toFixed(1);
+    
+    const newFile = {
+      id: files.length + 1,
+      name: uploadFile.name,
+      size: `${sizeInMB} MB`,
+      type: fileType,
+      modified: formattedDate,
+      starred: false,
+      folderId: activeFolder ? activeFolder.id : null,
+      icon: fileType === "PDF" 
+        ? <FaFilePdf className="text-danger" /> 
+        : ["JPG", "PNG", "GIF"].includes(fileType)
+          ? <FaFileImage className="text-success" /> 
+          : <FaFileAlt className="text-info" />
+    };
+    
+    setFiles([...files, newFile]);
+    
+    // Update folder count if added to a folder
+    if (activeFolder) {
+      setFolders(folders.map(folder => 
+        folder.id === activeFolder.id 
+          ? { ...folder, count: folder.count + 1 } 
+          : folder
+      ));
+    }
+    
+    setUploadFile(null);
+    document.getElementById('fileUpload').value = '';
+  };
+
+  return (
+    <div className="p-3">
+      {/* Add Folder Modal */}
+      {showAddFolderModal && (
+        <div className="modal-backdrop">
+          <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h5>Create New Folder</h5>
+              <button 
+                className="btn-close" 
+                onClick={() => setShowAddFolderModal(false)}
+              ></button>
             </div>
-          </div>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
-            <i className="fas fa-cloud-upload-alt text-gray-400 text-xl mb-2" />
-            <p className="text-sm text-gray-600">Drop files here</p>
-            <p className="text-xs text-gray-500">or browse from computer</p>
-          </div>
-        </div>
-        <nav className="space-y-1">
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-custom bg-gray-100 rounded-lg"
-          >
-            <i className="fas fa-folder" />
-            <span>All Folders/Files</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fab fa-google-drive" />
-            <span>Drive</span>
-          </a>
-          {/* <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fab fa-dropbox" />
-            <span>Dropbox</span>
-          </a> */}
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-share-alt" />
-            <span>Shared with Me</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-file-alt" />
-            <span>Documents</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-clock" />
-            <span>Recent Files</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-star" />
-            <span>Important</span>
-          </a>
-          {/* <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
-          >
-            <i className="fas fa-photo-video" />
-            <span>Media</span>
-          </a> */}
-        </nav>
-        <div className="mt-8">
-          <h3 className="text-sm font-medium mb-3">Storage Details</h3>
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
-            <div id="storage-chart" className="h-32" />
-            <div className="mt-3">
-              <div className="flex justify-between text-sm mb-1">
-                <span className="text-gray-600">Used Space</span>
-                <span className="font-medium">75%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-1">
-                <div
-                  className="bg-custom h-1 rounded-full"
-                  style={{ width: "75%" }}
+            <form onSubmit={handleAddFolderSubmit}>
+              <div className="mb-3">
+                <label htmlFor="folderName" className="form-label">Folder Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="folderName"
+                  value={newFolderName}
+                  onChange={(e) => setNewFolderName(e.target.value)}
+                  required
                 />
               </div>
+              <div className="d-flex justify-content-end">
+                <button 
+                  type="button" 
+                  className="btn btn-secondary me-2"
+                  onClick={() => setShowAddFolderModal(false)}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary">Create</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Add File Modal */}
+      {showAddFileModal && (
+        <div className="modal-backdrop">
+          <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h5>Add New File</h5>
+              <button 
+                className="btn-close" 
+                onClick={() => setShowAddFileModal(false)}
+              ></button>
+            </div>
+            <form onSubmit={handleAddFileSubmit}>
+              <div className="mb-3">
+                <label htmlFor="fileName" className="form-label">File Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="fileName"
+                  value={newFileName}
+                  onChange={(e) => setNewFileName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="fileType" className="form-label">File Type</label>
+                <select
+                  className="form-select"
+                  id="fileType"
+                  value={newFileType}
+                  onChange={(e) => setNewFileType(e.target.value)}
+                >
+                  <option value="PDF">PDF</option>
+                  <option value="Image">Image</option>
+                  <option value="Text">Text</option>
+                </select>
+              </div>
+              <div className="d-flex justify-content-end">
+                <button 
+                  type="button" 
+                  className="btn btn-secondary me-2"
+                  onClick={() => setShowAddFileModal(false)}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary">Add File</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Upload File Modal */}
+      {uploadFile && (
+        <div className="modal-backdrop">
+          <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h5>Upload File</h5>
+              <button 
+                className="btn-close" 
+                onClick={() => setUploadFile(null)}
+              ></button>
+            </div>
+            <div className="mb-3">
+              <p>File: {uploadFile.name}</p>
+              <p>Size: {(uploadFile.size / (1024 * 1024)).toFixed(2)} MB</p>
+              {activeFolder && <p>Will be added to: {activeFolder.name}</p>}
+            </div>
+            <div className="d-flex justify-content-end">
+              <button 
+                type="button" 
+                className="btn btn-secondary me-2"
+                onClick={() => setUploadFile(null)}
+              >
+                Cancel
+              </button>
+              <button 
+                type="button" 
+                className="btn btn-primary"
+                onClick={handleFileUpload}
+              >
+                Upload
+              </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Move to Folder Modal */}
+      {showMoveToFolderModal && (
+        <div className="modal-backdrop">
+          <div className="modal-content bg-white p-4 rounded" style={{ width: '400px', maxWidth: '90%' }}>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h5>Move File to Folder</h5>
+              <button 
+                className="btn-close" 
+                onClick={() => setShowMoveToFolderModal(false)}
+              ></button>
+            </div>
+            <div className="mb-3">
+              <p>Moving: {fileToMove?.name}</p>
+              <label className="form-label">Select Folder:</label>
+              <select
+                className="form-select"
+                value={selectedFolderId || ""}
+                onChange={(e) => setSelectedFolderId(Number(e.target.value))}
+              >
+                <option value="">-- Select a folder --</option>
+                {folders.map(folder => (
+                  <option key={folder.id} value={folder.id}>
+                    {folder.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="d-flex justify-content-end">
+              <button 
+                type="button" 
+                className="btn btn-secondary me-2"
+                onClick={() => setShowMoveToFolderModal(false)}
+              >
+                Cancel
+              </button>
+              <button 
+                type="button" 
+                className="btn btn-primary"
+                onClick={handleMoveToFolderSubmit}
+                disabled={!selectedFolderId}
+              >
+                Move
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="breadcrumb" className="mb-3">
+        <ol className="breadcrumb">
+          <li 
+            className="breadcrumb-item" 
+            style={{ cursor: 'pointer' }}
+            onClick={() => setActiveFolder(null)}
+          >
+            My Drive
+          </li>
+          {activeFolder && (
+            <li className="breadcrumb-item active" aria-current="page">
+              {activeFolder.name}
+            </li>
+          )}
+        </ol>
+      </nav>
+
+      {/* Header / Navbar */}
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+        <div className="d-flex align-items-center mb-3 mb-md-0 w-100">
+          <h4 className="mb-0 me-3 d-none d-md-block">
+            {activeFolder ? activeFolder.name : 'My Drive'}
+          </h4>
+          <div className="input-group w-100" style={{ maxWidth: '400px' }}>
+            <span className="input-group-text bg-white">
+              <FaSearch className="text-muted" />
+            </span>
+            <input 
+              type="text" 
+              className="form-control" 
+              placeholder="Search in Drive" 
+            />
+          </div>
+        </div>
+        <div className="d-flex w-100 w-md-auto justify-content-between justify-content-md-end">
+          <button 
+            className="btn btn-light me-2 d-flex align-items-center"
+            onClick={() => setShowAddFileModal(true)}
+          >
+            <FaFileAlt className="me-2" /> <span className="d-none d-md-inline">New File</span>
+          </button>
+          <form className="me-2">
+            <label htmlFor="fileUpload" className="btn btn-light d-flex align-items-center mb-0">
+              <FaUpload className="me-2" /> <span className="d-none d-md-inline">Upload</span>
+              <input 
+                type="file" 
+                id="fileUpload" 
+                style={{ display: 'none' }} 
+                onChange={(e) => setUploadFile(e.target.files[0])}
+              />
+            </label>
+          </form>
+          <button className="btn btn-light me-2 d-none d-md-block">
+            <FaTh />
+          </button>
+          <button className="btn btn-light d-none d-md-block">
+            <FaList />
+          </button>
         </div>
       </div>
-    </aside>
-    <main className="flex-1 overflow-auto">
-      <header className="bg-white border-b border-gray-200 px-8 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4 flex-1">
-            <div className="relative flex-1 max-w-2xl">
-              <input
-                type="text"
-                placeholder="Search files and folders..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-custom focus:border-custom"
-              />
-              <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <button className="p-2 text-gray-500 hover:text-gray-700">
-              <i className="fas fa-expand" />
-            </button>
-            <button className="p-2 text-gray-500 hover:text-gray-700">
-              <i className="fas fa-bell" />
-            </button>
-            <button className="p-2 text-gray-500 hover:text-gray-700">
-              <i className="fas fa-cog" />
-            </button>
-            <button className="bg-custom text-white px-4 py-2 rounded-lg !rounded-button flex items-center gap-2">
-              <i className="fas fa-plus" />
-              Create Folder
+
+      {/* Recent Folders - Only show when not inside a folder */}
+      {!activeFolder && (
+        <>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <h5 className="mb-0">Folders</h5>
+            <button 
+              className="btn btn-primary align-items-center justify-content-center d-flex"
+              onClick={handleAddFolder}
+            >
+              <FaFolderPlus className="me-1" /> New
             </button>
           </div>
-        </div>
-      </header>
-      <div className="p-8">
-        <div className="grid  gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <i className="fab fa-dropbox text-blue-600 text-2xl" />
-              </div>
-              <button className="text-gray-400 hover:text-gray-600">
-                <i className="fas fa-ellipsis-h" />
-              </button>
-            </div>
-            <h3 className="font-medium mb-1">Dropbox</h3>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">200 Files</span>
-              <span className="font-medium">28GB</span>
-            </div>
-            <div className="mt-3 w-full bg-gray-200 rounded-full h-1">
-              <div
-                className="bg-blue-600 h-1 rounded-full"
-                style={{ width: "65%" }}
-              />
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <i className="fab fa-google-drive text-green-600 text-2xl" />
-              </div>
-              <button className="text-gray-400 hover:text-gray-600">
-                <i className="fas fa-ellipsis-h" />
-              </button>
-            </div>
-            <h3 className="font-medium mb-1">Google Drive</h3>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">144 Files</span>
-              <span className="font-medium">54GB</span>
-            </div>
-            <div className="mt-3 w-full bg-gray-200 rounded-full h-1">
-              <div
-                className="bg-green-600 h-1 rounded-full"
-                style={{ width: "45%" }}
-              />
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <i className="fas fa-cloud text-purple-600 text-2xl" />
-              </div>
-              <button className="text-gray-400 hover:text-gray-600">
-                <i className="fas fa-ellipsis-h" />
-              </button>
-            </div>
-            <h3 className="font-medium mb-1">Cloud Storage</h3>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">144 Files</span>
-              <span className="font-medium">54GB</span>
-            </div>
-            <div className="mt-3 w-full bg-gray-200 rounded-full h-1">
-              <div
-                className="bg-purple-600 h-1 rounded-full"
-                style={{ width: "55%" }}
-              />
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                <i className="fas fa-hdd text-gray-600 text-2xl" />
-              </div>
-              <button className="text-gray-400 hover:text-gray-600">
-                <i className="fas fa-ellipsis-h" />
-              </button>
-            </div>
-            <h3 className="font-medium mb-1">Internal Storage</h3>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">144 Files</span>
-              <span className="font-medium">54GB</span>
-            </div>
-            <div className="mt-3 w-full bg-gray-200 rounded-full h-1">
-              <div
-                className="bg-gray-600 h-1 rounded-full"
-                style={{ width: "35%" }}
-              />
-            </div>
-          </div>
-        </div>
-        {/* <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-medium">Quick Access</h2>
-            <div className="flex items-center gap-4">
-              <button className="text-gray-500 hover:text-gray-700">
-                Close
-              </button>
-              <button className="text-custom hover:text-custom-dark">
-                View All
-              </button>
-            </div>
-          </div>
-          <div className="grid grid-cols-5 gap-6">
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-file-word text-blue-600" />
+          <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3 mb-4">
+            {folders.map((folder) => (
+              <div className="col" style={{width:"25%", position: "relative"}} key={folder.id}>
+                <div 
+                  className={`card h-100 border-0 ${folder.color} hover-shadow`}
+                  onClick={() => handleOpenFolder(folder)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <FolderDropdown 
+                    folder={folder}
+                    onDelete={handleDeleteFolder}
+                    onShare={handleShareFolder}
+                    onDownload={handleDownloadFolder}
+                    onOpen={handleOpenFolder}
+                  />
+                  <div className="card-body text-center">
+                    <div className="fs-2 mb-2">{folder.icon}</div>
+                    <h6 className="card-title text-truncate">{folder.name}</h6>
+                    <p className="card-text small text-muted d-none d-md-block">
+                      {folder.count} {folder.count === 1 ? 'item' : 'items'}
+                    </p>
+                  </div>
                 </div>
-                <button className="text-yellow-400">
-                  <i className="fas fa-star" />
-                </button>
               </div>
-              <h4 className="font-medium text-sm mb-1">Final Change.doc</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-file-pdf text-red-600" />
-                </div>
-                <button className="text-gray-400 hover:text-yellow-400">
-                  <i className="far fa-star" />
-                </button>
-              </div>
-              <h4 className="font-medium text-sm mb-1">Marklist.pdf</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-file-excel text-green-600" />
-                </div>
-                <button className="text-gray-400 hover:text-yellow-400">
-                  <i className="far fa-star" />
-                </button>
-              </div>
-              <h4 className="font-medium text-sm mb-1">List.xlsx</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-folder text-yellow-600" />
-                </div>
-                <button className="text-gray-400 hover:text-yellow-400">
-                  <i className="far fa-star" />
-                </button>
-              </div>
-              <h4 className="font-medium text-sm mb-1">Group Photos</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-image text-purple-600" />
-                </div>
-                <button className="text-yellow-400">
-                  <i className="fas fa-star" />
-                </button>
-              </div>
-              <h4 className="font-medium text-sm mb-1">Nature.png</h4>
-              <span className="text-xs text-gray-500">2.4 GB</span>
-            </div>
+            ))}
           </div>
-        </div> */}
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-medium">Recent Videos</h2>
-            <select className="border-0 text-sm text-gray-500 focus:ring-0">
-              <option>Last 7 Days</option>
-              <option>Last 30 Days</option>
-              <option>Last 3 Months</option>
+        </>
+      )}
+
+      {/* Files Table */}
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+        <h5 className="mb-3 mb-md-0">
+          {activeFolder ? `Files in ${activeFolder.name}` : 'Files'}
+        </h5>
+        <div className="d-flex">
+          <div className="me-3">
+            <label htmlFor="sortBy" className="me-2 small d-none d-md-inline">
+              Sort:
+            </label>
+            <select
+              id="sortBy"
+              className="form-select form-select-sm d-inline-block"
+              style={{ width: 'auto' }}
+            >
+              <option>Name</option>
+              <option>Modified</option>
+              <option>Size</option>
+              <option>Type</option>
             </select>
           </div>
-          <div className="grid grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-              <div className="relative">
-                <img
-                  src="https://creatie.ai/ai/api/search-image?query=futuristic sci-fi movie scene with glowing neon circles&width=400&height=225&orientation=landscape&flag=ad6f4e4b-374c-4803-a194-485d808704ed"
-                  alt="Video thumbnail"
-                  className="w-full h-48 object-cover"
-                />
-                <button className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 text-white">
-                  <i className="fas fa-play text-2xl" />
-                </button>
-              </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-medium">Inertia Movie</h4>
-                  <button className="text-yellow-400">
-                    <i className="fas fa-star" />
-                  </button>
-                </div>
-                <span className="text-sm text-gray-500">2.4 GB</span>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-              <div className="relative">
-                <img
-                  src="https://creatie.ai/ai/api/search-image?query=modern smartphone devices with glowing screens on clean background&width=400&height=225&orientation=landscape&flag=bcfeef7e-e39a-4a66-93d6-cf1a67cd4805"
-                  alt="Video thumbnail"
-                  className="w-full h-48 object-cover"
-                />
-                <button className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 text-white">
-                  <i className="fas fa-play text-2xl" />
-                </button>
-              </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-medium">2028 Nov 10.mp4</h4>
-                  <button className="text-yellow-400">
-                    <i className="fas fa-star" />
-                  </button>
-                </div>
-                <span className="text-sm text-gray-500">2.4 GB</span>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-              <div className="relative">
-                <img
-                  src="https://creatie.ai/ai/api/search-image?query=colorful liquid art abstract motion with vibrant colors&width=400&height=225&orientation=landscape&flag=ac9c3284-1ad8-4c98-ba6b-f1c9f18267bd"
-                  alt="Video thumbnail"
-                  className="w-full h-48 object-cover"
-                />
-                <button className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 text-white">
-                  <i className="fas fa-play text-2xl" />
-                </button>
-              </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-medium">AI Liquid Color</h4>
-                  <button className="text-yellow-400">
-                    <i className="fas fa-star" />
-                  </button>
-                </div>
-                <span className="text-sm text-gray-500">2.4 GB</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-    </main>
-  </div>
-  )
-}
+      <div className="table-responsive">
+        <table className="table align-middle table-hover">
+          <thead className="table-light">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col" className="d-none d-md-table-cell">Size</th>
+              <th scope="col" className="d-none d-md-table-cell">Type</th>
+              <th scope="col" className="d-none d-md-table-cell">Modified</th>
+              <th scope="col" className="d-none d-md-table-cell">Folder</th>
+              <th scope="col" className="text-center">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredFiles.map((file) => (
+              <tr key={file.id}>
+                <td>
+                  <div className="d-flex align-items-center">
+                    <span className="me-3">{file.icon}</span>
+                    <span className="text-truncate" style={{maxWidth: '150px'}}>{file.name}</span>
+                    {file.starred && <FaStar className="text-warning ms-2" size={14} />}
+                  </div>
+                </td>
+                <td className="text-muted d-none d-md-table-cell">{file.size}</td>
+                <td className="text-muted d-none d-md-table-cell">{file.type}</td>
+                <td className="text-muted d-none d-md-table-cell">{file.modified}</td>
+                <td className="text-muted d-none d-md-table-cell">
+                  {file.folderId ? folders.find(f => f.id === file.folderId)?.name : 'My Drive'}
+                </td>
+                <td className="text-center">
+                  <div className="d-flex justify-content-center">
+                    <FileDropdown 
+                      file={file}
+                      onDelete={handleDeleteFile}
+                      onShare={handleShareFile}
+                      onDownload={handleDownloadFile}
+                      onStar={handleStarFile}
+                      onMoveToFolder={handleMoveToFolder}
+                    />
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-export default Files;
+      {/* Pagination */}
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3">
+        <div className="text-muted small mb-2 mb-md-0">
+          Showing 1 to {filteredFiles.length} of {filteredFiles.length} items
+        </div>
+        <nav>
+          <ul className="pagination pagination-sm mb-0">
+            <li className="page-item disabled">
+              <button className="page-link">Previous</button>
+            </li>
+            <li className="page-item active">
+              <button className="page-link">1</button>
+            </li>
+            <li className="page-item">
+              <button className="page-link">2</button>
+            </li>
+            <li className="page-item">
+              <button className="page-link">Next</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  );
+};
+
+// Main FileManager Component
+const FileManager = () => {
+  const [activeFolder, setActiveFolder] = useState(null);
+
+  return (
+    <div className="container-fluid">
+      <div className="row g-0">
+        {/* Sidebar Column - Hidden on mobile, shown on tablet and up */}
+        <div
+          className="col-12 col-md-3 col-lg-2 border-end d-none d-md-block"
+          style={{ minHeight: "100vh", backgroundColor: '#f8f9fa' }}
+        >
+          <Sidebar onAddFolder={() => {}} setActiveFolder={setActiveFolder} />
+        </div>
+        {/* Main Content Column - Full width on mobile, adjusted on tablet and up */}
+        <div className="col-12 col-md-9 col-lg-10 p-3" style={{ backgroundColor: '#fff' }}>
+          <FileContent activeFolder={activeFolder} setActiveFolder={setActiveFolder} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Add these styles to your CSS
+const styles = `
+  .hover-bg:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+  }
+  .hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.2s ease;
+  }
+  .bg-warning-light {
+    background-color: rgba(255, 193, 7, 0.1);
+  }
+  .bg-primary-light {
+    background-color: rgba(13, 110, 253, 0.1);
+  }
+  .bg-success-light {
+    background-color: rgba(25, 135, 84, 0.1);
+  }
+  .bg-danger-light {
+    background-color: rgba(220, 53, 69, 0.1);
+  }
+  .bg-info-light {
+    background-color: rgba(13, 202, 240, 0.1);
+  }
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    
+    
+  }
+  .dropdown-menu {
+    min-width: 10rem;
+  }
+  .dropdown-item {
+    padding: 0.25rem 1rem;
+    font-size: 0.875rem;
+  }
+`;
+
+export default FileManager;
+
+// Add the styles to the head
+const styleElement = document.createElement('style');
+styleElement.innerHTML = styles;
+document.head.appendChild(styleElement);

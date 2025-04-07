@@ -10,6 +10,8 @@ import {
   faChevronRight, 
   faEllipsisV 
 } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 // Constants
 const PROJECTS = [
@@ -461,24 +463,32 @@ const TodoApp = () => {
   const getProjectName = (id) => {
     const project = PROJECTS.find(proj => proj.id === id);
     return project ? project.name : 'None';
+  }; 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
+  const navigate = useNavigate();
+
+  const handleRowClick = (taskId) => {
+    navigate(`/task/${taskId}`);
+    // navigate("/tododetails")
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <div className="container mx-auto px-3 px-md-4 px-lg-5 py-4">
+    <div className={` ${darkMode ? "" : null } min-h-screen `}>
+      <div className=" mx-auto px-3 px-md-4 px-lg-5 py-4">
         {/* Header */}
         <header className="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
           <div className="mb-3 mb-md-0">
             <h1 className="h3 mb-0">Todo</h1>
           </div>
-          <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center w-100 w-md-auto">
+          <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center w-30  w-md-auto">
             <div className="input-group me-sm-2 mb-2 mb-sm-0 flex-grow-1">
-              <span className="input-group-text">
+              <span className={` ${darkMode ? "dark-mode" : null }  input-group-text `}>
                 <FontAwesomeIcon icon={faSearch} />
               </span>
               <input 
                 type="text" 
-                className="form-control" 
+                className={` ${darkMode ? "dark-mode" : null } form-control color-gray-300 `} 
                 placeholder="Search Todo List" 
               />
             </div>
@@ -508,7 +518,8 @@ const TodoApp = () => {
             </span>
             <input 
               type="text" 
-              className="form-control" 
+              className= {` ${darkMode ? "dark-mode" : null } form-control `}
+              aria-label="New task"
               placeholder="New task" 
               value={newTask}
               onClick={() => setIsModalOpen(true)}
@@ -551,11 +562,11 @@ const TodoApp = () => {
           <div className="col-12 col-md-6">
             <div className="row g-2">
               <div className="col-4 col-sm-4">
-                <label className="form-label small">Due Date</label>
+                <label className= {` ${darkMode ? "dark-mode" : null }  form-label small`}>Due Date</label>
                 <select
                   value={dueDateFilter}
                   onChange={(e) => setDueDateFilter(e.target.value)}
-                  className="form-select form-select-sm"
+                  className={` ${darkMode ? "dark-mode" : null } form-select form-select-sm`}
                 >
                   <option value="">All</option>
                   {Array.from(new Set(tasks.map((task) => task.dueDate))).map((date) => (
@@ -566,11 +577,11 @@ const TodoApp = () => {
                 </select>
               </div>
               <div className="col-4 col-sm-4">
-                <label className="form-label small">All Tags</label>
+                <label className={` ${darkMode ? "dark-mode" : null } form-label small`}>All Tags</label>
                 <select
                   value={tagFilter}
                   onChange={(e) => setTagFilter(e.target.value)}
-                  className="form-select form-select-sm"
+                  className={` ${darkMode ? "dark-mode" : null } form-select form-select-sm`}
                 >
                   <option value="">All</option>
                   {TAG_OPTIONS.map((tag) => (
@@ -581,12 +592,11 @@ const TodoApp = () => {
                 </select>
               </div>
               <div className="col-4 col-sm-4">
-                <label className="form-label small">Sort By</label>
+                <label className={` ${darkMode ? "dark-mode" : null } form-label small`}>Sort By</label>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="form-select form-select-sm"
-                >
+                  className={` ${darkMode ? "dark-mode" : null } form-select form-select-sm`}>
                   <option value="createdDate">Created Date</option>
                   <option value="dueDate">Due Date</option>
                 </select>
@@ -597,7 +607,7 @@ const TodoApp = () => {
 
         {/* Task Sections */}
         {(activeFilter === 'all' || activeFilter === 'high') && highPriorityTasks.length > 0 && (
-          <div className="mb-5">
+          <div className={`${darkMode ? "dark-mode" : null } `}>
             <div className="d-flex flex-column flex-sm-row align-items-sm-center mb-2">
               <div className="d-flex align-items-center mb-2 mb-sm-0">
                 <FontAwesomeIcon icon={faChevronDown} className="me-2 text-muted" />
@@ -618,7 +628,7 @@ const TodoApp = () => {
             </div>
             
             <div className="table-responsive " >
-              <table className="table table-striped">
+              <table className= {` ${darkMode ? "table-dark" : null }  table table-striped`}>
                 <thead>
                   <tr>
                     <th scope="col">Task</th>
@@ -631,7 +641,7 @@ const TodoApp = () => {
                 </thead>
                 <tbody>
                   {highPriorityTasks.map(task => (
-                    <tr key={task.id}>
+                    <tr key={task.id} onClick={() => handleRowClick(task.id)} style={{ cursor: 'pointer' }}>
                       <td>
                         <div className="d-flex align-items-center">
                           <div className="form-check me-3">
@@ -730,7 +740,7 @@ const TodoApp = () => {
             </div>
             
             <div className="table-responsive" >
-              <table className="table table-striped">
+              <table className= {` ${darkMode ? "table-dark" : null }  table table-striped`}>
                 <thead>
                   <tr>
                     <th scope="col">Task</th>

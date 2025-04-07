@@ -1,8 +1,9 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import "./task.css";
 import { Link } from 'react-router-dom';
 const TaskDetail = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
 
   // You can fetch task details based on the id here
@@ -14,11 +15,16 @@ const TaskDetail = () => {
   <div className="task-card">
     <div className="d-flex justify-content-between align-items-start mb-4">
       <h4 className="mb-0">Task Details</h4>
-      <div className="btn">
-      <Link to="/project/task" className="edit-btn me-2">
-         Back
-      </Link>
-      <a href="#" className="edit-btn">
+      <div className="">
+        <button className="edit-btn " onClick={() => navigate(-1)}>
+        <i className="bi bi-arrow-left" />
+      
+      Back
+        </button>
+        
+            <a href="#" className="edit-btn">
+              
+
         <i className="bi bi-pencil" /> Edit Task
       </a>
       </div>

@@ -303,7 +303,7 @@ const ContactsList = () => {
                 <i className="bi bi-search inv-search-icon" />
                 <input
                   type="text"
-                  className="inv-search-input"
+                  className="inv-search-input h-11"
                   placeholder="Search Contacts..."
                   aria-label="Search Contacts"
                 />

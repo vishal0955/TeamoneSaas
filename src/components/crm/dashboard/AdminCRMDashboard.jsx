@@ -134,7 +134,7 @@ const AdminCRMDashboard = () => {
   }, []);
 
   return (
-    <div className="container-fluid bg-light p-3 p-md-4">
+    <div className="container-fluid  p-3 p-md-4">
       <h1 className="mb-3">CRM Dashboard</h1>
       
       {/* Stats Section - Responsive Grid */}
@@ -160,7 +160,7 @@ const AdminCRMDashboard = () => {
               </div>
               <div>
                 <div className="inv-stat-label">Sales Revenue</div>
-                <p className="inv-stat-value">$24,403</p>
+                <p className="inv-stat-value">£24,403</p>
               </div>
             </div>
           </div>
@@ -173,7 +173,7 @@ const AdminCRMDashboard = () => {
               </div>
               <div>
                 <div className="inv-stat-label">Average Price</div>
-                <p className="inv-stat-value">$2431</p>
+                <p className="inv-stat-value">£2431</p>
               </div>
             </div>
           </div>

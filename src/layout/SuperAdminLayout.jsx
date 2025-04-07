@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const SuperAdminLayout = () => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed((prev) => !prev);

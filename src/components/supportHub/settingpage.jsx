@@ -53,7 +53,7 @@ const sections = [
 
 const HelpDeskSettings = () => {
   return (
-    <div className="bg-gray-50 min-h-screen font-sans">
+    <div className=" min-h-screen font-sans">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-2xl font-semibold text-gray-900 mb-8">Help Desk Settings</h1>
         
