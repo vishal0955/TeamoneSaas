@@ -372,7 +372,7 @@ const AllProject = () => {
                         <input type="checkbox" className="form-check-input" />
                       </td>
                       <td>{task.name}</td>
-                      <td className="d-flex align-items-center">
+                      <td className=" align-items-center">
                         <img
                           src={task.avatar}
                           className="rounded-circle me-1"
