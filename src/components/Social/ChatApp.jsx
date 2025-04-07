@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const ChatApp = () => {
   const [activeTab, setActiveTab] = useState("allChats");
@@ -19,14 +20,16 @@ const ChatApp = () => {
     setMessage("");
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <div className="container-fluid p-0">
       <div className="row g-0">
         {/* Sidebar */}
         <div
-          className="col-md-3 col-12"
+          className={`${darkMode ? "dark-mode" : null } col-md-3 col-12`}
           style={{
-            backgroundColor: "#ffffff",
+            
             borderRight: "1px solid #dee2e6",
             //   height: '100%',
             padding: 0,
@@ -34,11 +37,13 @@ const ChatApp = () => {
           }}>
           {/* Tabs Navigation */}
           <div
+          className={`${darkMode ? "dark-mode" : null }`}
             style={{
               display: "flex",
-              backgroundColor: "#f8f9fa",
+           
             }}>
             <div
+            
               onClick={() => setActiveTab("allChats")}
               style={{
                 backgroundColor:
@@ -50,6 +55,7 @@ const ChatApp = () => {
                 textAlign: "center",
                 fontWeight: 500,
                 cursor: "pointer",
+                
               }}>
               All Chats
             </div>

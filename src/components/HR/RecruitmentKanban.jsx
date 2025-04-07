@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Plus, Search, Filter, SortAsc, Users, XCircle, Settings, ChevronDown, MoreVertical, FileText, Zap, Pause, Check, CreditCard, Calendar, Moon, Sun } from 'lucide-react';
+import { useSelector } from 'react-redux';
 
 
 const ItemTypes = {
@@ -517,16 +518,18 @@ const Recruitmentkanban = () => {
 
   // Theme-dependent styles
   const themeStyles = {
-    background: isDarkMode ? 'bg-gray-900' : 'bg-gray-100',
-    text: isDarkMode ? 'text-white' : 'text-gray-800',
+    background: isDarkMode ? '' : '',
+    text: isDarkMode ? '' : '',
     navBorder: isDarkMode ? 'border-gray-700' : 'border-gray-300',
-    cardBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
-    buttonBg: isDarkMode ? 'bg-gray-700' : 'bg-gray-200',
-    buttonHover: isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-300',
-    inputBg: isDarkMode ? 'bg-gray-800' : 'bg-white',
+    cardBg: isDarkMode ? '' : '',
+    buttonBg: isDarkMode ? '' : '',
+    buttonHover: isDarkMode ? '' : '',
+    inputBg: isDarkMode ? '' : '',
     inputBorder: isDarkMode ? 'border-gray-600' : 'border-gray-300',
-    secondaryText: isDarkMode ? 'text-gray-400' : 'text-gray-500',
+    secondaryText: isDarkMode ? '' : '',
   };
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
     <DndProvider backend={HTML5Backend}>

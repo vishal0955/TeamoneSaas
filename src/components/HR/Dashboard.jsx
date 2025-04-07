@@ -1,6 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const HRDashboard = () => {
+
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <div className="container">
     <div className=" min-h-screen p-4">
@@ -11,17 +16,17 @@ const HRDashboard = () => {
           <div className="flex-1">
             {/* Statistics Section */}
             <div className="mb-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                 {["To do's", "Performance", "Recruitment", "HR"].map(
                   (title, index) => (
                     <div
                       key={index}
-                      className="bg-white rounded px-3 py-3 shadow-sm h-full"
+                      className={`${darkMode ? "card-dark" : null } rounded px-3 py-3 shadow-sm h-full`}
                     >
                       <div className="text-2xl font-semibold text-primary">
                         {index < 2 ? 6 - index * 4 : 2}
                       </div>
-                      <div className="text-muted text-sm">{title}</div>
+                      <div className=" text-sm">{title}</div>
                     </div>
                   )
                 )}
@@ -50,7 +55,7 @@ const HRDashboard = () => {
                 return (
                   <div
                     key={index}
-                    className="bg-white text-gray-900 rounded-lg p-6 min-w-[280px] sm:min-w-[320px] flex-shrink-0 shadow-sm"
+                    className={`${darkMode ? "card-dark" : null } rounded-lg p-6 min-w-[280px] sm:min-w-[320px] flex-shrink-0 shadow-sm`}
                   >
                     <div className="flex items-center gap-3 mb-4">
                       <img
@@ -61,8 +66,8 @@ const HRDashboard = () => {
                       <div className="font-medium">{data.name}</div>
                     </div>
                     <h3 className="text-lg font-semibold mb-2">{data.title}</h3>
-                    <p className="text-sm text-gray-700">{data.desc}</p>
-                    <div className="text-xs text-gray-500 mt-4">{data.time}</div>
+                    <p className="text-sm ">{data.desc}</p>
+                    <div className="text-xs mt-4">{data.time}</div>
                   </div>
                 );
               })}
@@ -70,10 +75,10 @@ const HRDashboard = () => {
               {/* Sidebar Sections */}
               <div className="w-full sm:w-80 flex-shrink-0">
                 {/* Team Section */}
-                <div className="bg-white rounded-lg p-6 mb-6 shadow-sm">
+                <div className={`${darkMode ? "card-dark" : null } rounded-lg p-6 mb-6 shadow-sm`}>
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-gray-900 font-medium">In your team</h3>
-                    <a href="#" className="text-blue-500 text-sm">
+                    <h3 className=" font-medium">In your team</h3>
+                    <a href="#" className=" text-sm">
                       See all
                     </a>
                   </div>
@@ -94,9 +99,9 @@ const HRDashboard = () => {
                 </div>
   
                 {/* Favorites Section */}
-                <div className="bg-white rounded-lg p-6 shadow-sm">
+                <div className={`${darkMode ? "card-dark" : null } rounded-lg p-6 shadow-sm`}>
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-gray-900 font-medium">Favorites</h3>
+                    <h3 className=" font-medium">Favorites</h3>
                     <button className="text-blue-500">
                       <i className="fas fa-pen"></i>
                     </button>
@@ -106,7 +111,7 @@ const HRDashboard = () => {
             </div>
   
             {/* Tasks Section */}
-            <div className="bg-white rounded-lg shadow-sm">
+            <div className={`${darkMode ? "card-dark" : null } rounded-lg shadow-sm`}>
               <div className="divide-y divide-gray-200">
                 {[
                   {
@@ -146,7 +151,7 @@ const HRDashboard = () => {
                       </div>
                     </div>
                     <div className="flex flex-wrap sm:flex-nowrap items-center gap-3">
-                      <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">
+                      <span className="px-3 py-1  rounded-full text-sm">
                         {item.tag}
                       </span>
                       <img
