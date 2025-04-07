@@ -8,9 +8,16 @@ import KanbanBoard from "../../Kanban/Kanban";
 import Project from "../Project";
 import { useSelector } from "react-redux";
 
+import { Avatar } from "primereact/avatar";
+import { AvatarGroup } from "primereact/avatargroup";
+import { Badge } from "primereact/badge";
+import { IoIosArrowForward } from "react-icons/io";
+
+
+
 const AllProject = () => {
   const darkMode = useSelector((state) => state.theme.isDarkMode);
-  
+
   const [showModal, setShowModal] = useState(false);
   const [showClientModal, setShowClientModal] = useState(false);
   const [clients, setClients] = useState(["Kailee Kuvalis"]);
@@ -317,28 +324,28 @@ const AllProject = () => {
           </h4>
 
           <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
-            <div className= {` ${darkMode ? "table-dark" : null }view-toggle d-flex flex-wrap gap-1`}>
+            <div
+              className={` ${
+                darkMode ? "table-dark" : null
+              }view-toggle d-flex flex-wrap gap-1`}>
               {/* <Link to="/ProjectTimelineCalendar"> */}
               <button
                 className="btn btn-outline-secondary d-flex align-items-center gap-1"
-                onClick={() => setActiveTab(0)}
-              >
+                onClick={() => setActiveTab(0)}>
                 <i className="bi bi-grid" /> TimeLine
               </button>
               {/* </Link> */}
               {/* <Link to="/projectlist"> */}
               <button
                 className="btn btn-outline-secondary d-flex align-items-center gap-1"
-                onClick={() => setActiveTab(1)}
-              >
+                onClick={() => setActiveTab(1)}>
                 <i className="bi bi-list" /> List View
               </button>
               {/* </Link> */}
               {/* <Link to="/kanban"> */}
               <button
                 className="btn btn-outline-secondary d-flex align-items-center gap-1"
-                onClick={() => setActiveTab(2)}
-              >
+                onClick={() => setActiveTab(2)}>
                 <Kanban /> Board View
               </button>
               {/* </Link> */}
@@ -347,32 +354,35 @@ const AllProject = () => {
             <button
               className="btn btn-primary add-project-btn mt-2 mt-md-0"
               style={{ height: "fit-content" }}
-              onClick={handleOpenModal}
-            >
+              onClick={handleOpenModal}>
               <i className="bi bi-plus" /> Add New Project
             </button>
           </div>
         </div>
 
-        <div
-          className="table-responsive"
-          
-        >
-          <table className="table table-bordered align-middle text-nowrap">
-            <thead className="table-light">
-              <tr>
-                <th style={{ width: "40px" }}>
-                  <input type="checkbox" className="form-check-input" />
-                </th>
-                <th>Project Name</th>
-                <th>Members</th>
-                <th>Start Date</th>
-                <th>Deadline</th>
-                <th>Client</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
+        <div className="table-responsive">
+          <table  className={` ${
+                  darkMode ? "table-dark" : null
+                } table table-bordered align-middle text-nowrap `}>
+          <thead
+                  className={` ${darkMode ? "table-dark" : null} table-light`}>
+                  <tr>
+                    <th style={{ width: "40px" }}>
+                      <input type="checkbox" className="form-check-input" />
+                    </th>
+                    <th>Project Name</th>
+                    <th>Status</th>
+                    <th>Current Phases</th>
+                    <th>Progress</th>
+                    <th>Phases</th>
+                    <th>Deadline</th>
+                    <th>Members</th>
+                    <th>Start Date</th>
+                    <th>Client</th>
+                   
+                    <th>Actions</th>
+                  </tr>
+                </thead>
             <tbody>
               {paginatedDesignations.map((task) => (
                 <tr key={task.id}>
@@ -380,39 +390,69 @@ const AllProject = () => {
                     <input type="checkbox" className="form-check-input" />
                   </td>
                   <td>{task.name}</td>
-                  <td className="d-flex align-items-center">
-                    <img
-                      src={task.avatar}
-                      className="rounded-circle me-1"
-                      width="30"
-                      height="30"
-                      alt="avatar"
-                    />
-                    +3
+                  <td>
+                    {/* <div className="progress" style={{ height: "10px" }}>
+                                          <div
+                                            className="progress-bar bg-success"
+                                            style={{ width: `${task.progress}%` }}></div>
+                                        </div> */}
+                    <span className="badge bg-info mt-1">{task.status}</span>
                   </td>
-                  <td>{task.startDate}</td>
-                  <td>{task.deadline}</td>
-                  <td>{task.client}</td>
+                  <td>---</td>
                   <td>
                     <div className="progress" style={{ height: "10px" }}>
                       <div
                         className="progress-bar bg-success"
-                        style={{ width: `${task.progress}%` }}
-                      ></div>
+                        style={{ width: `${task.progress}%` }}></div>
                     </div>
-                    <span className="badge bg-info mt-1">{task.status}</span>
                   </td>
+                  <td>
+                    <IoIosArrowForward />
+                  </td>
+                  <td>{task.deadline}</td>
+                  <td>
+                    <div
+                      className="card flex justify-content-center"
+                      style={{
+                        backgroundColor: "transparent",
+                        border: "none",
+                      }}>
+                      <AvatarGroup>
+                        <Avatar
+                          image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png"
+                          size="large"
+                          shape="circle"
+                        />
+                        <Avatar
+                          image="https://primefaces.org/cdn/primereact/images/avatar/ionibowcher.png"
+                          size="large"
+                          shape="circle"
+                        />
+                        <Avatar
+                          image="https://primefaces.org/cdn/primereact/images/avatar/xuxuefeng.png"
+                          size="large"
+                          shape="circle"
+                        />
+                        <Avatar
+                          label="+2"
+                          shape="circle"
+                          size="large"
+                          className={` ${darkMode ? "table-dark" : null} `}
+                        />
+                      </AvatarGroup>
+                    </div>
+                  </td>
+                  <td>{task.startDate}</td>
+                  <td>{task.client}</td>
                   <td className="d-flex gap-2">
                     <button
                       onClick={() => handleOpenModal(task)}
-                      className="btn btn-sm btn-outline-primary"
-                    >
+                      className="btn btn-sm btn-outline-primary">
                       <i className="bi bi-pencil" />
                     </button>
                     <button
                       onClick={() => handleDelete(task.id)}
-                      className="btn btn-sm btn-outline-danger"
-                    >
+                      className="btn btn-sm btn-outline-danger">
                       <i className="bi bi-trash" />
                     </button>
                   </td>
@@ -437,8 +477,7 @@ const AllProject = () => {
               <Pagination.Item
                 key={index}
                 active={index + 1 === currentPage}
-                onClick={() => handlePageChange(index + 1)}
-              >
+                onClick={() => handlePageChange(index + 1)}>
                 {index + 1}
               </Pagination.Item>
             ))}
@@ -458,8 +497,7 @@ const AllProject = () => {
                 </h3>
                 <button
                   onClick={handleCloseModal}
-                  className="text-gray-500 hover:text-black text-2xl"
-                >
+                  className="text-gray-500 hover:text-black text-2xl">
                   &times;
                 </button>
               </div>
@@ -626,8 +664,7 @@ const AllProject = () => {
                 <h3 className="text-xl font-semibold">Client</h3>
                 <button
                   onClick={() => setShowClientModal(false)}
-                  className="text-gray-500 hover:text-black text-2xl"
-                >
+                  className="text-gray-500 hover:text-black text-2xl">
                   &times;
                 </button>
               </div>
@@ -718,14 +755,12 @@ const AllProject = () => {
                   <button
                     type="button"
                     onClick={() => setShowClientModal(false)}
-                    className="px-4 py-2 bg-gray-300 rounded"
-                  >
+                    className="px-4 py-2 bg-gray-300 rounded">
                     Close
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-blue-600 text-white rounded"
-                  >
+                    className="px-4 py-2 bg-blue-600 text-white rounded">
                     Save
                   </button>
                 </div>
