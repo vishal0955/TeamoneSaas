@@ -332,7 +332,7 @@ const NotesGrid = () => {
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-6">
             {/* Left side: Bulk Actions + Apply */}
             <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-              <div className="relative w-full">
+              <div className="relative ">
                 <button className="flex items-center justify-between w-full  border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   Bulk Actions
                   {/* <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -340,7 +340,7 @@ const NotesGrid = () => {
                   </svg> */}
                 </button>
               </div>
-              <button className="btn border border-gray-300 rounded  text-sm w-full">
+              <button className=" border border-gray-300 rounded  text-sm w-full">
                 Apply
               </button>
             </div>
@@ -378,7 +378,7 @@ const NotesGrid = () => {
               </div>
 
               <button
-                className={`${darkMode ? "dark-mode" : null } rounded px-4 py-2 text-sm flex items-center justify-center w-full sm:w-auto`}
+                className={`${darkMode ? "text-white bg-indigo-800 border" : null } rounded px-4 py-2 text-sm flex items-center justify-center w-full sm:w-auto`}
                 onClick={handleOpenAddNote}
               >
                 <Plus size={16} className="mr-1" />
@@ -392,7 +392,7 @@ const NotesGrid = () => {
           {viewMode === "list" ? (
             <div className="space-y-4">
               {notes.map((note) => (
-                <div key={note.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div key={note.id} className={`${darkMode ? "card-dark" : "bg-white" } rounded-lg shadow-sm overflow-hidden`}>
                   <div className="p-4">
                     <div className="flex justify-between items-start mb-2">
                       <div>
@@ -436,9 +436,9 @@ const NotesGrid = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredNotes.map((note) => (
-                <div key={note.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div key={note.id} className={`${darkMode ? "dark-mode" : "bg-white" } rounded-lg shadow-sm overflow-hidden`}>
                   <div className="p-4">
-                    <div className="flex justify-between items-center mb-3">
+                    <div className={`${darkMode ? "dark-mode" : "bg-white" } flex justify-between items-center mb-3 `}>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityClasses(note.priority)}`}>
                         {note.priority}
                       </span>

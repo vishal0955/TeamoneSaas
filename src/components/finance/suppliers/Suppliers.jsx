@@ -1,21 +1,178 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Pagination } from "react-bootstrap";
 
 const Suppliers = () => {
+  const initialTasks = [
+    {
+      id: 1,
+      supplierName: "Tech Solutions Ltd",
+      owner: "John Smith",
+      createDate: "23 Dec 2024 17:24 GMT",
+      phoneNumber: "+1 234 567 8900",
+      lastActivityDate: "23 Dec 2024 17:40 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 2,
+      supplierName: "Global Supplies Inc",
+      owner: "Sarah Johnson",
+      createDate: "22 Dec 2024 09:15 GMT",
+      phoneNumber: "+1 987 654 3210",
+      lastActivityDate: "22 Dec 2024 15:30 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 3,
+      supplierName: "Tech Solutions Ltd",
+      owner: "John Smith",
+      createDate: "23 Dec 2024 17:24 GMT",
+      phoneNumber: "+1 234 567 8900",
+      lastActivityDate: "23 Dec 2024 17:40 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 4,
+      supplierName: "Global Supplies Inc",
+      owner: "Sarah Johnson",
+      createDate: "22 Dec 2024 09:15 GMT",
+      phoneNumber: "+1 987 654 3210",
+      lastActivityDate: "22 Dec 2024 15:30 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 5,
+      supplierName: "Tech Solutions Ltd",
+      owner: "John Smith",
+      createDate: "23 Dec 2024 17:24 GMT",
+      phoneNumber: "+1 234 567 8900",
+      lastActivityDate: "23 Dec 2024 17:40 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    // {
+    //   id: ,
+    //   supplierName: "Global Supplies Inc",
+    //   owner: "Sarah Johnson",
+    //   createDate: "22 Dec 2024 09:15 GMT",
+    //   phoneNumber: "+1 987 654 3210",
+    //   lastActivityDate: "22 Dec 2024 15:30 GMT",
+    //   avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    // },
+    {
+      id: 6,
+      supplierName: "Tech Solutions Ltd",
+      owner: "John Smith",
+      createDate: "23 Dec 2024 17:24 GMT",
+      phoneNumber: "+1 234 567 8900",
+      lastActivityDate: "23 Dec 2024 17:40 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 7,
+      supplierName: "Global Supplies Inc",
+      owner: "Sarah Johnson",
+      createDate: "22 Dec 2024 09:15 GMT",
+      phoneNumber: "+1 987 654 3210",
+      lastActivityDate: "22 Dec 2024 15:30 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 8,
+      supplierName: "Tech Solutions Ltd",
+      owner: "John Smith",
+      createDate: "23 Dec 2024 17:24 GMT",
+      phoneNumber: "+1 234 567 8900",
+      lastActivityDate: "23 Dec 2024 17:40 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 9,
+      supplierName: "Global Supplies Inc",
+      owner: "Sarah Johnson",
+      createDate: "22 Dec 2024 09:15 GMT",
+      phoneNumber: "+1 987 654 3210",
+      lastActivityDate: "22 Dec 2024 15:30 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 10,
+      supplierName: "Tech Solutions Ltd",
+      owner: "John Smith",
+      createDate: "23 Dec 2024 17:24 GMT",
+      phoneNumber: "+1 234 567 8900",
+      lastActivityDate: "23 Dec 2024 17:40 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 11,
+      supplierName: "Global Supplies Inc",
+      owner: "Sarah Johnson",
+      createDate: "22 Dec 2024 09:15 GMT",
+      phoneNumber: "+1 987 654 3210",
+      lastActivityDate: "22 Dec 2024 15:30 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 12,
+      supplierName: "Tech Solutions Ltd",
+      owner: "John Smith",
+      createDate: "23 Dec 2024 17:24 GMT",
+      phoneNumber: "+1 234 567 8900",
+      lastActivityDate: "23 Dec 2024 17:40 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 13,
+      supplierName: "Global Supplies Inc",
+      owner: "Sarah Johnson",
+      createDate: "22 Dec 2024 09:15 GMT",
+      phoneNumber: "+1 987 654 3210",
+      lastActivityDate: "22 Dec 2024 15:30 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 14,
+      supplierName: "Tech Solutions Ltd",
+      owner: "John Smith",
+      createDate: "23 Dec 2024 17:24 GMT",
+      phoneNumber: "+1 234 567 8900",
+      lastActivityDate: "23 Dec 2024 17:40 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    {
+      id: 15,
+      supplierName: "Global Supplies Inc",
+      owner: "Sarah Johnson",
+      createDate: "22 Dec 2024 09:15 GMT",
+      phoneNumber: "+1 987 654 3210",
+      lastActivityDate: "22 Dec 2024 15:30 GMT",
+      avatar: "https://i.ibb.co/dJ68VsWW/image.png",
+    },
+    // Add more suppliers here if needed
+  ];
+
+  const [tasks, setTasks] = useState(initialTasks);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+
+  const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const paginatedDesignations = tasks.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(tasks.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div className="min-h-screen">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="py-4">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            {/* Left Section: Title and record count */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
-              <h1 className="text-2xl font-semibold text-gray-900">
-                Suppliers
-              </h1>
+              <h1 className="text-2xl font-semibold text-gray-900">Suppliers</h1>
               <span className="text-gray-500 text-sm">13,613 records</span>
             </div>
-
-            {/* Right Section: Buttons */}
             <div className="flex flex-wrap gap-2 sm:gap-3 justify-end w-full">
               <button className="w-full sm:w-auto !rounded-button px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50">
                 See Target Accounts
@@ -127,6 +284,7 @@ const Suppliers = () => {
             </div>
           </div>
 
+          {/* Suppliers Table */}
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
@@ -170,716 +328,87 @@ const Suppliers = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Tech Solutions Ltd
+                {paginatedDesignations.map((supplier) => (
+                  <tr key={supplier.id}>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <input
+                        type="checkbox"
+                        className="rounded border-gray-300 text-custom focus:ring-custom"
+                      />
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                          <img
+                            className="h-10 w-10 rounded-full"
+                            src={supplier.avatar}
+                            alt="avatar"
+                          />
+                        </div>
+                        <div className="ml-4">
+                          <div className="text-sm font-medium text-gray-900">
+                            {supplier.supplierName}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          John Smith
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0 h-8 w-8">
+                          <img
+                            className="h-8 w-8 rounded-full"
+                            src={supplier.avatar}
+                            alt="avatar"
+                          />
+                        </div>
+                        <div className="ml-3">
+                          <div className="text-sm font-medium text-gray-900">
+                            {supplier.owner}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:24 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 234 567 8900
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:40 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Global Supplies Inc
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          Sarah Johnson
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 09:15 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 987 654 3210
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 15:30 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Tech Solutions Ltd
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          John Smith
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:24 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 234 567 8900
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:40 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Global Supplies Inc
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          Sarah Johnson
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 09:15 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 987 654 3210
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 15:30 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Tech Solutions Ltd
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          John Smith
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:24 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 234 567 8900
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:40 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Global Supplies Inc
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          Sarah Johnson
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 09:15 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 987 654 3210
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 15:30 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Tech Solutions Ltd
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          John Smith
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:24 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 234 567 8900
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:40 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Global Supplies Inc
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          Sarah Johnson
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 09:15 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 987 654 3210
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 15:30 GMT
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Tech Solutions Ltd
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          John Smith
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:24 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 234 567 8900
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:40 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Global Supplies Inc
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          Sarah Johnson
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 09:15 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 987 654 3210
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 15:30 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Tech Solutions Ltd
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          John Smith
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:24 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 234 567 8900
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:40 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Global Supplies Inc
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          Sarah Johnson
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 09:15 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 987 654 3210
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 15:30 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Tech Solutions Ltd
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          John Smith
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:24 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 234 567 8900
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    23 Dec 2024 17:40 GMT
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-custom focus:ring-custom"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">
-                          Global Supplies Inc
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0 h-8 w-8">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://i.ibb.co/dJ68VsWW/image.png"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          Sarah Johnson
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 09:15 GMT
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    +1 987 654 3210
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    22 Dec 2024 15:30 GMT
-                  </td>
-                </tr>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {supplier.createDate}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {supplier.phoneNumber}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {supplier.lastActivityDate}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
-          <div className="px-4 py-3 border-t border-gray-200">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <span className="text-sm text-gray-700">
-                  Showing 1 to 10 of 13,613 results
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <button
-                  className="!rounded-button px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 disabled:opacity-50"
-                  disabled=""
-                >
-                  Previous
-                </button>
-                <button className="!rounded-button px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50">
-                  Next
-                </button>
-              </div>
-            </div>
+        </div>
+
+        {/* Pagination */}
+        <div className="d-flex justify-content-between align-items-center mt-3">
+          <div>
+            Showing {indexOfFirstItem + 1} to{" "}
+            {Math.min(indexOfLastItem, tasks.length)} of {tasks.length} entries
           </div>
+          <Pagination>
+            <Pagination.Prev
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            />
+            {Array.from({ length: totalPages }, (_, index) => (
+              <Pagination.Item
+                key={index}
+                active={index + 1 === currentPage}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </Pagination.Item>
+            ))}
+            <Pagination.Next
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            />
+          </Pagination>
         </div>
       </div>
     </div>

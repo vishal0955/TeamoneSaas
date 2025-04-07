@@ -9,6 +9,7 @@ import Project from "../Project";
 import { useSelector } from "react-redux";
 
 const AllProject = () => {
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   
   const [showModal, setShowModal] = useState(false);
   const [showClientModal, setShowClientModal] = useState(false);

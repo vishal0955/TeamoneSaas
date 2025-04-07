@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ContactForm from "./ContactForm";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "react-bootstrap";
+import { use } from "react";
+import { useSelector } from "react-redux";
 
 const ContactsList = () => {
   const [expand, setExpand] = useState(false);
@@ -199,6 +201,8 @@ const ContactsList = () => {
       setSelectedFilters([...selectedFilters, filterId]);
     }
   };
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+  console.log(darkMode);
 
   return (
     <div className="container-fluid px-3 px-md-4 py-3">
@@ -240,7 +244,7 @@ const ContactsList = () => {
       {/* Metrics Cards */}
       <div className="row g-3 mb-4">
         <div className="col-12 col-sm-6 col-md-3">
-          <div className="inv-stat-box h-100">
+          <div className={`${darkMode ? "dark-mode" : null } inv-stat-box h-100 `}>
             <div className="inv-stat-content">
               <div className="inv-stat-icon inv-stat-icon-primary">
                 <i className="fa-solid fa-address-book"></i>

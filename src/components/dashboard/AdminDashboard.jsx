@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import * as echarts from "echarts";
+import { useSelector } from "react-redux";
 
 const AdminDashboard = () => {
   useEffect(() => {
@@ -109,9 +110,10 @@ const AdminDashboard = () => {
       recruitmentPipeline.resize();
     });
   }, []);
+   const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
-    <div className="flex-1 max-w-full  overflow-y-auto bg-gray-50 p-6">
+    <div className={`${darkMode ? "dark-mode" : "bg-gray-50" } flex-1 max-w-full  overflow-y-auto p-6`}>
       <div className="max-w-full ">
         {/* Dashboard Cards */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
@@ -152,16 +154,16 @@ const AdminDashboard = () => {
               textColor: "text-purple-600",
             },
           ].map((item, index) => (
-            <div key={index} className="bg-white rounded-lg shadow p-6">
+            <div key={index} className={`${darkMode ? "card-dark text-[#E0E0E0]" : "bg-white" } rounded-lg shadow p-6`}>
               <div className="flex items-center">
                 <div className={`flex-shrink-0 ${item.bg} rounded-lg p-3`}>
                   <i className={`${item.icon} ${item.textColor} text-xl`}></i>
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-sm font-medium text-gray-900">
+                  <h3 className="text-sm font-medium ">
                     {item.title}
                   </h3>
-                  <p className="text-2xl font-semibold text-gray-700">
+                  <p className="text-2xl font-semibold ">
                     {item.value}
                   </p>
                 </div>
@@ -172,20 +174,20 @@ const AdminDashboard = () => {
 
         {/* Charts Section */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mt-6">
-          <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">
+          <div className=" rounded-lg shadow p-6">
+            <h3 className="text-lg font-medium  mb-4">
               Employee Distribution
             </h3>
             <div id="employeeDistribution" className="h-80"></div>
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">
+          <div className=" rounded-lg shadow p-6">
+            <h3 className="text-lg font-medium  mb-4">
               Monthly Hiring Trends
             </h3>
             <div id="hiringTrends" className="h-80"></div>
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">
+          <div className=" rounded-lg shadow p-6">
+            <h3 className="text-lg font-medium  mb-4">
               Recruitment Pipeline
             </h3>
             <div id="recruitmentPipeline" className="h-80"></div>
@@ -193,21 +195,21 @@ const AdminDashboard = () => {
         </div>
 
         {/* Recent Activities Table */}
-        <div className="mt-6 bg-white rounded-lg shadow">
+        <div className="mt-6 rounded-lg shadow border">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">
+            <h3 className="text-lg font-medium ">
               Recent Activities
             </h3>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="">
                 <tr>
                   {["Activity", "Person", "Department", "Date", "Status"].map(
                     (header, index) => (
                       <th
                         key={index}
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider"
                       >
                         {header}
                       </th>
