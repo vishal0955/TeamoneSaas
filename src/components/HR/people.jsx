@@ -3,6 +3,7 @@ import { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import interactionPlugin from '@fullcalendar/interaction';
+import { useSelector } from "react-redux";
 
 const People = () => {
     const [events, setEvents] = useState([
@@ -233,11 +234,14 @@ const People = () => {
     const toggleWeekends = () => {
       setShowWeekends(!showWeekends);
     };
+
+
+    const darkMode = useSelector((state) => state.theme.isDarkMode);
   
   return (
     <>
      
-      <div className=" text-gray-900 min-h-screen">
+      <div className="  min-h-screen">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Navbar */}
           {/* <nav className="flex items-center justify-between py-4">
@@ -280,11 +284,11 @@ const People = () => {
           <div className="mt-8">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-medium">Showing 3 requests</h2>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              <a href="#" className=" ">
                 View all
               </a>
             </div>
-            <div className="mt-4 bg-gray-100 rounded-lg p-4">
+            <div className={`${darkMode ? "card-dark" : null } mt-4 rounded-lg p-4`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <img
@@ -294,17 +298,17 @@ const People = () => {
                   />
                   <div>
                     <h3 className="font-medium">8 - 12 Aug 2024 · Annual Leave</h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm ">
                       Harry Peter · <span className="text-yellow-500">Pending</span>
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 flex items-center space-x-2">
+                  <button className=" px-4 py-2 flex items-center space-x-2">
                     <i className="fas fa-check"></i>
                     <span>Approve</span>
                   </button>
-                  <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 flex items-center space-x-2">
+                  <button className=" px-4 py-2 flex items-center space-x-2">
                     <i className="fas fa-times"></i>
                     <span>Reject</span>
                   </button>
@@ -314,13 +318,13 @@ const People = () => {
           </div>
 
           {/* Calendar Section */}
-          <div className="h-screen p-4 bg-white">
-                <div className="bg-white rounded-lg shadow-lg p-6 h-full">
+          <div className="h-screen p-4 ">
+                <div className=" rounded-lg shadow-lg p-6 h-full">
                   <div className="flex justify-between items-center mb-4">
                     <div className="flex space-x-2">
-                      <input type="text" placeholder="Search" className="px-3 py-1 border rounded-md" />
+                      <input type="text" placeholder="Search" className={`${darkMode ? "card-dark" : null } px-3 py-1 border rounded-md`} />
                       <button 
-                        className={`px-3 py-1 border rounded-md ${showWeekends ? 'bg-gray-100' : 'bg-blue-100'}`}
+                        className={`px-3 py-1 border rounded-md ${showWeekends ? '' : 'bg-blue-100'}`}
                         onClick={toggleWeekends}
                       >
                         {showWeekends ? 'Hide Weekends' : 'Show Weekends'}
@@ -390,7 +394,7 @@ const People = () => {
                       
                       if (isChild) {
                         return (
-                          <div className="text-xs text-gray-500 pl-4">
+                          <div className="text-xs  pl-4">
                             {info.resource.title}
                           </div>
                         )
@@ -398,7 +402,7 @@ const People = () => {
                       
                       return (
                         <div className="flex items-center space-x-2">
-                          <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                          <div className="w-8 h-8  rounded-full flex items-center justify-center">
                             {info.resource.title.substring(0, 1)}
                           </div>
                           <div>{info.resource.title}</div>

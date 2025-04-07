@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AllFeed from "./AllFeed";
 import ChatApp from "./ChatApp";
+import { useSelector } from "react-redux";
 
 const Social = () => {
   // State to manage bookmarks
@@ -13,6 +14,10 @@ const Social = () => {
     setBookmarked(!bookmarked);
     setBookmarkCount(bookmarked ? bookmarkCount - 1 : bookmarkCount + 1);
   };
+
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <div className="max-w-8xl mx-auto px-4 py-6">
       <div className="flex flex-col lg:flex-row gap-6">
@@ -21,7 +26,7 @@ const Social = () => {
           <div className="hidden lg:block w-full lg:w-72 flex-shrink-0">
             {/* Profile Card */}
             <div
-              className="bg-white rounded-lg p-6 mb-6"
+              className=" rounded-lg p-6 mb-6"
               style={{
                 boxShadow:
                   "rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset",
@@ -56,7 +61,7 @@ const Social = () => {
 
             {/* Navigation Tabs */}
             <nav
-              className="bg-white rounded-lg p-2 mb-6"
+              className=" rounded-lg p-2 mb-6"
               style={{
                 boxShadow:
                   "rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset",
@@ -127,7 +132,7 @@ const Social = () => {
 
             {/* Liked Pages */}
             <div
-              className="bg-white rounded-lg p-4"
+              className=" rounded-lg p-4"
               style={{
                 boxShadow:
                   "rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset",
@@ -179,7 +184,7 @@ const Social = () => {
         {/* Main Content - Full width on mobile, flex-1 on larger screens */}
         <div className="col-md-9">
           {/* Tab Content Display (Example) */}
-          <div className="mt-4 p-4 bg-white rounded-lg">
+          <div className={`${darkMode ? "dark-mode" : null } mt-4 p-4  rounded-lg`}>
             {activeTab === "allFeeds" && (
               <div>
                 {" "}
@@ -187,7 +192,7 @@ const Social = () => {
               </div>
             )}
             {activeTab === "explore" && <div>Explore Content</div>}
-            {activeTab === "messages" && <div> <ChatApp /> </div>}
+            {/* {activeTab === "messages" && <div> <ChatApp /> </div>} */}
             {activeTab === "bookmark" && (
               <p>Bookmark Content ({bookmarkCount} items)</p>
             )}
