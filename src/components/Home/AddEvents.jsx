@@ -1,200 +1,7 @@
-// import React, { useState } from 'react';
-// // import 'bootstrap/dist/css/bootstrap.min.css';
-// import { BsX, BsClock, BsCalendarEvent, BsGeoAlt, BsRepeat, BsPeople, 
-//          BsLink45Deg, BsCamera, BsThreeDotsVertical, BsBell, BsGoogle, 
-//          BsFolder, BsEyeSlash, BsCalendarCheck } from 'react-icons/bs';
 
-// const GoogleCalendarEventForm = () => {
-//   const [selectedTab, setSelectedTab] = useState('Event');
-  
-//   return (
-//     <div className="container my-4">
-//       <div className="card shadow mx-auto" style={{ maxWidth: '400px', borderRadius: '12px' }}>
-//         <div className="card-header bg-white d-flex justify-content-between align-items-center border-bottom py-2">
-//           <div className="ms-1">
-//             <BsX size={24} className="text-secondary" />
-//           </div>
-//           <button className="btn btn-sm btn-primary px-3 rounded-pill">Save</button>
-//         </div>
-        
-//         <div className="card-body p-3">
-//           {/* Title Input */}
-//           <input 
-//             type="text" 
-//             className="form-control border-0 fw-bold mb-3 p-0" 
-//             placeholder="Add title" 
-//           />
-          
-//           {/* Event Type Tabs */}
-//           <div className="d-flex gap-2 mb-3">
-//             {['Event', 'Task', 'Working location'].map((tab) => (
-//               <button 
-//                 key={tab}
-//                 className={`btn btn-sm ${selectedTab === tab ? 'btn-secondary' : 'btn-light'} rounded-pill px-3`}
-//                 onClick={() => setSelectedTab(tab)}
-//               >
-//                 {tab}
-//               </button>
-//             ))}
-//           </div>
-          
-//           {/* Calendar Selection */}
-//           <div className="d-flex align-items-center mb-3 ps-1">
-//             <div className="me-2">
-//               <div className="rounded-circle bg-primary" style={{ width: '12px', height: '12px' }}></div>
-//             </div>
-//             <small className="text-muted">test.gmail@gmail.com</small>
-//           </div>
-          
-//           {/* My calendars dropdown */}
-//           <div className="d-flex align-items-center mb-3 ps-1 py-1 bg-light rounded-3">
-//             <div className="ms-1 me-3">
-//               <BsCalendarCheck className="text-secondary" />
-//             </div>
-//             <small>My calendars</small>
-//             <div className="ms-auto">
-//               <BsThreeDotsVertical className="text-secondary" />
-//             </div>
-//           </div>
-          
-//           {/* All day toggle */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsClock className="text-secondary" />
-//             </div>
-//             <div className="flex-grow-1">
-//               <div className="form-check form-switch">
-//                 <input className="form-check-input" type="checkbox" id="allDaySwitch" />
-//                 <label className="form-check-label" htmlFor="allDaySwitch">All day</label>
-//               </div>
-//             </div>
-//           </div>
-          
-//           {/* Date and time selections */}
-//           <div className="mb-3">
-//             <div className="d-flex align-items-center mb-2 ps-5">
-//               <small>Saturday, 5 Apr 2025</small>
-//               <div className="ms-auto">
-//                 <small>4:00 PM</small>
-//               </div>
-//             </div>
-//             <div className="d-flex align-items-center mb-2 ps-5">
-//               <small>Saturday, 5 Apr 2025</small>
-//               <div className="ms-auto">
-//                 <small>4:45 PM</small>
-//               </div>
-//             </div>
-//           </div>
-          
-//           {/* Time zone */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsGeoAlt className="text-secondary" />
-//             </div>
-//             <small>British Summer Time</small>
-//           </div>
-          
-//           {/* Recurrence */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsRepeat className="text-secondary" />
-//             </div>
-//             <small>Does not repeat</small>
-//           </div>
-          
-//           {/* Add people */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsPeople className="text-secondary" />
-//             </div>
-//             <small>Add people</small>
-//           </div>
-          
-//           {/* View schedules */}
-//           <div className="d-flex justify-content-center mb-3">
-//             <button className="btn btn-sm btn-outline-secondary rounded-pill px-3">
-//               View schedules
-//             </button>
-//           </div>
-          
-//           {/* Add Google Meet */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsCamera className="text-secondary" />
-//             </div>
-//             <small>Add Google Meet video conferencing</small>
-//           </div>
-          
-//           {/* Add location */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsLink45Deg className="text-secondary" />
-//             </div>
-//             <small>Add location</small>
-//           </div>
-          
-//           {/* Notification */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsBell className="text-secondary" />
-//             </div>
-//             <small>10 minutes before</small>
-//           </div>
-          
-//           {/* Add notification */}
-//           <div className="d-flex align-items-center mb-3 ps-5">
-//             <small className="text-primary">Add notification</small>
-//           </div>
-          
-//           {/* Default color */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <div className="rounded-circle bg-success" style={{ width: '12px', height: '12px' }}></div>
-//             </div>
-//             <small>Default colour</small>
-//           </div>
-          
-//           {/* Add description */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsThreeDotsVertical className="text-secondary" />
-//             </div>
-//             <small>Add description</small>
-//           </div>
-          
-//           {/* Add Google Drive attachment */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsFolder className="text-secondary" />
-//             </div>
-//             <small>Add Google Drive attachment</small>
-//           </div>
-          
-//           {/* Default visibility */}
-//           <div className="d-flex align-items-center mb-3">
-//             <div className="ms-1 me-3">
-//               <BsEyeSlash className="text-secondary" />
-//             </div>
-//             <small>Default visibility</small>
-//           </div>
-          
-//           {/* Busy status */}
-//           <div className="d-flex align-items-center">
-//             <div className="ms-1 me-3">
-//               <BsCalendarEvent className="text-secondary" />
-//             </div>
-//             <small>Busy</small>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default GoogleCalendarEventForm;
 
 import React, { useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { BsX, BsClock, BsCalendarEvent, BsGeoAlt, BsRepeat, BsPeople, 
          BsLink45Deg, BsCamera, BsThreeDotsVertical, BsBell, BsGoogle, 
          BsFolder, BsEyeSlash, BsCalendarCheck, BsChevronDown, BsPlus } from 'react-icons/bs';
@@ -315,7 +122,7 @@ const GoogleCalendarEventForm = ({handleSubmit, handleclose}) => {
         <div className="card shadow mx-auto" style={{ maxWidth: '400px', borderRadius: '12px' }}>
           <div className="card-header bg-white d-flex justify-content-between align-items-center border-bottom py-2">
             <div className="ms-1">
-              <button type="button" className="btn btn-link text-secondary p-0 border-0" onClick={() => handleclose()}>
+              <button type="button" className="btn btn-link text-secondary p-0 border-0" onClick={handleclose}>
                 <BsX size={24} />
               </button>
             </div>
@@ -731,6 +538,7 @@ const GoogleCalendarEventForm = ({handleSubmit, handleclose}) => {
               </div>
             </div>
             <div className='d-flex justify-content-end'>
+                <button type="button" className="btn btn-secondary me-2" data-bs-dismiss="modal" onClick={handleclose}>Close </button>
             <button type="submit" className="btn btn-sm btn-primary  px-3 rounded-pill">Save</button>
             </div>
           </div>
