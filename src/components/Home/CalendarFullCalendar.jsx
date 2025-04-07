@@ -703,6 +703,10 @@ const CalendarApp = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleclose = () => {
+    setShowEventModal(false);
+  };
+
   // Date click handler for creating events
   const handleDateClick = (info) => {
     // Format the date to be compatible with the form
@@ -1199,7 +1203,7 @@ const CalendarApp = () => {
         //   <div className="bg-white rounded-lg shadow-lg w-full max-w-md">
         <div className="modal fade show d-block" role="dialog">
           
-            <GoogleCalendarEventForm handleSubmit={handleAddEvent} />
+            <GoogleCalendarEventForm handleSubmit={handleAddEvent} handleclose={handleclose} />
           </div>
         
       )}
