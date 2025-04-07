@@ -15,6 +15,7 @@ import {
   FaChevronDown,
   FaExternalLinkAlt,
 } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const ContactDetailPage = () => {
   const [activeTab, setActiveTab] = useState("Activity");
@@ -268,7 +269,7 @@ const ContactDetailPage = () => {
     setIsModalContactOpen(false);
     document.body.classList.remove("modal-open"); //Remove modal-open class
   };
-
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   const [isCreateDealModalOpen, setIsCreateDealModalOpen] = useState(false);
 
   // Function to handle the creation of a new deal
@@ -327,7 +328,7 @@ const ContactDetailPage = () => {
             <p className="text-sm text-gray-500 mb-4">{contactData.email}</p>
 
             <div className="flex justify-center gap-3 mb-4">
-              <button className="p-2 rounded-full hover:bg-gray-100">
+              <button className=" p-2 rounded-full hover:bg-gray-100">
                 <svg
                   className="h-5 w-5"
                   fill="none"
@@ -412,7 +413,7 @@ const ContactDetailPage = () => {
         </div>
 
         {/* Middle Section - Activities */}
-        <div className="col-md-6 bg-white rounded-lg shadow">
+        <div className={`${darkMode ? "dark-mode " : null}col-md-6 bg-white rounded-lg shadow`}>
           {/* Tabs */}
           <div className="border-b">
             <div className="">
@@ -439,11 +440,10 @@ const ContactDetailPage = () => {
                 <input
                   type="text"
                   placeholder="Search activities"
-                  className="w-full px-3 py-2 border rounded-lg"
-                />
+                 className={`${darkMode ? "dark-mode " : null} w-full px-3 py-2 border rounded-lg`} />
               </div>
-              <div className="flex gap-2">
-                <button className="px-3 py-2 border rounded-lg text-sm flex items-center gap-2">
+              <div className="flex gap-2 mt-2">
+                <button className={`${darkMode ? "dark-mode " : null} px-3 py-2 border rounded-lg text-sm flex items-center gap-2`}>
                   Filter activity
                   <svg
                     className="w-4 h-4"
@@ -459,7 +459,7 @@ const ContactDetailPage = () => {
                     />
                   </svg>
                 </button>
-                <button className="px-3 py-2 border rounded-lg text-sm flex items-center gap-2">
+                <button className={`${darkMode ? "dark-mode " : null} px-3 py-2 border rounded-lg text-sm flex items-center gap-2`}>
                   All users
                   <svg
                     className="w-4 h-4"
@@ -475,7 +475,7 @@ const ContactDetailPage = () => {
                     />
                   </svg>
                 </button>
-                <button className="px-3 py-2 border rounded-lg text-sm flex items-center gap-2">
+                <button className={`${darkMode ? "dark-mode " : null} px-3 py-2 border rounded-lg text-sm flex items-center gap-2`}>
                   All teams
                   <svg
                     className="w-4 h-4"

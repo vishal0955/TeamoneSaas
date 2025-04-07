@@ -196,7 +196,7 @@ const Users = () => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [roleFilter, setRoleFilter] = useState("All Roles");
@@ -264,6 +264,7 @@ const Users = () => {
                 value={dateFilter}
                 onChange={(e) => setDateFilter(e.target.value)}
                 placeholder="Date"
+               
               />
               <InputGroup.Text>
                 <FaCalendarAlt />
