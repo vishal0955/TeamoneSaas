@@ -56,7 +56,7 @@ const Users = () => {
     setCurrentPage(pageNumber);
   };
 
-  const [searchTerm, setSearchTerm] = useState("");
+
   const [dateFilter, setDateFilter] = useState("");
   const [roleFilter, setRoleFilter] = useState("All Roles");
   const [statusFilter, setStatusFilter] = useState("All Status");
