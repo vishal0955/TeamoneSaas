@@ -199,7 +199,7 @@ import { BsX, BsClock, BsCalendarEvent, BsGeoAlt, BsRepeat, BsPeople,
          BsLink45Deg, BsCamera, BsThreeDotsVertical, BsBell, BsGoogle, 
          BsFolder, BsEyeSlash, BsCalendarCheck, BsChevronDown, BsPlus } from 'react-icons/bs';
 
-const GoogleCalendarEventForm = ({handleSubmit}) => {
+const GoogleCalendarEventForm = ({handleSubmit, handleclose}) => {
   // Form state
   const [formData, setFormData] = useState({
     title: '',
@@ -315,7 +315,7 @@ const GoogleCalendarEventForm = ({handleSubmit}) => {
         <div className="card shadow mx-auto" style={{ maxWidth: '400px', borderRadius: '12px' }}>
           <div className="card-header bg-white d-flex justify-content-between align-items-center border-bottom py-2">
             <div className="ms-1">
-              <button type="button" className="btn btn-link text-secondary p-0 border-0">
+              <button type="button" className="btn btn-link text-secondary p-0 border-0" onClick={() => handleclose()}>
                 <BsX size={24} />
               </button>
             </div>
