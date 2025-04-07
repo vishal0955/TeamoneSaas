@@ -154,6 +154,19 @@ const Company = () => {
     },
   ]);
 
+  const [tasks, setTasks] = useState(companies);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+
+  const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const paginatedCompanies = companies.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(companies.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -331,24 +344,26 @@ const Company = () => {
                 <th className="d-none d-sm-table-cell">Last Activity</th>
               </tr>
             </thead>
+
+
+            
             <tbody>
-              {companies
-                .filter((c) =>
-                  c.name.toLowerCase().includes(search.toLowerCase())
-                )
-                .map((company, index) => (
+           
+              {paginatedCompanies
+               
+                .map((companies, index) => (
                   <tr key={index}>
                     <td>
                       <Form.Check type="checkbox" />
                     </td>
                     <td onClick={handleCompanyClick}>
-                      {company.logo} {company.name} <br />
-                      <small className="text-muted">{company.website}</small>
+                      {companies.logo} {companies.name} <br />
+                      <small className="text-muted">{companies.website}</small>
                     </td>
-                    <td>{company.owner}</td>
-                    <td className="d-none d-md-table-cell">{company.date}</td>
-                    <td className="d-none d-sm-table-cell">{company.phone}</td>
-                    <td className="d-none d-sm-table-cell">{company.activity}</td>
+                    <td>{companies.owner}</td>
+                    <td className="d-none d-md-table-cell">{companies.date}</td>
+                    <td className="d-none d-sm-table-cell">{companies.phone}</td>
+                    <td className="d-none d-sm-table-cell">{companies.activity}</td>
                   </tr>
                 ))}
             </tbody>
@@ -356,17 +371,31 @@ const Company = () => {
         </div>
       </div>
 
-      <Row className="mt-3">
-        <Col xs={12} className="d-flex justify-content-end">
-          <Pagination>
-            <Pagination.Prev />
-            <Pagination.Item active>{1}</Pagination.Item>
-            <Pagination.Item>{2}</Pagination.Item>
-            <Pagination.Item>{3}</Pagination.Item>
-            <Pagination.Next />
-          </Pagination>
-        </Col>
-      </Row>
+      <div className="d-flex justify-content-between align-items-center mt-3">
+        <div>
+          Showing {indexOfFirstItem + 1} to{" "}
+          {Math.min(indexOfLastItem, companies.length)} of {companies.length} entries
+        </div>
+        <Pagination>
+          <Pagination.Prev
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+          />
+          {Array.from({ length: totalPages }, (_, index) => (
+            <Pagination.Item
+              key={index}
+              active={index + 1 === currentPage}
+              onClick={() => handlePageChange(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          ))}
+          <Pagination.Next
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+          />
+        </Pagination>
+      </div>
 
       {isModalOpen && (
         <>
