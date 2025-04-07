@@ -14,6 +14,7 @@ import {
 import { FaTrash, FaCalendarAlt, FaSearch } from "react-icons/fa";
 import { FaPenToSquare, FaRegEye } from "react-icons/fa6";
 import { AddUserModal } from './userModal';
+import { useSelector } from "react-redux";
 
 const Users = () => {
   // Sample data for initial users
@@ -55,8 +56,8 @@ const Users = () => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+  const [searchTerm, setSearchTerm] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [roleFilter, setRoleFilter] = useState("All Roles");
   const [statusFilter, setStatusFilter] = useState("All Status");
@@ -122,6 +123,9 @@ const Users = () => {
                 value={dateFilter}
                 onChange={(e) => setDateFilter(e.target.value)}
                 placeholder="Date"
+                className={`${
+                  darkMode ? "dark-mode" : null
+                } `}
               />
               <InputGroup.Text>
                 <FaCalendarAlt />
@@ -132,7 +136,7 @@ const Users = () => {
             <Dropdown>
               <Dropdown.Toggle
                 variant="light"
-                className="w-100 text-start border"
+                className={`${darkMode ? "dark-mode" : null} w-100 text-start border`} 
               >
                 {roleFilter}
               </Dropdown.Toggle>
@@ -153,7 +157,7 @@ const Users = () => {
             <Dropdown>
               <Dropdown.Toggle
                 variant="light"
-                className="w-100 text-start border"
+                className={`${darkMode ? "dark-mode" : null} w-100 text-start border`}
               >
                 {statusFilter}
               </Dropdown.Toggle>
@@ -174,7 +178,7 @@ const Users = () => {
             <Dropdown>
               <Dropdown.Toggle
                 variant="light"
-                className="w-100 text-start border"
+                className= {`${darkMode ? "dark-mode" : null} w-100 text-start border`}
               >
                 {sortBy}
               </Dropdown.Toggle>
@@ -194,8 +198,8 @@ const Users = () => {
         </Row>
 
       {/* Users Table */}
-      <Table hover responsive className="align-middle">
-        <thead>
+      <Table hover responsive className={`${darkMode ? "table-dark" : null} align-middle`}>
+        <thead className={`${darkMode ? "table-dark" : null}`}>
           <tr>
             <th>
               <Form.Check type="checkbox" />
@@ -225,7 +229,7 @@ const Users = () => {
               <td>
                 <Badge
                   bg={user.role === "Employee" ? "danger" : "primary"}
-                  className="bg-opacity-10 text-dark"
+                  className=""
                 >
                   {user.role}
                 </Badge>
