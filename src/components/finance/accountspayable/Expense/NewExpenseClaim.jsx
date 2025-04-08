@@ -71,12 +71,12 @@ const NewExpenseClaim = () => {
                 <span className="text-sm text-custom">Itemise</span>
               </div>
               <div className="flex">
-                <select className="!rounded-r-none border-r-0 w-24 bg-white">
+                <select className={`${darkMode ? "card-dark" : "bg-white" } !rounded-r-none border-r-0 w-24`}>
                   <option>GBP</option>
                 </select>
                 <input
                   type="text"
-                  className="flex-1 !rounded-l-none"
+                  className={`${darkMode ? "card-dark" : "bg-white" } flex-1 !rounded-l-none`}
                   placeholder={0.0}
                 />
               </div>
@@ -87,7 +87,7 @@ const NewExpenseClaim = () => {
               </label>
               <div className="relative">
                 <textarea
-                  className="w-full h-24"
+                  className={`${darkMode ? "card-dark" : "bg-white" } w-full h-24`}
                   placeholder="What was it for?"
                   defaultValue={""}
                 />
@@ -124,23 +124,23 @@ const NewExpenseClaim = () => {
               <label className="block text-sm font-medium mb-2">
                 Company bank account
               </label>
-              <select className="w-full bg-white">
+              <select className={`${darkMode ? "card-dark" : "bg-white" } w-full`}>
                 <option>XYZ Consultants Ltd</option>
               </select>
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Spent at</label>
-              <select className="w-full bg-white">
+              <select className={`${darkMode ? "card-dark" : "bg-white" }  w-full bg-white`}>
                 <option>Select contact</option>
               </select>
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Spent on</label>
-              <input type="date" className="w-full" defaultValue="2024-12-27" />
+              <input type="date" className={`${darkMode ? "card-dark" : "bg-white" } w-full`} defaultValue="2024-12-27" />
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Account</label>
-              <select className="w-full bg-white">
+              <select className={`${darkMode ? "card-dark" : "bg-white" }  w-full bg-white`}>
                 <option>Select account</option>
               </select>
             </div>
@@ -151,13 +151,13 @@ const NewExpenseClaim = () => {
                   <label className="block text-sm font-medium mb-2">
                     Assign to project or customer
                   </label>
-                  <input type="text" className="w-full" />
+                  <input type="text" className={`${darkMode ? "card-dark" : "bg-white" } w-full`} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Label
                   </label>
-                  <input type="text" className="w-full" />
+                  <input type="text" className={`${darkMode ? "card-dark" : "bg-white" } w-full`} />
                 </div>
               </div>
             </div>

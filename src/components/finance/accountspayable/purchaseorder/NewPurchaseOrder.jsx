@@ -22,7 +22,7 @@ const NewPurchaseOrder = () => {
         </ol>
       </nav>
       <h1 className="text-2xl font-semibold mb-8">New Purchase Order</h1>
-      <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg shadow-sm p-6`}>
+      <div className={`${darkMode ? "card-dark" : "bg-gray-100" } bg-gray-50 rounded-lg shadow-sm p-6 border`}>
         <div className="flex justify-end mb-6">
           <button className="text-custom hover:text-custom-dark">
             <i className="far fa-clone mr-2" />
@@ -37,7 +37,7 @@ const NewPurchaseOrder = () => {
             <input
               type="text"
               placeholder="Enter supplier name..."
-              className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+              className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
             />
           </div>
           <div className="space-y-2">
@@ -47,7 +47,7 @@ const NewPurchaseOrder = () => {
             <input
               type="date"
               defaultValue="2024-12-27"
-              className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+              className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
             />
           </div>
           <div className="space-y-2">
@@ -56,7 +56,7 @@ const NewPurchaseOrder = () => {
             </label>
             <input
               type="date"
-              className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+              className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
             />
           </div>
           <div className="space-y-2">
@@ -66,7 +66,7 @@ const NewPurchaseOrder = () => {
             <input
               type="text"
               defaultValue="PO-13607"
-              className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+              className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
               readOnly=""
             />
           </div>
@@ -77,14 +77,14 @@ const NewPurchaseOrder = () => {
             <input
               type="text"
               placeholder="Enter supplier reference..."
-              className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+              className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
             />
           </div>
           <div className="space-y-2">
             <label className="block text-sm font-medium">
               Department
             </label>
-            <select className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom">
+            <select className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}>
               <option>XYZ Tech Group</option>
               <option>Finance</option>
               <option>Operations</option>
@@ -92,14 +92,14 @@ const NewPurchaseOrder = () => {
           </div>
         </div>
         <div className="flex justify-between mb-6">
-          <select className="border-gray-300 rounded-button focus:border-custom focus:ring-custom">
+          <select className={`${darkMode ? "card-dark" : "bg-white" } border rounded-button focus:border-custom focus:ring-custom`}>
             <option>GBP British Pound</option>
             <option>USD US Dollar</option>
             <option>EUR Euro</option>
           </select>
           <div className="flex items-center space-x-2">
             <span className="text-sm">Amounts are</span>
-            <select className="border-gray-300 rounded-button focus:border-custom focus:ring-custom">
+            <select className={`${darkMode ? "card-dark" : "bg-white" } border rounded-button focus:border-custom focus:ring-custom`}>
               <option>Tax Inclusive</option>
               <option>Tax Exclusive</option>
             </select>
@@ -142,12 +142,12 @@ const NewPurchaseOrder = () => {
                   <input
                     type="text"
                     placeholder="Enter item code..."
-                    className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+                    className={`${darkMode ? "card-dark" : "bg-white" } w-full border rounded-button focus:border-custom focus:ring-custom`}
                   />
                 </td>
                 <td className="px-4 py-3">
                   <textarea
-                    className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+                    className={`${darkMode ? "card-dark" : "bg-white" } w-full border rounded-button focus:border-custom focus:ring-custom`}
                     rows={1}
                     placeholder="Enter description..."
                     defaultValue={""}
@@ -158,7 +158,7 @@ const NewPurchaseOrder = () => {
                     type="number"
                     min={1}
                     defaultValue={1}
-                    className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+                    className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
                   />
                 </td>
                 <td className="px-4 py-3">
@@ -166,7 +166,7 @@ const NewPurchaseOrder = () => {
                     type="number"
                     step="0.01"
                     placeholder={0.0}
-                    className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+                    className={`${darkMode ? "card-dark" : "bg-white" }  w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
                   />
                 </td>
                 <td className="px-4 py-3">
@@ -174,18 +174,18 @@ const NewPurchaseOrder = () => {
                     type="number"
                     step="0.01"
                     placeholder={0.0}
-                    className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+                    className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
                   />
                 </td>
                 <td className="px-4 py-3">
-                  <select className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom">
+                  <select className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}>
                     <option>Select cost center...</option>
                     <option>General Expenses</option>
                     <option>IT Equipment</option>
                   </select>
                 </td>
                 <td className="px-4 py-3">
-                  <select className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom">
+                  <select className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}>
                     <option>20% VAT</option>
                     <option>0% VAT</option>
                   </select>
@@ -195,7 +195,7 @@ const NewPurchaseOrder = () => {
                     type="number"
                     step="0.01"
                     defaultValue={0.0}
-                    className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+                    className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
                     readOnly=""
                   />
                 </td>
@@ -255,7 +255,7 @@ const NewPurchaseOrder = () => {
                 <input
                   type="text"
                   defaultValue="Accounts Team"
-                  className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+                  className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
                 />
               </div>
               <div>
@@ -265,7 +265,7 @@ const NewPurchaseOrder = () => {
                 <input
                   type="tel"
                   defaultValue="+44 333 344 3201"
-                  className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+                  className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
                 />
               </div>
               <div>
@@ -273,7 +273,7 @@ const NewPurchaseOrder = () => {
                   Special Instructions
                 </label>
                 <textarea
-                  className="w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom"
+                  className={`${darkMode ? "card-dark" : "bg-white" } w-full border-gray-300 rounded-button focus:border-custom focus:ring-custom border`}
                   rows={4}
                   maxLength={500}
                   placeholder="Enter any special delivery instructions..."
@@ -285,14 +285,14 @@ const NewPurchaseOrder = () => {
         </div>
         <div className="flex justify-between items-center">
           <div className="space-x-4">
-            <button className={`${darkMode ? "card-dark" : "bg-white" } bg-custom rounded px-4 py-2 !rounded-button hover:bg-custom-dark`}>
+            <button className={`${darkMode ? "card-dark" : "bg-white" } bg-custom rounded px-4 py-2 !rounded-button hover:bg-custom-dark border`}>
               Save
             </button>
             <button className="bg-green-500 text-white px-4 py-2 !rounded-button hover:bg-green-600">
               Approve
             </button>
           </div>
-          <button className={`${darkMode ? "card-dark" : "bg-white" } px-4 py-2 !rounded-button rounded`}>
+          <button className={`${darkMode ? "card-dark" : "bg-white" } px-4 py-2 !rounded-button rounded border`}>
             Cancel
           </button>
         </div>

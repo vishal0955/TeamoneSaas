@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 
@@ -19,8 +17,11 @@ const timeZones = [
   { value: "UTC+05:30", label: "(UTC+05:30) Indian Standard Time (IST)" },
   { value: "UTC+08:00", label: "(UTC+08:00) China Standard Time (CST)" },
   { value: "UTC+09:00", label: "(UTC+09:00) Japan Standard Time (JST)" },
-  { value: "UTC+10:00", label: "(UTC+10:00) Australian Eastern Standard Time (AEST)" },
-  { value: "UTC+12:00", label: "(UTC+12:00) New Zealand Standard Time (NZST)" }
+  {
+    value: "UTC+10:00",
+    label: "(UTC+10:00) Australian Eastern Standard Time (AEST)",
+  },
+  { value: "UTC+12:00", label: "(UTC+12:00) New Zealand Standard Time (NZST)" },
 ];
 
 const industries = [
@@ -43,7 +44,7 @@ const industries = [
   "Media & Entertainment",
   "Legal Services",
   "Food & Beverage",
-  "Consumer Goods"
+  "Consumer Goods",
 ];
 
 const companyTypes = [
@@ -61,9 +62,8 @@ const companyTypes = [
   "Cooperative",
   "Limited Liability Company (LLC)",
   "Joint Venture",
-  "Holding Company"
+  "Holding Company",
 ];
-
 
 const CompanyForm = ({ handleClose }) => {
   const [formData, setFormData] = useState({
@@ -78,12 +78,11 @@ const CompanyForm = ({ handleClose }) => {
     revenue: "",
     timeZone: "",
     workingHours: "",
-    description: ""
+    description: "",
   });
 
   const [showOwnerModal, setShowOwnerModal] = useState(false);
   const [showIndustryModal, setShowIndustryModal] = useState(false);
-
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -101,18 +100,30 @@ const CompanyForm = ({ handleClose }) => {
         {/* Company Name */}
         <Form.Group className="mb-3">
           <Form.Label>Company Name</Form.Label>
-          <Form.Control type="text" name="companyName" value={formData.companyName} onChange={handleChange} />
+          <Form.Control
+            type="text"
+            name="companyName"
+            value={formData.companyName}
+            onChange={handleChange}
+          />
         </Form.Group>
         <Row>
           <Col md={6}>
             <Form.Group className="mb-3">
               <Form.Label>Company owner</Form.Label>
               <div className="d-flex align-items-center">
-                <Form.Select className="inv-filter-button" name="owner" value={formData.owner} onChange={handleChange}>
+                <Form.Select
+                  className="inv-filter-button"
+                  name="owner"
+                  value={formData.owner}
+                  onChange={handleChange}
+                >
                   <option>Select owner</option>
                   <option>Sarah Johnson</option>
                 </Form.Select>
-                <Button variant="link" onClick={() => setShowOwnerModal(true)}>+</Button>
+                <Button variant="link" onClick={() => setShowOwnerModal(true)}>
+                  +
+                </Button>
               </div>
             </Form.Group>
           </Col>
@@ -120,15 +131,25 @@ const CompanyForm = ({ handleClose }) => {
             <Form.Group className="mb-3">
               <Form.Label>Industry</Form.Label>
               <div className="d-flex align-items-center">
-                <Form.Select className="inv-filter-button " name="industry" value={formData.industry} onChange={handleChange}>
+                <Form.Select
+                  className="inv-filter-button "
+                  name="industry"
+                  value={formData.industry}
+                  onChange={handleChange}
+                >
                   <option>Select industry</option>
                   {industries.map((tz) => (
-                  <option key={tz.value} value={tz.value}>
-                    {tz.label}
-                  </option>
-                ))}
+                    <option key={tz.value} value={tz.value}>
+                      {tz.label}
+                    </option>
+                  ))}
                 </Form.Select>
-                <Button variant="link" onClick={() => setShowIndustryModal(true)}>+</Button>
+                <Button
+                  variant="link"
+                  onClick={() => setShowIndustryModal(true)}
+                >
+                  +
+                </Button>
               </div>
             </Form.Group>
           </Col>
@@ -136,24 +157,69 @@ const CompanyForm = ({ handleClose }) => {
 
         <Form.Group className="mb-3">
           <Form.Label>Type</Form.Label>
-          <Form.Select className=" " name="type" value={formData.type} onChange={handleChange}>
+          <Form.Select
+            className=" "
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+          >
             <option>Select type</option>
             {companyTypes.map((tz) => (
-                  <option key={tz} value={tz}>
-                    {tz}
-                  </option>
-                ))}
+              <option key={tz} value={tz}>
+                {tz}
+              </option>
+            ))}
           </Form.Select>
         </Form.Group>
 
         <Row>
-          <Col md={6}><Form.Group className="mb-3"><Form.Label>City</Form.Label><Form.Control type="text" name="city" value={formData.city} onChange={handleChange} /></Form.Group></Col>
-          <Col md={6}><Form.Group className="mb-3"><Form.Label>State/Region</Form.Label><Form.Control type="text" name="state" value={formData.state} onChange={handleChange} /></Form.Group></Col>
+          <Col md={6}>
+            <Form.Group className="mb-3">
+              <Form.Label>City</Form.Label>
+              <Form.Control
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group className="mb-3">
+              <Form.Label>State/Region</Form.Label>
+              <Form.Control
+                type="text"
+                name="state"
+                value={formData.state}
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Col>
         </Row>
 
         <Row>
-          <Col md={6}><Form.Group className="mb-3"><Form.Label>Postal Code</Form.Label><Form.Control type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} /></Form.Group></Col>
-          <Col md={6}><Form.Group className="mb-3"><Form.Label>Number of Employees</Form.Label><Form.Control type="number" name="employees" value={formData.employees} onChange={handleChange} /></Form.Group></Col>
+          <Col md={6}>
+            <Form.Group className="mb-3">
+              <Form.Label>Postal Code</Form.Label>
+              <Form.Control
+                type="text"
+                name="postalCode"
+                value={formData.postalCode}
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group className="mb-3">
+              <Form.Label>Number of Employees</Form.Label>
+              <Form.Control
+                type="number"
+                name="employees"
+                value={formData.employees}
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Col>
         </Row>
 
         {/* Time Zone Selection */}
@@ -161,7 +227,11 @@ const CompanyForm = ({ handleClose }) => {
           <Col md={6}>
             <Form.Group className="mb-3">
               <Form.Label>Time Zone</Form.Label>
-              <Form.Select name="timeZone" value={formData.timeZone} onChange={handleChange}>
+              <Form.Select
+                name="timeZone"
+                value={formData.timeZone}
+                onChange={handleChange}
+              >
                 <option value="">Select time zone</option>
                 {timeZones.map((tz) => (
                   <option key={tz.value} value={tz.value}>
@@ -171,7 +241,7 @@ const CompanyForm = ({ handleClose }) => {
               </Form.Select>
             </Form.Group>
           </Col>
-          
+
           {/* Working Hours */}
           <Col md={6}>
             <Form.Group className="mb-3">
@@ -190,14 +260,24 @@ const CompanyForm = ({ handleClose }) => {
         {/* Description */}
         <Form.Group className="mb-3">
           <Form.Label>Description</Form.Label>
-          <Form.Control as="textarea" name="description" value={formData.description} onChange={handleChange} rows={3} />
+          <Form.Control
+            as="textarea"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            rows={3}
+          />
         </Form.Group>
 
         {/* Submit Buttons */}
         <div className="d-flex justify-content-end gap-2">
-          <Button type="submit" className="inv-new-button">Create</Button>
+          <Button type="submit" className="inv-new-button">
+            Create
+          </Button>
           <Button>Create and add another</Button>
-          <Button className="inv-filter-button" onClick={handleClose}>Cancel</Button>
+          <Button className="inv-filter-button" onClick={handleClose}>
+            Cancel
+          </Button>
         </div>
       </Form>
 
@@ -215,7 +295,10 @@ const CompanyForm = ({ handleClose }) => {
       </Modal>
 
       {/* Industry Modal */}
-      <Modal show={showIndustryModal} onHide={() => setShowIndustryModal(false)}>
+      <Modal
+        show={showIndustryModal}
+        onHide={() => setShowIndustryModal(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add New Industry</Modal.Title>
         </Modal.Header>
@@ -232,4 +315,3 @@ const CompanyForm = ({ handleClose }) => {
 };
 
 export default CompanyForm;
-

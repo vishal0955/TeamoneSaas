@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FormModal from '../common/FormModal';
+import { useSelector } from "react-redux";
 
 const EmailsTab = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,6 +33,8 @@ const EmailsTab = () => {
     setIsModalOpen(false);
   };
 
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+
   return (
     <div className="p-4">
       <div className="flex justify-end mb-4">
@@ -45,7 +48,7 @@ const EmailsTab = () => {
 
       <div className="space-y-4">
         {emails.map(email => (
-          <div key={email.id} className="bg-white p-4 rounded-lg shadow">
+          <div key={email.id} className={`${darkMode ? "card-dark" : null } bg-white p-4 rounded-lg shadow`}>
             <div className="flex justify-between items-start">
               <div>
                 <h3 className="font-medium">{email.subject}</h3>
