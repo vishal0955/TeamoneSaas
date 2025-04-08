@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import "./task.css";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const TaskDetail = () => {
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   const navigate = useNavigate();
   const { id } = useParams();
   
@@ -40,7 +42,7 @@ const TaskDetail = () => {
     <>
       <div>
         <div className="container py-5">
-          <div className="task-card">
+          <div className={`${darkMode ? "card-dark" : null }  task-card p-3 rounded" `}>
             <div className="d-flex justify-content-between align-items-start mb-4">
               <h4 className="mb-0">Task Details</h4>
               <div className="">
@@ -57,7 +59,7 @@ const TaskDetail = () => {
             <div className="row">
               <div className="col-lg-8">
                 <h5 className="mb-3">Task Description</h5>
-                <p className="text-muted mb-4">
+                <p className=" text-[#a0a0a0] mb-4">
                   Design and implement new user interface components for the dashboard
                   section. Focus on improving user experience and maintaining
                   consistency with our design system.
@@ -87,7 +89,7 @@ const TaskDetail = () => {
               </div>
               <div className="col-lg-4">
                 <h5 className="mb-3">Attachments</h5>
-                <div className="attachment-item">
+                <div className= {`${darkMode ? "dark-mode" : null } attachment-item `}>
                   <div className="d-flex align-items-center">
                     <i className="bi bi-file-pdf text-danger me-2" />
                     <div>
@@ -95,11 +97,11 @@ const TaskDetail = () => {
                       <div className="file-size">2.4 KB</div>
                     </div>
                   </div>
-                  <a href="#" className="text-muted">
+                  <a href="#" className="">
                     <i className="bi bi-download" />
                   </a>
                 </div>
-                <div className="attachment-item">
+                <div className={`${darkMode ? "dark-mode" : null } attachment-item `}>
                   <div className="d-flex align-items-center">
                     <i className="bi bi-file-image text-primary me-2" />
                     <div>
@@ -107,11 +109,11 @@ const TaskDetail = () => {
                       <div className="file-size">1.8 MB</div>
                     </div>
                   </div>
-                  <a href="#" className="text-muted">
+                  <a href="#" className="">
                     <i className="bi bi-download" />
                   </a>
                 </div>
-                <div className="attachment-item">
+                <div className={`${darkMode ? "dark-mode" : null } attachment-item `}>
                   <div className="d-flex align-items-center">
                     <i className="bi bi-file-word text-primary me-2" />
                     <div>
@@ -119,7 +121,7 @@ const TaskDetail = () => {
                       <div className="file-size">850 KB</div>
                     </div>
                   </div>
-                  <a href="#" className="text-muted">
+                  <a href="#" className="">
                     <i className="bi bi-download" />
                   </a>
                 </div>
@@ -128,7 +130,7 @@ const TaskDetail = () => {
             <div className="row mt-4">
               <div className="col-lg-6">
                 <h5 className="mb-3">Custom Fields</h5>
-                <form onSubmit={handleSubmit} className="custom-fields-form">
+                <form onSubmit={handleSubmit} className= {`${darkMode ? "card-dark" : null } custom-fields-form `}>
                   <div className="field-item">
                     <div className="field-icon">📱</div>
                     <div className="field-label">Contact Phone</div>
@@ -138,7 +140,7 @@ const TaskDetail = () => {
                         name="contactPhone"
                         value={customFields.contactPhone}
                         onChange={handleInputChange}
-                        className="form-control"
+                        className={`${darkMode ? "card-dark" : null } form-control `}
                       />
                     </div>
                   </div>

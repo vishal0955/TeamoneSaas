@@ -1,37 +1,27 @@
-import React, { useState, useRef } from "react";
-import {
-  Search,
-  Bell,
-  User,
-  Settings,
-  Activity,
-  CreditCard,
-  HelpCircle,
-  LogOut,
-  Menu,
-  Sun,
-  Moon,
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { toggleTheme } from "../redux/slices/ThemeSlice";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useRef } from 'react';
+import { Search, Bell, User, Settings, Activity, CreditCard, HelpCircle, LogOut, Menu, Sun, Moon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { toggleTheme } from '../redux/slices/ThemeSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Navbar = ({ toggleSidebar, collapsed }) => {
   const dispatch = useDispatch();
-
+  
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  const [isNotificationDropdownOpen, setIsNotificationDropdownOpen] =
-    useState(false);
+  const [isNotificationDropdownOpen, setIsNotificationDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const handleLogout = () => {
     console.log("logout clicked");
     localStorage.removeItem("userRole");
     localStorage.removeItem("userEmail");
-    navigate("/");
+    navigate('/');
   };
+ 
+
+
 
   const toggleProfileDropdown = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
@@ -50,17 +40,14 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
   };
 
   const darkMode = useSelector((state) => state.theme.isDarkMode);
-  const toggleDarkMode = () => {
+   const toggleDarkMode = () => {
     dispatch(toggleTheme());
     console.log("Dark mode toggled");
-  };
+   };
 
   return (
-    <div
-      className={`${
-        darkMode ? "dark-mode" : "bg-white"
-      } fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200`}
-    >
+    <div className={ `${darkMode ? 
+        'dark-mode': "bg-white"  } fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200`}>
       <div className="flex items-center justify-between px-4 py-3 sm:px-6">
         {/* Left section - Logo and toggle button */}
         <div className="flex items-center">
@@ -68,13 +55,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
             {collapsed ? (
               <span className="text-indigo-600 font-bold text-2xl">H</span>
             ) : (
-              // <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
-              // <img src="../../assets/logo-BPAV.png" alt="Logo" className="h-8 w-8" />
-              <img
-                src="../assets/logo-BPAV.png"
-                alt="logo-BPAV"
-                className="h-8  w-8"
-              ></img>
+              <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
             )}
             <button
               onClick={toggleSidebar}
@@ -90,11 +71,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
           {/* Middle section - Search (hidden on mobile) */}
           <div className="hidden md:flex flex-1 mx-4 max-w-md .nav-search-btn">
             <div className="relative w-full">
-              <div
-                className={`${
-                  darkMode ? "card-dark" : null
-                } flex items-center bg-gray-100 rounded-md px-3 py-2 w-full`}
-              >
+              <div className="flex items-center bg-gray-100 rounded-md px-3 py-2 w-full">
                 <Search size={16} className="text-gray-500 mr-2" />
                 <input
                   type="text"
@@ -113,14 +90,10 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
           {/* Notification icon with dropdown */}
           <div className="relative" ref={dropdownRef}>
-            <button className="px-2 py-1 ml-2" onClick={toggleDarkMode}>
-              {darkMode ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
-            <button
+          <button className="px-2 py-1 ml-2" onClick={toggleDarkMode}>
+                       {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                     </button>
+            <button 
               onClick={toggleNotificationDropdown}
               className="text-gray-500 hover:text-gray-700 relative"
             >
@@ -132,21 +105,14 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
             {/* Notification dropdown menu */}
             {isNotificationDropdownOpen && (
-              <div
-                className={`${
-                  darkMode ? "dark-mode" : null
-                } absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50`}
-              >
+              <div className={`${darkMode ? "dark-mode" : null } absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50`}>
                 <div className="p-4 border-b border-gray-200">
                   <h3 className="text-base font-medium">Notifications</h3>
                 </div>
-
+                
                 <div className="py-1 max-h-96 overflow-y-auto">
                   {/* Notification items */}
-                  <a
-                    href="#"
-                    className="flex items-start px-4 py-3 text-smborder-b border-gray-100"
-                  >
+                  <a href="#" className="flex items-start px-4 py-3 text-smborder-b border-gray-100">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
                       <User size={16} className="text-blue-500" />
                     </div>
@@ -156,24 +122,19 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
                       <p className="text-xs text-gray-400 mt-1">2 hours ago</p>
                     </div>
                   </a>
-
-                  <a
-                    href="#"
-                    className="flex items-start px-4 py-3 text-smborder-b border-gray-100"
-                  >
+                  
+                  <a href="#" className="flex items-start px-4 py-3 text-smborder-b border-gray-100">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
                       <Activity size={16} className="text-green-500" />
                     </div>
                     <div>
                       <p className="font-medium">Leave request approved</p>
-                      <p className="text-xs">
-                        Your leave request has been approved
-                      </p>
+                      <p className="text-xs">Your leave request has been approved</p>
                       <p className="text-xs text-gray-400 mt-1">1 day ago</p>
                     </div>
                   </a>
-
-                  <a href="#" className="flex items-start px-4 py-3 text-sm">
+                  
+                  <a href="#" className="flex items-start px-4 py-3 text-sm ">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
                       <CreditCard size={16} className="text-purple-500" />
                     </div>
@@ -184,12 +145,9 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
                     </div>
                   </a>
                 </div>
-
+                
                 <div className="py-2 border-t border-gray-200 text-center">
-                  <a
-                    href="#"
-                    className="text-sm text-blue-500 hover:text-blue-700 font-medium"
-                  >
+                  <a href="#" className="text-sm text-blue-500 hover:text-blue-700 font-medium">
                     View all notifications
                   </a>
                 </div>
@@ -212,11 +170,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
             {/* Profile dropdown menu */}
             {isProfileDropdownOpen && (
-              <div
-                className={`${
-                  darkMode ? "dark-mode" : null
-                } absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50`}
-              >
+              <div className={`${darkMode ? "dark-mode" : null } absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50`}>
                 {/* Profile Info */}
                 <div className="p-4 border-b border-gray-200">
                   <div className="flex items-center space-x-3">
@@ -236,52 +190,31 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
                 {/* Menu Items */}
                 <div className="py-1">
-                  <a
-                    href="#profile"
-                    className="flex items-center px-4 py-2 text-smhover:bg-gray-100"
-                  >
+                  <a href="#profile" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <User size={18} className="mr-3" />
                     <span>My Profile</span>
                   </a>
-                  <a
-                    href="#settings"
-                    className="flex items-center px-4 py-2 text-smhover:bg-gray-100"
-                  >
+                  <a href="#settings" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <Settings size={18} className="mr-3" />
                     <span>Settings</span>
                   </a>
-                  <a
-                    href="#status"
-                    className="flex items-center px-4 py-2 text-smhover:bg-gray-100"
-                  >
+                  <a href="#status" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <Activity size={18} className="mr-3" />
                     <span>Status</span>
                   </a>
-                  <a
-                    href="#account"
-                    className="flex items-center px-4 py-2 text-smhover:bg-gray-100"
-                  >
+                  <a href="#account" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <CreditCard size={18} className="mr-3" />
                     <span>My Account</span>
                   </a>
-                  <a
-                    href="#knowledge"
-                    className="flex items-center px-4 py-2 text-smhover:bg-gray-100"
-                  >
+                  <a href="#knowledge" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <HelpCircle size={18} className="mr-3" />
                     <span>Knowledge Base</span>
                   </a>
                 </div>
 
                 {/* Logout */}
-                <div
-                  className="py-1 border-t border-gray-200"
-                  onClick={handleLogout}
-                >
-                  <a
-                    href="#logout"
-                    className="flex items-center px-4 py-2 text-smhover:bg-gray-100"
-                  >
+                <div className="py-1 border-t border-gray-200" onClick={handleLogout}>
+                  <a href="#logout" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <LogOut size={18} className="mr-3" />
                     <span>Logout</span>
                   </a>
