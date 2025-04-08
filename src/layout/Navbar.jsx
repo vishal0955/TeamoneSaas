@@ -47,7 +47,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
   return (
     <div className={ `${darkMode ? 
-        'dark-mode': "bg-white"  } fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200`}>
+        'dark-mode': "bg-white"  } fixed top-0 left-0 right-0 z-30  border-b border-gray-200`}>
       <div className="flex items-center justify-between px-4 py-3 sm:px-6">
         {/* Left section - Logo and toggle button */}
         <div className="flex items-center">
@@ -55,7 +55,9 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
             {collapsed ? (
               <span className="text-indigo-600 font-bold text-2xl">H</span>
             ) : (
-              <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
+              // <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
+              // <img src="../../assets/logo-BPAV.png" alt="Logo" className="h-8 w-8" />
+              <img  src="https://i.ibb.co/Qjm3yG7L/img.png" alt="logo-BPAV"  className="h-8  w-37.5" ></img>
             )}
             <button
               onClick={toggleSidebar}
@@ -71,7 +73,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
           {/* Middle section - Search (hidden on mobile) */}
           <div className="hidden md:flex flex-1 mx-4 max-w-md .nav-search-btn">
             <div className="relative w-full">
-              <div className="flex items-center bg-gray-100 rounded-md px-3 py-2 w-full">
+              <div className={`${darkMode ? "card-dark" : null } flex items-center bg-gray-100 rounded-md px-3 py-2 w-full`}>
                 <Search size={16} className="text-gray-500 mr-2" />
                 <input
                   type="text"
@@ -112,7 +114,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
                 
                 <div className="py-1 max-h-96 overflow-y-auto">
                   {/* Notification items */}
-                  <a href="#" className="flex items-start px-4 py-3 text-sm text-gray-700 border-b border-gray-100">
+                  <a href="#" className="flex items-start px-4 py-3 text-smborder-b border-gray-100">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
                       <User size={16} className="text-blue-500" />
                     </div>
@@ -123,7 +125,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
                     </div>
                   </a>
                   
-                  <a href="#" className="flex items-start px-4 py-3 text-sm text-gray-700 border-b border-gray-100">
+                  <a href="#" className="flex items-start px-4 py-3 text-smborder-b border-gray-100">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
                       <Activity size={16} className="text-green-500" />
                     </div>
@@ -134,7 +136,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
                     </div>
                   </a>
                   
-                  <a href="#" className="flex items-start px-4 py-3 text-sm text-gray-700">
+                  <a href="#" className="flex items-start px-4 py-3 text-sm">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
                       <CreditCard size={16} className="text-purple-500" />
                     </div>
@@ -190,23 +192,23 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
                 {/* Menu Items */}
                 <div className="py-1">
-                  <a href="#profile" className="flex items-center px-4 py-2 text-sm hover:bg-gray-100">
+                  <a href="#profile" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <User size={18} className="mr-3" />
                     <span>My Profile</span>
                   </a>
-                  <a href="#settings" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <a href="#settings" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <Settings size={18} className="mr-3" />
                     <span>Settings</span>
                   </a>
-                  <a href="#status" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <a href="#status" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <Activity size={18} className="mr-3" />
                     <span>Status</span>
                   </a>
-                  <a href="#account" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <a href="#account" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <CreditCard size={18} className="mr-3" />
                     <span>My Account</span>
                   </a>
-                  <a href="#knowledge" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <a href="#knowledge" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <HelpCircle size={18} className="mr-3" />
                     <span>Knowledge Base</span>
                   </a>
@@ -214,7 +216,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
                 {/* Logout */}
                 <div className="py-1 border-t border-gray-200" onClick={handleLogout}>
-                  <a href="#logout" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <a href="#logout" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
                     <LogOut size={18} className="mr-3" />
                     <span>Logout</span>
                   </a>
