@@ -413,7 +413,7 @@ const ContactDetailPage = () => {
         </div>
 
         {/* Middle Section - Activities */}
-        <div className={`${darkMode ? "dark-mode " : null}col-md-6 bg-white rounded-lg shadow`}>
+        <div className={`${darkMode ? "dark-mode " : null} col-md-6 bg-white rounded-lg shadow`}>
           {/* Tabs */}
           <div className="border-b">
             <div className="">

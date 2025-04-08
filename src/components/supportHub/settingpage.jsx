@@ -1,9 +1,9 @@
 import React from "react";
-import { 
-  FaUsers, FaClock, FaGraduationCap, FaComments, FaRobot, FaRandom, 
+import { FaUsers, FaClock, FaGraduationCap, FaComments, FaRobot, FaRandom, 
   FaPhone, FaBook, FaUserCircle, FaColumns, FaReply, FaFileAlt, 
   FaTicketAlt, FaChartBar 
 } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const sections = [
@@ -52,18 +52,27 @@ const sections = [
 ];
 
 const HelpDeskSettings = () => {
+  // Getting dark mode from redux store
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
-    <div className=" min-h-screen font-sans">
+    <div className="min-h-screen font-sans">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-2xl font-semibold text-gray-900 mb-8">Help Desk Settings</h1>
         
         <div className="space-y-8">
           {sections.map((section, index) => (
             <section key={index}>
-              <h2 className="text-sm font-medium text-gray-500 mb-4">{section.title}</h2>
+              <h2 className={`${darkMode ? "text-white" : "text-gray-900"} text-sm font-medium mb-4`}>
+                {section.title}
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {section.items.map((item, idx) => (
-                  <Link to={item.path} key={idx} className="block p-4 bg-white rounded-lg border border-gray-200 hover:border-custom transition-colors">
+                  <Link 
+                    to={item.path || "#"} 
+                    key={idx} 
+                    className={`${darkMode ? "card-dark" : "bg-white" } block p-4 bg-white rounded-lg border border-gray-200 hover:border-custom transition-colors`}
+                  >
                     <div className="flex items-start">
                       <div className="flex-shrink-0 text-custom opacity-80 text-xl">
                         {React.createElement(item.icon)}
@@ -74,7 +83,9 @@ const HelpDeskSettings = () => {
                       </div>
                       {item.badge && (
                         <div className="ml-auto">
-                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 ${item.badgeColor || ""}`}>
+                          <span 
+                            className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${item.badgeColor || "bg-gray-100 text-gray-800"}`}
+                          >
                             {item.badge}
                           </span>
                         </div>

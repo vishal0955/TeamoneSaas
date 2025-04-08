@@ -14,6 +14,7 @@ import {
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import "./Plans.css";
+import { useSelector } from "react-redux";
 
 function Plans({ show, plan }) {
   const [currentStep, setCurrentStep] = useState(1);
@@ -186,8 +187,7 @@ function Plans({ show, plan }) {
     setCurrentStep(1); // Optional: reset to first step if using multi-step
   };
 
-
-   const [checkedFeatures, setCheckedFeatures] = useState({});
+  const [checkedFeatures, setCheckedFeatures] = useState({});
 
   // Handle checkbox change
   const handleCheckboxChange = (index) => {
@@ -196,6 +196,8 @@ function Plans({ show, plan }) {
       [index]: !prevState[index], // Toggle checkbox state
     }));
   };
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
     <Container style={{ marginTop: "60px" }}>
       <div className="d-flex gap-3">
@@ -424,7 +426,11 @@ function Plans({ show, plan }) {
       </Modal>
       {/* Step 2 Modal */}
 
-      <Modal show={customizeModalShow && currentStep === 2} onHide={handleClose} className="custom-modal feature-modal modal-lg">
+      <Modal
+        show={customizeModalShow && currentStep === 2}
+        onHide={handleClose}
+        className="custom-modal feature-modal modal-lg"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Customize Your Plan Features</Modal.Title>
         </Modal.Header>
@@ -435,7 +441,11 @@ function Plans({ show, plan }) {
               <Row className="g-4">
                 {planFeatures.map((feature, index) => (
                   <Col md={6} key={index}>
-                    <Card className="h-100 feature-card p-3 " onClick={() => handleCheckboxChange(index)} style={{backgroundColor:"DeepSkyBlue"}}>
+                    <Card
+                      className="h-100 feature-card p-3 "
+                      onClick={() => handleCheckboxChange(index)}
+                      style={{ backgroundColor: "DeepSkyBlue" }}
+                    >
                       <Card.Body>
                         <div className="d-flex flex-wrap">
                           <input
@@ -446,12 +456,25 @@ function Plans({ show, plan }) {
                           />
                           {/* Displaying name side-by-side for words */}
                           {feature.name.split(" ").map((word, i) => (
-                            <span key={i} className="me-2 fw-bold" style={{ color: "white" }}>
+                            <span
+                              key={i}
+                              className="me-2 fw-bold"
+                              style={{ color: "white" }}
+                            >
                               {word}
                             </span>
                           ))}
                         </div>
-                        <Card.Text className=" mt-2 " style={{color:"white" ,fontSize:"18px", fontFamily:"Roboto"}}>{feature.description}</Card.Text>
+                        <Card.Text
+                          className=" mt-2 "
+                          style={{
+                            color: "white",
+                            fontSize: "18px",
+                            fontFamily: "Roboto",
+                          }}
+                        >
+                          {feature.description}
+                        </Card.Text>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -477,7 +500,7 @@ function Plans({ show, plan }) {
             <Card
               className={`h-100 plan-card ${
                 selectedPlan === index ? "selected-plan" : ""
-              }`}
+              } ${darkMode ? "card-dark" : "bg-white"} border border-light`}
               onClick={() => setSelectedPlan(index)}
               style={{ cursor: "pointer" }}
             >

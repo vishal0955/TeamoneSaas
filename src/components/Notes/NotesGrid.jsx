@@ -447,7 +447,7 @@ const NotesGrid = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredNotes.map((note) => (
-                <div key={note.id} className={`${darkMode ? "dark-mode" : "bg-white" } rounded-lg shadow-sm overflow-hidden`}>
+                <div key={note.id} className={`${darkMode ? "dark-mode" : "bg-white" } rounded-lg shadow-sm overflow-hidden border border-gray-200`}>
                   <div className="p-4">
                     <div className={`${darkMode ? "dark-mode" : "bg-white" } flex justify-between items-center mb-3 `}>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityClasses(note.priority)}`}>
@@ -500,6 +500,8 @@ const NotesGrid = () => {
         isOpen={isAddNoteOpen}
         onClose={handleCloseAddNote}
         onSave={handleSaveNote}
+       
+      
    
       />
     </div>

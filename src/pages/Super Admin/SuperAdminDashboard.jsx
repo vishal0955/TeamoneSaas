@@ -18,6 +18,7 @@ import {
   FaBoxOpen,
   FaDollarSign,
 } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 function SuperAdminDashboard() {
   const stats = [
@@ -51,10 +52,10 @@ function SuperAdminDashboard() {
     { name: "May", value: 50 },
   ];
   const borderColors = ["#FF5733", "#33FF57", "#337BFF", "#FF33A6"];
-
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
-    <div>
-      <Container fluid className="mt-4">
+    <div className={`${darkMode ? "card-dark" : "bg-white" }p-0`}>
+      <Container fluid className= " mt-4">
         {/* Stats Cards */}
 
         <Row className="mb-4">
@@ -67,11 +68,11 @@ function SuperAdminDashboard() {
                 //   boxShadow: `0px 4px 10px ${borderColors[index % borderColors.length]}50`,
                 // }}
               >
-                <Card.Body>
+                <Card.Body className={`${darkMode ? "card-dark" : "bg-white" }`}>
                   {/* ✅ Flexbox se icon aur text ek line me aa jayenge */}
-                  <div className="d-flex align-items-center justify-content-center gap-2">
+                  <div className=" d-flex align-items-center justify-content-center gap-2">
                     {stat.icon} {/* ✅ Icon yaha aayega */}
-                    <Card.Title className="text-muted mb-0">
+                    <Card.Title className=" mb-0">
                       {stat.title}
                     </Card.Title>
                   </div>
@@ -86,7 +87,7 @@ function SuperAdminDashboard() {
 
         {/* Graph Analytics */}
         <Card className="shadow">
-          <Card.Body>
+          <Card.Body className={`${darkMode ? "card-dark" : "bg-white" }`}>
             <h5 className="text-center mb-3">Graph Analytics</h5>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart data={data}>
