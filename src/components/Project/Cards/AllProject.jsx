@@ -12,7 +12,7 @@ import { Avatar } from "primereact/avatar";
 import { AvatarGroup } from "primereact/avatargroup";
 import { Badge } from "primereact/badge";
 import { IoIosArrowForward } from "react-icons/io";
-import ResourceTimelineCalendar from "../../ResourceTimlineCalendar";
+// import ResourceTimelineCalendar from "../../ResourceTimlineCalendar";
 import AllProjectTimeline from "../AllProjectTimeline";
 
 
@@ -363,7 +363,8 @@ const AllProject = () => {
           </div>
         </div>
 
-        {activeTab === 0 && <AllProjectTimeline />}
+        {/* {activeTab === 0 && <AllProjectTimeline />} */}
+        {activeTab === 0 && <ProjectTimelineCalendar />}
         {activeTab === 2 && <KanbanBoard />}
 
         { activeTab === 1 && <>
