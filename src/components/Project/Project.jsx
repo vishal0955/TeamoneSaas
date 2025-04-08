@@ -463,9 +463,9 @@ const Project = () => {
       )}
 
       {/* Modal */}
-      {/* {showModal && (
+      {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[90vh]">
+          <div className="bg-white w-full max-w-6xl rounded-lg p-6 overflow-y-auto max-h-[90vh]">
             <div className="flex justify-between items-center border-b pb-2 mb-4">
               <h3 className="text-xl font-semibold">Add Project</h3>
               <button
@@ -539,7 +539,7 @@ const Project = () => {
                   </select>
                 </div>
               </div>
-
+{/* 
               // <div className="mt-4">
               //   <label className="block text-sm font-medium mb-1">
               //     Public Gantt Chart
@@ -559,7 +559,7 @@ const Project = () => {
               //       <span className="ml-2">Disable</span>
               //     </label>
               //   </div>
-              // </div>
+              // </div> */}
 
               <div className="flex justify-end gap-3 pt-4 border-t mt-4">
                 <button
@@ -579,11 +579,11 @@ const Project = () => {
             </form>
           </div>
         </div>
-      )} */}
+      )}
 
    
 
-            {/* <form onSubmit={handleAddOrEditProject} className="space-y-4">
+            <form onSubmit={handleAddOrEditProject} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">
@@ -696,9 +696,9 @@ const Project = () => {
                       setNewProject({ ...newProject, members: e.target.value })
                     }
                   />
-                </div> */}
+                </div> 
 
-            {/* <div className="mt-4">
+             <div className="mt-4">
                   <label className="block text-sm font-medium mb-1">
                     Public Gantt Chart
                   </label>
@@ -717,8 +717,8 @@ const Project = () => {
                       <span className="ml-2">Disable</span>
                     </label>
                   </div>
-                </div> */}
-            {/* </div>
+                </div>
+             </div>
               <div className="flex justify-end gap-3 pt-4 border-t mt-4">
                 <button
                   type="button"
@@ -734,8 +734,8 @@ const Project = () => {
                   Save
                 </button>
               </div>
-            </form> */}
-
+            </form>
+{/* 
 {showModal && (
      <div className="modal fade show d-block bg-opacity-50 bg-gray-50" role="dialog">
             <div className="modal-dialog modal-lg " role="document">
@@ -753,7 +753,7 @@ const Project = () => {
             <ProjectCard />
           </div>
         </div>
-      )}
+      )} */}
       {showClientModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white w-full max-w-md rounded-lg p-6">
