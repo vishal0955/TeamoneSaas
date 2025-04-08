@@ -121,7 +121,7 @@ const AllQuotes = () => {
 
         {/* Quotes Table */}
         <div className="quotes-card">
-          <div className={`${darkMode ? "card-dark" : null} quotes-card-body`}>
+          <div className={`${darkMode ? "card-dark" : null} quotes-card-body rounded`}>
             <div className="quotes-filters row mb-4">
               <div className="col-md-6">
                 <div className="inv-search-wrapper">
