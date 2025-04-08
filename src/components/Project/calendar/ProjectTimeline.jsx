@@ -528,16 +528,16 @@ import { useSelector } from 'react-redux';
 
 const ProjectTimelineCalendar = () => {
   const [allEvents, setAllEvents] = useState([
-    { id: '1', resourceId: 'r1', title: 'BPAV - SHURE P300', start: '2024-04-18T10:00:00', end: '2024-04-18T12:00:00', backgroundColor: '#4e86f0', project: 'Lambda Networks', description: 'Complete setup for Lambda', assignedTo: 'John Doe' },
-    { id: '2', resourceId: 'r2', title: 'TECHARY - RCM L2', start: '2024-04-19T14:00:00', end: '2024-04-22T16:00:00', backgroundColor: '#4e86f0', project: 'Techary', description: 'Professional services', assignedTo: 'Jane Smith' },
-    { id: '3', resourceId: 'r3', title: 'TECHARY - RCM L3', start: '2024-04-19T09:00:00', end: '2024-04-19T17:00:00', backgroundColor: '#4e86f0', project: 'Techary', description: 'Professional services', assignedTo: 'Bob Johnson' },
-    { id: '4', resourceId: 'r4', title: 'TECHARY - RCM L1', start: '2024-04-19T13:00:00', end: '2024-04-21T15:00:00', backgroundColor: '#4e86f0', project: 'Techary', description: 'Professional services', assignedTo: 'Alice Brown' },
-    { id: '5', resourceId: 'r5', title: 'TEST TEST', start: '2024-04-19T11:00:00', end: '2024-04-19T13:00:00', backgroundColor: '#4e86f0', project: 'Bpav', description: 'Testing project', assignedTo: 'John Doe' },
-    { id: '6', resourceId: 'r6', title: 'SCC - ROYAL COURTS', start: '2024-04-20T09:00:00', end: '2024-04-20T17:00:00', backgroundColor: '#4e86f0', project: 'SCC', description: 'Royal Courts Of Justice', assignedTo: 'Jane Smith' },
-    { id: '7', resourceId: 'r7', title: 'TECHARY - RCM ADDITIONAL', start: '2024-04-21T10:00:00', end: '2024-04-21T12:00:00', backgroundColor: '#4e86f0', project: 'Techary', description: 'Additional services', assignedTo: 'Bob Johnson' },
-    { id: '8', resourceId: 'r8', title: 'TECHARY - RCM TOWN', start: '2024-04-22T14:00:00', end: '2024-04-22T16:00:00', backgroundColor: '#4e86f0', project: 'Techary', description: 'Town hall setup', assignedTo: 'Alice Brown' },
-    { id: '9', resourceId: 'r9', title: 'SCC - RCOJ UCI GUIDE', start: '2024-04-20T13:00:00', end: '2024-04-20T15:00:00', backgroundColor: '#4e86f0', project: 'SCC', description: 'UCI Guide implementation', assignedTo: 'John Doe' },
-    { id: '10', resourceId: 'r10', title: 'SPC - BRITISH AIRWAYS', start: '2024-04-23T10:00:00', end: '2024-04-23T12:00:00', backgroundColor: '#4e86f0', project: 'SPC Group', description: 'British Airways GL A', assignedTo: 'Jane Smith' },
+    { id: '1', resourceId: 'r1', title: 'xYZ - SHURE P300', start: '2024-04-18T10:00:00', end: '2024-04-18T12:00:00', backgroundColor: '#4e86f0', project: 'AlphA Networks', description: 'Complete setup for ALPHA', assignedTo: 'John Doe' },
+    { id: '2', resourceId: 'r2', title: 'TECH-X - RCM L2', start: '2024-04-19T14:00:00', end: '2024-04-22T16:00:00', backgroundColor: '#4e86f0', project: 'Tech-DOM', description: 'Professional services', assignedTo: 'Jane Smith' },
+    { id: '3', resourceId: 'r3', title: 'TECH-Y - RCM L3', start: '2024-04-19T09:00:00', end: '2024-04-19T17:00:00', backgroundColor: '#4e86f0', project: 'Tech-y', description: 'Professional services', assignedTo: 'Bob Johnson' },
+    { id: '4', resourceId: 'r4', title: 'TECHR - RCM L1', start: '2024-04-19T13:00:00', end: '2024-04-21T15:00:00', backgroundColor: '#4e86f0', project: 'Tech-R', description: 'Professional services', assignedTo: 'Alice Brown' },
+    { id: '5', resourceId: 'r5', title: 'TEST TEST', start: '2024-04-19T11:00:00', end: '2024-04-19T13:00:00', backgroundColor: '#4e86f0', project: 'TEST ', description: 'Testing project', assignedTo: 'John Doe' },
+    { id: '6', resourceId: 'r6', title: 'SCC - ROYAL Dom', start: '2024-04-20T09:00:00', end: '2024-04-20T17:00:00', backgroundColor: '#4e86f0', project: 'SCC', description: 'Classic Courts Of Justice', assignedTo: 'Jane Smith' },
+    { id: '7', resourceId: 'r7', title: 'Knock - RCM ADDITIONAL', start: '2024-04-21T10:00:00', end: '2024-04-21T12:00:00', backgroundColor: '#4e86f0', project: 'knock', description: 'Additional services', assignedTo: 'Bob Johnson' },
+    { id: '8', resourceId: 'r8', title: 'Kingston - RCM TOWN', start: '2024-04-22T14:00:00', end: '2024-04-22T16:00:00', backgroundColor: '#4e86f0', project: 'Kingston', description: 'Town hall setup', assignedTo: 'Alice Brown' },
+    { id: '9', resourceId: 'r9', title: 'SCC - 1', start: '2024-04-20T13:00:00', end: '2024-04-20T15:00:00', backgroundColor: '#4e86f0', project: 'SCC', description: 'UCI Guide implementation', assignedTo: 'John Doe' },
+    { id: '10', resourceId: 'r10', title: 'SPC - BA AIRWAYS', start: '2024-04-23T10:00:00', end: '2024-04-23T12:00:00', backgroundColor: '#4e86f0', project: 'SPC Group', description: 'BA tech services', assignedTo: 'Jane Smith' },
   ]);
   
   // Displayed events (filtered)
@@ -551,25 +551,25 @@ const ProjectTimelineCalendar = () => {
 
   // Resources with allocated time and percentage info
   const resources = [
-    { id: 'r1', title: 'BPAV - SHURE P300', allocated: '0h 0%' },
-    { id: 'r2', title: 'TECHARY - RCM L2, Professional Services', allocated: '96h 0%' },
-    { id: 'r3', title: 'TECHARY - RCM L3, Professional Services', allocated: '0h 0%' },
-    { id: 'r4', title: 'TECHARY - RCM, L1 professional services', allocated: '64h 0%' },
+    { id: 'r1', title: 'xYZ - SHURE P300', allocated: '0h 0%' },
+    { id: 'r2', title: 'TECH-X - RCM L2, Professional Services', allocated: '96h 0%' },
+    { id: 'r3', title: 'TECH-Y - RCM L3, Professional Services', allocated: '0h 0%' },
+    { id: 'r4', title: 'TECH-Z - RCM, L1 professional services', allocated: '64h 0%' },
     { id: 'r5', title: 'Test test', allocated: '0h 0%' },
-    { id: 'r6', title: 'SCC - Royal Courts Of Justice', allocated: '0h 0%' },
-    { id: 'r7', title: 'TECHARY - RCM - additional', allocated: '0h 0%' },
-    { id: 'r8', title: 'TECHARY - RCM - Town hall', allocated: '0h 0%' },
-    { id: 'r9', title: 'SCC - RCOJ UCI GUIDE', allocated: '0h 0%' },
-    { id: 'r10', title: 'SPC - British Airways GLA', allocated: '0h 0%' },
+    { id: 'r6', title: 'SCC - Claasic courts ', allocated: '0h 0%' },
+    { id: 'r7', title: 'TECH-X - RCM - additional', allocated: '0h 0%' },
+    { id: 'r8', title: 'TECH-Y - RCM - Town hall', allocated: '0h 0%' },
+    { id: 'r9', title: 'SCC - CCJ UCI GUIDE', allocated: '0h 0%' },
+    { id: 'r10', title: 'SPC - BA GLA', allocated: '0h 0%' },
   ];
 
   // Projects for select dropdown
   const projects = [
     { id: 'Lambda', name: 'Lambda Networks' },
     { id: 'Techary', name: 'Techary' },
-    { id: 'Bpav', name: 'Bpav' },
+    { id: 'XYz', name: 'XYz' },
     { id: 'SCC', name: 'SCC' },
-    { id: 'SPC', name: 'SPC Group' },
+    { id: 'SPC', name: 'SSC Group' },
   ];
 
   const employees = [
@@ -779,7 +779,7 @@ const ProjectTimelineCalendar = () => {
             headerToolbar={{
               left: 'prev,next today',
               center: 'title',
-              right: 'day,week,month'
+              right: 'resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth'
             }}
             customButtons={{
               today: {
@@ -859,7 +859,7 @@ const ProjectTimelineCalendar = () => {
               
               // Extract the resource's title and allocated values
               const title = resource.title;
-              const allocated = resource.extendedProps.allocated;
+              // const allocated = resource.extendedProps.allocated;
               
               // Create and append the title element
               const titleEl = document.createElement('div');
@@ -871,14 +871,14 @@ const ProjectTimelineCalendar = () => {
               
               // Create and append the allocated element
               const allocatedEl = document.createElement('div');
-              allocatedEl.textContent = allocated;
-              allocatedEl.style.textAlign = 'right';
+              // allocatedEl.textContent = allocated;
+              // allocatedEl.style.textAlign = 'right';
               
               // Replace the content
               const mainEl = el.querySelector('.fc-datagrid-cell-main');
               mainEl.innerHTML = '';
               mainEl.appendChild(titleEl);
-              mainEl.appendChild(allocatedEl);
+              // mainEl.appendChild(allocatedEl);
             }}
             dayHeaderDidMount={({ el }) => {
               // Remove the 00:00 time display

@@ -55,7 +55,9 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
             {collapsed ? (
               <span className="text-indigo-600 font-bold text-2xl">H</span>
             ) : (
-              <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
+              // <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
+              // <img src="../../assets/logo-BPAV.png" alt="Logo" className="h-8 w-8" />
+              <img src='../assets/logo-BPAV.png' alt="logo-BPAV"  className="h-8  w-8" ></img>
             )}
             <button
               onClick={toggleSidebar}
@@ -106,6 +108,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
             {/* Notification dropdown menu */}
             {isNotificationDropdownOpen && (
               <div className="absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+
                 <div className="p-4 border-b border-gray-200">
                   <h3 className="text-base font-medium text-gray-800">Notifications</h3>
                 </div>
