@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FormModal from '../common/FormModal';
+import { useSelector } from "react-redux";
 
 const NotesTab = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,6 +27,8 @@ const NotesTab = () => {
     setIsModalOpen(false);
   };
 
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+
   return (
     <div className="p-4">
       <div className="flex justify-end mb-4">
@@ -39,7 +42,7 @@ const NotesTab = () => {
 
       <div className="space-y-4">
         {notes.map(note => (
-          <div key={note.id} className="bg-white p-4 rounded-lg shadow">
+          <div key={note.id} className={`${darkMode ? "card-dark" : null } bg-white p-4 rounded-lg shadow`}>
             <p className="text-sm">{note.content}</p>
             <div className="mt-2 text-xs text-gray-500">
               Created by {note.createdBy} on {new Date(note.createdAt).toLocaleString()}

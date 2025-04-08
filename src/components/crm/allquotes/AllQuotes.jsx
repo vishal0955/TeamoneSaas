@@ -221,8 +221,8 @@ const AllQuotes = () => {
       {isModalOpen && (
         <>
           <div className="modal fade show d-block" role="dialog">
-            <div className="modal-dialog modal-xl" role="document">
-              <div className="modal-content">
+            <div className=  "modal-dialog modal-xl" role="document">
+              <div className={`${darkMode ? "card-dark" : null } modal-content `}>
                 <div className="modal-header">
                   <h5 className="modal-title">Add New Quote</h5>
                   <button

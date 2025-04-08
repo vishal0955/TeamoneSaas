@@ -18,6 +18,7 @@ import {
 } from "react-icons/fa";
 import { Dropdown } from "react-bootstrap";
 import AboutDealsForm from "./AboutDealsForm";
+import { useSelector } from "react-redux";
 
 const DealDetails = () => {
   const [activeTab, setActiveTab] = useState("Activity");
@@ -311,16 +312,18 @@ const DealDetails = () => {
     },
   };
 
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className={`${darkMode ? "dark-mode" : 'bg-gray-100' } min-h-screen bg-gray-100`}>
       {/* Header */}
       <div className="row mb-4">
         <div className="col-md-3">
-          <div className="my-4 bg-white h-100 border-b">
+          <div className={`${darkMode ? "card-dark" : 'bg-white' } my-4 bg-white h-100 border-b rounded`}>
             <div className="px-4 py-2">
               <Link
                 to="/crm/deals"
-                className="text-gray-600 hover:text-gray-800 flex items-center gap-2"
+                className="flex items-center gap-2"
               >
                 <svg
                   className="w-4 h-4"
@@ -342,21 +345,21 @@ const DealDetails = () => {
               {/* Deal Info Grid */}
               <div className="grid grid-cols-2 gap-4 mt-4 text-sm">
                 <div>
-                  <div className="text-gray-600">Amount:</div>
+                  <div>Amount:</div>
                   <div>{dealData.amount}</div>
                 </div>
                 <div>
-                  <div className="text-gray-600">Close Date:</div>
+                  <div>Close Date:</div>
                   <div>{dealData.closeDate}</div>
                 </div>
                 <div>
-                  <div className="text-gray-600">Stage:</div>
+                  <div>Stage:</div>
                   <div className="text-green-600">{dealData.stage}</div>
                 </div>
                 <div>
-                  <div className="text-gray-600">Pipeline:</div>
+                  <div>Pipeline:</div>
                   <select
-                    className="border rounded p-2 w-full"
+                    className={`${darkMode ? "dark-mode" : 'bg-gray-100' } border rounded p-2 w-full`}
                     value={dealData.pipeline}
                     onChange={(e) =>
                       setDealDatas({ ...dealData, pipeline: e.target.value })
@@ -374,7 +377,7 @@ const DealDetails = () => {
 
               {/* Action Buttons */}
               <div className="flex gap-2 my-4">
-                <button className="p-2 text-gray-600 hover:bg-gray-100 rounded">
+                <button className="p-2 rounded">
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -395,7 +398,7 @@ const DealDetails = () => {
                     />
                   </svg>
                 </button>
-                <button className="p-2 text-gray-600 hover:bg-gray-100 rounded">
+                <button className="p-2 rounded">
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -410,7 +413,7 @@ const DealDetails = () => {
                     />
                   </svg>
                 </button>
-                <button className="p-2 text-gray-600 hover:bg-gray-100 rounded">
+                <button className="p-2 rounded">
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -425,7 +428,7 @@ const DealDetails = () => {
                     />
                   </svg>
                 </button>
-                <button className="p-2 text-gray-600 hover:bg-gray-100 rounded">
+                <button className="p-2 rounded">
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -440,7 +443,7 @@ const DealDetails = () => {
                     />
                   </svg>
                 </button>
-                <button className="p-2 text-gray-600 hover:bg-gray-100 rounded">
+                <button className="p-2 rounded">
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -470,7 +473,7 @@ const DealDetails = () => {
         {/* Main Content */}
         {/* Left Content */}
         <div className="col-md-6 my-4">
-          <div className="w-full bg-gray-50 rounded-lg">
+          <div className={`${darkMode ? "card-dark" : "bg-white" } w-full bg-gray-50 rounded-lg`}>
             {/* Tabs */}
             <div className="border-b">
               <div className="">
@@ -497,7 +500,7 @@ const DealDetails = () => {
                   <input
                     type="text"
                     placeholder="Search activities"
-                    className="px-3 py-2 border rounded-lg"
+                    className={`${darkMode ? "card-dark" : "bg-white" } px-3 py-2 border rounded-lg`}
                   />
                 </div>
                 <div className="flex gap-2">
@@ -560,7 +563,7 @@ const DealDetails = () => {
 
         {/* Right Sidebar */}
         <div className="col-md-3 my-4">
-          <div className="bg-white h-100 p-3">
+          <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white h-100 p-3 rounded`}>
             <Accordion activeKey={activeKey}>
               {menuItems.map((item, index) => (
                 <Accordion.Item eventKey={index.toString()} key={index}>

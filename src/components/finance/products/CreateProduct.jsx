@@ -1,16 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const CreateProduct = () => {
+
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+  
   return (
     <div className="min-h-screen">
-      <header className="bg-white border-b border-gray-200">
+      <header className={`${darkMode ? "card-dark" : "bg-white" }  bg-white border-b border-gray-200`}>
         <div className="max-w-8xl mx-auto px-4">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between h-auto md:h-16">
             {/* Left Section */}
             <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
               <a
                 href="#"
-                className="text-gray-600 hover:text-gray-900 flex items-center"
+                className="flex items-center"
               >
                 <i className="fas fa-arrow-left" />
                 <span className="ml-2">Companies</span>
@@ -20,10 +24,10 @@ const CreateProduct = () => {
 
             {/* Right Section */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-              <button className="!rounded-button px-4 py-2 text-gray-700 bg-white border border-gray-200 hover:bg-gray-100 w-full sm:w-auto">
+              <button className={`${darkMode ? "card-dark" : "bg-white" }  !rounded-button rounded my-3 px-4 py-2 text-gray-700 bg-white border border-gray-200 w-full sm:w-auto`}>
                 Actions <i className="fas fa-chevron-down ml-2" />
               </button>
-              <button className="!rounded-button px-4 py-2 text-gray-700 bg-white border border-gray-200 hover:bg-gray-100 w-full sm:w-auto flex items-center justify-center">
+              <button className={`${darkMode ? "card-dark" : "bg-white" }  !rounded-button rounded my-3 px-4 py-2 text-gray-700 bg-white border border-gray-200 w-full sm:w-auto flex items-center justify-center`}>
                 <i className="fas fa-cog" />
                 <span className="ml-2">Customize record</span>
               </button>
@@ -33,23 +37,23 @@ const CreateProduct = () => {
       </header>
       <div className="max-w-8xl mx-auto px-4 py-6">
         <div className=" row ">
-          <main className=" col-md-9 flex-1">
-            <div className="bg-white rounded-lg shadow mb-6">
+          <main className="col-md-9 flex-1">
+            <div className={`${darkMode ? "card-dark" : "bg-white" }  bg-white rounded-lg shadow mb-6`}>
               <div className="border-b border-gray-200">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-2 text-center">
-                  <button className="!rounded-button w-full px-4 py-2 hover:bg-gray-100 flex justify-center items-center">
+                  <button className="!rounded-button w-full px-4 py-2 flex justify-center items-center">
                     <i className="fas fa-plus" />
                     <span className="ml-2">Add Product</span>
                   </button>
-                  <button className="!rounded-button w-full px-4 py-2 hover:bg-gray-100 flex justify-center items-center">
+                  <button className="!rounded-button w-full px-4 py-2 flex justify-center items-center">
                     <i className="fas fa-edit" />
                     <span className="ml-2">Edit</span>
                   </button>
-                  <button className="!rounded-button w-full px-4 py-2 hover:bg-gray-100 flex justify-center items-center">
+                  <button className="!rounded-button w-full px-4 py-2 flex justify-center items-center">
                     <i className="fas fa-trash" />
                     <span className="ml-2">Delete</span>
                   </button>
-                  <button className="!rounded-button w-full px-4 py-2 hover:bg-gray-100 flex justify-center items-center">
+                  <button className="!rounded-button w-full px-4 py-2 flex justify-center items-center">
                     <i className="fas fa-download" />
                     <span className="ml-2">Export</span>
                   </button>
@@ -59,25 +63,25 @@ const CreateProduct = () => {
                 <nav className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-6">
                   <a
                     href="#"
-                    className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+                    className="px-3 py-2 text-sm font-medium"
                   >
                     Details
                   </a>
                   <a
                     href="#"
-                    className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+                    className="px-3 py-2 text-sm font-medium"
                   >
                     Inventory
                   </a>
                   <a
                     href="#"
-                    className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+                    className="px-3 py-2 text-sm font-medium"
                   >
                     Analytics
                   </a>
                   <a
                     href="#"
-                    className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+                    className="px-3 py-2 text-sm font-medium"
                   >
                     Reviews
                   </a>
@@ -88,7 +92,7 @@ const CreateProduct = () => {
                       Product Details
                     </h3>
                     <textarea
-                      className="w-full p-3 border border-gray-300 rounded-md"
+                      className={`${darkMode ? "card-dark" : "bg-white" }  w-full p-3 border border-gray-300 rounded-md`}
                       rows={4}
                       placeholder="Add product description here..."
                       defaultValue={""}
@@ -100,11 +104,11 @@ const CreateProduct = () => {
                     </h3>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <p className="text-sm text-gray-500">Product Status</p>
+                        <p className="text-sm">Product Status</p>
                         <p className="mt-1">In Stock</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500">Category</p>
+                        <p className="text-sm">Category</p>
                         <p className="mt-1">Electronics</p>
                       </div>
                     </div>
@@ -114,15 +118,15 @@ const CreateProduct = () => {
                       Product Research
                     </h3>
                     <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-                      <button className="w-full sm:w-auto !rounded-button flex items-center px-4 py-2 border border-gray-300 hover:bg-gray-50">
+                      <button className="w-full rounded sm:w-auto !rounded-button flex items-center px-4 py-2 border border-gray-300">
                         <i className="fas fa-chart-line mr-2" />
                         Market Analysis
                       </button>
-                      <button className="w-full sm:w-auto !rounded-button flex items-center px-4 py-2 border border-gray-300 hover:bg-gray-50">
+                      <button className="w-full rounded sm:w-auto !rounded-button flex items-center px-4 py-2 border border-gray-300">
                         <i className="fas fa-tags mr-2" />
                         Price History
                       </button>
-                      <button className="w-full sm:w-auto !rounded-button flex items-center px-4 py-2 border border-gray-300 hover:bg-gray-50">
+                      <button className="w-full rounded sm:w-auto !rounded-button flex items-center px-4 py-2 border border-gray-300">
                         <i className="fas fa-boxes mr-2" />
                         Similar Products
                       </button>
@@ -134,25 +138,25 @@ const CreateProduct = () => {
                       Sales Analytics
                     </h3>
                     <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-                      <select className="!rounded-button border border-gray-300 px-4 py-2">
+                      <select className={`${darkMode ? "card-dark" : "bg-white" } !rounded-button rounded border border-gray-300 px-4 py-2`}>
                         <option>Delivery Performance</option>
                         <option>Monthly Orders</option>
                         <option>Quality Metrics</option>
                       </select>
-                      <select className="!rounded-button border border-gray-300 px-4 py-2">
+                      <select className={`${darkMode ? "card-dark" : "bg-white" } !rounded-button rounded border border-gray-300 px-4 py-2`}>
                         <option>All data</option>
                         <option>Last 30 days</option>
                         <option>Last 90 days</option>
                       </select>
                     </div>
-                    <div className="h-64 bg-gray-50 rounded-lg border border-gray-200 mt-2" />
+                    <div className={`${darkMode ? "card-dark" : "bg-white" }  h-64 mt-4 bg-gray-50 rounded-lg border border-gray-200 mt-2`} />
                   </section>
                 </div>
               </div>
             </div>
           </main>
-          <aside className=" col-md-3 ">
-            <div className="bg-white rounded-lg shadow">
+          <aside className="col-md-3 ">
+            <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg shadow`}>
               <div className="p-4 border-b border-gray-200">
                 <h2 className="font-medium">Product Summary</h2>
               </div>
