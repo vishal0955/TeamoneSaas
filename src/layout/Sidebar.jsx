@@ -217,7 +217,7 @@ export default function Sidebar({ toggleSidebar, collapsed }) {
   };
 
   const sidebarTheme = {
-    background: darkMode ? 'bg-gray-900' : 'bg-white',
+    background: darkMode ? 'bg-gray-900' : 'bg-gray-50',
     text: darkMode ? 'text-gray-300' : 'text-indgo-700',
     hover: darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-50',
     activeBackground: darkMode ? 'bg-gray-800' : 'bg-indigo-50',

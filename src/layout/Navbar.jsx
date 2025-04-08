@@ -47,7 +47,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
   return (
     <div className={ `${darkMode ? 
-        'dark-mode': "bg-white"  } fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200`}>
+        'dark-mode': "bg-white"  } fixed top-0 left-0 right-0 z-30  border-b border-gray-200`}>
       <div className="flex items-center justify-between px-4 py-3 sm:px-6">
         {/* Left section - Logo and toggle button */}
         <div className="flex items-center">
@@ -57,7 +57,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
             ) : (
               // <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
               // <img src="../../assets/logo-BPAV.png" alt="Logo" className="h-8 w-8" />
-              <img src='../assets/logo-BPAV.png' alt="logo-BPAV"  className="h-8  w-8" ></img>
+              <img  src="https://i.ibb.co/Qjm3yG7L/img.png" alt="logo-BPAV"  className="h-8  w-37.5" ></img>
             )}
             <button
               onClick={toggleSidebar}
