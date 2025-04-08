@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const AboutDealsForm = ({ data, onChange }) => {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -9,8 +10,10 @@ const AboutDealsForm = ({ data, onChange }) => {
     }
   };
 
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+
   return (
-    <div className="bg-white">
+    <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white`}>
       {/* Header */}
       <div
         className="flex justify-between items-center p-3 cursor-pointer"
@@ -42,48 +45,48 @@ const AboutDealsForm = ({ data, onChange }) => {
         <div className="p-3 border-t">
           <div className="space-y-4">
             <div>
-              <label className="block text-xs text-gray-500 mb-1">Email</label>
+              <label className="block text-xs mb-1">Email</label>
               <input
                 type="email"
                 value={data.email}
                 onChange={(e) => handleChange("email", e.target.value)}
-                className="w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500"
+                className={`${darkMode ? "card-dark" : "bg-white" } w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
               />
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Phone number
               </label>
               <input
                 type="tel"
                 value={data.phone}
                 onChange={(e) => handleChange("phone", e.target.value)}
-                className="w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500"
+                className={`${darkMode ? "card-dark" : "bg-white" }  w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
               />
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Company name
               </label>
               <input
                 type="text"
                 value={data.company}
                 onChange={(e) => handleChange("company", e.target.value)}
-                className="w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500"
+                className={`${darkMode ? "card-dark" : "bg-white" }  w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
               />
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Lead status
               </label>
               <div className="relative">
                 <select
                   value={data.leadStatus}
                   onChange={(e) => handleChange("leadStatus", e.target.value)}
-                  className="w-full p-2 text-sm border rounded appearance-none focus:outline-none focus:border-blue-500"
+                  className={`${darkMode ? "card-dark" : "bg-white" }  w-full p-2 text-sm border rounded appearance-none focus:outline-none focus:border-blue-500`}
                 >
                   <option value="">Select status</option>
                   <option value="new">New</option>
@@ -110,7 +113,7 @@ const AboutDealsForm = ({ data, onChange }) => {
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Lifecycle stage
               </label>
               <div className="relative">
@@ -119,7 +122,7 @@ const AboutDealsForm = ({ data, onChange }) => {
                   onChange={(e) =>
                     handleChange("lifecycleStage", e.target.value)
                   }
-                  className="w-full p-2 text-sm border rounded appearance-none focus:outline-none focus:border-blue-500"
+                  className={`${darkMode ? "card-dark" : "bg-white" } w-full p-2 text-sm border rounded appearance-none focus:outline-none focus:border-blue-500`}
                 >
                   <option value="lead">Lead</option>
                   <option value="customer">Customer</option>
@@ -144,26 +147,26 @@ const AboutDealsForm = ({ data, onChange }) => {
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Buying Role
               </label>
               <input
                 type="text"
                 value={data.buyingRole}
                 onChange={(e) => handleChange("buyingRole", e.target.value)}
-                className="w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500"
+                className={`${darkMode ? "card-dark" : "bg-white" } w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
               />
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Contact owner
               </label>
               <input
                 type="text"
                 value={data.contactOwner}
                 onChange={(e) => handleChange("contactOwner", e.target.value)}
-                className="w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500"
+                className={`${darkMode ? "card-dark" : "bg-white" } w-full p-2 text-sm border rounded focus:outline-none focus:border-blue-500`}
               />
             </div>
           </div>

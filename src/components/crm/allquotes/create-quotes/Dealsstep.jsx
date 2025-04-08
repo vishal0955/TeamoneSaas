@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const Dealsstep = () => {
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
   return (
     <>
       <div className="quote-section">
@@ -12,7 +14,7 @@ const Dealsstep = () => {
       </p>
       <div className="quote-form-group">
         <label className="quote-form-label">create a deal</label>
-          <select className='from-select w-100 border p-3 rounded-3'>
+          <select className={`${darkMode ? "card-dark" : null } from-select w-100 border p-3 rounded-3`}>
             <option>Create a deal</option>
             <option>#Q-2024-001</option>
             <option>#Q-2024-002</option>

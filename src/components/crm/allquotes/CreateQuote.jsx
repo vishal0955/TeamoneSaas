@@ -9,6 +9,7 @@ import ReviewLineItem from "./create-quotes/ReviewLineItem";
 import QuoteTemplateInterface from "./create-quotes/QuoteTemplateInterface";
 import QuoteNotification from "./create-quotes/QuoteNotification";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CreateQuote = ({ close }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -103,9 +104,11 @@ const CreateQuote = ({ close }) => {
     }
   };
 
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+
   return (
     <>
-      <div className="quote-wizard">
+      <div className={`${darkMode ? "card-dark" : "bg-white" } quote-wizard`}>
         {/* Progress Steps */}
         <div className="quote-wizard-steps">
           {[...Array(totalSteps)].map((_, index) => (
@@ -137,7 +140,7 @@ const CreateQuote = ({ close }) => {
         {/* Main Content */}
         <div className="quote-wizard-content">
           {/* Left Section */}
-          <div className="quote-wizard-form">{renderStepContent()}</div>
+          <div className={`${darkMode ? "card-dark" : null } quote-wizard-form `}>{renderStepContent()}</div>
 
           {/* Right Section */}
           {/* <div className="quote-wizard-preview">
@@ -169,7 +172,7 @@ const CreateQuote = ({ close }) => {
         </div>
 
         {/* Footer Actions */}
-        <div className="quote-wizard-footer">
+        <div className= {`${darkMode ? "card-dark" : null } quote-wizard-footer `}>
           <button
             className="quote-btn-back"
             onClick={handleBack}

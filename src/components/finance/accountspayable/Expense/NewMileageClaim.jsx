@@ -8,7 +8,7 @@ const NewMileageClaim = () => {
     <>
       <div
         className={`${
-          darkMode ? "card-dark" : "bg-white"
+          darkMode ? "card-dark" : null
         } top-0 left-0 right-0 bg-white border-b border-gray-200 z-50`}
       >
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +74,7 @@ const NewMileageClaim = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div
             className={`${
-              darkMode ? "card-dark" : "bg-white"
+              darkMode ? "card-dark" : null
             }bg-white border border-gray-200 rounded-lg p-8`}
           >
             <div className="h-96 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg">
@@ -91,7 +91,7 @@ const NewMileageClaim = () => {
           </div>
           <div
             className={`${
-              darkMode ? "card-dark" : "bg-white"
+              darkMode ? "card-dark" : null
             } space-y-6 p-3 rounded`}
           >
             <div>
@@ -100,7 +100,7 @@ const NewMileageClaim = () => {
               </label>
               <div className="relative">
                 <textarea
-                  className="w-full h-24"
+                  className={`${darkMode ? "card-dark" : null } w-full h-24 border`}
                   placeholder="Describe the purpose of your trip"
                   defaultValue={""}
                 />
@@ -114,8 +114,8 @@ const NewMileageClaim = () => {
                 Distance Traveled
               </label>
               <div className="flex">
-                <input type="number" className="flex-1" placeholder={0.0} />
-                <select className="!rounded-l-none border-l-0 w-24 bg-white">
+                <input type="number" className={`${darkMode ? "card-dark" : null } flex-1 border`} placeholder={0.0} />
+                <select className={`${darkMode ? "card-dark" : null } !rounded-l-none border-l-0 w-24 bg-white border`}>
                   <option>Miles</option>
                   <option>Kilometers</option>
                 </select>
@@ -125,7 +125,7 @@ const NewMileageClaim = () => {
               <label className="block text-sm font-medium mb-2">
                 Vehicle Type
               </label>
-              <select className="w-full bg-white">
+              <select className={`${darkMode ? "card-dark" : null } w-full bg-white border`}>
                 <option>Select vehicle type</option>
                 <option>Car</option>
                 <option>Motorcycle</option>
@@ -139,11 +139,11 @@ const NewMileageClaim = () => {
               <div className="flex">
                 <input
                   type="number"
-                  className="flex-1"
+                  className={`${darkMode ? "card-dark" : null } flex-1 border`}
                   placeholder={0.0}
                   defaultValue="0.45"
                 />
-                <select className="!rounded-l-none border-l-0 w-24 bg-white">
+                <select className={`${darkMode ? "card-dark" : null } !rounded-l-none border-l-0 w-24 bg-white border`}>
                   <option>GBP per mile</option>
                   <option>GBP per kilometer</option>
                 </select>
@@ -153,11 +153,11 @@ const NewMileageClaim = () => {
               <label className="block text-sm font-medium mb-2">
                 Date of Travel
               </label>
-              <input type="date" className="w-full" defaultValue="2024-12-27" />
+              <input type="date" className={`${darkMode ? "card-dark" : null } w-full border`} defaultValue="2024-12-27" />
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Account</label>
-              <select className="w-full bg-white">
+              <select className={`${darkMode ? "card-dark" : null } w-full border`}>
                 <option>Select account</option>
               </select>
             </div>
@@ -168,13 +168,13 @@ const NewMileageClaim = () => {
                   <label className="block text-sm font-medium mb-2">
                     Assign to project or customer
                   </label>
-                  <input type="text" className="w-full" />
+                  <input type="text" className={`${darkMode ? "card-dark" : null } w-full border`} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Label
                   </label>
-                  <input type="text" className="w-full" />
+                  <input type="text" className={`${darkMode ? "card-dark" : null } w-full border`} />
                 </div>
               </div>
             </div>
