@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import InvoicePaymentSetting from "./InvoicePaymentSetting";
+import { useSelector } from "react-redux";
 
 const NewInvoice = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
@@ -14,31 +15,33 @@ const NewInvoice = () => {
     document.body.classList.remove("modal-open"); // Remove modal-open class
   };
 
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+
   return (
     <>
       <form>
         {/* Invoice Header */}
         <div className="row g-4 mb-4">
           <div className="col-md-4">
-            <label className="form-label fw-medium">Invoice Number</label>
+            <label className="fw-medium">Invoice Number</label>
             <input
               type="text"
-              className="form-control"
+              className={`${darkMode ? "card-dark" : null } form-control`}
               defaultValue="INVOICE-75627"
               readOnly=""
             />
           </div>
           <div className="col-md-4">
-            <label className="form-label fw-medium">Invoice Date</label>
+            <label className="fw-medium">Invoice Date</label>
             <input
               type="date"
-              className="form-control"
+              className={`${darkMode ? "dark-mode" : null }  form-control`}
               defaultValue="2024-03-20"
             />
           </div>
           <div className="col-md-4">
-            <label className="form-label fw-medium">Payment Terms</label>
-            <select className="form-select">
+            <label className="fw-medium">Payment Terms</label>
+            <select className={`${darkMode ? "dark-mode" : null }  form-select`}>
               <option>Net 30</option>
               <option>Net 15</option>
               <option>Net 45</option>
@@ -47,16 +50,16 @@ const NewInvoice = () => {
           </div>
         </div>
         {/* Client Information */}
-        <div className="card bg-light border mb-4">
+        <div className={`${darkMode ? "card-dark" : null }  card bg-light border mb-4`}>
           <div className="card-body p-4">
             <h5 className="fw-semibold mb-4">Client Information</h5>
             <div className="row g-4">
               <div className="col-md-6">
-                <label className="form-label fw-medium">Bill To</label>
+                <label className="fw-medium">Bill To</label>
                 <div className="input-group">
                   <input
                     type="text"
-                    className="form-control"
+                    className={`${darkMode ? "dark-mode" : null } form-control`}
                     placeholder="Add Contact"
                   />
                   <button className="btn btn-outline-primary" type="button">
@@ -65,11 +68,11 @@ const NewInvoice = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <label className="form-label fw-medium">Company</label>
+                <label className="fw-medium">Company</label>
                 <div className="input-group">
                   <input
                     type="text"
-                    className="form-control"
+                    className={`${darkMode ? "dark-mode" : null } form-control`}
                     placeholder="Add Company"
                   />
                   <button className="btn btn-outline-primary" type="button">
@@ -81,30 +84,30 @@ const NewInvoice = () => {
           </div>
         </div>
         {/* Invoice Details */}
-        <div className="card bg-light border mb-4">
+        <div className={`${darkMode ? "card-dark" : null } card bg-light border mb-4`}>
           <div className="card-body p-4">
             <h5 className="fw-semibold mb-4">Invoice Details</h5>
             <div className="row g-4">
               <div className="col-md-6">
-                <label className="form-label fw-medium">PO Number</label>
+                <label className="fw-medium">PO Number</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`${darkMode ? "dark-mode" : null } form-control`}
                   placeholder="Enter PO number"
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label fw-medium">Reference</label>
+                <label className="fw-medium">Reference</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`${darkMode ? "dark-mode" : null } form-control`}
                   placeholder="Add reference"
                 />
               </div>
               <div className="col-12">
-                <label className="form-label fw-medium">Notes</label>
+                <label className="fw-medium">Notes</label>
                 <textarea
-                  className="form-control"
+                  className={`${darkMode ? "dark-mode" : null } form-control`}
                   rows={3}
                   placeholder="Add notes or terms"
                   defaultValue={""}
@@ -114,7 +117,8 @@ const NewInvoice = () => {
           </div>
         </div>
         {/* Line Items */}
-        <div className="card bg-light border mb-4">
+        <div className={`${darkMode ? "dark-mode" : null } card bg-light border mb-4`}
+        >
           <div className="card-body p-4">
             <h5 className="fw-semibold mb-2">Line Items</h5>
             <div className="empty-state text-center py-5 d-flex flex-column justify-content-center align-items-center">
@@ -142,7 +146,7 @@ const NewInvoice = () => {
           </div>
         </div>
         {/* Summary */}
-        <div className="card bg-light border mb-4">
+        <div className={`${darkMode ? "dark-mode" : null } card bg-light border mb-4`}>
           <div className="card-body p-4">
             <h5 className="fw-semibold mb-4">Summary</h5>
             <hr />
@@ -154,7 +158,7 @@ const NewInvoice = () => {
                 </div>
                 <button
                   type="button"
-                  className="btn btn-link text-decoration-none text-dark p-0 mb-3"
+                  className="btn btn-link text-decoration-none p-0 mb-3"
                 >
                   <i className="bi bi-plus-lg me-2" />
                   Add discount, fee or tax

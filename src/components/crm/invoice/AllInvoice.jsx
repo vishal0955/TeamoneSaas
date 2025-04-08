@@ -482,7 +482,7 @@ const AllInvoice = () => {
         <>
           <div className="modal fade show d-block" role="dialog">
             <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
-              <div className="modal-content">
+              <div className={`${darkMode ? "card-dark" : null } modal-content`}>
                 <div className="modal-header">
                   <h5 className="modal-title">Add New Invoice</h5>
                   <button

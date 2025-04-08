@@ -84,7 +84,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
             </div>
           </div>
           {/* Mobile search button (hidden on desktop) */}
-          <button className="md:hidden text-gray-500 hover:text-gray-700">
+          <button className="md:hidden hover:text-gray-700">
             {/* <Search size={20} /> */}
           </button>
 
@@ -105,42 +105,42 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
             {/* Notification dropdown menu */}
             {isNotificationDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+              <div className={`${darkMode ? "dark-mode" : null } absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50`}>
                 <div className="p-4 border-b border-gray-200">
-                  <h3 className="text-base font-medium text-gray-800">Notifications</h3>
+                  <h3 className="text-base font-medium">Notifications</h3>
                 </div>
                 
                 <div className="py-1 max-h-96 overflow-y-auto">
                   {/* Notification items */}
-                  <a href="#" className="flex items-start px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100">
+                  <a href="#" className="flex items-start px-4 py-3 text-smborder-b border-gray-100">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
                       <User size={16} className="text-blue-500" />
                     </div>
                     <div>
-                      <p className="font-medium">New employee joined</p>
-                      <p className="text-xs text-gray-500">John Doe has joined your team</p>
+                      <p className="fw-medium">New employee joined</p>
+                      <p className="text-xs">John Doe has joined your team</p>
                       <p className="text-xs text-gray-400 mt-1">2 hours ago</p>
                     </div>
                   </a>
                   
-                  <a href="#" className="flex items-start px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100">
+                  <a href="#" className="flex items-start px-4 py-3 text-smborder-b border-gray-100">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
                       <Activity size={16} className="text-green-500" />
                     </div>
                     <div>
                       <p className="font-medium">Leave request approved</p>
-                      <p className="text-xs text-gray-500">Your leave request has been approved</p>
+                      <p className="text-xs">Your leave request has been approved</p>
                       <p className="text-xs text-gray-400 mt-1">1 day ago</p>
                     </div>
                   </a>
                   
-                  <a href="#" className="flex items-start px-4 py-3 text-sm text-gray-700 hover:bg-gray-100">
+                  <a href="#" className="flex items-start px-4 py-3 text-sm">
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
                       <CreditCard size={16} className="text-purple-500" />
                     </div>
                     <div>
                       <p className="font-medium">Payslip generated</p>
-                      <p className="text-xs text-gray-500">Your payslip for March is ready</p>
+                      <p className="text-xs">Your payslip for March is ready</p>
                       <p className="text-xs text-gray-400 mt-1">3 days ago</p>
                     </div>
                   </a>
@@ -170,7 +170,7 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
 
             {/* Profile dropdown menu */}
             {isProfileDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+              <div className={`${darkMode ? "dark-mode" : null } absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50`}>
                 {/* Profile Info */}
                 <div className="p-4 border-b border-gray-200">
                   <div className="flex items-center space-x-3">
@@ -182,40 +182,40 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
                       />
                     </div>
                     <div>
-                      <h3 className="text-base font-medium text-gray-800">Kevin Larry</h3>
-                      <p className="text-sm text-gray-500">warren@example.com</p>
+                      <h3 className="text-base font-medium">Kevin Larry</h3>
+                      <p className="text-sm">warren@example.com</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Menu Items */}
                 <div className="py-1">
-                  <a href="#profile" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    <User size={18} className="mr-3 text-gray-500" />
+                  <a href="#profile" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
+                    <User size={18} className="mr-3" />
                     <span>My Profile</span>
                   </a>
-                  <a href="#settings" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    <Settings size={18} className="mr-3 text-gray-500" />
+                  <a href="#settings" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
+                    <Settings size={18} className="mr-3" />
                     <span>Settings</span>
                   </a>
-                  <a href="#status" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    <Activity size={18} className="mr-3 text-gray-500" />
+                  <a href="#status" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
+                    <Activity size={18} className="mr-3" />
                     <span>Status</span>
                   </a>
-                  <a href="#account" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    <CreditCard size={18} className="mr-3 text-gray-500" />
+                  <a href="#account" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
+                    <CreditCard size={18} className="mr-3" />
                     <span>My Account</span>
                   </a>
-                  <a href="#knowledge" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    <HelpCircle size={18} className="mr-3 text-gray-500" />
+                  <a href="#knowledge" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
+                    <HelpCircle size={18} className="mr-3" />
                     <span>Knowledge Base</span>
                   </a>
                 </div>
 
                 {/* Logout */}
                 <div className="py-1 border-t border-gray-200" onClick={handleLogout}>
-                  <a href="#logout" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    <LogOut size={18} className="mr-3 text-gray-500" />
+                  <a href="#logout" className="flex items-center px-4 py-2 text-smhover:bg-gray-100">
+                    <LogOut size={18} className="mr-3" />
                     <span>Logout</span>
                   </a>
                 </div>
