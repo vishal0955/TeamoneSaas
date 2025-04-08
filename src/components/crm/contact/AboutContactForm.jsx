@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const AboutContactForm = ({ data, onChange }) => {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -9,8 +10,10 @@ const AboutContactForm = ({ data, onChange }) => {
     }
   };
 
+  const darkMode = useSelector((state) => (state.theme.isDarkMode)) 
+
   return (
-    <div className="bg-white">
+    <div className={`${darkMode ? "dark-mode" : null } bg-white`}>
       {/* Header */}
       <div
         className="flex justify-between items-center p-3 cursor-pointer"
@@ -42,7 +45,7 @@ const AboutContactForm = ({ data, onChange }) => {
         <div className="p-3 border-t">
           <div className="space-y-4">
             <div>
-              <label className="block text-xs text-gray-500 mb-1">Email</label>
+              <label className="block text-xs mb-1">Email</label>
               <input
                 type="email"
                 value={data.email}
@@ -52,7 +55,7 @@ const AboutContactForm = ({ data, onChange }) => {
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Phone number
               </label>
               <input
@@ -64,7 +67,7 @@ const AboutContactForm = ({ data, onChange }) => {
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Company name
               </label>
               <input
@@ -76,7 +79,7 @@ const AboutContactForm = ({ data, onChange }) => {
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Lead status
               </label>
               <div className="relative">
@@ -110,7 +113,7 @@ const AboutContactForm = ({ data, onChange }) => {
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Lifecycle stage
               </label>
               <div className="relative">
@@ -144,7 +147,7 @@ const AboutContactForm = ({ data, onChange }) => {
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Buying Role
               </label>
               <input
@@ -156,7 +159,7 @@ const AboutContactForm = ({ data, onChange }) => {
             </div>
 
             <div>
-              <label className="block text-xs text-gray-500 mb-1">
+              <label className="block text-xs mb-1">
                 Contact owner
               </label>
               <input

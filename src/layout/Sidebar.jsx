@@ -30,6 +30,7 @@ const menuItems = [
     path: "/admin",
     icon: <House size={16} />,
     subItems: [
+      { name: "Dashboard", path: "/admin" },
       { name: "Calendar", path: "/fullcalendar" },
       {
         name: "Todo",

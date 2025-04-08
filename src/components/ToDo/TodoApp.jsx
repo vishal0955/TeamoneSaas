@@ -33,6 +33,8 @@ const TAG_OPTIONS = ['Projects', 'Urgent', 'Internal', 'In progress', 'Reminder'
 
 // TaskFormPopup Component
 const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   const [formData, setFormData] = useState({
     text: '',
     description: '',
@@ -113,7 +115,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
   return (
     <div className="modal show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
       <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div className="modal-content">
+        <div className={`${darkMode ? "card-dark" : null } modal-content `}>
           <div className="modal-header">
             <h5 className="modal-title text-indigo-600">
               {editTask ? 'Edit Task' : 'Add New Task'}
@@ -123,33 +125,33 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
           <form onSubmit={handleSubmit}>
             <div className="modal-body">
               <div className="mb-3">
-                <label className="form-label">Title</label>
+                <label className="">Title</label>
                 <input
                   type="text"
                   value={formData.text}
                   onChange={(e) => setFormData({ ...formData, text: e.target.value })}
-                  className="form-control"
+                  className={`${darkMode ? "dark-mode" : null } form-control `}
                   required
                 />
               </div>
               
               <div className="mb-3">
-                <label className="form-label">Description</label>
+                <label className="">Description</label>
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="form-control"
+                  className={`${darkMode ? "dark-mode" : null } form-control `}
                   rows="3"
                 />
               </div>
               
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label className="form-label">Priority</label>
+                  <label className="">Priority</label>
                   <select
                     value={formData.priority}
                     onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-                    className="form-select"
+                    className={`${darkMode ? "dark-mode" : null } form-control `}
                   >
                     {PRIORITY_OPTIONS.map((priority) => (
                       <option key={priority} value={priority.toLowerCase()}>
@@ -160,23 +162,23 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                 </div>
                 
                 <div className="col-md-6 mb-3">
-                  <label className="form-label">Due Date</label>
+                  <label className="">Due Date</label>
                   <input
                     type="date"
                     value={formData.dueDate}
                     onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
-                    className="form-control"
+                    className={`${darkMode ? "dark-mode" : null } form-control `}
                   />
                 </div>
               </div>
               
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label className="form-label">Project</label>
+                  <label className="">Project</label>
                   <select
                     value={formData.project || ''}
                     onChange={(e) => setFormData({ ...formData, project: e.target.value ? Number(e.target.value) : null })}
-                    className="form-select"
+                    className={`${darkMode ? "dark-mode" : null } form-control `}
                   >
                     {PROJECTS.map((project) => (
                       <option key={project.id} value={project.id}>
@@ -187,7 +189,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                 </div>
                 
                 <div className="col-md-6 mb-3">
-                  <label className="form-label">Tags</label>
+                  <label className="">Tags</label>
                   <div className="input-group mb-2">
                     <select
                       multiple
@@ -196,7 +198,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                         const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
                         setFormData({ ...formData, tags: selectedOptions });
                       }}
-                      className="form-select"
+                      className={`${darkMode ? "dark-mode" : null } form-control `}
                     >
                       {tagOptions.map((tag) => (
                         <option key={tag} value={tag}>
@@ -216,7 +218,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                     <div className="input-group mb-2">
                       <input
                         type="text"
-                        className="form-control"
+                        className={`${darkMode ? "dark-mode" : null } form-control `}
                         placeholder="New tag name"
                         value={newTag}
                         onChange={(e) => setNewTag(e.target.value)}
@@ -237,7 +239,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
               </div>
               
               <div className="mb-3">
-                <label className="form-label">Assignees</label>
+                <label className="">Assignees</label>
                 <div className="input-group mb-2">
                   <select
                     multiple
@@ -246,7 +248,7 @@ const TaskFormPopup = ({ isOpen, onClose, onSubmit, editTask }) => {
                       const selectedOptions = Array.from(e.target.selectedOptions, (option) => Number(option.value));
                       setFormData({ ...formData, assignees: selectedOptions });
                     }}
-                    className="form-select"
+                    className={`${darkMode ? "dark-mode" : null } form-control `}
                   >
                     {employeeOptions.map((employee) => (
                       <option key={employee.id} value={employee.id}>
