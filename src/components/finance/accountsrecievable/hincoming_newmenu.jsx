@@ -15,6 +15,7 @@
 import React, { useState, useEffect } from "react";
 import * as echarts from "echarts";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const DropdownButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,7 @@ const DropdownButton = () => {
   return (
     <div className="relative">
       <button
-        className="!rounded-button bg-blue-600 text-white px-4 py-2 flex items-center"
+        className="!rounded-button rounded bg-blue-600 text-white px-4 py-2 flex items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="mr-2">+ New</span>
@@ -77,21 +78,25 @@ const DropdownButton = () => {
   );
 };
 
-const SearchInput = () => (
-  <div className="relative">
+const SearchInput = () => {
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+  return(
+    <div className="relative">
     <input
       type="text"
       placeholder="Search"
-      className="!rounded-button pl-10 pr-4 py-2 border border-gray-300 focus:ring-custom focus:border-custom"
+      className={`${darkMode ? "dark-mode" : "bg-white" } !rounded-button rounded pl-10 pr-4 py-2 border border-gray-300 focus:ring-custom focus:border-custom`}
     />
     <i className="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
   </div>
-);
+  )
+};
 
 const StatCard = ({ title, amount, change, changeType }) => {
   const changeColor = changeType === "down" ? "text-red-500" : "text-green-500";
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm">
+    <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg shadow-sm`}>
       <div className="flex justify-between items-start mb-4">
         <div>
           <p className="text-sm text-gray-500">{title}</p>
@@ -106,12 +111,15 @@ const StatCard = ({ title, amount, change, changeType }) => {
   );
 };
 
-const SummaryCard = ({ title, amount }) => (
-  <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+const SummaryCard = ({ title, amount }) => {
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
+  return(
+    <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg shadow-sm text-center`}>
     <p className="text-sm text-gray-500 mb-2">{title}</p>
     <p className="text-2xl font-semibold">{amount}</p>
   </div>
-);
+  )
+}
 
 const Chart = () => {
   useEffect(() => {
@@ -138,28 +146,31 @@ const Chart = () => {
   return <div id="timeline-chart" className="h-64"></div>;
 };
 
+
 const SalesOverview = () => {
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-gray-900">Sales overview</h1>
+        <h1 className="text-2xl font-semibold">Sales overview</h1>
 
         {/* Wrapper Flex for Buttons + Search */}
         <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* Left: Dropdown + Buttons */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <DropdownButton />
-            <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm">
+            <button className={`${darkMode ? "dark-mode" : "bg-white" } rounded bg-white border border-gray-300 px-4 py-2 text-sm`}>
               Send Statements
             </button>
-            <button className="rounded bg-white border border-gray-300 px-4 py-2 text-sm">
+            <button className={`${darkMode ? "dark-mode" : "bg-white" } rounded bg-white border border-gray-300 px-4 py-2 text-sm`}>
               Import
             </button>
           </div>
 
           {/* Right: Search */}
-          <div className="w-full md:w-auto">
+          <div className="w-full md:w-auto rounded">
             <SearchInput />
           </div>
         </div>
@@ -172,6 +183,7 @@ const SalesOverview = () => {
           amount="£3,237.94"
           change="4.46%"
           changeType="down"
+          className={`${darkMode ? "card-dark" : null }`}
         />
         <StatCard
           title="Draft"
@@ -197,12 +209,12 @@ const SalesOverview = () => {
 
       {/* Charts & Data */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow-sm">
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg shadow-sm`}>
           <h3 className="text-lg font-medium mb-4">Money coming in</h3>
           <Chart />
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-sm">
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg shadow-sm`}>
           <h3 className="text-lg font-medium mb-4">Customers owing the most</h3>
           <div className="space-y-4">
             {["Client x", "Client y", "Client z", "Client a", "Client b"].map(

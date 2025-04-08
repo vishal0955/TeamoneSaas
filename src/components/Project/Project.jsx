@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import ResourceTimelineCalendar from "../ResourceTimlineCalendar";
 import KanbanBoard from "../Kanban/Kanban";
 import { Pagination } from "react-bootstrap";
+import TeamAvailabilityCalendar from "./SchedulingTimeLine";
 
 const initialTasks = [
   {
@@ -363,7 +364,7 @@ const Project = () => {
         </div>
       </div>
 
-      {activeTab === 0 && <ResourceTimelineCalendar />}
+      {activeTab === 0 && <TeamAvailabilityCalendar />}
       {activeTab === 2 && <KanbanBoard />}
 
       {activeTab === 1 && (
@@ -580,20 +581,7 @@ const Project = () => {
         </div>
       )} */}
 
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[100vh]">
-            <div className="flex justify-between items-center border-b pb-2 mb-4">
-              <h3 className="text-xl font-semibold">
-                {editId ? "Edit" : "Add"} Project
-              </h3>
-              <button
-                onClick={handleCloseModal}
-                className="text-gray-500 hover:text-black text-2xl"
-              >
-                &times;
-              </button>
-            </div>
+   
 
             {/* <form onSubmit={handleAddOrEditProject} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -747,6 +735,21 @@ const Project = () => {
                 </button>
               </div>
             </form> */}
+
+{showModal && (
+     <div className="modal fade show d-block bg-opacity-50 bg-gray-50" role="dialog">
+            <div className="modal-dialog modal-lg " role="document">
+            <div className="flex justify-between items-center border-b pb-2 mb-4">
+              <h3 className="text-xl font-semibold">
+                {editId ? "Edit" : "Add"} Project
+              </h3>
+              <button
+                onClick={handleCloseModal}
+                className="text-gray-500 hover:text-black text-2xl"
+              >
+                &times;
+              </button>
+            </div>
             <ProjectCard />
           </div>
         </div>

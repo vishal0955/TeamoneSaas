@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const Expense = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -7,6 +8,8 @@ const Expense = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
 
   return (
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,7 +66,7 @@ const Expense = () => {
       </div>
     </nav>
     <div className="mt-8 max-w-6xl mx-auto">
-      <div className="bg-white rounded-lg shadow-sm p-6 relative mb-8">
+      <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg shadow-sm p-6 relative mb-8`}>
         <button className="absolute right-4 top-4 text-gray-400 hover:text-gray-600">
           <i className="fas fa-times" />
         </button>
@@ -72,13 +75,13 @@ const Expense = () => {
             <h2 className="text-xl font-semibold mb-4">
               Capture expenses paid with company money
             </h2>
-            <p className="text-gray-600 mb-6">
+            <p className="mb-6">
               Employees can submit non-reimbursable expense claims when they've
               been assigned company bank accounts. Simply edit their expense
               settings and assign relevant bank accounts.
             </p>
             <div className="flex items-center space-x-4">
-              <button className="!rounded-button bg-custom hover:bg-blue-600 text-white px-4 py-2">
+              <button className="!rounded-button bg-custom px-4 py-2">
                 Go to settings
               </button>
               <a
@@ -97,7 +100,7 @@ const Expense = () => {
           />
         </div>
       </div>
-      <div className="bg-white rounded-lg shadow-sm p-8 text-center">
+      <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg shadow-sm p-8 text-center`}>
         <img
           src="https://creatie.ai/ai/api/search-image?query=A 3D vector-style illustration of two hands holding a document or receipt with a simple clean background, using orange as the primary color&width=200&height=200&orientation=squarish&removebg=true&flag=9d004963-0c7f-4e80-a801-d7a06643ada3"
           className="mx-auto w-32 mb-6"

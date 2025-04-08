@@ -12,12 +12,15 @@ import { Avatar } from "primereact/avatar";
 import { AvatarGroup } from "primereact/avatargroup";
 import { Badge } from "primereact/badge";
 import { IoIosArrowForward } from "react-icons/io";
+import ResourceTimelineCalendar from "../../ResourceTimlineCalendar";
+import AllProjectTimeline from "../AllProjectTimeline";
 
 
 
 const AllProject = () => {
   const darkMode = useSelector((state) => state.theme.isDarkMode);
 
+  const [activeTab, setActiveTab] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showClientModal, setShowClientModal] = useState(false);
   const [clients, setClients] = useState(["Kailee Kuvalis"]);
@@ -360,7 +363,11 @@ const AllProject = () => {
           </div>
         </div>
 
-        <div className="table-responsive">
+        {activeTab === 0 && <AllProjectTimeline />}
+        {activeTab === 2 && <KanbanBoard />}
+
+        { activeTab === 1 && <>
+          <div className="table-responsive">
           <table  className={` ${
                   darkMode ? "table-dark" : null
                 } table table-bordered align-middle text-nowrap `}>
@@ -486,7 +493,9 @@ const AllProject = () => {
               onClick={() => handlePageChange(currentPage + 1)}
             />
           </Pagination>
-        </div>
+        </div></>}
+
+     
 
         {showModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">

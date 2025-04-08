@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import ReactECharts from "echarts-for-react";
+import { useSelector } from "react-redux";
 
 const InventoryDashboard = () => {
   useEffect(() => {
@@ -62,9 +63,10 @@ const InventoryDashboard = () => {
     ],
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
     <div className=" w-full min-h-screen">
-      <nav className="bg-white shadow p-4 flex justify-between">
+      <nav className={`${darkMode ? "card-dark" : "bg-white" }bg-white shadow p-4 flex justify-between`}>
       
         <div className="text-gray-500">
           <i className="far fa-calendar-alt mr-2"></i>Today: <span id="currentDate"></span>
@@ -73,30 +75,30 @@ const InventoryDashboard = () => {
 
       <main className="max-w-6xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className={`${darkMode ? "card-dark" : "bg-white" }bg-white rounded-lg shadow p-6 border border-gray-200`}>
             <h2 className="text-lg font-semibold mb-4">Pickups</h2>
             <p className="text-xl font-medium text-center">You have no pickups for today</p>
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className={`${darkMode ? "card-dark" : "bg-white" }bg-white rounded-lg shadow p-6 border border-gray-200`}>
             <h2 className="text-lg font-semibold mb-4">Returns</h2>
             <p className="text-xl font-medium text-center">You have no returns for today</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className={`${darkMode ? "card-dark" : "bg-white" }bg-white rounded-lg shadow p-6 border border-gray-200`}>
             <h3 className="text-lg font-semibold mb-4">Inventory Distribution</h3>
             <ReactECharts option={pieChartOptions} style={{ height: 300 }} />
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className={`${darkMode ? "card-dark" : "bg-white" }bg-white rounded-lg shadow p-6 border border-gray-200`}>
             <h3 className="text-lg font-semibold mb-4">Inventory Levels by Category</h3>
             <ReactECharts option={barChartOptions} style={{ height: 300 }} />
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className={`${darkMode ? "card-dark" : "bg-white" }bg-white rounded-lg shadow p-6 border border-gray-200`}>
             <h3 className="text-lg font-semibold mb-4">Comparative Metrics</h3>
             <ReactECharts option={horizontalBarChartOptions} style={{ height: 300 }} />
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className={`${darkMode ? "card-dark" : "bg-white" }bg-white rounded-lg shadow p-6 border border-gray-200`}>
             <h3 className="text-lg font-semibold mb-4">Inventory Process Flow</h3>
             <ReactECharts option={funnelChartOptions} style={{ height: 300 }} />
           </div>

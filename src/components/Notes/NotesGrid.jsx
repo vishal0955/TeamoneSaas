@@ -9,13 +9,16 @@ import {
   List,
   Grid,
 } from "lucide-react";
-import { FaStar, FaTrash, FaEllipsisV, FaPlus } from "react-icons/fa";
+import { FaStar, FaTrash, FaEllipsisV, FaPlus, FaFile } from "react-icons/fa";
 import AddNotePopup from "./AddNoteForm";
 import { useSelector } from "react-redux";
+import InternalNotes from "./InternalNotes";
 
 const NotesGrid = () => {
 
   const darkMode = useSelector((state) => state.theme.isDarkMode);
+
+   const [ active , setActive] = useState("all")
     const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState("list");
   const [showAddFolder, setShowAddFolder] = useState(false);
@@ -72,13 +75,14 @@ const NotesGrid = () => {
   const [categories] = useState([
     { id: "all", name: "All Notes", count: notes.length, icon: "sticky" },
     { id: "important", name: "Starred", icon: "star" },
+    {id: "internalnotes", name: "Internal Notes", icon: "file-text" },
     { id: "trash", name: "Trash", icon: "trash" },
   ]);
 
   const [tags] = useState([
     { id: "pending", name: "Pending", color: "bg-blue-500" },
     { id: "on-hold", name: "On Hold", color: "bg-red-500" },
-    { id: "in-progress", name: "In Progress", color: "bg-yellow-500" },
+    { id: "in-progress", name: "In Progress", color: "bg-yellow-500", },
     { id: "done", name: "Done", color: "bg-green-500" },
   ]);
 
@@ -194,9 +198,10 @@ const NotesGrid = () => {
                 className={`mb-1 rounded ${
                   category.id === "all" ? "bg-gray-900 text-white" : ""
                 }`}
+                onClick={() => setActive(category.id)}
               >
                 <div className="flex items-center px-3 py-2">
-                  <div className="mr-2">
+                  <div className="mr-2" >
                     {category.id === "all" && (
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -212,6 +217,8 @@ const NotesGrid = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                       </svg>
                     )}
+
+{ category.id === "internalnotes" &&  (<FaFile />) }
                   </div>
                   <div className="flex-grow">{category.name}</div>
                   {category.id === "all" && (
@@ -220,6 +227,7 @@ const NotesGrid = () => {
                     </div>
                   )}
                 </div>
+
               </li>
             ))}
           </ul>
@@ -326,8 +334,11 @@ const NotesGrid = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 overflow-auto">
+      { active === "internalnotes" ? (
+        <InternalNotes />
+      ) :
+      (
         <div className="p-4 md:p-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-6">
             {/* Left side: Bulk Actions + Apply */}
@@ -436,7 +447,7 @@ const NotesGrid = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredNotes.map((note) => (
-                <div key={note.id} className={`${darkMode ? "dark-mode" : "bg-white" } rounded-lg shadow-sm overflow-hidden`}>
+                <div key={note.id} className={`${darkMode ? "dark-mode" : "bg-white" } rounded-lg shadow-sm overflow-hidden border border-gray-200`}>
                   <div className="p-4">
                     <div className={`${darkMode ? "dark-mode" : "bg-white" } flex justify-between items-center mb-3 `}>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityClasses(note.priority)}`}>
@@ -478,12 +489,19 @@ const NotesGrid = () => {
             </div>
           )}
         </div>
+      )
+      }
       </div>
+
+      {/* Main Content */}
+      
 
       <AddNotePopup
         isOpen={isAddNoteOpen}
         onClose={handleCloseAddNote}
         onSave={handleSaveNote}
+       
+      
    
       />
     </div>

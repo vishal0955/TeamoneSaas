@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const AllFeed = ({ bookmarked, handleBookmarkClick }) => {
   console.log("bok ", bookmarked);
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
     <>
       <div className="row">
         <div className="col-md-7">
           <div className="flex-1 w-full">
-            <div className="bg-white rounded-lg p-4 mb-6">
+            <div className={`${darkMode ? "card-dark" : null } rounded-lg p-4 mb-6`}>
               <div className="flex items-start gap-4">
                 <img
                   src="https://creatie.ai/ai/api/search-image?query=professional headshot of a business person on white background&width=40&height=40&orientation=squarish&flag=48858035-c22c-4978-b5f4-8ff0f4f72dba"
@@ -17,7 +20,7 @@ const AllFeed = ({ bookmarked, handleBookmarkClick }) => {
                 />
                 <div className="flex-1">
                   <textarea
-                    className="w-full border-0 focus:ring-0 resize-none"
+                    className={`${darkMode ? "card-dark" : null } w-full border-0 focus:ring-0 resize-none`}
                     rows={3}
                     placeholder="What's on your mind?"
                     defaultValue={""}
@@ -44,7 +47,7 @@ const AllFeed = ({ bookmarked, handleBookmarkClick }) => {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-lg p-4 mb-6">
+            <div className={`${darkMode ? "card-dark" : null } rounded-lg p-4 mb-6`}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold">Popular Channels</h3>
                 <div className="flex gap-2">
@@ -86,7 +89,7 @@ const AllFeed = ({ bookmarked, handleBookmarkClick }) => {
             </div>
             <div className="space-y-6">
               <div
-                className="bg-white rounded-lg p-6"
+                className={`${darkMode ? "card-dark" : null } rounded-lg p-6`}
                 style={{ boxShadow: "rgba(17, 17, 26, 0.1) 0px 0px 16px" }}>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
@@ -97,12 +100,12 @@ const AllFeed = ({ bookmarked, handleBookmarkClick }) => {
                     />
                     <div className="ml-3">
                       <h4 className="font-semibold">John Smith</h4>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm ">
                         United Kingdom • 1h ago
                       </p>
                     </div>
                   </div>
-                  <button className="text-gray-400">
+                  <button className="">
                     <i className="fas fa-ellipsis-h" />
                   </button>
                 </div>
@@ -118,15 +121,15 @@ const AllFeed = ({ bookmarked, handleBookmarkClick }) => {
                 />
                 <div className="flex items-center justify-between">
                   <div className="flex gap-4">
-                    <button className="flex items-center gap-2 text-gray-500 hover:text-gray-700">
+                    <button className="flex items-center gap-2  hover:text-gray-700">
                       <i className="far fa-heart" />
                       <span>2.5K</span>
                     </button>
-                    <button className="flex items-center gap-2 text-gray-500 hover:text-gray-700">
+                    <button className="flex items-center gap-2  hover:text-gray-700">
                       <i className="far fa-comment" />
                       <span>48</span>
                     </button>
-                    <button className="flex items-center gap-2 text-gray-500 hover:text-gray-700">
+                    <button className="flex items-center gap-2 hover:text-gray-700">
                       <i className="far fa-share-square" />
                       <span>Share</span>
                     </button>
@@ -150,10 +153,10 @@ const AllFeed = ({ bookmarked, handleBookmarkClick }) => {
         {/* Right Sidebar - Hidden on mobile, shown on lg screens */}
         <div className="col-md-5">
           <div className="hidden lg:block w-full lg:w-80 flex-shrink-0">
-            <div className="bg-white rounded-lg p-6 mb-6">
+            <div className={`${darkMode ? "card-dark" : null } rounded-lg p-6 mb-6`}>
               <div className="flex items-center justify-between mb-6">
                 <div className="flex gap-4">
-                  <button className="bg-custom text-white !rounded-button px-4 py-2">
+                  <button className="bg-custom !rounded-button px-4 py-2">
                     General
                   </button>
                   <button className="text-gray-500 hover:text-gray-700">
@@ -198,7 +201,7 @@ const AllFeed = ({ bookmarked, handleBookmarkClick }) => {
                 View All
               </button>
             </div>
-            <div className="bg-white rounded-lg p-6">
+            <div className={`${darkMode ? "card-dark" : null } rounded-lg p-6`}>
               <h3 className="font-semibold mb-6">Saved Feeds</h3>
               <div className="space-y-6">
                 <div className="flex gap-4">
