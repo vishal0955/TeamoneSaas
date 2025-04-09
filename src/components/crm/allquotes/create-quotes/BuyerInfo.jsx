@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 const BuyerInfo = () => {
   const darkMode = useSelector((state) => (state.theme.isDarkMode))
   return (
-    <div className="quote-container">
+    <div className={`${darkMode ? "dark-mode" : null } quote-container`}>
   <div className="quote-content">
     {/* Left Section */}
     <div className="quote-form-section">
@@ -23,11 +23,11 @@ const BuyerInfo = () => {
         </div>
       </div> */}
       <div className="quote-section-group">
-        <h2 className="quote-section-title">Buyer Information</h2>
+        <h2 className= "quote-section-title">Buyer Information</h2>
         <div className="quote-form-group">
           <label className="quote-label">Contact</label>
           <div className="quote-select-wrapper">
-            <select className="quote-select">
+            <select className={`${darkMode ? "dark-mode" : null } quote-select`}>
               <option>John Smith - john@company.com</option>
             </select>
           </div>
@@ -38,7 +38,7 @@ const BuyerInfo = () => {
         <div className="quote-form-group">
           <label className="quote-label">Company</label>
           <div className="quote-select-wrapper">
-            <select className="quote-select">
+            <select className={`${darkMode ? "dark-mode" : null } quote-select`}>
               <option>Acme Corporation</option>
             </select>
           </div>
