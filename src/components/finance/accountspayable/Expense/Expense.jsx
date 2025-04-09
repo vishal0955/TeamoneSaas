@@ -65,8 +65,8 @@ const Expense = () => {
         </button>
       </div>
     </nav>
-    <div className="mt-8 max-w-6xl mx-auto">
-      <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg shadow-sm p-6 relative mb-8`}>
+    <div className="mt-8 max-w-6xl mx-auto mb-4">
+      <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border shadow-sm p-6 relative mb-8`}>
         <button className="absolute right-4 top-4 text-gray-400 hover:text-gray-600">
           <i className="fas fa-times" />
         </button>
@@ -100,7 +100,7 @@ const Expense = () => {
           />
         </div>
       </div>
-      <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg shadow-sm p-8 text-center`}>
+      <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border shadow-sm p-8 text-center`}>
         <img
           src="https://creatie.ai/ai/api/search-image?query=A 3D vector-style illustration of two hands holding a document or receipt with a simple clean background, using orange as the primary color&width=200&height=200&orientation=squarish&removebg=true&flag=9d004963-0c7f-4e80-a801-d7a06643ada3"
           className="mx-auto w-32 mb-6"

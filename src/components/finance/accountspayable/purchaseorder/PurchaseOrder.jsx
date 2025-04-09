@@ -52,7 +52,7 @@ const PurchaseOrder = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border p-6 shadow-sm`}>
           <div className="mb-2">
             <h3 className="text-sm font-medium">Total Invoice</h3>
             <p className="text-2xl font-semibold">$3,237.94</p>
@@ -65,7 +65,7 @@ const PurchaseOrder = () => {
             32.40% from last month
           </p>
         </div>
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border p-6 shadow-sm`}>
           <div className="mb-2">
             <h3 className="text-sm font-medium ">Outstanding</h3>
             <p className="text-2xl font-semibold">$3,237.94</p>
@@ -78,7 +78,7 @@ const PurchaseOrder = () => {
             4.40% from last month
           </p>
         </div>
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border p-6 shadow-sm`}>
           <div className="mb-2">
             <h3 className="text-sm font-medium ">Draft</h3>
             <p className="text-2xl font-semibold">$3,237.94</p>
@@ -91,7 +91,7 @@ const PurchaseOrder = () => {
             12% from last month
           </p>
         </div>
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border p-6 shadow-sm`}>
           <div className="mb-2">
             <h3 className="text-sm font-medium ">Total Overdue</h3>
             <p className="text-2xl font-semibold">$3,237.94</p>
@@ -105,7 +105,7 @@ const PurchaseOrder = () => {
           </p>
         </div>
       </div>
-      <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg shadow-sm`}>
+      <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border shadow-sm`}>
         <div className="p-6 border-b border-gray-200">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">

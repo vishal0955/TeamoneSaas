@@ -215,7 +215,7 @@ const Company = () => {
         <Col xs={12}>
           <Row>
             <Col xs={12} sm={3} className="mb-3 mb-sm-0">
-              <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+              <div className={`${darkMode ? "card-dark" : null} border inv-stat-box`}>
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-primary">
                     <i className="fa-solid fa-building"></i>
@@ -228,7 +228,7 @@ const Company = () => {
               </div>
             </Col>
             <Col xs={12} sm={3} className="mb-3 mb-sm-0">
-              <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+              <div className={`${darkMode ? "card-dark" : null} border inv-stat-box`}>
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-warning">
                     <i className="fa-regular fa-building"></i>
@@ -241,7 +241,7 @@ const Company = () => {
               </div>
             </Col>
             <Col xs={12} sm={3} className="mb-3 mb-sm-0">
-              <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+              <div className={`${darkMode ? "card-dark" : null} border inv-stat-box`}>
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-danger">
                     <i className="fa-solid fa-building"></i>
@@ -254,7 +254,7 @@ const Company = () => {
               </div>
             </Col>
             <Col xs={12} sm={3}>
-              <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+              <div className={`${darkMode ? "card-dark" : null} border inv-stat-box`}>
                 <div className="inv-stat-content">
                   <div className="inv-stat-icon inv-stat-icon-neutral">
                     <i className="fa-regular fa-building"></i>
@@ -333,7 +333,7 @@ const Company = () => {
         </Col>
       </Row>
 
-      <div className={`${darkMode ? "card-dark" : null} inv-main-card`}>
+      <div className={`${darkMode ? "card-dark" : null} border inv-main-card`}>
         <div className="inv-card-header">
           <Row className="align-items-center">
             <Col xs={12} md={8} className="mb-3 mb-md-0">

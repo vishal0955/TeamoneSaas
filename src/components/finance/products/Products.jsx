@@ -243,7 +243,7 @@ const Products = () => {
             </Col>
           </Row>
 
-          <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white shadow rounded-lg`}>
+          <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white border shadow rounded-lg`}>
             {/* Filter Header */}
             <div className="border-b border-gray-200 px-4 py-4">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">

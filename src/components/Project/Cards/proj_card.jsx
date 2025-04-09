@@ -1,8 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ProjectCard= () => {
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
-    <div className="bg-gray-50 font-sans min-h-screen flex flex-col">
+    <div className={`${darkMode ? "card-dark" : null} bg-gray-50 font-sans min-h-screen rounded flex flex-col`}>
       {/* Navigation Bar */}
       
 
@@ -24,20 +28,20 @@ const ProjectCard= () => {
               </div>
 
               {/* New Project Form */}
-              <div className="bg-white rounded-lg shadow mb-8">
+              <div className={`${darkMode ? "card-dark" : null} bg-white rounded-lg shadow mb-8`}>
                 
                 <div className="p-6 space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Project Name</label>
-                    <input type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:border-custom focus:ring-custom sm:text-sm" placeholder="Enter project name"/>
+                    <label className="block text-sm font-medium">Project Name</label>
+                    <input type="text" className={`${darkMode ? "card-dark" : null} mt-1 block w-full rounded-md border shadow-sm p-3 focus:border-custom focus:ring-custom sm:text-sm" placeholder="Enter project name`}/>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Client Name</label>
-                    <input type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3  focus:border-custom focus:ring-custom sm:text-sm" defaultValue="Acme Corporation"/>
+                    <label className="block text-sm font-medium">Client Name</label>
+                    <input type="text" className={`${darkMode ? "card-dark" : null} mt-1 block w-full rounded-md border shadow-sm p-3  focus:border-custom focus:ring-custom sm:text-sm`} defaultValue="Acme Corporation"/>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Project Goal</label>
-                    <textarea rows="3" className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm">
+                    <label className="block text-sm font-medium">Project Goal</label>
+                    <textarea rows="3" className={`${darkMode ? "card-dark" : null} mt-1 block w-full rounded-md border p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm`}>
                       Redesign the company website to improve user experience and increase conversion rates.
                     </textarea>
                   </div>
@@ -45,7 +49,7 @@ const ProjectCard= () => {
               </div>
 
               {/* Project Details */}
-              <div className="bg-white rounded-lg shadow">
+              <div className={`${darkMode ? "card-dark" : "bg-white"} bg-white rounded-lg shadow`}>
                 <div className="border-b border-gray-200">
                   <nav className="-mb-px flex">
                     <a href="#" className="border-custom text-custom w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm">
@@ -56,16 +60,16 @@ const ProjectCard= () => {
                 <div className="p-6">
                   <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Status</label>
-                      <select className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm">
+                      <label className="block text-sm font-medium ">Status</label>
+                      <select className={`${darkMode ? "card-dark" : null} mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm border`}>
                         <option>Planning</option>
                         <option>In Progress</option>
                         <option>Completed</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Priority</label>
-                      <select className="mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm">
+                      <label className="block text-sm font-medium ">Priority</label>
+                      <select className={`${darkMode ? "card-dark" : null} mt-1 block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm border`}>
                         <option>Normal</option>
                         <option>High</option>
                         <option>Low</option>
@@ -75,9 +79,9 @@ const ProjectCard= () => {
 
                   {/* Comments Section */}
                   <div className="mt-6">
-                    <label className="block text-sm font-medium text-gray-700">Comments</label>
+                    <label className="block text-sm font-medium ">Comments</label>
                     <div className="mt-2">
-                      <textarea rows="3" className="block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm" placeholder="Add a comment..."></textarea>
+                      <textarea rows="3" className={`${darkMode ? "card-dark" : null} block w-full rounded-md border-gray-300 p-3 shadow-sm focus:border-custom focus:ring-custom sm:text-sm border`} placeholder="Add a comment..."></textarea>
                       <div className="mt-3 flex justify-end">
                         <button type="button" className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm  bg-custom hover:bg-custom focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom">
                           Send
