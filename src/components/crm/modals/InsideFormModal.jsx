@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const InsideFormModal = ({ 
   title, 
@@ -17,6 +18,7 @@ const InsideFormModal = ({
       setFormData(initialData);
     }
   }, [isOpen, initialData]);
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,10 +27,13 @@ const InsideFormModal = ({
   };
 
   if (!isOpen) return null;
+ 
+   
+
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg w-full max-w-md">
+      <div className={`${darkMode ? "dark-mode" : "bg-white" } rounded-lg w-full max-w-md`}>
         {/* Modal Header */}
         <div className="flex justify-between items-center px-4 py-3 border-b">
           <h5 className="text-lg font-semibold">{title}</h5>
@@ -48,7 +53,7 @@ const InsideFormModal = ({
           <form onSubmit={handleSubmit} id="modalForm">
             {formFields.map((field, index) => (
               <div key={index} className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium  mb-1">
                   {field.label}
                   {field.required && <span className="text-red-500 ml-1">*</span>}
                 </label>
@@ -61,7 +66,7 @@ const InsideFormModal = ({
                       [field.name]: e.target.value
                     }))}
                     required={field.required}
-                    className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className={`${darkMode ? "dark-mode" : null } w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   >
                     <option value="">{field.placeholder || 'Select'}</option>
                     {field.options?.map((option, i) => (
@@ -81,7 +86,7 @@ const InsideFormModal = ({
                     }))}
                     placeholder={field.placeholder}
                     required={field.required}
-                    className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className= {`${darkMode ? "dark-mode" : null } w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   />
                 )}
               </div>

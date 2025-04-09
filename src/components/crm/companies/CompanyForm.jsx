@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 // List of time zones
 const timeZones = [
@@ -94,13 +95,16 @@ const CompanyForm = ({ handleClose }) => {
     handleClose();
   };
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
         {/* Company Name */}
-        <Form.Group className="mb-3">
-          <Form.Label>Company Name</Form.Label>
+        <Form.Group className=" mb-3">
+          <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Company Name</Form.Label>
           <Form.Control
+          className={`${darkMode ? "dark-mode" : null }`}
             type="text"
             name="companyName"
             value={formData.companyName}
@@ -110,10 +114,10 @@ const CompanyForm = ({ handleClose }) => {
         <Row>
           <Col md={6}>
             <Form.Group className="mb-3">
-              <Form.Label>Company owner</Form.Label>
+              <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Company owner</Form.Label>
               <div className="d-flex align-items-center">
                 <Form.Select
-                  className="inv-filter-button"
+                  className={`${darkMode ? "dark-mode" : null } inv-filter-button`}
                   name="owner"
                   value={formData.owner}
                   onChange={handleChange}
@@ -129,17 +133,17 @@ const CompanyForm = ({ handleClose }) => {
           </Col>
           <Col md={6}>
             <Form.Group className="mb-3">
-              <Form.Label>Industry</Form.Label>
+              <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Industry</Form.Label>
               <div className="d-flex align-items-center">
                 <Form.Select
-                  className="inv-filter-button "
+                  className={`${darkMode ? "dark-mode" : null } `}
                   name="industry"
                   value={formData.industry}
                   onChange={handleChange}
                 >
-                  <option>Select industry</option>
+                  <option >Select industry</option>
                   {industries.map((tz) => (
-                    <option key={tz.value} value={tz.value}>
+                    <option key={tz.value} value={tz.value }>
                       {tz.label}
                     </option>
                   ))}
@@ -156,9 +160,9 @@ const CompanyForm = ({ handleClose }) => {
         </Row>
 
         <Form.Group className="mb-3">
-          <Form.Label>Type</Form.Label>
+          <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Type</Form.Label>
           <Form.Select
-            className=" "
+            className={`${darkMode ? "dark-mode" : null }`}
             name="type"
             value={formData.type}
             onChange={handleChange}
@@ -175,8 +179,9 @@ const CompanyForm = ({ handleClose }) => {
         <Row>
           <Col md={6}>
             <Form.Group className="mb-3">
-              <Form.Label>City</Form.Label>
+              <Form.Label className={`${darkMode ? "dark-mode" : null }`}>City</Form.Label>
               <Form.Control
+             className= {`${darkMode ? "dark-mode" : null }`}
                 type="text"
                 name="city"
                 value={formData.city}
@@ -186,8 +191,9 @@ const CompanyForm = ({ handleClose }) => {
           </Col>
           <Col md={6}>
             <Form.Group className="mb-3">
-              <Form.Label>State/Region</Form.Label>
+              <Form.Label className={`${darkMode ? "dark-mode" : null }`}>State/Region</Form.Label>
               <Form.Control
+              className={`${darkMode ? "dark-mode" : null }`}
                 type="text"
                 name="state"
                 value={formData.state}
@@ -200,8 +206,9 @@ const CompanyForm = ({ handleClose }) => {
         <Row>
           <Col md={6}>
             <Form.Group className="mb-3">
-              <Form.Label>Postal Code</Form.Label>
+              <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Postal Code</Form.Label>
               <Form.Control
+               className={`${darkMode ? "dark-mode" : null }`}
                 type="text"
                 name="postalCode"
                 value={formData.postalCode}
@@ -211,8 +218,9 @@ const CompanyForm = ({ handleClose }) => {
           </Col>
           <Col md={6}>
             <Form.Group className="mb-3">
-              <Form.Label>Number of Employees</Form.Label>
+              <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Number of Employees</Form.Label>
               <Form.Control
+              className={`${darkMode ? "dark-mode" : null }`}
                 type="number"
                 name="employees"
                 value={formData.employees}
@@ -226,8 +234,9 @@ const CompanyForm = ({ handleClose }) => {
         <Row>
           <Col md={6}>
             <Form.Group className="mb-3">
-              <Form.Label>Time Zone</Form.Label>
+              <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Time Zone</Form.Label>
               <Form.Select
+              className={`${darkMode ? "dark-mode" : null }`}
                 name="timeZone"
                 value={formData.timeZone}
                 onChange={handleChange}
@@ -245,8 +254,9 @@ const CompanyForm = ({ handleClose }) => {
           {/* Working Hours */}
           <Col md={6}>
             <Form.Group className="mb-3">
-              <Form.Label>Working Hours</Form.Label>
+              <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Working Hours</Form.Label>
               <Form.Control
+              className={`${darkMode ? "dark-mode" : null }`}
                 type="text"
                 name="workingHours"
                 value={formData.workingHours}
@@ -259,8 +269,9 @@ const CompanyForm = ({ handleClose }) => {
 
         {/* Description */}
         <Form.Group className="mb-3">
-          <Form.Label>Description</Form.Label>
+          <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Description</Form.Label>
           <Form.Control
+          className={`${darkMode ? "dark-mode" : null }`}
             as="textarea"
             name="description"
             value={formData.description}
@@ -281,31 +292,35 @@ const CompanyForm = ({ handleClose }) => {
         </div>
       </Form>
 
-      <Modal show={showOwnerModal} onHide={() => setShowOwnerModal(false)}>
+      
+
+      <Modal  show={showOwnerModal} onHide={() => setShowOwnerModal(false)} className={`${darkMode ? "custom-modal-dark" : null }`} >
         <Modal.Header closeButton>
-          <Modal.Title>Add New Owner</Modal.Title>
+          <Modal.Title >Add New Owner</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3">
-            <Form.Label>Owner Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter owner name" />
+            <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Owner Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter owner name"className={`${darkMode ? "dark-mode" : null }`} />
           </Form.Group>
           <Button onClick={() => setShowOwnerModal(false)}>Add</Button>
         </Modal.Body>
       </Modal>
 
+      
       {/* Industry Modal */}
       <Modal
         show={showIndustryModal}
         onHide={() => setShowIndustryModal(false)}
-      >
+        className={`${darkMode ? "custom-modal-dark" : null }`}
+         >
         <Modal.Header closeButton>
           <Modal.Title>Add New Industry</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3">
-            <Form.Label>Industry Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter industry name" />
+            <Form.Label className={`${darkMode ? "dark-mode" : null }`}> Industry Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter industry name" className={`${darkMode ? "dark-mode" : null }`} />
           </Form.Group>
           <Button onClick={() => setShowIndustryModal(false)}>Add</Button>
         </Modal.Body>

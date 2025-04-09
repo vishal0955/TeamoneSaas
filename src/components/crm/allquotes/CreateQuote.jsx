@@ -108,7 +108,7 @@ const CreateQuote = ({ close }) => {
 
   return (
     <>
-      <div className={`${darkMode ? "card-dark" : "bg-white" } quote-wizard`}>
+      <div className={`${darkMode ? "card-dark" : null } quote-wizard`}>
         {/* Progress Steps */}
         <div className="quote-wizard-steps">
           {[...Array(totalSteps)].map((_, index) => (

@@ -217,7 +217,7 @@ const AdminDashboard = () => {
                   )}
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className=" divide-y divide-gray-200">
                 <tr>
                   <td className="px-6 py-4 text-sm text-gray-900">
                     New employee onboarding

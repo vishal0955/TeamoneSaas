@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const BuyerInfo = () => {
+  const darkMode = useSelector((state) => (state.theme.isDarkMode))
   return (
     <div className="quote-container">
   <div className="quote-content">

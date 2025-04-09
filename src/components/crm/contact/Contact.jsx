@@ -538,8 +538,8 @@ const ContactsList = () => {
         <>
           <div className="modal fade show d-block" role="dialog">
             <div className="modal-dialog modal-md" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
+              <div className={`${darkMode ? "dark-mode" : null } modal-content`}>
+                <div className={`${darkMode ? "dark-mode" : null } modal-header`}>
                   <button
                     type="button"
                     className="btn-close"
@@ -547,7 +547,7 @@ const ContactsList = () => {
                     onClick={handleCloseModal}
                   />
                 </div>
-                <div className="modal-body">
+                <div className={`${darkMode ? "dark-mode" : null } modal-body`}>
                   <ContactForm handleclose={handleCloseModal} />
                 </div>
               </div>

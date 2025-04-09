@@ -13,7 +13,7 @@ const AboutContactForm = ({ data, onChange }) => {
   const darkMode = useSelector((state) => (state.theme.isDarkMode)) 
 
   return (
-    <div className={`${darkMode ? "dark-mode" : null } bg-white`}>
+    <div className={`${darkMode ? "dark-mode" : null } `}>
       {/* Header */}
       <div
         className="flex justify-between items-center p-3 cursor-pointer"

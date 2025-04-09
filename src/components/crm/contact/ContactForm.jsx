@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import InsideFormModal from '../modals/InsideFormModal';
+import { useSelector } from 'react-redux';
 
 
 const ContactForm = ({ handleclose }) => {
@@ -106,16 +107,18 @@ const ContactForm = ({ handleclose }) => {
    
   ];
 
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
-    <div className="container-fluid p-0">
+    <div className={`${darkMode ? "dark-mode" : null }  container-fluid p-0 `}>
       <div className="row g-0">
         <div className="col-12">
-          <form onSubmit={handleSubmit}>
+          <form  onSubmit={handleSubmit} className="">
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">Email</label>
+              <label htmlFor="email" className={`${darkMode ? "dark-mode" : null } form-label`}>Email</label>
               <input
                 type="email"
-                className="form-control"
+                className={`${darkMode ? "dark-mode" : null } form-control`}
                 id="email"
                 name="email"
                 value={formData.email}
@@ -124,10 +127,10 @@ const ContactForm = ({ handleclose }) => {
             </div>
             
             <div className="mb-3">
-              <label htmlFor="firstName" className="form-label">First name</label>
+              <label htmlFor="firstName" className={`${darkMode ? "dark-mode" : null } form-label`}>First name</label>
               <input
                 type="text"
-                className="form-control"
+                className={`${darkMode ? "dark-mode" : null } form-control`}
                 id="firstName"
                 name="firstName"
                 value={formData.firstName}
@@ -136,10 +139,10 @@ const ContactForm = ({ handleclose }) => {
             </div>
 
             <div className="mb-3">
-                <label htmlFor="lastName" className="form-label">Last name</label>
+                <label htmlFor="lastName" className={`${darkMode ? "dark-mode" : null } form-label`}>Last name</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`${darkMode ? "dark-mode" : null } form-control`}
                   id="lastName"
                   name="lastName"
                   value={formData.lastName}
@@ -148,15 +151,15 @@ const ContactForm = ({ handleclose }) => {
               </div>
               
               <div className="mb-3">
-                <label htmlFor="contactOwner" className="form-label">Contact owner</label>
+                <label htmlFor="contactOwner" className={`${darkMode ? "dark-mode" : null } form-label`}>Contact owner</label>
                 <div className="dropdown">
-                  <button className="form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="contactOwnerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className={`${darkMode ? "dark-mode" : null } form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="contactOwnerDropdown`}data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.contactOwner || 'Select contact owner'} 
                   </button>
-                  <ul className="dropdown-menu w-100" aria-labelledby="contactOwnerDropdown">
+                  <ul className= {`${darkMode ? "dark-mode" : null } dropdown-menu w-100`} aria-labelledby="contactOwnerDropdown">
                     {/* <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, contactOwner: 'Vishal Salanki'})}>Vishal Salanki</a></li> */}
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, contactOwner: 'John Doe'})}>John Doe</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, contactOwner: 'Jane Smith'})}>Jane Smith</a></li>
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, contactOwner: 'John Doe'})}>John Doe</a></li>
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, contactOwner: 'Jane Smith'})}>Jane Smith</a></li>
                   </ul>
                 </div>
               </div>
@@ -164,10 +167,10 @@ const ContactForm = ({ handleclose }) => {
               
               
               <div className="mb-3">
-                <label htmlFor="phoneNumber" className="form-label">Phone number</label>
+                <label htmlFor="phoneNumber" className={`${darkMode ? "dark-mode" : null } form-label`}>Phone number</label>
                 <input
                   type="tel"
-                  className="form-control"
+                  className={`${darkMode ? "dark-mode" : null } form-control`}
                   id="phoneNumber"
                   name="phoneNumber"
                   value={formData.phoneNumber}
@@ -178,20 +181,20 @@ const ContactForm = ({ handleclose }) => {
             {/* ... other form fields ... */}
             
             <div className="mb-3">
-              <label htmlFor="source" className="form-label">Source</label>
+              <label htmlFor="source" className={`${darkMode ? "dark-mode" : null } form-label`}>Source</label>
               <div className='d-flex align-items-center justify-content-between'>
                 <div className="dropdown flex-grow-1">
-                  <button className="form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="sourceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className={`${darkMode ? "dark-mode" : null } form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="sourceDropdown`} data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.source || 'Select source'}
                   </button>
-                  <ul className="dropdown-menu w-100" aria-labelledby="sourceDropdown">
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, source: 'LinkedIn'})}>LinkedIn</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, source: 'Email'})}>Email</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, source: 'Facebook'})}>Facebook</a></li>
+                  <ul className= {`${darkMode ? "dark-mode" : null } dropdown-menu w-100`} aria-labelledby="sourceDropdown">
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, source: 'LinkedIn'})}>LinkedIn</a></li>
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, source: 'Email'})}>Email</a></li>
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, source: 'Facebook'})}>Facebook</a></li>
                   </ul>
                 </div>
                 <button 
-                  className="btn btn-outline-dark" 
+                  className={`${darkMode ? "dark-mode" : null } btn btn-outline-dark`}
                   type="button" 
                   onClick={() => setSourceModalOpen(true)}
                 >
@@ -201,20 +204,20 @@ const ContactForm = ({ handleclose }) => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="lifecycleStage" className="form-label">Lifecycle stage</label>
+              <label htmlFor="lifecycleStage" className={`${darkMode ? "dark-mode" : null } form-label`}>Lifecycle stage</label>
               <div className='d-flex align-items-center justify-content-between'>
                 <div className="dropdown flex-grow-1">
-                  <button className="form-control text-start dropdown-toggle d-flex  inv-filter-button justify-content-between align-items-center" type="button" id="lifecycleStageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className= {`${darkMode ? "dark-mode" : null } form-control text-start dropdown-toggle d-flex  inv-filter-button justify-content-between align-items-center" type="button" id="lifecycleStageDropdown`} data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.lifecycleStage}
                   </button>
-                  <ul className="dropdown-menu w-100" aria-labelledby="lifecycleStageDropdown">
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Lead'})}>Lead</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Customer'})}>Customer</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Opportunity'})}>Opportunity</a></li>
+                  <ul className={`${darkMode ? "dark-mode" : null } dropdown-menu w-100`} aria-labelledby="lifecycleStageDropdown">
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Lead'})}>Lead</a></li>
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Customer'})}>Customer</a></li>
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, lifecycleStage: 'Opportunity'})}>Opportunity</a></li>
                   </ul>
                 </div>
                 <button 
-                  className="btn btn-outline-dark" 
+                  className={`${darkMode ? "dark-mode" : null } btn btn-outline-dark`}
                   type="button" 
                   onClick={() => setLifecycleModalOpen(true)}
                 >
@@ -224,21 +227,21 @@ const ContactForm = ({ handleclose }) => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="leadStatus" className="form-label">Lead status</label>
+              <label htmlFor="leadStatus" className={`${darkMode ? "dark-mode" : null } form-label`}>Lead status</label>
               <div className='d-flex align-items-center justify-content-between'>
                 <div className="dropdown flex-grow-1">
-                  <button className="form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="leadStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className= {`${darkMode ? "dark-mode" : null } form-control text-start dropdown-toggle d-flex inv-filter-button justify-content-between align-items-center" type="button" id="leadStatusDropdown`} data-bs-toggle="dropdown" aria-expanded="false">
                     {formData.leadStatus || 'Select lead status'}
                   </button>
-                  <ul className="dropdown-menu w-100" aria-labelledby="leadStatusDropdown">
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, leadStatus: 'New'})}>New</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, leadStatus: 'Open'})}>Open</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, leadStatus: 'In Progress'})}>In Progress</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={() => setFormData({...formData, leadStatus: 'Closed'})}>Closed</a></li>
+                  <ul className={`${darkMode ? "dark-mode" : null } dropdown-menu w-100`} aria-labelledby="leadStatusDropdown">
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, leadStatus: 'New'})}>New</a></li>
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, leadStatus: 'Open'})}>Open</a></li>
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, leadStatus: 'In Progress'})}>In Progress</a></li>
+                    <li><a className= {`${darkMode ? "dark-mode" : null } dropdown-item`} href="#" onClick={() => setFormData({...formData, leadStatus: 'Closed'})}>Closed</a></li>
                   </ul>
                 </div>
                 <button 
-                  className="btn btn-outline-dark" 
+                  className={`${darkMode ? "dark-mode" : null } btn btn-outline-dark`}
                   type="button" 
                   onClick={() => setLeadStatusModalOpen(true)}
                 >

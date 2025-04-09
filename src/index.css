@@ -308,6 +308,12 @@ body {
 }
 /* >>>>>>> a121075048bf17f4b21ba6f1e38160afe6bb8332 */
 
+.custom-modal-dark .modal-content {
+  background-color: #1e1e2f;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
 @media (max-width: 600px) {
   .nav-search-btn{
   display: none;
