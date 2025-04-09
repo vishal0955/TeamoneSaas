@@ -72,7 +72,7 @@ const AllQuotes = () => {
 
         <div className="grid grid-row-1 md:grid-row-5 gap-4 ">
           <div className="inv-stats-grid">
-            <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+            <div className={`${darkMode ? "card-dark" : null} border inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-primary">
                   <i class="bi bi-currency-pound"></i>
@@ -83,7 +83,7 @@ const AllQuotes = () => {
                 </div>
               </div>
             </div>
-            <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+            <div className={`${darkMode ? "card-dark" : null} border inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-warning">
                   <i className="bi bi-clock" />
@@ -94,7 +94,7 @@ const AllQuotes = () => {
                 </div>
               </div>
             </div>
-            <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+            <div className={`${darkMode ? "card-dark" : null} border inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-danger">
                   <i class="bi bi-x-circle-fill"></i>
@@ -105,7 +105,7 @@ const AllQuotes = () => {
                 </div>
               </div>
             </div>
-            <div className={`${darkMode ? "card-dark" : null} inv-stat-box`}>
+            <div className={`${darkMode ? "card-dark" : null} border inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-neutral">
                   <i class="bi bi-plus-circle-fill"></i>
@@ -121,7 +121,7 @@ const AllQuotes = () => {
 
         {/* Quotes Table */}
         <div className="quotes-card">
-          <div className={`${darkMode ? "card-dark" : null} quotes-card-body rounded`}>
+          <div className={`${darkMode ? "card-dark" : null} border quotes-card-body rounded`}>
             <div className="quotes-filters row mb-4">
               <div className="col-md-6">
                 <div className="inv-search-wrapper">

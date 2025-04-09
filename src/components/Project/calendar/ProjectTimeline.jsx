@@ -737,7 +737,7 @@ const ProjectTimelineCalendar = () => {
               <input 
                 type="text" 
                 placeholder="Search by title, project, person..." 
-                className="w-full px-3 py-1 border rounded-md pr-8" 
+                className={`${darkMode ? "card-dark" : null} w-full px-3 py-1 border rounded-md pr-8`} 
                 value={searchTerm}
                 onChange={handleSearch}
               />
@@ -758,7 +758,7 @@ const ProjectTimelineCalendar = () => {
           </div>
           <div className="flex items-center w-full md:w-auto justify-end">
             <button 
-              className={`px-1 py-1 border rounded-md me-2 ${showWeekends ? 'bg-gray-100' : 'bg-blue-100'}`}
+              className={`px-1 py-1 border rounded-md me-2 ${showWeekends ? null : null }`}
               onClick={toggleWeekends}
             >
               {showWeekends ? 'Hide Weekends' : 'Show Weekends'}
@@ -917,7 +917,7 @@ const ProjectTimelineCalendar = () => {
       {/* Task Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-4 md:p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
+          <div className={`${darkMode ? "card-dark" : null} bg-white rounded-lg p-4 md:p-6 w-full max-w-md max-h-[90vh] overflow-y-auto`}>
             <h2 className="text-xl font-bold mb-4">
               {formData.isEdit ? 'Edit Task' : 'Create New Task'}
             </h2>
@@ -926,7 +926,7 @@ const ProjectTimelineCalendar = () => {
                 <label className="block text-sm font-medium mb-1">Title</label>
                 <input 
                   type="text" 
-                  className="w-full px-3 py-2 border rounded-md"
+                  className={`${darkMode ? "card-dark" : null} w-full px-3 py-2 border rounded-md`}
                   value={formData.title}
                   onChange={(e) => setFormData({...formData, title: e.target.value})}
                   required
@@ -936,7 +936,7 @@ const ProjectTimelineCalendar = () => {
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1">Description</label>
                 <textarea 
-                  className="w-full px-3 py-2 border rounded-md"
+                  className={`${darkMode ? "card-dark" : null} w-full px-3 py-2 border rounded-md`}
                   value={formData.description}
                   onChange={(e) => setFormData({...formData, description: e.target.value})}
                   rows="3"
@@ -947,7 +947,7 @@ const ProjectTimelineCalendar = () => {
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1">Project</label>
                 <select 
-                  className="w-full px-3 py-2 border rounded-md"
+                  className={`${darkMode ? "card-dark" : null} w-full px-3 py-2 border rounded-md`}
                   value={formData.resourceId}
                   onChange={(e) => setFormData({...formData, resourceId: e.target.value})}
                   required
@@ -965,7 +965,7 @@ const ProjectTimelineCalendar = () => {
                 <div>
                   <label className="block text-sm font-medium mb-1">Company</label>
                   <select 
-                    className="w-full px-3 py-2 border rounded-md"
+                    className={`${darkMode ? "card-dark" : null} w-full px-3 py-2 border rounded-md`}
                     value={formData.project}
                     onChange={(e) => setFormData({...formData, project: e.target.value})}
                     required
@@ -981,7 +981,7 @@ const ProjectTimelineCalendar = () => {
                 <div>
                   <label className="block text-sm font-medium mb-1">Assigned To</label>
                   <select 
-                    className="w-full px-3 py-2 border rounded-md"
+                    className={`${darkMode ? "card-dark" : null} w-full px-3 py-2 border rounded-md`} 
                     value={formData.assignedTo}
                     onChange={(e) => setFormData({...formData, assignedTo: e.target.value})}
                     required
@@ -1001,7 +1001,7 @@ const ProjectTimelineCalendar = () => {
                   <label className="block text-sm font-medium mb-1">Start Date & Time</label>
                   <input 
                     type="datetime-local" 
-                    className="w-full px-3 py-2 border rounded-md"
+                    className={`${darkMode ? "card-dark" : null} w-full px-3 py-2 border rounded-md`}
                     value={formData.start}
                     onChange={(e) => setFormData({...formData, start: e.target.value})}
                     required
@@ -1011,7 +1011,7 @@ const ProjectTimelineCalendar = () => {
                   <label className="block text-sm font-medium mb-1">End Date & Time</label>
                   <input 
                     type="datetime-local" 
-                    className="w-full px-3 py-2 border rounded-md"
+                    className={`${darkMode ? "card-dark" : null} w-full px-3 py-2 border rounded-md`}
                     value={formData.end}
                     onChange={(e) => setFormData({...formData, end: e.target.value})}
                     required
@@ -1034,7 +1034,7 @@ const ProjectTimelineCalendar = () => {
                 <div className="flex space-x-2">
                   <button 
                     type="button"
-                    className="px-4 py-2 border rounded-md hover:bg-gray-100"
+                    className="px-4 py-2 border rounded-md"
                     onClick={() => setShowModal(false)}
                   >
                     Cancel

@@ -65,7 +65,7 @@ const AllBills = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border p-6 shadow-sm`}>
           <h3 className="text-sm font-medium text-gray-500">Total Invoice</h3>
           <p className="text-2xl font-semibold mt-2">$3,237.94</p>
           <div className="mt-2 flex items-center">
@@ -78,7 +78,7 @@ const AllBills = () => {
             +32.40% from last month
           </p>
         </div>
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border p-6 shadow-sm`}>
           <h3 className="text-sm font-medium text-gray-500">Outstanding</h3>
           <p className="text-2xl font-semibold mt-2">$3,237.94</p>
           <div className="mt-2 flex items-center">
@@ -91,7 +91,7 @@ const AllBills = () => {
             -4.40% from last month
           </p>
         </div>
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border p-6 shadow-sm`}>
           <h3 className="text-sm font-medium text-gray-500">Draft</h3>
           <p className="text-2xl font-semibold mt-2">$3,237.94</p>
           <div className="mt-2 flex items-center">
@@ -104,7 +104,7 @@ const AllBills = () => {
             +12% from last month
           </p>
         </div>
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border p-6 shadow-sm`}>
           <h3 className="text-sm font-medium text-gray-500">Total Overdue</h3>
           <p className="text-2xl font-semibold mt-2">$3,237.94</p>
           <div className="mt-2 flex items-center">
@@ -135,7 +135,7 @@ const AllBills = () => {
         </button>
       </div>
     </div> */}
-      <div className={`${darkMode ? "card-dark" : null } rounded-lg shadow-sm p-6`}>
+      <div className={`${darkMode ? "card-dark" : null } rounded-lg border shadow-sm p-6`}>
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0 mb-6">
           <div className="relative flex-1 max-w-md me-4">
             <i className="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />

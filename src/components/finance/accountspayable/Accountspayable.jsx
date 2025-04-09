@@ -106,7 +106,7 @@ const Accountspayable = () => {
           </header>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <div className={`${darkMode ? "card-dark" :  "bg-white" } bg-white rounded-lg p-4 shadow-sm`}>
+            <div className={`${darkMode ? "card-dark" :  "bg-white" } bg-white rounded-lg p-4 border shadow-sm`}>
               <h3 className="text-sm text-gray-500 mb-1">Total Invoice</h3>
               <p className="text-2xl font-semibold mb-2">£3,237.94</p>
               <div className="flex items-center text-green-500 text-sm">
@@ -115,7 +115,7 @@ const Accountspayable = () => {
               </div>
             </div>
 
-            <div className={`${darkMode ? "card-dark" :  "bg-white" } bg-white rounded-lg p-4 shadow-sm`}>
+            <div className={`${darkMode ? "card-dark" :  "bg-white" } bg-white rounded-lg p-4 border shadow-sm`}>
               <h3 className="text-sm text-gray-500 mb-1">Outstanding</h3>
               <p className="text-2xl font-semibold mb-2">£3,237.94</p>
               <div className="flex items-center text-red-500 text-sm">
@@ -124,7 +124,7 @@ const Accountspayable = () => {
               </div>
             </div>
 
-            <div className={`${darkMode ? "card-dark" :  "bg-white" } bg-white rounded-lg p-4 shadow-sm`}>
+            <div className={`${darkMode ? "card-dark" :  "bg-white" } bg-white rounded-lg p-4 border shadow-sm`}>
               <h3 className="text-sm text-gray-500 mb-1">Draft</h3>
               <p className="text-2xl font-semibold mb-2">£3,237.94</p>
               <div className="flex items-center text-green-500 text-sm">
@@ -133,7 +133,7 @@ const Accountspayable = () => {
               </div>
             </div>
 
-            <div className={`${darkMode ? "card-dark" :  "bg-white" } bg-white rounded-lg p-4 shadow-sm`}>
+            <div className={`${darkMode ? "card-dark" :  "bg-white" } bg-white rounded-lg p-4 border shadow-sm`}>
               <h3 className="text-sm text-gray-500 mb-1">Total Overdue</h3>
               <p className="text-2xl font-semibold mb-2">£3,237.94</p>
               <div className="flex items-center text-red-500 text-sm">
@@ -145,7 +145,7 @@ const Accountspayable = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             {/* Bills You Need to Pay */}
-            <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+            <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 border shadow-sm`}>
               <h3 className="text-lg font-medium mb-4">
                 Bills you need to pay
               </h3>
@@ -184,7 +184,7 @@ const Accountspayable = () => {
             </div>
 
             {/* Expense Claims */}
-            <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+            <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 border shadow-sm`}>
               <h3 className="text-lg font-medium text-blue-500 mb-4">
                 Expense claims
               </h3>
@@ -210,7 +210,7 @@ const Accountspayable = () => {
             </div>
           </div>
 
-          <div className={`${darkMode ? "card-dark" : "bg-white" } rounded-lg p-6 shadow-sm mb-8`}>
+          <div className={`${darkMode ? "card-dark" : "bg-white" } rounded-lg p-6 border shadow-sm mb-8`}>
             {/* Expenses Overview */}
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-4">
               <div>
@@ -237,21 +237,21 @@ const Accountspayable = () => {
 
           {/* Supplier Stats and Top Suppliers */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+            <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg border p-6 shadow-sm`}>
               <h3 className="text-xl font-medium mb-4">Suppliers Expenses</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className={`${darkMode ? "card-dark" : "bg-gray-50" } rounded p-4`}>
+                <div className={`${darkMode ? "card-dark" : "bg-gray-50" } rounded border p-4`}>
                   <p className="text-sm text-gray-500 mb-1">Customers</p>
                   <p className="text-2xl font-semibold">200</p>
                 </div>
-                <div className={`${darkMode ? "card-dark" : "bg-gray-50" } rounded p-4`}>
+                <div className={`${darkMode ? "card-dark" : "bg-gray-50" } rounded border p-4`}>
                   <p className="text-sm text-gray-500 mb-1">Owing</p>
                   <p className="text-2xl font-semibold">£1234</p>
                 </div>
               </div>
             </div>
 
-            <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+            <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white border rounded-lg p-6 shadow-sm`}>
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-medium">Top Suppliers To Pay</h3>
                 <a href="#" className="text-blue-500 text-sm">
@@ -273,7 +273,7 @@ const Accountspayable = () => {
           </div>
 
           {/* Cash Flow Chart */}
-          <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white rounded-lg p-6 shadow-sm`}>
+          <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white border rounded-lg p-6 shadow-sm`}>
             <h3 className="text-xl font-medium mb-6">Total cash in and out</h3>
             <div id="cashFlowChart" className="h-64" />
             <CashFlowChart />

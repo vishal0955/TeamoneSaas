@@ -315,6 +315,7 @@ const Recruitmentkanban = () => {
   // Theme state
   const [isDarkMode, setIsDarkMode] = useState(false);
   
+  
   // Add task states
   const [newTaskText, setNewTaskText] = useState({});
   const [isAddingTask, setIsAddingTask] = useState({});

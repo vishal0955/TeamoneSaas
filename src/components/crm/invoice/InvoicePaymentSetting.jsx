@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SendInvoice from "./SendInvoice";
+import { useSelector } from "react-redux";
 
 const InvoicePaymentSetting = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
@@ -13,10 +14,13 @@ const InvoicePaymentSetting = () => {
     setIsModalOpen(false);
     document.body.classList.remove("modal-open"); // Remove modal-open class
   };
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
+
   return (
     <>
       <div className="container py-4">
-        <div className="card shadow-sm">
+        <div className={`${darkMode ? "card-dark" : null} card shadow-sm`}>
           <div className="card-body p-4">
             <h4 className="ips-heading mb-2">Payment Settings</h4>
             <p className="text-secondary mb-4">
@@ -101,7 +105,7 @@ const InvoicePaymentSetting = () => {
               {/* Invoice Summary */}
               <div className="mb-4">
                 <h6 className="ips-heading--sm mb-3">Invoice Summary</h6>
-                <div className="ips-summary">
+                <div className= {`${darkMode ? "card-dark" : null} ips-summary`}>
                   <div className="ips-summary__item">
                     <div className="d-flex justify-content-between">
                       <span className="ips-summary__label">Total Amount</span>
@@ -120,12 +124,12 @@ const InvoicePaymentSetting = () => {
               <div className="mb-4">
                 <div className="mb-3">
                   <label
-                    className="form-label ips-heading--sm"
+                    className="ips-heading--sm"
                     htmlFor="paymentTerms">
                     Payment Terms <span className="text-danger">*</span>
                   </label>
                   <select
-                    className="form-select ips-select"
+                    className={`${darkMode ? "card-dark" : null} form-select ips-select`}
                     id="paymentTerms"
                     required="">
                     <option value="">Select payment terms</option>
@@ -142,12 +146,12 @@ const InvoicePaymentSetting = () => {
                 </div>
                 <div className="mb-3">
                   <label
-                    className="form-label ips-heading--sm"
+                    className="ips-heading--sm"
                     htmlFor="currency">
                     Currency <span className="text-danger">*</span>
                   </label>
                   <select
-                    className="form-select ips-select"
+                    className={`${darkMode ? "card-dark" : null} form-select ips-select`}
                     id="currency"
                     required="">
                     <option value="">Select currency</option>
@@ -180,7 +184,7 @@ const InvoicePaymentSetting = () => {
         <>
           <div className="modal fade show d-block" role="dialog">
             <div className="modal-dialog modal-lg" role="document">
-              <div className="modal-content">
+              <div className={`${darkMode ? "card-dark" : null} modal-content`}>
                 <div className="modal-header">
                   <h5 className="modal-title">Send New Invoice</h5>
                   <button

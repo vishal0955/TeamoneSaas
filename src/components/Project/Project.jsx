@@ -591,7 +591,7 @@ const Project = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full border px-3 py-2 rounded"
+                    className={`${darkMode ? "card-dark" : null} w-full border px-3 py-2 rounded`}
                     value={newProject.name}
                     onChange={(e) =>
                       setNewProject({ ...newProject, name: e.target.value })
@@ -605,7 +605,7 @@ const Project = () => {
                   </label>
                   <input
                     type="date"
-                    className="w-full border px-3 py-2 rounded"
+                    className={`${darkMode ? "card-dark" : null} w-full border px-3 py-2 rounded`}
                     value={newProject.deadline}
                     onChange={(e) =>
                       setNewProject({ ...newProject, deadline: e.target.value })
@@ -619,7 +619,7 @@ const Project = () => {
                   </label>
                   <input
                     type="date"
-                    className="w-full border px-3 py-2 rounded"
+                    className={`${darkMode ? "card-dark" : null} w-full border px-3 py-2 rounded`}
                     value={newProject.startDate}
                     onChange={(e) =>
                       setNewProject({
@@ -635,7 +635,7 @@ const Project = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full border px-3 py-2 rounded"
+                    className={`${darkMode ? "card-dark" : null} w-full border px-3 py-2 rounded`}
                     value={newProject.department}
                     onChange={(e) =>
                       setNewProject({
@@ -657,7 +657,7 @@ const Project = () => {
                     </button>
                   </label>
                   <select
-                    className="w-full border px-3 py-2 rounded"
+                    className={`${darkMode ? "card-dark" : null} w-full border px-3 py-2 rounded`}
                     value={newProject.client}
                     onChange={(e) =>
                       setNewProject({ ...newProject, client: e.target.value })
@@ -677,7 +677,7 @@ const Project = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full border px-3 py-2 rounded"
+                    className={`${darkMode ? "card-dark" : null} w-full border px-3 py-2 rounded`}
                     value={newProject.category}
                     onChange={(e) =>
                       setNewProject({ ...newProject, category: e.target.value })
@@ -690,7 +690,7 @@ const Project = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full border px-3 py-2 rounded"
+                    className={`${darkMode ? "card-dark" : null} w-full border px-3 py-2 rounded`}
                     value={newProject.members}
                     onChange={(e) =>
                       setNewProject({ ...newProject, members: e.target.value })
@@ -719,7 +719,7 @@ const Project = () => {
                   </div>
                 </div>
              </div>
-              <div className="flex justify-end gap-3 pt-4 border-t mt-4">
+              <div className="flex justify-end gap-3 pt-4 border-t my-4">
                 <button
                   type="button"
                   onClick={handleCloseModal}

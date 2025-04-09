@@ -271,7 +271,7 @@ const AllInvoice = () => {
         {/* Stats Section - Responsive Grid */}
         <div className="row g-3 mb-4">
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
+            <div className={`${darkMode ? "card-dark" : null } border inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-primary">
                   <i className="bi bi-arrow-left-right" />
@@ -284,7 +284,7 @@ const AllInvoice = () => {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
+            <div className={`${darkMode ? "card-dark" : null } border inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-warning">
                   <i className="bi bi-clock" />
@@ -297,7 +297,7 @@ const AllInvoice = () => {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
+            <div className={`${darkMode ? "card-dark" : null } border inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-neutral">
                   <i className="bi bi-file-text" />
@@ -310,7 +310,7 @@ const AllInvoice = () => {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-lg-3">
-            <div className={`${darkMode ? "card-dark" : null } inv-stat-box`}>
+            <div className={`${darkMode ? "card-dark" : null } border inv-stat-box`}>
               <div className="inv-stat-content">
                 <div className="inv-stat-icon inv-stat-icon-danger">
                   <i className="bi bi-exclamation-circle" />

@@ -84,7 +84,7 @@ const CreditNotes = () => {
         </div>
       </div>
     </div>
-    <div className={`${darkMode ? "card-dark" : null } shadow rounded-lg overflow-hidden`}>
+    <div className={`${darkMode ? "card-dark" : null } shadow rounded-lg border overflow-hidden`}>
       <div className={`${darkMode ? "table-dark" : "bg-white" } overflow-x-auto`}>
         <table className="min-w-full divide-y divide-gray-200">
           <thead>

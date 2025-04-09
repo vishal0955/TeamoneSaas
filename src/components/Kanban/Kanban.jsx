@@ -14,7 +14,7 @@ const ItemTypes = {
 
 const Task = ({ task, index, columnId, moveTask }) => {
   const ref = useRef(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const isDarkMode = useSelector((state) => state.theme.isDarkMode);
 
 
   const themeStyles = {

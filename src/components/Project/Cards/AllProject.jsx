@@ -316,6 +316,7 @@ const AllProject = () => {
     setShowClientModal(false);
   };
 
+  
   const navigate = useNavigate();
   return (
     <>
@@ -500,7 +501,7 @@ const AllProject = () => {
 
         {showModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[100vh]">
+            <div className={`${darkMode ? "card-dark" : "bg-white"} bg-white w-full max-w-4xl rounded-lg p-6 overflow-y-auto max-h-[100vh]`}>
               <div className="flex justify-between items-center border-b pb-2 mb-4">
                 <h3 className="text-xl font-semibold">
                   {editId ? "Edit" : "Add"} Project

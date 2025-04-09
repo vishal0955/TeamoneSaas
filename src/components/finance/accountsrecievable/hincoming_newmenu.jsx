@@ -85,7 +85,7 @@ const SearchInput = () => {
     <input
       type="text"
       placeholder="Search"
-      className={`${darkMode ? "dark-mode" : "bg-white" } !rounded-button rounded pl-10 pr-4 py-2 border border-gray-300 focus:ring-custom focus:border-custom`}
+      className={`${darkMode ? "dark-mode" : "bg-white" } !rounded-button border rounded pl-10 pr-4 py-2 border border-gray-300 focus:ring-custom focus:border-custom`}
     />
     <i className="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
   </div>
@@ -96,7 +96,7 @@ const StatCard = ({ title, amount, change, changeType }) => {
   const changeColor = changeType === "down" ? "text-red-500" : "text-green-500";
   const darkMode = useSelector((state) => (state.theme.isDarkMode))
   return (
-    <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg shadow-sm`}>
+    <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white border p-6 rounded-lg shadow-sm`}>
       <div className="flex justify-between items-start mb-4">
         <div>
           <p className="text-sm text-gray-500">{title}</p>
@@ -114,7 +114,7 @@ const StatCard = ({ title, amount, change, changeType }) => {
 const SummaryCard = ({ title, amount }) => {
   const darkMode = useSelector((state) => (state.theme.isDarkMode))
   return(
-    <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg shadow-sm text-center`}>
+    <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 border rounded-lg shadow-sm text-center`}>
     <p className="text-sm text-gray-500 mb-2">{title}</p>
     <p className="text-2xl font-semibold">{amount}</p>
   </div>
@@ -161,7 +161,7 @@ const SalesOverview = () => {
           {/* Left: Dropdown + Buttons */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <DropdownButton />
-            <button className={`${darkMode ? "dark-mode" : "bg-white" } rounded bg-white border border-gray-300 px-4 py-2 text-sm`}>
+            <button className={`${darkMode ? "dark-mode" : "bg-white" } rounded bg-white  border border-gray-300 px-4 py-2 text-sm`}>
               Send Statements
             </button>
             <button className={`${darkMode ? "dark-mode" : "bg-white" } rounded bg-white border border-gray-300 px-4 py-2 text-sm`}>
@@ -209,12 +209,12 @@ const SalesOverview = () => {
 
       {/* Charts & Data */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg border shadow-sm`}>
           <h3 className="text-lg font-medium mb-4">Money coming in</h3>
           <Chart />
         </div>
 
-        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg shadow-sm`}>
+        <div className={`${darkMode ? "card-dark" : "bg-white" } bg-white p-6 rounded-lg border shadow-sm`}>
           <h3 className="text-lg font-medium mb-4">Customers owing the most</h3>
           <div className="space-y-4">
             {["Client x", "Client y", "Client z", "Client a", "Client b"].map(
