@@ -55,9 +55,9 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
             {collapsed ? (
               <span className="text-indigo-600 font-bold text-2xl">H</span>
             ) : (
-              // <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
+              <span className="text-indigo-600 font-bold text-2xl">HRMS</span>
               // <img src="../../assets/logo-BPAV.png" alt="Logo" className="h-8 w-8" />
-              <img  src="https://i.ibb.co/Qjm3yG7L/img.png" alt="logo-BPAV"  className="h-8  w-37.5" ></img>
+              // <img  src="https://i.ibb.co/Qjm3yG7L/img.png" alt="logo-BPAV"  className="h-8  w-37.5" ></img>
             )}
             <button
               onClick={toggleSidebar}
