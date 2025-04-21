@@ -8,6 +8,14 @@ const AllInvoice = () => {
 
   
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [iscontactModalOpen, setContactModalOpen] = useState(false);
+  const [isCompanyModalOpen, setCompanyModalOpen] = useState(false);
+
+  const handleNewCloseModal = () => {
+    setContactModalOpen(false);
+    setCompanyModalOpen(false);
+  };
   const darkMode = useSelector((state) => state.theme.isDarkMode);
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -341,10 +349,29 @@ const AllInvoice = () => {
                 </div>
               </div>
               <div className="col-12 col-md-4 d-flex justify-content-end">
-                <button className={`${darkMode ? "dark-mode" : null } inv-filter-button btn btn-outline-secondary d-flex align-items-center`}>
-                  <i className="bi bi-funnel me-2" /> 
-                  <span className="d-none d-sm-inline">Filters</span>
-                </button>
+             
+
+                <button
+    className="btn btn-outline-secondary dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+  Status
+  </button>
+  <ul className="dropdown-menu">
+    <li>
+      <button className="dropdown-item d-flex align-items-center gap-2" >
+Pending
+      </button>
+    </li>
+    <li>
+      <button className="dropdown-item d-flex align-items-center gap-2" onClick={() => console.log("Export clicked")}>
+      Paid
+      </button>
+    </li>
+  </ul>
+                
               </div>
             </div>
 

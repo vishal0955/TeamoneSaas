@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import {
   House,
@@ -74,9 +75,6 @@ const menuItems = [
       { name: "Deals", path: "/crm/deals" },
       { name: "Quotes", path: "/crm/quotes" },
       { name: "Invoices", path: "/crm/invoices" },
-      { name: "Payment", path: "/crm/Payment" },
-  
-
       { name: "Analytics", path: "/crm/analytics" },
 
     ],

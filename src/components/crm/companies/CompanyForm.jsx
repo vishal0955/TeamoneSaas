@@ -136,15 +136,15 @@ const CompanyForm = ({ handleClose }) => {
               <Form.Label className={`${darkMode ? "dark-mode" : null }`}>Industry</Form.Label>
               <div className="d-flex align-items-center">
                 <Form.Select
-                  className={`${darkMode ? "dark-mode" : null } `}
+                  className={`${darkMode ? "dark-mode" : "bg-white" } `}
                   name="industry"
                   value={formData.industry}
                   onChange={handleChange}
                 >
                   <option >Select industry</option>
                   {industries.map((tz) => (
-                    <option key={tz.value} value={tz.value }>
-                      {tz.label}
+                    <option key={tz} value={tz }>
+                      {tz}
                     </option>
                   ))}
                 </Form.Select>

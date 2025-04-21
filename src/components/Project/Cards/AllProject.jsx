@@ -18,6 +18,7 @@ import AllProjectTimeline from "../AllProjectTimeline";
 
 
 const AllProject = () => {
+  const navigate  =  useNavigate();
   const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   const [activeTab, setActiveTab] = useState(1);
@@ -317,7 +318,7 @@ const AllProject = () => {
   };
 
   
-  const navigate = useNavigate();
+
   return (
     <>
       <div className="container mt-4">
@@ -334,21 +335,22 @@ const AllProject = () => {
               }view-toggle d-flex flex-wrap gap-1`}>
               {/* <Link to="/ProjectTimelineCalendar"> */}
               <button
-                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+                className={`${activeTab === 0 ? "btn btn-secondary" : "btn btn-outline-secondary"}  d-flex align-items-center gap-1`}
                 onClick={() => setActiveTab(0)}>
+                  
                 <i className="bi bi-grid" /> TimeLine
               </button>
               {/* </Link> */}
               {/* <Link to="/projectlist"> */}
               <button
-                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+               className={`${activeTab === 1 ? "btn btn-secondary" : "btn btn-outline-secondary"}  d-flex align-items-center gap-1`}
                 onClick={() => setActiveTab(1)}>
                 <i className="bi bi-list" /> List View
               </button>
               {/* </Link> */}
               {/* <Link to="/kanban"> */}
               <button
-                className="btn btn-outline-secondary d-flex align-items-center gap-1"
+              className={`${activeTab === 2 ? "btn btn-secondary" : "btn btn-outline-secondary"}  d-flex align-items-center gap-1`}
                 onClick={() => setActiveTab(2)}>
                 <Kanban /> Board View
               </button>
@@ -358,7 +360,7 @@ const AllProject = () => {
             <button
               className="btn btn-primary add-project-btn mt-2 mt-md-0"
               style={{ height: "fit-content" }}
-              onClick={handleOpenModal}>
+              onClick={() => navigate("/project/addnewproject")}>
               <i className="bi bi-plus" /> Add New Project
             </button>
           </div>

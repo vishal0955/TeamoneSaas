@@ -184,7 +184,7 @@ const NotesGrid = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* Sidebar - Collapsible on mobile */}
-      <div className="w-full md:w-64 border-r border-gray-200 flex-shrink-0 shadow-xs">
+      <div className={`w-full md:w-64 border-r border-gray-200 flex-shrink-0 shadow-xs  ${darkMode ? "bg-gray-800 text-white" : " bg-gray-50" }`}>
         <div className="flex items-center px-3 py-4">
           <div className="bg-indigo-100 rounded p-2 mr-2"></div>
           <h5 className="font-medium">Notes</h5>
@@ -197,8 +197,8 @@ const NotesGrid = () => {
               <li
                 key={category.id}
                 className={`mb-1 rounded ${
-                  category.id === "all" ? "bg-gray-900 text-white" : ""
-                }`}
+                  category.id === "all" ? "" : ""
+                }    ${active === category.id ? "bg-gray-400" : ""}`  }
                 onClick={() => setActive(category.id)}
               >
                 <div className="flex items-center px-3 py-2">

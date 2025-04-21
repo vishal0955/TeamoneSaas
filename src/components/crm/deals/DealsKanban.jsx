@@ -323,12 +323,12 @@ const SalesDashboard = () => {
             <div className="w-full md:w-auto">
               <select className={`${darkMode ? "dark-mode" : null } w-full md:w-auto px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}>
                 <option>Main Pipeline</option>
-                <option>Secondary Pipeline</option>
+                <option>Deals Pipeline</option>
               </select>
             </div>
-            <button className="px-4 py-2 border rounded-lg hover:bg-gray-50 flex items-center">
+            {/* <button className="px-4 py-2 border rounded-lg hover:bg-gray-50 flex items-center">
               <i className="bi bi-funnel me-2"></i> Filters
-            </button>
+            </button> */}
           </div>
         </div>
 
