@@ -355,11 +355,11 @@ const Project = () => {
           </div>
 
           <button
-            className="btn btn-primary add-project-btn"
+            className="btn btn-primary"
             style={{ height: "fit-content" }}
             onClick={handleOpenModal}
           >
-            <i className="bi bi-plus" /> Add New Project
+            <i className="bi bi-plus" /> 
           </button>
         </div>
       </div>
@@ -583,7 +583,7 @@ const Project = () => {
 
    
 
-            <form onSubmit={handleAddOrEditProject} className="space-y-4">
+            {/* <form onSubmit={handleAddOrEditProject} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">
@@ -734,7 +734,7 @@ const Project = () => {
                   Save
                 </button>
               </div>
-            </form>
+            </form> */}
 {/* 
 {showModal && (
      <div className="modal fade show d-block bg-opacity-50 bg-gray-50" role="dialog">

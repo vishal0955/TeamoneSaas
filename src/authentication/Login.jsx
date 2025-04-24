@@ -76,7 +76,7 @@ const Login = () => {
               onSubmit={handleSubmit}>
               <h2 className="login-signup__form-title">Create Account</h2>
               <div className="login-signup__form-icons"></div>
-              <span className="login-signup__form-span">
+              <span className="login-signup__form-span"style={{fontSize:"15px"}}>
                 or use email for registration
               </span>
               <input
@@ -111,7 +111,7 @@ const Login = () => {
               onSubmit={handleSubmit}>
               <h2 className="login-signup__form-title">Sign in</h2>
               <div className="login-signup__form-icons"></div>
-              <span className="login-signup__form-span">
+              <span className="login-signup__form-span" style={{fontSize:"15px"}}>
                 or use your email account
               </span>
               <input
@@ -127,8 +127,9 @@ const Login = () => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                
               />
-              <a className="login-signup__form-link">Forgot your password?</a>
+              <a className="login-signup__form-link fw-bold " style={{fontSize:"20px"}}>Forgot your password?</a>
               <button className="login-signup__button login-signup__button--submit" onClick={handleLogin}>
                 SIGN IN
               </button>
@@ -139,7 +140,7 @@ const Login = () => {
                         <button
                             key={userRole}
                             onClick={() => handleRoleSelect(userRole)}
-                            className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-[#4b70e2] hover:text-white transition"
+                            className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-[#4b70e2] hover:text-white transition fw-bold"
                         >
                             {userRole.charAt(0).toUpperCase() + userRole.slice(1)}
                         </button>
@@ -169,7 +170,7 @@ const Login = () => {
               }`}
               id="switch-signin">
               <h2 className="login-signup__switch-title">Welcome Back!</h2>
-              <p className="login-signup__switch-description">
+              <p className="login-signup__switch-description "style={{fontSize:"18px"}}>
                 To keep connected with us please login with your personal info
               </p>
               <button
@@ -186,8 +187,8 @@ const Login = () => {
                 isSignUp ? "login-signup__is-hidden" : ""
               }`}
               id="switch-signup">
-              <h2 className="login-signup__switch-title">Hello Friend!</h2>
-              <p className="login-signup__switch-description">
+              <h2 className="login-signup__switch-title"> <img  src="https://i.ibb.co/Qjm3yG7L/img.png" alt="logo-BPAV"  className="h-50  w-37.5" ></img></h2>
+              <p className="login-signup__switch-description" style={{fontSize:"18px"}}>
                 Enter your personal details and start journey with us
               </p>
               <button

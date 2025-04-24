@@ -257,7 +257,7 @@ const NotesGrid = () => {
           </ul>
         </div>
 
-        <div className="px-4 py-2">
+        <div className="px-4">
           <h6 className="text-gray-500 text-xs font-medium mb-2 flex justify-between">
             Tags
             <FaPlus className="cursor-pointer" onClick={handlePlusClicked} />
@@ -266,7 +266,7 @@ const NotesGrid = () => {
           <ul>
             {tags.map((tag) => (
               <li key={tag.id} className="mb-1">
-                <div className="flex items-center px-3 py-2">
+                <div className="flex items-center px-3 ">
                   <div className="mr-2">
                     <span
                       className={`inline-block w-3 h-3 rounded-full ${tag.color}`}
@@ -330,7 +330,7 @@ const NotesGrid = () => {
                 key={priority.id}
                 className="mb-1 flex items-center justify-between"
               >
-                <div className="flex items-center">
+                <div className="flex items-center px-3">
                   <i className="fa-solid fa-folder text-gray-600 mr-2"></i>
                   <div>{priority.name}</div>
                 </div>
@@ -388,21 +388,21 @@ const NotesGrid = () => {
           <InternalNotes />
         ) : (
           <div className="p-4 md:p-6">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-6">
+            <div className="flex flex-col md:flex-row md:justify-end md:items-center gap-3 mb-6">
               {/* Left side: Bulk Actions + Apply */}
-              <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+              {/* <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
                 <div className="relative ">
                   <button className="flex items-center justify-between w-full  border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    Bulk Actions
+                    Bulk Actions */}
                     {/* <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg> */}
-                  </button>
+                  {/* </button>
                 </div>
                 <button className=" border border-gray-300 rounded  text-sm w-full">
                   Apply
                 </button>
-              </div>
+              </div> */}
 
               {/* Right side: View toggle + Add Note */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full md:w-auto">
@@ -442,12 +442,12 @@ const NotesGrid = () => {
 
                 <button
                   className={`${
-                    darkMode ? "text-white bg-indigo-800 border" : null
-                  } rounded px-4 py-2 text-sm flex items-center justify-center w-full sm:w-auto`}
+                    darkMode ? " text-white bg-indigo-800 border" : null
+                  } btn btn-primary rounded  text-sm flex items-center justify-center w-full sm:w-auto`}
                   onClick={handleOpenAddNote}
                 >
-                  <Plus size={16} className="mr-1" />
-                  Add Note
+                  <Plus size={16} className="mr-1 fe-bold" />
+                  
                 </button>
               </div>
             </div>

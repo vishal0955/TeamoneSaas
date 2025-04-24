@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { toggleTheme } from '../redux/slices/ThemeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Navbar = ({ toggleSidebar, collapsed }) => {
+const Navbar = ({userRole ,  collapsed }) => {
   const dispatch = useDispatch();
   
   const navigate = useNavigate();
+   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isNotificationDropdownOpen, setIsNotificationDropdownOpen] = useState(false);
@@ -38,6 +39,9 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
       setIsProfileDropdownOpen(false);
     }
   };
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   const darkMode = useSelector((state) => state.theme.isDarkMode);
    const toggleDarkMode = () => {
@@ -59,12 +63,23 @@ const Navbar = ({ toggleSidebar, collapsed }) => {
               // <img src="../../assets/logo-BPAV.png" alt="Logo" className="h-8 w-8" />
               <img  src="https://i.ibb.co/Qjm3yG7L/img.png" alt="logo-BPAV"  className="h-8  w-37.5" ></img>
             )}
-            <button
-              onClick={toggleSidebar}
-              className="ml-4 p-1.5 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
-            >
-              <Menu size={20} className="text-gray-600" />
-            </button>
+            <div>
+      {/* Toggle Button */}
+      {/* 
+        Show button for superadmin only on desktop, 
+        show button for all users on mobile (by using Tailwind's responsive classes)
+      */}
+      {(userRole === "superadmin" && window.innerWidth >= 768) || window.innerWidth < 768 ? (
+        <button
+          onClick={toggleSidebar}
+          className="ml-4 p-1.5 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
+        >
+          <Menu size={20} className="text-gray-600" />
+        </button>
+      ) : null}
+
+      {/* Sidebar content or other components can go here */}
+    </div>
           </div>
         </div>
 

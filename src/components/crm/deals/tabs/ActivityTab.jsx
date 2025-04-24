@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ActivityTab = ({ activities }) => {
+const ActivityTab = () => {
+    const [activities, setActivities] = useState([
+      {
+        id: 1,
+        type: "status_change",
+        content: "Deal moved to Qualified by Integration.",
+        date: "16 Dec 2024 at 13:10 GMT",
+      },
+      {
+        id: 2,
+        type: "creation",
+        content: "This deal was created",
+        date: "16 Dec 2024 at 13:10 GMT",
+      },
+    ]);
   return (
     <div className="p-4">
       {activities.map(activity => (

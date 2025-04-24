@@ -54,7 +54,7 @@ const AddRole = ({handleclose}) => {
           <button
             type="submit"
             form="addRoleForm"
-            className="btn btn-dark px-4"
+            className="btn btn-primary px-4"
           >
             Add Role
           </button>

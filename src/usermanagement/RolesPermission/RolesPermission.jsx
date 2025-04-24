@@ -38,14 +38,14 @@ const RolesPermission = () => {
         Export
       </button>
       <button
-        className="btn btn-dark"
+        className="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#addRoleModal"
 
         onClick={handleOpenModal}
       >
         <i className="bi bi-plus-lg me-2" />
-        Add Roles
+        
       </button>
     </div>
   </div>

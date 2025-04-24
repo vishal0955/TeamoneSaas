@@ -4,6 +4,7 @@ import FullCalendar from '@fullcalendar/react';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import interactionPlugin from '@fullcalendar/interaction';
 import { useSelector } from "react-redux";
+import { Modal, Button, Table } from "react-bootstrap";
 
 const People = () => {
     const [events, setEvents] = useState([
@@ -237,6 +238,33 @@ const People = () => {
 
 
     const darkMode = useSelector((state) => state.theme.isDarkMode);
+
+   
+
+  const handleShow = () => setShowModal(true);
+  const handleClose = () => setShowModal(false);
+
+    const staffRequests = [
+      {
+        name: "Anjali Sharma",
+        type: "Leave",
+        date: "22 Apr 2025",
+        status: "Pending",
+      },
+      {
+        name: "Rohit Mehra",
+        type: "Shift Change",
+        date: "21 Apr 2025",
+        status: "Approved",
+      },
+      {
+        name: "Suman Das",
+        type: "Overtime",
+        date: "20 Apr 2025",
+        status: "Pending",
+      },
+    ];
+  
   
   return (
     <>
@@ -283,12 +311,60 @@ const People = () => {
           {/* Requests Section */}
           <div className="mt-8">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-medium">Showing 3 requests</h2>
+            <Button variant="primary" onClick={handleShow} className="">
+        Showing {staffRequests.length} requests
+      </Button>
+              {/* <h2 className="text-lg font-medium">Showing 3 requests</h2> */}
               <a href="#" className=" ">
                 View all
               </a>
             </div>
-            <div className={`${darkMode ? "card-dark" : null } mt-4 rounded-lg p-4`}>
+
+            <Modal show={showModal} onHide={handleClose} centered size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Staff Requests</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table responsive bordered hover>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Request Type</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {staffRequests.map((req, index) => (
+                <tr key={index}>
+                  <td>{req.name}</td>
+                  <td>{req.type}</td>
+                  <td>{req.date}</td>
+                  <td>
+                    <span
+                      className={`badge ${
+                        req.status === "Approved"
+                          ? "bg-success"
+                          : req.status === "Pending"
+                          ? "bg-warning text-dark"
+                          : "bg-secondary"
+                      }`}
+                    >
+                      {req.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+            {/* <div className={`${darkMode ? "card-dark" : null } mt-4 rounded-lg p-4`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <img
@@ -314,7 +390,7 @@ const People = () => {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Calendar Section */}

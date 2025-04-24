@@ -271,8 +271,8 @@ const AllInvoice = () => {
             className="inv-new-button btn btn-primary d-flex align-items-center"
             onClick={handleOpenModal}
           >
-            <i className="bi bi-plus me-2" /> 
-            <span className=" d-sm-inline">New Invoice</span>
+            <i class="fa-solid fa-plus"></i>
+            <span className=" d-sm-inline"></span>
           </button>
         </div>
 

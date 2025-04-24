@@ -63,3 +63,21 @@
 }
 
 
+.menu-item {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  white-space: nowrap;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.menu-item:hover .submenu {
+  display: block;
+}

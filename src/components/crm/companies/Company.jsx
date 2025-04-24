@@ -205,7 +205,7 @@ const Company = () => {
               className={`${darkMode ? "card-dark" : null} inv-new-button`}
               onClick={handleOpenModal}
             >
-              <i className="bi bi-plus-lg"></i> Add New
+              <i className="bi bi-plus-lg"></i> 
             </Button>
           </div>
         </div>
@@ -270,72 +270,115 @@ const Company = () => {
         </Col>
       </Row>
 
-      <Row className="mb-3">
-        <Col xs={12}>
-          <div className="d-flex flex-wrap gap-2 align-items-center">
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="light"
-                className={`${darkMode ? "card-dark" : null} inv-filter-button`}
-              >
-                Company owner
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#michael">Michael Chen</Dropdown.Item>
-                <Dropdown.Item href="#sarah">Sarah Johnson</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+      
+  
 
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="light"
-                className={`${darkMode ? "card-dark" : null} inv-filter-button`}
-              >
-                Create date
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#today">Today</Dropdown.Item>
-                <Dropdown.Item href="#yesterday">Yesterday</Dropdown.Item>
-                <Dropdown.Item href="#last7">Last 7 days</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+  {/* Filters below search bar */}
+  <Row className="mb-3">
+  <Col xs={12}>
+    <div className="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+      
+      
 
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="light"
-                className={`${darkMode ? "card-dark" : null} inv-filter-button`}
-              >
-                Last activity date
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#today">Today</Dropdown.Item>
-                <Dropdown.Item href="#yesterday">Yesterday</Dropdown.Item>
-                <Dropdown.Item href="#last7">Last 7 days</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+      {/* Filter dropdowns on the right */}
+      <div className="d-flex flex-wrap gap-2 align-items-center">
+        <Dropdown>
+          <Dropdown.Toggle
+            variant="light"
+            className={`${darkMode ? "card-dark" : ""} inv-filter-button`}
+          >
+            Company owner
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#michael">Michael Chen</Dropdown.Item>
+            <Dropdown.Item href="#sarah">Sarah Johnson</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
 
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="light"
-                className={`${darkMode ? "card-dark" : null} inv-filter-button`}
-              >
-                Lead status
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#new">New</Dropdown.Item>
-                <Dropdown.Item href="#open">Open</Dropdown.Item>
-                <Dropdown.Item href="#contacted">Contacted</Dropdown.Item>
-                <Dropdown.Item href="#unqualified">Unqualified</Dropdown.Item>
-                <Dropdown.Item href="#closed">Closed</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-        </Col>
-      </Row>
+        <Dropdown>
+          <Dropdown.Toggle
+            variant="light"
+            className={`${darkMode ? "card-dark" : ""} inv-filter-button`}
+          >
+            Create date
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#today">Today</Dropdown.Item>
+            <Dropdown.Item href="#yesterday">Yesterday</Dropdown.Item>
+            <Dropdown.Item href="#last7">Last 7 days</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
+        <Dropdown>
+          <Dropdown.Toggle
+            variant="light"
+            className={`${darkMode ? "card-dark" : ""} inv-filter-button`}
+          >
+            Last activity date
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#today">Today</Dropdown.Item>
+            <Dropdown.Item href="#yesterday">Yesterday</Dropdown.Item>
+            <Dropdown.Item href="#last7">Last 7 days</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
+        <Dropdown>
+          <Dropdown.Toggle
+            variant="light"
+            className={`${darkMode ? "card-dark" : ""} inv-filter-button`}
+          >
+            Lead status
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#new">New</Dropdown.Item>
+            <Dropdown.Item href="#open">Open</Dropdown.Item>
+            <Dropdown.Item href="#contacted">Contacted</Dropdown.Item>
+            <Dropdown.Item href="#unqualified">Unqualified</Dropdown.Item>
+            <Dropdown.Item href="#closed">Closed</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+      {/* Search bar on the left */}
+      <Row className="mb-3 align-items-center">
+
+         {/* Filter Button Right Side */}
+  <Col xs={12} md={4} className="text-md-end mt-2 mt-md-0">
+    <Button
+      variant="light"
+      className={`${darkMode ? "card-dark" : ""} inv-filter-button`}
+    >
+      <i className="bi bi-funnel me-2" /> Filters
+    </Button>
+  </Col>
+  {/* Search Input Left Side */}
+  <Col xs={12} md={8}>
+    <div className="inv-search-wrapper">
+      <i className="bi bi-search inv-search-icon" />
+      <input
+        type="text"
+        className={`${darkMode ? "card-dark" : ""} inv-search-input`}
+        placeholder="Search companies..."
+        aria-label="Search companies"
+        onChange={(e) => setSearch(e.target.value)}
+      />
+    </div>
+  </Col>
+
+ 
+</Row>
+
+    </div>
+  </Col>
+</Row>
+
+ 
+
+
 
       <div className={`${darkMode ? "card-dark" : null} border inv-main-card`}>
         <div className="inv-card-header">
-          <Row className="align-items-center">
+          {/* <Row className="align-items-end">
             <Col xs={12} md={8} className="mb-3 mb-md-0">
               <div className="inv-search-wrapper">
                 <i className="bi bi-search inv-search-icon" />
@@ -350,7 +393,7 @@ const Company = () => {
                 />
               </div>
             </Col>
-            <Col xs={12} md={4} className="text-md-end">
+            <Col xs={12}  className="text-md-end">
               <Button
                 variant="light"
                 className={`${darkMode ? "card-dark" : null} inv-filter-button`}
@@ -358,7 +401,7 @@ const Company = () => {
                 <i className="bi bi-funnel me-2" /> Filters
               </Button>
             </Col>
-          </Row>
+          </Row> */}
         </div>
 
         <div className="table-responsive">

@@ -194,9 +194,9 @@ const Suppliers = () => {
                 Import
               </button>
               <Link to="/finance/createsupplier" className="w-full sm:w-auto">
-                <button className="w-full rounded !rounded-button px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-500">
+                <button className="w-full rounded !rounded-button px-3 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-500">
                   <i className="fas fa-plus mr-2" />
-                  Create supplier
+                  
                 </button>
               </Link>
             </div>

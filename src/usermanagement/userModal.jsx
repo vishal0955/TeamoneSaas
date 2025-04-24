@@ -278,7 +278,7 @@ export const AddUserModal = ({ show, handleClose }) => {
         <Button variant="light" onClick={handleClose}>
           Cancel
         </Button>
-        <Button variant="dark" onClick={handleSubmit}>
+        <Button variant="primary" onClick={handleSubmit}>
           Add User
         </Button>
       </Modal.Footer>

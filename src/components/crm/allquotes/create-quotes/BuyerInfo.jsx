@@ -25,7 +25,7 @@ const BuyerInfo = () => {
       <div className="quote-section-group">
         <h2 className= "quote-section-title">Buyer Information</h2>
         <div className="quote-form-group">
-          <label className="quote-label">Contact</label>
+          <label className="quote-label">Contact Info</label>
           <div className="quote-select-wrapper">
             <select className={`${darkMode ? "dark-mode" : null } quote-select`}>
               <option>John Smith - john@company.com</option>
@@ -36,14 +36,14 @@ const BuyerInfo = () => {
           </button>
         </div>
         <div className="quote-form-group">
-          <label className="quote-label">Company</label>
+          <label className="quote-label">Company details</label>
           <div className="quote-select-wrapper">
             <select className={`${darkMode ? "dark-mode" : null } quote-select`}>
               <option>Acme Corporation</option>
             </select>
           </div>
         </div>
-        <div className="quote-include-section">
+        {/* <div className="quote-include-section">
           <label className="quote-label">Include in quote</label>
           <div className="quote-checkbox-group">
             <label className="quote-checkbox">
@@ -55,7 +55,7 @@ const BuyerInfo = () => {
               <span className="quote-checkbox-text">Company details</span>
             </label>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   </div>

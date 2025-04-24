@@ -618,10 +618,10 @@ const TodoApp = () => {
               </div>
               <div className="ms-sm-auto d-flex">
                 <button 
-                  className="btn btn-link btn-sm text-decoration-none px-1 px-sm-2"
+                  className="btn btn-primary btn-sm text-decoration-none px-1 px-sm-2"
                   onClick={() => setIsModalOpen(true)}
                 >
-                  Add New
+                  <i class="fa-solid fa-plus"></i>
                 </button>
                 <button className="btn btn-link btn-sm text-decoration-none text-muted px-1 px-sm-2">
                   See All

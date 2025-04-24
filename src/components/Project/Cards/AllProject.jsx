@@ -358,10 +358,10 @@ const AllProject = () => {
             </div>
 
             <button
-              className="btn btn-primary add-project-btn mt-2 mt-md-0"
+              className="btn btn-primary  mt-2 mt-md-0"
               style={{ height: "fit-content" }}
               onClick={() => navigate("/project/addnewproject")}>
-              <i className="bi bi-plus" /> Add New Project
+              <i className="bi bi-plus" /> 
             </button>
           </div>
         </div>

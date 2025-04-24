@@ -245,8 +245,8 @@ const Users = () => {
           <Button variant="outline-secondary" className="me-2">
             <i className="bi bi-download me-1"></i> Export
           </Button>
-          <Button variant="dark" onClick={() => setShowAddModal(true)}>
-            <i className="bi bi-plus me-1"></i> Add User
+          <Button variant="primary" onClick={() => setShowAddModal(true)}>
+            <i className="bi bi-plus me-1"></i> 
           </Button>
         </Col>
       </Row>

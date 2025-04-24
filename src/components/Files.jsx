@@ -39,6 +39,13 @@ const Sidebar = ({ onAddFolder, setActiveFolder }) => {
             <span className="d-none d-md-inline">My File</span>
           </div>
         </li>
+
+        <li className="my-2 py-2 px-3 rounded hover-bg" onClick={() => setActiveFolder(null)}>
+          <div className="d-flex align-items-center">
+            <FaFolder className="text-warning me-2" />
+            <span className="d-none d-md-inline">Shared File</span>
+          </div>
+        </li> 
         <li className="my-2 py-2 px-3 rounded hover-bg">
           <div className="d-flex align-items-center">
             <FaStar className="text-warning me-2" />
@@ -697,6 +704,8 @@ const FileContent = ({ activeFolder, setActiveFolder }) => {
           </div>
         </>
       )}
+
+      
 
       {/* Files Table */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">

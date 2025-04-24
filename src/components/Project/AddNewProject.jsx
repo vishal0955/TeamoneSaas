@@ -116,11 +116,11 @@ const AddNewProject = ( {handleAddOrEditProject}) => {
                   <label className="form-label me-2">Client</label>
                   <button 
                     type="button" 
-                    className="btn btn-sm btn-primary" 
+                    className="btn  btn-primary" 
                     onClick={showAddClientForm}
                     style={{ marginBottom: '8px' }}
                   >
-                    <i className="bi bi-plus"></i> Add
+                    <i className="bi bi-plus"></i> 
                   </button>
                 </div>
                 

@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+
 
 const Roadmap = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [goalData, setGoalData] = useState({
+    name: "",
+    description: "",
+    dueDate: "",
+    priority: "Medium",
+    assignedTo: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setGoalData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSave = () => {
+    console.log("Saved Goal:", goalData);
+    setIsOpen(false);
+    // Reset form
+    setGoalData({
+      name: "",
+      description: "",
+      dueDate: "",
+      priority: "Medium",
+      assignedTo: "",
+    });
+  };
   return (
     <div className="bg-white min-h-screen">
       {/* Navbar */}
@@ -134,29 +161,148 @@ const Roadmap = () => {
           {/* Employee Goals Timeline */}
           <div className="col-span-12">
             <div className="bg-white rounded-lg p-6 border border-gray-200">
-              <h2 className="text-xl font-bold text-gray-900 mb-2">
-                Employee Goals Timeline
-              </h2>
-              <p className="text-gray-400 mb-6">
-                Track individual and team performance goals over time
-              </p>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900 mb-2">
+                    Employee Goals Timeline
+                  </h2>
+                  <p className="text-gray-400 mb-6">
+                    Track individual and team performance goals over time
+                  </p>
+                </div>
+                <div>
+                  <button
+                    className="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#roadmapModal"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+
+              {/* Modal */}
+              <div
+                className="modal fade"
+                id="roadmapModal"
+                tabIndex="-1"
+                aria-labelledby="roadmapModalLabel"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog modal-lg">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="roadmapModalLabel">
+                        Add Task / Goal / Milestone
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      />
+                    </div>
+                    <div className="modal-body">
+                      <form>
+                        <div className="mb-3">
+                          <label className="form-label">Task Name</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter task or goal"
+                          />
+                        </div>
+
+                        <div className="mb-3">
+                          <label className="form-label">Description</label>
+                          <textarea
+                            className="form-control"
+                            rows="3"
+                            placeholder="Details about the task..."
+                          />
+                        </div>
+
+                        <div className="row">
+                          <div className="col-md-6 mb-3">
+                            <label className="form-label">Due Date</label>
+                            <input type="date" className="form-control" />
+                          </div>
+                          <div className="col-md-6 mb-3">
+                            <label className="form-label">Priority</label>
+                            <select className="form-select">
+                              <option>Low</option>
+                              <option>Medium</option>
+                              <option>High</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div className="mb-3">
+                          <label className="form-label">Assign To</label>
+                          <select className="form-select">
+                            <option>Select user</option>
+                            <option>John Doe</option>
+                            <option>Sarah Lee</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                    <div className="modal-footer">
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                      <button type="button" className="btn btn-primary">
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div className="bg-gray-100 rounded-lg p-4">
                 <div className="relative">
                   <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
                   <div className="space-y-8">
                     {[
-                      { date: "Jan 2024", goal: "Complete UI Design for Customer Portal", status: "Completed" },
-                      { date: "Feb 2024", goal: "Implement New Feature Set", status: "In Progress" },
-                      { date: "Mar 2024", goal: "Team Leadership Training", status: "Not Started" },
+                      {
+                        date: "Jan 2024",
+                        goal: "Complete UI Design for Customer Portal",
+                        status: "Completed",
+                      },
+                      {
+                        date: "Feb 2024",
+                        goal: "Implement New Feature Set",
+                        status: "In Progress",
+                      },
+                      {
+                        date: "Mar 2024",
+                        goal: "Team Leadership Training",
+                        status: "Not Started",
+                      },
                     ].map((item, index) => (
                       <div key={index} className="relative flex items-center">
-                        <div className={`absolute left-0 w-8 h-8 rounded-full flex items-center justify-center text-white ${item.status === "Completed" ? "bg-green-500" : item.status === "In Progress" ? "bg-yellow-500" : "bg-red-500"}`}>
+                        <div
+                          className={`absolute left-0 w-8 h-8 rounded-full flex items-center justify-center text-white ${
+                            item.status === "Completed"
+                              ? "bg-green-500"
+                              : item.status === "In Progress"
+                              ? "bg-yellow-500"
+                              : "bg-red-500"
+                          }`}
+                        >
                           ✓
                         </div>
                         <div className="ml-12 p-4 bg-white rounded-lg border w-full">
-                          <span className="text-sm text-gray-500">{item.date}</span>
-                          <h4 className="text-gray-900 font-medium mt-1">{item.goal}</h4>
+                          <span className="text-sm text-gray-500">
+                            {item.date}
+                          </span>
+                          <h4 className="text-gray-900 font-medium mt-1">
+                            {item.goal}
+                          </h4>
                         </div>
                       </div>
                     ))}
@@ -166,7 +312,7 @@ const Roadmap = () => {
             </div>
           </div>
         </div>
-      </div>  
+      </div>
     </div>
   );
 };
