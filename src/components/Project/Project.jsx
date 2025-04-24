@@ -303,31 +303,15 @@ const Project = () => {
   return (
     <div className="container mt-4">
       {/* Header */}
-      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-2">
         <h4 className="mb-0 text-2xl font-bold text-start text-md-start w-100 w-md-auto">
           All Projects
         </h4>
 
-        <div className="add-toggle d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 w-100 w-md-auto">
-          {/* <div className="d-flex flex-wrap align-items-center gap-2 justify-content-start">
-      <Link to="/calendar">
-        <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
-          <i className="bi bi-grid" /> TimeLine
-        </button>
-      </Link>
-      <Link to="/projectlist">
-        <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
-          <i className="bi bi-list" /> List View
-        </button>
-      </Link>
-      <Link to="/kanban">
-        <button className="btn btn-outline-secondary d-flex align-items-center gap-1">
-          <Kanban /> Board View
-        </button>
-      </Link>
-    </div> */}
+        <div className="add-toggle d-flex flex-md-row align-items-start align-items-md-center gap-3 w-100 ">
+          
 
-          <div className= {` ${darkMode ? "dark-mode" : null } view-toggle d-flex flex-wrap gap-1`}>
+          <div className= {` ${darkMode ? "dark-mode" : null } add-toggle d-flex flex-column flex-md-row align-items-md-center gap-2 justify-content-between`}>
             {/* <Link to="/ProjectTimelineCalendar"> */}
             <button
               className="btn btn-outline-secondary d-flex align-items-center gap-1"
@@ -352,15 +336,16 @@ const Project = () => {
               <Kanban /> Board View
             </button>
             {/* </Link> */}
-          </div>
-
-          <button
+            <button
             className="btn btn-primary add-project-btn"
             style={{ height: "fit-content" }}
             onClick={handleOpenModal}
           >
             <i className="bi bi-plus" /> Add New Project
           </button>
+          </div>
+
+          
         </div>
       </div>
 
@@ -411,7 +396,7 @@ const Project = () => {
                           style={{ width: `${task.progress}%` }}
                         ></div>
                       </div>
-                      <span className="badge bg-info mt-1">{task.status}</span>
+                     
                     </td>
                     <td>
                       <button

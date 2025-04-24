@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import CreateDealModal from "./ADdDealForm";
 import { useNavigate } from "react-router-dom";
@@ -153,14 +152,14 @@ const SalesDashboard = () => {
     // Set the drag image (optional)
     if (e.dataTransfer) {
       // Create a custom ghost image (optional)
-      const ghostElement = document.createElement('div');
-      ghostElement.classList.add('deal-drag-ghost');
+      const ghostElement = document.createElement("div");
+      ghostElement.classList.add("deal-drag-ghost");
       ghostElement.textContent = deal.company;
       document.body.appendChild(ghostElement);
-      
+
       e.dataTransfer.setDragImage(ghostElement, 0, 0);
       e.dataTransfer.effectAllowed = "move";
-      
+
       // Clean up the ghost element after a short delay
       setTimeout(() => {
         document.body.removeChild(ghostElement);
@@ -228,7 +227,12 @@ const SalesDashboard = () => {
   const handleCreateDeal = (dealData) => {
     // Create a new deal object
     const newDeal = {
-      id: Math.max(...Object.values(stages).flat().map(deal => deal.id)) + 1,
+      id:
+        Math.max(
+          ...Object.values(stages)
+            .flat()
+            .map((deal) => deal.id)
+        ) + 1,
       company: dealData.company,
       amount: `£${parseInt(dealData.amount).toLocaleString()}`,
       value: parseInt(dealData.amount),
@@ -237,9 +241,9 @@ const SalesDashboard = () => {
     };
 
     // Add the new deal to the first stage (Qualified)
-    setStages(prev => ({
+    setStages((prev) => ({
       ...prev,
-      Qualified: [...prev.Qualified, newDeal]
+      Qualified: [...prev.Qualified, newDeal],
     }));
 
     setIsCreateDealModalOpen(false);
@@ -256,17 +260,21 @@ const SalesDashboard = () => {
     <div className="min-h-screen p-6">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Deals</h1>
-        <button 
+        <button
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded flex items-center"
           onClick={addNewDeal}
         >
           <i className="bi bi-plus mr-2" /> New Deal
         </button>
       </div>
-      
+
       {/* Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <div className={`${darkMode ? "card-dark" : null } p-4 rounded-lg shadow-sm border flex items-center`}>
+        <div
+          className={`${
+            darkMode ? "card-dark" : null
+          } p-4 rounded-lg shadow-sm border flex items-center`}
+        >
           <div className="inv-stat-icon inv-stat-icon-primary">
             <i className="bi bi-currency-pound "></i>
           </div>
@@ -275,8 +283,12 @@ const SalesDashboard = () => {
             <p className="text-xl font-bold">{metrics.totalDealAmount}</p>
           </div>
         </div>
-        
-        <div className={`${darkMode ? "card-dark" : null } p-4 rounded-lg shadow-sm border flex items-center`}>
+
+        <div
+          className={`${
+            darkMode ? "card-dark" : null
+          } p-4 rounded-lg shadow-sm border flex items-center`}
+        >
           <div className="inv-stat-icon inv-stat-icon-warning">
             <i className="bi bi-clock "></i>
           </div>
@@ -285,8 +297,12 @@ const SalesDashboard = () => {
             <p className="text-xl font-bold">{metrics.totalOpenDealAmount}</p>
           </div>
         </div>
-        
-        <div className={`${darkMode ? "card-dark" : null } p-4 rounded-lg shadow-sm border flex items-center`}>
+
+        <div
+          className={`${
+            darkMode ? "card-dark" : null
+          } p-4 rounded-lg shadow-sm border flex items-center`}
+        >
           <div className="inv-stat-icon inv-stat-icon-danger">
             <i className="bi bi-x-circle-fill "></i>
           </div>
@@ -295,8 +311,12 @@ const SalesDashboard = () => {
             <p className="text-xl font-bold">{metrics.totalClosedDealAmount}</p>
           </div>
         </div>
-        
-        <div className={`${darkMode ? "card-dark" : null } p-4 rounded-lg shadow-sm border flex items-center`}>
+
+        <div
+          className={`${
+            darkMode ? "card-dark" : null
+          } p-4 rounded-lg shadow-sm border flex items-center`}
+        >
           <div className="inv-stat-icon inv-stat-icon-success">
             <i className="bi bi-plus-circle-fill"></i>
           </div>
@@ -314,14 +334,20 @@ const SalesDashboard = () => {
             <i className="bi bi-search absolute left-3 top-3 text-gray-400"></i>
             <input
               type="text"
-              className={`${darkMode ? "dark-mode" : null } w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`${
+                darkMode ? "dark-mode" : null
+              } w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
               placeholder="Search deals..."
             />
           </div>
 
           <div className="flex gap-3">
             <div className="w-full md:w-auto">
-              <select className={`${darkMode ? "dark-mode" : null } w-full md:w-auto px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}>
+              <select
+                className={`${
+                  darkMode ? "dark-mode" : null
+                } w-full md:w-auto px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              >
                 <option>Main Pipeline</option>
                 <option>Deals Pipeline</option>
               </select>
@@ -333,68 +359,97 @@ const SalesDashboard = () => {
         </div>
 
         {/* Kanban Board */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-1 overflow-auto pb-2">
-          {Object.keys(stages).map((stageName) => (
-            <div
-              key={stageName}
-              className= " rounded-lg p-3 border min-h-96"
-              onDragOver={handleDragOver}
-              onDrop={(e) => handleDrop(e, stageName)}
-            >
-              <div className="flex justify-between items-center mb-3 pb-2 border-b">
-                <h3 className="font-medium">{stageName}</h3>
-                <span className="text-sm  px-2 py-1 rounded-full">
-                  {stages[stageName].length}
-                </span>
-              </div>
+        <div
+          className="relative  pb-2"
+          style={{ maxHeight: "calc(100vh - 200px)" }}
+        >
+          <div className="sticky top-0 bg-white z-10">
+            <table className="min-w-full border">
+              <thead>
+                <tr className="border-b">
+                  <th className="p-3 text-left sticky left-0 bg-white z-20">
+                    Stage
+                  </th>
+                  <th className="p-3 text-left">Company</th>
+                  <th className="p-3 text-left">Category</th>
+                  <th className="p-3 text-left">Owner</th>
+                  <th className="p-3 text-right">Amount</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
 
-              {/* Deals in this stage */}
-              <div className="space-y-3 max-h-96 overflow-y-auto pb-2 mb-3">
-                {stages[stageName].map((deal) => (
-                  <div
-                    key={deal.id}
-                    className=" p-3 rounded-lg shadow-sm cursor-move border hover:shadow-md transition-all"
-                    draggable={true}
-                    onDragStart={(e) => handleDragStart(e, deal)}
-                    onClick={handleDealClick}
-                  >
-                    <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-medium text-sm">{deal.company}</h4>
-                      <span className="font-medium text-sm  px-2 py-1 rounded-full">
-                        {deal.amount}
-                      </span>
-                    </div>
-                    <p className="text-xs mb-2">{deal.category}</p>
-                    <div className="flex items-center text-xs ">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3 w-3 mr-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+          <div
+            className="overflow-y-auto"
+            style={{ maxHeight: "calc(100vh - 250px)" }}
+          >
+            <table className="min-w-full border">
+              <tbody>
+                {Object.keys(stages).map((stageName) => (
+                  <>
+                    {stages[stageName].map((deal, index) => (
+                      <tr
+                        key={deal.id}
+                        className="border-b hover:bg-gray-50 cursor-move"
+                        draggable={true}
+                        onDragStart={(e) => handleDragStart(e, deal)}
+                        onClick={handleDealClick}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span>{deal.owner}</span>
-                    </div>
-                  </div>
+                        {index === 0 && (
+                          <td
+                            rowSpan={stages[stageName].length}
+                            className="p-3 border-r align-top sticky left-0 bg-white z-10"
+                            onDragOver={handleDragOver}
+                            onDrop={(e) => handleDrop(e, stageName)}
+                          >
+                            <div className="flex justify-between items-center">
+                              <span className="font-medium">{stageName}</span>
+                              <span className="text-sm px-2 py-1 rounded-full">
+                                {stages[stageName].length}
+                              </span>
+                            </div>
+                          </td>
+                        )}
+                        <td className="p-3">{deal.company}</td>
+                        <td className="p-3">{deal.category}</td>
+                        <td className="p-3">
+                          <div className="flex items-center text-xs">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-3 w-3 mr-1"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                              />
+                            </svg>
+                            <span>{deal.owner}</span>
+                          </div>
+                        </td>
+                        <td className="p-3 text-right">{deal.amount}</td>
+                      </tr>
+                    ))}
+                    <tr className="border-b bg-gray-50">
+                      <td
+                        colSpan={4}
+                        className="p-3 text-xs text-gray-500 text-right sticky left-0 bg-gray-50 z-10"
+                      >
+                        Total
+                      </td>
+                      <td className="p-3 font-medium text-right bg-gray-50">
+                        {stageTotals[stageName]}
+                      </td>
+                    </tr>
+                  </>
                 ))}
-              </div>
-
-              {/* Stage total */}
-              <div className=" p-3 rounded-lg border-t mt-auto">
-                <div className="flex justify-between items-center">
-                  <span className="text-xs text-gray-500">Total</span>
-                  <span className="font-medium text-sm">{stageTotals[stageName]}</span>
-                </div>
-              </div>
-            </div>
-          ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

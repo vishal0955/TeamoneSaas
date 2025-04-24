@@ -2,6 +2,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer } from "recharts";
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, Title, ArcElement,   } from 'chart.js';
+
+
+
 
 const data = [
   { name: "Oct 2024", pipeline: 10000, bestCase: 5000, commit: 7000, closed: 8000 },
@@ -9,14 +14,47 @@ const data = [
   { name: "Dec 2024", pipeline: 40000, bestCase: 25000, commit: 22000, closed: 18000 },
 ];
 
+
+
 const Analytics = () => {
 
 
 
-  const darkMode = useSelector((state) => state.theme.isDarkMode);
+  const dataMobileCRM = {
+    labels: ['Achieved sales quotas', 'Non-achieved sales quotas'],
+    datasets: [
+      {
+        label: 'Mobile CRM enabled companies',
+        data: [35, 65], // Data points
+        backgroundColor: ['#3DCDC7', '#D1E7E3'], // Colors for achieved and non-achieved
+        hoverOffset: 4,
+      },
+    ],
+  };
 
+  const dataNonMobileCRM = {
+    labels: ['Achieved sales quotas', 'Non-achieved sales quotas'],
+    datasets: [
+      {
+        label: 'Non-Mobile CRM enabled companies',
+        data: [22, 78],
+        backgroundColor: ['#3DCDC7', '#D1E7E3'],
+        hoverOffset: 4,
+      },
+    ],
+  };
+
+
+
+
+  const darkMode = useSelector((state) => state.theme.isDarkMode);
   return (
     <div className= "p-6  min-h-screen">
+
+      
+
+
+
       <h2 className="text-xl font-semibold mb-4">Sales</h2>
 
       <div className=" grid md:grid-cols-2 gap-6">
@@ -82,6 +120,17 @@ const Analytics = () => {
           </ResponsiveContainer>
         </div>
       </div>
+      <div className="charts-container p-4 rounded-xl shadow-lg" style={{ display: 'flex', justifyContent: 'space-around', marginTop:"20px" }}>
+      <div style={{ width: '250px', marginTop:"30px", marginBottom:"20px" }}>
+        <h3>Mobile CRM enabled companies</h3>
+        <Doughnut data={dataMobileCRM} />
+      </div>
+      <div style={{ width: '250px', marginTop:"30px", marginBottom:"20px" }}>
+        <h3>Non-Mobile CRM enabled companies</h3>
+        <Doughnut data={dataNonMobileCRM} />
+      </div>
+    </div>
+
     </div>
   );
 };
