@@ -10,17 +10,83 @@ import interactionPlugin from '@fullcalendar/interaction';
 const Workload = () => {
   // Sample data for the chart
   const [chartData, setChartData] = useState([
-    { period: '01 Apr - 04 Apr', availableCapacity: 65, assignedAllocations: 20, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '07 Apr - 11 Apr', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '14 Apr - 18 Apr', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '21 Apr - 25 Apr', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '28 Apr - 02 May', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '05 May - 09 May', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '12 May - 16 May', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '19 May - 23 May', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '26 May - 30 May', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '02 Jun - 06 Jun', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
-    { period: '09 Jun - 13 Jun', availableCapacity: 75, assignedAllocations: 0, unassignedAllocations: 0, totalCapacity: 75 },
+    {
+      period: "01 Apr - 04 Apr",
+      availableCapacity: 65,
+      assignedAllocations: 20,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "07 Apr - 11 Apr",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "14 Apr - 18 Apr",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "21 Apr - 25 Apr",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "28 Apr - 02 May",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "05 May - 09 May",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "12 May - 16 May",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "19 May - 23 May",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "26 May - 30 May",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "02 Jun - 06 Jun",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
+    {
+      period: "09 Jun - 13 Jun",
+      availableCapacity: 75,
+      assignedAllocations: 0,
+      unassignedAllocations: 0,
+      totalCapacity: 75,
+    },
   ]);
 
   // Sample data for the allocation table
@@ -37,41 +103,140 @@ const Workload = () => {
 
   // Time periods for the table
   const timePeriods = [
-    { id: 'apr1', label: '03-06', month: 'Apr \'25' },
-    { id: 'apr2', label: '07-11', month: 'Apr \'25' },
-    { id: 'apr3', label: '10-18', month: 'Apr \'25' },
-    { id: 'apr4', label: '21-25', month: 'Apr \'25' },
-    { id: 'apr5', label: '28-02', month: 'Apr \'25' },
-    { id: 'may1', label: '05-09', month: 'May \'25' },
-    { id: 'may2', label: '12-16', month: 'May \'25' },
-    { id: 'may3', label: '19-23', month: 'May \'25' },
-    { id: 'may4', label: '26-30', month: 'May \'25' },
-    { id: 'jun1', label: '02-06', month: 'Jun \'25' },
-    { id: 'jun2', label: '09-13', month: 'Jun \'25' },
+    { id: "apr1", label: "03-06", month: "Apr '25" },
+    { id: "apr2", label: "07-11", month: "Apr '25" },
+    { id: "apr3", label: "10-18", month: "Apr '25" },
+    { id: "apr4", label: "21-25", month: "Apr '25" },
+    { id: "apr5", label: "28-02", month: "Apr '25" },
+    { id: "may1", label: "05-09", month: "May '25" },
+    { id: "may2", label: "12-16", month: "May '25" },
+    { id: "may3", label: "19-23", month: "May '25" },
+    { id: "may4", label: "26-30", month: "May '25" },
+    { id: "jun1", label: "02-06", month: "Jun '25" },
+    { id: "jun2", label: "09-13", month: "Jun '25" },
   ];
 
   // Allocation data - this would typically come from a backend API
   const [allocations, setAllocations] = useState({
-    '3d': { 'apr1': '75%', 'apr2': '0%', 'apr3': '0%', 'apr4': '0%', 'apr5': '0%', 'may1': '0%', 'may2': '0%', 'may3': '0%', 'may4': '0%', 'jun1': '0%', 'jun2': '0%' },
-    '2d': { 'apr1': 'NA', 'apr2': 'NA', 'apr3': 'NA', 'apr4': 'NA', 'apr5': 'NA', 'may1': 'NA', 'may2': 'NA', 'may3': 'NA', 'may4': 'NA', 'jun1': 'NA', 'jun2': 'NA' },
-    'admin': { 'apr1': 'NA', 'apr2': 'NA', 'apr3': 'NA', 'apr4': 'NA', 'apr5': 'NA', 'may1': 'NA', 'may2': 'NA', 'may3': 'NA', 'may4': 'NA', 'jun1': 'NA', 'jun2': 'NA' },
-    'audioc': { 'apr1': 'NA', 'apr2': 'NA', 'apr3': 'NA', 'apr4': 'NA', 'apr5': 'NA', 'may1': 'NA', 'may2': 'NA', 'may3': 'NA', 'may4': 'NA', 'jun1': 'NA', 'jun2': 'NA' },
-    'avc': { 'apr1': 'NA', 'apr2': 'NA', 'apr3': 'NA', 'apr4': 'NA', 'apr5': 'NA', 'may1': 'NA', 'may2': 'NA', 'may3': 'NA', 'may4': 'NA', 'jun1': 'NA', 'jun2': 'NA' },
-    'avsm': { 'apr1': 'NA', 'apr2': 'NA', 'apr3': 'NA', 'apr4': 'NA', 'apr5': 'NA', 'may1': 'NA', 'may2': 'NA', 'may3': 'NA', 'may4': 'NA', 'jun1': 'NA', 'jun2': 'NA' },
-    'avse': { 'apr1': 'NA', 'apr2': 'NA', 'apr3': 'NA', 'apr4': 'NA', 'apr5': 'NA', 'may1': 'NA', 'may2': 'NA', 'may3': 'NA', 'may4': 'NA', 'jun1': 'NA', 'jun2': 'NA' },
-    'ceo': { 'apr1': '75%', 'apr2': '0%', 'apr3': '0%', 'apr4': '0%', 'apr5': '0%', 'may1': '0%', 'may2': '0%', 'may3': '0%', 'may4': '0%', 'jun1': '0%', 'jun2': '0%' },
+    "3d": {
+      apr1: "75%",
+      apr2: "0%",
+      apr3: "0%",
+      apr4: "0%",
+      apr5: "0%",
+      may1: "0%",
+      may2: "0%",
+      may3: "0%",
+      may4: "0%",
+      jun1: "0%",
+      jun2: "0%",
+    },
+    "2d": {
+      apr1: "NA",
+      apr2: "NA",
+      apr3: "NA",
+      apr4: "NA",
+      apr5: "NA",
+      may1: "NA",
+      may2: "NA",
+      may3: "NA",
+      may4: "NA",
+      jun1: "NA",
+      jun2: "NA",
+    },
+    admin: {
+      apr1: "NA",
+      apr2: "NA",
+      apr3: "NA",
+      apr4: "NA",
+      apr5: "NA",
+      may1: "NA",
+      may2: "NA",
+      may3: "NA",
+      may4: "NA",
+      jun1: "NA",
+      jun2: "NA",
+    },
+    audioc: {
+      apr1: "NA",
+      apr2: "NA",
+      apr3: "NA",
+      apr4: "NA",
+      apr5: "NA",
+      may1: "NA",
+      may2: "NA",
+      may3: "NA",
+      may4: "NA",
+      jun1: "NA",
+      jun2: "NA",
+    },
+    avc: {
+      apr1: "NA",
+      apr2: "NA",
+      apr3: "NA",
+      apr4: "NA",
+      apr5: "NA",
+      may1: "NA",
+      may2: "NA",
+      may3: "NA",
+      may4: "NA",
+      jun1: "NA",
+      jun2: "NA",
+    },
+    avsm: {
+      apr1: "NA",
+      apr2: "NA",
+      apr3: "NA",
+      apr4: "NA",
+      apr5: "NA",
+      may1: "NA",
+      may2: "NA",
+      may3: "NA",
+      may4: "NA",
+      jun1: "NA",
+      jun2: "NA",
+    },
+    avse: {
+      apr1: "NA",
+      apr2: "NA",
+      apr3: "NA",
+      apr4: "NA",
+      apr5: "NA",
+      may1: "NA",
+      may2: "NA",
+      may3: "NA",
+      may4: "NA",
+      jun1: "NA",
+      jun2: "NA",
+    },
+    ceo: {
+      apr1: "75%",
+      apr2: "0%",
+      apr3: "0%",
+      apr4: "0%",
+      apr5: "0%",
+      may1: "0%",
+      may2: "0%",
+      may3: "0%",
+      may4: "0%",
+      jun1: "0%",
+      jun2: "0%",
+    },
   });
 
   // Function to update allocation
   const updateAllocation = (resourceId, periodId, value) => {
-    const newValue = prompt(`Update allocation for ${resourceId} during ${periodId}:`, value);
+    const newValue = prompt(
+      `Update allocation for ${resourceId} during ${periodId}:`,
+      value
+    );
     if (newValue) {
-      setAllocations(prev => ({
+      setAllocations((prev) => ({
         ...prev,
         [resourceId]: {
           ...prev[resourceId],
-          [periodId]: newValue
-        }
+          [periodId]: newValue,
+        },
       }));
     }
   };
@@ -87,10 +252,10 @@ const Workload = () => {
 
   // Get background color for allocation cells
   const getAllocationCellColor = (value) => {
-    if (value === 'NA') return 'bg-purple-50 text-purple-500';
-    if (value === '0%') return 'bg-green-50 text-green-800';
-    if (value === '75%') return 'bg-blue-500 text-white';
-    return 'bg-gray-50';
+    if (value === "NA") return "bg-purple-50 text-purple-500";
+    if (value === "0%") return "bg-green-50 text-green-800";
+    if (value === "75%") return "bg-blue-500 text-white";
+    return "bg-gray-50";
   };
 
     const [allEvents, setAllEvents] = useState([
@@ -296,11 +461,13 @@ const Workload = () => {
   
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
+    <div className="flex flex-col h-full overflow-hidden" style={{marginLeft:"25px"}}>
       {/* Chart section */}
-      <div className={`${darkMode ? "card-dark" : null }  p-4 shadow-sm mb-4`}>
+      <div className={`${darkMode ? "card-dark" : null}  p-4 shadow-sm mb-4`}>
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-medium">Allocations (demand) vs Capacity (supply)</h2>
+          <h2 className="text-lg font-medium">
+            Allocations (demand) vs Capacity (supply)
+          </h2>
           <div className="flex space-x-4">
             <div className="flex items-center">
               <div className="w-4 h-0.5  mr-1"></div>
@@ -324,7 +491,16 @@ const Workload = () => {
             </div>
           </div>
         </div>
-        
+        <div className="text-end">
+          <input
+            type="text"
+            placeholder="Search by title, project, person..."
+            className={`${
+              darkMode ? "card-dark" : null
+            }  px-3 py-1 border rounded-md pr-8 gap-2 w-25 text-end`}
+          />
+        </div>
+
         <div className="w-full h-64">
           <BarChart
             width={1000}
@@ -339,9 +515,23 @@ const Workload = () => {
             <YAxis domain={[0, 100]} />
             <Tooltip />
             <ReferenceLine y={75} stroke="#666" strokeDasharray="3 3" />
-            <Bar dataKey="availableCapacity" fill="#63B3ED" name="Available capacity" />
-            <Bar dataKey="assignedAllocations" fill="#38B2AC" name="Assigned allocations" stackId="a" />
-            <Bar dataKey="unassignedAllocations" fill="#9AE6B4" name="Unassigned allocations" stackId="a" />
+            <Bar
+              dataKey="availableCapacity"
+              fill="#63B3ED"
+              name="Available capacity"
+            />
+            <Bar
+              dataKey="assignedAllocations"
+              fill="#38B2AC"
+              name="Assigned allocations"
+              stackId="a"
+            />
+            <Bar
+              dataKey="unassignedAllocations"
+              fill="#9AE6B4"
+              name="Unassigned allocations"
+              stackId="a"
+            />
           </BarChart>
         </div>
       </div>
@@ -672,12 +862,23 @@ const Workload = () => {
         </div>
       {/* Edit button in corner */}
       <button className="fixed bottom-6 right-6 w-12 h-12  rounded-full shadow-lg flex items-center justify-center text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+          />
         </svg>
       </button>
     </div>
   );
-}
+};
 
 export default Workload;

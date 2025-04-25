@@ -733,14 +733,8 @@ const ProjectTimelineCalendar = () => {
       <div className={`${darkMode ? "dark-mode" : ""} rounded-lg shadow-lg p-3 md:p-6 h-full`}>
         <div className="flex flex-col md:flex-row justify-between items-center mb-4">
           <div className="flex items-center space-x-2 w-full md:w-1/2 mb-2 md:mb-0">
-            <div className="flex items-center w-full">
-              <input 
-                type="text" 
-                placeholder="Search by title, project, person..." 
-                className={`${darkMode ? "card-dark" : null} w-full px-3 py-1 border rounded-md pr-8`} 
-                value={searchTerm}
-                onChange={handleSearch}
-              />
+            <div className="flex items-center w-full ">
+             
               {searchTerm && (
                 <>
                   <button  
@@ -757,6 +751,15 @@ const ProjectTimelineCalendar = () => {
             </div>
           </div>
           <div className="flex items-center w-full md:w-auto justify-end">
+         <div style={{marginRight:"10px"}}>
+         <input 
+                type="text" 
+                placeholder="Search by title, project, person..." 
+                className={`${darkMode ? "card-dark" : null} w-full px-3 py-1 border rounded-md pr-8 `} 
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+         </div>
             <button 
               className={`px-1 py-1 border rounded-md me-2 ${showWeekends ? null : null }`}
               onClick={toggleWeekends}

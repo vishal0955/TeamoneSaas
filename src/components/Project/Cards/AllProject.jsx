@@ -374,9 +374,9 @@ const AllProject = () => {
           <div className="table-responsive">
           <table  className={` ${
                   darkMode ? "table-dark" : null
-                } table table-bordered align-middle text-nowrap `}>
+                } table  align-middle text-nowrap `}>
           <thead
-                  className={` ${darkMode ? "table-dark" : null} table-light`}>
+                  className={` ${darkMode ? "table-dark" : null} `}>
                   <tr>
                     <th style={{ width: "40px" }}>
                       <input type="checkbox" className="form-check-input" />

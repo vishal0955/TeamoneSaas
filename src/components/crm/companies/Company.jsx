@@ -192,7 +192,7 @@ const Company = () => {
   const darkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 " style={{marginLeft:"20px"}}>
       <Row className="mb-3 ">
         <div className="d-flex justify-content-between">
           <div>

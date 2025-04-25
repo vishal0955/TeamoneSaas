@@ -182,7 +182,7 @@ const NotesGrid = () => {
   );
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen" style={{marginLeft:"20px"}}>
       {/* Sidebar - Collapsible on mobile */}
       <div className={`w-full md:w-64 border-r border-gray-200 flex-shrink-0 shadow-xs  ${darkMode ? "bg-gray-800 text-white" : " bg-gray-50" }`}>
         <div className="flex items-center px-3 py-4">

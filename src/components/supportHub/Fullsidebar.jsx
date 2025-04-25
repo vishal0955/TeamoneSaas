@@ -14,7 +14,7 @@ const Sidebar = ({ toggleSidebar, collapsed }) => {
     }));
   };
   return (
-    <div className=" flex min-h-screen">
+    <div className=" flex min-h-screen" style={{marginLeft:"25px"}}>
       {/* Sidebar */}
       <aside
         className={`min-h-screen shadow-gray-200 shadow-lg flex flex-col transition-all duration-300 ease-in-out ${

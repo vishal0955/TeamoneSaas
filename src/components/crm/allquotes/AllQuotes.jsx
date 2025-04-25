@@ -50,7 +50,7 @@ const AllQuotes = () => {
 
   return (
     <>
-      <div className="quotes-container container py-4">
+      <div className="quotes-container container py-4" style={{marginLeft:"25px"}}>
         <div className="quotes-header d-flex justify-content-between align-items-center mb-4">
           <h2 className="quotes-title">All Quotes</h2>
           <div className="quotes-actions d-flex gap-3">

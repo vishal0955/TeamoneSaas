@@ -867,7 +867,7 @@ const FunctionalCalendar = () => {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100 " >
       {/* Sidebar Toggle Button (Mobile) */}
       <button
         className={`md:hidden fixed top-4 left-4 z-20 p-2 rounded-md ${sidebarOpen ? 'bg-gray-700 text-white' : 'bg-gray-200'}`}
